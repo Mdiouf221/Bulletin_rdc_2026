@@ -1,0 +1,59 @@
+TITRE : Caisse Nationale de Sécurité Sociale des Agents Publics de l'État (CNSSAP) — Branches et prestations
+SOURCE : Caisse Nationale de Sécurité Sociale des Agents Publics de l'État (CNSSAP), République Démocratique du Congo
+URL : https://www.cnssap.cd/qui-sommes-nous/
+CONSULTÉ : 2026-06-08
+NIVEAU : Source primaire institutionnelle (site officiel de l'institution)
+
+---
+
+BRANCHES COUVERTES PAR LA CNSSAP (selon site officiel cnssap.cd)
+
+La CNSSAP gère trois branches de sécurité sociale pour les agents publics de l'État :
+
+1. Branche des pensions
+   - Prestations d'invalidité
+   - Prestations de vieillesse
+   - Prestations aux survivants
+
+2. Branche des risques professionnels
+   - Prestations en cas d'accidents du travail
+   - Prestations en cas de maladie professionnelle
+
+3. Branche des prestations aux familles
+   - Allocations familiales
+   - Allocations prénatales
+   - Allocations de maternité
+
+SOURCE LÉGALE PRIMAIRE :
+- Décret n°15/031 du 14 décembre 2015 portant création, organisation et fonctionnement de la CNSSAP
+- Loi n°22/031 du 15 juillet 2022 portant régime spécial de sécurité sociale des agents publics de l'État
+- Arrêté n°049/CAB.VPMIN/FP-MA-ISP/JPL/2023 du 05 mai 2023 relatif aux prestations
+(Textes disponibles sur cnssap.cd/textes-legaux-et-reglementaires/)
+
+---
+
+POPULATION ASSUJETTIE
+Les agents de carrière des services publics de l'État, les militaires et policiers, les enseignants,
+les fonctionnaires contractuels de l'État, les stagiaires et les apprentis liés par un contrat
+d'apprentissage qui intègrent l'Administration publique.
+
+---
+
+PRESTATIONS COMPLÉMENTAIRES (Régime Complémentaire)
+La CNSSAP gère également un régime complémentaire dont les prestations sont documentées
+séparément sur le site officiel (cnssap.cd/prestations-au-regime-complementaire/).
+
+---
+
+BRANCHES NON COUVERTES PAR LA CNSSAP
+- Soins médicaux (Partie II de la C102) : couverts partiellement via l'action sociale et sanitaire,
+  non documentés comme branche formelle
+- Indemnités de maladie (Partie III de la C102) : non documentées comme branche distincte
+- Chômage (Partie IV de la C102) : non couvert
+
+---
+
+NOTE MÉTHODOLOGIQUE
+Ces informations sont extraites du site officiel de la CNSSAP (cnssap.cd).
+La couverture effective (nombre d'affiliés, cotisants actifs, bénéficiaires) fait l'objet
+du chapitre institutionnel du bulletin.

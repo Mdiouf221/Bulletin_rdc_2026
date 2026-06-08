@@ -1,0 +1,625 @@
+/*
+ * preview.css
+ * -----------
+ * Feuille de style pour la prévisualisation navigateur du bulletin.
+ * Indépendante des fichiers .md et du futur export Word.
+ * Modifier librement sans toucher à aucun fichier source.
+ */
+
+/* ===== Variables ===================================================== */
+:root {
+    --couleur-principale : #1a3a6b;
+    --couleur-accent      : #c8a951;
+    --couleur-texte       : #1c1c1c;
+    --couleur-fond        : #f2f1ec;
+    --couleur-fond-page   : #ffffff;
+    --couleur-bordure     : #d0cfc8;
+    --largeur-sidebar     : 270px;
+    --police-corps        : Georgia, 'Times New Roman', serif;
+    --police-ui           : 'Segoe UI', Arial, sans-serif;
+    --police-mono         : 'Courier New', monospace;
+}
+
+/* ===== Reset de base ================================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ===== Corps ========================================================== */
+body {
+    font-family : var(--police-corps);
+    font-size   : 16px;
+    line-height : 1.85;
+    color       : var(--couleur-texte);
+    background  : var(--couleur-fond);
+    display     : flex;
+    min-height  : 100vh;
+}
+
+/* ===== Sidebar — Table des matières ================================== */
+#sidebar {
+    width      : var(--largeur-sidebar);
+    min-width  : var(--largeur-sidebar);
+    height     : 100vh;
+    position   : sticky;
+    top        : 0;
+    overflow-y : auto;
+    background : var(--couleur-principale);
+    color      : #dde2ea;
+    padding    : 0 0 40px;
+    font-family: var(--police-ui);
+    font-size  : 13px;
+}
+
+#toc-header {
+    font-size      : 10.5px;
+    font-weight    : 700;
+    text-transform : uppercase;
+    letter-spacing : 1.8px;
+    color          : var(--couleur-accent);
+    padding        : 22px 18px 14px;
+    border-bottom  : 1px solid rgba(255,255,255,0.1);
+    margin-bottom  : 6px;
+}
+
+/* Liens TOC */
+#sidebar .toc { list-style: none; }
+#sidebar .toc ul { list-style: none; }
+
+#sidebar .toc a {
+    display     : block;
+    color       : #b8c4d4;
+    text-decoration: none;
+    padding     : 5px 18px;
+    line-height : 1.45;
+    transition  : background 0.12s, color 0.12s;
+    border-left : 3px solid transparent;
+}
+#sidebar .toc a:hover {
+    background  : rgba(255,255,255,0.07);
+    color       : #ffffff;
+    border-left-color: var(--couleur-accent);
+}
+
+/* Niveaux de profondeur */
+#sidebar .toc ul a       { padding-left: 30px; font-size: 12px; color: #8898b0; }
+#sidebar .toc ul ul a    { padding-left: 42px; font-size: 11.5px; color: #6a7a90; }
+#sidebar .toc ul ul ul a { padding-left: 54px; font-size: 11px; }
+
+/* ===== Zone principale =============================================== */
+#main {
+    flex       : 1;
+    overflow-y : auto;
+    padding    : 48px 56px;
+    min-width  : 0;
+}
+
+#content {
+    max-width  : 800px;
+    margin     : 0 auto;
+    background : var(--couleur-fond-page);
+    padding    : 64px 80px;
+    box-shadow : 0 2px 18px rgba(0,0,0,0.09);
+}
+
+/* ===== Titres ======================================================== */
+h1 {
+    font-family   : var(--police-ui);
+    font-size     : 24px;
+    font-weight   : 700;
+    color         : var(--couleur-principale);
+    margin        : 52px 0 18px;
+    padding-bottom: 10px;
+    border-bottom : 3px solid var(--couleur-accent);
+    line-height   : 1.3;
+}
+h1:first-child { margin-top: 0; }
+
+h2 {
+    font-family   : var(--police-ui);
+    font-size     : 18px;
+    font-weight   : 700;
+    color         : var(--couleur-principale);
+    margin        : 38px 0 12px;
+    padding-bottom: 6px;
+    border-bottom : 1px solid var(--couleur-bordure);
+}
+
+h3 {
+    font-family : var(--police-ui);
+    font-size   : 16px;
+    font-weight : 600;
+    color       : #2a4a80;
+    margin      : 28px 0 8px;
+}
+
+h4 {
+    font-family : var(--police-ui);
+    font-size   : 14.5px;
+    font-weight : 600;
+    color       : #444;
+    margin      : 20px 0 6px;
+}
+
+/* ===== Paragraphes =================================================== */
+p {
+    margin      : 0 0 1em;
+    text-align  : justify;
+    hyphens     : auto;
+}
+
+/* ===== Listes ======================================================== */
+ul, ol { margin: 0 0 1em 1.4em; padding: 0; }
+li { margin-bottom: 0.3em; }
+
+/* ===== Tableaux ====================================================== */
+table {
+    width           : 100%;
+    border-collapse : collapse;
+    margin          : 1.6em 0;
+    font-size       : 12.5px;
+    font-family     : var(--police-ui);
+}
+thead tr {
+    background : var(--couleur-principale);
+    color      : #ffffff;
+}
+thead th {
+    padding    : 7px 10px;
+    text-align : left;
+    font-weight: 600;
+    font-size  : 12px;
+}
+tbody tr:nth-child(even) { background: #f4f3ee; }
+tbody tr:hover           { background: #eaeff8; }
+td, th {
+    padding       : 6px 10px;
+    border-bottom : 1px solid var(--couleur-bordure);
+    vertical-align: top;
+}
+
+/* Conteneur scrollable automatique pour tous les tableaux */
+.table-scroll {
+    overflow-x : auto;
+    -webkit-overflow-scrolling : touch;
+    margin : 1.6em 0;
+}
+.table-scroll table {
+    margin : 0;
+    min-width : 600px;
+}
+
+/* ===== Citations ===================================================== */
+blockquote {
+    border-left : 4px solid var(--couleur-accent);
+    background  : #fdf9ef;
+    padding     : 12px 16px;
+    margin      : 1.2em 0;
+    font-style  : italic;
+    color       : #555;
+}
+
+/* ===== Code ========================================================== */
+code {
+    font-family  : var(--police-mono);
+    font-size    : 13px;
+    background   : #f0eeea;
+    padding      : 1px 5px;
+    border-radius: 3px;
+    color        : #b03060;
+}
+pre {
+    background  : #f5f4f0;
+    padding     : 14px 16px;
+    overflow-x  : auto;
+    margin      : 1em 0;
+    border-left : 3px solid var(--couleur-bordure);
+}
+pre code {
+    background : transparent;
+    padding    : 0;
+    color      : var(--couleur-texte);
+    font-size  : 13px;
+}
+
+/* ===== Séparateurs =================================================== */
+hr {
+    border    : none;
+    border-top: 1px solid var(--couleur-bordure);
+    margin    : 2.2em 0;
+}
+
+/* ===== Liens ========================================================= */
+a { color: var(--couleur-principale); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ===== Textes placeholder "À rédiger" ================================ */
+p em:only-child { color: #aaa; font-style: italic; }
+
+/* ===== Barre d'info en haut ========================================== */
+#topbar {
+    position   : fixed;
+    top        : 0; left: 0; right: 0;
+    height     : 32px;
+    background : var(--couleur-accent);
+    color      : #1a1a1a;
+    font-family: var(--police-ui);
+    font-size  : 12px;
+    font-weight: 600;
+    display    : flex;
+    align-items: center;
+    padding    : 0 16px;
+    z-index    : 100;
+    letter-spacing: 0.3px;
+}
+
+/* Décale le contenu quand la barre est présente */
+body.with-topbar #main { padding-top: 56px; }
+body.with-topbar #sidebar { padding-top: 32px; }
+
+/* ===== Sections repliables — contenu ================================= */
+.collapsible-heading {
+    cursor       : pointer;
+    user-select  : none;
+}
+.collapsible-heading:hover .collapse-toggle { color: #e0b83a; }
+
+.collapse-toggle {
+    display        : inline-block;
+    width          : 1.1em;
+    color          : var(--couleur-accent);
+    font-size      : 0.75em;
+    margin-right   : 5px;
+    vertical-align : middle;
+    transition     : color 0.12s;
+    flex-shrink    : 0;
+}
+
+.collapsible-section.collapsed { display: none; }
+
+/* ===== TOC repliable — sidebar ======================================= */
+.toc-toggle {
+    display        : inline-block;
+    width          : 0.9em;
+    margin-right   : 3px;
+    color          : rgba(200,169,81,0.7);
+    font-size      : 0.75em;
+    vertical-align : middle;
+    cursor         : pointer;
+    transition     : color 0.12s;
+    flex-shrink    : 0;
+}
+.toc-toggle:hover  { color: var(--couleur-accent); }
+ul.toc-collapsed   { display: none !important; }
+
+/* ===== Indicateur de page ============================================ */
+#page-indicator {
+    position   : fixed;
+    bottom     : 16px;
+    right      : 20px;
+    background : rgba(26, 58, 107, 0.88);
+    color      : #dde2ea;
+    font-family: var(--police-ui);
+    font-size  : 12px;
+    padding    : 5px 12px;
+    border-radius : 4px;
+    z-index    : 200;
+    pointer-events : none;
+    letter-spacing : 0.4px;
+    box-shadow : 0 2px 8px rgba(0,0,0,0.25);
+}
+
+/* ===== Responsive ===================================================== */
+@media (max-width: 960px) {
+    #sidebar { display: none; }
+    #main    { padding: 24px 16px; }
+    #content { padding: 32px 24px; }
+}
+
+/* ===== Indicateurs de statut de validation ============================= */
+/*
+ * Palette :
+ *   brouillon  →  rouge   #d42b2b
+ *   à revoir   →  orange  #e07820
+ *   revu       →  bleu    #2e78c8
+ *   validé     →  noir    #111111
+ */
+
+.status-dot {
+    display        : inline-block;
+    font-size      : 0.6em;
+    vertical-align : middle;
+    margin-right   : 6px;
+    cursor         : default;
+    line-height    : 1;
+    opacity        : 0.9;
+}
+
+.status-brouillon { color: #d42b2b; }
+.status-arevoir   { color: #e07820; }
+.status-revu      { color: #2e78c8; }
+.status-valide    { color: #111111; }
+
+/* ===== Légende des statuts — panneau flottant ========================= */
+
+#status-legend {
+    position      : fixed;
+    bottom        : 18px;
+    right         : 18px;
+    background    : rgba(255,255,255,0.97);
+    border        : 1px solid var(--couleur-bordure);
+    border-radius : 6px;
+    padding       : 8px 14px;
+    font-family   : var(--police-ui);
+    font-size     : 11.5px;
+    color         : #444;
+    box-shadow    : 0 2px 10px rgba(0,0,0,0.1);
+    line-height   : 1.9;
+    z-index       : 90;
+    user-select   : none;
+}
+#status-legend .legend-title {
+    font-weight    : 700;
+    font-size      : 10px;
+    text-transform : uppercase;
+    letter-spacing : 1.2px;
+    color          : #888;
+    margin-bottom  : 4px;
+}
+#status-legend .l-dot {
+    display        : inline-block;
+    width          : 9px;
+    height         : 9px;
+    border-radius  : 50%;
+    margin-right   : 6px;
+    vertical-align : middle;
+}
+
+/* ===== Placeholder "Texte à rédiger" ================================= */
+p.a-rediger {
+    color         : #b05000;
+    font-family   : var(--police-ui);
+    font-size     : 13px;
+    font-style    : italic;
+    border        : 1px dashed #e0a070;
+    background    : #fff8f2;
+    border-radius : 4px;
+    padding       : 7px 14px;
+    margin        : 0.8em 0;
+}
+
+/* ===== Badges de validation par paragraphe ============================ */
+/*
+ * Sur chaque titre ### du texte rédigé :
+ *   <span class="valid-badge nv" title="Non validé">non validé</span>
+ *
+ * Niveaux :  nv gris  |  ec orange  |  v vert  |  r rouge
+ */
+.valid-badge {
+    display        : inline-block;
+    font-size      : 0.55em;
+    vertical-align : middle;
+    margin-left    : 9px;
+    padding        : 2px 7px;
+    border-radius  : 10px;
+    font-family    : var(--police-ui);
+    font-weight    : 700;
+    letter-spacing : 0.4px;
+    text-transform : uppercase;
+    cursor         : default;
+    line-height    : 1.5;
+}
+.valid-badge.nv { background: #e5e5e5; color: #888888; border: 1px solid #cccccc; }
+.valid-badge.ec { background: #fff0d4; color: #9a5c00; border: 1px solid #f0c070; }
+.valid-badge.v  { background: #d6f0e0; color: #1a6e3c; border: 1px solid #90d4aa; }
+.valid-badge.r  { background: #fce8e8; color: #9c1c1c; border: 1px solid #e09090; }
+
+/* ===== Annotations de source ========================================== */
+/*
+ * S'applique à : données chiffrées, citations directes, reformulations sourçées.
+ * Classe de validation obligatoire (détermine la couleur) :
+ *
+ *   <a href="/files/06_donnees/officielles_web/FICHIER.pdf"
+ *      title="Source : OIT (2022)  Rapport, p. 45"
+ *      class="source-ref nv">texte ou chiffre</a>
+ *
+ * nv  gris | ec  orange | v  vert | r  rouge
+ * Soulignement pointillé dans tous les cas.
+ */
+a.source-ref {
+    color                    : inherit;
+    text-decoration          : underline;
+    text-decoration-style    : dashed;
+    text-decoration-thickness: 2px;
+    text-underline-offset    : 3px;
+    cursor                   : pointer;
+    border-radius            : 2px;
+    transition               : background 0.12s;
+}
+a.source-ref.nv { text-decoration-color: #999999; }
+a.source-ref.ec { text-decoration-color: #e07820; }
+a.source-ref.v  { text-decoration-color: #1a6e3c; }
+a.source-ref.r  { text-decoration-color: #9c1c1c; }
+
+a.source-ref.nv:hover { background: rgba(153,153,153,0.10); }
+a.source-ref.ec:hover { background: rgba(224,120,32,0.10);  }
+a.source-ref.v:hover  { background: rgba(26,110,60,0.10);   }
+a.source-ref.r:hover  { background: rgba(156,28,28,0.10);   }
+
+/* ===== Couverture légale / effective dans les tableaux ============== */
+/*
+ * .cov-eff  — branche couverte de façon effective (données disponibles)
+ * .cov-leg  — branche prévue légalement uniquement (pas encore de données)
+ *
+ * Usage dans les cellules de tableau :
+ *   <span class="cov-eff">✓</span>   — bleu gras  (effectif)
+ *   <span class="cov-leg">✓</span>   — gris       (légal uniquement)
+ */
+.cov-eff {
+    color       : #1a56db;
+    font-weight : 700;
+    font-size   : 1.1em;
+}
+.cov-leg {
+    color       : #9ca3af;
+    font-weight : 400;
+}
+
+/* ===== Tableau compact (T4 et tableaux larges) ======================= */
+/*
+ * Utilisé pour les tableaux à nombreuses colonnes.
+ * Wrapper : <div class="table-compact"> ... tableau markdown ... </div>
+ */
+.table-compact table {
+    font-size   : 0.78em;
+    line-height : 1.35;
+}
+.table-compact table th,
+.table-compact table td {
+    padding     : 4px 7px;
+}
+
+/* ===== Éléments de validation inline ================================= */
+/*
+ * .val       — donnée chiffrée ou factuelle
+ * .val-cite  — citation directe
+ * .val-para  — reformulation / paraphrase
+ *
+ * Usage dans le Markdown :
+ *   <span class="val"
+ *         data-val-id="s3-p1-d1"
+ *         data-val-status="à valider"
+ *         data-val-file="02_introduction_generale/section.md">34 %</span>
+ *
+ * Cliquer sur l'élément ouvre le popup de changement de statut.
+ */
+
+[data-val-id] {
+    text-decoration          : underline;
+    text-decoration-style    : dotted;
+    text-decoration-thickness: 2px;
+    text-underline-offset    : 3px;
+    cursor                   : pointer;
+    border-radius            : 2px;
+    transition               : background 0.12s;
+}
+
+[data-val-id][data-val-status="brouillon"] {
+    text-decoration-color: #d42b2b;
+}
+[data-val-id][data-val-status="brouillon"]:hover { background: rgba(212,43,43,0.08); }
+
+[data-val-id][data-val-status="à revoir"] { text-decoration-color: #e07820; }
+[data-val-id][data-val-status="à revoir"]:hover { background: rgba(224,120,32,0.08); }
+
+[data-val-id][data-val-status="revu"] { text-decoration-color: #2e78c8; }
+[data-val-id][data-val-status="revu"]:hover { background: rgba(46,120,200,0.08); }
+
+[data-val-id][data-val-status="validé"] { text-decoration-color: #111111; }
+[data-val-id][data-val-status="validé"]:hover { background: rgba(17,17,17,0.06); }
+
+.val-cite { font-style: italic; }
+
+/* ===== Popup de validation interactive ================================ */
+#val-popup {
+    position      : fixed;
+    background    : #ffffff;
+    border        : 1px solid var(--couleur-bordure);
+    border-radius : 8px;
+    padding       : 14px 16px;
+    font-family   : var(--police-ui);
+    font-size     : 13px;
+    color         : var(--couleur-texte);
+    box-shadow    : 0 4px 20px rgba(0,0,0,0.18);
+    z-index       : 500;
+    min-width     : 230px;
+    display       : none;
+}
+#val-popup.open { display: block; }
+
+#val-popup .vp-title {
+    font-size      : 10px;
+    font-weight    : 700;
+    text-transform : uppercase;
+    letter-spacing : 1.2px;
+    color          : #888;
+    margin-bottom  : 8px;
+}
+#val-popup .vp-label {
+    font-size      : 11.5px;
+    color          : #556;
+    margin-bottom  : 10px;
+    font-style     : italic;
+    white-space    : nowrap;
+    overflow       : hidden;
+    text-overflow  : ellipsis;
+    max-width      : 200px;
+    border-bottom  : 1px solid #eee;
+    padding-bottom : 8px;
+}
+#val-popup .vp-options {
+    display        : flex;
+    flex-direction : column;
+    gap            : 2px;
+    margin-bottom  : 10px;
+}
+#val-popup .vp-opt {
+    display        : flex;
+    align-items    : center;
+    gap            : 8px;
+    padding        : 5px 8px;
+    border-radius  : 4px;
+    cursor         : pointer;
+    transition     : background 0.10s;
+    font-size      : 12.5px;
+}
+#val-popup .vp-opt:hover   { background: #f0f2f8; }
+#val-popup .vp-opt.selected { background: #e8eef8; font-weight: 600; }
+#val-popup .vp-dot {
+    width          : 10px;
+    height         : 10px;
+    border-radius  : 50%;
+    flex-shrink    : 0;
+}
+#val-popup .vp-actions {
+    display        : flex;
+    justify-content: flex-end;
+    gap            : 8px;
+    margin-top     : 4px;
+}
+#val-popup .vp-btn {
+    padding        : 4px 13px;
+    border-radius  : 4px;
+    border         : 1px solid var(--couleur-bordure);
+    font-size      : 12px;
+    font-family    : var(--police-ui);
+    cursor         : pointer;
+    transition     : background 0.10s;
+    background     : #fff;
+}
+#val-popup .vp-btn.confirm {
+    background     : var(--couleur-principale);
+    color          : #fff;
+    border-color   : var(--couleur-principale);
+}
+#val-popup .vp-btn.confirm:hover { background: #254a8e; }
+#val-popup .vp-btn.cancel:hover  { background: #f0f0f0; }
+
+/* Tooltip flottant */
+#source-tooltip {
+    position      : fixed;
+    left          : -9999px;
+    top           : -9999px;
+    background    : #1a3a6b;
+    color         : #ffffff;
+    padding       : 6px 13px;
+    border-radius : 4px;
+    font-size     : 12px;
+    font-family   : var(--police-ui);
+    pointer-events: none;
+    opacity       : 0;
+    transition    : opacity 0.18s ease;
+    max-width     : 440px;
+    z-index       : 9999;
+    box-shadow    : 0 2px 12px rgba(0, 0, 0, 0.35);
+    line-height   : 1.6;
+    white-space   : pre-wrap;
+}

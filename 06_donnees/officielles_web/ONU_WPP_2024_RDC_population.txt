@@ -1,0 +1,81 @@
+SOURCE : Nations Unies, Département des affaires économiques et sociales (DESA)
+TITRE   : World Population Prospects 2024 — Country Profile: Democratic Republic of the Congo
+URL     : https://population.un.org/wpp/
+CONSULTÉ: 2026-06-08
+NIVEAU  : 1 (organisation internationale — source primaire)
+
+---------------------------------------------------------------------
+DONNÉES CLÉS — RDC (extraites pour le deuxième Bulletin statistique)
+---------------------------------------------------------------------
+
+Population totale (2024)         : 109 276 265 habitants
+Population totale (2025 estimée) : 112 200 000 habitants (projection médiane)
+Taux de croissance annuel (2024) : 3,18 %
+Densité (2024)                   : ~48 hab/km²
+
+Structure par âge (2024) :
+  - 0-14 ans  : 46,7 %
+  - 15-64 ans : 50,7 %
+  - 65 ans+   :  2,6 %
+Indice de dépendance démographique : ~97 %
+
+Fécondité (TFG 2024)             : 5,91 enfants par femme
+Espérance de vie à la naissance (2024) :
+  - Total     : 62,2 ans
+  - Femmes    : 63,9 ans
+  - Hommes    : 60,5 ans
+Mortalité infantile (2024)       : 59,6 pour 1 000 naissances vivantes
+
+Population urbaine (2024)        : 48,0 % (environ 52 millions)
+Taux d'urbanisation annuel       : 4,1 %
+Principales agglomérations (2024) :
+  - Kinshasa : 17 071 000 habitants
+  - Lubumbashi : 2 984 000
+  - Mbuji-Mayi : 2 919 000
+
+Projection 2050 : ~215 millions habitants (médiane)
+
+---------------------------------------------------------------------
+NOTE D'UTILISATION
+---------------------------------------------------------------------
+Ces données sont issues des projections officielles des Nations Unies.
+Elles constituent la référence démographique de base pour le bulletin.
+Citer comme : Nations Unies, DESA (2024), World Population Prospects 2024.
+
+---------------------------------------------------------------------
+NOTE DE CONFLIT DE SOURCE — POPULATION TOTALE
+---------------------------------------------------------------------
+L'INS RDC (Institut National de la Statistique) publie une projection nationale
+de la population pour 2025 d'environ 124 millions d'habitants, contre ~112,8 millions
+selon WPP 2024 (Nations Unies). Écart : +11 millions.
+
+Raisons de l'écart :
+  - Le dernier recensement général de la population en RDC date de 1984.
+  - L'INS applique une hypothèse de fécondité plus élevée que WPP dans ses projections.
+  - Les deux projections sont donc cohérentes avec leurs hypothèses propres.
+
+Décision de rédaction : le bulletin retient la valeur WPP 2024 (~112M) comme référence
+internationale standardisée, cohérente avec les publications des organisations onusiennes
+et de la Banque mondiale.
+
+Source INS à consulter :
+  Institut National de la Statistique RDC — Projections démographiques nationales
+  URL : https://www.ins.cd/
+
+Cette note est conforme à la procédure standard de documentation des conflits de sources
+(PROC-001, règle : noter les sources alternatives dans le fichier .txt sans les intégrer
+au texte principal sauf si supérieures en qualité ou en récence).
+
+---------------------------------------------------------------------
+NOTE DE DISCORDANCE — TAUX D'URBANISATION (WPP vs WB WDI/WUP)
+---------------------------------------------------------------------
+Le fichier WPP 2024 indique une population urbaine de 48,0 % pour 2024.
+La Banque mondiale WDI (basée sur WUP 2025 Revision) indique 44,75 % pour 2024.
+Écart : -3,25 points.
+
+Cette discordance est documentée dans la littérature ; elle reflète une révision
+méthodologique entre WUP 2018 (utilisée dans WPP 2024) et WUP 2025.
+
+Décision de rédaction : le bulletin retient la valeur WB WDI / WUP 2025 (~45 %)
+comme plus récente et source par la Banque mondiale. Voir fichier distinct :
+  BanqueMondiale_WDI_RDC_urbanisation_2024.txt

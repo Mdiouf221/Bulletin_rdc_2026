@@ -1,0 +1,77 @@
+﻿# Configuration d’assemblage du deuxième Bulletin statistique de la protection sociale en RDC
+# Ce fichier définit l’ordre dans lequel les fichiers Markdown doivent être assemblés.
+
+project:
+  title: "Deuxième Bulletin statistique de la protection sociale en RDC"
+  workspace: "Bulletin_rdc_2026_agents"
+  language: "fr"
+  output_dir: "10_output"
+
+options:
+  include_internal_notes_in_working_version: true
+  remove_internal_notes_for_publication_version: true
+  generate_word_document: true
+
+outputs:
+  working_markdown: "10_output/bulletin_complet_travail.md"
+  publication_markdown: "10_output/bulletin_complet_publication.md"
+  word_document: "10_output/bulletin_complet.docx"
+
+sections:
+  - id: "pages_preliminaires"
+    title: "Pages préliminaires"
+    files:
+      - "01_pages_preliminaires/avant_propos.md"
+      - "01_pages_preliminaires/remerciements.md"
+      - "01_pages_preliminaires/sigles_acronymes.md"
+      - "01_pages_preliminaires/listes_tableaux_figures_encadres.md"
+
+  - id: "chapitre_1_contexte"
+    title: "Chapitre 1  Contexte général et cadre de référence"
+    files:
+      - "02_introduction_generale/00_intro_chapitre_1.md"
+      - "02_introduction_generale/0_1_contexte_demographique.md"
+      - "02_introduction_generale/0_2_contexte_economique_emploi.md"
+      - "02_introduction_generale/0_3_strategie_donnees_statistiques.md"
+
+  - id: "chapitre_2_cadre"
+    title: "Chapitre 2  Cadre conceptuel et périmètre statistique"
+    files:
+      - "03_chapitres/chapitre_1/00_intro_chapitre_1.md"
+      - "03_chapitres/chapitre_1/1_1_definitions_approches.md"
+      - "03_chapitres/chapitre_1/1_2_approche_bit_oit.md"
+      - "03_chapitres/chapitre_1/1_3_champ_statistique.md"
+      - "03_chapitres/chapitre_1/1_4_classification_regimes.md"
+      - "03_chapitres/chapitre_1/1_5_precautions_lecture.md"
+
+  - id: "chapitre_3_cartographie"
+    title: "Chapitre 3  Cartographie institutionnelle de la protection sociale"
+    files:
+      - "03_chapitres/chapitre_2/00_plan_chapitre_2.md"
+
+  - id: "chapitre_4_couverture"
+    title: "Chapitre 4  Couverture effective et prestations"
+    files:
+      - "03_chapitres/chapitre_3/00_plan_chapitre_3.md"
+
+  - id: "chapitre_5_depenses"
+    title: "Chapitre 5  Dépenses et financement de la protection sociale"
+    files:
+      - "03_chapitres/chapitre_4/00_plan_chapitre_4.md"
+
+  - id: "chapitre_6_qualite"
+    title: "Chapitre 6  Qualité, disponibilité et perspectives"
+    files:
+      - "03_chapitres/chapitre_5/00_plan_chapitre_5.md"
+
+  - id: "annexes"
+    title: "Annexes"
+    files:
+      - "04_annexes/annexe_A_fiches_institutionnelles.md"
+      - "04_annexes/annexe_A1_institutions_contributrices.md"
+      - "04_annexes/annexe_A2_correspondance_institutions_indicateurs.md"
+      - "04_annexes/annexe_B_programmes_hors_perimetre.md"
+      - "04_annexes/annexe_C_definitions_indicateurs.md"
+      - "04_annexes/annexe_D_notes_methodologiques.md"
+      - "04_annexes/annexe_E_tableaux_statistiques.md"
+      - "04_annexes/annexe_F_outil_collecte.md"

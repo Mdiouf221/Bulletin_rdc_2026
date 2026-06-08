@@ -1,0 +1,55 @@
+SOURCE : Bureau International du Travail (BIT / OIT)
+TITRE   : World Social Protection Report 2020-22 — Social protection at the crossroads —
+          in pursuit of a better future
+URL     : https://www.ilo.org/wcmsp5/groups/public/---dgreports/---dcomm/---publ/documents/publication/wcms_817572.pdf
+CONSULTÉ: 2026-06-08
+NIVEAU  : 1 (organisation internationale — source normative et statistique primaire)
+
+---------------------------------------------------------------------
+EXTRAITS CLÉS utilisés dans le deuxième Bulletin statistique RDC
+---------------------------------------------------------------------
+
+DÉFINITION DE RÉFÉRENCE (p. 1-2) :
+  « La protection sociale comprend l'ensemble des politiques et
+    programmes visant à réduire et prévenir la pauvreté et la
+    vulnérabilité tout au long du cycle de vie. Elle couvre les
+    prestations pour enfants et familles, la maternité, le chômage,
+    les accidents du travail, l'invalidité, la vieillesse et les
+    soins de santé. »
+
+COUVERTURE MONDIALE (synthèse rapport) :
+  - 53 % de la population mondiale couverte par au moins une
+    prestation de protection sociale (2020)
+  - En Afrique subsaharienne : seulement 17,4 % de la population
+    bénéficient d'au moins une prestation de protection sociale
+  - La RDC figure parmi les pays à couverture la plus faible
+
+DÉFICIT DE FINANCEMENT (Afrique subsaharienne) :
+  - Pour atteindre des socles de protection sociale minimaux :
+    déficit estimé à 77,9 milliards USD/an (avant COVID)
+  - Correspond à environ 15,9 % du PIB régional
+
+RECOMMANDATIONS CLÉS (résumé applicable à la RDC) :
+  1. Élargir la couverture aux travailleurs de l'économie informelle
+  2. Renforcer les systèmes de données et de suivi statistique
+  3. Augmenter l'espace budgétaire consacré à la protection sociale
+  4. Articuler les régimes contributifs et non contributifs
+
+---------------------------------------------------------------------
+INDICATEUR ODD 1.3.1 (p. 36-40)
+---------------------------------------------------------------------
+  Définition : proportion de la population couverte par des socles
+  ou systèmes de protection sociale, ventilée par : enfants, mères
+  avec nouveau-nés, personnes en âge de travailler, personnes âgées,
+  personnes handicapées, femmes enceintes, chômeurs, victimes
+  d'accidents du travail.
+  Source officielle : OIT/BIT, bases de données ILOSTAT.
+
+---------------------------------------------------------------------
+NOTE D'UTILISATION
+---------------------------------------------------------------------
+Ce rapport est la référence normative principale pour les définitions
+et les indicateurs de couverture. À citer pour toute définition
+conceptuelle utilisée dans le bulletin.
+Citer comme : BIT (2021), Rapport mondial sur la protection sociale
+2020-22 : la protection sociale à la croisée des chemins, Genève, OIT.

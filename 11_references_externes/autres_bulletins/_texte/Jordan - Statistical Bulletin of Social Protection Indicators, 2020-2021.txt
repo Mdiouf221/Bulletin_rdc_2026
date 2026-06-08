@@ -1,0 +1,1037 @@
+--- Page 1 ---
+Hashemite Kingdom of Jordan
+Statistical
+Bulletin of Social
+Protection
+Indicators in
+Jordan
+2020 - 2021
+
+--- Page 2 --- [pas de texte extractible]
+
+--- Page 3 ---
+Statistical
+Bulletin of Social
+Protection
+Indicators in
+Jordan
+2020 - 2021
+
+--- Page 4 ---
+2 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+Preface
+The Department of Statistics is pleased to present the first Statistical Bulletin of Social Protection
+Indicators in Jordan, which covers the period from 2020 to 2021. The Statistical Bulletin is considered as
+an important first step towards building a comprehensive database of the social protection system in
+Jordan, to be updated and released on annual basis in the coming years.
+The Statistical Bulletin has been prepared and implemented in cooperation with the International Labor
+Organization (ILO) in compliance with the international standards for calculating social protection
+indicators also to ensure the possibility of international comparisons.
+The preparation of this Statistical Bulletin stems from the Jordanian government›s belief that providing
+accurate data on social protection supports decision-makers to evaluate and build evidence-based social
+protection policies to contribute to the implementation of the vision postulated by the National Strategy
+for Social Protection, Which state that “all Jordanians enjoy a dignified living, decent work opportunities
+and empowering social services.”
+The Department of Statistics takes this opportunity to thank all ministries, government departments and
+public institutions that contributed to this publication providing the statistical information contained in
+this Statistical Bulletin, as well as to all members of the Statistical Working Group for their great efforts
+in preparing this volume.
+Director General
+Haidar Fraihat
+
+--- Page 5 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 3
+Acknowledgements
+This bulletin was prepared by the Statistical Working Group coordinated by Ministry of Planning and
+International Cooperation (MoPIC), with technical leadership of the Department of Statistics (DOS) and
+active participation of the Social Security Corporation (SSC), National Aid Fund (NAF), Ministry of Social
+Development (MoSD), Ministry of Labour (MoL), Ministry of Education (MoE), and Ministry of Health
+(MoH).
+Gratitude and appreciation are due to all members of the core national team including Ghaida
+Khasawneh, Raed Salameh, Dirar Jawarneh, and Eman Bani Mifrej from the DOS, Dr Hadram Al-Fayez
+and Sakher AlBadareen from the MOPIC, Yazan Al Majali from the SSC, Khawla Abu Sarara from NAF,
+Mays Abdeen and Katia Mdanat from MOSD, Majdi Abu Saan from MOL, Ahlam Altaweel from MOE, and
+Rania Qandeel from MOH.
+The Bulletin is funded by the European Union (EU) and completed with technical support provided by
+ILO consultants, Dr. Tareq Abuelhaj and Dr. Nooh Alshyab, under the overall management and oversight
+from Dr. Markku Malkamaeki and Eng. Rana Al-Ansari from the ILO Jordan office and Dr. Luca Pellerano
+from the ILO Regional Office for Arab States.
+
+--- Page 6 ---
+4 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+About the Social Protection
+Bulletin
+The Statistical Bulletin of the Social Protection Sector in Jordan is an initiative of MOPIC, supported
+by ILO and funded by the EU through the EU-MADAD program led by ILO and UNICEF. The Statistical
+Bulletin pursues the twofold aim of supporting the implementation of the Jordanian National Social
+Protection Strategy (2019-2025) and of building national capacities to improve sustainability of social
+protection via better mechanisms for evidence-based policy design.
+Social Protection encompasses public measures that a society provides for its members to manage social
+and economic risks and to protect them against economic and social distress resulting from demographic
+and work related contingencies as outlined in the ILO Convention 102 (1952), which was ratified by the
+Kingdom of Jordan in 2014. The 1948 Universal Declaration of Human Rights defined Social Protection
+as a human right. This has been reinforced by the formulation of the Sustainable Development Goal
+No. 1.3. to “Implement nationally appropriate social protection systems and measures for all, including
+floors, and by 2030 achieve substantial coverage of the poor and the vulnerable.”
+The constitution of the Hashemite Kingdom of Jordan provides legal protection for certain contingencies
+such as maternity, childhood, youth, and old age, as well as persons with disabilities. The constitution
+also protects the right to work and several labour rights. The recent National Social Protection Strategy
+(2019-2025) aims to break the intergenerational cycle of poverty and to provide a “Social Protection
+Floor” in the context of the Kingdom’s vision for a state of solidarity, production, and justice, revolving
+around three main pillars: (1) Opportunity – with programs and interventions related to Decent Work
+and Social Security, (2) Dignity – with programs and interventions related to cash and in-kind social
+assistance and (3) Empowerment – with programs and interventions related to education, health care,
+health insurance and social care services.
+Guided by the above, the statistical working group agreed upon an intervention-based definition of
+Social Protection to guide the development of the Bulletin to provide statistics on public programs and
+interventions that fall under the following categories:
+Social Insurance: including statutory and voluntary social insurance for contingencies such as
+old age, disability, unemployment, maternity, and work injury insurances funded by member
+contributions as well as health insurance.
+Social Assistance: Assistance – which includes social assistance programs such as cash and in-kind
+social transfers and subsidies.
+
+--- Page 7 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 5
+Labour Market Interventions: including active and passive labour market programs and
+interventions.
+Social Care: including deinstitutionalization and assistance for households with older persons and
+Persons with Disabilities.
+This bulletin is the first edition of what is planned as an annual publication by DoS that consolidates
+statistics produced by several national institutions active in the Jordanian social protection system. This
+version of the bulletin covers public national social assistance and social insurance schemes, which
+are the core of the public Social Protection system in Jordan. Other elements will be added in future
+editions1.
+1 These include areas such as subsidies, donor funded humanitarian assistance, education, active labour market programs, and
+health insurance.
+
+--- Page 8 ---
+6 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+Table of Contents
+PREFACE 2
+ACKNOWLEDGEMENTS 3
+ABOUT THE SOCIAL PROTECTION BULLETIN 4
+LIST OF FIGURES 7
+LIST OF TABLES 7
+EXECUTIVE SUMMARY 9
+SOCIAL PROTECTION COVERAGE (2020 AND 2021) 13
+OLD AGE 17
+WORKING AGE 20
+DISABILITY 24
+CHILDREN 26
+SOCIAL PROTECTION EXPENDITURE AND MINIMUM BENEFIT ADEQUACY 29
+ANNEXES 32
+
+--- Page 9 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 7
+List of Figures
+Figure 1: Proportion of The Population Covered by At Least One Area of Social Protection by
+Citizenship and Year 13
+Figure 2: Proportion of Jordanians Protected by At Least One Area of Social Protection by
+Year and Benefit Type 14
+Figure 3: Direct and Indirect Social Protection Coverage by Age and Nationality 15
+Figure 4: Distribution of Covered Population by Type of Coverage Across Pre-Transfer
+Income Deciles (2021) 16
+Figure 5: Receipt of Old Age Benefits by Older Male Jordanians by Age Group and Type
+of Benefit (2021) 19
+Figure 6: Receipt of Old Age Benefits by Older Female Jordanians by Age Group and
+Type of Benefit (2021) 19
+Figure 7: Proportion of Jordanian Labour Force Contributing to the Pension System by Age
+and Sex (2021) 21
+Figure 8: Proportion of Women Giving Birth Receiving Maternity Benefits in 2021 by Age
+Group and Nationality 22
+Figure 9: Share of Persons with Severe Disabilities in Jordan receiving Direct Disability
+Benefits by Sex (2021) 25
+Figure 10: Coverage of Cash Benefits for Jordanian Children by Type and Age Group (2021) 27
+List of Tables
+Table 1: Receipt of Old Age Benefits by Type of Benefit, Year, Citizenship and Sex 18
+Table 2: Pension Schemes Affilitation as a Percent of Labour Force (15-69) by Year,
+Citizenship and Sex 21
+Table 3: Contribution to Unemployment Insurance as a Percent of Labour Force by Year,
+Citizenship, and sex 23
+Table 4: Direct Receipt of Unemployment Benefits as a Percent of Unemployment by Year,
+Citizenship, and Sex 23
+Table 5: Proportion of Persons with Severe Disabilities Receiving Disability Benefits by Year,
+Citizenship, and Sex 25
+Table 6: Percent Children Receiving Benefits by Type of Benefit, Year, Citizenship, and Sex 27
+Table 7: Expenditure on Social Protection in Jordan by Type of Benefit and Year (Million JOD) 29
+Table 8: Minimum Benefit Adequacy by Type of Benefit (2021) 30
+
+--- Page 10 ---
+8 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+
+--- Page 11 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 9
+Executive Summary
+Aggregate Social Protection Coverage and
+Expenditure
+Over one in three residents in the Kingdom (34.1%) are covered by national social protection
+mechanisms during 2021, reaching as high as 45.2% of Jordanians. This includes direct and indirect
+recipients of national cash and in-kind support programmes, as well as individuals insured through
+contributory Social Protection mechanisms.2 Of all Jordanians, 25% were covered by contributory
+schemes, comprised of 10% that received income transfers from contributory schemes and 15%
+that actively contributed to social security. In addition, 16% of Jordanians received tax-financed
+cash-based benefits and 4% received in-kind benefits during 2021. Accounting for cash-based
+benefits only, national coverage is estimated at 30.2%, reaching as high as 41.3% of Jordanians.
+The data indicates that 42% of the population within the bottom half of the income distribution
+were covered by at least one form of Social Protection in 2021. However, coverage of vulnerable
+groups, as defined by the ILO 3, reached 13.6% overall, rising to 21.2% of vulnerable Jordanians,
+approximately half of which (48.5%) is due to the ‘Takaful’ scheme.
+Total expenditure on social protection during 2021 reached JOD 3.69 billion (11.5% of GDP),
+equivalent to JOD 334 per capita. Contributory benefits account for 90% of total expenditures,
+reaching JOD 3.31 billion (10.3% of GDP), split equally between the Social Security Corporation
+(51%) and the Ministry of Finance (49%).
+Expenditures on tax-financed schemes reached 1.2% of GDP in 2021, up from 0.9% in 2020. Cash
+assistance schemes administered by the NAF, accounting for 93% of tax-financed expenditures,
+increased by 41% relative to expenditures in 2020.
+2 In line with the National Social Protection Strategy, coverage of humanitarian assistance schemes is not included in this
+version of the bulletin. Humanitarian assistance programs, funded by international donors and administered by international
+organizations, provide crucial support to non-Jordanian citizens residing in the Kingdom, particularly for Syrian refugees and
+refugees of other nationalities. As the focus of the National Social Protection Strategy adapts and expands, the inclusion of
+humanitarian assistance as well as social assistance provided by international organizations and civil society can be considered.
+3 The ILO definition for vulnerable groups in this context refers to all children, older persons not receiving contributory pensions,
+and working-age individuals excluding those receiving contributory benefits or actively contributing to social security.
+
+--- Page 12 ---
+10 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+Old Age
+45.8% of the older population4 in Jordan were direct recipients of pension income during 2021. Among
+older Jordanians, this ratio is 57.1%. Contributory schemes account for most of the coverage in old age,
+where coverage from contributory pension and disability benefits reached 50.7% of older Jordanians.
+Disaggregating further by sex shows that direct coverage of older male Jordanians (61.4%) is higher
+than older female Jordanians (54.1%).
+In addition, 6.4% of older Jordanians received direct tax-financed old age benefits, and an additional
+13.6% were indirect beneficiaries of tax-financed cash assistance mechanisms 5. Relative to older males,
+coverage of older females is higher from direct tax-financed old age benefits (8.5% females and 3.4%
+males) than from indirect benefits financed by taxes (13.3% females and 14.1% males).
+Working Age
+During 2021, 45.7% of the total labour force in Jordan contributed to mandatory social insurance 6.
+Breakdown by citizenship shows the ratio of contributors is 64.5% of Jordanians and 15.1% of non-
+Jordanians. For the latter, this marks a significant improvement from 11.6% in 2020. An estimated 9.6%
+of females giving birth (15-49 years old) received cash maternity benefits during 2021 and the SSC
+reports providing benefits to 13,457 injured workers during the same year.
+Unemployment Insurance was available to 25.6% of the total labour force in Jordan during 2021,
+remaining higher among Jordanians (32.2%) and generally higher among the Jordanian female labour
+force (47.7%) than the male labour force (28.2%). The SSC reports providing unemployment benefits to
+25.8% and 17.4% of the unemployed during 2020 and 2021 respectively possibly owing to the strong
+role played by the social security system in alleviating the impacts of the COVID-19 pandemic.
+Disability
+One in six Persons with Disabilities (PWD) (16%) is estimated to have received disability benefits during
+2021. For Jordanian PWDs, the share is 22.2% overall, with coverage by tax-financed schemes roughly
+double the coverage for contributory schemes at 15.3% and 6.8%, respectively.
+Children
+Up to one in four children in Jordan (24.9%) are estimated to receive at least one type of benefit during
+2021, including cash and in-kind,7 contributory and tax-financed benefits.
+Overall, 14.6% of all children in Jordan received some form of cash support during 2021, either in the
+form of child benefits or as indirect coverage of tax-financed family benefits (NAF). 20.5% of Jordanian
+children received some form of cash support from the national Social Protection system during 2021.
+4 This refers to pension age, specifically 55 years old and above for women and 60 years old and above for men.
+5 Direct benefits refer to support received by an individual exclusively due to their individual characteristics. Examples of direct
+benefits include a disability pension received by a person with disabilities, an old age pension received by a person that has
+reached the age of retirement, or unemployment benefits received by an individual due to temporary unemployment. Indirect
+benefits refer to support directed to households. Individuals within targeted households are considered indirect beneficiaries
+since their inclusion is based upon collective characteristics of the household, such as poverty, and not exclusively due to their
+individual characteristics.
+6 This covers old age and disability pension and maternity, work injury and unemployment insurance.
+7 Tax-financed In-kind benefits include direct benefits from Social Care schemes managed by the Ministry of Social Development,
+and the national school feeding program managed by the Ministry of Education.
+
+--- Page 13 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 11
+Benefit Adequacy
+The minimum benefit amount is highest for contributory disability pension followed by contributory old
+age pension offering 62% and 48% of the minimum wage 8 respectively. Adequacy is lowest for the tax-
+financed disability benefit providing only 12% of the minimum wage, followed by the tax-financed old
+age benefit and poverty targeted household grant providing 13% of the minimum wage.
+Text Box 1: Regional and Global Comparison
+Social Protection coverage and expenditure indicators for Jordan exceed regional averages,
+particularly when compared to Arab States in the Middle East excluding Gulf Cooperation Council
+countries*. As illustrated in the figure below, coverage of key vulnerable groups in Jordan such
+as older persons, persons with disabilities, and children is double their regional averages. This is
+reflected in expenditure on Social Protection in Jordan, which is nearly double the regional average
+and in total effective coverage, which is 42% higher in Jordan than the regional average.
+* Countries included in the regional comparison for the Arab Region excluding GCC are Iraq, Lebanon, Yemen and
+Palestine, in accordance with the ILO regional classification
+8 JOD 260 per month.
+
+--- Page 14 ---
+12 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+
+--- Page 15 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 13
+Social Protection Coverage
+(2020 and 2021)
+One of every three residents in the Kingdom are covered by at least one area of social protection 9 (Figure
+1). Specifically, this is estimated at 34.1% for 2021, up from an estimated 33.4% in 2020. Coverage of
+Jordanians by at least one area of social protection in 2021 is estimated at 45.2%, down from 46.2% in
+2020.
+Figure 1: Proportion of The Population Covered by At Least One Area of Social Protection by Citizenship
+and Year
+46.2% 45.2 %
+33.4% 34.1%
+All population Jordanians
+2020 2021
+Considering cash-based Social Protection schemes only, the data indicates that 30.2% of the total
+population were covered (insured or recipient) by at least one social protection mechanism providing
+direct income support during 2021, down from 33.1% in 2020. For Jordanians, this is estimated at 45.7%
+in 2020 and 41.3% in 2021.
+10 This coverage rate accounts for the population receiving benefits from national contributory and tax-financed schemes as
+well as the working population actively contributing to social security under the Social Security Corporation. Contributory
+benefits include direct retirement, disability, survivor, maternity and unemployment benefits provided by the SSC and
+retirement, disability and survivor benefits from the Civil and Military Pension Funds. Maternity benefits for public sector
+employees are estimated by DOS. Coverage excludes work injury benefits due to limited information on disaggregation
+by age and sex. Coverage of tax-financed benefits include receipt of direct and indirect cash-based Social Assistance from
+regular, supplemental and ‘Takaful’ schemes managed by the National Aid Fund. Where indicated, coverage may also include
+tax-financed In-kind benefits from Social Care schemes managed by the Ministry of Social Development, and the national
+school feeding program managed by the Ministry of Education. Coverage excludes humanitarian assistance provided to
+non-Jordanian citizens residing in the Kingdom, particularly for Syrian refugees and refugees of other nationalities, funded
+by international donors and administered by international organizations. The Jordanian National Social Protection Strategy
+acknowledges the importance of such schemes though it concludes that the focus of the current strategy “would be on
+Government’s accountability for social protection, that is programs and projects that receive public funding”. The statistical
+bulletin aligns with this definition. In addition, coverage does not include public health insurance coverage which extends to
+all public sector employees and retirees and their beneficiaries. In addition, the Ministry of Health provides free public health
+insurance to all children under 6 years and the elderly over 60 years old and to all beneficiaries of the National Aid Fund (NAF).
+Accordingly, many of the individuals covered by Social Protection mechanisms also have health insurance coverage.
+
+--- Page 16 ---
+14
+The proportion of Jordanians receiving income transfers from contributory schemes remained stable at
+10% during 2020 and 2021 (Figure 2). Similarly, 15% of Jordanians actively contributed to social security
+in both years. Total coverage of cash and in-kind tax-financed benefits for Jordanians remained largely
+unchanged during 2020 and 2021 (20.9% in 2020 falling to 19.8% in 2021), although a significant shift
+in coverage by scheme occurred during this period. The expansion of cash transfer schemes managed
+by the National Aid Fund in response to the COVID-19 pandemic along with the associated lockdown
+of schools and government institutions led cash assistance mechanisms to constitute nearly all tax-
+financed benefits provided during 2020.
+Figure 2: Proportion of Jordanians Protected by At Least One Area of Social Protection by Year and
+Benefit Type
+2020 2021
+10 %
+10 %
+Contributory Income
+15 % 15 % Active Contriboutors
+55 % Tax-financed Cash Assistance
+54 %
+21 % 16 % Tax-financed In Kind Assistance
+Uncovered Population
+4 %
+0.4 %
+The gradual return to normalcy during 2021 allowed for the provision of in-kind assistance, which
+benefitted nearly 4% of Jordanians. Nonetheless, cash assistance schemes managed by the National
+Aid Fund remained the main tax-financed social assistance mechanism supporting the Jordanian
+population, accounting for more coverage than any other mechanism. Collectively, cash assistance
+schemes managed by the National Aid Fund covered 16% of the Jordanian population, accounting for
+80% of all tax-financed coverage and 35% of aggregate social protection coverage of the Jordanian
+population during 2021.
+Coverage of cash assistance schemes expanded significantly in recent years, beginning with the
+introduction of the supplementary cash assistance scheme in 2019 and its expansion in 2020. In
+addition, the NAF introduced in 2020 the ‘Takaful 2’ scheme in response to the COVID-19 pandemic, which
+targeted poor families with informally employed breadwinners. The NAF response to the COVID-19
+pandemic continued in 2021 under the ‘Takaful 3’ scheme with expanded coverage and eligibility
+parameters. Accordingly, the shock-responsive expansion increased the number of NAF beneficiaries
+by 90%, accounting for 47% of the total coverage by NAF during 2021.
+Coverage of cash benefits for non-Jordanians is limited to contributory mechanisms where only 0.5%
+received contributory benefits during 2020 and 2021 and the proportion of non-Jordanians actively
+
+--- Page 17 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 15
+contributing to social security increased from 4.0% in 2020 to 4.7% in 2021, with coverage highest
+among the working age followed by the older population. Coverage of non-Jordanians also includes
+tax-financed school feeding (in-kind), which reached 4% of the non-Jordanian population in 2021.
+Among the Jordanian population, coverage increases with age, particularly among the working-age
+population 10, then proceeds to fall for older Jordanians above 64 years old and is lowest among children
+under 5 years old followed by children and youth 10-24 years old (Figure 3).
+Figure 3: Direct and Indirect Social Protection Coverage by Age and Nationality
+70+
+65-69
+60-64
+55-59
+50-54
+45-49
+40-44
+35-39
+30-34
+25-29
+20-24
+15-19
+10-14
+5-9
+0-4
+0% 20% 40% 60% 80% 100%
+Covered Jordanians Covered Non-Jordanians Uncovered Population
+The data shows that 13.6% for the vulnerable population residing in the Kingdom in 2021 are covered
+by Social Protection income support according to the ILO definition 11, nearly half of which (48.5%) is due
+to the ‘Takaful’ scheme. Among vulnerable Jordanians, this proportion is 21.2%, rising to 26.4% when
+in-kind benefits are accounted for.
+Although it is not possible to directly determine the proportion of the poor population 12 covered by
+social protection mechanisms from the administrative data used to develop this bulletin, additional
+information available from the 2018 HIES survey is utilized to approximate the distribution of coverage
+across income deciles. Figure 4 illustrates this distribution where it is evident that coverage is highest
+among members of the poorest decile, driven mainly by tax-financed social assistance, which falls
+significantly among the higher income groups. Overall, the data indicates that approximately 42% of
+population within the bottom half of the income distribution are covered by at least one form of Social
+Protection.
+10 As a proportion of the age-group specific population size.
+11 The standard ILO definition divides the total number of non-contributory cash assistance by the sum of all children plus older
+persons 65 years and above not receiving contributory pension benefits plus the working-age population not insured and not
+receiving contributory benefits. Due to data limitation, this is operationalized in this report by limiting the children category to
+0-14 year old and including the children ages 15-17 years old within the working age category.
+12 According to the official definition of poverty.
+
+--- Page 18 ---
+16 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+Figure 4: Distribution of Covered Population by Type of Coverage Across Pre-Transfer Income Deciles
+(2021)
+100%
+90%
+80%
+70%
+60%
+50%
+40%
+30%
+20%
+10%
+0%
+1 2 3 4 5 6 7 8 9 10
+(poorest) (wealthiest)
+Deciles of per capita household income*
+Receiving tax-financed transfers Receiving Contributory transfers
+Active Contributors Not receiving
+* Included income from all sources except transfer income
+
+--- Page 19 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 17
+Old Age
+The definition of ‘older person’ adopted by the Statistical Working Group aligns with the statutory
+retirement age for Jordan, which is 55 years old for women and 60 years old for men. Accordingly,
+the older population comprised 6.7% of the total population in Jordan in 2021, estimated at 737,898
+individuals (576,857 Jordanians and 161,041 non-Jordanians), of which 58.5% are women over 54 years
+old and 41.5% are men over 59 years old.
+During 2021, 45.8% of the older population (Jordanian and non-Jordanians) were direct recipients of
+a pension income 13 from contributory and tax-financed schemes. Contributory pensions in Jordan
+are administered by the Social Security Corporation, although employees that joined the civil service
+before 1995 receive the benefits from the Civil Retirement Fund and personnel that joined the military
+before 2003 receive benefits from the Military Pension Fund. Relative to 2020, coverage of contributory
+benefits increased in 2021 by share and number of older Jordanians and non-Jordanian persons: in 2020
+a total of 277,321 old age individuals received contributory pension benefits (38.3%), while in 2021 there
+were a total of 300,802 recipients (40.8%).
+13 This includes pension income from contributory schemes administered by the SSC and the MOF and tax-financed benefits
+targeted directly to the older population within the regular monthly assistance scheme administered by the NAF.
+
+--- Page 20 ---
+18 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+An important milestone was crossed in 2021 as more than half of older Jordanians became recipients
+of contributory pension income. The 2.9 percentage point increase of contributory pension coverage
+for the older Jordanian population during 2021 was driven almost entirely by a 1.9 percentage point
+increase in contributory retirement pension coverage for older male Jordanians up to 56.2% in 2021,
+and the 2.8 percentage point increase in contributory survivor pension coverage up to 27.8% among
+older female Jordanians.
+Table 1: Receipt of Old Age Benefits by Type of Benefit, Year, Citizenship and Sex
+2021 2020
+Jordanian Non Jordanian Jordanian Non Jordanian
+Male Female Male Female Male Female Male Female
+56.2% 17.8% 4.9% 1.0% 54.4% 17.1% 4.6% 1.0%
+Contributory
+Retirement/Disability 33.6% 2.7% 32.4% 2.5%
+Pension
+26.8% 25.8%
+1.8% 27.8% 0.3% 4.4% 1.5% 27.8% 0.3% 4.4%
+Contributory Survivor
+17.1% 2.6% 15.4% 2.6%
+Pension
+13.9% 12.6%
+58.0% 45.6% 5.2% 5.4% 55.9% 42.1% 4.9% 5.3%
+Total Contributory
+50.7% 5.3% 47.8% 5.1%
+Pensions
+40.8% 38.3%
+3.4% 8.5% 0.0% 0.0% 3.4% 8.7% 0.0% 0.0%
+Tax-financed Direct
+Old Age/Disability 6.4% 0.0% 6.6% 0.0%
+Pension
+5.0% 5.1%
+61.4% 54.1% 5.2% 5.4% 59.3% 50.8% 4.9% 5.3%
+Total Direct
+57.1% 5.3% 54.3% 5.1%
+Coverage
+45.8% 43.5%
+14.1% 13.3% 0.0% 0.0% 18.6% 18.1% 0.0% 0.0%
+Tax-financed Indirect
+benefits received by 13.6% 0.0% 18.3% 0.0%
+the Older Population
+10.7% 14.2%
+75.5% 67.4% 5.2% 5.4% 77.9% 68.9% 4.9% 5.3%
+Total Direct &
+70.7% 5.3% 72.6% 5.1%
+Indirect Coverage
+56.4% 57.7%
+
+--- Page 21 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 19
+During 2021, 6.4% of older Jordanians received direct, tax-financed old age benefits administered by
+the NAF, with coverage among older women (8.5%) exceeds coverage among older men (3.4%). Receipt
+of direct benefits is generally higher among older male Jordanians (61.4%) than among older female
+Jordanians (54.1%). Figures 5 and 6 further illustrate coverage of old age benefits by gender and type
+of benefit, showing that retirement pension is the most prevalent type of income transfer for older
+males, whereas among female older Jordanians survivor pension is the most prevalent form of income
+transfer.
+Figure 5: Receipt of Old Age Benefits by Older Male Jordanians by Age Group and Type of Benefit (2021)
+70+ 48,494 2,792 3,128 48,247
+65-69 34,202 691 1,153 23,310
+60-64 50,495 683 1,419 22,284
+0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Retirement Survivor NAF - Direct Uncovered Population
+Figure 6: Receipt of Old Age Benefits by Older Female Jordanians by Age Group and Type of Benefit
+(2021)
+70+ 7,651 40,294 9,972 39,834
+65-69 8,533 16,015 4,335 33,131
+60-64 17,443 17,778 7,780 30,431
+55-59 26,948 20,260 6,003 53,553
+0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Retirement Survivor NAF - Direct Uncovered Population
+Older Jordanians also benefit indirectly from tax financed social assistance schemes, such as the Takaful
+scheme, which are targeted on the basis of household characteristics rather than individual entitlement.
+An additional 13.6% of older Jordanians benefitted indirectly from tax financed social assistance schemes
+administered by the NAF (Table 1). Disaggregated by sex, the ratio is higher for older male (14.1%) than
+for older female Jordanians (13.3%). Additionally, indirect coverage for the older population is lower
+in 2021 than indirect coverage in 2020 where social assistance expanded in response to the COVID19
+pandemic.
+
+--- Page 22 ---
+20 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+Working Age
+The working age population in Jordan is estimated at 7.26 million in 2021, 5 million of which are Jordanian
+citizens 14. The 2021 labour force is 2.92 million individuals of which 1.8 million are Jordanian consisting
+mainly of male Jordanians (79%). The non-Jordanian labour force resident in the Kingdom amount to
+1.12 million individuals of which 10.6% are female.
+During 2021, 45.7% of the total labour force (15-69 years old) in Jordan contributed to pension schemes
+mandatory for public and private sector workers (Table 2) for a total of 1.33 million contributors. This is
+an increase from 2020 where the proportion stood at 42.7% (about 1.25 million contributors). While the
+rate of contributions increased slightly for Jordanians during 2021 (64.5% in 2021, up from 64% in 2020),
+the rise in coverage among non-Jordanians 15 – from 11.6% in 2020 up to 15.1% in 2021 – contributed
+significantly to the overall increase observed in 2021.
+14 The ILO defines the working age population to be all individuals who are 15 years old and older,
+15 This group mainly consists of Syrian refugees in Jordan. It also includes a small number of Jordanian workers who are required
+to have special licenses such as tourist guides and taxi drivers.
+
+--- Page 23 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 21
+Table 2: Pension Scheme Affiliation as a Percent of Labour Force (15-69) by Year, Citizenship and Sex
+2021 2020
+Jordanian Non Jordanian Jordanian Non Jordanian
+Male Female Male Female Male Female Male Female
+57.9% 89.9% 12.8% 35.2% 58.3% 85.9% 9.4% 28.9%
+Affiliation with
+Mandatory Schemes
+64.5% 15.1% 64.0% 11.6%
+including Old-Age,
+Disability and Survivor
+Benefits. 45.7% 42.7%
+Affiliation with 61.6% 96.7% 12.8% 35.2% 61.9% 92.5% 9.4% 28.9%
+Mandatory and
+Voluntary Schemes 68.8% 15.1% 68.2% 11.6%
+including Old-Age,
+Disability and Survivor
+48.4% 45.2%
+Benefits.
+In addition, Social Security Corporation data indicates that over 78,000 Jordanians also contributed to
+a voluntary scheme during 2021 which also extends participation to economically inactive and non-
+resident Jordanians. Accounting for the voluntary contributory scheme raises the rate of contribution
+among the Jordanian labour force in 2021 to 68.8%, raising the national average to 48.4% for the
+total labour force in 2021. Coverage is generally higher among female (96.7%) than male Jordanian
+labour force participants (61.6%). This can be explained by the high share of female employment in
+public sector relative to the private sector, and the fact that the voluntary scheme extends coverage to
+Jordanian housewives who are generally out of the labor force.
+Figure 7 illustrates the proportion of the Jordanian labour force (15-69 years old) actively contributing
+to the pension system in 2021 by age group. The figure shows that males contribute significantly more
+than female. Furthermore, the age group 25-54 contribute significantly to the pension system. The
+highest coverage is among 35-39 year old Jordanians with only 10% of the labour force in that age group
+not contributing to the pension system.
+Figure 7: Proportion of Jordanian Labour Force Contributing to the Pension System by Age and Sex
+(2021)
+65-69 5% 0% 95%
+60-64 15% 1% 84%
+55-59 53% 5% 42%
+50-54 49% 19% 32%
+45-49 49% 24% 27%
+40-44 51% 28% 21%
+35-39 61% 29% 10%
+30-34 62% 24% 14%
+25-29 46% 18% 36%
+20-24 36% 11% 53%
+15-19 30% 4% 66%
+0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Male Contributors Female Contributors Not Contributing Labour Force
+
+--- Page 24 ---
+22 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+Maternity Benefits
+Contributions for Maternity Benefits are compulsory for private sector employees and some categories
+of self-employed workers. Although public sector employees do not directly contribute to Maternity
+Benefits, they are entitled to paid maternity leave. As a result, effective coverage of maternity benefits
+extends to all workers contributing to mandatory pension schemes (45.7%) as detailed in Table 2.
+It is estimated that 9.6% of birthing mothers 15-49 years old received maternity benefits during 2021
+(Figure 8), with receipt significantly higher among Jordanian mothers (13.5%) than for non-Jordanian
+mothers (0.3%). This is estimated as the ratio of all females employed in the private and public sectors
+that received cash maternity benefits during 2021 to all females giving estimated to give birth in the
+same year 16. For workers in the private sector, maternity benefits are covered by the mandatory
+maternity insurance provided by the SSC, whereas female public sector employees are entitled to
+maternity benefits, directly covered by the government.
+Figure 8: Proportion of Women Giving Birth Receiving Maternity Benefits in 2021 by Age Group and
+Nationality
+25.0%
+20.0%
+Total, 9.6%
+15.0% Total, 13.5%
+10.0%
+5.0%
+Total, 0.3%
+0.0%
+Total Jordanian Total non-Jordanian Total Jord. & non-Jord.
+15-19 20-24 25-29 30-34 35-39 40-44 45-49 Total
+Unemployment Insurance
+Like Maternity Benefits, Unemployment Insurance is compulsory for private sector employees and
+self-employed workers requiring a permit yet not available for public sector employees. Accordingly,
+coverage of Unemployment Insurance is estimated to extend to 25.6% of the total labour force in Jordan
+during 2021. This rate is higher among Jordanians (32.2%) than non-Jordanians (14.7%) and higher
+among the female labour force (47.7% Jordanian, 35% non-Jordanian) than among the male labour
+force (28.2% Jordanian, 12.3% non-Jordanian). As detailed in Table 3, the rate of contributions increased
+significantly, particularly for non-Jordanians during 2021.
+16 Estimated based on age-specific fertility rates from the 2018 Demographic and Health Survey.
+
+--- Page 25 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 23
+Table 3: Contribution to Unemployment Insurance as a Percent of Labour Force by Year, Citizenship,
+and sex
+2021 2020
+Jordanian Non Jordanian Jordanian Non Jordanian
+Male Female Male Female Male Female Male Female
+28.2% 47.7% 12.3% 35.0% 28.3% 44.2% 8.9% 28.6%
+32.2% 14.7% 31.6% 11.2%
+25.6% 23.3%
+The SSC provided unemployment benefits to 146,201 individuals during 2020 and 101,697 during 2021,
+representing 25.8% and 17.4% of the unemployed during 2020 and 2021 respectively (Table 4) possibly
+owing to the strong role played by the Social Security Corporation in alleviating the impacts of the
+COVID-19 pandemic. Receipts in 2021 of unemployment benefits among the Jordanian unemployed
+population (22.9%) far exceeds receipt among the non-Jordanian unemployed population (1.2%).
+Table 4: Direct Receipt of Unemployment Benefits as a Percent of Unemployment by Year, Citizenship,
+and Sex
+2021 2020
+Jordanian Non Jordanian Jordanian Non Jordanian
+Male Female Male Female Male Female Male Female
+25.0% 17.1% 1.2% 1.5% 36.3% 34.2% 1.1% 1.4%
+Contributory
+22.9% 1.2% 35.7% 1.1%
+benefits
+17.4% 25.8%
+25.0% 26.0% 1.2% 1.5% 36.3% 34.2% 1.1% 1.4%
+Contributory and tax-
+25.3% 1.2% 38.3% 1.1%
+financed benefits
+19.2% 27.7%
+Although the Social Protection system in Jordan does not include an individually targeted tax-financed
+unemployment benefit, this Bulletin classifies direct assistance to specific categories within the regular
+monthly assistance scheme administered by the NAF, including direct assistance for women without
+income and for divorced women, as equivalent to an unemployment benefit. Reports by the NAF indicate
+that approximately 10,000 women benefitted directly from these schemes during 2021. Combining this
+with contributory unemployment benefits raises the ratio of recipient unemployed women up to 26%,
+raising the proportion for unemployed Jordanians up to 25.3% during 2021.
+Work Injury Insurance
+Work Injury protection is compulsory for public and private sector employees and self-employed workers
+requiring a permit. Accordingly, 45.7% of the total labour force is protected against this contingency,
+equivalent to the proportion contributing to mandatory pension schemes as detailed in Table 2. The
+SSC reports providing benefits to 13,457 injured workers during 2021, up from 9,102 workers during
+2020.
+
+--- Page 26 ---
+24 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+Disability
+The latest data on disability indicates that 2.6% of the population in Jordan suffer from severe disabilities,
+a prevalence that rises significantly among the older population reaching nearly 30% among older
+women 70 years old and higher. Disability benefits are compulsory for all contributory schemes in
+Jordan and the NAF administers a non-contributory, means tested disability benefit 17.
+A total of 16% of Persons with Disabilities (PWD) receive disability benefits. For Jordanian PWDs, the
+share is 22.2%, while for non-Jordanians the share is less than 1% (Table 5). Coverage of tax-financed
+disability benefits is double the coverage for contributory benefits at 10.9% and 5.1% respectively. In
+addition, coverage of non-Jordanian PWDs is limited to contributory schemes due to limitations on
+eligibility for non-Jordanians.
+17 The Ministry of Education also provides a cash stipend for students with disabilities yet the number of beneficiaries from this
+program remains small, reaching no more than 600 students during 2021. Due to limited information on the age and sex
+breakdown of these beneficiaries, they are excluded from the statistics presented in the current edition of the Bulletin.
+
+--- Page 27 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 25
+Table 5: Proportion of Persons with Severe Disabilities Receiving Disability Benefits by Year, Citizenship,
+and Sex
+2021 2020
+Jordanian Non Jordanian Jordanian Non Jordanian
+Male Female Male Female Male Female Male Female
+10.9% 2.1% 1.3% 0.1% 10.4% 2.0% 1.3% 0.1%
+Contributory 6.8% 0.8% 6.5% 0.7%
+5.1% 4.8%
+22.0% 7.8% 0.0% 0.0% 22.3% 7.8% 0.0% 0.0%
+Tax-Financed 15.3% 0.0% 15.6% 0.0%
+10.9% 11.0%
+32.9% 9.9% 1.3% 0.0% 32.8% 9.9% 1.3% 0.1%
+Total Coverage 22.2% 0.8% 22.1% 0.7%
+16.0% 15.9%
+Figure 9 Figure 9 presents the share of PWDs that received direct disability benefits in 2021 by age
+group and sex where it is evident that coverage is highest among adults 40-44 years old and lowest for
+the oldest (70+ years old) and youngest (5-9 years old) PWDs 18.
+Figure 9: Share of Persons with Severe Disabilities in Jordan receiving Direct Disability Benefits by Sex
+(2021)
+70+ 3% 1% 96%
+65-69 8% 1% 90%
+60-64 17% 2% 81%
+55-59 23% 4% 73%
+50-54 26% 6% 68%
+45-49 28% 6% 66%
+40-44 29% 6% 65%
+35-39 28% 6% 66%
+30-34 19% 5% 76%
+25-29 11% 4% 85%
+20-24 5% 4% 91%
+15-19 4% 3% 92%
+10-14 4%3% 93%
+5-9 2%2% 96%
+0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Male Recipients Female Recipients Uncovered Disabled
+18 The department of statistics does not collect data on the prevalence of disabilities among children below 5 years old. Data on
+coverage includes 140 children in this age group receiving direct disability benefits during 2021.
+
+--- Page 28 ---
+26 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+Children
+The number of children in Jordan was estimated at 4.39 million in 2021, ranging in age from infancy up
+to 17 years old and constitute nearly 40% of the total population in Jordan, including 1.27 million non-
+Jordanian children (29% of all children). Social Protection schemes providing direct benefits for children
+include contribution-based survivor benefits, tax-financed cash assistance provided by the NAF, and
+tax-financed in-kind support including school feeding administered by the Ministry of Education, and
+social care services provided by the Ministry of Social Development. Up to 24.9% of children in Jordan
+are estimated to receive at least one type of benefit during 2021 (Table 6), including cash and in-kind
+benefits, received directly through cash benefits and indirectly from contributory and tax-financed
+schemes. This reflects an upper limit of the estimated coverage given limited information on the extent
+of overlap between cash and in-kind benefits.
+Overall, 14.6% of all children in Jordan received some form of cash support during 2021, down from
+16.7% in 2020 where coverage was expanded to respond to the COVID-19 pandemic. Disaggregating
+by citizenship status it is emerges that 20.5% of Jordanian children received some form of cash
+support during 2021 while only 0.1% of non-Jordanian children accessed benefits from the national
+Social Protection system. In total, just over 639,000 children in Jordan received direct and indirect cash
+benefits from contributory and tax-financed schemes during 2021, of which 1,416 are non-Jordanians
+that received direct contributory survivor benefits.
+
+--- Page 29 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 27
+Table 6: Percent Children Receiving Benefits by Type of Benefit, Year, Citizenship, and Sex
+2021 2020
+Jordanian Non Jordanian Jordanian Non Jordanian
+Male Female Male Female Male Female Male Female
+2.0% 2.2% 0.1% 0.1% 1.9% 2.1% 0.1% 0.1%
+Direct Cash
+2.1% 0.1% 2.0% 0.1%
+Benefit
+1.5% 1.4%
+16.1% 16.9% 0.1% 0.1% 3.3% 2.7% 0.1% 0.1%
+Direct Cash and
+16.5% 0.1% 3.0% 0.1%
+In-Kind Benefit
+11.8% 2.1%
+20.3% 20.7% 0.1% 0.1% 23.6% 24.0% 0.1% 0.1%
+Direct and Indirect
+20.5% 0.1% 23.8% 0.1%
+Cash Benefit
+14.6% 16.7%
+34.5% 35.6% 0.1% 0.1% 25.1% 24.7% 0.1% 0.1%
+Direct and Indirect
+Cash and In-Kind 35.0% 0.1% 24.9% 0.1%
+Benefit
+24.9% 17.4%
+The data shows that 1 out of every 5 Jordanian children received direct and indirect cash benefits during
+2021 with a slight decrease relative to 2020. This level of coverage is mainly due to tax-financed social
+assistance schemes targeted to households administered by the NAF through their regular monthly
+assistance or through the supplementary assistance and ‘Takaful’ schemes. In contrast, most of the
+direct cash support for Jordanian children is from contributory survivor benefits, reaching 2% of all
+Jordanian children during 2021. Figure 10 highlights differences by age group where it is evident that
+coverage is lowest among children under 5 years old where 87% do not receive any form of tax-financed
+or contribution-based cash benefits through the national Social Protection system.
+Figure 10: Coverage of Cash Benefits for Jordanian Children by Type and Age Group (2021)
+15-17 5.5% 20.2% 74.3%
+10-14 3.0% 23.0% 74.0%
+5-9 1.1% 18.6% 80.3%
+0-4 0.4% 12.6% 87.0%
+0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Direct Contributory/Tax-Financed Indirect Tax-Financed Uncovered
+
+--- Page 30 ---
+28 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+
+--- Page 31 ---
+SSTTAATTIISSTTIICCAALL BBUULLLLEETTIINN OOFF SSOOCCIIAALL PPRROOTTEECCTTIIOONN IINNDDIICCAATTOORRSS IINN JJOORRDDAANN 2299
+Social Protection Expenditure
+and Minimum Benefit Adequacy
+Total expenditure on the Social Protection schemes considered in this Bulletin is estimated at JOD3.69
+billion during 2021 (11.5% of GDP), up from JOD3.37 billion (10.8% of GDP) in 2020 (Table 7). On a per
+capita basis, total Social Protection expenditures reached JOD 311 in 2020 and JOD 334 in 2021.
+Expenditures on contributory benefits amount to JOD 3.31 billion (10.3% of GDP), accounting for 90% of
+total expenditures, and are split evenly between the Social Security Corporation (51%) and the Ministry
+of Finance 19 (49%). Contributions collected by the SSC from active participants and their employers
+reached JOD 1.9 billion during 2021, equivalent to 6% of GDP.
+Table 7: Expenditure on Social Protection in Jordan by Type of Benefit and Year (Million JOD)
+2021 2020 % Change
+Contributory
+Social Security Corporation 1,673.6 1,543.3 8.4%
+Regular Pensions (Old Age, Disability, Survivor) 1403.7 1283.3 9.4%
+Total Lump sum payments 80.4 71.2 13.0%
+Maternity Insurance 15.7 12.7 24.1%
+Unemployment Insurance 123.5 109.2 13.1%
+Administrative Costs 50.2 66.9 -25.0%
+Ministry of Finance (Civil and Military Pension Funds) 1,638.3 1,551.3 5.6%
+Total Contributory - JOD 3,311.86 3,094.52 7.0%
+Total Contributory - % of GDP 10.3% 10.0% 3.4%
+Tax-Financed
+National Aid Fund 349.7 248 41.0%
+Regular Monthly Assistance 99.7 101.0 -1.3%
+Supplementary Scheme 100.0 65.0 53.8%
+Takaful Scheme 150.0 82.0 82.9%
+Ministry of Social Development 26.12 22.85 14.3%
+Ministry of Education (N/A) (N/A)
+Total Tax-Financed - JOD 375.82 270.85 38.8%
+Total Tax-Financed - % of GDP 1.2% 0.9% 34.0%
+Total Social Protection - JOD 3,687.68 3,365.37 9.6%
+Total Social Protection - % of GDP 11.5% 10.8% 5.8%
+19 Expenditure data for the SSC are actual as reported by the institution. Expenditure data for the Ministry of Finance are
+estimates as they are report on a % of GDP basis and exclude the estimated cost of maternity benefits provided to public
+sector employees.
+
+--- Page 32 ---
+30 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+Expenditures on tax-financed schemes reached 1.2% of GDP in 2021, up from 0.9% in 2020 - excluding
+expenditures on School Feeding 20. The NAF accounts for 93% of recorded expenditures for 2021, which
+witnessed a significant increase in total expenditures to reach nearly JOD350 million in 2021, up by 41%
+from the JOD248 million spent by the NAF in 2020. This is driven by an 82.9% increase for the ‘Takaful’
+scheme and a 53.8% in the Supplementary scheme. Expenditure on the Regular Monthly Assistance
+scheme, which accounts for all the individual benefits administered by the NAF, fell by 1.3 percentage
+points in 2021 relative to 2020.
+Benefits adequacy is assessed by comparing minimum benefit levels for the various schemes against
+the national minimum wage equal to JOD 260 during 2021. As detailed in Table 8, minimum benefits are
+highest for contributory schemes with a minimum disability pension of JOD 200 and minimum old age
+pension of JOD 165 per month, respectively 77% and 63% of the 2021 minimum wage.
+Table 8: Minimum Benefit Adequacy by Type of Benefit (2021)
+Minimum Benefit (JOD) % of Minimum Wage
+Contributory Old Age Pension* 165 63%
+Contributory Disability Pension* 200 77%
+Tax-Financed – Older Persons (NAF) 50 19%
+Tax-Financed – Disability (NAF) 30 12%
+Tax-Financed – Older Persons with Disability 80 31%
+(NAF)
+Tax-Financed – Children (NAF) 45 17%
+Tax-Financed - Poor Households (NAF) 35 13%
+* Note: The legal minimum for old age pension is 125JOD and for disability pension is 160JOD. An additional 40 JOD is
+added to the legal minimum for both benefits.
+Minimum benefit amount for tax-financed schemes is generally lower than contributory schemes.
+The tax-financed disability benefit is the least adequate benefit where the minimum benefit (JOD 30)
+represents only 12% of the minimum wage, however, for older persons with disabilities, the minimum
+benefit combines both benefits for older persons and for persons with disabilities, totaling 80 JOD
+monthly equivalent to 31% of the minimum wage.
+20 The cost of the School Feeding program is shared by a number of national institutions (Ministry of Education and Ministry of
+Defense) and the World Food Programme (WFP). Consequently, the Ministry of Education could not share sufficient information
+regarding total cost by the time of publication of the Bulletin.
+
+--- Page 33 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 31
+
+--- Page 34 ---
+32 SSTTAATTIISSTTIICCAALL BBUULLLLEETTIINN OOFF SSOOCCIIAALL PPRROOTTEECCTTIIOONN IINNDDIICCAATTOORRSS IINN JJOORRDDAANN
+Annexes
+As follows, the operational definition for the indicators included in the Social Protection Bulletin are
+presented together with the main source(s) of data.
+Social Protection Coverage (2020 and 2021)
+Proportion of the population protected in at least one area of social protection
+Definition Proportion of the total population receiving cash benefits under at least one of the
+contingencies (contributory or non-contributory benefit) or actively contributing
+to at least one social security scheme.
+Data are disaggregated by gender, nationality, age group, and income decile
+Numerator Recipients of non-contributory cash benefits + recipients of contributory cash
+benefits + contributors
+Data source SSC, MOF, NAF, MOSD, and MOED (disability cash benefit)
+Denominator Population
+Data source DOS
+Old age
+Proportion of older persons receiving a pension
+Definition Ratio of persons above statutory retirement age receiving an old-age pension
+to persons above statutory retirement age (including contributory and non-
+contributory).
+Data are disaggregated by gender, nationality, and age group
+Numerator total number of recipients of old-age contributory and non-contributory pension
+Data source SSC, NAF, MOF
+Denominator Population of pension age (male population 60+ and female population 55+)
+Data source DOS
+Proportion of older persons receiving contributory pension
+Definition ratio of contributory pensions recipients to the total number of persons above
+statutory pensionable age.
+Data are disaggregated by gender and age group
+Numerator total number of recipients of old age contributory pensions
+Data source SSC, MOF
+Denominator population of pension age (male population 60+ and female population 55+)
+Data source DOS
+
+--- Page 35 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 33
+Proportion of older persons receiving social pension
+Definition ratio of persons above statutory retirement age who are not covered by
+contributory pensions and receiving social pension
+Data are disaggregated by gender and age group
+Numerator total number of recipients of non-contributory old age benefits
+Data source NAF
+Denominator Population of pension age (male population 60+ and female population 55+)
+Data source DOS
+Working Age
+Working age population covered by existing law under mandatory contributory
+and non-contributory schemes
+Definition estimates of the extent of legal coverage use both information on the groups
+covered by statutory schemes for a given social security area (branch) in national
+legislation and available statistical information quantifying the number of persons
+concerned at the national level.
+Data are disaggregated by gender, nationality, and age group
+Numerator number of persons in a specific population group covered by law
+Data source MOL and MOSD
+Denominator Working age population
+Data source DOS
+Proportion of labour force or working-age population contributing to the pension system
+Definition Ratio of active contributors to the pension system to working-age population or
+labor force.
+Data will be disaggregated by gender, nationality, and age group
+Numerator Active contributors to the pension system (counting all contributory pension
+schemes)
+Data source SSC
+Denominator Labour force
+Data source DOS
+
+--- Page 36 ---
+34 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+Maternity Benefits
+Proportion of women giving birth covered by maternity benefits
+Definition Ratio of women receiving cash maternity benefits to women giving birth in the
+same year estimated based on age-specific fertility rates published.
+Data are disaggregated by gender, nationality, and age group
+Numerator Recipients of maternity cash benefit
+Data source SSC
+Denominator Women giving birth (based on age-specific fertility rates)
+Data source DOS
+Proportion of labour force contributing to maternity insurance scheme
+Definition Ratio of women and men contributing to maternity insurance scheme in private
+sector or otherwise employed in the public sector to the total number of persons
+in labor force
+Data are disaggregated by gender and age group
+Numerator total number of contributors to maternity insurance scheme
+Data source SSC
+Denominator total number of persons in labor force
+Data source DOS
+Unemployment Insurance
+Proportion of labour force contributing to unemployment insurance scheme
+Definition Ratio of women and men contributing to unemployment insurance scheme to
+the total number of persons in labor force
+Data are disaggregated by gender, nationality, and age group
+Numerator Total number of contributors to unemployment insurance scheme
+Data source SSC
+Denominator Labour Force
+Data source DOS
+Note
+Unemployment insurance is not provided for workers in the public sector
+
+--- Page 37 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 35
+Persons receiving unemployment support
+Definition Ratio of recipients of unemployment cash benefits to the number of unemployed
+persons
+Data will be disaggregated by gender and age group
+Numerator Recipients of unemployment cash benefit
+Data source SSC, NAF
+Denominator Number of unemployed individuals
+Data source DOS
+Work Injury Insurance
+Persons covered in the event of work injury
+Definition ratio of workers protected by injury insurance to total employment or the labour
+force
+Data are disaggregated by gender, nationality, and age group
+Numerator Persons covered against work injury (by contributory schemes, employer's
+liability)
+Data source SSC in the private sector and workers in the public sector
+Denominator Labor Force
+Data source DOS
+Disability
+Proportion of persons with severe disabilities receiving benefits
+Definition ratio of persons receiving disability cash benefits to persons with severe disabilities
+Data are disaggregated by gender, nationality, and age group
+Numerator total number of recipients of recipients of disability cash benefits (contributory
+and non-contributory)
+Data source SSC and NAF
+Denominator Persons with severe disabilities
+Data source DOS
+
+--- Page 38 ---
+36 STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN
+Proportion of persons with severe disabilities receiving contributory pension
+Definition ratio of contributory pensions recipients to the total number of persons with
+severe disabilities
+Data are disaggregated by gender, nationality, and age group
+Numerator total number of recipients of contributory disability pensions
+Data source SSC
+Denominator Persons with severe disabilities
+Data source DOS
+Children
+Proportion of children covered by social protection benefits
+Definition ratio of children/households receiving child or family cash benefits to the total
+number of children/households with children
+Data are disaggregated by gender, nationality, and age group
+Numerator number of children receiving cash or in kind support, disaggregated by type of
+benefit
+Data source NAF, MOSD and MOED
+Denominator number of children
+Data source DOS
+Social Protection Expenditure and Minimum Benefit Adequacy
+Total expenditure on social protection as % of GDP
+Definition Total expenditure (including administrative expenditure) on social protection
+excluding health as % of Gross Domestic Product (GDP)
+Numerator Total expenditure (including administrative expenditure) on social protection
+excluding health
+Data source SSC, MOF, NAF, MOSD, MOED
+Denominator Gross Domestic Product
+Data source DOS
+
+--- Page 39 ---
+STATISTICAL BULLETIN OF SOCIAL PROTECTION INDICATORS IN JORDAN 37
+Total expenditure per capita on social protection
+Definition Total expenditure per capita (including administrative expenditure) on social
+protection excluding health as % of Gross Domestic Product (GDP)
+Numerator Total expenditure (including administrative expenditure) on social protection
+excluding health
+Data source SSC, MOF, NAF, MOSD, MOED
+Denominator Population
+Data source DOS
+Expenditure on contributory system as a percentage of GDP
+Definition ratio of public expenditure on the contributory system to the GDP
+Numerator Public expenditure on the contributory system
+Data source SSC, MoF
+Denominator GDP
+Data source DOS
+Expenditure on non-contributory system as a percentage of GDP
+Definition ratio of public expenditure on the non-contributory system to the GDP
+Numerator Public expenditure on the non-contributory system
+Data source NAF, MOSD, MOED
+Denominator GDP
+Data source DOS
+Minimum benefit level for a contributory scheme as a percentage of minimum wage
+Definition Comparison of minimum level of benefit received after prescribed contributory
+period (separately for each contingency) to the minimum national wage set by
+law
+Numerator minimum pension/ benefit
+Data source SSC, NAF
+Denominator Minimum wage
+Data source DOS
+
+--- Page 40 ---
+This publication was funded by the European Union. Its contents are the sole
+responsibility of the International Labour Organization and do not necessarily reflect
+the views of the European Union.

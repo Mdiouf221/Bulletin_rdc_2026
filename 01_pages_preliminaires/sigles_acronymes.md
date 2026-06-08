@@ -1,0 +1,40 @@
+﻿# Liste des sigles et acronymes
+
+<!-- NOTE_INTERNE
+Grand axe :
+Centraliser les sigles et acronymes utilisés dans le bulletin.
+
+Catégories à couvrir :
+- Institutions nationales.
+- Régimes et programmes.
+- Concepts statistiques.
+- Indicateurs nationaux et internationaux.
+- Partenaires techniques.
+
+Logique rédactionnelle :
+La liste devra être complétée progressivement à mesure que les institutions, programmes, indicateurs et sources sont intégrés dans le bulletin.
+
+Statut :
+à compléter progressivement
+-->
+
+## Texte rédigé
+
+| Sigle | Signification |
+|---|---|
+| AT/MP | Accidents du travail et maladies professionnelles |
+| BIT | Bureau international du Travail |
+| CNSS | Caisse Nationale de Sécurité Sociale |
+| CNSSAP | Caisse Nationale de Sécurité Sociale des Agents Publics de l'État |
+| CSU | Couverture Santé Universelle |
+| FNPSS | Fonds National de Promotion et de Service Social |
+| INS | Institut National de la Statistique |
+| ODD | Objectif de développement durable |
+| OIT | Organisation internationale du Travail |
+| OMS | Organisation mondiale de la Santé |
+| PIB | Produit intérieur brut |
+| PNPS | Politique nationale de protection sociale |
+| RDC | République démocratique du Congo |
+| SESOPA | Service de Sécurité Sociale des Parlementaires |
+| SNPS | Stratégie nationale de protection sociale |
+| USD | Dollar des États-Unis |
