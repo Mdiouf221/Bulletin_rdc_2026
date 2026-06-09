@@ -1,0 +1,86 @@
+TITRE : ESS CNSS 2020 — Enquête sur les Sources Statistiques de la protection sociale
+SOURCE : Caisse Nationale de Sécurité Sociale (CNSS), République Démocratique du Congo
+CONTACT : Direction des Etudes et Organisation — deocnss@gmail.com (par analogie avec 2019/2021/2022)
+PÉRIODE : 2020
+MONNAIE : Franc congolais (CDF)
+NIVEAU : Source primaire institutionnelle (transmission directe de l'institution)
+
+---
+
+NOTE SUR L'HISTORIQUE DU FICHIER
+
+Ce fichier (OIT CNSS 2020.xlsm, renommé ESS CNSS 2020.xlsm lors du traitement PROC-008)
+remplace un fichier antérieur nommé "ESS CNSS 2020.xlsm" qui contenait en réalité des données
+CNSSAP (anomalie de contenu documentée dans ESS_CNSS_2020_ANOMALIE.txt).
+L'ancien fichier anomalique a été conservé sous le nom "ESS CNSS 2020_ANOMALIE.xlsm".
+Le présent fichier a été déposé dans 06_sources/_entrants/ et traité via PROC-008 le 2026-06-09.
+
+---
+
+FORMAT ET STRUCTURE
+
+Même structure que les ESS CNSS 2019, 2021 et 2022 (gabarit OIT francophone). Feuilles actives :
+- INSTRUCTIONS
+- Inventaire des régimes
+- Prestations aux familles (Régime 1)
+- Risques professionnels (Régime 2)
+- Pension (Régime 3)
+- Régime 4 (Action sanitaire et sociale — non détaillé)
+- Régimes 5 à 40 (gabarit vide)
+- Info Pauvreté
+- ADDITIONAL statistics for SDGs
+- CALCULATIONS
+
+Taille du fichier : 551 842 octets (cohérente avec 2019 : 550 679 ; 2021 : 551 853 ; 2022 : 552 068)
+Période confirmée : cellule B2 = 2020
+
+---
+
+RÉGIMES DÉCLARÉS
+
+Régime 1 — Branche des Prestations aux familles (CNSS)
+  Fonctions couvertes : Famille, Maternité
+  Population couverte légalement : Travailleurs du secteur privé, employés rémunérés (âge de travailler)
+  Prestations :
+    1. Allocations prénatales
+    2. Allocation de maternité
+    3. Allocations familiales
+    4. Indemnité journalière de maternité
+  Données quantitatives partielles extraites :
+    - Bénéficiaires (Maternité/Paternité) : 508 708
+    - Bénéficiaires (Famille) : 68 459
+    - Bénéficiaires (Enfants) : 2 628
+    - Dépenses totales : ~436 461 803 384 CDF
+    - Recettes totales : ~725 693 132 810 CDF
+
+Régime 2 — Branche des Risques Professionnels (CNSS)
+  Fonctions couvertes : Risques professionnels (accidents du travail, maladies professionnelles)
+  Population couverte légalement : Travailleurs du secteur privé
+  Prestations : identiques à 2019 (11 prestations)
+
+Régime 3 — Branche des Pensions (CNSS)
+  Fonctions couvertes : Vieillesse, Invalidité, Survivants
+  Population couverte légalement : Travailleurs du secteur privé
+  Prestations : identiques à 2019 (7 prestations)
+
+Régime 4 — Action sanitaire et sociale (CNSS)
+  Données non détaillées dans ce fichier.
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Structure identique aux ESS CNSS 2019, 2021 et 2022 : ce fichier complète la série temporelle
+  et lève la lacune signalée dans les fichiers anomaliques précédents.
+- Ce fichier rétablit la continuité de la série CNSS sur 2019–2022.
+- Quelques données quantitatives extraites de la feuille "Prestations aux familles" (Régime 1) ;
+  les données chiffrées complètes restent dans les feuilles individuelles du fichier XLSM.
+- L'ancien fichier anomalique (contenu CNSSAP) est conservé sous ESS CNSS 2020_ANOMALIE.xlsm
+  à des fins de traçabilité.
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSS (2020), Enquête sur les Sources Statistiques (ESS) — format OIT,
+Caisse Nationale de Sécurité Sociale, Kinshasa, République Démocratique du Congo.

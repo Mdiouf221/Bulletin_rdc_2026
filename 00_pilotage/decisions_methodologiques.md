@@ -86,6 +86,31 @@ Le niveau de détail à inclure dans les annexes statistiques devra être fixé 
 **Statut :** à confirmer  
 **Impact :** annexes, chapitre 3, chapitre 6
 
+## Décisions actées (suite — issues de la session 2026-06-09)
+
+### DM-010 — Règle de conversion foyers/bénéficiaires pour les prestations enfants et transferts familiaux
+
+**Principe général :**
+Lorsqu'une institution déclare ses données par **foyer bénéficiaire** ou par **récipiendaire principal** (et non par enfant ou par individu couvert), il est nécessaire d'appliquer un facteur multiplicateur pour estimer le nombre réel d'enfants ou de personnes couvertes.
+
+**Règles opérationnelles :**
+
+1. **Vérification préalable obligatoire** : pour chaque année et chaque régime, identifier explicitement si la donnée déclarée est exprimée en foyers, en récipiendaires principaux ou en individus/enfants. Cette vérification doit être documentée dans les métadonnées de l'ESS concernée.
+
+2. **Conservation du multiplicateur historique** : le facteur 3,17 enfants/foyer utilisé dans le 1er bulletin est maintenu pour les années déjà traitées (2019–2022). Il ne doit pas être modifié rétrospectivement afin de préserver la cohérence de la série.
+
+3. **Nouveau multiplicateur pour chaque nouvelle année** : lorsqu'une nouvelle année est intégrée et que l'institution déclare encore ses données par foyer, le facteur multiplicateur approprié doit être **recherché et discuté explicitement** avant d'être appliqué. Il ne peut pas être reconduit automatiquement d'une année à l'autre sans vérification.
+
+4. **Règle générale pour tous les transferts familiaux** : cette règle s'applique à toutes les prestations enfants et à tous les transferts aux familles exprimés par foyer ou par récipiendaire principal, quelle que soit l'institution (CNSS, CNSSAP, PAM, MINAS, etc.).
+
+5. **Alerte rupture méthodologique** : si entre deux déclarations successives une institution change sa manière de reporter (passage de foyers à individus, ou inversement), cela peut provoquer une variation spectaculaire apparente du nombre de bénéficiaires. Une telle rupture doit être :
+   - détectée automatiquement (variation > 50 % d'une année sur l'autre sans justification programmatique) ;
+   - signalée comme alerte dans les données ;
+   - documentée explicitement dans le bulletin (encadré méthodologique ou note de bas de page).
+
+**Statut :** actée  
+**Impact :** sous-indicateur ODD 2.2 (enfants), sous-indicateur 2.8 (assistance/transferts), tous tableaux de couverture par branche famille
+
 ## Décisions en discussion
 
 _Aucune décision en discussion à ce stade._

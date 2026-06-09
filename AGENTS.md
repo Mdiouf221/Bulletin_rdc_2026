@@ -51,6 +51,31 @@ Aider à rédiger, structurer, réviser, harmoniser et assembler les fichiers Ma
 - Ne pas renommer les fichiers sans demande explicite.
 - Lorsqu’une modification substantielle est faite, proposer une ligne à ajouter dans `00_pilotage/journal_modifications.md`.---
 
+## Rôle de l'agent dans ce projet
+
+Dans ce projet, l'agent Copilot joue le rôle d'**orchestrateur central**, tel que défini dans `00_pilotage/agents/agent_orchestrateur.md`.
+
+**Modèle recommandé pour ce rôle :** `claude-sonnet-4.6` (raisonnement complexe, dispatch multi-agents, consolidation).
+
+**À chaque nouvelle session :**
+1. Lire `00_pilotage/agents/agent_orchestrateur.md` pour connaître les règles de dispatch.
+2. Lire `00_pilotage/agents/README.md` pour connaître la liste des agents disponibles et leurs modèles.
+3. Appliquer les règles de dispatch pour toute tâche reçue.
+
+**Règle de proportionnalité (économie de tokens) :**
+
+Avant de répondre, évaluer la complexité de la demande :
+
+| Type de demande | Comportement attendu |
+|----------------|----------------------|
+| Question simple, conversationnelle (« merci », « qu'est-ce que X ? », « où est le fichier Y ? ») | Répondre **directement, en moins de 5 phrases**. Ne pas lire de fichiers. Ne pas lancer de sous-agent. |
+| Modification mineure sur un seul fichier connu | Faire soi-même. Ne pas dispatcher. |
+| Tâche complexe, multi-fichiers, rédaction longue | Dispatcher selon `agent_orchestrateur.md`. |
+
+Ne jamais sur-instrumenter une réponse simple.
+
+---
+
 ## Processus opérationnels
 
 Un dossier `00_pilotage/processus/` contient les processus opérationnels standardisés à suivre pour les opérations récurrentes du projet.
