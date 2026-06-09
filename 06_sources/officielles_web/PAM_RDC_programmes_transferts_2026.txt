@@ -1,0 +1,42 @@
+TITRE   : Programme Alimentaire Mondial  Activités en RDC (2021-2026)
+SOURCE  : Programme Alimentaire Mondial (PAM / WFP)
+URL     : https://www.wfp.org/countries/democratic-republic-congo
+CONSULTÉ: juin 2026
+NIVEAU  : 2 (publication officielle organisme onusien  source secondaire acceptable)
+BASE LÉGALE : mandat PAM (résolution 1714 du Conseil économique et social de l'ONU, 1961)
+
+===================================================
+DONNÉES ET PROGRAMMES DOCUMENTÉS EN RDC
+===================================================
+
+1. TRANSFERTS DE RESSOURCES SANS CONDITIONS (URGENCE)
+------------------------------------------------------
+- Bénéficiaires 2021 : 4 037 575 personnes
+- Bénéficiaires 2022 : 3 795 530 personnes
+- Bénéficiaires 2026 (Est DRC, depuis janvier 2026) : 1,3 million de personnes
+  dont 241 000 via transferts alimentaires et monétaires
+  et 44 000 enfants <2 ans + femmes enceintes/allaitantes (nutrition)
+- Zone principale : provinces orientales (Nord-Kivu, Sud-Kivu, Ituri, Tanganyika)
+- Financement requis 2026 : USD 214 millions pour les besoins urgents dans l'Est
+- Nature : transferts humanitaires, non conditionnels, durée déterminée par crise
+
+2. PROGRAMME DE CANTINES SCOLAIRES
+-----------------------------------
+- Statut : phase pilote (2023, selon Agence Congolaise de Presse 2023)
+- Objectif : consolidation de la gratuité de l'enseignement primaire dans les écoles publiques
+- Co-responsable : PAM + Ministère de l'Enseignement Primaire, Secondaire et Technique (MEPST)
+- Nature : transferts en nature (repas nutritifs), non contributifs
+
+3. PROGRAMME NUTRITION (PRÉVENTIF ET CURATIF)
+----------------------------------------------
+- Ciblage : enfants <2 ans, femmes enceintes et allaitantes
+- Modalité : distributions alimentaires spécialisées
+
+NOTE MÉTHODOLOGIQUE :
+- Le PAM opère en RDC dans un contexte principalement humanitaire.
+- Les programmes ne sont pas permanents : dépendent des financements annuels des donateurs.
+- Les donateurs principaux incluent : États-Unis (USAID/BHA), Union européenne (DG ECHO), 
+  Royaume-Uni (FCDO), Allemagne, Canada.
+- Les chiffres de bénéficiaires varient fortement selon le contexte sécuritaire.
+- Source des données 2021-2022 : Premier bulletin statistique de la protection sociale en RDC (2023).
+- Source des données 2026 : site officiel wfp.org (consulté juin 2026).

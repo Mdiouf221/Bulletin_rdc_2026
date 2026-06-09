@@ -1,0 +1,56 @@
+TITRE : ESS CNSS 2020 — Enquête sur les Sources Statistiques de la protection sociale
+SOURCE : Fichier nommé « ESS CNSS 2020.xlsm » — voir anomalie ci-dessous
+CONTACT : +243810044886 — mpanyakangodie@cnssap.cd
+PÉRIODE DÉCLARÉE DANS LE FICHIER : 2020 (en-tête) / 2022 (inventaire des régimes)
+MONNAIE : Non précisée
+NIVEAU : Source primaire institutionnelle — à vérifier (anomalie de contenu)
+
+---
+
+⚠️ ANOMALIE IMPORTANTE
+
+Ce fichier est nommé "ESS CNSS 2020.xlsm" mais son contenu correspond à un fichier CNSSAP :
+- L'adresse e-mail de contact est celle de la CNSSAP (mpanyakangodie@cnssap.cd)
+- La feuille principale s'intitule "CNSAP Régime de base" et non les branches CNSS habituelles
+- L'inventaire des régimes ne déclare qu'un seul régime : CNSAP Régime de base (Branche des pensions, CNSSAP)
+- La période affichée dans l'inventaire est 2022, non 2020
+
+Hypothèses : erreur de nommage lors du dépôt, ou fichier CNSSAP déposé à la place du fichier CNSS 2020.
+À vérifier avec l'institution avant toute utilisation analytique.
+
+---
+
+FORMAT ET STRUCTURE
+
+Feuilles actives :
+- Inventaire des régimes
+- CNSAP Régime de base (régime unique déclaré)
+- ADDITIONAL statistics for SDGs
+- CALCULATIONS
+
+---
+
+RÉGIMES DÉCLARÉS
+
+Régime 1 — CNSAP Régime de base (Branche des pensions, CNSSAP)
+  Fonctions couvertes : Vieillesse (X), Invalidité/Handicap (X)
+  Administrateur : CNSSAP
+  Source déclarée : CNSSAP
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Ce fichier ne contient pas les données habituelles de la CNSS (3 branches : familles,
+  risques professionnels, pensions). Il ne doit PAS être utilisé comme source CNSS 2020
+  sans vérification préalable.
+- Les fichiers ESS CNSS 2019, 2021 et 2022 présentent une structure cohérente à 3 branches ;
+  l'absence d'un fichier CNSS 2020 cohérent constitue un manque dans la série temporelle.
+
+---
+
+CITATION RECOMMANDÉE
+
+À ne pas citer sans vérification. En cas d'utilisation provisoire :
+CNSSAP (2020 ?), Enquête sur les Sources Statistiques (ESS) — format OIT,
+Caisse Nationale de Sécurité Sociale des Agents Publics, Kinshasa [fichier à vérifier].

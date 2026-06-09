@@ -1,0 +1,48 @@
+TITRE : Caisse Nationale de Sécurité Sociale (CNSS) — Branches et prestations
+SOURCE : Caisse Nationale de Sécurité Sociale (CNSS), République Démocratique du Congo
+URL : https://www.cnss.cd/
+CONSULTÉ : 2026-06-08
+NIVEAU : Source primaire institutionnelle (site officiel de l'institution)
+
+---
+
+BRANCHES COUVERTES PAR LA CNSS (selon site officiel cnss.cd)
+
+La CNSS gère trois branches de sécurité sociale pour les travailleurs du secteur privé et assimilés :
+
+1. Accidents du travail et maladies professionnelles
+   - Rente en cas d'incapacité permanente ou temporaire
+   - Rente de survivants en cas de décès de l'assuré suite à un accident du travail
+
+2. Prestations aux familles
+   - Allocations prénatales
+   - Allocations de maternité
+   - Indemnités journalières de congé de maternité
+   - Allocations familiales
+
+3. Vieillesse, invalidité et survivants
+   - Pension de vieillesse normale
+   - Pension proportionnelle
+   - Allocation de décès
+   - Allocation de survivants
+
+SOURCE COMPLÉMENTAIRE : Loi n°16/009 du 15 juillet 2016 fixant les règles relatives à la sécurité sociale
+(référencée dans le premier bulletin statistique RDC, 2023)
+
+---
+
+POPULATION ASSUJETTIE
+La CNSS est l'institution principale de sécurité sociale pour les travailleurs du secteur privé et les travailleurs formels non couverts par un régime spécial.
+
+---
+
+BRANCHES NON COUVERTES PAR LA CNSS
+- Soins médicaux (Partie II de la C102) : non couverts directement par la CNSS
+- Indemnités de maladie (Partie III de la C102) : non documentées
+- Chômage (Partie IV de la C102) : non couvert
+
+---
+
+NOTE MÉTHODOLOGIQUE
+Ces informations sont extraites du site officiel de la CNSS (cnss.cd) et corroborées par la cartographie institutionnelle du premier bulletin statistique RDC (2023).
+La couverture effective (nombre d'affiliés, cotisants actifs, bénéficiaires) fait l'objet du chapitre institutionnel du bulletin.

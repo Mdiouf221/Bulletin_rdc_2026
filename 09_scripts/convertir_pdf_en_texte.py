@@ -1,16 +1,17 @@
 """
 convertir_pdf_en_texte.py
 --------------------------
-Convertit tous les fichiers PDF des dossiers de références externes
-et des dossiers de données en fichiers texte (.txt) lisibles par les agents.
+Convertit tous les fichiers PDF des dossiers sources
+en fichiers texte (.txt) lisibles par les agents.
 
 Dossiers traités :
-  - 11_references_externes/bulletins_rdc/
-  - 11_references_externes/autres_bulletins/
-  - 11_references_externes/references_oit_bit/
-  - 06_donnees/institutions/
-  - 06_donnees/officielles_web/
-  - 06_donnees/sources_incertaines/
+  - 06_sources/bulletins_rdc/
+  - 06_sources/bulletins_comparaison/
+  - 06_sources/normes_oit/
+  - 06_sources/institutions/
+  - 06_sources/officielles_web/
+  - 06_sources/sources_incertaines/
+  - 06_sources/atelier_lancement/presentations/
 
 Pour chaque PDF, crée un fichier .txt dans un sous-dossier _texte/
 au même niveau que le PDF source.
@@ -36,16 +37,16 @@ except ImportError:
 
 SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
 WORKSPACE_DIR = SCRIPT_DIR.parent
-REFERENCES_DIR = WORKSPACE_DIR / "11_references_externes"
-DONNEES_DIR = WORKSPACE_DIR / "06_donnees"
+SOURCES_DIR = WORKSPACE_DIR / "06_sources"
 
 DOSSIERS = [
-    REFERENCES_DIR / "bulletins_rdc",
-    REFERENCES_DIR / "autres_bulletins",
-    REFERENCES_DIR / "references_oit_bit",
-    DONNEES_DIR / "institutions",
-    DONNEES_DIR / "officielles_web",
-    DONNEES_DIR / "sources_incertaines",
+    SOURCES_DIR / "bulletins_rdc",
+    SOURCES_DIR / "bulletins_comparaison",
+    SOURCES_DIR / "normes_oit",
+    SOURCES_DIR / "institutions",
+    SOURCES_DIR / "officielles_web",
+    SOURCES_DIR / "sources_incertaines",
+    SOURCES_DIR / "atelier_lancement" / "presentations",
 ]
 
 # ---------------------------------------------------------------------------
@@ -62,7 +63,8 @@ def convertir_pdf(pdf_path: pathlib.Path, output_dir: pathlib.Path) -> bool:
 
     try:
         with pdfplumber.open(pdf_path) as pdf:
-            pages_text = []
+            total_pages = len(pdf.pages)
+            pages_text = [f"[DOCUMENT : {pdf_path.name} — {total_pages} pages]\n"]
             for i, page in enumerate(pdf.pages, start=1):
                 text = page.extract_text()
                 if text:

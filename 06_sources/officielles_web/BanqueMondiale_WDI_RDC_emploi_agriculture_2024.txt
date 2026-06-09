@@ -1,0 +1,88 @@
+SOURCE : Banque mondiale — World Development Indicators (WDI)
+TITRE   : World Development Indicators — Emploi agricole, emploi vulnérable et informalité, République Démocratique du Congo
+URL     : https://data.worldbank.org/indicator/SL.AGR.EMPL.ZS?locations=CD
+API     : https://api.worldbank.org/v2/country/CD/indicator/SL.AGR.EMPL.ZS?format=json&mrv=5
+CONSULTÉ: 2026-06-08
+NIVEAU  : 1 (organisation internationale — source primaire)
+NOTE    : Données issues du modèle ILO (ILOSTAT — ILOEST). Licence CC BY-4.0. MàJ : 8 avril 2026.
+
+---------------------------------------------------------------------
+DONNÉES CLÉS — EMPLOI AGRICOLE (SL.AGR.EMPL.ZS)
+---------------------------------------------------------------------
+
+Part de l'emploi agricole dans l'emploi total :
+  2021 : 61,4 %
+  2022 : 60,4 %
+  2023 : 59,5 %
+  2024 : 58,9 %    ← valeur retenue dans le bulletin
+  2025 : 58,5 % (estimation)
+
+Part de l'emploi agricole — Femmes (SL.AGR.EMPL.FE.ZS) :
+  2021 : 70,2 %
+  2022 : 69,3 %
+  2023 : 68,3 %
+  2024 : 67,8 %
+
+Part de l'emploi agricole — Hommes (SL.AGR.EMPL.MA.ZS) :
+  2021 : 53,0 %
+  2022 : 51,8 %
+  2023 : 51,0 %
+  2024 : 50,3 %
+
+---------------------------------------------------------------------
+DONNÉES COMPLÉMENTAIRES — INDICATEURS D'INFORMALITÉ (proxies WDI)
+---------------------------------------------------------------------
+
+Note : le taux d'emploi informel stricto sensu (indicateur ILOSTAT INF_2INF_NOC_RT_A)
+n'est pas disponible via l'API WDI. Les indicateurs suivants en sont des proxies.
+
+Emploi vulnérable — % emploi total (SL.EMP.VULN.ZS) :
+  2021 : 82,6 %
+  2022 : 82,3 %
+  2023 : 82,1 %
+  2024 : 81,8 %
+  2025 : 81,5 % (estimation)
+
+Travailleurs indépendants — % emploi total (SL.EMP.SELF.ZS) :
+  2021 : 86,1 %
+  2022 : 85,9 %
+  2023 : 85,6 %
+  2024 : 85,3 %
+  2025 : 85,1 % (estimation)
+
+Travailleurs familiaux contribuants — % emploi total (SL.FAM.WORK.ZS) :
+  2021 : 22,0 %
+  2022 : 21,8 %
+  2023 : 21,6 %
+  2024 : 21,4 %
+
+Taux d'emploi (15+ ans) (SL.EMP.TOTL.SP.ZS) :
+  2023 : 62,1 %
+  2024 : 61,6 %
+
+Taux de chômage (modèle ILO, SL.UEM.TOTL.ZS) :
+  2020 : 4,5 %
+  2021 : 4,3 %
+  2022 : 4,3 %
+  2023 : 3,7 %
+  2024 : 4,4 %
+
+---------------------------------------------------------------------
+NOTE SUR L'EMPLOI INFORMEL ILOSTAT
+---------------------------------------------------------------------
+Le taux d'emploi informel exact de la RDC (indicateur INF_2INF_NOC_RT_A)
+provient d'estimations modélisées ILOSTAT, consultables manuellement sur :
+  https://ilostat.ilo.org/data/ → "Informal economy" → filtrer COD
+
+La valeur utilisée dans le bulletin (~96%) date de 2020 (ILOSTAT).
+Les proxies WDI (emploi vulnérable ~82%, travailleurs indépendants ~85%)
+confirment une informalité très élevée et persistante, légèrement inférieure
+à 96% selon la méthodologie ILOSTAT plus large.
+La valeur de 96% reste plausible selon la définition large de l'emploi informel
+(emploi formel sans protection + secteur informel).
+
+---------------------------------------------------------------------
+NOTE D'UTILISATION
+---------------------------------------------------------------------
+Citer comme : Banque mondiale (2026), World Development Indicators — Emploi
+et informalité, RDC, données 2024. Indicateurs basés sur le modèle ILOEST (ILO).

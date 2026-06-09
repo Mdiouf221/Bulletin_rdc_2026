@@ -1,4 +1,4 @@
-
+﻿
 ---
 
 ## 4. `05_references/sources_bibliographiques.md`
@@ -50,11 +50,11 @@ Toute source utilisée pour un chiffre, une définition, une institution, un ind
 
 ## Documents de référence déposés dans le workspace
 
-Les documents de référence complets (bulletins, rapports) sont déposés dans `11_references_externes/`.
-Consulter `11_references_externes/README_references_externes.md` pour le registre complet.
+Les documents de référence complets (bulletins, rapports) sont déposés dans `06_sources/`.
+Consulter `06_sources/README_references_externes.md` pour le registre complet.
 
 | Document | Dossier | Usage |
 |---|---|---|
-| Premier Bulletin statistique de la protection sociale en RDC | `11_references_externes/bulletins_rdc/` | Continuité institutionnelle, structure, formulations |
-| Bulletins statistiques comparatifs | `11_references_externes/autres_bulletins/` | Comparaison de structure et style |
-| Conventions, recommandations et guides OIT/BIT | `11_references_externes/references_oit_bit/` | Cadre normatif (R.202, C.102), métadonnées ODD 1.3.1, guides méthodologiques |
+| Premier Bulletin statistique de la protection sociale en RDC | `06_sources/bulletins_rdc/` | Continuité institutionnelle, structure, formulations |
+| Bulletins statistiques comparatifs | `06_sources/bulletins_comparaison/` | Comparaison de structure et style |
+| Conventions, recommandations et guides OIT/BIT | `06_sources/references_oit_bit/` | Cadre normatif (R.202, C.102), métadonnées ODD 1.3.1, guides méthodologiques |

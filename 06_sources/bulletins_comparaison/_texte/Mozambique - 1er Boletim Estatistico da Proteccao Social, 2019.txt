@@ -1,0 +1,881 @@
+--- Page 1 ---
+1º BOLETIM EsTaTísTIcO
+sobre Protecção
+social
+
+--- Page 2 ---
+FICHA TÉCNICA
+Título: 1º Boletim Estatístico sobre Protecção Social
+Editor: Célio Langa
+Maputo – Moçambique
+Elaboração: Ângelo Tivane, Célio Langa, Fabião Mundlovo,
+Gito Mataba, Jonas Nassabe, Marcos Muianga.
+Revisão: Gito Mataba
+Controlo de Qualidade: Rubén Vicente, Denise Monteiro
+Colaboração: Instituto Nacional de Acção Social (INAS)
+Instituto Nacional de Estatística (INE)
+Instituto Nacional de Previdência Social (INPS)
+Instituto Nacional de Segurança Social (INSS)
+Ministério do Género, Criança e Acção Social (MGCAS)
+Ministério do Trabalho e Segurança Social (MITSS)
+Organização Internacional do Trabalho (OIT)
+Grafismo: Gito Mataba
+Apoio Técnico e Financeiro: OIT – Moçambique
+Desenho Gráfico: Daniela Cristofori
+Imagem da capa: iStockphoto
+Tiragem: 100 Exemplares
+Difusão: OIT – Moçambique
+© 2019
+Este Boletim foi realizado com o apoio do projeto ACTION/Portugal de reforço dos sistemas
+de proteção social nos PALOP e Timor-Leste, financiado pelo Gabinete de Estratégia e
+Planeamento do Ministério do Trabalho, Solidariedade e Segurança Social de Portugal.
+
+--- Page 3 ---
+1º BOLETIM
+EsTaTísTIcO
+sobre
+Protecção
+social
+Maputo, Julho 2019
+
+--- Page 4 ---
+Índice de Gráficos e Figuras
+Figura 1 Incidência da Pobreza em Moçambique, 2014/15 3
+Gráfico 1 População de Moçambique, 2017 3
+Gráfico 2 População com deficiência, 2017 3
+Gráfico 3 Distribuição territorial do efectivo de pensionistas do Estado por província, 2018 5
+Gráfico 4 Distribuição territorial do efectivo de pensionistas do Estado por gênero e província, 2018 5
+Gráfico 5 Trabalhadores por conta de outrem no sistema de seg. social por província, 2018 5
+Gráfico 6 Trabalhadores por conta própria no sistema de seg. social por província, 2018 6
+Gráfico 7 Casos pagos por tipo de subsídio segundo província, 2018 6
+Gráfico 8 Casos pagos por gênero segundo província, 2018 6
+Gráfico 9 Casos pagos por tipo de Pensão segundo província, 2018 7
+Gráfico 10 Casos pagos por tipo de abono segundo província, 2018 7
+Gráfico 11 Casos pagos por tipo de abono segundo província, 2018 7
+Gráfico 12 Assistência no Regime Geral Público não Contributivo por Programas
+implementados pelo INAS, 2018 9
+Gráfico 13 Distribuição dos beneficiários do INAS por Programa, 2018 9
+Gráfico 14 Distribuição dos beneficiários dos Programas do INAS por gênero, 2018 9
+Gráfico 15 Beneficiários atendidos no PSSB anual 2017-2018 9
+Gráfico 16 Beneficiários atendidos no PASD, 2018 10
+Gráfico 17 Mapa Resumo do atendimento no PSSAS, 2018 10
+Gráfico 18 PSSAS por componente e gênero, 2018 11
+Gráfico 19 Atendimento nas Unidades Sociais, 2018 11
+Gráfico 20 Beneficiários atendimento no PASP, 2018 11
+Índice de Quadros
+Quadro 1 Serviços prestados em cada regime geral público contributivo 4
+Quadro 2 Segurança Social Básica (não contributivo) 8
+Quadro 3 População de Moçambique, 2017 16
+Quadro 4 População com deficiência, 2018 16
+Quadro 5 Incidência da Pobreza 17
+Quadro 6 Incidência da Pobreza 17
+Quadro 7 Incidência da Pobreza 17
+Quadro 8 Incidência da Pobreza 17
+Quadro 9 Distribuição territorial do efectivo de pensionistas do Estado 17
+Quadro 10 Trabalhadores por conta de outrem no sistema de segurança social por província 18
+Quadro 11 Trabalhadores por conta própria no sistema de segurança social por província 18
+Quadro 12 Casos pagos por tipo de subsídio segundo província 18
+Quadro 13 Casos pagos por tipo de pensão segundo província 19
+Quadro 14 Casos pagos por tipo de abono segundo província 19
+Quadro 15 Beneficiários atendidos no PSSB anual 2017-2018 19
+Quadro 16 Beneficiários atendidos no PASD, 2018 20
+Quadro 17 Mapa Resumo do atendimento no PSSAS, 2018 20
+Quadro 18 Atendimento nas Unidades Sociais, 2018 20
+
+--- Page 5 ---
+Índice
+sumário Executivo 1
+introdução ........................................................................................... 2
+1. incidência da Probreza em Moçambique ............................................ 3
+2. segurança social obrigatória (regime contributivo) .............................. 4
+3. segurança social básica (regime não contributivo) .............................. 8
+4. conclusões .................................................................................... 12
+Referências Bibliográficas 13
+Glossário 14
+anexos 16
+
+--- Page 6 ---
+Lista de Acrónimos
+aF Agregados Familiares
+ca Centro Aberto
+caV Centro de Apoio à Velhice
+cOV Criança Orfã e Vulnerável
+cT Centro de Trânsito
+FaDM Forças Armadas de Moçambique
+HIV Vírus de Imunodeficiência Humana
+INas Instituto Nacional de Acção Social
+INE Instituto Nacional de Estatística
+INPs Instituto Nacional de Previdência Social
+INss Instituto Nacional de Segurança Social
+MEF Ministério de Economia e Finanças
+MGcas Ministério do Género, Criança e Acção Social
+MITss Ministério do Trabalho e Segurança Social
+OIT Organização Internacional do Trabalho
+PasD Programa Apoio Social Directo
+PasP Programa Acção Social Produtiva
+PEs Plano Económico e Social
+Pssas Programa Serviços Sociais de Acção Social
+PssB Programa Subsídio Social Básico
+TP Trabalhos Públicos
+TPI Trabalhos Públicos Inclusivos
+
+--- Page 7 ---
+©UNICEF/Mozambique
+SUMÁRIO EXECUTIVO
+Este relatório balanço apresenta as actividades realizadas pelas instituições de Protecção
+Social públicas de Moçambique, levadas a cabo ao longo do ano de 2018, como o resultado da
+colaboração interinstitucional e da compilação, agregação e harmonização das informações
+e dados recolhidos a nível do Ministério da Economia e Finanças (MEF), concretamente no
+Instituto Nacional de Previdência Social (INPS) e Instituto Nacional de Estatística (INE); no
+Ministério do Género, Criança e Acão Social (MGCAS), no Instituto Nacional de Acão Social
+(INAS), no Ministério do Trabalho e Segurança Social (MITSS) e no Instituto Nacional de
+Segurança Social (INSS).
+Em Moçambique a Lei de Bases de Protecção Social 4/2007, define que a Segurança Social
+Obrigatória (Contributiva), está a cargo do Ministério da Economia e Finanças, através do
+Instituto Nacional de Previdência Social (INPS) e do Ministério do Trabalho e Segurança
+Social através do Instituto Nacional de Segurança Social (INSS). Entretanto, a Segurança
+Social Básica (não Contributiva), está a cargo do Ministério do Género, Criança e Acção
+Social (MGCAS) e implementa programas através do seu braço executor, o Instituto Nacional
+de Acção Social (INAS), de assistência directa às pessoas em situação de pobreza e
+vulnerabilidade.
+Durante o ano de 2018, foi prestada assistência a 1,104,791 Beneficiários; destes, 74.928,
+correspondentes a 5,84%, no regime contributivo público através do INPS; 510.516
+correspondentes a 39,82%, no regime contributivo privado através do INSS; 519.347
+correspondestes a 40,5% no regime não contributivo através dos programas de protecção
+social básica implementados pelo INAS.
+No regime não contributivo público, o atendimento centrou-se em 179.246 crianças (1.166
+em infantários, 33.197 em centros de acolhimento da criança e 143.306 através do apoio
+multiforme, 988 no PASD e no PSSB 2.052) e 378.056 pessoas idosas (2.373 nos Centros de
+Apoio a Velhice, 5.206 nos Centros Abertos, 408 no PASD e 370.069 no PSSB).
+1
+
+--- Page 8 ---
+Introdução
+este relatório, espelha as actividades
+desenvolvidas durante o período de
+Janeiro à Dezembro de 2018, tendo
+como base os relatórios das instituições
+Nacionais de Protecção social neste
+período, e procura abordar de forma
+descritiva e analítica as metas alcança-
+das, os constrangimentos enfrentados
+na implementação, as conclusões e per-
+spectivas para os próximos períodos.
+À luz da Lei nº4/2007, de 7 de Fevereiro, o Sistema de
+Protecção Social em Moçambique estrutura-se em
+três níveis, designadamente: Segurança Social Básica;
+Segurança Social Obrigatória; e Segurança Social
+Complementar.
+O relatório encontra-se estruturado da seguinte forma:
+apresentação do sumário executivo, seguido da introdução,
+a incidência da pobreza em Moçambique, os resultados
+alcançados no sistema de proteccção social em 2018,
+tanto no regime contributivo como no não contributivo,
+e finalmente, as conclusões e os constrangimentos
+enfrentados.
+©UNICEF/Mozambique
+22
+
+--- Page 9 ---
+1º boletiM estatístico sobre Protecção social
+cONTEXTUaLIZaÇÃO
+GRáFIcO 1 População de Moçambique, 2017
+1. Incidência
+da Probreza em
+Moçambique
+Segundo os resultados do Censo Geral da Popu-
+lação e Habitação de 2017, Moçambique tem cer-
+ca de 27.9 milhões de pessoas dos quais cerca de
+17.9 milhões na áreas rural e 8.9 milhões na área
+urbana. As províncias de Nampula e Zambézia são Fonte: INE, Resultados definitivos de Censo 2017
+as mais populosas, representando cerca de 40%
+da população nacional. A província de Gaza e a Ci-
+dade de Maputo são as menos populosas. GRáFIcO 2 População com deficiência, 2017
+O Gráfico 2, apresenta o tamanho da população
+segundo a deficiência, de acordo com o o censo
+da população de 2017. Nota-se que cerca de
+7.2 milhões de pessoas afirmaram terem alguma
+deficiência. As pernas amputadas ou atrofiadas
+e dificuldade de andar ou locomover são as
+deficiências que afectam a maioria da população
+com alguma deficiência.
+FIGURa 1 Incidência da Pobreza em
+Moçambique, 2014-2015
+Fonte: INE, Resultados definitivos do Censo 2017
+44,8%
+60,6%
+De acordo com o INE (2017), Moçambique possui uma
+população total de 27.909.799 habitantes, sendo estes cerca de
+52% do sexo feminino e os restantes 48% do sexo masculino.
+31,8%
+57,1%
+Com um universo de cerca de 28 milhões de pessoas,
+Moçambique possui uma população vivendo por baixo da linha
+56,5%
+nacional da pobreza na ordem dos 46.1%, ou seja, 13.305.319
+pessoas (IOF, 2014/15), o equivalente a 6.746.496 dos
+agregados familiares do país.
+41%
+44,2%
+Segundo o INE (2016), com base no Inquérito aos Orçamentos
+Familiares (IOF) 2014/15, a incidência da pobreza usando a
+metodologia PLEASe1(%) situa-se em 46,1% a nível nacional,
+51,2% sendo mais elevada na zona rural com 50,1% e na zona urbana
+com 37,4%.
+48,6%
+A incidência da pobreza por região é mais elevada no norte do
+18,9%
+país com 55,1%, seguido do centro (46,2%) e por fim no sul
+com 32,8%.
+11,6%
+1 Poverty Line Estimation Analytic Software
+3
+
+--- Page 10 ---
+2. Segurança Social Obrigatória
+(regime contributivo)
+A segurança social é um direito garantido a todo o No regime dos trabalhadores do sector privado, são
+cidadão moçambicano pela Constituição da República, abrangidos pelo sistema de segurança social obrigatória
+nos nºs 1 e 2 do artigo 95 da Constituição da República os trabalhadores por conta de outrem e por conta própria,
+de Moçambique. Este sistema visa garantir a assistência nacionais e estrangeiros residentes em território nacional,
+material ao trabalhador, nas situações de falta ou bem como os familiares a seu cargo. Podem também
+diminuição da capacidade para o trabalho. O sistema ser abrangidos pelo sistema, os moçambicanos que
+abrange também aos familiares dos trabalhadores em trabalham no estrangeiro desde que para o efeito tenham
+casos de morte segundo elucida o artigo nº 2 da Lei nº sido celebrados acordos sobre a matéria, ou adiram ao
+04/2007 de 7 de Fevereiro. regime dos trabalhadores por conta própria, de acordo
+com o nº 2 do artigo nº 18 da Lei nº 04/2007 de 7 de
+A Segurança Social Obrigatória compreende o regime
+Fevereiro.
+dos trabalhadores do sector privado, gerido pelo Instituto
+Nacional de Segurança Social (INSS), e do Regime dos Nos temos do artigo 19 da Lei que temos vindo a citar, a se-
+funcionários e agentes do Estado, gerido pelo Instituto gurança social obrigatória compreende as prestações nas
+Nacional de Previdência Social (INPS). eventualidades de doença, maternidade, invalidez e morte.
+QUaDRO 1: serviços prestados em cada regime geral público contributivo
+INPs INss
+A Previdência Social oferece as seguintes prestações O Instituto Nacional de Segurança Social oferece
+para os funcionários do Estado, Forças Armadas de prestações para os Trabalhadores por Conta de
+Moçambique (FADM) e Deputados: Outrem (TCO) e por conta Própria (TCP) nacionais ou
+• aposentação estrangeiros residentes no território nacional e os
+• aposentação voluntária familiares a seu cargo.
+• aposentação obrigatória • subsídio por doença
+• aposentação extraordinária • subsídio por morte
+• aposentação extraordinária para dirigentes do país • subsídio de funeral
+• aposentação extraordinária para militares • Pensão de velhice
+• aposentação por incapacidade • Pensão de invalidez
+• Pensão de sobrevivência • Pensão de sobrevivência
+• Pensão de sangue • abono de velhice
+• Pensão por serviços excepcionais e relevantes • subsídio de internamento Hospitalar
+Prestados ao País
+• assistência Médica e Medicamentosa para os
+funcionários do estado
+• subsídio por Morte
+• subsídio de Funeral
+• suplemento de vencimentos
+• licença de parto
+• licença em casos de doenças crónico-
+degenerativas e mentais
+Fonte: INSP/INSS
+4
+
+--- Page 11 ---
+1º boletiM estatístico sobre Protecção social
+GRáFIcO 3 Distribuição territorial do efectivo de
+pensionistas do Estado por Província, 2018
+O efectivo dos Pensionistas e Rendistas do Estado,
+na base das respectivas pensões pagas até 31
+de Dezembro de 2018, foi de 170.699. sendo
+118.776 militares (dentre os quais 72.719 de sexo
+masculino, 46.057 de sexo feminino) e 51.923
+civis, dentre os quais 31.789 do sexo masculino e
+20.134 do sexo feminino.
+A proporção actual (2018) dos Funcionários e
+Agentes do Estado do sexo masculino é de 61%,
+e do sexo feminino é de 39%.
+Fonte: INPS, 2018
+GRáFIcO 4 Distribuição territorial do efectivo de pensionistas do Estado por gênero e Província, 2018
+Fonte: INPS, 2018
+GRáFIcO 5 Trabalhadores por conta de outrem no sistema de segurança social por província, 2018
+Fonte: INSS, 2019
+5
+
+--- Page 12 ---
+No ano de 2018, foram inscritos 11.562 trabalhadores por efectuados os pagamentos de subsídios de doença, morte,
+conta própria, dos quais a maioria foi para Maputo Cidade funeral, internamento e maternidade. A maioria dos casos
+e a minoria em Niassa, com 4.297 e 276, respectivamente pagos estão relacionados com o subsídio de doença com
+que correspondem a 37% e 2% do total dos trabalhadores 7.839 que corresponderam a 40% do total dos subsídios
+inscritos (Gráfico 6). Durante o período em análise, foram e a maioria dos beneficiários são residentes em Maputo
+Cidade (Gráfico 7).
+GRáFIcO 6 Trabalhadores por conta própria no sistema de segurança social por província, 2018
+Fonte: INSS, 2018
+GRáFIcO 7 casos pagos por tipo de subsídio por província, 2018
+Fonte: INSS, 2019
+GRáFIcO 8 casos pagos, por gênero, segundo província, 2018
+Ainda neste período em análise, segundo
+o gráfico 11, receberam abono de velhice
+através do INSS 165 pessoas, sendo Maputo
+Cidade a província que mais se beneficiou
+(com um 26% do total).
+Fonte: INSS, 2019
+6
+
+--- Page 13 ---
+1º boletiM estatístico sobre Protecção social
+GRáFIcO 9 casos pagos por tipo de pensão segundo província, 2018
+Fonte: INSS, 2018
+No período em análise (Quadro 13), receberam GRáFIcO 10 casos pagos por tipo de abono segundo
+pensão através do INSS 74.763 pessoas, sendo província, 2018
+a maioria (44.308) Pensão de Sobrevivência
+(que correspondem a 59% do total dos
+beneficiários das Pensões) e a Pensão de Invalidez
+se destaca por ter sido para menor número de
+pessoas (1,8%).
+74.763
+receberam pensão através do
+Fonte: INSS, 2019
+iNss no período em análise
+GRáFIcO 11 casos de abono de velhice pagos, por gênero, segundo província, 2018
+Fonte: INSS, 2018
+1.8%
+das pensões recebidas
+foram pensões de invalidez
+7
+
+--- Page 14 ---
+©iStock
+3. Segurança Social Básica
+(regime não contributivo)
+Em Moçambique, o Ministério do Género, Criança e Acção O Instituto Nacional de Acção Social, tem sob sua alçada,
+Social (MGCAS), através do seu braço executor, o Instituto quatro (4) programas nomeadamente: o Programa Subsídio
+Nacional de Acção Social (INAS), tem envidado esforços, Social Básico (PSSB), o Programa Apoio Social Directo
+na implementação de programas de assistência directa às (PASD), o Programa Serviços Sociais de Acção Social
+pessoas em situação de pobreza e vulnerabilidade. (PSSAS) e, o Programa Acção Social Produtiva (PASP)
+(Gráfico 13).
+QUaDRO 2 segurança social Básica (regime não contributivo)
+segurança social Básica (MGcas/INas)
+a) transferências monetárias através dos Pssb e PasP
+b) cabaz alimentar através do PasD
+c) assistência nas Unidades sociais e serviços sociais através do Pssas.
+Fonte: INAS/MGCAS
+8
+
+--- Page 15 ---
+1º boletiM estatístico sobre Protecção social
+Assim, no ano 2018, beneficiaram-se dos programas no
+Regime Geral Público não Contributivo o total de 519.347 GRáFIcO 13 Distribuição dos Beneficiários do
+pessoas, sendo 78% assistidos no PSSB, 17% no PASP, INas por Programa, 2018
+3% PASD e 2% no PSSAS, conforme mostra o gráfico 13.
+Em todos Programas, as pessoas do sexo feminino são as
+que mais se beneficiam (Gráfico 14) PASP
+17%
+Pssas2%
+PasD3%
+Beneficiários do sistema de
+GRáFIcO 12
+segurança social Básica - não
+contributivo - por Programas PSSB
+implementados pelo INas, 2018 78%
+Fonte: INAS, 2018
+GRáFIcO 14 Distribuição dos beneficiários
+dos Programas do INas por
+gênero, 2018
+Fonte: INAS, 2018
+a) Programa subsídio social Básico (PssB)
+Neste programa, o INAS assistiu, em 2018, 404.355
+agregados familiares, destes, 267.371 são agregados
+familiares chefiados por mulheres e 136.984 agregados
+familiares são chefiados por homens correspondentes a Fonte: INAS, 2018
+66% e 34%, respectivamente (Gráfico 15).
+GRáFIcO 15 Beneficiários atendidos no PssB 2018
+Fonte: INAS, 2018
+9
+
+--- Page 16 ---
+Desta assistência, 370.069 foram agregados familiares b) Programa apoio social Directo (PasD)
+chefiados por pessoas idosas, (equivalente a 91,52% do
+Durante o período em análise, foram assistidos 16.628
+total assistido), 21.839 de agregados familiares chefiados
+agregados familiares no PASD, sendo 12.618 no âmbito do
+por pessoas com deficiência (equivalente a 5,40%), 5.683
+atendimento prolongado e 4.010 no atendimento pontual.
+agregados familiares chefiados por pessoas com doenças
+crónicas e degenerativas (equivalente a 1,41%), 1.252
+Dos 16.628 assistidos, 7.353 (44%) foram agregados
+agregado familiar chefiados por crianças de 12 a 18 anos
+familiares chefiados por homens e 9.275 (56%) chefiados
+(equivalente a 0,31% agregados familiares), 3.983 agrega-
+por mulheres (Gráfico 16).
+dos familiares chefiados por pessoas acamadas (equiva-
+lente a 0,99%), 61 agregados familiares chefiados por Neste programa, foram atendidas 988 crianças órfãos e
+pessoas em situação temporária (equivalente a 0,02%), e vulneráveis, sendo 507 do gênero masculino e 481 do
+668 agregados familiares chefiados por pessoas com HIV gênero feminino.
+em TARV (equivalente a 0,17%) e 800 crianças de 0 a 2
+anos, que corresponde a 0,20% do total assistido em 2018.
+GRáFIcO 16 Beneficiários atendidos no PasD, 2018
+Fonte: INAS, 2018
+c) Programa serviços sociais de acção social (Pssas)
+No programa, foram assistidas 9.025 pessoas, sendo 9.025
+3.702 do sexo masculino e 5.323 do sexo feminino. Desta
+assistência, 958 foi no âmbito de reunificação familiar,
+1.639 no âmbito de Orientação e 6.428 na Unidades Pessoas foram assistidas através
+Sociais. Este programa beneficiou mais mulheres em todas do Programa de serviços sociais
+as componentes, conforme mostra o gráfico 18. de acção social (Pssas) em 2018
+GRáFIcO 17 atendimento no Pssas, 2018
+Fonte: INAS, 2018
+10
+
+--- Page 17 ---
+1º boletiM estatístico sobre Protecção social
+No gráfico 18, pode constatar-se que o programa GRáFIcO 18 Pssas por componente e gênero
+em todos os componentes assistiu mais pessoas do
+gênero feminino em relação aos de gênero masculino.
+Dos 6.428 beneficiários atendidos nas Unidades
+Sociais, 653 foram crianças atendidas nos Infantários,
+468 pessoas idosas atendidas nos Centros de Apoio
+à Velhice, 101 pessoas com deficiência atendidas nos
+Centros de Trânsito e 5.206 pessoas atendidas nos
+Centros Abertos (Gráfico 19).
+Em relação as duas componentes restantes,
+Orientação e Reunificação Familiar, foram atendidos
+um total de 2.597 beneficiários, destes 1.148 do sexo
+masculino e 1.449 do sexo feminino. Fonte: INAS, 2019
+GRáFIcO 19 atendimento nas Unidades sociais, 2018
+Fonte: INAS, 2018
+d) Programa acção social Produtiva (PasP)
+Na componente de trabalhos públicos com uso de mão-
+de-obra Intensiva foram atendidos um total de 89.339
+agregados familiares, sendo 41.096 chefiados por homens
+e 48.243 chefiados por mulheres.
+GRáFIcO 20 Beneficiários participando
+no PasP, 2018
+89.339
+MULHER HOMEM
+54% 46%
+agregados familiares foram
+assistidos através do PasP
+em 2018
+Fonte: INAS, 2019
+11
+
+--- Page 18 ---
+©iStock
+4. CONCLUSÕES
+Ao longo de 2018 foi possível verificar um aumento significativo da cobertura do sistema
+de Protecção Social em Moçambique, tanto no que se refere ao pilar contributivo (gerido
+pelo INPS e INSS) como o não contrivutivo (gerido pelo MGCAS através do INAS),
+continuando a senda de expansão dos programas iniciada como resultado da aprovação
+da Estratégia Nacional de Segurança Social Básica (ENSSB) 2016-2024, aprovada em
+Conselho de Ministros, que orienta os objectivos a serem alcançados no que tange ao pilar
+não contributivo, assim como dos esforços envidados pelo MITSS e INSS para abranger os
+trabalhadores por conta própria operando na economía informal através da aprovação do
+Decreto 51/2017, e do início da gestão do sistema dos funcionários públicos e agentes do
+Estado através do INPS, criado em 2014 através do Decreto 8/2014.
+Dadas as condições socioeconómicas do país, onde 46% da população vive por baixo da
+linha da pobreza e dado o elevado índice de informalidade (menos de 15% das pessoas
+economicamente ativas são trabalhadores por conta de outrem) os principais desafios
+que o Sistema de Protecção Social enfrenta em Moçambique para continuar a estender a
+cobertura e consolidar um Piso de Protecção Social no país relacionam-se com:
+a) O limitado espaço fiscal destinado aos programas de protecção social básica implemen-
+tados pelo INAS (apenas 0.6% do PIB em 2018, a ENSSB recomenda 2.23% do PIB
+para ser destinado aos programas de protecção social básica em 2024).
+b) A materialização da extensão da cobertura aos trabalhadores por conta própria operando
+na economia informal.
+A presente edição deste documento referida ao ano de 2018, constitui o primeiro relatório
+harmonizado que consolida dados de beneficiários atendidos e cobertura tanto no subsistema
+contributivo (INSS e INPS) como no não contributivo (INAS) do sistema de protecção social
+em Moçambique.
+12
+
+--- Page 19 ---
+1º boletiM estatístico sobre Protecção social
+A equipa interministerial e as instituições envolvidas na produção do presente boletim,
+reconhecendo a importância de um sistema de estatísticas de proteção social eficiente,
+abrangente e integrado para orientar e alicerçar as decisões políticas e para ter a capacidade
+e possibilidade de monitorizar o impacto dos programas e benefícios sociais implementados,
+irá continuar a envidar esforços para melhorar, com apoio da OIT, a qualidade dos dados
+estatísticos sobre protecção social de forma a torná-los mais fiáveis e disponíveis para a
+tomada de decisões de modo a continuar a consolidar um Piso de Protecção Social em
+Moçambique.
+Assim, recomenda-se:
+• A operacionalização da Comissão interinstitucional (MGCAS/INAS, MITSS/INSS, MEF/
+INPS/ISS/DEEF, INE) responsável pela recolha, sistematização e análise de dados
+estatísticos da Protecção Social;
+• A criação de uma base de dados comum de estatísticas de Protecção Social;
+• O estabelecimento de encontros periódicos para sistematização e análise de dados
+estatísticos;
+• A revisão dos instrumentos de recolha de dados a nível central;
+• O aprimoramento dos mecanismos de comunicação com a fonte primária de dados
+(Províncias e Distritos);
+• O estabelecimento de uma data de referência para a recolha de dados estatísticos por
+cada regime ou instituição;
+• O alinhamento da produção de informação de estatísticas com os indicadores de ODS;
+• A produção de boletins e anuários das estatísticas de Protecção Social;
+• O preenchimento regular dos inquéritos de protecção social da OIT;
+• A disponibilização dos relatórios estatísticos nos websites de cada instituição e do
+Governo.
+REFERÊNCIAS BIBLIOGRÁFICAS
+INAS (2018). Relatório Balanço do PES Anual. Maputo: DPE.
+INE (2017). Recenseamento Geral da População e Habitação. Maputo: INE.
+INPS (2018). Relatório Anual. Maputo: DPE.
+MEF (2016). Pobreza e bem-estar em Moçambique: Quarta Avaliação Nacional baseada no
+Inquérito aos Orçamentos Familiares 2014/15. Maputo.
+MGCAS (2018). Relatório Balanço do PES Anual. Maputo: DPC.
+MITSS (2019). Boletim de Estatísticas de Trabalho 2018. Maputo: MITSS.
+13
+
+--- Page 20 ---
+GLOSSÁRIO
+1. Abono de sobrevivência - Prestação única 9. Pensão de velhice - Prestação mensal atribuída
+paga aos familiares do beneficiário ou pension- a um beneficiário, que tenha atingido a idade
+ista falecido. de 55 e 60 anos de idade, quer seja mulher ou
+homem, respectivamente, ou que não tendo at-
+2. Abono de velhice - É a prestação única paga ao ingido as idades indicadas, reúna o requisito de
+beneficiário na falta de condições para o direito 30 anos de inscrição no sistema e tendo dado
+à pensão por velhice. 300 meses de entrada de contribuições.
+3. Beneficiário (trabalhador) activo - É o trabal- 10. Previdência Social nas Forças Armadas de
+hador assalariado inscrito na segurança social Moçambique (FADM) - O regulamento da previ-
+que tenha pelo menos três meses com entrada dência social e reforma nas Forças Armadas de
+de contribuições. Moçambique (FADM) foi decretado ao abrigo
+da Constituição da RPM, pelo Conselho de
+4. Beneficiário (trabalhador) inscrito - É o trabal- Ministros, através do Decreto 3/86 de 25 de
+hador inscrito na segurança social obrigatória, Junho. Este regulamento estabelece as nor-
+titular de direito às prestações pecuniárias e mas que regem a constituição e o pagamento
+em espécie, atribuídas pela entidade gestora dos seguintes abonos: • Pensão de reforma
+da segurança social. e de invalidez; • Pensão de sobrevivência; •
+Subsídio por morte; • Pensão de sangue e •
+5. Contribuinte activo - É a empresa ou estabel- Pensão por serviços excepcionais e relevantes
+ecimento que cumpre com as suas obrigações, prestados ao país.
+ou seja, envia as folhas de remunerações e as
+devidas contribuições ao sistema de segurança 11. Previdência Social para Deputados - A previ-
+social. dência e segurança social do deputado, é es-
+tipulada pela lei número 21/2002, de 21 de Ou-
+6. Contribuinte inscrito - É a empresa ou estabel- tubro, prevista no Artigo 24 da Lei n.º 2/95, de
+ecimento registado e titular de direitos e obrig- 8 de Maio, que aprova o Estatuto do Deputado
+ações no sistema de segurança social. e ao abrigo do disposto no n.º 1 do Artigo 135
+da Constituição, sendo que o decreto número
+7. Pensão de invalidez - É atribuída a um trabal- 48/2002, de 26 de Dezembro aprova o respec-
+hador que, na sequência de doença ou aci- tivo regulamento do Sistema (Lei de Previdência
+dente de origem não profissional, sofreu uma e Segurança Social, 2002). Este subsistema de
+diminuição permanente das suas faculdades segurança social integra: Pensão de aposen-
+físicas ou mentais, devidamente certificada por tação • Pensão de aposentação extraordinária •
+junta de saúde, que o torne incapaz de ganhar Subsídio de funeral • Subsídio por morte • Pen-
+mais do que um terço da remuneração que são de sobrevivência e de Sangue • Assistência
+um trabalhador com a mesma formação pode médica e medicamentosa.
+auferir pelo seu trabalho.
+12. Programa Acção Social Produtiva (PASP) -
+8. Pensão de sobrevivência - Prestação con- Tem como objectivo criar oportunidades de au-
+cedida aos familiares sobreviventes (viúva, to-sustento para indivíduos vivendo em situação
+viúvo, inválido e menores) pela morte de um de pobreza, com capacidade para o trabalho,
+beneficiário/pensionista do sistema, mas que através da realização de trabalhos públicos com
+reúnam determinadas condições exigidas por uso de mão-de-obra intensiva e, sua integração
+lei. em actividades de apoio à iniciativas de geração
+de rendimentos.
+14
+14
+
+--- Page 21 ---
+11ºº bboolleettiiMM eessttaattííssttiiccoo ssoobbrree PPrrootteeccççããoo ssoocciiaall
+13. Programa Apoio Social Directo (PASD) - con- 16. Subsídio de funeral - Prestação atribuída
+siste nas transferências sociais por tempo num único montante, aos familiares dos
+determinado em espécie ou pagamento de pensionistas ou trabalhadores em caso de
+serviços destinados a fazer face a situação falecimento.
+de choques que agravam o grau de vulnera-
+bilidade a pessoas ou agregados familiares em 17. Subsídio de maternidade - Prestação pecu-
+situação de pobreza e sem meios próprios para niária concedida á trabalhadora por materni-
+satisfazer as suas necessidades básicas, des- dade equivalente a 60 dias, por ocasião do
+ignadamente: agregados familiares chefiados parto.
+por crianças de 12 a 18 anos; agregados famil-
+iares com crianças em fase de recuperação de 18. Subsídio por doença - Prestação pecuniária
+uma situação de desnutrição aguda, por um concedida em caso de doença ou acidente
+período de 2 anos que pode ser prorrogado não profissional e ainda por ausência do
+por igual período mediante avaliação medica. trabalhador (pai ou mãe) acompanhante de
+Este programa subdivide-se em atendimento filho menor internado em estabelecimento
+prolongado e pontual. hospitalar.
+14. Programa Serviços Sociais de Acção So- 19. Subsídio por internamento - Prestação con-
+cial (PSSAS) - consiste na assistência directa cedida em casos de impedimento do trabal-
+aos utentes das Unidades Sociais sob tutela hador para o trabalho, por doença ou acidente
+do INAS nomeadamente: Centros de Apoio a de origem não profissional ou quando este for
+Velhice, Centro de Trânsito, Centros Abertos, acompanhante de um menor a seu cargo, in-
+Centros de Acolhimentos e Infantários, conce- ternado em estabelecimento hospitalar.
+dendo-lhes apoio material, vestuários, alimentar
+e de outros produtos básicos e na assistência 20. Subsídio por morte - Prestação paga uma
+comunitária através da Orientação e integração única vez aos familiares dos trabalhadores ou
+e ou reintegração familiar. pensionistas, por morte destes.
+15. Programa Subsídio Social Básico (PSSB) -
+consiste na prestação de assistência directa
+aos agregados familiares em situação de po-
+breza, incapacitados para o trabalho, através
+de atribuição de um valor monetário mensal
+a cada agregado familiar, sendo o respectivo
+chefe o beneficiário directo e também os agre-
+gados familiares em situação temporária de
+incapacidade para o trabalho até o período
+máximo de 1 ano e seis meses; pessoas ido-
+sas e pessoas com doenças crónicas e degen-
+erativa em situação de acamados; pessoas em
+processo de reintegração sociofamiliar no mo-
+mento de reunificação familiar; pessoas com
+deficiência necessitando de meios de com-
+pensação e pessoas vivendo com HIV/SIDA
+em tratamento anti-retroviral até seis meses e
+crianças dos 0 a 2 anos.
+15
+15
+
+--- Page 22 ---
+26.9 milhões
+ANEXOS
+População total de Moçambique
+QUaDRO 3 População de Moçambique, 2017
+áREa POPULaÇÃO
+Nacional 26 899 105
+Urbano 8 971 788
+rural 17 927 317
+Norte 9 464 848
+centro 11 603 059
+sul 5 831 198
+Niassa 1 713 751
+cabo Delgado 2 267 715
+Nampula 5 483 382
+Zambézia 5 002 457
+tete 2 551 826
+Manica 1 851 931
+sofala 2 196 845
+inhambane 1 454 804
+Gaza 1 388 039
+Maputo Província 1 908 078
+Maputo cidade 1 080 277
+Fonte: INE, 2017
+727,620
+População com deficiência
+QUaDRO 4 População com alguma deficiência, 2017
+DEFIcIÊNcIa POPULaÇÃO
+Total 727 620
+cego 58 021
+surdo/mudo 68 326
+braço(s) amputado(s) / atrofiado(s) 55 670
+Perna(s) amputada(s) / atrofiada(s) 115 918
+Paralisia 44 875
+Mental 49 565
+Dificuldade para ver mesmo usando óculos 81 072
+Dificuldade para ouvir, mesmo usando aparelho auditivo 35 803
+Dificuldade de memória ou de concentração 30 173
+Dificuldade de locomoção (andar) 105 529
+outra 91 086
+Fonte: INE, 2017
+16
+
+--- Page 23 ---
+1º boletiM estatístico sobre Protecção social
+QUaDRO 5 Incidência da Pobreza, 2016 QUaDRO 6 Incidência da Pobreza, 2016
+área IOF 14 (%) área IOF 14 (%)
+Nacional 46.1 Nacional 46.1
+Urbano 37.4 Norte 55.1
+rural 50.1 centro 46.2
+Fonte: MEF (2016) sul 32.8
+Fonte: MEF (2016)
+QUaDRO 7 Incidência da Pobreza, 2016
+QUaDRO 8 Incidência da Pobreza, 2016
+área IOF 14 (%)
+Nacional 46.1 área IOF 14 (%)
+Niassa 60.6 Nacional 46.1
+cabo Delgado 44.8 Urbano 37.4
+Nampula 57.1 rural 50.1
+Zambézia 56.5 Norte 55.1
+tete 31.8 centro 46.2
+Manica 41 sul 32.8
+sofala 44.2 Niassa 60.6
+inhambane 48.6 cabo Delgado 44.8
+Gaza 51.2 Nampula 57.1
+Zambézia 56.5
+Maputo Província 18.9
+tete 31.8
+Maputo cidade 11.6
+Manica 41
+Fonte: MEF (2016)
+sofala 44.2
+inhambane 48.6
+Gaza 51.2
+33,543
+Maputo Província 18.9
+Maputo cidade 11.6
+Pensionistas do estado Fonte: MEF (2016)
+QUaDRO 9 Distribuição territorial do efectivo de pensionistas do Estado, 2018
+civis Militares Total
+Província
+M F Total M F Total M F Total
+Niassa 771 825 1 596 4 945 5 292 10 237 5 716 6 117 11 833
+cabo Delgado 1 358 1 446 2 804 16 890 17 973 34 863 18 249 19 418 37 667
+Nampula 2 398 2 517 4 915 4 454 4 677 9 131 6 852 7 194 14 046
+Zambézia 1 238 1 344 2 582 3 119 3 386 6 505 4 357 4 730 9 087
+tete 1 115 1 167 2 282 5 252 5 492 10 744 6 367 6 659 13 026
+Manica 1 241 1 352 2 593 5 527 6 017 11 544 6 768 7 369 14 137
+sofala 2 322 2 476 4 798 4 889 5 211 10 100 7 211 7 687 14 898
+inhambane 1 380 1 635 3 015 1 797 2 128 3 925 3 177 3 763 6 940
+Gaza 1 427 1 721 3 148 1 743 2 102 3 845 3 170 3 823 6 993
+Maputo Província 719 782 1 501 2 091 2 274 4 365 2 809 3 057 5 866
+Maputo cidade 1 290 1 373 2 663 0 0 0 1 290 1 373 2 663
+País 24 961 26 962 51 923 57 098 61 678 118 776 82 059 88 640 170 699
+central 20 026 13 517 33 543
+Fonte: INPS, 2018
+17
+
+--- Page 24 ---
+QUaDRO 10 Trabalhadores por conta de outrem no sistema de segurança social por Província, 2018
+Inscritos acumulados activos
+Província
+M F Total M F Total M F Total
+Niassa 2 014 2 155 4 169 19 943 21 340 41 283 4 449 4 760 9 209
+cabo Delgado 2 511 2 672 5 183 21 071 22 421 43 492 8 066 8 583 16 649
+Nampula 4 792 5 032 9 824 62 159 65 270 127 429 20 966 22 015 42 981
+Zambézia 3 690 4 005 7 695 45 604 49 506 95 110 9 876 10 721 20 597
+tete 3 647 3 815 7 462 48 174 50 384 98 558 15 487 16 198 31 685
+Manica 2 843 3 095 5 938 48 171 52 447 100 618 10 899 11 867 22 766
+sofala 7 264 7 743 15 007 98 738 105 246 203 984 30 771 32 800 63 571
+inhambane 3 094 3 665 6 759 29 990 35 522 65 512 8 251 9 773 18 024
+Gaza 4 698 5 664 10 362 31 148 37 555 68 703 7 468 9 003 16 471
+Maputo Província 7 529 8 192 15 721 132 372 144 020 276 392 40 396 43 951 84 347
+Maputo cidade 4 221 4 491 8 712 157 713 167 783 325 496 77 854 82 825 160 679
+País 46 549 50 283 96 832 695 402 751 175 1 446 577 234 102 252 877 486 979
+Fonte: INSS, 2019
+QUaDRO 11 Trabalhadores por conta própria no sistema de segurança social por Província, 2018
+Inscritos acumulados activos
+Província
+M F Total M F Total M F Total
+Niassa 133 143 276 594 636 1 230 43 47 90
+cabo Delgado 170 180 350 638 678 1 316 53 56 109
+Nampula 178 186 364 790 830 1 620 99 104 203
+Zambézia 347 377 724 1 064 1 155 2 219 97 105 202
+tete 198 207 405 752 787 1 539 52 54 106
+Manica 147 160 307 945 1 028 1 973 146 160 306
+sofala 644 686 1 330 1 586 1 691 3 277 200 214 414
+inhambane 417 494 911 1 014 1 200 2 214 127 151 278
+Gaza 355 427 782 947 1 141 2 088 196 236 432
+Maputo Província 870 946 1 816 3 298 3 589 6 887 399 434 833
+Maputo cidade 2 082 2 215 4 297 5 223 5 556 10 779 577 614 1 191
+País 5 558 6 004 11 562 16 894 18 248 35 142 2 002 2 162 4 164
+Fonte: INSS, 2019
+QUaDRO 12 casos pagos por tipo de subsídio e Província, 2018
+Interna-
+Doença Morte Funeral Maternidade Total
+Província mento
+M F Total M F Total M F Total M F Tot. M F Total M F Total
+Niassa 48 51 99 11 11 22 18 20 38 0 0 0 0 134 134 142 151 293
+cabo Delgado 131 139 270 44 46 90 39 42 81 0 0 0 0 108 108 266 283 549
+Nampula 299 313 612 159 166 325 115 121 236 0 0 0 0 366 366 752 787 1539
+Zambézia 221 240 461 85 93 178 63 69 132 0 1 1 0 238 238 483 527 1010
+tete 292 305 597 89 93 182 82 86 168 0 0 0 0 335 335 627 655 1282
+Manica 234 254 488 103 113 216 87 95 182 0 0 0 0 373 373 603 656 1259
+sofala 643 685 1.328 271 289 560 139 149 288 0 0 0 0 520 520 1305 1391 2696
+inhambane 68 81 149 46 54 100 40 47 87 6 7 13 0 143 143 225 267 492
+Gaza 138 167 305 80 96 176 68 81 149 0 0 0 0 256 256 402 484 886
+Maputo Prov. 374 406 780 171 187 358 208 227 435 0 0 0 0 1.1651.1651311 1427 2738
+Maputo cid. 1.3321.418 2.750 366 390 756 331 353 684 0 0 0 0 2.4392.4393211 3418 6629
+País 3.780 4.059 7.839 1.425 1.538 2.963 1.190 1.290 2.480 6 8 14 0 6.077 6.077 9.327 10.04619.373
+Fonte: INSS, 2019
+18
+
+--- Page 25 ---
+1º boletiM estatístico sobre Protecção social
+QUaDRO 13 casos pagos por tipo de Pensão e Província, 2018
+Velhice Invalidez sobrevivência Total
+Província
+M F Total M F Total M F Total M F Total
+Niassa 109 117 226 5 5 10 336 359 695 450 481 931
+cabo Delgado 186 197 383 35 38 73 554 589 1 143 775 824 1599
+Nampula 807 847 1 654 38 40 78 1 568 1 646 3 214 2413 2533 4946
+Zambézia 526 570 1 096 35 39 74 1 367 1 485 2 852 1928 2094 4022
+tete 382 399 781 17 17 34 1 028 1 075 2 103 1427 1491 2918
+Manica 842 916 1 758 73 80 153 1 935 2 107 4 042 2850 3103 5953
+sofala 1 778 1 896 3 674 83 88 171 4 645 4 952 9 597 6506 6936 13442
+inhambane 492 583 1 075 25 30 55 703 832 1 535 1220 1445 2665
+Gaza 393 473 866 20 24 44 931 1 122 2 053 1344 1619 2963
+Maputo Prov. 2 433 2 648 5 081 84 92 176 2 747 2 988 5 735 5264 5728 10992
+Maputo cid. 6 078 6 466 12 544 218 231 449 5 494 5 845 11 339 11790 12542 24332
+Pais 14 007 15 131 29 138 633 684 1 317 21 300 23 008 44 308 35 967 38 796 74 763
+Fonte: INSS, 2019
+QQQUUUaaaDDDRRROOO 111433 cccaaasssooosss pppaaagggooosss pppooorrr tttiiipppooo dddeee PPabeeonnnssããooo e ss Peerggouuvnnínddcooi app,rr oo2vv0íínn1cc8iiaa
+Velhice sobrevivência Invalidez
+Província
+M F Total M F Total M F Total
+Niassa 0 0 0 0 0 0 0 0 0
+cabo Delgado 1 1 2 1 1 2 2 2 4
+Nampula 0 1 1 0 0 0 0 1 1
+Zambézia 2 2 4 5 6 11 7 8 15
+tete 3 3 6 3 3 6 6 6 12
+Manica 2 3 5 4 5 9 7 7 14
+sofala 14 14 28 2 2 4 15 17 32
+inhambane 0 0 0 4 5 9 4 5 9
+Gaza 0 0 0 0 0 0 0 0 0
+Maputo Província 0 0 0 8 8 16 8 8 16
+Maputo cidade 21 22 43 9 10 19 30 32 62
+Pais 43 46 89 37 39 76 79 86 165
+Fonte: INSS, 2019
+QUaDRO 15 Beneficiários atendidos no PssB anual 2017-2018
+Províncias Homens Mulheres Total
+Niassa 11 772 21 699 33 471
+cabo Delgado 12 515 25 438 37 953
+Nampula 33 618 41 081 74 699
+Zambézia 20 555 26 619 47 174
+tete 13 414 27 373 40 787
+Manica 10 117 27 400 37 517
+sofala 11 017 23 174 34 191
+inhambane 9 012 20 982 29 994
+Gaza 9 890 33 161 43 051
+Maputo Província 3 334 11 556 14 890
+Maputo cidade 1 740 8 888 10 628
+Total 136 984 267 371 404 355
+Fonte: INAS, 2018
+19
+
+--- Page 26 ---
+QUaDRO 16 Beneficiários atendidos no PasD, 2018
+Províncias Homens Mulheres Total
+Niassa 945 987 1 932
+cabo Delgado 391 454 845
+Nampula 721 728 1 449
+Zambézia 886 1 294 2 180
+tete 906 698 1 604
+Manica 603 1 455 2 058
+sofala 1 188 1 201 2 389
+inhambane 315 599 914
+Gaza 1 047 1 357 2 404
+Maputo Província 215 331 546
+Maputo cidade 136 171 307
+Total 7 353 9 275 16 628
+Fonte: INAS, 2018
+QQUUaaDDRROO 1173 Mcaapsao sR peasugomso p door taitpeon ddiem Peenntosã noo s Pegsusnadso, p2r0o1v8íncia
+Reunificação Orientação Unidades sociais Total Pssas
+Província
+M F Total M F Total M F Total M F Total
+Niassa 18 19 37 106 194 300 217 454 671 341 667 1 008
+cabo Delgado 7 35 42 32 104 136 166 142 308 205 281 486
+Nampula 200 167 367 230 162 392 116 176 292 546 505 1 051
+Zambézia 16 18 34 66 82 148 335 812 1147 417 912 1 329
+tete 8 10 18 109 170 279 202 221 423 319 401 720
+Manica 49 47 96 31 24 55 320 230 550 400 301 701
+sofala 13 14 27 46 60 106 210 266 476 269 340 609
+inhambane 18 13 31 33 21 54 125 193 318 176 227 403
+Gaza 16 23 39 43 81 124 298 828 1126 357 932 1 289
+Prov. Maputo 53 47 100 0 0 0 74 263 337 127 310 437
+c. de Maputo 32 135 167 22 23 45 491 289 780 545 447 992
+Total 430 528 958 718 921 1 639 2 554 3 874 6 428 3 702 5 323 9 025
+Fonte: INAS, 2018
+QQUUaaDDRROO 1183 acteansdosim peangtoos npaosr Utinpiod addee Ps esnoscãioa isse, g2u0n1d8o província
+Província Infantário caV cT ca Total
+cabo Delgado 0 0 0 302 302
+Nampula 19 10 8 332 369
+Zambézia 0 100 0 1 147 1 247
+tete 39 24 0 330 393
+Manica 85 29 0 438 552
+sofala 64 66 28 288 446
+inhambane 43 45 25 126 239
+Gaza 68 60 0 996 1 124
+Prov. Maputo 85 36 14 201 336
+c. de Maputo 250 98 0 415 763
+Total 653 468 101 5 206 6 428
+Fonte: INAS, 2018
+20
+
+--- Page 27 --- [pas de texte extractible]
+
+--- Page 28 --- [pas de texte extractible]

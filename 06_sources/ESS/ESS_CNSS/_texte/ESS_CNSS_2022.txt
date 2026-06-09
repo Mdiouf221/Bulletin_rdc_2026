@@ -1,0 +1,61 @@
+TITRE : ESS CNSS 2022 — Enquête sur les Sources Statistiques de la protection sociale
+SOURCE : Caisse Nationale de Sécurité Sociale (CNSS), République Démocratique du Congo
+CONTACT : Direction des Etudes et Organisation — deocnss@gmail.com
+PÉRIODE : 2022
+MONNAIE : Franc congolais (CDF)
+NIVEAU : Source primaire institutionnelle (transmission directe de l'institution)
+
+---
+
+FORMAT ET STRUCTURE
+
+Même structure que les ESS CNSS 2019 et 2021. Feuilles actives :
+- Inventaire des régimes
+- Prestations aux familles (Régime 1)
+- Risques professionnels (Régime 2)
+- Pension (Régime 3)
+- Info Pauvreté
+- ADDITIONAL statistics for SDGs
+- CALCULATIONS
+
+---
+
+RÉGIMES DÉCLARÉS
+
+Régime 1 — Branche des Prestations aux familles (CNSS)
+  Fonctions couvertes : Famille, Maternité
+  Population couverte légalement : Travailleurs du secteur privé, employés rémunérés (âge de travailler)
+  Prestations :
+    1. Allocations prénatales
+    2. Allocation de maternité
+    3. Allocations familiales
+    4. Indemnité journalière de maternité
+
+Régime 2 — Branche des Risques Professionnels (CNSS)
+  Fonctions couvertes : Risques professionnels (accidents du travail, maladies professionnelles)
+  Population couverte légalement : Travailleurs du secteur public et privé (âge de travailler / tous âges)
+  Prestations : 11 prestations (identiques à 2019 et 2021)
+
+Régime 3 — Branche des Pensions (CNSS)
+  Fonctions couvertes : Vieillesse, Invalidité, Survivants
+  Population couverte légalement : Travailleurs du secteur privé
+  Prestations : 7 prestations (identiques à 2019 et 2021)
+
+Régime 4 — Action sanitaire et sociale (CNSS)
+  Données non détaillées dans ce fichier.
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Structure et prestations identiques aux ESS CNSS 2019 et 2021.
+- C'est l'année la plus récente de la série CNSS individuelle (2019–2022).
+- Pour l'année 2023, les données CNSS sont intégrées dans le fichier consolidé
+  "ESS RDC tous régimes 2023" (régimes 5 et 17-18 de ce fichier).
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSS (2022), Enquête sur les Sources Statistiques (ESS) — format OIT,
+Caisse Nationale de Sécurité Sociale, Kinshasa, République Démocratique du Congo.

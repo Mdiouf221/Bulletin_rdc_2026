@@ -52,12 +52,12 @@ Ce fichier peut être mis à jour régulièrement par l’utilisateur ou par un 
 
 **Objectif :** déposer et référencer les documents externes servant de base de travail pour les agents.
 
-- [x] Créer le dossier `11_references_externes/`
-- [x] Déposer le premier Bulletin statistique RDC dans `11_references_externes/bulletins_rdc/`
-- [x] Déposer les bulletins comparatifs pertinents dans `11_references_externes/autres_bulletins/`
-- [x] Déposer les rapports OIT/BIT pertinents dans `11_references_externes/references_oit_bit/`
+- [x] Créer le dossier `06_sources/`
+- [x] Déposer le premier Bulletin statistique RDC dans `06_sources/bulletins_rdc/`
+- [x] Déposer les bulletins comparatifs pertinents dans `06_sources/bulletins_comparaison/`
+- [x] Déposer les rapports OIT/BIT pertinents dans `06_sources/normes_oit/`
 - [x] Convertir tous les PDF en fichiers texte lisibles par les agents (19 fichiers)
-- [x] Mettre à jour le registre dans `11_references_externes/README_references_externes.md`
+- [x] Mettre à jour le registre dans `06_sources/README_sources.md`
 
 ## Phase 4 — Rédaction assistée
 

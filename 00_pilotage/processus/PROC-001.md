@@ -59,7 +59,7 @@ Consulter en premier :
 - **Nations Unies / UN** : SDG indicators database (ODD 1.3.1)
 - **FMI** : Government Finance Statistics, Article IV RDC
 
-> Dossier de stockage : `06_donnees/officielles_web/`
+> Dossier de stockage : `06_sources/officielles_web/`
 
 ### Niveau 2 — Sources nationales officielles RDC *(source prioritaire si disponible)*
 
@@ -70,7 +70,7 @@ Consulter ensuite :
 - **Ministère du Budget / Finances** : lois de finances, rapports d'exécution budgétaire
 - **Journal officiel de la RDC** : lois, décrets, ordonnances
 
-> Dossier de stockage : `06_donnees/officielles_web/` (si en ligne) ou `06_donnees/institutions/` (si transmis directement)
+> Dossier de stockage : `06_sources/officielles_web/` (si en ligne) ou `06_sources/institutions/` (si transmis directement)
 
 ### Niveau 3 — Organisations régionales africaines *(source secondaire acceptable)*
 
@@ -80,7 +80,7 @@ Consulter si les niveaux 1 et 2 n'ont pas fourni de données suffisantes :
 - **SADC** : rapports régionaux si pertinents
 - **COMESA** : idem
 
-> Dossier de stockage : `06_donnees/officielles_web/`
+> Dossier de stockage : `06_sources/officielles_web/`
 
 ### Niveau 4 — Institutions académiques et centres de recherche *(source secondaire à qualifier)*
 
@@ -89,7 +89,7 @@ En dernier recours parmi les sources fiables :
 - Publications dans des revues scientifiques indexées
 - Évaluations indépendantes commanditées par des organisations internationales
 
-> Dossier de stockage : `06_donnees/officielles_web/`
+> Dossier de stockage : `06_sources/officielles_web/`
 
 ### Niveau 5 — Presse spécialisée et rapports d'ONG *(source à traiter avec prudence)*
 
@@ -98,7 +98,7 @@ En dernier recours parmi les sources fiables :
 - Rapports d'ONG (Oxfam, Save the Children, IRC…)
 - Blogs institutionnels, posts LinkedIn de fonctionnaires
 
-> Dossier de stockage : `06_donnees/sources_incertaines/`
+> Dossier de stockage : `06_sources/sources_incertaines/`
 
 ---
 
@@ -153,7 +153,7 @@ Pour que les données issues d'une recherche internet apparaissent avec un souli
 
 **Forme 1 — avec lien vers le fichier source (recommandée) :**
 ```html
-<a href="/files/06_donnees/officielles_web/NOM_FICHIER.pdf"
+<a href="/files/06_sources/officielles_web/NOM_FICHIER.pdf"
    title="Source : [Organisation] ([Année]) — [Titre du document], p. X"
    class="source-ref"
    data-val-id="[id-unique]"
@@ -183,7 +183,7 @@ Exemple : `s3-p1-d1`, `s3-p2-c1`, `s3-p3-r1`
 Exemple complet dans une phrase :
 
 ```markdown
-En 2020, <a href="/files/06_donnees/officielles_web/BM_WDI_RDC_2024.txt"
+En 2020, <a href="/files/06_sources/officielles_web/BM_WDI_RDC_2024.txt"
 title="Source : Banque mondiale (2024) — World Development Indicators"
 class="source-ref" data-val-id="s3-p1-d1" data-val-status="à valider"
 data-val-file="02_introduction_generale/0_3_strategie_donnees_statistiques.md"
@@ -198,9 +198,9 @@ Enregistrer une copie de la source (de préférence en PDF, sinon en `.txt` ou `
 
 | Niveau de fiabilité | Dossier de dépôt |
 |--------------------|--------------------|
-| Niveaux 1 à 4 | `06_donnees/officielles_web/` |
-| Niveau 5 | `06_donnees/sources_incertaines/` |
-| Document transmis par institution | `06_donnees/institutions/` |
+| Niveaux 1 à 4 | `06_sources/officielles_web/` |
+| Niveau 5 | `06_sources/sources_incertaines/` |
+| Document transmis par institution | `06_sources/institutions/` |
 
 Nommer le fichier selon la convention : `[Organisation]_[Sujet]_[Année].[extension]`  
 Exemple : `OIT_protection_sociale_RDC_2022.pdf`
@@ -213,7 +213,7 @@ Exemple : `OIT_protection_sociale_RDC_2022.pdf`
 
 ### 5c — Mettre à jour le registre des données
 
-Ouvrir `06_donnees/registre_donnees.md` et ajouter une ligne dans le tableau du sous-dossier concerné :
+Ouvrir `06_sources/registre_donnees.md` et ajouter une ligne dans le tableau du sous-dossier concerné :
 
 | Fichier | Source | Type | Description | Lien d'origine | Période | Converti | Statut |
 |---------|--------|------|-------------|----------------|---------|---------|--------|
@@ -244,7 +244,7 @@ Proposer une ligne à ajouter dans `00_pilotage/journal_modifications.md` :
 - [ ] Tableau de résultats présenté à l'utilisateur
 - [ ] Validation de l'utilisateur obtenue
 - [ ] Section du bulletin mise à jour
-- [ ] Source archivée dans `06_donnees/`
+- [ ] Source archivée dans `06_sources/`
 - [ ] Registre des données mis à jour (`registre_donnees.md`)
 - [ ] Note de bas de page ajoutée dans la section
 - [ ] Bibliographie mise à jour (si applicable)

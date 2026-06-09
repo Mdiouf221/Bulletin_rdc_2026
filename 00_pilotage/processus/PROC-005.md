@@ -15,7 +15,7 @@ Date : 2026-06-08
 ## Déclencheur
 
 Ce processus est activé lorsque :
-- Un nouveau document est déposé dans `06_donnees/` (quel que soit le sous-dossier).
+- Un nouveau document est déposé dans `06_sources/` (quel que soit le sous-dossier).
 - Une source est citée dans le bulletin pour la première fois.
 - L'utilisateur demande : « Mets à jour le registre », « Ajoute cette source au registre ».
 - Un processus PROC-001 ou PROC-002 arrive à son Étape 5b.
@@ -28,7 +28,7 @@ Collecter les informations suivantes :
 
 | Champ | Description |
 |-------|-------------|
-| **Nom du fichier** | Nom exact du fichier déposé dans `06_donnees/` |
+| **Nom du fichier** | Nom exact du fichier déposé dans `06_sources/` |
 | **Sous-dossier** | `institutions/`, `officielles_web/` ou `sources_incertaines/` |
 | **Source / Émetteur** | Organisation ou institution ayant produit le document |
 | **Type** | Rapport, base de données, loi, décret, article, tableau, etc. |
@@ -42,7 +42,7 @@ Collecter les informations suivantes :
 
 ## Étape 2 — Mise à jour de `registre_donnees.md`
 
-Ouvrir `06_donnees/registre_donnees.md` et ajouter la ligne dans le tableau du sous-dossier correspondant.
+Ouvrir `06_sources/registre_donnees.md` et ajouter la ligne dans le tableau du sous-dossier correspondant.
 
 **Format pour `institutions/` :**
 ```

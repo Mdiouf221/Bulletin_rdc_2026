@@ -1,0 +1,54 @@
+TITRE : ESS CNSSAP 2022 — Enquête sur les Sources Statistiques de la protection sociale
+SOURCE : Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP), République Démocratique du Congo
+CONTACT : +243810044886 — mpanyakangodie@cnssap.cd
+PÉRIODE : 2022
+MONNAIE : Non précisée
+NIVEAU : Source primaire institutionnelle (transmission directe de l'institution)
+
+---
+
+FORMAT ET STRUCTURE
+
+Feuilles actives :
+- Inventaire des régimes
+- CNSAP Régime de base (Régime 1)
+- Reforme du transfert (Régime 2 — nouveau par rapport à 2020-2021)
+- ADDITIONAL statistics for SDGs
+- CALCULATIONS
+
+---
+
+RÉGIMES DÉCLARÉS
+
+Régime 1 — CNSAP Régime de base (Branche des pensions)
+  Administrateur : CNSSAP
+  Fonctions couvertes : Vieillesse (X), Invalidité/Handicap (X)
+  Type : Contributif, Obligatoire, Public
+
+Régime 2 — Réforme du transfert des assurés du système octroyé [régime transitoire]
+  Nom complet : "Prestations de la Réforme du transfert des assurés du système octroyé"
+  Administrateur : CNSSAP
+  Fonctions couvertes : Vieillesse (X)
+  Type : Non précisé
+  Note : Ce régime est apparu en 2022 et correspond vraisemblablement à la transition
+         entre l'ancien système de pensions octroyées (non contributif) et le régime
+         contributif CNSSAP. Il s'agit d'un régime de transition.
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- C'est l'année la plus récente de la série CNSSAP individuelle (2020–2022).
+- L'apparition du Régime 2 (Réforme du transfert) en 2022 est un signal institutionnel fort :
+  la CNSSAP a formalisé une transition de régime cette année-là.
+- Dans le fichier consolidé 2023, la CNSSAP déclare 3 branches complètes :
+  régime de base, allocations familiales, accidents du travail — élargissement notable.
+- Contrairement aux ESS 2020 et 2021, la date affichée dans l'inventaire (2022)
+  est cohérente avec le nom du fichier.
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSSAP (2022), Enquête sur les Sources Statistiques (ESS) — format OIT,
+Caisse Nationale de Sécurité Sociale des Agents Publics, Kinshasa, République Démocratique du Congo.

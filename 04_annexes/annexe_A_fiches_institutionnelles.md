@@ -26,7 +26,7 @@ Institutions à couvrir (liste provisoire) :
 
 Documents de référence :
 - Premier bulletin RDC (édition 1/2023) : fiches institutionnelles à actualiser
-- Données transmises directement par les institutions (06_donnees/institutions/)
+- Données transmises directement par les institutions (06_sources/institutions/)
 
 Fichiers associés :
 - annexe_A1_institutions_contributrices.md : liste des institutions ayant contribué

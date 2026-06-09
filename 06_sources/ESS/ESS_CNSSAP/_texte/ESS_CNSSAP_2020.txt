@@ -1,0 +1,57 @@
+TITRE : ESS CNSSAP 2020 — Enquête sur les Sources Statistiques de la protection sociale
+SOURCE : Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP), République Démocratique du Congo
+CONTACT : +243810044886 — mpanyakangodie@cnssap.cd
+PÉRIODE NOMINALE DU FICHIER : 2020
+PÉRIODE AFFICHÉE DANS L'INVENTAIRE : 2022 (anomalie — voir ci-dessous)
+MONNAIE : Non précisée
+NIVEAU : Source primaire institutionnelle (transmission directe de l'institution)
+
+---
+
+⚠️ ANOMALIE — INCOHÉRENCE DE DATE
+
+La période affichée dans la feuille "Inventaire des régimes" indique 2022, alors que
+le fichier est nommé "ESS CNSSAP 2020.xlsm". Cette incohérence est identique dans
+les fichiers ESS CNSSAP 2020 et 2021 (tous deux affichent 2022 dans leur inventaire).
+Possible explication : gabarit partiellement mis à jour ou erreur de saisie.
+À vérifier avec la CNSSAP avant utilisation analytique comparée.
+
+---
+
+FORMAT ET STRUCTURE
+
+Feuilles actives :
+- Inventaire des régimes
+- CNSAP Régime de base (régime unique)
+- ADDITIONAL statistics for SDGs
+- CALCULATIONS
+
+---
+
+RÉGIMES DÉCLARÉS
+
+Régime 1 — CNSAP Régime de base (Branche des pensions)
+  Administrateur : CNSSAP
+  Fonctions couvertes : Vieillesse (X), Invalidité/Handicap (X), Survivants (implicite)
+  Type : Contributif, Obligatoire, Public
+  Source déclarée : CNSSAP
+  Note : "Les chiffres dans les cellules fusionnées représentent [...]" (note méthodologique interne)
+
+---
+
+BRANCHES COUVERTES PAR LA CNSSAP (selon ESS)
+
+La CNSSAP ne déclare qu'un seul régime dans les fichiers 2020 et 2021 (régime de base — pensions).
+À partir de 2022, un second régime apparaît : la Réforme du transfert des assurés.
+Dans le fichier consolidé 2023, la CNSSAP déclare 3 branches :
+  - Régime de base (pensions — vieillesse, invalidité, survivants)
+  - Branche des allocations familiales
+  - Branche des accidents du travail et maladies professionnelles
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSSAP (2020), Enquête sur les Sources Statistiques (ESS) — format OIT,
+Caisse Nationale de Sécurité Sociale des Agents Publics, Kinshasa, République Démocratique du Congo.
+[Note : date interne du fichier affiche 2022 — à vérifier]

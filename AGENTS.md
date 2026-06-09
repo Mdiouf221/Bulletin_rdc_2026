@@ -64,7 +64,7 @@ Processus disponibles :
 - **PROC-002** — Intégration d'une donnée institutionnelle : réception, dépôt, vérification de cohérence, intégration.
 - **PROC-003** — Révision et validation d'une section : grille de contrôle fond/terminologie/style, rapport de révision.
 - **PROC-004** — Vérification terminologique : consultation glossaire, conventions, références OIT, mise à jour si nouveau terme.
-- **PROC-005** — Mise à jour du registre des sources : nommage, conversion .txt, enregistrement dans `registre_donnees.md`.
+- **PROC-005** — Mise à jour du registre des sources : nommage, conversion .txt, enregistrement dans `registre_donnees.md` et `registre_sources.json`.
 
 ---
 
@@ -93,7 +93,7 @@ Le système de validation inline utilise deux conventions complémentaires :
 #### 1. Lien `source-ref` (données et citations avec lien fichier)
 
 ```html
-<a href="/files/06_donnees/officielles_web/FICHIER.pdf"
+<a href="/files/06_sources/officielles_web/FICHIER.pdf"
    title="Source : [Organisation] ([Année]) — [Titre]"
    class="source-ref"
    data-val-id="s3-p1-d1"
@@ -183,36 +183,39 @@ Rédiger le texte dans la section `## Texte rédigé`. Ne pas modifier la NOTE_I
 
 ---
 
-## Documents de référence externes
+## Documents de référence et sources
 
-Un dossier `11_references_externes/` est disponible dans le workspace. Il contient :
+Toutes les sources — données, références normatives, bulletins comparatifs, documents institutionnels — sont regroupées dans un unique dossier **`06_sources/`**, organisé par nature :
 
-- `bulletins_rdc/` — le premier Bulletin statistique RDC (**référence directe** : c'est le bulletin que ce projet prolonge et améliore)
-- `autres_bulletins/` — bulletins statistiques d'autres pays ou organisations (**référence de style** : structure, mise en forme, formulations)
-- `references_oit_bit/` — conventions, recommandations, guides méthodologiques et métadonnées OIT/BIT (**référence normative** : définitions, cadres, indicateurs, R.202, ODD 1.3.1)
-
-Les fichiers `.txt` lisibles par les agents se trouvent dans les sous-dossiers `_texte/` de chaque dossier.
-
----
-
-## Données sources
-
-Un dossier `06_donnees/` contient les documents et données utilisés pour la rédaction. Il est organisé par niveau de fiabilité :
-
-- `institutions/` — documents transmis directement par les institutions nationales (CNSS, CNSSAP, FNPSS, ministères…). **Source primaire.** Citer sans réserve avec mention de l'institution et de l'année.
-- `officielles_web/` — publications officielles trouvées en ligne : rapports d'organisations internationales, lois, décrets, journaux officiels, bases de données publiques. **Source secondaire acceptable.** Citer avec mention de l'organisation, de l'année et du lien si disponible.
-- `sources_incertaines/` — sources moins fiables, estimations non documentées, articles de presse, données à vérifier. **Utiliser uniquement à titre indicatif**, avec réserve explicite dans le texte.
+| Sous-dossier | Nature | Niveau de fiabilité |
+|---|---|---|
+| `ESS/` | Tableaux ESS OIT (CNSS, CNSSAP, tous régimes) | **Source primaire** |
+| `institutions/` | Documents transmis directement par les institutions nationales | **Source primaire** |
+| `officielles_web/` | Publications officielles en ligne (OIT, Banque mondiale, INS…) | **Source secondaire acceptable** |
+| `sources_incertaines/` | Estimations non documentées, presse, données à vérifier | **À utiliser avec prudence** |
+| `normes_oit/` | Conventions, recommandations, guides méthodologiques OIT/BIT | **Référence normative** |
+| `bulletins_rdc/` | Premier Bulletin statistique RDC | **Référence directe** |
+| `bulletins_comparaison/` | Bulletins d'autres pays (Mozambique, Angola, Jordanie…) | **Référence de style** |
+| `atelier_lancement/` | Documents et présentations de l'atelier de lancement | **Source primaire** |
 
 Les fichiers `.txt` lisibles par les agents se trouvent dans les sous-dossiers `_texte/` de chaque dossier.
-Le registre `06_donnees/registre_donnees.md` inventorie tous les documents déposés.
+Le registre `06_sources/registre_donnees.md` inventorie tous les documents.
+Le registre `06_sources/registre_sources.json` est le tableau de correspondance structuré de toutes les sources.
 
 **Règle** : ne jamais citer une donnée sans indiquer sa source et son niveau de fiabilité.
 
+**Workflow unifié pour toute source déposée dans `06_sources/` :**
+1. Archiver le fichier original (PDF, XLSX…) dans le bon sous-dossier
+2. Convertir en `.txt` lisible dans le sous-dossier `_texte/`
+3. Créer un fichier de métadonnées `.txt` (résumé, données clés, citation recommandée)
+4. Inscrire la source dans `registre_donnees.md` et `registre_sources.json`
+5. Intégrer dans le bulletin si pertinent (avec mention de source et niveau de fiabilité)
+
 **Quand consulter ces documents :**
-Ne pas relire ces documents systématiquement à chaque demande. Les consulter uniquement lorsque la tâche le requiert explicitement, par exemple :
+Ne pas relire ces documents systématiquement. Les consulter uniquement lorsque la tâche l'exige :
 - la demande mentionne « en t'appuyant sur le premier bulletin » ;
 - la demande porte sur la structure, la terminologie ou les formulations types ;
-- une section porte sur des données ou institutions déjà traitées dans le premier bulletin.
+- une section porte sur des données ou institutions déjà traitées.
 
 Règles d'utilisation :
 - Le premier bulletin RDC est la référence principale de continuité : retenir la logique institutionnelle, améliorer la rigueur conceptuelle.

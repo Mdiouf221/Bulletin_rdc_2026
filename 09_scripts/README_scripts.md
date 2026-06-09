@@ -1,4 +1,4 @@
-# Scripts d'assemblage — Bulletin statistique de la protection sociale en RDC
+﻿# Scripts d'assemblage — Bulletin statistique de la protection sociale en RDC
 
 ## Contenu du dossier
 
@@ -76,12 +76,12 @@ Convertit tous les fichiers PDF présents dans les dossiers de références exte
 
 | Dossier | Type |
 |---|---|
-| `11_references_externes/bulletins_rdc/` | Référence directe |
-| `11_references_externes/autres_bulletins/` | Référence de style |
-| `11_references_externes/references_oit_bit/` | Référence normative |
-| `06_donnees/institutions/` | Source primaire |
-| `06_donnees/officielles_web/` | Source secondaire officielle |
-| `06_donnees/sources_incertaines/` | Source à traiter avec prudence |
+| `06_sources/bulletins_rdc/` | Référence directe |
+| `06_sources/bulletins_comparaison/` | Référence de style |
+| `06_sources/references_oit_bit/` | Référence normative |
+| `06_sources/institutions/` | Source primaire |
+| `06_sources/officielles_web/` | Source secondaire officielle |
+| `06_sources/sources_incertaines/` | Source à traiter avec prudence |
 
 Pour chaque PDF, le fichier `.txt` est créé dans le sous-dossier `_texte/` au même niveau.
 
@@ -101,7 +101,7 @@ python 09_scripts/convertir_pdf_en_texte.py
 
 ```
 [institutions/] — 3 PDF(s)
-  [OK] CNSS_rapport_annuel_2023.pdf → 06_donnees/institutions/_texte/...
+  [OK] CNSS_rapport_annuel_2023.pdf → 06_sources/institutions/_texte/...
   [DÉJÀ CONVERTI] ...
 
 [BILAN] 5 converti(s), 0 erreur(s)

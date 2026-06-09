@@ -1,4 +1,4 @@
-# Deuxième Bulletin statistique de la protection sociale en RDC
+﻿# Deuxième Bulletin statistique de la protection sociale en RDC
 
 Ce workspace contient les fichiers de pilotage, de rédaction, de documentation méthodologique, de données, de tableaux, de figures et de sortie liés à la préparation du deuxième Bulletin statistique de la protection sociale en RDC.
 
@@ -17,12 +17,12 @@ Ce workspace contient les fichiers de pilotage, de rédaction, de documentation 
 - `03_chapitres/` : chapitres principaux du bulletin.
 - `04_annexes/` : annexes prévues.
 - `05_references/` : glossaire, conventions terminologiques, sources et instructions rédactionnelles.
-- `06_donnees/` : documents et données sources classés par niveau de fiabilité (`institutions/`, `officielles_web/`, `sources_incertaines/`). Chaque sous-dossier contient un sous-dossier `_texte/` pour les versions lisibles par les agents. Le registre `registre_donnees.md` inventorie tous les documents déposés.
+- `06_sources/` : documents et données sources classés par niveau de fiabilité (`institutions/`, `officielles_web/`, `sources_incertaines/`). Chaque sous-dossier contient un sous-dossier `_texte/` pour les versions lisibles par les agents. Le registre `registre_donnees.md` inventorie tous les documents déposés.
 - `07_tableaux/` : tableaux sources, exports et registre des tableaux.
 - `08_figures/` : figures sources, exports et registre des figures.
 - `09_scripts/` : scripts d’assemblage, nettoyage et export.
 - `10_output/` : versions assemblées du bulletin.
-- `11_references_externes/` : documents de référence externes (bulletins RDC précédents, bulletins comparatifs, rapports OIT/BIT).
+- `06_sources/` : documents de référence externes (bulletins RDC précédents, bulletins comparatifs, rapports OIT/BIT).
 
 ## Convention de rédaction
 

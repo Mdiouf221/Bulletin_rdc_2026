@@ -1,0 +1,4649 @@
+[DOCUMENT : CNSSAP_RDC_branches_prestations.pdf  40 pages]
+
+
+--- Page 1 ---
+Bulletin trimestriel
+d’informations statistiques
+N°07
+Kinshasa, le 23 avril 2022
+
+--- Page 2 --- [sans texte]
+
+--- Page 3 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+AVANT-PROPOS
+AVANT-PROPOS
+Ce nouveau numéro du Bulletin d’information statistique de la CNSSAP rend compte, en chiffres,
+des activités de notre institution telles que déroulées au premier trimestre de l’année 2022. Les
+points saillants ci-après sont mis en évidence :
+• Les effectifs des cotisants de la CNSSAP ont augmenté de 11,3 % par rapport à l’année
+2021. Ils se sont situés à 190.544 au premier trimestre 2022, venant de 171.185 à fin 2021.
+• D’un point de vue géographique, Kinshasa reste la province modale avec 40,5% d’effectifs,
+tandis que sur le plan administratif, le secteur de la santé garde la tête du peloton avec 25,7%
+d’assurés.
+• Le total d’agents actifs immatriculés, depuis le début de la campagne en 2017, se chiffre à
+ce jour à 88.395 personnes. Les hommes représentent 66,4%, tandis que les femmes
+comptent pour 33,6%.
+• Pour ce qui est des retraités, leur effectif a reculé de 6,5 % par rapport à l’année 2021. Ainsi,
+le nombre de personnes bénéficiaires des prestations a connu une légère baisse de 0,20%.
+Il sied de noter que pour le moment, la majorité des retraités payés par la CNSSAP sont
+issues de la fonction publique, soit 43,6% du total.
+• S’agissant des indicateurs de performance, ils sont globalement en phase avec les normes.
+La publication de ce nouveau numéro du bulletin statistique s’inscrit dans une culture dorénavant
+ancrée au sein de la CNSSAP ; celle de rendre compte. Le document offre aux parties intéressées
+pertinentes l’occasion de suivre pas à pas le comportement des indicateurs sociaux dans sa
+composante « sécurité sociale » du secteur public en RDC.
+TOMBOLA MUKE
+CM / CNSSAP
+1
+1
+
+--- Page 4 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+SIGNES, SIGLES & ABREVIATIONS
+SIGNES, SIGLES & ABREVIATIONS
+- : Renseignement nul
+AA1 : Agent Auxiliaire de 1ère classe
+AA2 : Agent Auxiliaire de 2ème classe
+Adm. : Administration
+AGA1 : Agent d’Administration de 1ère classe
+AGA2 : Agent d’Administration de 2ème classe
+ATA1 : Attaché d’Administration de 1ère classe
+ATA2 : Attaché d’Administration de 2ème classe
+Bac+3 : Graduat
+Bac+5 : Licence
+BNR : Bordereau nominatif des rémunérations
+CB : Chef de Bureau
+CD : Chef de Division
+CDF : Franc congolais (FC)
+CM : Chargé de mission
+CNSSAP : Caisse nationale de sécurité sociale des agents
+publics de l’Etat
+CPA : Cotisation part agent
+CPE : Cotisation part Etat employeur
+D : Directeur
+D6 : Niveau bac
+DAT : Dépôts à terme
+DEA/DES : Diplôme d'études approfondies
+F : Femme
+H : Homme
+Pub. : Publique
+RDC : République Démocratique du Congo
+RH : Ressources humaines
+SG : Secrétaire Général
+Trim n : Trimestre n (n : 1, 2, 3 et 4)
+USD : Dollar américain
+2
+2
+
+--- Page 5 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+DEFINITIONS DE PRINCIPAUX CONCEPTS
+DEFINITIONS DE PRINCIPAUX CONCEPTS
+Affiliation : Rattachement de l’agent public au régime de sécurité
+sociale institué, tant au niveau de ses obligations
+(cotisations) que de ses droits (prestations).
+Annuité : Pourcentage du salaire de référence retenu pour le
+calcul de la pension que l’assuré acquiert par année
+de service.
+Assuré : Agent public affilié au régime de sécurité sociale
+contributif institué par la loi.
+Cotizapp : Application mobile de la CNSSAP permettant aux
+assurés cotisants de consulter en temps réel
+l’évolution de leurs comptes cotisants individuels et
+de simuler le montant de leur pension de retraite
+future.
+Cotisations (sociales) : Prélèvements obligatoires périodiques imposés aux
+agents publics et à l’Etat-employeur, destinés au
+financement du régime de sécurité sociale institué en
+leur faveur.
+Immatriculation : Procédure administrative par laquelle un organisme
+de sécurité sociale identifie ses assujettis, les
+enregistre dans ses livres et attribue à chacun un
+numéro de sécurité sociale.
+Pension de retraite : Allocation versée périodiquement aux agents
+publics admis à la retraite.
+Prestataire : Bénéficiaire d’une prestation servie par la CNSSAP.
+Prestations (sociales) : Prestations en espèce ou en nature que les
+institutions de protection sociale versent à leurs
+bénéficiaires.
+Rapport démographique : Indice qui montre le nombre de cotisants qu’il faut
+pour supporter la pension d’un retraité.
+Rente de survie : Allocation versée aux survivants d’un
+assujetti décédé.
+3
+3
+
+--- Page 6 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+FORMULES
+FORMULES
+1.
+!"#$% '"#()$*#) à %$ ,é.("/0 #
+!"##$%& (é*$+%"#ℎ-./0 = !"#$% .0#.$(#é) à %$ ,é.("/0 #
+2.
+!"#$%&# (" )"*)+%*" = -./.012 32 4.52∗7.89 32 12:;/.<2:2=>
+3.
+?+@A (" )"BCD+E"B"#* = FG:412 3’.==é25 32 521J0<2∗7.89 3’.==80>é
+4. *
+!
+?+@A ( +##@%*é = K.MM%
+5. #
+O"#*" (" $@)P%" +@ E&#Q&%#* $@)P%P+#* (+E*%S (éEé(é) = -./.012 32 4.52∗UV%
+6. #
+!"#$" &" '()*+" ,( -.#/.+#$ '()*+*,#$ ()"$),+$é &é-é&é)=4567896 :5 ;5<;=8<5∗?@%
+7. #
+O"#*" (" $@)P%" C&@) D’&)Cℎ"D%# (+E*%S (éEé(é) = -./.012 32 4.52∗ X%
+8. #
+O"#*" (" $@)P%" C&@) D’&)Cℎ"D%# ()"*)+%*é (éEé(é) = Y2=50G= 32 12>1.0>2∗ KZ%
+9.
+!"#"$% '(')*=,-./0123 2456718043 (.0 5.213:21.73)+,-./0123 30- .=é-:21.7 /4 =?:54@472
+10.
+B.$,C -ℎ,)E"= FG=;H57 <5IG68JK57 (9K L;57<=<8967)+FG=;H57 :5 N96I<89665O56<
+11.
+"#$%&'( *' +,-./0,--'1'-/ (1,0-( $1,%/0(('1'-/()
+O+*%& ("$ Eℎ+)["$ +(B%#%$*)+*%P"$ = 4,/$5 .,/0($/0,-(
+12.
+12$.30) /0 4"*'#("**050*#
+!"&-$ (02 3ℎ"%+02 (0 4$53&-$550*05& = 6070*8 #"#$%
+13.
+12$.30 /8 ,0.)"**0%
+!"&-$ (02 4%"-2 (/ #0%2$5506 = 12$.30) /0 4"*'#("**050*#
+14.
+6é)8%#$# *0#
+!"&-$ (/ %é2/6&"& 50& = 1"#()$#("*)
+15.
+9"*#$*# /0) ,%$'050*#)
+!"&-$ (02 %é20%702 = 9"*#$*# /0) ,0*)("*)
+16.
+: 6070*8 #"#$%
+!"&-$ ( "/&$2/44-2"530 = !"#$% '2$.30)
+* Paramètre fixé par l’article 9 de l’arrêté ministériel n°007/ME/MIN.FP/2017 du 15 juillet 2017 fixant les modalités
+d’octroi des prestations dans le cadre du régime de sécurité sociale géré par la CNSSAP.
+# Paramètre fixé par les articles 126 et 128 de la loi n°16/013 du 15 juillet 2016 portant statut des agents de carrière
+des services publics de l’Etat.
+4
+4
+
+--- Page 7 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+COTISATIONS
+I. COTISATIONS
+Tableau 1.1. Cotisants à la CNSSAP
+Année 2018 2019 2020 2021 2022*
+Effectifs cotisants 164 626 172 204 172 304 171 185 190 544
+Variation - +7 578 +100 -1 119 +19 359
+Variation en % - +4,6% +0,1% -0,6% +11,3%
+Source : CNSSAP
+* Effectifs cotisants au premier trimestre 2022
+Tableau 1.2. Cotisants par province (ancienne configuration) au premier trimestre 2022
+N° Province 2021 2022* En %
+1 Bandundu 14 210 15 305 8,0%
+2 Bas-Congo 13 908 14 239 7,5%
+3 Equateur 14 223 17 345 9,1%
+4 Kasaï Occidental 12 338 13 283 7,0%
+5 Kasaï Oriental 14 086 15 780 8,3%
+6 Katanga 10 372 11 772 6,2%
+7 Kinshasa 69 780 77 182 40,5%
+8 Maniema 2 718 2 989 1,6%
+9 Nord-Kivu 6 212 6 746 3,5%
+10 Province Orientale 9 055 10 930 5,7%
+11 Sud-Kivu 4 283 4 973 2,6%
+Total 171 185 190 544 100%
+Source : CNSSAP
+* Effectifs cotisants au premier trimestre 2022
+5
+5
+
+--- Page 8 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 1.3. Cotisants par administration publique au premier trimestre 2022
+N° Administration Publique 2019 2020 2021 2022*
+1 Actions humanitaires et solidarité nationale 64 64 112 308
+2 Administration de l'assemblée nationale 246 245 246 442
+3 Administration du sénat 252 253 253 262
+4 Affaires coutumières - - 71 349
+5 Affaires étrangères 757 747 745 827
+6 Affaires foncières 2 718 2 732 2 747 3 304
+7 Affaires sociales 6 578 6 545 6 558 6 951
+8 Agriculture 12 282 12 272 12 175 12 410
+9 Aménagement du territoire et rénovation de la ville - - 253 369
+10 Anciens combattants 112 114 114 329
+11 Budget 2 947 2 888 2 256 2 717
+12 Chancellerie des ordres nationaux 167 299 296 331
+13 Commerce extérieur 2 127 2 124 2 153 2 287
+14 Commission nationale pour l'UNESCO 43 57 - -
+15 Communication et médias 439 432 431 521
+16 Conseil économique et social - - - 42
+17 Coopération internationale 167 170 177 214
+18 Coopération régionales 69 68 73 150
+19 Culture et arts 1 423 1 387 1 390 1 601
+20 Décentralisation et Réforme institutionnelle 57 57 128 256
+21 Défense nationale 7 733 7 732 7 728 7 985
+22 Développement rural 3 368 3 353 3 350 3 677
+23 Droits humains 335 335 341 404
+24 Economie nationale 2 354 2 354 2 350 2 505
+25 Emploi et travail 1 020 997 995 1 124
+26 Enseignement primaire, secondaire et technique 1 972 1 970 1 968 2 037
+27 Enseignement supérieur et universitaire 488 484 480 588
+28 Environnement et conservation de la nature 2 593 2 585 2 595 3 171
+29 Finances 17 155 17 139 17 147 17 916
+30 Fonction publique 3 580 3 576 3 660 6 544
+31 Formation professionnelle, métiers et artisanat - - - 610
+32 Genre, femme et enfant 710 708 719 857
+33 Hydrocarbures 190 208 210 308
+34 Industrie 2 361 2 373 2 426 2 753
+35 Infrastructures et travaux publics 7 101 7 093 7 087 7 410
+36 Inspection générale des finances 179 179 167 169
+37 Intérieur et sécurité 22 890 23 018 22 576 23 522
+38 Jeunesse 3 569 3 562 3 557 3 795
+39 Justice 4 544 4 530 4 513 5 193
+40 Mines 1 761 1 770 1 772 2 041
+41 Pêche et élevage - - 91 390
+42 Petites et moyennes entreprises - - - 49
+43 Plan et suivi de la mise en œuvre de la Révolution de la modernité 536 552 554 942
+44 Porte feuille 170 170 169 177
+45 Poste et télécommunication et Nouvelles Technologies de 746 738 739 917
+l’Information et de la Communication
+46 Présidence de la république 631 629 629 721
+47 Prévoyance sociale 242 269 267 328
+48 Primature 124 131 134 199
+49 Recherche scientifique 279 278 263 313
+50 Reconstruction 169 169 169 366
+51 Relation avec le parlement 440 478 479 733
+52 Relation avec les partis politiques 84 83 82 115
+53 Ressources hydraulique et électricité 1 115 1 120 1 120 1 493
+54 Santé publique 45 833 45 739 45 124 48 898
+55 Sports 493 493 493 546
+56 Tourisme 1 736 1 744 1 745 2 139
+57 Transport et voies de communication 3 407 3 423 3 424 3 734
+58 Urbanisme et habitat 1 848 1 868 1 884 2 205
+Total 172 204 172 304 171 185 190 544
+Source : CNSSAP
+* Effectifs cotisants au premier trimestre 2022
+6
+6
+
+--- Page 9 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+7
+2202
+ertsemirt
+reimerp
+ua
+edarg
+rap
+stnasitoC
+.4.1
+uaelbaT
+%
+nE
+*2202
+1202
+0202
+9102
+8102
+edarG
+%3,0
+045
+604
+493
+683
+331
+GS
+%8,2
+633
+5
+958
+5
+040
+6
+261
+6
+767
+5
+D
+%3,3
+563
+6
+042
+6
+431
+6
+252
+6
+062
+5
+DC
+%9,7
+530
+51
+699
+31
+848
+31
+601
+41
+835
+21
+BC
+%3,71
+940
+33
+685
+92
+549
+92
+113
+82
+421
+62
+1ATA
+%6,71
+575
+33
+865
+92
+928
+92
+850
+92
+217
+82
+2ATA
+%8,12
+136
+14
+926
+93
+259
+93
+426
+04
+729
+93
+1AGA
+%1,71
+275
+23
+411
+62
+072
+62
+488
+62
+883
+52
+2AGA
+%7,7
+317
+41
+582
+21
+373
+21
+607
+21
+929
+21
+1AA
+%1,3
+038
+5
+936
+5
+146
+5
+297
+5
+268
+5
+2AA
+%0,1
+898
+1
+368
+1
+878
+1
+329
+1
+689
+1
+reissiuH
+%001
+445
+091
+581
+171
+403
+271
+402
+271
+626
+461
+latoT
+PASSNC
+: ecruoS
+2202
+ertsemirt
+reimerp
+ua
+stnasitoc
+sfitceffE
+*
+2202
+ertsemirt
+reimerp
+ua
+edarg
+rap
+te
+)noitarugifnoc
+enneicna(
+ecnivorp
+rap
+stnasitoC
+.5.1
+uaelbaT
+latoT
+reissiuH
+2AA
+1AA
+2AGA
+1AGA
+2ATA
+1ATA
+BC
+DC
+D
+GS
+ecnivorP
+503
+51
+323
+736
+039
+1
+065
+2
+501
+3
+861
+2
+286
+2
+192
+1
+173
+532
+3
+udnudnaB
+932
+41
+513
+188
+755
+1
+704
+3
+625
+2
+030
+2
+609
+1
+211
+1
+372
+112
+12
+ognoC-saB
+543
+71
+641
+546
+221
+2
+500
+4
+478
+4
+178
+1
+588
+1
+811
+1
+243
+723
+01
+ruetauqE
+382
+31
+731
+335
+204
+1
+151
+2
+812
+3
+143
+2
+004
+2
+808
+881
+99
+6
+latnedicco
+ïasaK
+087
+51
+792
+857
+665
+1
+452
+3
+796
+3
+294
+2
+552
+2
+459
+752
+732
+31
+latneiro
+ïasaK
+277
+11
+921
+404
+324
+1
+256
+2
+942
+2
+010
+2
+715
+1
+959
+782
+731
+5
+agnataK
+281
+77
+961
+625
+256
+1
+068
+8
+263
+61
+911
+71
+252
+71
+801
+7
+910
+4
+366
+3
+254
+asahsniK
+989
+2
+62
+07
+561
+046
+058
+364
+624
+412
+65
+87
+1
+ameinaM
+647
+6
+461
+503
+026
+486
+1
+983
+1
+989
+579
+883
+541
+87
+9
+uviK-droN
+039
+01
+321
+097
+208
+1
+083
+2
+562
+2
+762
+1
+851
+1
+336
+772
+022
+51
+elatneirO
+ecnivorP
+379
+4
+96
+182
+474
+979
+690
+1
+528
+395
+054
+051
+15
+5
+uviK-duS
+445
+091
+898
+1
+038
+5
+317
+41
+275
+23
+136
+14
+575
+33
+940
+33
+530
+51
+563
+6
+633
+5
+045
+latoT
+PASSNC
+: ecruoS
+7
+
+--- Page 10 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+8
+2202
+ertsemirt
+reimerp
+ua
+)noitarugifnoc
+enneicna(
+ecnivorp
+rap
+te
+euqilbup
+noitartsinimda
+rap
+stnasitoC
+.6.1
+uaelbaT
+latoT
+uviK-duS
+ecnivorP
+-droN
+ameinaM
+asahsniK
+agnataK
+ïasaK
+ïasaK
+ruetauqE
+ognoC-saB
+udnudnaB
+euqilbuP
+noitartsinimdA
+elatneirO
+uviK
+latneiro
+latnediccO
+403
+3
+511
+641
+722
+64
+496
+1
+362
+312
+241
+261
+541
+151
+serèicnof
+seriaffA
+159
+6
+091
+903
+612
+931
+923
+2
+227
+359
+916
+365
+036
+182
+selaicos
+seriaffA
+014
+21
+034
+351
+1
+036
+221
+138
+2
+987
+021
+1
+196
+1
+450
+1
+660
+1
+425
+1
+erutlucirgA
+717
+2
+13
+231
+201
+03
+925
+1
+902
+422
+38
+291
+96
+611
+tegduB
+782
+2
+29
+95
+79
+71
+453
+1
+552
+94
+521
+121
+601
+21
+rueirétxe
+ecremmoC
+589
+7
+45
+021
+92
+02
+010
+5
+143
+822
+991
+267
+782
+539
+elanoitan
+esneféD
+776
+3
+001
+911
+911
+34
+840
+1
+053
+703
+453
+265
+043
+533
+larur
+tnemeppolevéD
+505
+2
+46
+031
+311
+15
+921
+1
+302
+252
+671
+571
+431
+87
+elanoitan
+eimonocE
+730
+2
+42
+73
+6
+6
+455
+1
+54
+05
+261
+04
+45
+95
+te
+eriadnoces
+,eriamirp
+tnemengiesnE
+lennoisseforp
+171
+3
+88
+551
+891
+78
+022
+1
+191
+572
+971
+982
+792
+291
+al
+ed
+noitavresnoc
+te tnemennorivnE
+erutan
+619
+71
+526
+298
+370
+1
+381
+317
+9
+337
+1
+446
+254
+826
+494
+1
+974
+secnaniF
+445
+6
+511
+791
+301
+88
+628
+3
+663
+534
+113
+736
+641
+023
+euqilbup
+noitcnoF
+357
+2
+97
+911
+411
+732
+251
+1
+571
+732
+152
+87
+971
+231
+eirtsudnI
+014
+7
+963
+995
+361
+531
+043
+1
+794
+298
+796
+350
+1
+778
+887
+scilbup
+xuavart
+te
+serutcurtsarfnI
+225
+32
+536
+598
+2
+687
+586
+936
+6
+226
+1
+258
+2
+349
+1
+115
+2
+054
+1
+405
+1
+étirucés
+te rueirétnI
+597
+3
+631
+442
+721
+16
+367
+522
+113
+693
+697
+744
+982
+essenueJ
+391
+5
+981
+672
+361
+66
+425
+2
+005
+724
+832
+223
+203
+681
+ecitsuJ
+140
+2
+85
+161
+111
+411
+317
+88
+041
+324
+701
+55
+17
+seniM
+898
+84
+637
+392
+2
+787
+1
+955
+512
+61
+428
+1
+464
+4
+194
+3
+883
+5
+522
+5
+619
+6
+euqilbup
+étnaS
+931
+2
+39
+39
+28
+93
+129
+721
+801
+062
+881
+811
+011
+emsiruoT
+437
+3
+882
+051
+071
+18
+305
+1
+192
+404
+892
+402
+671
+961
+noitacinummoc
+ed
+seiov
+te
+tropsnarT
+502
+2
+89
+06
+29
+52
+226
+033
+171
+371
+503
+021
+902
+tatibah
+te
+emsinabrU
+053
+71
+463
+195
+832
+551
+355
+11
+626
+420
+1
+026
+802
+1
+225
+944
+seuqilbuP
+snoitartsinimdA
+sertuA
+445
+091
+379
+4
+039
+01
+647
+6
+989
+2
+281
+77
+277
+11
+087
+51
+382
+31
+543
+71
+932
+41
+503
+51
+latoT
+PASSNC
+: ecruoS
+8
+
+--- Page 11 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+9
+2202
+ertsemirt
+reimerp
+ua
+edarg
+rap
+te
+euqilbup
+noitartsinimda
+rap
+stnasitoC
+.7.1
+uaelbaT
+latoT
+reissiuH
+2AA
+1AA
+2AGA
+1AGA
+2ATA
+1ATA
+BC
+DC
+D
+GS
+euqilbuP
+noitartsinimdA
+403
+3
+33
+93
+311
+117
+308
+947
+593
+913
+221
+91
+1
+serèicnof
+seriaffA
+159
+6
+34
+292
+715
+173
+1
+196
+1
+162
+1
+769
+646
+711
+54
+1
+selaicos
+seriaffA
+014
+21
+182
+137
+925
+1
+513
+2
+129
+2
+016
+1
+965
+1
+856
+613
+084
+-
+erutlucirgA
+717
+2
+8
+21
+24
+552
+594
+406
+018
+752
+812
+61
+-
+tegduB
+782
+2
+1
+01
+64
+135
+926
+285
+242
+861
+26
+51
+1
+rueirétxe
+ecremmoC
+589
+7
+62
+59
+752
+917
+884
+1
+463
+2
+605
+2
+393
+011
+62
+1
+elanoitan
+esneféD
+776
+3
+83
+861
+024
+457
+318
+075
+835
+532
+99
+24
+-
+larur
+tnemeppolevéD
+505
+2
+9
+91
+931
+733
+516
+016
+135
+091
+04
+51
+-
+elanoitan
+eimonocE
+730
+2
+9
+4
+71
+511
+752
+573
+445
+001
+715
+69
+3
+lennoisseforp
+te
+eriadnoces
+,eriamirp
+tnemengiesnE
+171
+3
+25
+67
+202
+556
+778
+826
+644
+961
+43
+23
+-
+erutan
+al
+ed
+noitavresnoc
+te tnemennorivnE
+619
+71
+601
+552
+416
+578
+2
+826
+3
+804
+4
+215
+3
+825
+1
+458
+631
+-
+secnaniF
+445
+6
+33
+37
+432
+099
+015
+1
+642
+1
+416
+1
+094
+881
+27
+49
+euqilbup
+noitcnoF
+357
+2
+4
+73
+541
+494
+487
+546
+514
+171
+74
+11
+-
+eirtsudnI
+014
+7
+753
+810
+1
+864
+1
+982
+1
+472
+1
+848
+708
+832
+86
+14
+2
+scilbup
+xuavart
+te
+serutcurtsarfnI
+225
+32
+972
+176
+829
+1
+613
+3
+002
+6
+843
+4
+043
+4
+607
+1
+616
+611
+2
+étirucés
+te rueirétnI
+597
+3
+05
+603
+354
+756
+497
+505
+455
+663
+29
+81
+-
+essenueJ
+391
+5
+51
+08
+952
+038
+940
+1
+159
+487
+017
+063
+051
+5
+ecitsuJ
+140
+2
+01
+21
+55
+482
+594
+865
+504
+951
+24
+11
+-
+seniM
+898
+84
+354
+825
+1
+098
+4
+026
+9
+619
+8
+621
+5
+927
+8
+032
+4
+015
+1
+385
+3
+313
+euqilbup
+étnaS
+931
+2
+7
+59
+612
+773
+695
+704
+112
+961
+73
+12
+3
+emsiruoT
+437
+3
+51
+77
+191
+127
+879
+248
+606
+322
+17
+8
+2
+noitacinummoc
+ed
+seiov
+te
+tropsnarT
+502
+2
+02
+17
+022
+344
+856
+524
+932
+501
+91
+4
+1
+tatibah
+te
+emsinabrU
+053
+71
+94
+161
+857
+319
+2
+061
+4
+309
+3
+582
+2
+508
+1
+628
+973
+111
+seuqilbuP
+snoitartsinimdA
+sertuA
+445
+091
+898
+1
+038
+5
+317
+41
+275
+23
+136
+14
+575
+33
+940
+33
+530
+51
+563
+6
+633
+5
+045
+latoT
+PASSNC
+: ecruoS
+9
+
+--- Page 12 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 1.8. Cotisations trimestrielles (en CDF)
+Période CPA (part salariale, 3%) CPE (part patronale, 6%) Total
+2017 1 587 061 941 - 1 587 061 941
+Trim4 1 587 061 941 - 1 587 061 941
+2018 6 299 612 436 12 601 114 944 18 900 727 380
+Trim1 1 569 631 142 3 139 733 221 4 709 364 363
+Trim2 1 571 201 524 3 142 874 456 4 714 075 980
+Trim3 1 578 880 972 3 158 235 656 4 737 116 628
+Trim4 1 579 898 797 3 160 271 612 4 740 170 409
+2019 8 203 693 722 16 407 387 450 24 611 081 172
+Trim1 1 589 470 572 3 178 941 144 4 768 411 716
+Trim2 2 169 708 798 4 339 417 596 6 509 126 394
+Trim3 2 185 610 211 4 371 220 425 6 556 830 636
+Trim4 2 258 904 141 4 517 808 285 6 776 712 426
+2020 10 839 097 813 22 471 726 597 33 310 824 411
+Trim1 2 514 154 222 5 028 308 443 7 542 462 665
+Trim2 2 777 457 960 6 348 446 891 9 125 904 851
+Trim3 2 777 389 271 5 554 778 541 8 332 167 812
+Trim4 2 770 096 361 5 540 192 722 8 310 289 083
+2021 11 367 585 992 22 735 171 983 34 102 757 975
+Trim1 2 757 650 277 5 515 300 553 8 272 950 830
+Trim2 2 749 505 928 5 499 011 857 8 248 517 785
+Trim3 2 748 819 328 5 497 638 657 8 246 457 985
+Trim4 3 111 610 458 6 223 220 916 9 334 831 374
+2022 3 062 955 895 6 125 911 790 9 188 867 685
+Trim1 3 062 955 895 6 125 911 790 9 188 867 685
+Source : CNSSAP
+Tableau 1.9. Cotisations par province (ancienne configuration) au premier trimestre 2022
+(en CDF)
+N° Province CPA CPE Total En %
+1 Bandundu 243 670 692 487 341 384 731 012 076 8,0%
+2 Bas-Congo 225 111 905 450 223 810 675 335 714 7,3%
+3 Equateur 276 084 058 552 168 116 828 252 175 9,0%
+4 Kasaï Occidental 211 383 863 422 767 725 634 151 588 6,9%
+5 Kasaï Oriental 250 413 612 500 827 223 751 240 835 8,2%
+6 Katanga 187 576 531 375 153 061 562 729 592 6,1%
+7 Kinshasa 1 261 568 972 2 523 137 943 3 784 706 915 41,2%
+8 Maniema 47 844 392 95 688 784 143 533 176 1,6%
+9 Nord-Kivu 107 303 893 214 607 787 321 911 680 3,5%
+10 Province Orientale 172 637 468 345 274 936 517 912 404 5,6%
+11 Sud-Kivu 79 360 510 158 721 019 238 081 529 2,6%
+Total 3 062 955 895 6 125 911 790 9 188 867 685 100%
+Source : CNSSAP
+10
+10
+
+--- Page 13 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 1.10. Cotisations par administration publique au premier trimestre 2022 (en CDF)
+N° Administration Publique CPA CPE Total En %
+1 Actions humanitaires et solidarité nationale 4 982 182 9 964 363 14 946 545 0,2%
+2 Administration de l'assemblée nationale 7 199 663 14 399 327 21 598 990 0,2%
+3 Administration du sénat 4 274 455 8 548 909 12 823 364 0,1%
+4 Affaires coutumières 5 621 838 11 243 676 16 865 515 0,2%
+5 Affaires étrangères 13 500 027 27 000 055 40 500 082 0,4%
+6 Affaires foncières 53 173 914 106 347 828 159 521 742 1,7%
+7 Affaires sociales 111 001 199 222 002 398 333 003 597 3,6%
+8 Agriculture 197 409 119 394 818 238 592 227 356 6,4%
+9 Aménagement du territoire et rénovation de la ville 5 997 255 11 994 510 17 991 764 0,2%
+10 Anciens combattants 5 320 806 10 641 611 15 962 417 0,2%
+11 Budget 44 176 087 88 352 173 132 528 260 1,4%
+12 Chancellerie des ordres nationaux 5 316 896 10 633 791 15 950 687 0,2%
+13 Commerce extérieur 36 821 485 73 642 970 110 464 455 1,2%
+14 Communication et médias 8 272 874 16 545 749 24 818 623 0,3%
+15 Conseil économique et social 677 708 1 355 415 2 033 123 0,0%
+16 Coopération internationale 3 462 154 6 924 308 10 386 462 0,1%
+17 Coopération régionales 2 434 493 4 868 985 7 303 478 0,1%
+18 Culture et arts 25 655 199 51 310 398 76 965 598 0,8%
+19 Décentralisation et Réforme institutionnelle 4 149 146 8 298 292 12 447 438 0,1%
+20 Défense nationale 128 841 784 257 683 567 386 525 351 4,2%
+21 Développement rural 58 567 090 117 134 180 175 701 271 1,9%
+22 Droits humains 6 536 292 13 072 584 19 608 876 0,2%
+23 Economie nationale 40 313 372 80 626 743 120 940 115 1,3%
+24 Emploi et travail 18 295 626 36 591 252 54 886 878 0,6%
+25 Enseignement primaire, secondaire et technique 33 468 321 66 936 641 100 404 962 1,1%
+26 Enseignement supérieur et universitaire 9 620 503 19 241 006 28 861 509 0,3%
+27 Environnement et conservation de la nature 50 534 109 101 068 218 151 602 328 1,6%
+28 Finances 289 055 189 578 110 379 867 165 568 9,4%
+29 Fonction publique 111 925 949 223 851 897 335 777 846 3,7%
+30 Formation professionnelle, métiers et artisanat 9 776 466 19 552 932 29 329 397 0,3%
+31 Genre, femme et enfant 13 748 766 27 497 532 41 246 298 0,4%
+32 Hydrocarbures 5 013 967 10 027 933 15 041 900 0,2%
+33 Industrie 44 174 173 88 348 346 132 522 519 1,4%
+34 Infrastructures et travaux publics 115 537 077 231 074 153 346 611 230 3,8%
+35 Inspection générale des finances 2 696 878 5 393 756 8 090 634 0,1%
+36 Intérieur et sécurité 375 491 259 750 982 518 1 126 473 777 12,3%
+37 Jeunesse 60 343 217 120 686 434 181 029 650 2,0%
+38 Justice 84 121 813 168 243 626 252 365 440 2,7%
+39 Mines 32 877 691 65 755 381 98 633 072 1,1%
+40 Pêche et élevage 6 299 753 12 599 505 18 899 258 0,2%
+41 Petites et moyennes entreprises 781 363 1 562 726 2 344 089 0,0%
+42 Plan et suivi de la mise en œuvre de la Révolution de la 15 316 229 30 632 458 45 948 687 0,5%
+modernité
+43 Porte feuille 2 886 596 5 773 192 8 659 788 0,1%
+44 Poste et télécommunication et Nouvelles Technologies de 14 756 062 29 512 125 44 268 187 0,5%
+l’Information et de la Communication
+45 Présidence de la république 11 696 587 23 393 174 35 089 761 0,4%
+46 Prévoyance sociale 5 288 076 10 576 152 15 864 228 0,2%
+47 Primature 3 247 964 6 495 929 9 743 893 0,1%
+48 Recherche scientifique 5 158 982 10 317 965 15 476 947 0,2%
+49 Reconstruction 5 887 680 11 775 361 17 663 041 0,2%
+50 Relation avec le parlement 11 785 894 23 571 788 35 357 682 0,4%
+51 Relation avec les partis politiques 1 874 717 3 749 433 5 624 150 0,1%
+52 Ressources hydraulique et électricité 24 027 920 48 055 840 72 083 759 0,8%
+53 Santé publique 785 438 030 1 570 876 059 2 356 314 089 25,6%
+54 Sports 8 868 411 17 736 821 26 605 232 0,3%
+55 Tourisme 34 250 697 68 501 395 102 752 092 1,1%
+56 Transport et voies de communication 59 887 010 119 774 021 179 661 031 2,0%
+57 Urbanisme et habitat 35 117 885 70 235 770 105 353 656 1,1%
+Total 3 062 955 895 6 125 911 790 9 188 867 685 100%
+Source : CNSSAP
+11
+11
+
+--- Page 14 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+12
+)FDC
+ne(
+2202
+ertsemirt
+reimerp
+ua
+edarg
+rap
+snoitasitoC
+.11.1
+uaelbaT
+%
+nE
+latoT
+)%6(
+EPC
+)%3(
+APC
+elairalas
+essaM
+edarG
+%5,0
+394
+959
+64
+923
+603
+13
+461
+356
+51
+441
+277
+125
+GS
+%0,3
+828
+383
+872
+912
+985
+581
+906
+497
+29
+846
+351
+390
+3
+D
+%5,3
+131
+076
+523
+124
+311
+712
+017
+655
+801
+310
+755
+816
+3
+DC
+%2,8
+698
+395
+557
+462
+927
+305
+236
+468
+152
+037
+784
+593
+8
+BC
+%6,71
+700
+985
+516
+1
+833
+950
+770
+1
+966
+925
+835
+469
+889
+059
+71
+1ATA
+%7,71
+979
+081
+226
+1
+689
+354
+180
+1
+399
+627
+045
+301
+332
+420
+81
+2ATA
+%6,12
+042
+713
+889
+1
+728
+445
+523
+1
+314
+277
+266
+187
+314
+290
+22
+1AGA
+%8,61
+212
+948
+645
+1
+808
+232
+130
+1
+404
+616
+515
+564
+312
+781
+71
+2AGA
+%3,7
+661
+161
+866
+777
+044
+544
+983
+027
+222
+859
+210
+424
+7
+1AA
+%8,2
+295
+307
+062
+593
+208
+371
+791
+109
+68
+775
+607
+698
+2
+2AA
+%9,0
+041
+954
+08
+724
+936
+35
+317
+918
+62
+544
+099
+398
+reissiuH
+%001
+586
+768
+881
+9
+097
+119
+521
+6
+598
+559
+260
+3
+828
+925
+890
+201
+latoT
+PASSNC
+: ecruoS
+)FDC
+ne(
+2202
+ertsemirt
+reimerp
+ua
+edarg
+rap
+te
+)noitarugifnoc
+enneicna(
+ecnivorp
+rap
+snoitasitoC
+.21.1
+uaelbaT
+latoT
+reissiuH
+2AA
+1AA
+2AGA
+1AGA
+2ATA
+1ATA
+BC
+DC
+D
+GS
+ecnivorP
+670
+210
+137
+533
+156
+31
+125
+816
+82
+142
+406
+88
+672
+874
+121
+764
+828
+741
+301
+806
+401
+946
+373
+031
+510
+126
+46
+267
+558
+81
+406
+022
+21
+401
+251
+udnudnaB
+417
+533
+576
+018
+633
+31
+279
+491
+93
+066
+196
+96
+620
+041
+161
+738
+593
+021
+037
+719
+79
+948
+344
+29
+124
+234
+55
+423
+229
+31
+275
+487
+01
+415
+570
+1
+ognoC-saB
+571
+252
+828
+968
+503
+6
+316
+688
+82
+489
+115
+69
+777
+353
+091
+684
+620
+332
+501
+623
+09
+191
+680
+29
+105
+208
+55
+269
+224
+71
+309
+810
+71
+487
+015
+ruetauqE
+885
+151
+436
+027
+218
+5
+918
+838
+32
+547
+539
+26
+594
+202
+201
+982
+877
+351
+474
+110
+311
+715
+611
+711
+390
+264
+04
+900
+965
+9
+165
+121
+5
+668
+203
+.ccO ïasaK
+538
+042
+157
+568
+226
+21
+289
+639
+33
+509
+608
+07
+056
+606
+451
+875
+564
+571
+727
+833
+021
+665
+152
+011
+221
+773
+74
+673
+100
+31
+716
+661
+21
+744
+666
+latneirO
+ïasaK
+295
+927
+265
+323
+184
+5
+187
+720
+81
+595
+368
+36
+196
+900
+621
+254
+165
+701
+652
+490
+79
+091
+791
+47
+759
+743
+84
+452
+337
+41
+154
+251
+7
+046
+062
+agnataK
+519
+607
+487
+3
+241
+789
+6
+213
+925
+32
+060
+260
+87
+790
+372
+124
+535
+018
+287
+840
+548
+728
+227
+342
+548
+582
+527
+853
+402
+710
+602
+319
+737
+191
+895
+574
+24
+asahsniK
+671
+335
+341
+351
+111
+1
+658
+990
+3
+220
+915
+7
+670
+354
+03
+709
+174
+04
+498
+773
+22
+221
+437
+02
+415
+187
+01
+214
+678
+2
+537
+550
+4
+784
+25
+ameinaM
+086
+119
+123
+660
+389
+6
+006
+236
+31
+438
+778
+72
+030
+900
+08
+797
+764
+66
+703
+187
+74
+556
+256
+74
+295
+675
+91
+597
+114
+7
+029
+160
+4
+580
+754
+uviK-droN
+404
+219
+715
+418
+122
+5
+834
+693
+53
+797
+509
+08
+819
+467
+211
+109
+390
+801
+484
+199
+06
+165
+234
+65
+479
+108
+13
+156
+041
+41
+717
+904
+11
+051
+357
+.rO
+ecnivorP
+925
+180
+832
+540
+549
+2
+896
+145
+21
+423
+283
+12
+571
+855
+64
+199
+614
+25
+358
+888
+93
+589
+650
+92
+124
+566
+22
+383
+917
+7
+638
+356
+2
+818
+252
+uviK-duS
+586
+768
+881
+9
+041
+954
+08
+295
+307
+062
+661
+161
+866
+212
+948
+645
+1
+042
+713
+889
+1
+979
+081
+226
+1
+700
+985
+516
+1
+698
+395
+557
+131
+076
+523
+828
+383
+872
+394
+959
+64
+latoT
+PASSNC
+: ecruoS
+21
+
+--- Page 15 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+13
+ed
+snoillim
+ne(
+2202
+ertsemirt
+reimerp
+ua
+)noitarugifnoc
+enneicna(
+ecnivorp
+rap
+te
+euqilbup
+noitartsinimda
+rap
+snoitasitoC
+.31.1
+uaelbaT )FDC
+latoT
+-duS
+ecnivorP
+-droN
+ameinaM
+asahsniK
+agnataK
+ïasaK
+ïasaK
+ruetauqE
+ognoC-saB
+udnudnaB
+euqilbuP
+noitartsinimdA
+uviK
+elatneirO
+uviK
+latneirO
+.ccO
+5,951
+6,5
+0,7
+9,01
+2,2
+2,28
+7,21
+1,01
+9,6
+7,7
+0,7
+3,7
+serèicnof
+seriaffA
+0,333
+2,9
+8,41
+3,01
+7,6
+5,211
+4,43
+1,54
+7,92
+9,62
+8,92
+6,31
+selaicos
+seriaffA
+2,295
+2,02
+9,35
+0,03
+9,5
+9,831
+3,73
+2,35
+4,97
+7,05
+0,15
+7,17
+erutlucirgA
+5,231
+5,1
+4,6
+9,4
+4,1
+1,57
+1,01
+8,01
+0,4
+3,9
+4,3
+6,5
+tegduB
+5,011
+4,4
+8,2
+7,4
+8,0
+6,56
+3,21
+3,2
+1,6
+8,5
+1,5
+6,0
+rueirétxe
+ecremmoC
+5,683
+6,2
+8,5
+4,1
+0,1
+8,342
+4,61
+0,11
+6,9
+4,63
+5,31
+1,54
+elanoitan
+esneféD
+7,571
+7,4
+6,5
+7,5
+0,2
+1,15
+5,61
+6,41
+7,61
+6,62
+3,61
+9,51
+larur
+tnemeppolevéD
+9,021
+1,3
+3,6
+4,5
+5,2
+9,45
+7,9
+1,21
+5,8
+3,8
+4,6
+7,3
+elanoitan
+eimonocE
+4,001
+2,1
+8,1
+3,0
+3,0
+9,67
+2,2
+5,2
+9,7
+0,2
+6,2
+9,2
+te
+eriadnoces
+,eriamirp
+tnemengiesnE lennoisseforp
+6,151
+2,4
+3,7
+4,9
+2,4
+4,95
+1,9
+2,31
+6,8
+8,31
+5,31
+0,9
+erutan
+al
+ed
+noitavresnoc
+te tnemennorivnE
+2,768
+2,03
+0,24
+7,15
+9,8
+4,274
+1,48
+1,13
+9,12
+1,03
+0,27
+0,32
+secnaniF
+8,533
+5,5
+5,9
+9,4
+3,4
+0,502
+5,71
+9,02
+0,51
+6,03
+0,7
+4,51
+euqilbup
+noitcnoF
+5,231
+8,3
+7,5
+4,5
+4,11
+8,55
+3,8
+3,11
+1,21
+8,3
+5,8
+3,6
+eirtsudnI
+6,643
+9,61
+5,72
+6,7
+3,6
+1,56
+9,22
+3,14
+6,23
+2,94
+6,04
+8,63
+scilbup
+xuavart
+te
+serutcurtsarfnI
+5,621
+1
+5,03
+9,631
+3,73
+6,23
+9,223
+2,77
+2,531
+2,39
+5,021
+6,86
+6,17
+étirucés
+te rueirétnI
+0,181
+5,6
+5,11
+0,6
+9,2
+2,73
+9,01
+8,41
+0,91
+3,73
+1,12
+8,31
+essenueJ
+4,252
+2,9
+2,31
+8,7
+2,3
+9,321
+0,42
+6,02
+5,11
+4,51
+5,41
+0,9
+ecitsuJ
+6,89
+8,2
+6,7
+3,5
+5,5
+8,43
+3,4
+8,6
+5,02
+1,5
+7,2
+4,3
+seniM
+3,653
+2
+6,53
+3,901
+1,58
+0,72
+7,697
+4,78
+0,312
+9,561
+9,752
+3,742
+2,133
+euqilbup
+étnaS
+8,201
+5,4
+4,4
+9,3
+9,1
+4,44
+0,6
+2,5
+4,21
+9,8
+6,5
+3,5
+emsiruoT
+7,971
+8,31
+1,7
+1,8
+9,3
+9,27
+8,31
+3,91
+3,41
+8,9
+5,8
+1,8
+noitacinummoc
+ed
+seiov
+te
+tropsnarT
+4,501
+6,4
+9,2
+4,4
+2,1
+2,03
+6,51
+0,8
+3,8
+4,41
+7,5
+0,01
+tatibah
+te
+emsinabrU
+3,148
+5,71
+5,82
+4,11
+6,7
+1,365
+1,03
+0,94
+1,03
+6,75
+9,42
+5,12
+seuqilbuP
+snoitartsinimdA
+sertuA
+9,881
+9
+1,832
+9,715
+9,123
+5,341
+7,487
+3
+7,265
+2,157
+2,436
+3,828
+3,576
+0,137
+latoT
+PASSNC
+: ecruoS
+31
+
+--- Page 16 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+14
+)FDC
+ed
+snoillim
+ne(
+2202
+ertsemirt
+reimerp
+ua
+edarg
+rap
+te
+euqilbup
+noitartsinimda
+rap
+snoitasitoC
+.41.1
+uaelbaT
+latoT
+reissiuH
+2AA
+1AA
+2AGA
+1AGA
+2ATA
+1ATA
+BC
+DC
+D
+GS
+euqilbuP
+noitartsinimdA
+25,951
+04,1
+47,1
+90,5
+08,33
+44,83
+42,63
+73,91
+41,61
+72,6
+00,1
+50,0
+serèicnof
+seriaffA
+00,333
+28,1
+20,31
+52,32
+81,56
+57,08
+19,06
+53,74
+45,23
+19,5
+22,2
+50,0
+selaicos
+seriaffA
+32,295
+78,11
+95,23
+14,86
+70,011
+08,931
+98,77
+98,67
+92,33
+22,61
+02,52
+00,0
+erutlucirgA
+35,231
+43,0
+45,0
+88,1
+31,21
+17,32
+22,92
+07,93
+99,21
+12,11
+28,0
+00,0
+tegduB
+64,011
+40,0
+54,0
+80,2
+52,52
+11,03
+51,82
+78,11
+05,8
+91,3
+97,0
+50,0
+rueirétxe
+ecremmoC
+35,683
+01,1
+42,4
+16,11
+81,43
+32,17
+73,411
+78,221
+68,91
+56,5
+63,1
+40,0
+elanoitan
+esneféD
+07,571
+16,1
+64,7
+48,81
+58,53
+88,83
+85,72
+43,62
+78,11
+90,5
+12,2
+00,0
+larur
+tnemeppolevéD
+49,021
+83,0
+58,0
+52,6
+20,61
+44,92
+15,92
+40,62
+16,9
+60,2
+97,0
+00,0
+elanoitan
+eimonocE
+04,001
+83,0
+81,0
+97,0
+74,5
+03,21
+41,81
+75,62
+60,5
+43,62
+40,5
+51,0
+lennoisseforp
+te
+eriadnoces
+,eriamirp
+tnemengiesnE
+06,151
+02,2
+62,3
+30,9
+40,13
+09,14
+23,03
+78,12
+55,8
+57,1
+86,1
+00,0
+erutan
+al
+ed
+noitavresnoc
+te tnemennorivnE
+71,768
+94,4
+73,11
+50,82
+84,631
+14,371
+00,312
+50,271
+82,77
+98,34
+41,7
+00,0
+secnaniF
+87,533
+04,1
+62,3
+58,01
+80,74
+72,27
+22,06
+31,97
+97,42
+76,9
+57,3
+53,32
+euqilbup
+noitcnoF
+25,231
+71,0
+56,1
+35,6
+74,32
+15,73
+02,13
+53,02
+56,8
+24,2
+85,0
+00,0
+eirtsudnI
+16,643
+90,51
+93,54
+46,56
+22,16
+49,06
+00,14
+75,93
+40,21
+84,3
+51,2
+01,0
+scilbup
+xuavart
+te
+serutcurtsarfnI
+74,621
+1
+18,11
+39,92
+38,58
+66,751
+73,492
+92,012
+75,212
+81,68
+56,13
+90,6
+01,0
+étirucés
+te rueirétnI
+30,181
+21,2
+56,31
+62,02
+42,13
+99,73
+34,42
+61,72
+15,81
+37,4
+59,0
+00,0
+essenueJ
+73,252
+36,0
+75,3
+85,11
+44,93
+71,05
+99,54
+44,83
+19,53
+15,81
+78,7
+42,0
+ecitsuJ
+36,89
+24,0
+45,0
+44,2
+84,31
+96,32
+64,72
+28,91
+40,8
+61,2
+75,0
+00,0
+seniM
+13,653
+2
+25,91
+50,96
+61,622
+41,654
+17,524
+85,642
+39,324
+44,902
+35,67
+65,681
+86,61
+euqilbup
+étnaS
+57,201
+03,0
+42,4
+30,01
+29,71
+35,82
+96,91
+53,01
+55,8
+09,1
+01,1
+51,0
+emsiruoT
+66,971
+36,0
+24,3
+66,8
+62,43
+08,64
+47,04
+17,92
+82,11
+56,3
+24,0
+01,0
+noitacinummoc
+ed
+seiov
+te
+tropsnarT
+53,501
+58,0
+71,3
+69,9
+60,12
+05,13
+65,02
+27,11
+13,5
+89,0
+12,0
+50,0
+tatibah
+te
+emsinabrU
+92,148
+88,1
+61,7
+49,43
+04,831
+98,891
+86,881
+39,111
+22,19
+34,24
+88,91
+68,5
+seuqilbuP
+snoitartsinimdA
+sertuA
+78,881
+9
+64,08
+07,062
+61,866
+58,645
+1
+23,889
+1
+81,226
+1
+95,516
+1
+95,557
+76,523
+83,872
+69,64
+latoT
+PASSNC
+: ecruoS
+41
+
+--- Page 17 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 1.15. Cotisants immatriculés à la CNSSAP
+Année 2019 2020 2021 2022*
+Effectifs immatriculés 21 673 23 201 33 310 8 634
+Cumul 23 250 46 451 79 761 88 395
+Source : CNSSAP
+* Effectifs immatriculés au premier trimestre 2022
+Tableau 1.16. Cotisants immatriculés à la CNSSAP par âge et par sexe
+Age Hommes En % Femmes En % Total En %
+(-)25 19 0,02% 18 0,02% 37 0,04%
+25 8 0,01% 12 0,01% 20 0,02%
+26 7 0,01% 5 0,01% 12 0,01%
+27 11 0,01% 9 0,01% 20 0,02%
+28 16 0,02% 11 0,01% 27 0,03%
+29 30 0,03% 38 0,04% 68 0,08%
+30 40 0,05% 17 0,02% 57 0,06%
+31 74 0,08% 34 0,04% 108 0,12%
+32 90 0,10% 64 0,07% 154 0,17%
+33 105 0,12% 84 0,10% 189 0,21%
+34 171 0,19% 105 0,12% 276 0,31%
+35 223 0,25% 151 0,17% 374 0,42%
+36 258 0,29% 207 0,23% 465 0,53%
+37 307 0,35% 227 0,26% 534 0,60%
+38 321 0,36% 301 0,34% 622 0,70%
+39 455 0,51% 446 0,50% 901 1,02%
+40 408 0,46% 377 0,43% 785 0,89%
+41 515 0,58% 536 0,61% 1 051 1,19%
+42 625 0,71% 627 0,71% 1 252 1,42%
+43 738 0,83% 711 0,80% 1 449 1,64%
+44 775 0,88% 748 0,85% 1 523 1,72%
+45 979 1,11% 900 1,02% 1 879 2,13%
+46 1 098 1,24% 951 1,08% 2 049 2,32%
+47 1 256 1,42% 1 019 1,15% 2 275 2,57%
+48 1 114 1,26% 947 1,07% 2 061 2,33%
+49 1 441 1,63% 1 123 1,27% 2 564 2,90%
+50 1 216 1,38% 756 0,86% 1 972 2,23%
+51 1 551 1,75% 1 066 1,21% 2 617 2,96%
+52 1 626 1,84% 1 091 1,23% 2 717 3,07%
+53 1 831 2,07% 1 146 1,30% 2 977 3,37%
+54 1 710 1,93% 966 1,09% 2 676 3,03%
+55 1 723 1,95% 975 1,10% 2 698 3,05%
+56 1 949 2,20% 1 003 1,13% 2 952 3,34%
+57 2 223 2,51% 1 070 1,21% 3 293 3,73%
+58 1 906 2,16% 930 1,05% 2 836 3,21%
+59 2 115 2,39% 960 1,09% 3 075 3,48%
+60 1 387 1,57% 604 0,68% 1 991 2,25%
+61 2 106 2,38% 934 1,06% 3 040 3,44%
+62 2 062 2,33% 912 1,03% 2 974 3,36%
+63 2 047 2,32% 921 1,04% 2 968 3,36%
+64 1 655 1,87% 759 0,86% 2 414 2,73%
+(+)64 20 496 23,19% 5 947 6,73% 26 443 29,91%
+Total 58 687 66,39% 29 708 33,61% 88 395 100%
+Source : CNSSAP
+15
+15
+
+--- Page 18 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 1.17. Rapport démographique
+Année 2019 2020 2021 2022*
+Cotisants 172 204 172 304 171 185 190 544
+Retraités 845 814 780 729
+Indice 204 212 219 261
+Source : CNSSAP
+* Indice au premier trimestre 2022
+Tableau 1.18. Évolution des utilisateurs de l’application « COTIZAPP »
+Année 2019 2020 2021 2022*
+Utilisateurs 8 082 9 945 10 330 10 333
+Variation - +1 863 +385 +3
+Variation en % - +23,05% +3,87% +0,03%
+Source : CNSSAP
+* Utilisateurs au premier trimestre 2022
+16
+16
+
+--- Page 19 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+PRESTATIONS
+II. PRESTATIONS
+Tableau 2.1. Retraités payés
+Année 2019 2020 2021 2022*
+Effectifs retraités 845 814 780 729
+Variation - -31 -34 -51
+Variation en % - -3,7% -4,2% -6,5%
+Source : CNSSAP
+* Effectifs retraités au premier trimestre 2022
+Tableau 2.2. Retraités payés par grade
+Grade 2019 2020 2021 2022* En %
+SG 84 81 80 75 10,3%
+D 4 4 4 4 0,5%
+CD 145 143 138 126 17,3%
+CB 159 152 147 138 18,9%
+ATA1 196 190 179 171 23,5%
+ATA2 119 114 108 101 13,9%
+AGA1 40 38 37 32 4,4%
+AGA2 57 55 51 51 7,0%
+AA1 26 24 24 22 3,0%
+AA2 9 8 7 5 0,7%
+Huissier 6 5 5 4 0,5%
+Total 845 814 780 729 100%
+Source : CNSSAP
+* Effectifs retraités au premier trimestre 2022
+Tableau 2.3. Bénéficiaires des prestations
+Prestations 2020 2021 2022*
+Pension de retraite 814 780 729
+Rente de survie (retraités décédés) 64 79 97
+Rente de survie (actifs décédés) 26 138 169
+Total 904 997 995
+Variation - +93 -2
+Variation en % - +10,3% -0,2%
+Source : CNSSAP
+* Bénéficiaires des prestations au premier trimestre 2022
+17
+17
+
+--- Page 20 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 2.4. Retraités payés par administration publique
+N° Administration Publique 2019 2020 2021 2022* En %
+1 Administration de l'assemblée nationale 2 2 1 - -
+2 Affaires foncières et Affaires sociales 1 1 1 1 0,1%
+3 Agriculture 2 2 2 2 0,3%
+4 Budget 180 174 166 162 22,2%
+5 Coopération internationale 1 1 1 1 0,1%
+6 Culture et arts 1 1 1 1 0,1%
+7 Développement rural 1 1 1 1 0,1%
+8 Economie nationale 1 1 1 1 0,1%
+9 Emploi, travail et prévoyance sociale 1 1 1 1 0,1%
+10 Enseignement primaire, secondaire et 2 2 2 2 0,3%
+professionnel
+11 Enseignement supérieur et universitaire 1 1 1 1 0,1%
+12 Environnement et conservation de la nature 1 1 1 1 0,1%
+13 Finances 108 107 102 96 13,2%
+14 Fonction publique 379 365 350 318 43,6%
+15 Genre, femme et enfant 1 1 1 1 0,1%
+16 Infrastructures et travaux publics 2 1 1 1 0,1%
+17 Intérieur et sécurité 2 2 2 2 0,3%
+18 Jeunesse 1 1 1 1 0,1%
+19 Mines 1 1 1 1 0,1%
+20 Plan et suivi de la mise en œuvre de la 112 106 102 98 13,4%
+Révolution de la modernité
+21 Porte feuille 38 36 35 32 4,4%
+22 Poste et télécommunication et Nouvelles 2 2 2 2 0,3%
+Technologies de l’Information et de la
+Communication
+23 Réforme institutionnelle et décentralisation 1 1 1 1 0,1%
+24 Relation avec le parlement 1 1 1 1 0,1%
+25 Santé publique 1 1 1 1 0,1%
+26 Tourisme 1 - - - -
+27 Transport et voies de communication 1 1 1 - -
+Total 845 814 780 729 100%
+Source : CNSSAP
+* Effectifs retraités au premier trimestre 2022
+Tableau 2.5. Bénéficiaires de la rente de survie
+Bénéficiaires 2019 2020 2021 2022*
+Conjoint 37 50 114 133
+Orphelin 33 40 103 133
+Total 70 90 217 266
+Variation - +20 +127 +49
+Variation en % - +28,6% +141,1% +22,6%
+Source : CNSSAP
+* Bénéficiaires de la rente au premier trimestre 2022
+18
+18
+
+--- Page 21 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+19
+2202
+ertsemirt
+reimerp
+ua
+edarg
+rap
+te
+euqilbup
+noitartsinimda
+rap
+séyap
+sétiarteR
+.6.2
+uaelbaT
+latoT
+reissiuH
+2AA
+1AA
+2AGA
+1AGA
+2ATA
+1ATA
+BC
+DC
+D
+GS
+euqilbuP
+noitartsinimdA
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+elanoitan
+eélbmessa'l
+ed
+noitartsinimdA
+2
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+2
+erutlucirgA
+261
+-
+3
+7
+41
+11
+63
+73
+32
+42
+-
+7
+tegduB
+2
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+2
+te
+eriadnoces
+,eriamirp
+tnemengiesnE lennoisseforp
+69
+2
+-
+-
+01
+41
+33
+12
+7
+3
+1
+5
+secnaniF
+813
+2
+1
+21
+42
+5
+62
+98
+17
+95
+1
+82
+euqilbup
+noitcnoF
+2
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+2
+étirucés
+te
+rueirétnI
+89
+-
+-
+-
+1
+2
+4
+81
+33
+03
+1
+9
+al
+ed
+ervuœ
+ne
+esim
+al
+ed
+ivius
+te
+nalP
+étinredom
+al
+ed
+noitulovér
+23
+-
+1
+3
+2
+-
+2
+6
+4
+01
+1
+3
+elliuef
+etroP
+2
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+2
+sellevuoN
+te
+noitacinummocélét
+te
+etsoP
+al
+ed
+te
+noitamrofnI’l
+ed
+seigolonhceT
+noitacinummoC
+51
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+51
+seuqilbuP
+snoitartsinimdA
+sertuA
+927
+4
+5
+22
+15
+23
+101
+171
+831
+621
+4
+57
+latoT
+PASSNC
+:
+ecruoS
+91
+
+--- Page 22 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 2.7. Retraités payés par administration publique et par sexe au premier trimestre
+2022
+Administration Publique H F Total
+Administration de l'assemblée nationale - - -
+Agriculture 2 - 2
+Budget 128 34 162
+Enseignement primaire, secondaire et professionnel 2 - 2
+Finances 68 28 96
+Fonction publique 270 48 318
+Intérieur et sécurité 2 - 2
+Plan et suivi de la mise en œuvre de la révolution de la modernité 83 15 98
+Porte feuille 27 5 32
+Poste et télécommunication et Nouvelles Technologies de l’Information et de - 2 2
+la Communication
+Autres Administrations Publiques 13 2 15
+Total 595 134 729
+Source : CNSSAP
+Tableau 2.8. Retraités payés par administration publique et par tranche d'âge au premier
+trimestre 2022
+Administration Publique (-)65 65 à 69 70 à 74 75 à 79 (+)79 Total
+Administration de l'assemblée nationale - - - - - -
+Agriculture - 1 1 - - 2
+Budget 25 56 55 20 6 162
+Enseignement primaire, secondaire et - - 2 - - 2
+professionnel
+Finances 17 27 37 11 4 96
+Fonction publique 19 42 169 65 23 318
+Intérieur et sécurité - 1 1 - - 2
+Plan et suivi de la mise en œuvre de la 4 23 46 19 6 98
+révolution de la modernité
+Porte feuille 1 7 16 7 1 32
+Poste et télécommunication et Nouvelles - 1 1 - - 2
+Technologies de l’Information et de la
+Communication
+Autres Administrations Publiques - 3 10 2 - 15
+Total 66 161 338 124 40 729
+En % 9,1% 22,1% 46,4% 17,0% 5,5% 100%
+Source : CNSSAP
+Tableau 2.9. Retraités payés par grade et par sexe au premier trimestre 2022
+Grade H F Total
+SG 68 7 75
+D 4 - 4
+CD 107 19 126
+CB 108 30 138
+ATA1 131 40 171
+ATA2 71 30 101
+AGA1 30 2 32
+AGA2 46 5 51
+AA1 22 - 22
+AA2 5 - 5
+Huissier 3 1 4
+Total 595 134 729
+Source : CNSSAP
+20
+20
+
+--- Page 23 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 2.10. Retraités payés par grade et par tranche d'âge au premier trimestre 2022
+Age (-)65 65 à 69 70 à 74 75 à 79 (+)79 Total
+SG 1 23 44 5 2 75
+D - 1 1 2 - 4
+CD 12 28 54 20 12 126
+CB 17 35 58 23 5 138
+ATA1 15 34 71 38 13 171
+ATA2 13 20 54 13 1 101
+AGA1 3 9 12 5 3 32
+AGA2 4 7 26 13 1 51
+AA1 - 2 15 3 2 22
+AA2 1 2 1 - 1 5
+Huissier - - 2 2 - 4
+Total 66 161 338 124 40 729
+Source : CNSSAP
+Tableau 2.11. Retraités payés par âge et par sexe au premier trimestre 2022
+Age Hommes En % Femmes En % Total En %
+(-)65 32 4,4% 34 4,7% 66 9,1%
+65 18 2,5% 5 0,7% 23 3,2%
+66 16 2,2% 12 1,6% 28 3,8%
+67 29 4,0% 12 1,6% 41 5,6%
+68 24 3,3% 6 0,8% 30 4,1%
+69 27 3,7% 12 1,6% 39 5,3%
+70 52 7,1% 6 0,8% 58 8,0%
+71 65 8,9% 17 2,3% 82 11,2%
+72 77 10,6% 5 0,7% 82 11,2%
+73 53 7,3% 8 1,1% 61 8,4%
+74 49 6,7% 6 0,8% 55 7,5%
+75 40 5,5% 1 0,1% 41 5,6%
+76 27 3,7% 4 0,5% 31 4,3%
+77 21 2,9% 2 0,3% 23 3,2%
+78 10 1,4% 4 0,5% 14 1,9%
+79 15 2,1% - 0,0% 15 2,1%
+(+)79 40 5,5% - 0,0% 40 5,5%
+Total 595 81,6% 134 18,4% 729 100%
+Source : CNSSAP
+Tableau 2.12. Prestations servies (en millions de CDF)
+Prestations 2019 2020 2021 2022*
+Pension de retraite 1 502,4 1 571,3 1 523,7 381,0
+Rente de survie 22,0 38,8 89,9 30,9
+Total 1 524,4 1 610,1 1 613,5 411,9
+Variation - +85,7 +3,4 -
+Variation en % - +5,6% +0,2% -
+Source : CNSSAP
+* Prestations servies au premier trimestre 2022
+21
+21
+
+--- Page 24 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 2.13. Age et pension de retraite mensuelle moyens par sexe au premier trimestre
+2022
+Pension Sexe Age moyen Pension de retraite mensuelle
+moyenne (en CDF)
+Pension de retraite F 68 143 509,7
+H 72 181 143,0
+Moyenne générale 70 162 326,4
+Source : CNSSAP
+Tableau 2.14. Pensions de retraite mensuelles (en CDF)
+Période Pensions de retraite
+2020 1 571 325 887
+Avril 117 513 565
+Mai 118 799 175
+Juin 120 513 882
+Trim2 356 826 622
+Juillet 125 890 191
+Août 144 163 882
+Septembre 134 400 900
+Trim3 404 454 973
+Octobre 128 507 121
+Novembre 127 899 662
+Décembre 159 539 133
+Trim4 415 945 916
+2021 1 523 659 370
+Janvier 120 747 650
+Février 123 937 020
+Mars 131 219 520
+Trim1 375 904 190
+Avril 127 981 140
+Mai 127 442 200
+Juin 129 073 280
+Trim2 384 496 620
+Juillet 127 526 330
+Août 127 297 850
+Septembre 126 776 210
+Trim3 381 600 390
+Octobre 126 776 210
+Novembre 128 058 370
+Décembre 126 823 590
+Trim4 381 658 170
+2022 381 031 230
+Janvier 108 665 990
+Février 124 905 670
+Mars 147 459 570
+Trim1 381 031 230
+Source : CNSSAP
+22
+22
+
+--- Page 25 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 2.15. Pensions de retraite par grade (en millions de CDF)
+Grade 2019 2020 2021 2022*
+SG 961,5 921,9 883,8 223,4
+D 2,9 3,9 4,0 1,0
+CD 116,1 142,7 142,4 34,2
+CB 120,3 142,1 139,7 36,9
+ATA1 135,4 164,2 159,1 40,0
+ATA2 81,4 97,0 95,8 22,0
+AGA1 25,9 31,0 31,1 6,6
+AGA2 35,1 42,0 40,4 11,0
+AA1 14,9 17,0 18,1 4,2
+AA2 5,4 5,8 5,4 1,1
+Huissier 3,4 3,7 3,8 0,7
+Total 1 502,4 1 571,3 1 523,7 381,0
+Source : CNSSAP
+* Pensions de retraite au premier trimestre 2022
+Tableau 2.16. Pensions de retraite par administration publique au premier trimestre 2022
+(en millions de CDF)
+N° Administration Publique Janvier Février Mars Total En %
+1 Administration de l'assemblée nationale - - - - -
+2 Affaires foncières et Affaires sociales - - 21,1 21,1 5,5%
+3 Agriculture 2,1 2,1 2,1 6,3 1,7%
+4 Budget 16,5 18,4 20,0 55,0 14,4%
+5 Coopération internationale 1,4 1,4 1,4 4,2 1,1%
+6 Culture et arts 1,4 1,4 1,4 4,2 1,1%
+7 Développement rural 1,4 1,4 1,4 4,2 1,1%
+8 Economie nationale 1,4 1,4 1,4 4,2 1,1%
+9 Emploi, travail et prévoyance sociale 1,4 1,4 1,4 4,2 1,1%
+10 Enseignement primaire, secondaire et professionnel 1,4 1,4 1,4 4,2 1,1%
+11 Enseignement supérieur et universitaire 2,1 2,1 2,1 6,3 1,7%
+12 Environnement et conservation de la nature 1,4 1,4 1,4 4,2 1,1%
+13 Finances 0,7 0,7 0,7 2,1 0,6%
+14 Fonction publique 9,5 10,9 12,6 33,1 8,7%
+15 Genre, femme et enfant 41,7 45,1 47,4 134,2 35,2%
+16 Infrastructures et travaux publics 1,4 1,4 1,4 4,2 1,1%
+17 Intérieur et sécurité 1,4 1,4 1,4 4,2 1,1%
+18 Jeunesse 1,4 4,2 2,8 8,4 2,2%
+19 Mines 1,4 1,4 1,4 4,2 1,1%
+20 Plan et suivi de la mise en œuvre de la révolution de la 0,7 0,7 0,7 2,1 0,6%
+modernité
+21 Porte feuille 11,4 14,2 14,0 39,7 10,4%
+22 Poste et télécommunication et Nouvelles Technologies 4,2 6,7 4,9 15,8 4,2%
+de l’Information et de la Communication
+23 Réforme institutionnelle et décentralisation 2,8 2,8 2,8 8,4 2,2%
+24 Relation avec le parlement 1,4 1,4 1,4 4,2 1,1%
+25 Santé publique - 1,4 0,7 2,1 0,6%
+26 Transport et voies de communications - - - - -
+Total 108,7 124,9 147,5 381,0 100%
+Source : CNSSAP
+Tableau 2.17. Pensions de retraite par sexe au premier trimestre 2022 (en CDF)
+Période Pensions de retraite (H) Pensions de retraite (F) Total
+Janvier 91 332 350 17 333 640 108 665 990
+Février 105 881 470 19 024 200 124 905 670
+Mars 126 126 510 21 333 060 147 459 570
+Total 323 340 330 57 690 900 381 031 230
+Source : CNSSAP
+23
+23
+
+--- Page 26 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+24
+)FDC
+ed
+snoillim
+ne(
+2202
+ertsemirt
+reimerp
+ua
+edarg
+rap
+te
+euqilbup
+noitartsinimda
+rap
+etiarter
+ed
+snoisneP
+.81.2
+uaelbaT
+latoT
+reissiuH
+2AA
+1AA
+2AGA
+1AGA
+2ATA
+1ATA
+BC
+DC
+D
+GS
+euqilbuP
+noitartsinimdA
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+elanoitan
+eélbmessa'l
+ed
+noitartsinimdA
+3,6
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+3,6
+erutlucirgA
+0,55
+-
+7,0
+6,1
+2,3
+4,2
+2,8
+9,8
+4,6
+7,6
+-
+9,61
+tegduB
+3,6
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+3,6
+te
+eriadnoces
+,eriamirp
+tnemengiesnE
+lennoisseforp
+1,33
+4,0
+-
+-
+0,3
+9,2
+4,7
+9,5
+9,1
+8,0
+3,0
+5,01
+secnaniF
+2,431
+3,0
+1,0
+1,2
+2,4
+9,0
+2,5
+5,91
+6,91
+8,61
+3,0
+3,56
+euqilbup
+noitcnoF
+4,8
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+4,8
+étirucés
+te
+rueirétnI
+7,93
+-
+-
+-
+2,0
+4,0
+7,0
+3,3
+2,8
+7,7
+2,0
+0,91
+noitulovér
+al
+ed
+ervuœ
+ne
+esim
+al ed
+ivius
+te nalP
+étinredom
+al
+ed
+8,51
+-
+2,0
+5,0
+5,0
+-
+5,0
+3,2
+9,0
+3,2
+2,0
+4,8
+elliuef
+etroP
+4,8
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+4,8
+sellevuoN
+te
+noitacinummocélét
+te
+etsoP
+al
+ed
+te
+noitamrofnI’l
+ed
+seigolonhceT
+noitacinummoC
+8,37
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+8,37
+seuqilbuP
+snoitartsinimdA
+sertuA
+0,183
+7,0
+1,1
+2,4
+0,11
+6,6
+0,22
+0,04
+9,63
+2,43
+0,1
+4,322
+latoT
+PASSNC
+: ecruoS
+42
+
+--- Page 27 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 2.19. Pensions de retraite par administration publique et par sexe au premier
+trimestre 2022 (en CDF)
+Administration Publique H F Total
+Administration de l'assemblée nationale - - -
+Agriculture 6 324 870 - 6 324 870
+Budget 44 823 060 10 135 050 54 958 110
+Enseignement primaire, secondaire et professionnel 6 324 870 - 6 324 870
+Finances 24 660 660 8 398 650 33 059 310
+Fonction publique 121 326 660 12 850 920 134 177 580
+Intérieur et sécurité 8 437 740 - 8 437 740
+Plan et suivi de la mise en œuvre de la révolution de la modernité 32 455 500 7 200 600 39 656 100
+Porte feuille 13 604 790 2 230 200 15 834 990
+Poste et télécommunication et Nouvelles Technologies de - 8 437 740 8 437 740
+l’Information et de la Communication
+Autres Administrations Publiques 65 382 180 8 437 740 73 819 920
+Total 323 340 330 57 690 900 381 031 230
+Source : CNSSAP
+Tableau 2.20. Pensions de retraite par administration publique et par tranche d'âge au
+premier trimestre 2022 (en millions de CDF)
+Administration Publique (-)65 65 à 69 70 à 74 75 à 79 (+)79 Total
+Administration de l'assemblée nationale - - - - - -
+Agriculture - 4,2 2,1 - - 6,3
+Budget 5,8 28,5 13,5 5,7 1,5 55,0
+Enseignement primaire, secondaire et professionnel - - 6,3 - - 6,3
+Finances 3,9 10,1 12,6 3,5 2,9 33,1
+Fonction publique 7,7 21,6 79,9 16,5 8,6 134,2
+Intérieur et sécurité - 4,2 4,2 - - 8,4
+Plan et suivi de la mise en œuvre de la révolution de 0,8 8,9 19,4 8,8 1,7 39,7
+la modernité
+Porte feuille 0,2 2,6 11,3 1,5 0,2 15,8
+Poste et télécommunication et Nouvelles - 4,2 4,2 - - 8,4
+Technologies de l’Information et de la
+Communication
+Autres Administrations Publiques - 12,7 35,9 25,3 - 73,8
+Total 18,4 97,1 189,4 61,4 14,8 381,0
+Source : CNSSAP
+Tableau 2.21. Pensions de retraite par grade et par sexe au premier trimestre 2022 (en CDF)
+Grade H F Total
+SG 200 228 010 23 193 480 223 421 490
+D 998 610 - 998 610
+CD 29 278 740 4 899 180 34 177 920
+CB 28 330 680 8 557 020 36 887 700
+ATA1 28 710 690 11 271 750 39 982 440
+ATA2 14 724 540 7 313 040 22 037 580
+AGA1 6 153 630 434 370 6 588 000
+AGA2 9 078 780 1 889 100 10 967 880
+AA1 4 226 880 - 4 226 880
+AA2 1 063 590 - 1 063 590
+Huissier 546 180 132 960 679 140
+Total 323 340 330 57 690 900 381 031 230
+Source : CNSSAP
+25
+25
+
+--- Page 28 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 2.22. Pensions de retraite par grade et par tranche d'âge au premier trimestre 2022
+(en CDF)
+Grade (-)65 65 à 69 70 à 74 75 à 79 (+)79 Total
+SG 2 106 000 63 228 090 122 244 180 31 631 220 4 212 000 223 421 490
+D - 274 020 225 240 499 350 - 998 610
+CD 2 909 670 7 019 340 15 472 350 5 006 550 3 770 010 34 177 920
+CB 5 254 200 8 537 280 14 214 480 7 518 060 1 363 680 36 887 700
+ATA1 3 405 570 8 909 820 14 873 880 9 068 520 3 724 650 39 982 440
+ATA2 3 044 520 4 680 930 11 140 590 2 906 340 265 200 22 037 580
+AGA1 626 220 1 972 260 2 176 650 1 080 450 732 420 6 588 000
+AGA2 855 750 1 554 420 5 809 380 2 552 310 196 020 10 967 880
+AA1 - 443 610 2 804 520 677 010 301 740 4 226 880
+AA2 209 940 459 750 141 210 - 252 690 1 063 590
+Huissier - - 265 920 413 220 - 679 140
+Total 18 411 870 97 079 520 189 368 400 61 353 030 14 818 410 381 031 230
+En% 4,8% 25,5% 49,7% 16,1% 3,9% 100%
+Source : CNSSAP
+Tableau 2.23. Pensions de retraite par tranche d'âge et par sexe au premier trimestre 2022
+(en CDF)
+Age H F Total
+(-)65 9 093 570 9 318 300 18 411 870
+65 à 69 74 717 610 22 361 910 97 079 520
+70 à 74 168 674 370 20 694 030 189 368 400
+75 à 79 56 036 370 5 316 660 61 353 030
+(+)79 14 818 410 - 14 818 410
+Total 323 340 330 57 690 900 381 031 230
+Source : CNSSAP
+26
+26
+
+--- Page 29 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 2.24. Rente de survie mensuelle en CDF (retraités décédés)
+Période Conjoint Orphelins Total
+2020 29 830 753 1 733 793 31 564 546
+Janvier 1 218 938 89 972 1 308 910
+Février 1 295 947 89 972 1 385 919
+Mars 1 628 469 89 972 1 718 441
+Trim1 4 143 354 269 916 4 413 270
+Avril 1 742 820 89 972 1 832 792
+Mai 2 119 415 99 958 2 219 373
+Juin 1 849 573 99 958 1 949 530
+Trim2 5 711 807 289 888 6 001 695
+Juillet 2 162 437 99 958 2 262 395
+Août 3 575 381 350 235 3 925 615
+Septembre 2 941 279 213 386 3 154 666
+Trim3 8 679 098 663 579 9 342 676
+Octobre 5 199 129 171 268 5 370 397
+Novembre 3 190 478 171 268 3 361 745
+Décembre 2 906 888 167 875 3 074 762
+Trim4 11 296 494 510 410 11 806 905
+2021 59 232 731 3 197 770 62 430 501
+Janvier 3 654 711 311 880 3 966 591
+Février 3 628 970 283 900 3 912 870
+Mars 4 659 530 226 760 4 886 290
+Trim1 11 943 211 822 540 12 765 751
+Avril 6 770 130 815 360 7 585 490
+Mai 4 913 000 194 300 5 107 300
+Juin 4 729 240 194 300 4 923 540
+Trim2 16 412 370 1 203 960 17 616 330
+Juillet 4 982 820 194 300 5 177 120
+Août 4 982 820 194 300 5 177 120
+Septembre 5 025 250 194 300 5 219 550
+Trim3 14 990 890 582 900 15 573 790
+Octobre 5 104 170 194 300 5 298 470
+Novembre 5 639 850 194 300 5 834 150
+Décembre 5 142 240 199 770 5 342 010
+Trim4 15 886 260 588 370 16 474 630
+2022 18 236 192 1 199 830 19 436 022
+Janvier 5 161 731 199 770 5 361 501
+Février 6 162 781 480 570 6 643 351
+Mars 6 911 680 519 490 7 431 170
+Trim1 18 236 192 1 199 830 19 436 022
+Source : CNSSAP
+27
+27
+
+--- Page 30 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 2.25. Rente de survie mensuelle en CDF (actifs décédés)
+Période Conjoint Orphelins Total
+2020 6 389 438 833 454 7 222 892
+Janvier 460 814 62 864 523 678
+Février 460 814 57 415 518 229
+Mars 460 814 57 415 518 229
+Trim1 1 382 443 177 694 1 560 137
+Avril 460 814 57 415 518 229
+Mai 701 603 88 607 790 211
+Juin 509 018 63 685 572 703
+Trim2 1 671 436 209 707 1 881 143
+Juillet 509 018 63 685 572 703
+Août 471 058 63 685 534 743
+Septembre 800 879 108 348 909 227
+Trim3 1 780 955 235 718 2 016 673
+Octobre 518 202 70 111 588 313
+Novembre 518 202 70 111 588 313
+Décembre 518 202 70 111 588 313
+Trim4 1 554 605 210 334 1 764 939
+2021 23 370 930 4 067 030 27 437 960
+Janvier 609 620 83 660 693 280
+Février 930 250 163 870 1 094 120
+Mars 1 516 440 265 540 1 781 980
+Trim1 3 056 310 513 070 3 569 380
+Avril 1 561 840 280 080 1 841 920
+Mai 1 594 670 280 080 1 874 750
+Juin 1 742 370 309 160 2 051 530
+Trim2 4 898 880 869 320 5 768 200
+Juillet 1 923 110 345 600 2 268 710
+Août 3 020 600 520 680 3 541 280
+Septembre 2 414 100 400 280 2 814 380
+Trim3 7 357 810 1 266 560 8 624 370
+Octobre 2 458 900 429 860 2 888 760
+Novembre 2 732 100 479 900 3 212 000
+Décembre 2 866 930 508 320 3 375 250
+Trim4 8 057 930 1 418 080 9 476 010
+2022 9 607 640 1 845 860 11 453 500
+Janvier 3 048 600 602 110 3 650 710
+Février 3 138 800 617 900 3 756 700
+Mars 3 420 240 625 850 4 046 090
+Trim1 9 607 640 1 845 860 11 453 500
+Source : CNSSAP
+28
+28
+
+--- Page 31 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 2.26. Rente de survie mensuelle totale (en CDF)
+Période Conjoint Orphelins Total
+2020 36 220 191 2 567 247 38 787 438
+Janvier 1 679 752 152 836 1 832 589
+Février 1 756 761 147 387 1 904 148
+Mars 2 089 283 147 387 2 236 670
+Trim1 5 525 796 447 611 5 973 407
+Avril 2 203 634 147 387 2 351 021
+Mai 2 821 019 188 565 3 009 584
+Juin 2 358 591 163 643 2 522 233
+Trim2 7 383 243 499 595 7 882 838
+Juillet 2 671 455 163 643 2 835 098
+Août 4 046 439 413 920 4 460 358
+Septembre 3 742 158 321 735 4 063 893
+Trim3 10 460 052 899 297 11 359 349
+Octobre 5 717 330 241 379 5 958 710
+Novembre 3 708 679 241 379 3 950 059
+Décembre 3 425 089 237 986 3 663 075
+Trim4 12 851 099 720 745 13 571 844
+2021 82 603 661 7 264 800 89 868 461
+Janvier 4 264 331 395 540 4 659 871
+Février 4 559 220 447 770 5 006 990
+Mars 6 175 970 492 300 6 668 270
+Trim1 14 999 521 1 335 610 16 335 131
+Avril 8 331 970 1 095 440 9 427 410
+Mai 6 507 670 474 380 6 982 050
+Juin 6 471 610 503 460 6 975 070
+Trim2 21 311 250 2 073 280 23 384 530
+Juillet 6 905 930 539 900 7 445 830
+Août 8 003 420 714 980 8 718 400
+Septembre 7 439 350 594 580 8 033 930
+Trim3 22 348 700 1 849 460 24 198 160
+Octobre 7 563 070 624 160 8 187 230
+Novembre 8 371 950 674 200 9 046 150
+Décembre 8 009 170 708 090 8 717 260
+Trim4 23 944 190 2 006 450 25 950 640
+2022 27 843 832 3 045 690 30 889 522
+Janvier 8 210 331 801 880 9 012 211
+Février 9 301 581 1 098 470 10 400 051
+Mars 10 331 920 1 145 340 11 477 260
+Trim1 27 843 832 3 045 690 30 889 522
+Source : CNSSAP
+29
+29
+
+--- Page 32 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 2.27. Ancienneté moyenne par grade (en années)
+Grade Ancienneté moyenne
+SG 38
+D 37
+CD 38
+CB 36
+ATA1 36
+ATA2 36
+AGA1 34
+AGA2 33
+AA1 32
+AA2 36
+Huissier 32
+Moyenne générale 35
+Source : CNSSAP
+Tableau 2.28. Nombre d’enfants par retraité
+Grade Effectifs retraités Total enfants Enfants par retraité
+SG 75 479 6
+D 4 37 9
+CD 126 921 7
+CB 138 925 7
+ATA1 171 1 097 6
+ATA2 101 649 6
+AGA1 32 218 7
+AGA2 51 345 7
+AA1 22 159 7
+AA2 5 35 7
+Huissier 4 22 6
+Total 729 4 887 7
+Source : CNSSAP
+30
+30
+
+--- Page 33 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+III. FINANCES
+Tableau 3.1. Compte de résultats au 31 mars 2022 (en milliards de CDF)
+Intitulés des comptes 31-déc.-19 31-déc.-20 31-déc.-21 31-mars.-22
+Produits techniques 24,6 33,3 34,1 9,2
+Produits sur opération de placement 1,8 7,2 7,6 1,0
+Charges techniques 1,5 1,6 1,6 0,4
+Matières et fournitures consommées 0,2 0,2 0,3 0,2
+Transports consommés 0,1 0,1 0,1 0,0
+Autres services consommés 1,1 1,6 1,9 0,9
+Charges et pertes diverses 0,8 1,2 1,7 0,8
+Charges de personnel 1,2 1,9 2,3 0,7
+Intérêt reçus - - - -
+Charges financières 0,1 0,1 0,1 0,1
+Dotations aux provisions exigibles - - - -
+Résultat brut d'exploitation 21,4 33,9 33,7 7,1
+Impôt et taxes 0,0 0,0 0,0 0,0
+Dotations aux amortissements 0,3 0,5 0,5 -
+Résultat net d'exploitation 21,1 33,4 33,2 7,1
+Résultat sur cession d'éléments d'actifs 0,0 0,0 0,0 -
+Reprise sur provisions - - - -
+Produits exceptionnels - - - -
+Résultat courant avant impôt 21,1 33,4 33,2 7,1
+Impôt sur le bénéfice - - - -
+Résultat net 21,1 33,4 33,2 7,1
+Source : CNSSAP
+31
+31
+
+--- Page 34 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 3.2. Bilan au 31 mars 2022 (en millions de CDF)
+ACTIF 31-déc.-19 31-déc.-20 31-déc.-21 31-mars.-22
+ACTIF IMMOBILISE
+Immobilisations incorporelles
+Licences et logiciels 225,33 227,85 564,56 685,13
+Charges immobilisées 270,38 222,16 1 795,08 2 773,87
+Total des immobilisations incorporelles 495,71 450,00 2 359,64 3 459,00
+Immobilisations corporelles
+Valeurs immobilisées corporelles 647,47 809,82 1 792,19 1 964,99
+Valeurs immobilisées corporelles en cours 74,84 108,80 3 033,29 3 187,09
+Total des immobilisations corporelles 722,31 918,62 4 825,48 5 152,08
+Immobilisations financières
+Autres immobilisations financières 35 475,87 64 237,54 77 316,18 78 456,53
+Total des immobilisations financières 35 475,87 64 237,54 77 316,18 78 456,53
+TOTAL ACTIF IMMOBILISE 36 693,89 65 606,16 84 501,30 87 067,61
+ACTIF CIRCULANT
+Créances d'exploitation
+Débiteurs divers 277,62 3 238,40 4 410,37 3 613,18
+Contribution de l'Etat Congolais 3 174,12 2 380,59 2 380,59 2 380,59
+Total des créances d'exploitations 3 451,74 5 618,99 6 790,97 6 069,46
+TOTAL ACTIF CIRCULANT 3 451,74 5 618,99 6 790,97 6 069,46
+TRESORERIE
+Banques, chèques postaux, caisses 2 236,71 7 584,34 18 184,36 22 661,15
+TOTAL TRESORERIE 2 236,71 7 584,34 18 184,36 22 661,15
+TOTAL ACTIF 42 382,34 78 809,50 109 476,63 115 722,53
+PASSIF 31-déc.-19 31-déc.-20 31-déc.-21 31-mars.-22
+Fonds propres
+Dotation initiale 1 500,00 1 500,00 1 500,00 1 500,00
+Résultat net de l'exercice 21 072,78 33 368,25 33 194,29 7 085,67
+Report à nouveau 14 792,95 35 865,73 69 233,98 102 375,50
+Subvention d'investissement 252,90 205,99 510,29 510,29
+Plus-value de réévaluation 63,20 194,93 194,93 194,93
+Total des fonds propres 37 682 71 135 104 633,50 111 742,08
+Dettes financières et ressources assimilées
+Provisions financières pour risques et charges 506,31 506,31 506,31 506,31
+Total des dettes financières et ressources assimilées 506,31 506,31 506,31 506,31
+Passif circulant
+Dettes fiscales 47,16 16,91 - 27,71
+Personnel, charges à payer 11,70 - - -
+Prestations à payer - 18,86 313,50 -
+Divers passifs 36,78 214,01 29,82 -
+Autres comptes de transition - - - 352,69
+Cotisations et pénalités de retard 3 174,12 2 380,59 2 380,59 2 380,59
+Ecart de conversion passif 924,44 4 537,91 1 612,90 788,83
+TOTAL PASSIF CIRCULANT 4 194,20 7 168,28 4 336,82 3 549,83
+TOTAL PASSIF 42 382,34 78 809,50 109 476,63 115 722,53
+Source : CNSSAP
+32
+32
+
+--- Page 35 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 3.3. Évolution des indicateurs de performance
+Ratios Normes 2020 2021 2022*
+Ratio des charges de fonctionnement par Inférieur ou égal à 15% 13,7% 14,9% -
+rapport au total des revenus
+Frais du personnel par rapport aux Inférieur ou égal à 50% 33,6% 36,6% 34,4%
+dépenses de fonctionnement
+Ratio du résultat net par rapport aux Supérieur ou égal à 100,2% 97,2% 77,1%
+cotisations 20%
+Ratio des réserves Supérieur ou égal à 3 38,39 55,94 243,01
+Ratio d’autosuffisance Supérieur ou égal à 565,1% 533,7% 407,0%
+120%
+Source : CNSSAP
+* Evolution des indicateurs de performance au premier trimestre 2022. Concernant le premier indicateur, il est non
+disponible. Il sera publié lors du prochain numéro du bulletin.
+Tableau 3.4. Évolution des revenus de la CNSSAP (en milliards de CDF)
+Année 2019 2020 2021 2022*
+Produits techniques 24,6 33,3 34,1 9,2
+Produits sur opération de placement 1,8 7,2 7,6 1,0
+Total revenus 26,4 40,5 41,7 10,2
+Variation - +14,1 +1,2 -
+Variation en % - +53,3% +2,8% -
+Source : CNSSAP
+* Revenus au premier trimestre 2022
+Tableau 3.5. Évolution des charges de la CNSSAP (en milliards de CDF)
+Année 2019 2020 2021 2022*
+Charges techniques 1,5 1,6 1,6 0,4
+Frais de gestion 3,8 5,6 6,9 2,7
+Total charges 5,4 7,2 8,5 3,1
+Variation - +1,8 +1,3 -
+Variation en % - +33,8% +18,6% -
+Source : CNSSAP
+* Charges au premier trimestre 2022
+Tableau 3.6. Évolution du résultat net après impôt (en milliards de CDF)
+Année 2019 2020 2021 2022*
+Résultat net 21,1 33,4 33,2 7,1
+Variation - +12,3 -0,2 -
+Variation en % - +58,4% -0,5% -
+Source : CNSSAP
+* Résultat net au premier trimestre 2022
+Tableau 3.7. Dépôts à terme (en millions d’USD)
+Année 2019 2020 2021 2022*
+DAT 20,1 30,6 44,8 48,1
+Variation - +10,5 +14,2 +3,3
+Variation en % - +52,2% +46,4% +7,4%
+Source : CNSSAP
+* Dépôts à terme au premier trimestre 2022
+33
+33
+
+--- Page 36 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+RESSOURCES HUMAINES
+IV. RESSOURCES HUMAINES
+Tableau 4.1. Quelques indicateurs RH
+Indicateurs 2018 2019 2020 2021 2022*
+Nombre d'agents et cadres 32 37 58 64 81
+Nombre de dirigeants 3 3 3 3 3
+Nombre de consultants techniques 3 3 2 5 6
+Age moyen du staff interne 32 ans 33 ans 32 ans 32 ans 35 ans
+Ancienneté moyenne 13 mois 27 mois 23 mois 28 mois 29 mois
+Personnel féminin 34,4% 32,4% 32,7% 32,8% 33,33%
+Taux de rétention du personnel 96% 97% 99% 100% 99%
+Source : CNSSAP
+* Indicateurs au premier trimestre 2022
+Tableau 4.2. Effectif général CNSSAP au premier trimestre 2022
+N° Catégorie H F Total
+1 Dirigeants 3 - 3
+2 Cadres 8 2 10
+3 Maîtrises 15 10 25
+4 Agents d'exécution 31 15 46
+5 Consultants techniques 6 - 6
+Total 63 27 90
+Source : CNSSAP
+Tableau 4.3. Distribution d'âge à la CNSSAP au premier trimestre 2022
+Classe d’âge H F Total
+23-25 2 2 4
+26-28 9 7 16
+29-31 8 4 12
+32-34 11 5 16
+35-37 10 5 15
+38-40 8 2 10
+41-45 5 - 5
++45 1 2 3
+Total 54 27 81
+Source : CNSSAP
+Note : cette variable n’a pas pris en compte les 3 dirigeants et les 6 consultants techniques.
+34
+34
+
+--- Page 37 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 4.4. Evolution trimestrielle de l'effectif du staff CNSSAP
+Période Dirigeants Cadres Maîtrises Agents Consultants Total
+d'exécutions techniques
+H F H F H F H F H F
+2017
+Trim4 3 - 7 3 3 1 5 5 4 - 31
+2018
+Trim1 3 - 5 2 5 1 4 5 3 - 28
+Trim2 3 - 6 2 4 1 3 6 3 - 28
+Trim3 3 - 6 2 6 1 7 6 3 - 34
+Trim4 3 - 7 2 7 2 9 5 3 - 38
+2019
+Trim1 3 - 7 2 10 3 8 7 3 - 43
+Trim2 3 - 7 2 10 3 8 6 3 - 42
+Trim3 3 - 7 2 10 3 8 6 3 - 42
+Trim4 3 - 7 2 10 3 9 6 3 - 43
+2020
+Trim1 3 - 8 2 11 4 11 10 2 - 51
+Trim2 3 - 8 2 11 3 11 11 2 - 51
+Trim3 3 - 8 2 11 4 19 12 2 - 61
+Trim4 3 - 8 2 11 6 20 11 2 - 63
+2021
+Trim1 3 - 8 2 10 6 20 11 2 - 62
+Trim2 3 - 8 2 11 6 22 11 2 - 65
+Trim3 3 - 8 2 12 6 23 11 5 - 70
+Trim4 3 - 8 2 12 6 23 13 5 - 72
+2022
+Trim1 3 - 8 2 15 10 31 15 6 - 90
+Source : CNSSAP
+Tableau 4.5. Niveau d’études du capital humain CNSSAP
+Niveau DEA/DES Licence Graduat D6 Total
+d'études (Bac+5) (Bac+3)
+H F H F H F H F
+2017 3 - 17 9 1 1 - - 31
+2018 3 - 20 9 3 2 1 - 38
+2019 4 - 24 10 2 2 1 - 43
+2020 3 - 37 17 2 2 2 - 63
+2021 3 - 37 19 3 2 3 - 67
+2022* 3 - 43 26 4 3 5 - 84
+Source : CNSSAP
+* Effectifs au premier trimestre 2022
+Note : cette variable n’a pas pris en compte les 6 consultants techniques.
+35
+35
+
+--- Page 38 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+TABLE DES MATIÈRES
+AVANT-PROPOS 1
+SIGNES, SIGLES & ABREVIATIONS 2
+DEFINITIONS DE PRINCIPAUX CONCEPTS 3
+FORMULES 4
+I. COTISATIONS 5
+Tableau 1.1. Cotisants à la CNSSAP 5
+Tableau 1.2. Cotisants par province (ancienne configuration) au premier trimestre 2022 5
+Tableau 1.3. Cotisants par administration publique au premier trimestre 2022 6
+Tableau 1.4. Cotisants par grade au premier trimestre 2022 7
+Tableau 1.5. Cotisants par province (ancienne configuration) et par grade au premier trimestre 2022 7
+Tableau 1.6. Cotisants par administration publique et par province (ancienne configuration) au premier trimestre 2022 8
+Tableau 1.7. Cotisants par administration publique et par grade au premier trimestre 2022 9
+Tableau 1.8. Cotisations trimestrielles (en CDF) 10
+Tableau 1.9. Cotisations par province (ancienne configuration) au premier trimestre 2022 (en CDF) 10
+Tableau 1.10. Cotisations par administration publique au premier trimestre 2022 (en CDF) 11
+Tableau 1.11. Cotisations par grade au premier trimestre 2022 (en CDF) 12
+Tableau 1.12. Cotisations par province (ancienne configuration) et par grade au premier trimestre 2022 (en CDF) 12
+Tableau 1.13. Cotisations par administration publique et par province (ancienne configuration) au premier trimestre 2022
+(en millions de CDF) 13
+Tableau 1.14. Cotisations par administration publique et par grade au premier trimestre 2022 (en millions de CDF) 14
+Tableau 1.15. Cotisants immatriculés à la CNSSAP 15
+Tableau 1.16. Cotisants immatriculés à la CNSSAP par âge et par sexe 15
+Tableau 1.17. Rapport démographique 16
+Tableau 1.18. Évolution des utilisateurs de l’application « COTIZAPP » 16
+II. PRESTATIONS 17
+Tableau 2.1. Retraités payés 17
+Tableau 2.2. Retraités payés par grade 17
+Tableau 2.3. Bénéficiaires des prestations 17
+Tableau 2.4. Retraités payés par administration publique 18
+Tableau 2.5. Bénéficiaires de la rente de survie 18
+Tableau 2.6. Retraités payés par administration publique et par grade au premier trimestre 2022 19
+Tableau 2.7. Retraités payés par administration publique et par sexe au premier trimestre 2022 20
+Tableau 2.8. Retraités payés par administration publique et par tranche d’âge au premier trimestre 2022 20
+Tableau 2.9. Retraités payés par grade et par sexe au premier trimestre 2022 20
+Tableau 2.10. Retraités payés par grade et par tranche d’âge au premier trimestre 2022 21
+Tableau 2.11. Retraités payés par âge et par sexe au premier trimestre 2022 21
+36
+
+--- Page 39 ---
+BULLETIN TRIMESTRIEL D’INFORMATIONS STATISTIQUES
+N°07
+Tableau 2.12. Prestations servies (en millions de CDF) 21
+Tableau 2.13. Age et pension de retraite mensuelle moyens par sexe au premier trimestre 2022 22
+Tableau 2.14. Pensions de retraite mensuelles (en CDF) 22
+Tableau 2.15. Pensions de retraite par grade (en millions de CDF) 23
+Tableau 2.16. Pensions de retraite par administration publique au premier trimestre 2022 (en millions de CDF) 23
+Tableau 2.17. Pensions de retraite par sexe au premier trimestre 2022 (en CDF) 23
+Tableau 2.18. Pensions de retraite par administration publique et par grade au premier trimestre 2022 (en millions de CDF) 24
+Tableau 2.19. Pensions de retraite par administration publique et par sexe au premier trimestre 2022 (en CDF) 25
+Tableau 2.20. Pensions de retraite par administration publique et par tranche d’âge au premier trimestre 2022
+(en millions de CDF) 25
+Tableau 2.21. Pensions de retraite par grade et par sexe au premier trimestre 2022 (en CDF) 25
+Tableau 2.22. Pensions de retraite par grade et par tranche d’âge au premier trimestre 2022 (en CDF) 26
+Tableau 2.23. Pensions de retraite par tranche d’âge et par sexe au premier trimestre 2022 (en CDF) 26
+Tableau 2.24. Rente de survie mensuelle en CDF (retraités décédés) 27
+Tableau 2.25. Rente de survie mensuelle en CDF (actifs décédés) 28
+Tableau 2.26. Rente de survie mensuelle totale (en CDF) 29
+Tableau 2.27. Ancienneté moyenne par grade (en années) 30
+Tableau 2.28. Nombre d’enfants par retraité 30
+III. FINANCES 31
+Tableau 3.1. Compte de résultats au 31 mars 2022 (en milliards de CDF) 31
+Tableau 3.2. Bilan au 31 mars 2022 (en millions de CDF) 32
+Tableau 3.3. Évolution des indicateurs de performance 33
+Tableau 3.4. Évolution des revenus de la CNSSAP (en milliards de CDF) 33
+Tableau 3.5. Évolution des charges de la CNSSAP (en milliards de CDF) 33
+Tableau 3.6. Évolution du résultat net après impôt (en milliards de CDF) 33
+Tableau 3.7. Dépôts à terme (en millions d’USD) 33
+IV. RESSOURCES HUMAINES 34
+Tableau 4.1. Quelques indicateurs RH 34
+Tableau 4.2. Effectif général CNSSAP au premier trimestre 2022 34
+Tableau 4.3. Distribution d’âge à la CNSSAP au premier trimestre 2022 34
+Tableau 4.4. Evolution trimestrielle de l’effectif du staff CNSSAP 35
+Tableau 4.5. Niveau d’études du capital humain CNSSAP 35
+37
+
+--- Page 40 ---
+Adresse physique
+Siège
+8ème rue, Petit boulevard résidentiel, Limete-Kinshasa
+Agence/Kinshasa
+Aile 4, 2ème étage
+Bâtiment de la Fonction Publique
+Kinshasa/Gombe
+Agence/Lubumbashi
+15, avenue du Parc,
+Quartier Makomeno,
+Commune de Lubumbashi.
+Contact
++243 82 990 8482
++243 82 990 8473 (Service client)
+serviceclient@cnssap.cd
+contact@cnssap.cd
+www.cnssap.cd
+CNSSAP RDC Officiel

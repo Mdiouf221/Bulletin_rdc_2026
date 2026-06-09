@@ -955,7 +955,7 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
     def _serve_file(self):
         """Sert un fichier du workspace via /files/<chemin_relatif>.
 
-        Pour les fichiers .txt de sources (dans 06_donnees/), génère une
+        Pour les fichiers .txt de sources (dans 06_sources/), génère une
         page HTML avec le contenu du fichier + liens vers la source web
         et vers le fichier local.
         """
@@ -981,7 +981,7 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
                 return
 
             # Fichiers .txt de sources → page HTML enrichie
-            if target.suffix.lower() == ".txt" and "06_donnees" in str(target):
+            if target.suffix.lower() == ".txt" and "06_sources" in str(target):
                 data = self._build_source_viewer(
                     target, rel, val_id, val_file, val_status, ctx, anchor
                 ).encode("utf-8")

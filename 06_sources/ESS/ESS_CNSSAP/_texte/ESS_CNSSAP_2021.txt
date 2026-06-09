@@ -1,0 +1,47 @@
+TITRE : ESS CNSSAP 2021 — Enquête sur les Sources Statistiques de la protection sociale
+SOURCE : Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP), République Démocratique du Congo
+CONTACT : +243810044886 — mpanyakangodie@cnssap.cd
+PÉRIODE NOMINALE DU FICHIER : 2021
+PÉRIODE AFFICHÉE DANS L'INVENTAIRE : 2022 (anomalie — voir ESS CNSSAP 2020)
+MONNAIE : Non précisée
+NIVEAU : Source primaire institutionnelle (transmission directe de l'institution)
+
+---
+
+FORMAT ET STRUCTURE
+
+Structure identique à l'ESS CNSSAP 2020. Feuilles actives :
+- Inventaire des régimes
+- CNSAP Régime de base (régime unique)
+- ADDITIONAL statistics for SDGs
+- CALCULATIONS
+
+---
+
+RÉGIMES DÉCLARÉS
+
+Régime 1 — CNSAP Régime de base (Branche des pensions)
+  Administrateur : CNSSAP
+  Fonctions couvertes : Vieillesse (X), Invalidité/Handicap (X)
+  Type : Contributif, Obligatoire, Public
+  Source déclarée : CNSSAP
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Structure et contenu identiques à l'ESS CNSSAP 2020.
+- La période affichée dans l'inventaire est également 2022 (même anomalie que 2020).
+- Un seul régime est déclaré (pensions uniquement) ; les branches familiales et
+  accidents du travail n'apparaissent qu'à partir de 2022 (Réforme du transfert)
+  et 2023 (fichier consolidé).
+- L'évolution entre 2021 et 2022 (ajout de la Réforme du transfert) peut signaler
+  une transition institutionnelle importante à documenter.
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSSAP (2021), Enquête sur les Sources Statistiques (ESS) — format OIT,
+Caisse Nationale de Sécurité Sociale des Agents Publics, Kinshasa, République Démocratique du Congo.
+[Note : date interne du fichier affiche 2022 — à vérifier]

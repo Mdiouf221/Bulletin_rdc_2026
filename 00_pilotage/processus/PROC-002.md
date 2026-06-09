@@ -17,7 +17,7 @@ Date : 2026-06-08
 Ce processus est activé lorsque :
 - Un document est transmis directement par une institution nationale.
 - L'utilisateur dit : « J'ai reçu des données de la CNSS / du ministère / de l'INS… »
-- Un fichier est déposé dans `06_donnees/institutions/`.
+- Un fichier est déposé dans `06_sources/institutions/`.
 
 ---
 
@@ -39,11 +39,11 @@ Si des éléments manquent, les demander à l'utilisateur.
 
 ## Étape 2 — Dépôt et archivage
 
-1. Déposer le fichier original dans `06_donnees/institutions/`.
+1. Déposer le fichier original dans `06_sources/institutions/`.
 2. Nommer le fichier selon la convention : `[Institution]_[Type]_[Année].[extension]`  
    Exemple : `CNSS_rapport_annuel_2022.pdf`
 3. Si le fichier est un PDF : noter qu'une conversion `.txt` est nécessaire via `09_scripts/convertir_pdf_en_texte.py` pour le rendre lisible par les agents.
-4. Mettre à jour `06_donnees/registre_donnees.md` — tableau `institutions/` :
+4. Mettre à jour `06_sources/registre_donnees.md` — tableau `institutions/` :
 
 ```
 | CNSS_rapport_annuel_2022.pdf | CNSS | Rapport annuel | Effectifs affiliés, cotisations, prestations 2022 | — | Non | À convertir |
@@ -108,7 +108,7 @@ Proposer une ligne pour `00_pilotage/journal_modifications.md`.
 
 ## Livrables attendus
 
-- [ ] Fichier déposé dans `06_donnees/institutions/`
+- [ ] Fichier déposé dans `06_sources/institutions/`
 - [ ] Registre mis à jour
 - [ ] Incohérences vérifiées et signalées si besoin
 - [ ] Résumé présenté et validé par l'utilisateur

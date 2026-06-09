@@ -48,10 +48,10 @@ Si le terme n'est pas trouvé ou est ambigu → passer à l'Étape 3.
 
 Si les références internes ne permettent pas de trancher, consulter :
 
-1. **Glossaire OIT/BIT** — Documents de référence dans `11_references_externes/references_oit_bit/`
+1. **Glossaire OIT/BIT** — Documents de référence dans `06_sources/normes_oit/`
 2. **SSPTW (Social Security Programs Throughout the World)** — définitions des branches
 3. **Recommandation R.202 de l'OIT** — langage sur le socle de protection sociale
-4. **Autres bulletins** — `11_references_externes/autres_bulletins/` (usage comparatif uniquement)
+4. **Autres bulletins** — `06_sources/bulletins_comparaison/` (usage comparatif uniquement)
 
 ---
 

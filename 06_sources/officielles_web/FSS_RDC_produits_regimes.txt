@@ -1,0 +1,50 @@
+TITRE : Fonds de Solidarité de Santé (FSS) — Missions, produits et régimes
+SOURCE : Fonds de Solidarité de Santé (FSS), République Démocratique du Congo
+URL : https://www.fss.cd/
+CONSULTÉ : 2026-06-08
+NIVEAU : Source primaire institutionnelle (site officiel de l'institution)
+BASE LÉGALE : Loi n°18/035 du 13 décembre 2018 ; Décret n°22/13 du 09 avril 2022
+
+---
+
+MISSION DU FSS
+Le FSS est la caisse nationale d'assurance maladie de la RDC.
+Il est l'un des 7 instruments de facilitation de la mise en œuvre de la Couverture Santé Universelle (CSU).
+Selon le site officiel (fss.cd, consulté juin 2026) : "le FSS est la caissière nationale de l'assurance maladie en RDC : elle tient les comptes, paie les factures."
+
+---
+
+PRODUITS ET RÉGIMES (selon site officiel fss.cd, juin 2026)
+
+1. Afia Bora — Paquet de base obligatoire
+   Prise en charge des frais de traitement à la suite d'une maladie auprès d'un établissement de soins de premier contact.
+
+2. Kobota Ofele — Programme d'assistance de l'État pour mère et enfant
+   Programme de gratuité des accouchements et prise en charge des nouveau-nés.
+   Référencé dans le Conseil des ministres du 20 février 2026 (79e réunion).
+
+3. Afia Bora Prime — Paquet complémentaire
+   Couverture complémentaire au paquet de base.
+
+---
+
+STATUT OPÉRATIONNEL
+- Au moment du premier bulletin statistique (janvier 2024) : FSS pas encore opérationnel.
+- Au moment du deuxième bulletin (2026) : FSS opérationnel, produits commercialisés.
+- Assemblée générale du FSS tenue le 15 avril 2026.
+
+---
+
+POPULATION COUVERTE (selon premier bulletin + site FSS)
+- Travailleurs du secteur privé formel : régime contributif (Afia Bora)
+- Travailleurs du secteur informel : régime prévu (statut opérationnel à confirmer)
+- Programme mère et enfant (Kobota Ofele) : couverture plus large, financement État
+
+---
+
+NOTE MÉTHODOLOGIQUE
+Le FSS était créé en 2018 (Loi n°18/035) mais organisé par le Décret n°22/13 de 2022.
+Il est distinct de la MESP (Mutuelle des Enseignants de l'EPST) qui reste le seul régime
+statutaire obligatoire de santé antérieur au FSS.
+Le nombre exact d'affiliés, cotisants et bénéficiaires devra être obtenu directement
+auprès du FSS (données non disponibles sur le site à la date de consultation).

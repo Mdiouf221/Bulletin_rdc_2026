@@ -1,0 +1,36 @@
+SOURCE : Fonds des Nations Unies pour la Population (UNFPA)
+TITRE   : World Population Dashboard — Democratic Republic of the Congo
+URL     : https://www.unfpa.org/data/world-population/CD
+CONSULTÉ: 2026-06-08
+NIVEAU  : 1 (organisation internationale — source primaire)
+
+---------------------------------------------------------------------
+DONNÉES CLÉS — RDC (extraites pour le deuxième Bulletin statistique)
+---------------------------------------------------------------------
+
+Population (2024)                : 109 millions
+Taux de fécondité                : 6,0 enfants par femme
+Population de moins de 25 ans    : 63 %
+Espérance de vie                 : 62 ans
+
+Santé maternelle :
+  Mortalité maternelle           : 547 pour 100 000 naissances vivantes
+  Naissances assistées par personnel qualifié : 80 %
+  Taux de prévalence contraceptive (méthodes modernes) : 23 %
+  Besoins non satisfaits en planification familiale : 28 %
+
+Santé juvénile :
+  Taux de fécondité adolescente (15-19 ans) : 135 pour 1 000 femmes
+  Mariages avant 18 ans          : 37 %
+
+Éducation des filles :
+  Taux net de scolarisation primaire (filles) : 74 %
+
+---------------------------------------------------------------------
+NOTE D'UTILISATION
+---------------------------------------------------------------------
+Le tableau de bord UNFPA fournit des indicateurs démographiques et de
+santé reproductive harmonisés pour tous les pays. Ces données
+complètent les projections ONU/DESA pour l'analyse de la couverture
+sociale (maternité, santé).
+Citer comme : UNFPA (2024), World Population Dashboard — RDC.

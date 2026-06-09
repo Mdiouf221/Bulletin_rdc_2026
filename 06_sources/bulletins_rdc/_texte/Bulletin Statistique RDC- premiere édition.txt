@@ -1,0 +1,1920 @@
+--- Page 1 ---
+République Démocratique du Congo
+Bulletin Statistique sur
+la Protection Sociale
+N°1/2023
+
+--- Page 2 ---
+Fiche technique
+Bulletin Statistique sur la Protection Sociale – 1ère édition
+Titre
+2023
+Editeur Ministère de la Santé Publique, l’Hygiène et la Prévoyance
+Sociale
+Moustapha Diouf (BIT), Mme Féza Josée (SNPS)
+Elaboration
+Valeria Nesterenko (BIT), Ana Carolina De Lima Vieira (BIT),
+Révision et contrôle de qualité
+Nathalie Both (BIT), Théophane Bukele (FSS), Jean-Lambert
+Mandjo (BIT), et De Gaulle Mpumbua Mukamba (BIT)
+• Le ministère de la Santé Publique, Hygiène Et Prévoyance
+Collaboration
+Sociale
+• Le ministère de l’Emploi et du Travail
+• Le ministère de l’Enseignement Primaire, Secondaire et
+Technique (MEPST)
+• Le ministère des Affaires Sociales, Action Humanitaire et
+Solidarité Nationale (MINAS)
+• L’Institut National de la Statistique (INS)
+• La Caisse Nationale de Sécurité Sociale (CNSS)
+• La Caisse Nationale de Sécurité Sociale des Agents
+Publics de l’État (CNSSAP)
+• Le Fonds de Solidarité de Santé (FSS)
+• La Mutuelle de Santé des Enseignants de l’EPST (MESP)
+Bureau de pays de l'OIT pour la République démocratique
+Appui technique et financier
+du Congo
+©2024
+Ce bulletin a été élaboré avec l’appui du projet Bâtir
+des socles de protection sociale pour tous. Appui à la
+deuxième phase du programme phare mondial de l'OIT
+en en RDC, financé par le gouvernement de la Belgique et
+du Luxembourg.
+
+--- Page 3 ---
+Bulletin Statistique
+sur la Protection
+Sociale N°1/2023
+Septembre 2024
+
+--- Page 4 ---
+iv Bulletin Statistique sur la Protection Sociale
+N°1/2023
+Abréviations
+AT/MP Accidents du travail et maladies professionnelles
+BIT Bureau International du Travail
+CNSS Caisse Nationale de Sécurité Sociale
+CNSSAP Caisse Nationale de Sécurité Sociale des Agents Publics de l’État
+CSU Couverture Santé Universelle
+INS Institut National de la Statistique
+FAO Organisation des Nations Unies pour l’alimentation et l’agriculture
+FSS Fonds de Solidarité Santé
+Mutuelle de Santé des Enseignants de l’Enseignement Primaire, Secondaire et
+MESP
+Professionnel
+MEPST Ministère de l'Enseignement Primaire, Secondaire et Technique
+MINAS Ministère des Affaires Sociales, Action Humanitaire et Solidarité Nationale
+ODD Objectifs de Développement Durable
+OIT Organisation Internationale du Travail
+ONG Organisations non gouvernementales
+PAM Programme Alimentaire Mondial
+PIB Produit Intérieur Brut
+PNSD Plan National Stratégique de Développement
+PNPS Programme National d’appui à la Protection Sociale
+RDC République Démocratique du Congo
+SNPS Stratégie Nationale de Protection Sociale
+
+--- Page 5 ---
+Bulletin Statistique sur la Protection Sociale v
+N°1/2023
+Sommaire
+Introduction .............................................................................................................................................1
+1. La République Démocratique du Congo en chiffres ........................................................................3
+1.1 Démographie .................................................................................................................................3
+1.2 Économie ........................................................................................................................................4
+1.3 Marché du travail ..........................................................................................................................5
+2. Le système de protection sociale en RDC .........................................................................................7
+2.1 Politique et stratégie nationale de la protection sociale .........................................................7
+2.2 Cartographie de la protection sociale ........................................................................................7
+2.2.1 Autorités en charge ................................................................................................................9
+2.2.2 Aperçu du système de protection sociale ...........................................................................9
+2.3 Principales institutions et régimes de sécurité sociale ..........................................................10
+2.3.1 La Caisse Nationale de Sécurité Sociale (CNSS) ................................................................10
+2.3.2 La Caisse Nationale de Sécurité Sociale des Agents Publics de l’État (CNSSAP) .........13
+2.3.3 Les régimes spéciaux ..........................................................................................................17
+2.3.4 La Mutuelle de Santé des Enseignants de l’Enseignement Primaire, Secondaire et
+Professionnel (MESP « Mutuelle agréée ») .......................................................................17
+2.3.5 Le Fonds de Solidarité de Santé (FSS) ................................................................................19
+2.4 Principaux programmes de protection sociale non statutaire .............................................19
+2.4.1 Les Mutuelles de Santé Professionnelles, Corporatives et Communautaire ...............19
+2.4.2 Interventions gouvernementales ......................................................................................19
+2.4.3 Interventions financés ou mis en œuvre par les partenaires humanitaires et d’appui
+au développement ..............................................................................................................21
+2.5 Responsabilité de l’employeur et régimes d’entreprise .........................................................22
+3. Indicateurs de couverture des régimes statutaires ......................................................................24
+3.1 Couverture par branche .............................................................................................................24
+3.2 Autres indicateurs de couverture statutaire ...........................................................................28
+3.3 Indicateurs des Objectifs de Développement Durable ............................................................................30
+Conclusion ..............................................................................................................................................33
+Bibliographie ..........................................................................................................................................34
+Glossaire .................................................................................................................................................35
+
+--- Page 6 ---
+vi Bulletin Statistique sur la Protection Sociale
+N°1/2023
+
+--- Page 7 ---
+Bulletin Statistique sur la Protection Sociale 1
+N°1/2023
+Introduction
+La mise en place de systèmes de protection sociale ont besoin d’informations précises et à jour. Il est
+universels et la concrétisation du droit humain à également souhaitable que ces données soient
+la sécurité sociale pour tous constituent la pierre collectées de manière systématique et traitées selon
+angulaire d’une approche centrée sur l’humain pour des critères stricts, reconnus internationalement.
+parvenir à la justice sociale. La protection sociale L’OIT soutient la production régulière des statistiques
+contribue grandement à réduire la pauvreté et les sur la protection sociale à travers le monde et en
+inégalités, à renforcer les capacités des individus, particulier en République Démocratique du Congo
+à améliorer la productivité, à favoriser la dignité, la (RDC).
+solidarité et l’équité, et à revitaliser le contrat social.
+La protection sociale en RDC constitue une
+La protection sociale, ou sécurité sociale, selon
+préoccupation majeure depuis l’indépendance du
+l’Organisation Internationale du Travail (OIT) recouvre
+pays en 1960. En 2019, afin de mieux organiser son
+l’ensemble des politiques et des programmes conçus
+développement, la RDC s’est dotée d’un Plan National
+pour réduire et prévenir la pauvreté et la vulnérabilité
+Stratégique de Développement (PNSD) pour la
+tout au long du cycle de vie (BIT, 2021). La protection
+période allant de 2019 à 2023, qui prend en compte
+sociale comporte neuf grands domaines : les
+la protection sociale à travers le pilier relatif à la
+prestations à l’enfance et aux familles, la protection
+valorisation du capital humain, et le développement
+de la maternité, la protection contre le chômage, les
+social et culturel. La protection sociale y est définie
+prestations en cas d’accident du travail et de maladie
+comme « tous les mécanismes de prévoyance
+professionnelle, les prestations en cas de maladie, la
+collective permettant aux individus de faire face
+protection de la santé, les prestations de vieillesse,
+aux conséquences financières des risques sociaux, à
+les prestations d’invalidité et les prestations aux
+survivants. Les systèmes de protection sociale traitent savoir les situations susceptibles de compromettre la
+tous ces domaines au moyen d’une combinaison de sécurité économique des individus ou de leur famille,
+régimes contributifs (assurance sociale) et de régimes en provoquant une baisse de leurs ressources ou un
+non contributifs financés par l’impôt (régimes accroissement de leurs dépenses ».
+universels/catégoriels et assistance sociale).
+La RDC est membre de l’OIT depuis le 20 septembre
+Les statistiques jouent un rôle essentiel dans le 1960. En matière de protection sociale il est
+renforcement des systèmes de protection sociale. important de souligner que la RDC a ratifié plusieurs
+Pour garantir l’efficacité des politiques, les décideurs conventions, notamment :
+Ratifications Date
+C017 – Conventions (No 17) sur la réparation des accidents du travail,1925 20 septembre 1960
+C018 – Convention (No 18) sur les maladies professionnelles, 1925 20 septembre 1960
+C102 – Conventions (No 102) concernant la sécurité sociale (norme minimum) 1952
+03 avril 1987
+A accepter les parties V, VII, IX et X
+C121 – Convention (no 121) sur les prestations en cas d’accidents du travail et de
+05 septembre 1967
+maladies professionnelles, 1964 [tableau I modifié en 1980]
+
+--- Page 8 ---
+2 Bulletin Statistique sur la Protection Sociale
+N°1/2023
+Le premier bulletin statistique sur la protection sociale u et enfin, examiner les indicateurs statistiques de la
+en RDC vise à contribuer à orienter les stratégies et protection sociale, notamment les indicateurs de
+politiques nationales de protection sociale fondées couverture des régimes statutaires et l’indicateur
+sur des données factuelles afin d’améliorer la 1.3.1 des Objectifs de Développement Durable
+couverture du système de protection sociale, son
+(ODD).
+efficacité et l’impact des programmes au profit de la
+population, ainsi qu’aux chercheurs, à la société civile Constituent les sources d’information : la Secrétariat
+et au grand public. Cela en faveur d’un système de Nationale à la Protection Sociale (SNPS), le ministère
+protection sociale de plus en plus complet et efficace, de la Santé Publique, Hygiène Et Prévoyance
+conformément à la recommandation (No. 202) sur les Sociale1, le ministère de l’Emploi et du Travail, le
+socles de protection sociale, 2012. Une publication ministère de l’Enseignement Primaire, Secondaire
+régulière de ce bulletin statistique sera cruciale et Technique (MEPST), le ministère des Affaires
+pour évaluer, planifier et améliorer les politiques de
+Sociales, Action Humanitaire et Solidarité Nationale
+protection sociale dans les années à venir.
+(MINAS), l’Institut National de la Statistique (INS),
+Les objectifs de ce bulletin statistique sont les la Caisse Nationale de Sécurité Sociale (CNSS), la
+suivantes : Caisse Nationale de Sécurité Sociale des Agents
+Publics de l’État (CNSSAP), le Fonds de Solidarité de
+u présenter une analyse de la démographie,
+Santé (FSS) et la Mutuelle de Santé des Enseignants
+l’économie et le marché du travail en RDC ;
+de l’EPST (MESP).
+u donner un aperçu du système de protection sociale
+Ce bulletin a été élaboré par une équipe multi-
+en RDC ;
+sectorielle conduite par le Secrétariat national à la
+u estimer la couverture obtenue en 2022 des régimes protection sociale, avec l’appui technique et financier
+de protection sociale statutaires ; du Bureau International du Travail (BIT).
+1 Lors de l’élaboration de ce bulletin, la prévoyance sociale était sous l’égide du ministère de l’Emploi, du Travail, et de la
+Prévoyance Sociale. Depuis lors, une réorganisation ministérielle en mai 2024 a rattaché la prévoyance sociale au ministère
+de la Santé Publique, l’Hygiène et la Prévoyance Sociale. Ce document fait référence à ce dernier ministère.
+
+--- Page 9 ---
+Bulletin Statistique sur la Protection Sociale 3
+N°1/2023
+1. La République Démocratique du
+Congo en chiffres
+1.1 Démographie
+La RDC est le deuxième plus grand pays d’Afrique en 2024, la population de 0 à 14 ans représentait 46
+après l’Algérie avec une population en forte pour cent des Congolais. À titre de comparaison,
+croissance, estimée à 78 657 000 d’habitants en cette même tranche d’âge représente 40 pour
+2015 et à 95 894 000 de personnes en 20212. La cent de la population du continent africain
+RDC a connu un exode rural modéré: entre 1950 et et 25 pour cent de la population mondiale3.
+2023, la population urbaine est passée de 19 pour L’accès à l’éducation et aux soins de santé reste
+cent à 47 pour cent de la population totale selon la relativement difficile pour la plupart de la
+Division de la population des Nations Unies. population, une situation qui se reflète dans le
+faible Indice de Développement Humain du pays,
+La population en RDC est particulièrement jeune: qui s’est établi à 0,48 en 2021 (PNUD, 2022).
+selon les Fonds des Nations Unies pour la population,
+u Figure 1. Évolution de la population, population totale, urbaine et rurale (1950-2023)
+120000
+121000000000
+10080000000
+8060000000
+6040000000
+4020000000
+20000 0
+1950 1960 1970 1980 1990 2000 2010 2020
+0
+Population totale Population urbaine Population rurale
+1950 1960 1970 1980 1990 2000 2010 2020
+Population totale Population urbaine Population rurale
+Source: Division de la population des Nations Unies, Perspectives de l’urbanisation mondiale : La révision de 2018.
+2 Source : UNFPA World Population Dashboard: https://www.unfpa.org/fr/data/world-population-dashboard
+3 Source : UNFPA World Population Dashboard: https://www.unfpa.org/fr/data/world-population-dashboard
+
+--- Page 10 ---
+4 Bulletin Statistique sur la Protection Sociale
+N°1/2023
+1.2 Économie
+Le secteur minier occupe une place importante de l’économie congolaise grâce à d’immenses ressources
+minières, notamment des gisements de cuivre, de cobalt, d’or, de diamants, de coltan et d’autres minéraux
+précieux. Après plusieurs années de croissance parfois négative, la RDC a renoué avec une croissance stable et
+positive au début des années 2000.
+u Figure 2. Croissance annuelle du PIB (%), en Afrique et en RDC
+15,0%
+10,0%
+5,0%
+0,0%
+-5,0%
+-10,0%
+-15,0%
+1971 1981 1991 2001 2011 2021
+Afrique République Démocratique du Congo Lineal (République Démocratique du Congo)
+Afrique République Démocratique du Congo Lineal (République Démocratique du Congo)
+Source : Division des statistiques des Nations Unies, Comptes nationaux. PIB, Taux de croissance annuel - Pourcentage (1970-2022).
+Le produit intérieur brut (PIB) par habitant de la RDC reste relativement faible, comme indiqué dans la Figure 3.
+Les inégalités sont fortes, selon les Nations Unies, en 2012 (dernières données disponibles), l’indice de Gini, qui
+mesure les inégalités de revenus, était de 0.421 et le taux de pauvreté, représentant les personnes vivant en
+dessous du seuil de pauvreté national, atteignait 63.9 pour cent.
+u Figure 3. PIB par habitant ($ US Constant 2015)
+1600
+1400
+1200
+1000
+800
+527
+600
+400
+200
+0
+1970 1980 1990 2000 2010 2020
+Source : Division des statistiques des Nations Unies, Comptes nationaux. PIB par habitant à prix constants de 2015 - Dollars américains
+(1970-2022).
+
+--- Page 11 ---
+Bulletin Statistique sur la Protection Sociale 5
+N°1/2023
+1.3 Marché du travail
+Selon l’Organisation des Nations Unies pour l’alimentation et l’agriculture (FAO), « l’agriculture paysanne occupe
+70 pour cent de la population active »4. Malgré le faible taux de chômage estimé à 4.5 pour cent en 20205,
+l’informalité représente une part significative du marché du travail, avec un taux d’emploi informel estimé à
+environ 96 pour cent selon l’OIT6. Cette situation découle en grande partie des défis structurels.
+u Figure 4. Taux d’emploi informel par sexe (%)
+Total 97,8%
+95,7%
+Travailleurs non classifiables 100,0%
+99,6%
+Travailleurs indépendants 98,0%
+96,7%
+Employeurs 93,1%
+86,0%
+Employés 95,8%
+91,1%
+75% 80% 85% 90% 95% 100%
+Femme Homme
+Source : Organisation Internationale du Travail. Base de données des estimations et projections modélisées de l’OIT (ILOEST), ILOSTAT.
+4 Source : Page web du FAO - FAO en République démocratique du Congo : Le pays en un coup d’œil https://www.fao.org/
+republique-democratique-congo/fao-en-republique-democratique-du-congo/le-pays-en-un-coup-doeil/fr/#:~:tex-
+t=L%27agriculture%20paysanne%20occupe%2070,milliards%20de%20personnes%20au%20monde
+5 Source : Organisation Internationale du Travail. Base de données de l’OIT (ILOSTAT).
+6 Source : Organisation Internationale du Travail. Base de données de l’OIT (ILOSTAT).
+
+--- Page 12 ---
+66 BBuulllleettiinn SSttaattiissttiiqquuee ssuurr llaa PPrrootteeccttiioonn SSoocciiaallee
+NN°°11//22002233
+
+--- Page 13 ---
+Bulletin Statistique sur la Protection Sociale 7
+N°1/2023
+2. Le système de protection
+sociale en RDC
+2.1 Politique et stratégie nationale de la protection sociale
+Le Programme National d’appui à la Protection u la promotion des mécanismes garantissant l’accès
+Sociale (PNPS) est un organe technique et social du aux services sociaux de base et une sécurité
+Gouvernement en matière de Protection Sociale. Il a élémentaire de revenus pour les personnes
+été mis en place par le décret présidentiel n°05/176 vulnérables ;
+du 24 novembre 2005 et placé sous la tutelle du
+u le renforcement et extension des systèmes
+ministère de la Santé Publique, l’Hygiène et la d’assurance sociale fiables et économiquement
+Prévoyance Sociale. viables ;
+La PNPS vise à structurer les réponses à donner pour u le renforcement du cadre institutionnel, des
+réduire la vulnérabilité et adopte la vision suivante : capacités et le financement de la protection sociale.
+« à l’horizon 2030, le Congo est une Nation solidaire,
+La mise en place de la Couverture Sanitaire Universelle
+soucieuse d’équité, promotrice de bien-être, une
+est également une priorité du Gouvernement, dont
+Nation qui protège efficacement les couches
+la mise en œuvre est déclinée à travers différents
+sociales les plus vulnérables et les plus démunies»
+documents de politique et stratégies, y compris le
+(RDC, 2016). Elle définit ainsi trois axes stratégiques Plan national de développement sanitaire (PNDS), la
+complémentaires qui visent à assurer la mise en Stratégie de financement de la santé de 2018, et le
+œuvre de cette vision et qui structurent la Stratégie Plan stratégique national pour la couverture santé
+nationale de la protection sociale (SNPS). Il s’agit de : universelle 2021-2030.
+2.2 Cartographie de la Protection Sociale
+Le schéma ci-dessous fourni une brève description des programmes de protection sociale identifiés. La partie
+suivante reprend et décrit les éléments fondamentaux du même graphique.
+
+--- Page 14 ---
+8 Bulletin Statistique sur la Protection Sociale
+N°1/2023
+u Figure 5. Cartographie des régimes de protection sociale
+Le système de protection sociale en République Démocratique du Congo (RDC) est structuré autour de
+MINISTÈRE DE L’EMPLOI, DU TRAVAIL ET DE LA PRÉVOYANCE SOCIALE*
+plusieurs institutions et régimes distincts, chacun étant représenté par différentes autorités en charge et
+couvertures, selon le secteur d'emploi et le statut des travailleurs. Les travailleurs du secteur privé, qu'ils
+MINISTÈRE DE MINISTÈRE DE LA AUTRES (ONG, soient formels ou informels, sont principalement couverts par la Caisse Nationale de Sécurité Sociale
+PRÉSIDENCE DE LA MINISTÈRE DES (CNSS), qui leur offre des prestations de vieillesse, d'invalidité, de maternité, ainsi que des allocations
+L’EMPLOI, DU TRAVAIL MINISTÈRE DE LA FONCTION DÉFENSE ET DES MINISTÈRE DE LA autres
+RÉPUBLIQUE ET AFFAIRES familiales et des indemnités en cas de décès, toutes financées par des cotisations sociales.
+ET DE LA PRÉVOYANCE PUBLIQUE ANCIENS SANTÉ PUBLIQUE institutions,
+PRIMATURE SOCIALES
+SOCIALE* COMBATTANTS autres ministères)
+Les agents du secteur public en RDC bénéficient quant à eux de régimes spécifiques, tels que la CNSSAP
+CNSS CNSSAP Régime spécial des pour les agents publics de l'État, tandis que des régimes spéciaux sont mis en place pour certaines
+Régime spécial des catégories professionnelles, comme les militaires, les magistrats, et les parlementaires. Ces régimes
+militaires
+cadres et agents de octroyés, souvent financés par des allocations budgétaires, assurent des couvertures adaptées aux besoins
+l'administration Programmes et Programmes et spécifiques de ces groupes.
+MINISTERE DE LA JUSTICE
+publique interventions du interventions du Un élément clé est la Mutuelle des Enseignants sous la tutelle du Ministère de l'EPST (MESP), qui est la seule
+Caisse Nationale De Caisse Nationale De Sécurité Sociale Régime spécial des ministère ministère mutuelle obligatoire et statutaire, assurant une couverture de santé essentielle pour les enseignants,
+Sécurité Sociale Des Agents Publics De L’état magistrats civils et Divers complétant ainsi les autres régimes de sécurité sociale.
+milita j i u re d s ic d ia e ir l e 'ordre pro d E g é x r p e a i m m st p m a l g e e e s : , de pr s o E o g x u r e a t m i m e p n m l e a e u s : x d e p i r n o t g e r r a v m en m ti e o s n e s t O co u m tre p c lé e m s r e é n g t i a m ir e e s s p p r o in u c r i d p ' a a u u x t , r e il s e g x r is o t u e p e e n s R . D D e C p d l e u s s , m le u s t u m e i l n le is s t è d r e e s s a d n e t é la v S o a lo n n té t a e i t r e d s e q s u A i f o fa f i f r r e e s n S t d o e c s ia p le r s e s g t è a r t e io n n t s
+divers programmes d'assistance sociale, visant à soutenir les populations vulnérables avec des prestations
+distribution de femmes
+et programmes de soins de santé adaptés. Enfin, la couverture santé universelle, actuellement en cours
+SERVICE AUTONOME kits médicaux, vulnérables, d'opérationnalisation, vise à étendre l'accès aux soins de santé à l'ensemble de la population, avec pour
+D S E O L U 'A S S S L E A M RE B S L P E O E N N S A A T B IO IL N IT A E L E etc. etc. objectif de garantir une protection sociale complète et inclusive.
+Régime spécial pour les
+parlementaires
+Travailleurs salariés du secteur public formel
+Travailleurs du
+secteur privé Agents Cadres et agents Populations ciblées Populations
+Cadres et agents de ...
+formel et publics de Enseignants spécifiques de selon programme vulnérables
+l'administration
+informel l'État, dont uniquement publique l'administration
+enseignants publique
+Assistance Assistance Assistance
+CNSS CNSSAP Regime spécial Regimes spéciaux
+Sociale Sociale Sociale
+Vieillesse Vieillesse Vieillesse Vieillesse Soins médicaux Réduction de la
+…
+Invalidité Invalidité - Invalidité pauvreté
+AT/MP (S. Médicaux) - - - Soins médicaux
+Maternité - - -
+Prest. Familiales - - -
+Décès Décès Décès Décès
+Soins médicaux
+MINISTÈRE DE
+L'EPST*
+Mutuelles
+OBLIGATOIRE
+des Enseignants
+(MESP)
+Mutuelles volontaires
+Couverture Santé Universelle (en cours d'opérationnalisation)*
+* Lors de l’élaboration de ce bulletin, la prévoyance sociale était sous l’égide du ministère de l’Emploi, du Travail, et de la Prévoyance Sociale. Depuis lors, une
+réorganisation ministérielle en mai 2024 a rattaché la prévoyance sociale au ministère de la Santé Publique, l’Hygiène et la Prévoyance Sociale.
+1. Autorités en charge 4. Prestations du régime
+2.1 Régimes contributifs d’assurance sociale (financé 5. Régimes / Prestations / Programmes de soins de santé
+par des cotisations) (contributifs et non contributifs)
+2.2 Régimes octroyés (financé par allocation 6. Mutuelles de santé volontaires
+2.3 Programmes non contributifs d’assistances 7. Couverture Santé Universelle (en cours
+sociales d’opérationnalisation)1
+3. Population légalement couverte
+1 Vise à remplacer les différents régimes de soins médicaux existants par la Couverture Santé Universelle (CSU). Seule la
+gratuité de la maternité est opérationnelle.
+
+--- Page 15 ---
+Bulletin Statistique sur la Protection Sociale 9
+N°1/2023
+2.2.1 Autorités en charge Les travailleurs du secteur privé, qu’ils soient formels
+ou informels, sont couverts par la CNSS, également
+Les régimes contributifs de la protection sociale
+représentée en orange dans la Figure 5. Ce régime
+des personnes employées dans le secteur formel
+est contributif et financé par les cotisations des
+sont gérés par le ministère de la Santé Publique,
+employeurs et des employés.
+l’Hygiène et la Prévoyance Sociale, qui est également
+directement en charge de la Caisse Nationale De Enfin, des programmes d’assistance sociale,
+Sécurité Sociale (CNSS). Les mutuelles volontaires marqués en rose dans la Figure 5, sont mis en place
+de santé sont sous l’égide du même ministère. Le par les ministères et les ONG. Ces programmes, non
+ministère de la Fonction Publique supervise la Caisse contributifs, ciblent des populations spécifiques et
+Nationale de Sécurité Sociale des Agents Publics offrent des prestations de santé ou des initiatives
+de l’État (CNSSAP). D’autres ministères supervisent visant à réduire la pauvreté. Ils fournissent un filet de
+des régimes spécifiques de taille modérée, appelés sécurité essentiel aux personnes les plus vulnérables.
+régimes spéciaux.
+Couverture des soins de santé
+Le pays s’est également doté d’un dispositif
+institutionnel pour la mise en œuvre de la de la La couverture des soins de santé en RDC ne comprend
+Couverture Santé Universelle (CSU), avec la mise en qu’une seule mutuelle de santé contributive et
+place du Conseil National de la Couverture Santé obligatoire, mais plus de 200 mutuelles de santé
+Universelle (CNCSU) par ordonnance présidentielle volontaires. La mutuelle obligatoire, représentée
+nº 21/032, placé sous la responsabilité d’un Conseiller en vert foncé dans la Figure 5, est la Mutuelle de
+spécial du Président de la République. Six institutions Santé des Enseignants de l’Enseignement Primaire,
+de facilitation ont également été créées dont le Fonds Secondaire et Technique (MESP). Les mutuelles
+de Solidarité de Santé (FSS) en charge de la gestion de santé volontaires, en vert clair dans la Figure 5,
+de l’assurance santé publique. sont financées par les contributions des assurés,
+2.2.2 Aperçu du système de protection des subventions gouvernementales, et parfois par
+sociale en RDC des financements externes de bailleurs ou d’ONG.
+En raison de leur caractère privé et volontaire, ces
+En République Démocratique du Congo (RDC), mutuelles ne sont pas incluses dans notre analyse.
+le système de protection sociale est largement
+structuré autour des régimes liés à l’emploi, offrant Le FSS, créé par le Décret n°22/13 du 9 avril 2022
+des prestations couvrant notamment la vieillesse, et mentionné en pointillé dans la Figure 5, a pour
+l’invalidité et le décès. Parallèlement, divers ministères objectif de contribuer à la mise en œuvre de la CSU.
+et organismes fournissent une assistance sociale à Le FSS organisera l’assurance publique. Au moment
+des populations ciblées. Certaines prestations, telles de l’élaboration de ce bulletin, le FSS n’est pas encore
+que les indemnités de maladie en espèces, reposent entièrement opérationnel.
+sur la responsabilité de l’employeur et ne sont pas
+Mécanismes de protection sociale basés sur la
+incluses dans la figure 5.
+responsabilité de l’employeur et les régimes
+Régimes liés à l’emploi et programmes d’assistance d’entreprise
+sociale
+Certains mécanismes de protection sociale, bien
+Le régime général pour les agents publics de l’État qu’existants, sont exclus de la figure 5 et de
+est administré par la CNSSAP, représentée en orange notre analyse en générale. Il s’agit notamment
+dans la Figure 5. En complément de la CNSSAP, des des prestations relevant de la responsabilité de
+régimes spéciaux existent pour certains agents l’employeur et des régimes d’entreprise.
+spécifiques de l’État, tels que les magistrats et les
+parlementaires. À l’exception du régime spécial Les indicateurs de couverture de la protection
+des parlementaires, ces régimes spéciaux sont sociale calculé dans ce Bulletin concerne les régimes
+représentés en jaune dans la figure, car ils sont statutaires relevant du mécanisme d’assurance.
+non-contributifs et financés par des allocations Pour une meilleure compréhension, un glossaire en
+budgétaires (régime octroyé). Ils ne fonctionnent pas annexe fournit les définitions retenues pour chaque
+selon le principe de l’assurance. type de prestations.
+
+--- Page 16 ---
+10 Bulletin Statistique sur la Protection Sociale
+N°1/2023
+2.3 Principales institutions et régimes de sécurité sociale
+Sous l’égide du ministère de la Santé Publique, Prestations : Le régime gère trois branches :
+l’Hygiène et la Prévoyance Sociale, il existe deux
+u La branche des pensions : elle garantit la pension
+régimes d’assurance sociale contributifs. Il s’agît
+de vieillesse normale ; la pension proportionnelle ;
+de la CNSSAP et de la CNSS. Il existe aussi au moins
+la pension anticipée ; la pension de survivant ;
+un régime spécial financé par allocation budgétaire
+l’allocation de décès ; l’allocation de survivants8.
+et par des contributions (le Régime Spécial pour
+les Parlementaires) ainsi que plusieurs régimes u La branche des prestations familiales : elle
+spéciaux financés uniquement par allocation garantit les allocations prénatales, aides aux
+budgétaire (le Régime Spécial des Cadres et Agents jeunes ménages ou primes à la naissance,
+de l’Administration Publique, le Régime Spécial des allocations familiales, indemnités journalières de
+Militaires, Le Régime Spécial des Magistrats Civils et maternité, frais d’accouchement et soins médicaux
+Militaires de l’Ordre de Justice). Le FSS est l’organe en liés aux complications de la grossesse ou de
+charge de la gestion de l’assurance santé publique. l’accouchement, ainsi que d’autres prestations en
+Le chapitre suivant présentera en détail chacun de nature9.
+ces régimes.
+u La branche des risques professionnels : elle
+2.3.1 La Caisse Nationale de Sécurité
+garantit les soins médicaux et dentaires, la
+Sociale (CNSS)
+fourniture des produits pharmaceutiques, et le
+Source juridique : L’Institut National de Sécurité transport de la victime en cas d’accidents au travail
+Sociale (INSS) de la RDC, créé en 1961, est le résultat ou de maladies professionnelles ainsi que les frais
+de la fusion de trois caisses de sécurité sociale. Par le occasionnés par la réadaptation fonctionnelle et
+décret du 14 juillet 2016 (n°18/027), l’INSS est devenu la rééducation professionnelle ; l’attribution d’une
+la CNSS. La loi n°16/009 du 15 juillet 2016 fixe les rente en cas d’incapacité permanente, temporaire
+règles générales relatives au régime général de la ou partielle de travail ; l’attribution d’une indemnité
+sécurité sociale. journalière ; l’allocation de frais funéraires et
+rente de survivants en cas de décès de l’assuré ;
+Mission : La mission principale de la CNSS est de la fourniture, l’entretien et le renouvellement des
+superviser et administrer le régime général de appareils prothèse et d’orthopédie ; la lunetterie,
+sécurité sociale en RDC. Actuellement, la CNSS gère les soins infirmiers et les visites à domicile10.
+six des neuf éventualités prévues par la Convention
+No. 102 de l’OIT réparties en trois branches.
+Personnes Assujetties : La CNSS est l’institution
+gérant le régime général de sécurité sociale des
+travailleurs ne disposant pas de régime spécial. Il
+s’agit donc globalement de l’ensemble du secteur
+privé formel. Un régime couvrant le secteur informel
+est en cours d’opérationnalisation.
+Risques assurés :
+u Tableau 1. Risques assurés par la CNSS
+Accidents du Prestations Soins de
+Vieillesse Invalidité Survivants Maladie Maternité Chômage
+travail familiales santé
+Oui Oui Oui Non Oui Oui Non Oui Non
+8 Source : données transmises par la CNSS.
+9 Source : données transmises par la CNSS.
+10 Source : données transmises par la CNSS.
+
+--- Page 17 ---
+Bulletin Statistique sur la Protection Sociale 11
+N°1/2023
+Financement : Les cotisations sociales constituent Contributeurs de la CNSS : Le nombre de
+la ressource essentielle de la CNSS. Les taux de contributeurs à la CNSS a diminué en 2020 en
+cotisations sociales en fonction de la rémunération raison de la pandémie de COVID-19, ce qui n’est pas
+par branche sont11: surprenant et était même attendu. Ce nombre a
+ensuite augmenté progressivement avec la reprise
+u 10 pour cent du salaire mensuel pour la branche
+économique.
+des pensions de vieillesse invalidité décès dont 5
+pour cent à la charge de l’employeur et 5 pour cent u Tableau 2. Nombre de contributeurs de la
+à la charge du salarié ; CNSS
+u 6.5 pour cent du salaire mensuel pour la branche 2019 2020 2021 2022
+allocations familiales, à la charge de l’employeur ;
+Contributeurs 676 179 508 708 591 130 613 761
+u 1.5 pour cent du salaire mensuel pour la
+Bénéficiaires de la CNSS : Le nombre de bénéficiaires
+branche des accidents du travail et des maladies
+dans les différentes branches de la CNSS est en
+professionnelles, à la charge de l’employeur.
+augmentation.
+u Tableau 3. Nombre de bénéficiaires de la CNSS
+Branche des pensions de la CNSS 2019 2020 2021 2022
+Pension de retraite 38 641 39 465 42 407 44 094
+Pension d'invalidité 883 568 524 728
+Pension des survivants 24 725 25 720 28 355 31 524
+Allocations de vieillesse N/A N/A N/A N/A
+Allocations des survivants N/A N/A N/A N/A
+Pension de retraite anticipée 0 78 272 1 235
+Frais funéraires N/A N/A N/A N/A
+Branche des prestations familiales
+Allocations prénatales N/A 162 184 532
+Allocations de maternité N/A 108 167 414
+Allocations familiales 267 445 294 346 396 399 356 423
+Indemnité journalière de maternité N/A 2 2 17
+Branche des risques professionnels
+Rente ou allocation d'incapacité 1 082 1 020 955 1 053
+Rente de survivants 1 476 1 608 1 845 1 781
+Indemnité journalière N/A N/A N/A N/A
+Allocation des frais funéraires 1 766 589 849 533
+Autres prestations N/A N/A N/A N/A
+11 Source : Décret n°18/041 du 24 novembre 2018 fixant les taux de cotisations dues à la caisse nationale de sécurité sociale,
+en sigle « CNSS ».
+
+--- Page 18 ---
+1122 BBuulllleettiinn SSttaattiissttiiqquuee ssuurr llaa PPrrootteeccttiioonn SSoocciiaallee
+NN°°11//22002233
+u Illustration: Graphiques et commentaires sur la CNSS
+Le nombre de contributeurs a connu une forte baisse en 2020, passant de 676 179 à 508 708, soit une diminution
+de 24,7 pour cent. Cette chute est probablement liée à l’impact de la pandémie de COVID-19, qui a perturbé de
+nombreuses activités économiques et réduit le nombre de cotisants. En 2021 et 2022, une reprise est observée,
+avec une augmentation de 16,2 pour cent en 2021 et une hausse plus modérée de 3,8 pour cent en 2022, portant
+le total à 613 761 contributeurs. Bien que le nombre de contributeurs ait significativement récupéré après la
+pandémie, il n’a pas encore atteint le niveau d’avant la crise en 2019.
+Nombre de contributeurs à la CNSS
+1 000 000 Nombre de contributeurs à la CNSS
+1 050000 000000
+Nombre de contributeurs à la CNSS
+1 0
+5
+0
+0
+0
+0
+0
+0
+0
+0
+0
+00
+2019 2020 2021 2022
+0
+500 000
+2019 2020 2021 2022
+Entre 2019 et 2022, l 0 e nombre deN boémnébfirciea idrees cdoen latr pibenustieoun rdse à r eltar aCitNe SaS augmenté de 5 453 personnes, soit une
+hausse de 14,1 pour cent, reflétan2t 0u1n9e croiss2a0n2c0e contin20u2e1 du nom20b2r2e de retraités. La pension des survivants
+1 000 000
+a connu une augmentation notable de 7 799 bénéficiaires (+31,5 pour cent) sur la même période, indiquant un
+élargissement 5d0e0 c0e00tte couverture. En revanche, la pension d’invalidité a d’abord diminué de manière significative
+de 36 pour cent ent0re 2019 et 2021, avant de connaître un redressement en 2022, avec une hausse de 39 pour
+cent par rapport à l’année précéden2t0e1.9 Le nomb2r0e2 0de béné2fi0c2i1aires de2 l0a2 2retraite anticipée a passé de 78 à 1 235 en
+seulement deux ans.
+Distribution des bénéficiaires de la branche
+Distributiodne sd pese nbséinoénfsi cdiea ilrae sC NdeS Sla branche
+100 000 des pensions de la CNSS Pension de retraite anticipée
+100 000 Distribution des bénéficiaires de la branche PPeennssiioonn ddees r esutrraviitvea anntsticipée
+50 000 des pensions de la CNSS
+10500 000000 PP Pee enn nss sii ioo onn n dd d'e eins r ve sau trlriadv iii ttv eéa a n n ts ticipée
+0 PP Pee enn nss sii ioo onn n dd de' e in sr ves a utrl r iad vii itt veé ants
+50 0000 2019 Distr2i0b2u0tion des b2é0n21éficiaires d20e2 2la branchePension de retraite
+Pension d'invalidité
+2019 2020 des pen2s0i2o1ns de la CN20S2S2
+100 0000 PPeennssiioonn ddee rreettrraaiittee anticipée
+Le nombre de béné2fi0c1i9aires d’alloca2t0io20ns familiales 2a0 f2o1rtement aug2m02e2nté de 48,2P epnosuiorn c deens ts eurnvtivraen 2ts019 et 2021, avant
+de con5n0a 0î0t0re une légère baisse de 10 pour cent en 2022. Cette évolution pourrait être le résultat de changements
+Pension d'invalidité
+dans les politiques d’allocations ou dans la population éligible. Les allocations prénatales et de maternité, ont vu
+0 Pension de retraite
+leur nombre tripler en 2022, atteignant respectivement 532 et 414 bénéficiaires. Enfin, l’indemnité journalière de
+2N01o9mbre de b2é0n20éficiaires d2'0a2l1locations f2a02m2iliales de la CNSS
+maternité reste marginale, avec uniquement 2 bénéficiaires en 2022, et 17 l’année suivante.
+500 000 Nombre de bénéficiaires d'allocations familiales de la CNSS
+450000 000000
+Nombre de bénéficiaires d'allocations familiales de la CNSS
+340000 000000
+500 000
+230000 000000
+400 000
+120000 000000
+300 000
+100 0000 Nombre de bénéficiaires d'allocations familiales de la CNSS
+5 2 0 0 0 0 0 0 0 0 00 0 2019 2020 2021 2022
+100 000
+2019 2020 2021 2022
+400 000
+0
+300 000 2019 2020 2021 2022
+200 000
+Le n1o0m0 0b0r0e de bénéfiDciiasitrerisb duetsi orenn dteess o bué anlléofciactiiaoinrse sd ’dinec alpaa bcirtaé nac lhéegè dreems erinstq fluuecstu é, avec une baisse de 11,8
+pour cent0 entre 2019D eist t2r0ib21u,t siouniv ide eds’up bnréeo nfleéégsfsèiciroeia nrieereplsrs i dsdeee e llnaa C2b0Nr2aS2nS, cahttee igdneasn rti s1q 0u5e3s b énéficiaires, soit un retour
+2019 2020 2021 2022
+proche des niveaux de 2019. La rente dper osfuersvsiviaonntes las adueg lma eCnNtéS Sde manière constante, avec une hausse de 25
+pour c 5 e 0 n 00 t entre 2019D eits t2r0i2b1u, taivoann td dees cboénnnéafîtircei auinree sp edteit ela d bimrainnuctihoen dene s2 0ri2s2q. uL’ealslo cation d R e e s n t f e r o a u is funéraires,
+cepen4 5 d 0 0 a0 0 n0 0 t, a diminué de 70 pour cent d p e r p o u f i e s s 2 s 0 i 1 o 9 n , e c l e s q d u e i p la o u C r N ra S it S signaler des modifications a d Rd l ' el i a o n nn c c tae a s t p oi l o a ue n c s it é conditions
+allocation
+d’attri
+3
+45b
+0
+00u
+0
+00t
+0
+00ion ou une réduction des demandes pour cette allocation.
+dR'einnctea poaucité
+Ralelonctaet dioen
+2
+34
+0
+00
+0
+00
+0
+00 Distribution des bénéficiaires de la branche des risques s Rdu'einr
+n
+vct i eav pa
+d
+naectsité
+professionels de la CNSS
+survivants
+23 000000
+1 000 Rente de
+5 000 As R u ellron vct i eav atoinou tns des
+12 4 00 0 00 0 00 0 0 fA a d rl ' lal i l o n oisc c c a a afut p t i ino a oén c n i r t ad é ierses
+1 0000 2019 2020 2021 2022 frais funéraires
+3 000 2019 2020 2021 2022 A Re llo n c te a t d io e n des
+0 frais funéraires
+survivants
+2 000 2019 2020 2021 2022
+1 000
+Allocation des
+0 frais funéraires
+2019 2020 2021 2022
+
+--- Page 19 ---
+Bulletin Statistique sur la Protection Sociale 13
+N°1/2023
+2.3.2 La Caisse Nationale de Sécurité Sociale des Agents Publics de l’État (CNSSAP)
+Source juridique : Le Décret n°15/031 du 14 décembre 2015 instaure la création, l’organisation et le
+fonctionnement d’un établissement public dénommé CNSSAP.
+Mission : L’objectif principal de la CNSSAP est de coordonner et d’administrer les prestations de sécurité sociale
+pour l’essentiel des agents publics de l’état qui doivent englober trois branches.
+Personnes Assujetties : La population couverte est constituée des agents de carrière des services publics
+de l’État et de leurs éventuels dépendants. Cela inclut les fonctionnaires contractuels de l’État, ainsi que les
+stagiaires et les apprentis engagés par un contrat d’apprentissage et travaillant au sein de l’administration
+publique.
+Risques assurés :
+u Tableau 4. Risques assurés par la CNSSAP
+Accidents Prestations Soins de
+Vieillesse Invalidité Survivants Maladie Maternité Chômage
+du travail familiales santé
+Oui Oui Oui Non Non Non* Non Non Non
+*Les prestations familiales et les prestations en cas d’accidents au travail ou de maladies professionnelles n’étaient pas
+encore opérationnelles en 2022. Les prestations en cas d’accidents au travail ou de maladies professionnelles seront
+opérationnalisé en 2023.
+Prestations :
+Le régime gère trois branches :
+u La branche des pensions, qui couvre les allocations pour invalidité, retraite et survivants ;
+u La branche des risques professionnels, qui prend en charge les indemnités en cas d’accidents du travail et de
+maladies professionnelles mais qui n’est pas opérationnelle ;
+u La branche des prestations familiales qui prend en charge les prestations de familles (allocations) mais qui
+n’est pas opérationnelle.
+Financement : Le régime de sécurité sociale administré par la CNSSAP repose sur les contributions obligatoires
+pour tous les travailleurs actifs. Elles constituent la principale source de financement de la CNSSAP. Depuis le
+1er octobre 2017, les cotisations sont prélevées mensuellement à la source sur le salaire de base de tous les
+fonctionnaires des services publics de l’État. Le taux de cotisation de l’agent public est fixé à 3 pour cent de son
+traitement de base tandis que celui de l’État-employeur est de 6 pour cent.
+u Tableau 5. Nombre de contributeurs de la CNSSAP12
+Contributeurs 2019 2020 2021 2022
+Contributeurs (Hommes) N/A 110 912 124 921 138 443
+Contributeurs de la CNSSAP :
+Contributeurs (Femmes) N/A 61 392 65 624 59 956
+12 Contributeurs (Total) 172 204 172 304 190 545 198 399
+12 Source : Données transmises par la CNSSAP.
+
+--- Page 20 ---
+14 Bulletin Statistique sur la Protection Sociale
+N°1/2023
+La mécanisation des agents et cadres de la fonction publique :
+La RDC a longtemps été confrontée au problème des agents et fonctionnaires de l’État non rémunérés. Il s’agit
+d’agent de l’état qui possèdent un numéro de matricule délivré par le ministère de la Fonction Publique, mais
+ne figurent pas sur la liste de paye officielle. Ces agents ne reçoivent aucun salaire et ne bénéficient pas des
+avantages du système de sécurité sociale. Une politique d’inclusion salariale (mécanisation) a été mise en place
+afin de régulariser progressivement le statut administratif de ces agents de l’État. À ce jour, plusieurs vagues
+de mécanisation ont été entreprises, comprenant 40 000 agents d’octobre 2021 à décembre 2022 et 101 000
+agents en 202313.
+Si ces processus de mécanisation se poursuivent, ils devraient avoir un impact significatif sur le nombre de
+contributeurs à la CNSSAP dans les années à venir, contribuant ainsi à une meilleure inclusion sociale et à une
+réduction des disparités dans le système de rémunération des fonctionnaires. Il est à signaler que le nombre
+de travailleur du secteur public de la RDC est estimé à 2 391 500 personnes dont 1 623 000 employés en 202014.
+u Tableau 6. Nombre de bénéficiaires de la branche des pensions de la CNSSAP15
+Bénéficiaires de la branche des pensions 2019 2020 2021 2022
+Pension de retraite (Hommes) N/A 666 640 1 091
+Pension de retraite (Femmes) N/A 148 140 238
+Pension de retraite Total 845 814 780 1 329
+Rente de survie au conjoint survivants N/A 50 114 184
+Rente de survie pour l'orphelin N/A 40 103 187
+Pension de réversion 70 N/A N/A N/A
+La réforme de basculement des pensions de retraite :
+La réforme de basculement implique le transfert des pensionnés de régimes octroyés (dont les prestations
+étaient initialement financées par des allocations budgétaires) vers le système contributif de la CNSSAP. Cela
+concerne les bénéficiaires (retraités) n’ayant pas effectivement cotisé à la CNSSAP depuis sa création en 2015,
+mais dont les pensions seront versées par cette dernière. Ce processus progressif devrait significativement
+accroître le nombre de pensionnés de la CNSSAP.15
+u Tableau 7. Nombre de bénéficiaires de la réforme de basculement de la CNSSAP en 2022 et 2023
+Bénéficiaires de la réforme de basculement 2022
+Pension de retraite (Hommes) 3 268
+Pension de retraite (Femmes) 385
+Pension de retraite (TOTAL) 3 653
+Rente de survie au conjoint survivants 6 044
+Rente de survie pour l'orphelin 549
+13 Source : site internet du Ministère de la Fonction Publique, Modernisation de l’Administration et Innovation du Service
+Public https://fonctionpublique.gouv.cd/j-p-lihau-etablit-un-plan-quinquennal-de-mise-a-la-retraite-de-300-000-agents-
+publics-de-letat-eligibles-dici-2026/
+14 Source : Organisation Internationale du Travail. Base de données de l’OIT (ILOSTAT).
+15 Source : Données transmises par la CNSSAP
+
+--- Page 21 ---
+Bulletin Statistique sur la Protection Sociale 15
+N°1/2023
+Départ par tranche/mise à la retraite par vague u 4 400 agents ont été mis à la retraite (1ere vague,
+septembre 2022) ;
+En 2022, le Vice-Premier Ministre et ministre de la
+Fonction Publique a indiqué que 350 000 agents u 6 369 agents ont été mis à la retraite (2eme vague,
+étaient éligibles à la retraite. Il a précisé que parmi février 2023) ;
+ces agents, 14 000 étaient âgés de plus de 90 ans,
+dont 256 étaient des centenaires, le plus âgé ayant
+u 50 000 agents ont été mis à la retraite (prévue
+pour l’année 2023)17.
+110 ans. Il a souligné la nécessité de mettre en place
+un départ progressif afin d’assurer une retraite digne Il a fait état de 300 000 agents publics éligibles entre
+pour ces agents.16 2022 et 2026.18
+Un plan de mise à la retraite progressif des agents Le nombre d’agents mis à la retraite et
+publics de l’état éligibles à la retraite a été entamé progressivement basculé vers la CNSSAP devrait avoir
+depuis 2022. Au 1er janvier 2023 : un très grand effet sur le nombre de bénéficiaires de
+pensions de retraites de la CNSSAP.
+16 Source : site internet du Ministère de la Fonction Publique, Modernisation de l’Administration et Innovation du Service
+Public https://fonctionpublique.gouv.cd/j-p-lihau-etablit-un-plan-quinquennal-de-mise-a-la-retraite-de-300-000-agents-
+publics-de-letat-eligibles-dici-2026/
+17 Source : site internet du Ministère de la Fonction Publique, Modernisation de l’Administration et Innovation du Service
+Public https://fonctionpublique.gouv.cd/j-p-lihau-etablit-un-plan-quinquennal-de-mise-a-la-retraite-de-300-000-agents-
+publics-de-letat-eligibles-dici-2026/
+18 Source : site internet du Ministère de la Fonction Publique, Modernisation de l’Administration et Innovation du Service
+Public https://fonctionpublique.gouv.cd/j-p-lihau-etablit-un-plan-quinquennal-de-mise-a-la-retraite-de-300-000-agents-
+publics-de-letat-eligibles-dici-2026/
+
+--- Page 22 ---
+1166 BBuulllleettiinn SSttaattiissttiiqquuee ssuurr llaa PPrrootteeccttiioonn SSoocciiaallee
+NN°°11//22002233
+u Illustration: Graphiques et commentaires CNSSAP
+Entre 2019 et 2022, le nombre total de contributeurs a augmenté de manière régulière, passant de 172 204 en
+2019 à 198 399 en 2022, soit une hausse de 15,2 pour cent. Cette croissance a été principalement tirée par une
+augmentation significative du nombre de contributeurs masculins, qui a progressé de 24,8 pour cent sur cette
+période, passant de 110 912 en 2019 à 138 443 en 2022. En revanche, le nombre de contributrices féminines a
+montré une tendance moins uniforme. Après une augmentation en 2020, atteignant 65 624, le nombre de femmes
+contributrices a diminué de 8,6 pour cent en 2022 par rapport à 2021, tombant à 59 956. Cette divergence dans les
+tendances entre les sexes pourrait refléter des différences dans les secteurs d’emploi ou des impacts différenciés
+de la pandémie sur l’emploi masculin et féminin.
+Contributeurs de la CNSSAP
+300 000
+200 000 Homme
+100 000 Femme
+0
+2019 2020 2021 2022
+*La ventilation homme femme en 2019 est une estimation.
+Contributeurs de la CNSSAP
+300 000
+Entre 2019 e2t 0200 02020, le nombre total de bénéficiaires de la branche des pensions de la CNSSAP aH ocmonmneu une évolution
+marquée, passant de 845 en 2019 à 1 329 en 2022, soit une augmentation significative de 57,3 pour cent. Cette
+100 000 Femme
+croissance a été principalement alimentée par une forte augmentation des pensions de retraite pour les hommes,
+qui ont presque d0oublé, pasDsiasnttr idbeu 6t6io6 ne nd e2s0 1b9é àn é1 f0ic9i1a eirne 2s0 d2e2 .l Lae bs rpaenncshioens de retraite pour les femmes ont
+également augmenté de man20iè1r9ed seusb spteanntsiei2ol0lne2,0s a evenc 2u0n2e2 h da2ue02s l1sae CdeN 6S0S,A8 Ppo2u02r2 cent sur la même période.
+En ce qui concerne les rentes de survie, le nombre de bénéficiaires pour les conjoints survivants a presque
+quadruplé, passant de 50 en 2019 à 184 en 2022, tandis que les rentes pour les orphelins ont également connu une
+Rente de survie aux conjoints survivants
+forte augmentation, passant de 40 à 187 bénéficiaires, soit une hausse de 367,5 pour cent. Ces chiffres reflètent
+187 1091 Rente de survie pour l’orphelin
+une augmentation notable de la couverture ou du nombre de situations nécessitant ces rentes.
+1329
+184 Pension de réversion
+238
+Pension de retraite (Homme)
+Distribution des bénéficiaires de la branche
+Pension de retraite (Femme)
+des pensions en 2022 de la CNSSAP
+Rente de survie aux conjoints survivants
+187 1091 Rente de survie pour l’orphelin
+1329
+184 Pension de réversion
+238
+Pension de retraite (Homme)
+Pension de retraite (Femme)
+
+--- Page 23 ---
+Bulletin Statistique sur la Protection Sociale 17
+N°1/2023
+19
+2.3.3 Les régimes spéciaux
+Les régimes spéciaux concernent les systèmes de protection sociale destinés à des agents spécifiques de la
+fonction publique, chacun étant régi par son propre ministère ou organisme. À l’exception du régime spécial des
+parlementaires, ces régimes sont non-contributifs et financés par le Trésor public. Il a été difficile d’obtenir des
+informations détaillées sur ces régimes et de tous les énumérer.
+u Tableau 8. Régimes spéciaux financement et risques assurés
+Textes
+Autorités en Charge Personnes Protégées Financement Risques
+Juridiques
+Soins médicaux
+Indemnité
+de cessation
+Ordonnance
+Présidence de la de mandat
+Agents publics de l'Etat 82-046
+République Trésor public
+et leurs ayant droits du 31 mars
+et Primature Vieillesse
+1982
+Décès
+-
+Invalidité
+Ministère de la Défence Militaires
+Trésor public Vieillesse N/A
+et Anciens Combattants et leurs ayant droits
+Décès
+Magistrats civils Invalidité
+O-L 88-056
+et militaires
+Ministère de la Justice Trésor public Vieillesse du 29 septembre
+de l'ordre de justice
+1988
+et leurs ayant droits Décès
+Invalidité
+Service Autonome Trésor public ;
+Loi 88-002
+placé sous Parlementaires cotisation
+Vieillesse du 29 janvier
+la responsabilité de et leurs ayant droits des parlementaires et
+1988
+l’Assemblée Nationale revenu de placements.
+Décès
+2.3.4 La Mutuelle de Santé des est mise en place pour prendre en charge les
+Enseignants de l’Enseignement enseignants et ainsi que leur époux(ses) et enfants
+Primaire, Secondaire et Professionnel légitimes conformément aux lois en vigueur en RDC.
+(MESP « Mutuelle agréée »)
+Financement : Les ressources financières sont
+constituées des cotisations des Membres et
+Les enseignants sont pris en charge par la Mutuelle de
+des subventions de l’État. Les cotisations sont
+Santé des Enseignants de l’Enseignement Primaire,
+mensuelles, retenues à la source et versées via le
+Secondaire et Technique (MESP « Mutuelle agréée »),
+comptable d’État.
+qui est la seule mutuelle obligatoire et statutaire.
+Prestations : Le régime couvre un paquet étendu
+Source juridique : L’Arrêté n°027/CAB/MINETAT/
+de soins ambulatoires, spécialisés et hospitaliers,
+MTEPS/01/2019 accorde l’agrément à la MESP.
+d’examens, médicaments spécialisés après accord du
+Reconnu par l’Arrêté n°042/CAB/MIN/JGSDH/2015
+médecin-conseil. Au-delà du titulaire principal, sont
+du ministère de la Justice, le financement de cette
+prise en charge le conjoint et maximum 3 enfants
+mutuelle provient des cotisations des membres et
+(<18 ans ou encore étudiant ; 5 enfants si 2 conjoints
+des subventions de l’État.
+enseignants).
+Mission : La MESP « Mutuelle agréée » est une société
+Population couverte : Les enseignants, leur
+d’assurance maladie obligatoire de type corporatif,
+époux(ses) et enfants légitimes ne deviennent
+agréé qui regroupe tous les enseignants du secteur
+affiliés et bénéficiaires des prestations aux soins
+public en RDC.
+que lorsqu’ils sont détenteurs d’une carte MESP.
+Personnes Assujetties : La MESP «Mutuelle agréée» Aussi, à la date du 31 décembre 2022, la MESP n’était
+19 Source : Secrétariat Nationale De Protection Sociale (SNPS).
+
+--- Page 24 ---
+18 Bulletin Statistique sur la Protection Sociale
+N°1/2023
+disponible que dans 7 des 26 provinces de la RDC, à savoir Kinshasa, Haut Katanga, Equateur, Kasaï-Oriental,
+Kasaï, Tshopo et Nord Kivu.20
+u Tableau 9. Population couverte par le MESP20
+2019 2020 2021 2022
+Contributeurs du MESP 50 256 54 383 60 745 80 041
+Membres de famille du contributeurs 72 291 76 578 81 081 84 836
+Total 122 547 130 961 141 826 164 877
+La marge de progression est conséquente puisque si chaque enseignant détenait une carte, elle compterait
+plus de 700 000 titulaires (enseignants) ainsi que 4 membres de leur famille environ. La Mutuelle devrait à terme
+couvrir plus de 2 800 000 personnes21.
+u Illustration: Graphiques et commentaires sur la MESP
+Entre 2019 et 2022, le nombre de contributeurs à la Mutuelle de Santé des Enseignants de l’Enseignement Primaire,
+Secondaire et Technique (MESP) a enregistré une progression remarquable de 59,3 pour cent, passant de 50 256
+à 80 041. De plus, le nombre de personnes à charge des contributeurs a également augmenté, atteignant 84 836
+en 2022. Ces résultats positifs montrent une dynamique encourageante pour le MESP, avec un potentiel encore
+important pour continuer à élargir sa couverture et renforcer la protection sociale des enseignants et de leurs
+familles en RDC.
+Couverture de la MESP
+2022
+2021
+2020
+2019
+0 20 000 40 000 60 000 80 000 100 000 120 000 140 000 160 000 180 000
+Dont Contributeurs du MESP Dont Personnes à charge du MESP
+20 Source : Données transmises par le MPESP en 2023.
+21 Source : Site internet du MESP MESP RDC – Mutuelle de Santé des Enseignants de l’EPSP
+
+--- Page 25 ---
+Bulletin Statistique sur la Protection Sociale 19
+N°1/2023
+w Le Régime spécial sur la gratuité de la
+2.3.5 Le Fonds de Solidarité de Santé
+maternité ;
+(FSS)
+w Un régime d’assurance maladie
+Source juridique : Le FSS, créé par la Loi n° 18/035 du complémentaire.
+13 décembre 2018 fixant les principes fondamentaux
+La couverture santé publique est en cours
+relatifs à l’organisation de la santé publique, est un
+d’opérationnalisation et visera, à terme, à
+Établissement public à caractère administratif, doté
+remplacer tous les régimes particuliers de
+de la personnalité juridique et de l’autonomie de
+financement de soins médicaux existants afin
+gestion.
+d’assurer une couverture universelle. A l’heure de
+Mission Selon le Décret n° 22/13 du 09 avril 2022, l’élaboration de ce bulletin (janvier 2024), le FSS ne
+il est chargé d’organiser la solidarité financière prélevait pas encore de contributions des assurés,
+des cotisants de la CSU, de collecter les fonds pour mais finançait déjà la gratuité de la maternité.
+les services de santé, de contractualiser avec les En effet, en septembre 2023, la politique de la
+établissements de santé et pharmaceutiques, gratuité des accouchements et des soins néonatals
+a été lancée dans la ville-province de Kinshasa.
+d’assurer un financement équitable des soins pour
+Elle comprend entre autres, les consultations
+tous, et effectuer les paiements des prestations
+prénatales, l’échographie obstétricale, les
+de santé. Pour rappel la couverture santé publique
+accouchements simples, les accouchements par
+regroupera plusieurs types de régimes :
+césarienne, les soins du nouveau-né, la vaccination,
+u Un régime d’assurance maladie de base les consultations post-natales, les services de
+contributif et obligatoire : planification familiale et l’accès aux médicaments
+essentiels. La population de la ville-province de
+w L’assurance maladie obligatoire pour les
+Kinshasa est habituellement estimée entre 16 et
+agents de carrière des Services Publics de
+18 millions de personnes. La politique de gratuité
+l’État, actifs et retraités ;
+des soins prénatals, maternels et néonatals sera
+w L’assurance maladie obligatoire des travailleurs ensuite étendue aux provinces du Sud-Kivu, du
+régis par le Code du travail, retraités et actifs ; Kasaï Oriental, du Kongo Central puis à l’ensemble
+du pays. Il s’agit du paquet des soins de base de la
+w L’assurance maladie obligatoire scolaire et
+mise en œuvre de la CSU.
+estudiantine ;
+w L’assurance maladie du secteur informe.l Il existe également divers programmes
+d’assistance médicale ou de soins de santé,
+u Un régime de couverture maladie non contributif :
+notamment par l’intermédiaire du ministère de
+w L’assistance médicale de l’État aux personnes la Santé. Ces programmes ne relèvent pas du
+vulnérables ; mécanisme d’assurance.
+2.4 Principaux programmes de protection sociale non statutaire
+2.4.1 Les Mutuelles de Santé quartier ou de village, du secteur informel ». La RDC
+Professionnelles, Corporatives et disposerait de plus de 200 mutuelles volontaires
+Communautaire dont le financement repose sur les contributions des
+assurés, les subventions du gouvernement et parfois
+Jusqu’à l’opérationnalisation de l’assurance santé
+de financement de bailleurs ou d’ONG. L’affiliation à
+publique, la protection sociale en santé repose
+ces mutuelles étant volontaire et leur administration
+essentiellement sur les mutuelles volontaires de
+privée, elles ne sont pas prises en compte dans ce
+santé de type communautaire ou professionnelle
+document.
+(Institut de Médecine Tropicale, 2016). La loi
+2.4.2 Interventions
+organique No 17/002 du 08 février 2017 déterminant
+gouvernementales
+les principes fondamentaux de la mutualité
+définit les mutuelles comme « un groupement des
+Interventions du ministère de l’enseignement
+personnes physiques ou morales, de droit privé,
+primaire, secondaire et technique (MEPST)
+à but non lucratif qui, au moyen des cotisations de
+ses membres, se propose de mener dans l’intérêt Depuis 2019, la RDC s’est engagée à assurer la
+de ceux-ci et/ou de personnes à leur charge, des gratuité de l’enseignement primaire sur tout son
+actions de prévoyance, de solidarité et d’entraide ». territoire, conformément à l’article 43, alinéa 4 de
+A son article 70 : « La mutuelle de santé est conçue et la constitution du 18 février 2006 et à la loi cadre de
+développée comme une assurance maladie nationale l’enseignement national du 14 février 2014. Cette
+offrant aux populations la possibilité d’accéder aux mesure vise à garantir un accès équitable à une
+soins de santé de qualité à des prix décents. » Il éducation primaire de qualité pour tous les enfants.
+peut s’agir (article 76) « des mutuelles d’entreprise, La responsabilité de cette gratuité incombe au
+des mutuelles professionnelles ou corporatives, des ministère de l’Enseignement Primaire, Secondaire et
+mutuelles scolaires et étudiantes, des mutuelles de Technique (MEPST).
+
+--- Page 26 ---
+20 Bulletin Statistique sur la Protection Sociale
+N°1/2023
+u Tableau 10. Estimation du nombre de bénéficiaires de la gratuité de l’éducation
+2019 2020 2021 2022
+Estimation du nombre de bénéficiaires
+de la gratuité de l'éducation primaire publique22 15 105 337 16 668 703 17 941 415 18 386 994
+Un programme national de cantines scolaires a également été initié pour consolider la22gratuité de l’enseignement
+primaire dans les écoles publiques de la RDC (Agence Congolaise de Presse, 2023). Ce projet, en phase pilote
+dans cinq provinces éducationnelles de la ville de Kinshasa bénéficie déjà à un total de 6 643 élèves répartis dans
+11 écoles sélectionnées en 202323. Il devrait par la suite être étendu à l’ensemble du territoire.
+Interventions du ministère de la Santé Publique, Hygiène et Prévoyance sociale
+Le ministère de la Santé Publique, l’Hygiène et la Prévoyance Sociale est responsable de l’élaboration et de la
+mise en œuvre des politiques, plans et stratégies de santé du gouvernement. Il joue un rôle crucial dans la
+protection de la santé par le biais de programmes et d’interventions ciblés. De plus, il offre des soins de santé
+aux populations vulnérables. Des données sur la couverture de ces programmes et interventions ne sont pas
+disponibles cependant.
+u Tableau 11. Interventions du ministère de la Santé Publique, l’Hygiène et la Prévoyance Sociale en 2022
+Total
+Interventions Public cible
+bénéficiaires
+Kits médicaux distribués Enfants de moins de 5 ans N/A
+Malaria (Moustiquaires imprégnés) Enfants de moins de 15 ans N/A
+Vaccination Enfants de moins de 5 ans N/A
+Dépistage VIH et traitement antirétroviral Personnes vivant avec le VIH N/A
+Dépistage et traitement tuberculose Malades tuberculeux N/A
+Carte de soins pour des personnes vulnérables Personne en situation de vulnérabilité N/A
+Autres Autres N/A
+Interventions du ministère des Affaires Sociales, Action Humanitaire et Solidarité Nationale (MINAS)
+La RDC dispose d’un ministère des Affaires Sociales, Actions Humanitaires et Solidarité Nationale (MINAS) dont
+le rôle «est de garantir à toutes les personnes en situation difficile, l’accès aux services sociaux de base et un
+revenu minimum par la promotion et la protection de leurs droits et de l’équité sociale ainsi que la lutte contre
+toutes formes d’exclusion, de vulnérabilité et de pauvreté pouvant entamer leur bien-être et leurs capacités
+compromettre ainsi la dynamique et la cohésion sociale »24.
+Le MINAS est chargé de concevoir et de mettre en œuvre des politiques visant à améliorer le bien-être des
+populations vulnérables, telles que les personnes handicapées, les orphelins et les personnes âgées. Le MINAS
+coordonne les programmes d’assistance sociale et d’inclusion. Il travaille également en collaboration avec
+des organisations locales et internationales pour renforcer le système de protection sociale et promouvoir la
+solidarité nationale.
+22 Source : Ministère de l’EPST sur la base de projection.
+23 Source : Ministère de l’EPST.
+24 Source : Site web du Ministère des Affaires Sociales, de l’Action Humanitaire et de la Solidarité https://minas.gouv.cd/
+
+--- Page 27 ---
+Bulletin Statistique sur la Protection Sociale 21
+N°1/2023
+u Tableau 12: Interventions du ministère des Affaires Sociales, Action Humanitaire et Solidarité
+Nationale en 202225
+Total Dont Dont
+Interventions Public cible
+bénéficiaires Hommes Femmes
+Cartes d’indigences Tout personne démunie et vulnérable 2 544 1 043 1 501
+Orphelins et enfants abandonnés
+Orphelinats 1 457 976 481
+et/ou en rupture familiale
+Personnes de troisième
+Les hospices pour
+âge abandonnés/sans 486 201 285
+les personnes âgées
+soutien familial
+Centres de promotion sociale Enfants et jeunes de 9-24 ans 812 540 455 022 357 518
+Centres d’apprentissage
+Enfants et jeunes handicapés
+professionnel pour les personnes 214 152 130 633 83 519
+(moteurs, visuels et sensoriels)
+vivant avec handicap
+Personnes démunies sans ressources
+ni soutien familial ainsi que
+Assistance sociale aux
+les personnes /ménages déplacés, 3 546 852 N/A N/A
+populations nécessiteuses
+sinistrés victimes des catastrophes
+et autres calamités
+Tutelle et reclassement
+des enfants en situation N/A N/A N/A N/A
+particulièrement difficile
+Personnes vulnérables et
+en situation d’extrême pauvreté
+Protection et insertion (enfants et jeunes en situation difficile,
++/- 5 400 000 N/A N/A
+sociale des groupes vulnérables personnes vivant avec handicap),
+personnes de troisième âge,
+déplacés, sinistrés, etc.
+Enseignement spécial
+au profit des enfants vivant N/A N/A N/A N/A
+avec handicap
+2.4.3 Interventions financés ou mis en œuvre par les partenaires humanitaires et
+d’appui au développement
+Le Fonds Social de la RDC, établis par le Décret Présidentiel n° 009/2002 du 05 février 2002 est l’entité de
+mise en œuvre du Projet pour la Stabilisation de l’Est de la DRC pour la Paix (STEP), initialement approuvé en
+2014 et financée par le Groupe de la Banque Mondiale. Le projet, dans sa troisième phase de mise en œuvre,
+vise à améliorer l’accès aux activités génératrices de revenu et aux infrastructures socio-économiques dans
+les communautés vulnérables accueillant les personnes réfugiées. Le projet comprend des programmes de
+travaux publics, des transferts monétaires et des mesures complémentaires. Au total, le projet vise à fournir
+des transferts monétaires à 470 000 individus et à engager 150 000 personnes dans le programme de travaux
+publics (World Bank, 2021). La date de clôture du projet était en février 2024.25
+25 Source : Information transmise durant l’atelier de validation du bulletin.
+
+--- Page 28 ---
+22 Bulletin Statistique sur la Protection Sociale
+N°1/2023
+Les organismes humanitaires et d’appui au 530 en 2022. De plus, le PAM met en œuvre des
+développement mettent également en œuvre Transferts de ressources sans conditions, couvrant
+des programmes qui visent à alléger la pauvreté 4 037 575 bénéficiaires en 2021 et 3 790 107
+multidimensionnelle. En vue du nombre important personnes en 2022 (PAM, 2022 ; PAM, 2023).
+d’acteurs mettant en œuvre des programmes de
+u En 2022, UNICEF et FAO ont également
+transferts monétaires ou de transferts en espèces,
+collaboré sur un programme fournissant à 4 000
+une liste exhaustive est au-delà de la portée de
+ménages vulnérables des transferts monétaires
+ce bulletin. Cependant, à titre illustratif, certains
+inconditionnels ainsi qu’un soutien aux activités
+exemples sont cités ci-dessous.
+génératrices de revenus liées à l’agriculture, qui visait
+u Le PAM soutient plusieurs programmes et activités à améliorer la résilience et la sécurité alimentaire
+en RDC visant à réduire la malnutrition et la des ménages bénéficiaires. En 2022, UNICEF
+pauvreté, y compris en réponse aux situations mettait également en œuvre deux programmes
+d’urgence. En 2021, 226 648 enfants bénéficiaient de transferts monétaires humanitaires dans la
+des cantines scolaires, qui visent à fournir des province de Tanganyika : un programme dit « Cash+
+repas nutritifs aux enfants dans les écoles, ce qui Nutrition » couvrant 1 400 ménages combinant un
+contribue à encourager la fréquentation scolaire, transfert monétaire à usages multiples avec des
+à améliorer la nutrition des enfants et à soutenir interventions de nutrition ; et un transfert monétaire
+le développement communautaire. En 2022, le à usages multiples mobile ciblant 3 606 personnes
+nombre d’enfants bénéficiaires est passé à 246 déplacées et les populations hôtes (UNICEF, 2023).
+2.5 Responsabilité de l’employeur et régimes d’entreprise
+Les risques couverts par la responsabilité juridique de sécurité sociale tels qu’énoncés dans la convention
+de l’employeur en RDC sont : No. 102, y compris les principes de financement
+collectif (articles 71 de la convention No. 102). L’OIT
+u Allocations prénatales (Loi n° 16/010 du 15 juillet
+estime généralement que, bien que la protection
+2016 et la loi n° 015-2002 portant Code du travail) ;
+légale puisse être en partie assurée par des dispositifs
+impliquant la responsabilité de l’employeur, le
+u Indemnités de maladie en espèces (Loi n° 015/2002
+mécanisme d’assurance demeure le meilleur moyen
+du 16 octobre 2002 portant Code du Travail) ;
+de garantir une sécurité de revenu et de la santé
+u Prestations de maternité et soins de santé26. en cas de maladie ou de maternité. En effet, un
+système exclusivement basé sur la responsabilité
+Il existe également en RDC des régimes d’entreprise
+de l’employeur présente des limites, car il ne
+se fondant sur les dispositions du Code du travail pour
+couvre que les travailleurs salariés (les travailleurs
+établir des conventions collectives négociées entre
+indépendants étant leur propre employeur) et peut
+les employeurs et les travailleurs afin de fournir des
+exclure certaines catégories de salariés, telles que les
+prestations de sécurité sociale. Ces régimes couvrent
+travailleurs occasionnels, les employés rémunérés à
+aussi généralement les soins de santé, les allocations
+l’heure ou agissant dans le secteur informel. De plus,
+de maternité, les indemnités de maladie et les
+la solidarité dans le financement est insuffisante
+allocations familiales (Louis dit Guérin, à paraître).
+dans ce modèle, puisque les entreprises doivent
+Les régimes fondés sur la responsabilité de supporter seules le coût des arrêts de maladie. Cela
+l’employeur et celle découlant de conventions peut les inciter à dissuader les congés de maladie
+collectives sont exclus de notre analyse et de la ou à discriminer les candidats souffrant de maladies
+Figure 527. chroniques. Les petites entreprises peuvent avoir
+du mal à financer ce type de régime et pourraient
+Ces types de prestations ne sont pas conformes aux
+privilégier des formes d’emploi ne garantissant pas
+principes fondamentaux des normes internationales
+de cette sécurité (BIT, 2020q).
+26 La mise en œuvre de la couverture santé publique verra l’introduction d’un régime assuranciel pour couvrir l’accès aux
+services de santé, cependant.
+27 La couverture potentielle de régimes fondés sur la responsabilité de l’employeur n’est pas estimée dans ce bulletin en
+raison du champ d’application limité et de l’absence de registres administratifs fiables.
+
+--- Page 29 ---
+BBuulllleettiinn SSttaattiissttiiqquuee ssuurr llaa PPrrootteeccttiioonn SSoocciiaallee 2233
+NN°°11//22002233
+
+--- Page 30 ---
+24 Bulletin Statistique sur la Protection Sociale
+N°1/2023
+3. Indicateurs de couverture des
+régimes statutaires
+Cette section présente les taux de couverture pour plusieurs branches de sécurité sociale, accompagnés des
+définitions en italique retenues pour cette évaluation. Elle se concentre uniquement sur les régimes statutaires,
+reposant sur le mécanisme d’assurance délivrant des prestations en espèces. Les couvertures calculées peuvent
+varier selon les définitions retenues.
+3.1 Couverture par branche
+Protection sociale statutaire des enfants
+Proportion d’enfants couverts par des prestations de protection sociale : pourcentage des enfants ou ménages avec
+enfants qui perçoivent des prestations en espèces à l’enfance ou aux familles.
+Une définition plus élargie de la protection sociale pourrait prendre en compte le programme de gratuité de
+l’enseignement primaire du MEPST.
+Ci-dessous l’estimation du nombre d’enfants couverts28 à partir du nombre de bénéficiaires de prestations
+familiales sur une base de 3.17 enfants par titulaire.2930313233
+u Tableau 13. Estimation du nombre d’enfants bénéficiaires de prestations familiales de la CNSS
+2019 2020 2021 2022
+Nombre de titulaires de
+267 445 294 346 396 399 356 423
+prestations familiales29 de la CNSS
+Estimation du nombre d’enfants par foyer30 3.17 3.17 3.17 3.17
+Estimation du nombre d’enfants
+847 801 933 077 1 256 585 1 129 861
+bénéficiaires de prestations familiales
+u Tableau 14. Indicateurs de couverture effective de protection sociale
+2019 2020 2021 2022
+Population couverte 847 801 933 117 1 256 688 1 130 048
+Dont enfants bénéficiaires de l’allocation
+847 801 933 077 1 256 585 1 129 861
+familiale de la CNSS (estimation31)
+Dont enfants bénéficiaires
+N/A 40 103 187
+de rente d’orphelin de la CNSSAP32
+Population de moins de 18 ans33 47 523 411 49 135 644 50 791 485 52 490 412
+Taux de couverture 1.78% 1.90% 2.47% 2.15%
+28 Basé sur le nombre d’enfants de moins de 20 ans par foyer en 2013. Source : Division de la population des Nations Unies,
+Base de données sur la taille et la composition des ménages https://www.un.org/development/desa/pd/data/house-
+hold-size-and-composition
+29 Source : données transmises par la CNSS en 2023.
+30 Estimation basée sur un nombre de 3.17 enfants de moins de 20 ans par foyer en 2013 (UN HH Size and Composition 2019).
+31 Source : données transmises par la CNSS en 2023.
+32 Source : données transmises par la CNSS en 2023.
+33 Source : ILOSTAT - Modelled estimates.
+
+--- Page 31 ---
+Bulletin Statistique sur la Protection Sociale 25
+N°1/2023
+Protection sociale statutaire des travailleurs
+Proportion des personnes en âge de travailler bénéficiant d’une couverture légale pour certains risques sociaux.
+La protection sociale statutaire des travailleurs comprend les cotisants de la CNSS, de la CNSSAP, ainsi que des
+divers régimes spéciaux. Elle concerne également les bénéficiaires en âge de travailler des prestations de long
+terme de ces institutions. Par simplification, nous considérons que les bénéficiaires de rentes d’AT/MP sont en
+âge de travailler. Il en va de même pour les bénéficiaires de pensions de survivants. La couverture de protection
+sociale statutaire des travailleurs devrait connaitre un grand bond en 2023 du fait des réformes de la CNSS en
+cours (cf. : Aperçu des initiatives d’extension de la couverture en 2023). 34 35
+u Tableau 15. Protection sociale statutaire des travailleurs
+2019 2020 2021 2022
+Population couverte 876 619 709 978 813 468 847 430
+Dont contributeurs de la CNSS 676 179 508 708 591 130 613 761
+Dont bénéficiaires de pensions d'invalidité
+883 568 524 728
+de la branche des pensions de la CNSS
+Dont bénéficiaires de pensions de survivant
+24 725 25 720 28 355 31 524
+de la branche des pensions de la CNSS
+Dont bénéficiaires de rentes ou d’allocations
+1 082 1 020 955 1 053
+d'incapacité de la branche des AT/MP de la CNSS
+Dont bénéficiaires de rentes de survivant
+1 476 1 608 1 845 1 781
+de la branche des AT/MP de la CNSS
+Dont contributeurs de la CNSSAP 172 204 172 304 190 545 198 399
+Dont bénéficiaires de rentes de survivant
+N/A 50 114 184
+de la branche des pensions de la CNSSAP
+Dont bénéficiaires de pensions de réversion
+70 N/A N/A N/A
+de la branche des pensions de la CNSSAP
+Population active34 31 751 352 31 547 329 33 725 229 35 059 191
+Taux de couverture 2.76% 2.25% 2.41% 2.42%35
+Protection sociale statutaire en cas d’accidents du travail et de maladies professionnelles
+Proportion de travailleurs couverts en cas de maladie professionnelle ou d’accident du travail : pourcentage de la
+main-d’œuvre assurée contre les accidents du travail ou les maladies professionnelles.
+La protection sociale statutaire par un système d’assurance sociale en cas d’accidents du travail et de maladies
+professionnelles est essentiellement assurée par le régime des accidents au travail et maladies professionnelles
+de la CNSS. Les personnes couvertes sont les contributeurs à la CNSS et les bénéficiaires de rentes de long
+terme de la branche des risques professionnels de la CNSS. La couverture de protection sociale statutaire en cas
+d’accidents du travail et de maladies professionnelles devrait connaître une augmentation remarquable en 2023
+grâce au lancement de la branche des risques professionnels de la CNSSAP. Le nombre de personnes couvertes
+devrait augmenter d’au moins 1 000 000 de personnes (cf. : Aperçu des initiatives d’extension de la couverture
+en 2023).
+34 Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet
+2022).
+35 La couverture de protection sociale statutaire des travailleurs devrait connaitre un grand bond en 2023 du fait des ré-
+formes de la CNSS en cours (voir Aperçu d’initiatives d’extension de la couverture en 2023).
+
+--- Page 32 ---
+26 Bulletin Statistique sur la Protection Sociale
+N°1/2023
+u Tableau 16. Protection sociale statutaire en cas d’accidents du travail et de maladies professionnelles
+2019 2020 2021 2022
+Population couverte 678 737 511 336 593 930 616 595
+Dont contributeurs de la CNSS 676 179 508 708 591 130 613 761
+Dont bénéficiaires de rentes ou allocation d'incapacité
+de la branche des accidents du travail et maladies 1 082 1 020 955 1 053
+professionnelles (AT/MP) de la CNSS
+Dont bénéficiaires de rentes de survivant de
+la branche des accidents du travail et maladies 1 476 1 608 1 845 1 781
+professionnelles (AT/MP) de la CNSS
+Population active36 31 751 352 31 547 329 33 725 229 35 059 191
+Taux de couverture 2.14% 1.62% 1.76% 1.76%37
+Protection sociale statutaire contre le chômage 36 37
+Proportion de chômeurs indemnisés : pourcentage des demandeurs d’emploi qui perçoivent des prestations de
+chômage.
+Il n’existe pas en RDC de protection sociale statutaire contre le chômage. Selon l’Association internationale de
+la sécurité sociale (AISS), le paiement d’une indemnisation de licenciement pour les employés du commerce est
+articulé dans une convention collective signée en 1999 entre les organisations patronales du commerce et des
+organisations syndicales38.
+Protection sociale statutaire pour les femmes et les hommes âgés
+Proportion de personnes âgées bénéficiant d’une pension de vieillesse : pourcentage de personnes ayant atteint l’âge
+légal de départ à la retraite qui perçoivent des prestations de vieillesse (contributives ou non contributives).
+La protection sociale statutaire par un système d’assurance sociale pour les personnes âgées est composée des
+bénéficiaires des régimes de pensions vieillesse de la CNSS et de la CNSSAP, en plus des régimes spéciaux pour
+lesquelles nous n’avons pas de données. Par simplifications nous comptons aussi les bénéficiaires de pensions
+anticipées. La proportion de personnes âgées bénéficiant d’une pension de vieillesse devrait fortement
+augmenter en 2023 (cf. : Aperçu des initiatives d’extension de la couverture en 2023).39 40
+u Tableau 17. Protection sociale statutaire pour les femmes et les hommes âgès
+2019 2020 2021 2022
+Population couverte 39 486 40 357 43 459 46 658
+Dont bénéficiaires de pensions de retraite de la CNSS 38 641 39 465 42 407 44 094
+Dont bénéficiaires de pensions de retraite anticipée
+0 78 272 1 235
+de la CNSS
+Dont bénéficiaires de pensions de retraite de la CNSSAP 845 814 780 1 329
+Populations âgées de plus de 60 ans39 4 208 996 4 326 213 4 424 202 4 519 266
+Taux de couverture 0.94% 0.93% 0.98% 1.03%40
+36 Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations Juillet
+2022).
+37 La couverture de protection sociale statutaire en cas d’accidents du travail et de maladies professionnelles devrait
+connaître une augmentation remarquable en 2023 grâce au lancement de la branche des risques professionnels de la
+CNSSAP.
+38 Source : AISS profiles pays, https://www.issa.int/node/195543?country=831
+39 Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022).
+40 La Proportion de personnes âgées bénéficiant d’une pension de vieillesse devrait fortement augmenter en 2023 (cf. : Aperçu
+des initiatives d’extension de la couverture en 2023.
+
+--- Page 33 ---
+Bulletin Statistique sur la Protection Sociale 27
+N°1/2023
+Protection sociale statutaire des personnes en situation de handicap
+Proportion de personnes en situation de handicap bénéficiant de prestations : nombre de personnes qui perçoivent
+des prestations d’invalidité rapporté au nombre de personnes lourdement handicapées. Ce dernier chiffre s’obtient en
+multipliant la population du pays par le taux de personnes handicapées établi par l’Organisation Mondiale de la Santé
+pour chaque groupe de pays.
+u Tableau 18. Protection sociale statutaire des personnes en situation de handicap
+2019 2020 2021 2022
+Population couverte 1 965 1 588 1 479 1 781
+Dont bénéficiaires de pensions d'invalidité de la branche
+883 568 524 728
+des pensions de la CNSS
+Dont bénéficiaires de rentes ou allocation d'incapacité
+1 082 1 020 955 1 053
+de la branche des AT/MP de la CNSS
+Population invalide41 2 787 114 2 878 448 2 972 718 3 069 317
+Taux de couverture 0% 0% 0% 0%
+Protection sociale statutaire de la santé
+Pourcentage de la population couverte : Pourcentage des personnes protégées par un système de santé pour leur
+couverture de base. La couverture peut être assurée par l’assurance-maladie nationale ; assurance-maladie sociale
+sous tutelle publique (y compris les dispositifs subventionnés à l’intention des pauvres) ; services de santé nationaux
+sans ticket modérateur, ou prévoyant une participation minime ; autres programmes (exonération de frais, coupons,
+etc.).
+Le MESP est la seule mutuelle de santé obligatoire et contributive. La protection sociale statutaire de la santé
+concerne pour l’heure donc les personnes assurées par la MESP ainsi que les membres du régime spécial des
+cadres et agents de l’administration publique et leurs ayant droits, l’assurance santé publique étant en cours
+d’opérationnalisation. Le développement récent du FSS pourrait influer sur le taux de couverture dès 2024
+dépendamment de la définition retenue de l’indicateur.41 42
+u Tableau 19. Protection sociale statutaire de la santé
+2019 2020 2021 2022
+Population couverte 122 547 130 961 141 826 164 877
+Dont contributeurs du MESP 50 256 54 383 60 745 80 041
+Dont personnes membre de la famille d’un contributeur
+72 291 76 578 81 081 84 836
+du MESP
+Population totale42 89 906 891 92 853 165 95 894 119 99 010 212
+Taux de couverture 0.14% 0.14% 0.15% 0.17%
+41 Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies.
+42 Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022).
+
+--- Page 34 ---
+28 Bulletin Statistique sur la Protection Sociale
+N°1/2023
+3.2 Autres indicateurs de couverture statutaire
+Protection sociale statutaire des personnes La protection sociale statutaire des personnes
+vulnérables vulnérables dans le cas de la RDC est strictement
+composée des enfants bénéficiaires d’allocations
+Proportion de personnes vulnérables bénéficiant de
+familiales. La gratuité des repas scolaires (lorsqu’elle
+prestations : pourcentage de personnes vulnérables
+sera effective et statutaire) ou la gratuité de
+percevant une prestation d’assistance sociale en espèces.
+l’enseignement scolaire peuvent éventuellement
+Le nombre de personnes vulnérables s’obtient en
+retranchant de la population totale les personnes en âge être pris en compte dans ce calcul tout en prenant
+de travailler qui cotisent à un régime d’assurance sociale garde de ne pas compter deux fois les mêmes
+ou qui perçoivent des prestations contributives, et les bénéficiaires. De même, la définition pourrait être
+personnes ayant atteint l’âge de la retraite qui perçoivent élargie pour inclure l’assistance médicale de l’État
+des prestations contributives. Les enfants sont considérés aux personnes vulnérables prévue sous l’assurance
+comme des personnes vulnérable par définition. santé publique.
+u Tableau 20. Protection sociale statutaire des personnes vulnérables
+2019 2020 2021 2022
+Population couverte 847 801 933 117 1 256 688 1 130 048
+Dont enfants bénéficiaires d’allocations familiales
+847 801 933 077 1 256 585 1 129 861
+de la CNSS (estimation)
+Population vulnérable 89 906 891 92 853 165 95 894 119 99 010 212
+Taux de couverture 0.94% 1.00% 1.31% 1.14%
+u Aperçu de réformes pour l’extension de la couverture en 2023
+L’année 2023 a vu une hausse importante de couverture de la protection sociale, liée à certaines réformes en cours.
+Premièrement, le FSS, créé en 2018, a démarré à Kinshasa le régime d’assistance médicale de l’Etat, à travers la
+politique de gratuité des soins maternels et néonatals et a entrepris la mise en œuvre de l’assurance santé publique
+qui est en cours. Pour le dernier quadrimestre 2023, il a pris en charge dans le cadre de ladite politique de gratuité,
+dans sa phase initiale à Kinshasa, 52 305 accouchements, soit 65 pour cent des accouchements mensuels attendus
+dans la ville. Sur l’ensemble de la période, les établissements de santé ont enregistré 24 573 consultations, avec une
+répartition majoritaire en faveur des centres de santé, qui représentent environ 50 pour cent de ce total. Cela montre
+une tendance globale à l’augmentation des consultations dans les deux types d’établissements, avec une progression
+plus marquée dans les centres de santé.
+u Tableau 21. Evolution de la prise en charge de soins et service à Kinshasa par la politique gratuité
+des soins maternels et néonatals de septembre à décembre 2023.
+Sep-23 Oct-23 Nov-23 Dec-23 Total
+Accouchements pris en charge 9 030 13 050 14 936 15 289 52 305
+Consultations ambulatoires prises en charge 2 738 8 998 6 330 6 507 24 573
+Cas d’hospitalisation en néonatologie dans les
+512 709 774 688 2 683
+Hôpitaux de référence secondaire pris en charge
+Source : Fonds de solidarité de santé/Direction Technique/Service statistique
+La CNSSAP a également introduit d’importantes réformes en 2023 pour élargir la protection sociale des agents
+publics en République Démocratique du Congo. Ces réformes incluent
+u L’extension de sa couverture aux enseignants sous la tutelle du MEPST ;
+u La mise en place d’une nouvelle branche dédiée aux risques professionnels ;
+
+--- Page 35 ---
+BBuulllleettiinn SSttaattiissttiiqquuee ssuurr llaa PPrrootteeccttiioonn SSoocciiaallee 2299
+NN°°11//22002233
+u La poursuite de la réforme de transition.
+La nouvelle branche dédiée aux risques professionnels, qui couvrira tous les fonctionnaires de l’État dès leur recrutement,
+a été officiellement lancée par le Vice-Premier Ministre chargé de la Fonction Publique en mai 2023. L’ensemble des
+contributeurs de la CNSSAP est désormais également couvert contre les accidents du travail et les risques professionnels
+La CNSSAP a également annoncé l’extension de sa couverture aux enseignants sous la tutelle du MEPST. Cette
+mesure s’inscrit dans la mise en œuvre de la loi n°22/031 du 15 juillet 2022, visant à intégrer au sein de la CNSSAP
+les fonctionnaires affiliés à des régimes spéciaux, octroyé notamment aux enseignants, médecins, policiers,
+militaires et magistrats.
+L’année 2023 a donc vu une augmentation pour le moins intéressante des cotisants de la CNSSAP, avec l’intégration
+massive des agents de l’EPST, qui constituent désormais une majorité des affiliés. Cette augmentation garantira
+une protection sociale conforme aux standards internationaux pour un plus grand nombre d’agents publics en RDC
+et influencera divers taux de couverture au niveau national.
+L’entièreté des contributeurs de la CNSAPP sont désormais également couvert contre les accidents du travail et
+risques professionnelles.
+u 1 9 0 0 0 F0 0 i0 0 g0 0 0 0 ure 6. Evolution du nombre total de cotisants de la CNSSAP 678 361 689 415
+800 000
+700 000
+600 000
+50 1 0 0 0 0 0 0 0 000 678 361 689 415
+900 000
+400 000
+300 8 0 0 0 0 0 000 248 280 259101
+200 7 0 0 0 0 0 000 190 544 192 044 192 946 198 399 203 097
+600 000
+100 000
+500 000
+0
+400 000 T1-2022 T2-2022 T3-2022 T4-2022 T1-2023 T2-2023 T3-2023
+300 000 248 280 259101
+200 000 190 544 192 044 192 946 198 399 203 097
+100 000 EPST Hors EPST
+0
+T1-2022 T2-2022 T3-2022 T4-2022 T1-2023 T2-2023 T3-2023
+EPST Hors EPST
+u Figure 7. Bénéficiaires des pensions de la CNSSAP
+25 000
+Bénéficiaires de la réforme de
+basculement pension de retraites
+20 000
+Bénéficiaires de la réforme de
+15 000 basculement rente de survie
+25 000
+Bénéficiaires de la réforme de
+10 000 Bébnaésficcuialeirmese nret npteen dseio snu drvei eretraites
+20 000
+5 0 1 0 5 0 0 000 266 729 333 740 217 742 1 3 3 7 2 1 9 27 0 68 43 0 41 500 0 9 Bén B béa é fs n icc é iua fi li c er i me a s i e r p e ne s t n d rse e ino l t a ne r dd é ee fo rs r eu m trr e vai ie d te e
+10T 10-020022 T2-2022 T3-2022 T4-2022 T1-2023 T2-2023 T3-2023 Bénéficiaires rente de survie
+5 00 0 0 266 729 333 740 217 742 1 3 3 7 2 1 9 27 0 68 43 0 41 500 0 9 Bénéficiaires pension de retraite
+Par ailleuT1r-2s0,2 2depuis 2T02-220122, le nombT3r-2e0 22de retraiTt4é-2s0 2p2ris en chT1a-2r02g3e par la TC2-2N02S3SAP a éT3g-2a02l3ement augmenté, passant
+de 780 en 2021 à 2 768 en 2023, soit une hausse de 255 pour cent sur trois ans. En 2023, la croissance s’accélère
+encore, avec une augmentation de 56 pour cent entre le 1er trimestre (4 341 retraités) et le troisième trimestre.
+u Tableau 22. Bénéficiaires des pensions de la CNSSAP
+2022 2023
+T1-2022 T2-2022 T3-2022 T4-2022 T1-2023 T2-2023 T3-2023
+Bénéficiaires pension de retraite 729 740 742 1 329 2 768 4 341 5 009
+Bénéficiaires de rente de survie Conjoint 133 161 114 184 N/A N/A N/A
+Bénéficiaires de rente de survie Orphelin 133 172 103 187 N/A N/A N/A
+Bénéficiaires de rente de survie 266 333 217 371 N/A N/A N/A
+Depuis la réforme de basculement, le nombre de bénéficiaires des prestations a également augmenté
+régulièrement. Cette réforme a un impact majeur sur le nombre de bénéficiaires des prestations à long terme de
+la CNSSAP. Combinée à une augmentation naturelle du nombre de retraités classiques, en raison de la jeunesse du
+régime, la couverture de la CNSSAP devrait continuer à croître à court et moyen terme. Cette dynamique entraînera
+une augmentation significative et constante des taux de couverture de la RDC.
+
+--- Page 36 ---
+30 Bulletin Statistique sur la Protection Sociale
+N°1/2023
+3.3 Indicateurs des Objectifs de Développement Durable
+L’indicateur 1.3.1 des Objectif de Développement Durable (ODD) surveille l’amélioration mondial et régional de
+la couverture de protection sociale. L’indicateur global mesure la proportion de la population protégée par au
+moins une branche de la sécurité sociale.
+Indicateur global : pourcentage de la population qui bénéficie de prestations en espèces pour au moins une des
+éventualités ou un des domaines de la sécurité sociale (prestations contributives ou non contributives), ou bien cotisant
+activement à au moins un régime de sécurité sociale.
+L’indicateur ODD 1.3.1 repris ci-dessous est différent de l’estimation du taux de couverture de ce document car
+il se base, entre autres, sur une estimation du nombre de contributeurs de la CNSSAP, qui est équivalent au
+nombre d’employés de la fonction publique en 2020 (soit 1 623 000 employés43). L’indicateur ODD 1.3.1 prend
+également en compte le nombre de bénéficiaires de repas scolaires et de transferts monétaires du PAM.
+L’indicateur indique également la proportion de personnes couvertes par des dispositifs de protection sociale,
+tels que les prestations de retraite, les AT/MP, ou les aides en cas de chômage. En assurant une couverture
+sociale plus équitable, cet ODD vise à renforcer le filet de sécurité pour ceux qui en ont le plus besoin.44 45 4647
+u Tableau 23.
+Indicateur O.D.D 1.3.144 2022
+Population couverte par au moins une prestation de protection sociale (excluant la santé) 5.2 %45
+Enfants (0-17) 2.6 %
+Mères de nouveau-nés N/A
+Personnes présentant un handicap lourd N/A
+Travailleurs en cas d’accidents du travail 1.8 %
+Chômeurs 0.0
+Personnes âgées 1 %
+Personnes vulnérables couvertes par l’assistance sociale 2.9 %
+Contributeurs à la pension de retraite46 47 2022
+Cotisants actifs au système de retraite 6.4%
+La cible 3.8 des ODD liée à la Couverture Sanitaire Universelle (CSU) est une mesure prioritaire et complémentaire
+à l’ODD 1.3, visant à assurer à tous une vie saine et digne. La protection sociale en santé est un aspect essentiel
+des efforts déployés pour réaliser la CSU, dont deux aspects sont mesurés par la cible 3.8 des ODD: la couverture
+des services de santé essentiels, à travers l’indicateur 3.8.1, et la protection financière à travers l’indicateur
+3.8.2. En RDC, les dernières données disponibles pour l’indicateur 3.8.1 datent de 2012, et indiquent que 4.82
+pourcents de la population consacre plus de 10 pourcents de leurs dépenses ou de leurs revenus domestiques
+aux services de soins de santé́, tandis que l’indice de couverture sanitaire universelle des services (indicateur
+3.8.1) atteint 42 en 202148. Bien que cet indice ait doublé en 20 ans, il demeure néanmoins bas par rapport aux
+normes régionales et internationales.
+43 Source: ILOSTAT Modelled Estimates.
+44 Source: Tableau de bord de l’OIT sur la Protection Sociale https://www.social-protection.org/gimi/ShowMainPage.action
+45 Basé, entre autres sur une estimation du nombre de contributeurs de la CNSSAP égal au nombre d’employé de la fonction
+publique en 2020 (1 623 000 employés selon ILOSTAT).
+46 Basé, entre autres sur une estimation du nombre de contributeurs de la CNSSAP égal au nombre d’employé de la fonction
+publique en 2020 (1 623 000 employés selon ILOSTAT).
+47 Source: Tableau de bord de l’OIT sur la Protection Sociale https://www.social-protection.org/gimi/ShowMainPage.action
+48 WHO global health observatory, disponible https://www.who.int/data/gho/data/indicators
+
+--- Page 37 ---
+BBuulllleettiinn SSttaattiissttiiqquuee ssuurr llaa PPrrootteeccttiioonn SSoocciiaallee 3311
+NN°°11//22002233
+u Illustration: Indicateurs des Objectifs de Développement Durable
+Couverture effective de la protection sociale, indicateurs 1.3.1
+30%
+25%
+20%
+Couverture effective de la protection sociale, indicateurs 1.3.1
+15%
+30%
+10%
+25%
+5%
+20%
+0%
+15% Population Enfants (0-17) Personnes Travailleurs en Chômeurs Personnes Personnes
+couverte par au présentant un cas d’accidents âgées vulnérables
+10% moins une handicap lourd du travaill
+prestation de
+5% protection
+sociale (excluant
+0% la santé)
+Population Enfants (0-17) Personnes Travailleurs en Chômeurs Personnes Personnes
+couverte par au présentant un cas d’accidents âgées vulnérables
+RDC 2022 Pays à Faible revenu Afrique
+moins une handicap lourd du travaill
+prestation de
+protection
+sociale (excluant
+[1] Source : Tlaab slaenatué d)e bord de l’OIT sur la Protection Sociale https://www.social-protection.org/gimi/ShowMainPage.action
+[2] Basé, entre autres sur une estimation du nombre de contributeurs de la CNSSAP égal au nombre d’employé de la fonction
+publique en 2020 ( 1 623 000 employés selon ILOSTAT).
+RDC 2022 Pays à Faible revenu Afrique
+[3] Pays à Faible revenu : Afghanistan, Bénin, Burkina Faso, Burundi, Comores, Érythrée, Éthiopie, Gambie, Guinée, Guinée-
+Bissau, Haïti, Libéria, Madagascar, Malawi, Mali, Mozambique, Népal, Niger, Ouganda, République centrafricaine, République
+démocratique du Congo, RépubliqCuoe ndétmroibcrautitqeueu prosp uàla ilrea d pe eConrései, oRnwa nddea, rSéentérgaal,i tSieerra Leone, Somalie, Soudan du
+Sud, République-Unie de Tanzanie, Tchad, Togo, Zimbabwe.
+70,00%
+60,00%
+50,00%
+40,00%
+Contributeurs à la pension de retraite
+30,00%
+20,00%
+70,00%
+10,00%
+60,00%
+0,00%
+50,00%
+RDC 2022 Afrique Cameroon Pays à faible revenu Burkina Faso
+40,00%
+30,00%
+20,00%
+10,00%
+0,00%
+RDC 2022 Afrique Cameroon Pays à faible revenu Burkina Faso
+[1] Tableau de bord de l’OIT sur la Protection Sociale https://www.social-protection.org/gimi/ShowMainPage.action
+
+--- Page 38 ---
+3322 BBuulllleettiinn SSttaattiissttiiqquuee ssuurr llaa PPrrootteeccttiioonn SSoocciiaallee
+NN°°11//22002233
+
+--- Page 39 ---
+Bulletin Statistique sur la Protection Sociale 33
+N°1/2023
+Conclusion
+Le système de protection sociale en RDC est travailleurs de l’économie congolaise opérant dans
+encore relativement jeune, avec plusieurs régimes le secteur informel où ils ne bénéficient souvent
+récemment mis en œuvre ou encore en cours de peu ou pas de protections statutaires. Cette
+d’opérationnalisation, ce qui se traduit en une situation rend ardue l’extension de la couverture
+couverture relativement basse pour chaque branche à une grande partie de la population active et
+de protection sociale. En effet, les deux principales leurs dépendants, et indique le besoin d’adapter
+institutions, la CNSS et la CNSSAP, ont été créées le système de protection sociale pour couvrir ces
+en 2018 et en 2015 respectivement, et la protection travailleurs au travers des régimes déjà existants
+sociale statutaire des travailleurs ne représente ainsi en même temps que les politiques nationales de
+que 2.42 pour cent de la population active selon formalisation.
+notre calcul. La seule mutuelle de santé obligatoire et
+u L’absence de données robustes, qui rend difficile
+statutaire de la RDC, la MESP, a été mise en place en
+la conception des politiques et des programmes
+2015. S’adressant aux enseignants du secteur public
+efficaces pour étendre la couverture sociale, et
+et à leurs dépendants, sa couverture reste faible par
+l’élaboration d’une vue d’ensemble du système
+rapport au nombre d’enseignants dans le pays et à
+d’assistance sociale, de déterminer les populations
+leurs dépendants. Créé en 2018, le FSS assure la mise
+ciblées et de surveiller les impacts.
+en œuvre de l’assurance santé publique qui est en
+cours, et a démarré le régime d’assistance médicale Cependant, avec la mise en place de nouveaux
+de l’Etat à travers la politique de gratuité des soins régimes et les plans concrets d’extension de la
+maternels et néonatals, qui a pris en charge 65 couverture, on peut raisonnablement anticiper une
+pour cent des accouchements mensuels attendus à augmentation significative du nombre de personnes
+Kinshasa durant le dernier quadrimestre de 2023. couvertes par les régimes de protection sociale dans
+De plus, les régimes non-contributifs demeurent les années à venir. C’est notamment le cas de la
+relativement fragmentés et non-statutaires, CNSSAP en raison de la mécanisation en cours et de
+avec un rôle important joué par les acteurs non- la réforme de basculement lancée l’année dernière.
+gouvernementaux, résultant en un manque de Il convient également de noter que, pour l’instant, la
+données et des difficultés à évaluer leur couverture. CNSSAP ne couvre qu’une seule des trois branches
+de prestations énoncées dans ses statuts. Quant à
+D’autres facteurs interconnectés qui viennent
+la CNSS, elle envisage d’étendre sa couverture via
+expliquer un taux de couverture relativement faible
+un régime volontaire d’assurance destiné à couvrir
+incluent
+le secteur informel, qui représente plus de 95 pour
+u L’instabilité politique et économique des années cent de la population active. Enfin, lorsqu’elle sera
+passées, qui a entravé la mise en place de politiques opérationnelle, l’assurance santé publique visera
+sociales durables et efficaces, malgré les intentions à atteindre une couverture universelle, avec des
+affichées des autorités administratives. régimes contributifs obligatoires et une couverture
+subventionnée pour les couches les plus vulnérables.
+u Les ressources limitées allouées à la protection
+Ce premier bulletin statistique vise à soutenir ces
+sociale qui ne parviennent généralement pas à
+efforts pour concevoir des politiques efficaces pour
+répondre aux besoins croissants de la population,
+étendre la couverture, l’exhaustivité, et l’adéquation
+créant ainsi un déficit de financement qui accentue
+du système de protection sociale. Le manque
+la précarité des populations vulnérables. En effet,
+significatif de données disponibles sur de nombreux
+les dépenses de l’administration publique consacrée
+régimes démontre l’importance d’engager et
+à la protection sociale (hors santé) sont estimées à
+coordonner avec toutes les parties prenantes dans la
+1.8 pour cent du PIB en 2020 contre 3.8 pour cent
+collecte et la publication régulière et harmonisée de
+en moyenne en Afrique et 12.9 pour cent dans le
+données statistiques de protection sociale robustes
+monde (BIT, 2021).
+pour permettre l’évaluation précise de la situation,
+u L’informalité, avec environ 96 pour cent des des progrès réalisés et des lacunes persistantes.
+
+--- Page 40 ---
+34 Bulletin Statistique sur la Protection Sociale
+N°1/2023
+Bibliographie
+Agence Congolaise de Presse. 2023. RDC : des cantines democratic-republic-congo/pam-republique-democratique-
+scolaires pour consolider la gratuité de l’enseignement du-congo-rapport-annuel-pays-2022-apercu-general
+primaire. https://acp.cd/genre/rdc-des-cantines-
+PNUD. 2022. Rapports sur le développement humain,
+scolaires-pour-consolider-la-gratuite-de-lenseignement-
+2021-2022. New York : Programme des Nations
+primaire/#:~:text=Kinshasa,%2031%20octobre%20
+Unies pour le développement. https://www.undp.org/
+2023(ACP,Programme%20national%20d’alimentation%20
+fr/morocco/publications/rapport-sur-le-developpement-
+scolaire
+humain-2021-22
+BIT. 2021. Rapport mondial sur la protection sociale
+RDC. 2016. Politique Nationale de Protection Sociale
+2020-2022: la protection sociale à la croisée des
+Volume 1. Kinshasa : Gouvernement de la République
+chemins – bâtir un avenir meilleur. Genève : Bureau
+Démocratique du Congo. https://socialprotection.org/
+international du Travail. https://www.social-protection.
+discover/legal_policy_frameworks/r%C3%A9publique-
+org/gimi/Media.action?id=18818
+d%C3%A9mocratique-du-congo-politique-nationale-de-
+Institut de Médecine Tropicale. 2016. Etude des protection#:~:text=La%20Politique%20Nationale%20
+mutuelles de santé en RDC dans le cadre de la couverture de%20Protection%20Sociale%20de%20la%20RDC%2C%20
+sanitaire universelle. Anvers : Institut de Médecine
+adopt%C3%A9e,une%20alimentation%20saine%20et%20
+Tropicale. https://www.be-causehealth.be/wp-content/ %C3%A9quilibr%C3%A9e%2C
+uploads/2017/05/Etude-des-mutuelles-de-sant%C3%A9-
+en-RDC.pdf UNICEF. 2023. Country Office Annual Report 2022
+Democratic Republic of the Congo. UNICEF. https://www.
+Louis dit Guérin, Olivier. A paraître. Etude sur le
+unicef.org/media/136736/file/Democratic-Republic-of-the-
+Financement de la Couverture Santé Universelle en
+Congo-2022-COAR.pdf
+République démocratique du Congo. Genève : Bureau
+international du Travail World Bank. 2021. Project Paper on a Proposed Grant
+in the Amount of SDR 174.1 Million (US$250 million
+PAM. 2022. Rapport Annuel de pays 2021. Programme
+Equivalent of which US$135 million equivalent from
+Alimentaire Mondial. https://reliefweb.int/report/
+the Window for Host Communities and Refugees) to the
+democratic-republic-congo/programme-alimentaire-
+Democratic Republic of Congo for a Third Additional
+mondial-en-rdc-2021-rapport-annuel-du-pays-2021-faits-
+Financing for the Eastern Recovery Project. World
+saillants
+Bank. https://documents1.worldbank.org/curated/
+PAM. 2023. Rapport Annuel de pays 2022. Programme en/581091623117712022/pdf/Congo-Democratic-Republic-
+Alimentaire Mondial. https://reliefweb.int/report/ of-Eastern-Recovery-Project-Third-Additional-Financing.pdf
+
+--- Page 41 ---
+Bulletin Statistique sur la Protection Sociale 35
+N°1/2023
+Glossaire
+Régime Statutaire à une condition d’âge) et les régimes soumis à
+conditions de ressources (par exemple les régimes
+Un régime de protection sociale statutaire est
+d’assistance sociale). Les régimes non contributifs
+établi par la loi. Celle-ci détermine la couverture,
+sont généralement financés par l’impôt, d’autres
+généralement l’ensemble ou une partie de la
+recettes publiques ou, parfois, par des subventions
+population en fonction de critères spécifiques tels
+ou prêts externes.
+que l’emploi, la résidence ou l’âge. Les prestations
+sont déterminées par des lois ou des règlements. Régime Octroyé
+Régime Contributif Régimes financés par allocation budgétaire et liés
+à l’emploi. Ce sont des régimes non contributifs qui
+Régime en vertu duquel les cotisations versées par
+assurent les personnes employées dans le secteur
+les personnes protégées déterminent directement
+public. La couverture reste liée à la relation d’emploi
+le droit aux prestations (droits acquis). Le type
+mais ils ne relèvent pas du mécanisme d’assurance.
+le plus courant de régime contributif de sécurité
+Le coût total des prestations est supporté par le
+sociale est le régime légal d’assurance sociale, qui
+gouvernement.
+couvre généralement les travailleurs de l’économie
+formelle et, dans certains pays, les travailleurs Régime d’Assurance Sociale
+indépendants. Parmi les autres types classiques de
+Régime contributif de protection sociale garantissant
+régimes contributifs garantissant un certain niveau
+une protection au moyen d’un mécanisme
+de protection – en l’absence d’assurance sociale –
+d’assurance, fondé sur :
+figurent les caisses nationales de prévoyance qui,
+généralement, versent une somme forfaitaire aux 1) le paiement préalable de cotisations, c’est-à-dire
+bénéficiaires en cas d’aléas – vieillesse, invalidité ou avant la survenance de l’aléa assuré ;
+décès. Les régimes d’assurance sociale couvrant les
+2) le partage ou la « mutualisation » des risques ; et
+travailleurs occupant un emploi rémunéré ou salarié
+prévoient généralement que les cotisations sont 3) la notion de garantie.
+versées par les travailleurs et l’employeur (même si,
+Les cotisations versées par (ou pour) les personnes
+généralement, cette dernière finance intégralement
+assurées sont mises en commun et le fonds ainsi
+les régimes d’accidents du travail et de maladies
+constitué sert à financer les dépenses encourues
+professionnelles). Si les régimes contributifs peuvent
+exclusivement par les personnes touchées par l’aléa
+être intégralement financés par les cotisations,
+ou les aléas assurés (qui sont clairement définis).
+ils sont souvent financés en partie par l’impôt ou
+Contrairement aux polices d’assurance privées, où les
+d’autres sources, par exemple: une subvention visant
+primes de risque sont calculées individuellement, la
+à combler les déficits du régime, une subvention
+mutualisation des risques aux termes de l’assurance
+générale se substituant entièrement aux cotisations,
+sociale est fondée sur le principe de solidarité.
+ou une subvention ciblant exclusivement certaines
+catégories de cotisants ou de bénéficiaires (par Régime / programme d ’assistance social
+exemple les personnes qui ne cotisent pas, comme
+Régime offrant des prestations aux groupes
+les parents avec enfants à charge, les étudiants, les
+vulnérables de la population, notamment les ménages
+militaires ou les chômeurs; ou celles qui ne cotisent
+pauvres. La plupart des régimes d’assistance sociale
+pas à taux plein en raison de leurs faibles revenus,
+sont soumis à conditions de ressources.
+ou qui perçoivent des prestations inférieures à un
+certain seuil, faute d’avoir suffisamment cotisé). Protection Sociale découlant de la Responsabilité
+de l’Employeur
+Régime Non Contributif
+La responsabilité de l’employeur se réfère à un
+Régime, sous conditions de ressources ou non, qui
+système où l’employeur est directement responsable
+ne subordonne généralement pas le versement
+de la fourniture des prestations, de l’indemnisation
+des prestations au paiement de cotisations par les
+ou de la compensation de ses employés. Dans ce
+bénéficiaires ou leur employeur. Ce terme recouvre
+système, les employeurs ont l’obligation légale de
+un large éventail de régimes, notamment les régimes
+fournir des prestations à leurs employés, sans qu’un
+universels pour tous les résidents (tels que les services
+régime d’assurance distinct soit nécessaire.
+nationaux de santé), les régimes catégoriels ciblant
+certains segments de la population (par exemple L’OIT souligne que, bien que les systèmes de
+les enfants ou les personnes âgées satisfaisant responsabilité de l’employeur puissent offrir une
+
+--- Page 42 ---
+36 Bulletin Statistique sur la Protection Sociale
+N°1/2023
+protection, ils présentent plusieurs limites, telles que: forme de prestations de maladie, d’invalidité ou de
+survivants.
+u Couverture inadéquate : Dans certains cas, tous
+les travailleurs ou types de blessures ne sont pas u Protection de la maternité : protection de la
+couverts. maternité avec notamment des soins médicaux et
+une prestation de maternité en espèce.
+u Retard dans l’indemnisation : Le processus de
+demande d’indemnisation directement auprès de u Prestations familiales : protection dans le cadre de
+l’employeur peut être lent et complexe, retardant la « responsabilité pour l’entretien d’enfants, ou
+potentiellement les prestations pour le travailleur pour les enfants, de nourriture, de vêtements de
+blessé. logements, de séjours de vacances ou d’assistances
+ménagères », et de prestations familiales de
+u Défis juridiques et administratifs : Les travailleurs
+soutien du revenu en espèce.
+peuvent rencontrer des difficultés à prouver
+la négligence de l’employeur ou à naviguer u Décès du soutien de famille : protection des
+dans les procédures légales pour obtenir une survivants en cas de décès d’un membre de la
+indemnisation. famille « soutien de famille » sous forme de soutien
+du revenu en espèce.
+La couverture potentielle de régimes fondés sur la
+responsabilité de l’employeur n’est pas estimée dans u Indemnités de Maladies : soutien du revenu sous
+ce bulletin en raison du champ d’application limité et forme d’indemnités de maladie en espèces.
+de l’absence de registres administratifs fiables
+u Prestations d’invalidité : protection en cas
+L’OIT préconise des régimes d’assurance sociale plus d’incapacité d’exercer une activité professionnelle
+robustes, car ils sont généralement plus complets quelconque lorsqu’il est probable que cette
+et équitables, offrant une protection plus large aux incapacité sera permanente ou lorsqu’elle subsiste
+travailleurs. à l’expiration d’une période prescrite d’incapacité
+temporaire ou initiale sous forme de soutien du
+Branches de protection sociale
+revenu en espèce.
+Les définitions retenues lors de l’élaboration du
+u Chômage : protection contre le chômage, y compris
+bulletin sont :
+un soutien économique sous forme d’allocations
+u Vieillesse : protection des personnes âgées, avec de chômage, et d’autres politiques du marché de
+notamment le soutien du revenu et les soins de l’emploi – prestations d’aides au revenu.
+longue durée.
+u Soins médicaux : protection contre tout état
+u Accidents du travail et maladies professionnelles: morbide, quelle que soit la cause ; grossesse,
+protection en cas d’accidents du travail, soins naissance et leurs suites sous forme de soins
+médicaux, rééducations et aide au revenu sous médicaux à caractère curatif.
+
+--- Page 43 ---
+Avec l’appui de
+Avec le soutien financier de
