@@ -111,6 +111,27 @@ Lorsqu'une institution déclare ses données par **foyer bénéficiaire** ou par
 **Statut :** actée  
 **Impact :** sous-indicateur ODD 2.2 (enfants), sous-indicateur 2.8 (assistance/transferts), tous tableaux de couverture par branche famille
 
+### DM-011 — Exclusion des programmes humanitaires externes et des prestations en nature de ODD 1.3.1
+
+**Principe général :**
+L'inclusion d'un programme ou régime dans les indicateurs ODD 1.3.1 n'est pas automatique. Elle doit être instruite selon PROC-009 (grille des 5 critères) et documentée dans le registre d'inclusion (`registre_inclusion_programmes.md`).
+
+**Décisions actées sur des programmes spécifiques :**
+
+1. **Transferts monétaires PAM** : exclus de ODD 1.3.1. Le seul critère favorable (prestation en espèces) est insuffisant pour compenser l'absence de cadre statutaire national, de responsabilité primaire étatique, de permanence et de financement national. Classé « Indicateur connexe » — présenté dans le tableau des programmes non statutaires.
+
+2. **Repas scolaires PAM/MEPST** : exclus de ODD 1.3.1 par définition (prestation en nature ; ODD 1.3.1 = prestations en espèces uniquement selon WSPR 2024-26). Peut figurer dans des indicateurs connexes (alimentation, éducation).
+
+**Règle générale :**
+Tout programme présentant au moins une réponse négative parmi les critères C2–C5 (cadre statutaire, responsabilité État, permanence, financement) doit être instruit selon PROC-009 avant d'être inclus ou exclu. Cette instruction produit une fiche dans le registre. Le jugement motivé prime sur l'application mécanique des critères.
+
+**Leçon de méthode :**
+La décision d'inclusion est rarement binaire. Des programmes qui ressemblent à des programmes similaires déjà inclus peuvent en différer sur des critères essentiels. L'examen multi-critères protège à la fois contre l'inclusion abusive (gonflement artificiel des indicateurs) et contre l'exclusion injustifiée (sous-estimation de la couverture réelle).
+
+**Statut :** actée  
+**Impact :** tous les indicateurs ODD, tous les tableaux de couverture  
+**Référence :** PROC-009, `registre_inclusion_programmes.md`
+
 ## Décisions en discussion
 
 _Aucune décision en discussion à ce stade._
