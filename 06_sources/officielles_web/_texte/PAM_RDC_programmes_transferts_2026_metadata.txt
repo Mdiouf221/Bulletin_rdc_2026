@@ -1,0 +1,54 @@
+TITRE : WFP Regional Bureau for Eastern Africa — 2022 Regional Achievements and Outlook (April 2023)
+SOURCE / AUTEUR : Programme Alimentaire Mondial (PAM / WFP) — Regional Bureau for Eastern Africa
+PAYS / RÉGION : Afrique de l'Est (Région) — non spécifique à la RDC
+DATE : Avril 2023 (couvre les réalisations 2022)
+LANGUE : Anglais
+TYPE : rapport international
+FICHIER : PAM_RDC_programmes_transferts_2026.txt / PAM_RDC_programmes_transferts_2026.pdf
+NIVEAU FIABILITE : 1 — Organisation internationale, publication officielle
+
+---
+
+⚠️ DISCORDANCE ENTRE NOM DE FICHIER ET CONTENU
+
+Le fichier est nommé « PAM_RDC_programmes_transferts_2026 » mais son contenu est un rapport WFP sur les réalisations régionales 2022 du Bureau Régional pour l'Afrique de l'Est — document sur la politique genre du PAM (Gender Transformative Approach), couvrant principalement le Kenya, le Rwanda, l'Ouganda et le Soudan du Sud. Ce document ne porte PAS directement sur les programmes de transferts du PAM en RDC pour 2026.
+
+Les données sur les programmes PAM RDC mentionnées dans le registre proviennent d'une autre source (probablement le site WFP countries/democratic-republic-congo) et non de ce fichier PDF.
+
+---
+
+CONTENU RÉSUMÉ DU DOCUMENT RÉEL
+
+Document du Bureau Régional PAM pour l'Afrique de l'Est, publié en avril 2023, couvrant les réalisations 2022. Thème central : l'Approche Transformatrice du Genre (Gender Transformative Approach — GTA) du PAM. Sections couvertes :
+1. Evidence Generation (analyses genre au Kenya, Rwanda, Soudan du Sud)
+2. Job Creation for Youth (partenariat WFP + Mastercard Foundation — Kenya, Rwanda, Ouganda)
+3. Key International Events (Journée internationale des femmes 2022)
+Régions couvertes : Afrique de l'Est (Kenya, Rwanda, Ouganda, Soudan du Sud) — PAS la RDC.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Données PAM RDC — issues du registre, PAS de ce fichier spécifique]
+- Bénéficiaires transferts urgence RDC 2021 : 4 037 575 personnes
+- Bénéficiaires transferts urgence RDC 2022 : 3 795 530 personnes
+- Bénéficiaires 2026 (Est RDC) : 1,3 million de personnes
+- Financement requis 2026 : 214 millions USD
+- Programme cantines scolaires RDC : phase pilote (2023)
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Ce fichier ne contient PAS les données PAM RDC attendues selon le nom de fichier.
+- Pour les données PAM RDC 2026, consulter directement le site WFP : https://www.wfp.org/countries/democratic-republic-congo (Country Brief RDC 2026).
+- Les données du registre sur le PAM RDC ont probablement été extraites du Country Brief WFP RDC — document différent de celui archivé ici.
+- Recommandation : Télécharger le Country Brief WFP RDC 2026 et remplacer ce fichier, ou archiver séparément.
+
+---
+
+CITATION RECOMMANDÉE
+
+Pour les données PAM RDC :
+PAM (2026), WFP Democratic Republic of Congo — Country Brief, Washington D.C. : World Food Programme.
+[Le présent fichier PDF contient un document différent]

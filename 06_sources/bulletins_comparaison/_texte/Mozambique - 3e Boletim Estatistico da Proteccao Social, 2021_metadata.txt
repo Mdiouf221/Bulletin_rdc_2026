@@ -1,0 +1,40 @@
+TITRE : 3.º Boletim Estatístico sobre Protecção Social 2020 — Mozambique (données 2020)
+SOURCE / AUTEUR : Ministério do Trabalho e Segurança Social (MITSS), Mozambique — avec l'appui de l'OIT (Projeto ACTION/Portugal)
+PAYS / RÉGION : Mozambique
+DATE : 2021 (données 2020)
+LANGUE : Portugais
+TYPE : bulletin statistique
+FICHIER : Mozambique - 3e Boletim Estatistico da Proteccao Social, 2021.txt / Mozambique - 3e Boletim Estatistico da Proteccao Social, 2021.pdf
+NIVEAU FIABILITE : 2 — publication officielle secondaire acceptable
+
+---
+
+CONTENU RÉSUMÉ
+
+Troisième édition du Bulletin statistique sur la protection sociale du Mozambique, publiée en 2021, données de référence 2020, à Maputo. Coordonné par le MITSS (Direction Nationale d'Observation du Marché du Travail). Édité par Célio Langa. Contrôle de qualité OIT : Rubén Vicente, Vanádio Monteiro, Luis Cotinguiba. Tirée à 200 exemplaires. Couvre les mêmes domaines que les éditions précédentes (INPS, INSS, FADM, fonctionnaires d'État pour le contributif ; INAS pour le non contributif), avec en plus la section ADIGR (Appui au Développement d'Initiatives de Génération de Revenus). Financement : OIT / Projeto ACTION/Portugal.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Indicateurs 2020 — Mozambique, période marquée par la COVID-19]
+- Données sur l'incidence de la pauvreté (COVID-19 impact)
+- Régimes contributifs : INPS (secteur privé), INSS (sect. informel), FADM (armée), État
+- Protection non contributive : INAS — PSSB, PASD, PSSAS, PASP, TPI, TP, ADIGR
+- Données ventilées par province, par sexe, par type de prestation
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Troisième édition d'une série continue (1re : 2019/données 2018 ; 2e : 2020/données 2019 ; 3e : 2021/données 2020).
+- Première édition couvrant une année COVID-19 (2020) — peut contenir des ruptures de série.
+- L'ajout de la catégorie ADIGR en 2021 signale une évolution de la couverture des programmes.
+- Utile comme référence de style pour le bulletin RDC.
+- INPS et INSS au Mozambique ≠ CNSS et CNSSAP en RDC (acronymes différents pour des institutions similaires).
+
+---
+
+CITATION RECOMMANDÉE
+
+MITSS, Mozambique (2021), 3.º Boletim Estatístico sobre Protecção Social 2020, Maputo, 2021. [Avec l'appui de l'OIT / Projeto ACTION/Portugal]

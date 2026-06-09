@@ -1,0 +1,302 @@
+MÉTHODOLOGIE ET INDICATEURS ODD 1.3.1
+2e Bulletin statistique de la protection sociale en RDC
+Atelier de cadrage et de lancement
+Kinshasa, RDC | 14 mai 2026
+Sous l’égide du Secrétariat National de la Protection Sociale (SNPS)
+Avec l’appui technique de l’Organisation internationale du Travail (OIT)
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 1
+REPÉRAGE
+Où en sommes nous dans le déroulé ?
+Séquence Statut Contenu
+1 ✓ Ouverture institutionnelle —SNPS
+2 ✓ Cadrage de l’atelier
+3 ✓ Premier tour de table des institutions
+4 ✓ Protection sociale au sens de l’OIT
+5 ✓ Retour sur le 1er Bulletin
+6 ✓ Échanges institutionnels et évolutions récentes
+7 → Maintenant Méthodologie des indicateurs ODD 1.3.1
+8 À suivre Présentation des outils : ESS, QPSS, EC_Calc
+9 À suivre Collecte, points focaux, calendrier et validation
+10 À suivre Synthèse et clôture
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 2
+PRINCIPES
+Pourquoi une méthodologie commune ?
+Une méthodologie commune est nécessaire pour garantir :
+Comparabilité Cohérence Qualité statistique Crédibilité Utilité publique
+Entre institutions Même périmètre Sources documentées Résultats robustes Suivi des réformes
+Entre années Même unité de comptage Données contrôlables Méthode transparente Pilotage national
+Entre pays Même année Limites explicites Neutralité du bulletin Dialogue
+institutionnel
+Le bulletin n’est pas une compilation libre de chiffres : il doit produire des indicateurs comparables, documentés et utilisables pour la décision publique.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 3
+ARCHITECTURE DU BULLETIN
+Ce que le bulletin peut contenir : trois niveaux distincts
+Niveau Contenu Statut méthodologique
+1. Noyau statistique Indicateurs standard (exemple : ODD 1.3.1) autre indicateurs usuelles Standardisé, comparable
+2. Analyse nationale Évolutions, réformes, tendances, limites de données Interprétation documentée
+3. Encadrés ou annexes Initiatives, projets, ambitions institutionnelles, efforts sociaux Contextualisation, hors calcul standard
+Exemples d’éléments à contextualiser : gratuité scolaire, gratuité de la maternité, cantines scolaires, transferts sociaux, ambitions institutionnelles.
+Ces éléments peuvent enrichir le bulletin sans modifier le calcul des indicateurs standardisés.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 5
+PÉRIMÈTRE
+Pourquoi ne peut on pas “tout mettre” dans les indicateurs ?
+Les indicateurs statistiques doivent respecter des définitions, des sources et des règles de calcul précises.
+Critères à documenter rigoureusement Règle de prudence
+▪ Branche de protection sociale
+▪ Un programme social n’entre pas automatiquement dans
+▪ Population cible
+un indicateur OIT
+▪ Prestation fournie
+▪ L’inclusion (et l’exclusion) doit être justifiée et documentée
+▪ Mode de financement
+▪ Les limites doivent être explicites
+▪ Ancrage institutionnel ou programmatique
+▪ Données disponibles pour le suivi
+Objectif : préserver la neutralité statistique du bulletin tout en documentant les initiatives nationales pertinentes.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 4
+LECTURE DES RÉSULTATS
+Une lecture transversale et une lecture temporelle
+Lecture Question principale Utilité
+Transversale Que couvre le système à une année donnée ? Cartographier les régimes, branches, populations et lacunes
+Temporelle Comment la couverture évolue t elle dans le temps ? Suivre les progrès, réformes, changements de reportinget efforts récents
+À narrer
+Progrès réel de couverture
+Extension d’un régime
+Amélioration du reporting
+Changement méthodologique
+Politique nouvelle d’extension de la couverture
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 6
+PÉRIMÈTRE DES DISPOSITIFS
+Programmes statutaires et non statutaires
+Type de dispositif Caractéristiques principales Exemples possibles
+Programmes statutaires Encadrés par des textes, droits ou obligations formalisés Régimes de sécurité sociale tel que la CNSS, la
+CNSSAP
+Programmes non statutaires Interventions organisées hors d’un cadre statutaire complet, mais pouvant relever Assistance sociale, transferts, filets sociaux,
+de la protection sociale programmes temporaires ciblés
+À ne pas confondre avec la distinction contributif / non contributif.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 7
+PÉRIMÈTRE DES DISPOSITIFS
+Régimes contributif et non contributif
+Type Logique Données attendues
+Protection liée à une cotisation ou à l’affiliation à un régime, basée sur un Cotisants, assurés, bénéficiaires, prestations, recettes,
+Contributif
+mécanisme assuranciel dépenses
+Bénéficiaires, population cible, prestations, budget,
+Non contributif Protection financée sans contribution directe du bénéficiaire
+critères d’éligibilité
+Les deux types sont importants pour mesurer l’étendue réelle de la protection sociale.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 8
+PÉRIMÈTRE DES DISPOSITIFS
+Couverture légale et couverture effective
+Type Logique Données attendues
+Protection prévue par le cadre légal ou réglementaire, définissant les
+Population couverte par la loi, critères d’éligibilité,
+Couverture légale catégories de population ayant droit à une prestation ou à une affiliation à un
+catégories protégées, nature des prestations prévues
+régime de protection sociale.
+effectiveProtectionréellement fournie et utilisée par la population, mesurée à
+Affiliés, cotisants, bénéficiaires effectifs, prestations
+Couverture effective travers les personnes effectivement affiliées, cotisantes ou bénéficiaires de
+versées, utilisation réelle des services
+prestations.
+Dans le cadre de ce bulletin, l’accent est mis principalement sur la couverture effective, c’est-à-dire la population
+réellement couverte ou bénéficiant effectivement des prestations de protection sociale. La couverture légale
+pourra être mobilisée de manière complémentaire pour contextualiser l’existence des droits et dispositifs prévus
+par les textes légaux et réglementaires.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 8
+MÉTHODE
+Comment lire un indicateur ?
+Élément Question clé Source principale
+Définition Que mesure l’indicateur ? Référentiel OIT / ODD 1.3.1
+Numérateur Qui est effectivement couvert ou bénéficiaire ? Données administratives des institutions
+Dénominateur Quelle est la population cible de référence ? INS, recensements, enquêtes, projections, ILOSTAT, WPP
+Désagrégations Total, hommes, femmes, âge, branche, régime ? Institutions + sources statistiques
+Conditions de validité Même année, même périmètre, unité de comptage claire ? Documentation méthodologique
+Taux de couverture = Numérateur / Dénominateur × 100
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 9
+ODD 1.3.1
+ODD 1.3.1 : un ensemble d’indicateurs de couverture
+L’ODD 1.3.1 mesure la couverture effective par des socles ou systèmes de protection sociale, par sexe et par groupe de population.
+INDICATEUR AGRÉGÉ — population couverte par au moins une prestation
+Population active contribuant à un
+Enfants Maternité
+régime de pension*
+Chômage AT/MP Invalidité / handicap
+Vieillesse Vulnérabilité Santé*
+* Indicateur complémentaire du bulletin : hors noyau ODD 1.3.1 et non pris en compte dans l’indicateur agrégé.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 10
+ODD 1.3.1
+Liste des indicateurs ODD 1.3.1
+Dimension Indicateur de couverture
+Proportion de la population bénéficiant de socles ou systèmes de protection sociale, par sexe et par
+Indicateur ODD 1.3.1 groupe de population (enfants, chômeurs, personnes âgées, personnes handicapées, femmes enceintes
+et nouveau-nés, victimes d’un accident du travail, pauvres et personnes vulnérables)
+Retraite* % de la population active contribuant à un régime de pension
+Enfants % d'enfants bénéficiant d'une protection sociale
+Maternité % de femmes qui accouchent et reçoivent des allocations de maternité
+Chômage % de chômeurs bénéficiant d'allocations de chômage
+Vieillesse % de personnes âgées bénéficiant d'une pension ou d'une prestation
+Invalidité / handicap % de personnes gravement handicapées bénéficiant de prestations
+Accidents du travail % de travailleurs couverts en cas d'accidents du travail ou de maladies professionnelles
+Vulnérabilité % de personnes en situation de pauvreté bénéficiant de systèmes de protection sociale
+Santé* Population protégée par un régime social de protection de la santé
+* Indicateur complémentaire du bulletin : hors noyau ODD 1.3.1 et non pris en compte dans l’indicateur agrégé.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 11
+ODD 1.3.1
+Liste des indicateurs ODD 1.3.1
+Dimension Indicateur de couverture
+Proportion de la population couverte par au moins une prestation en espèces:
+pourcentage de la population qui bénéficie de prestations en espèces pour au
+Indicateur
+moins une des éventualités ou un des domaines de la sécurité sociale (prestations
+agrégé
+contributives ou non contributives), ou bien cotisant activement à au moins un
+régime de sécurité sociale.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 11
+ODD 1.3.1
+Liste des indicateurs ODD 1.3.1
+Indicateur de couverture
+Retraite* Population active contribuant à un régime de retraite.
+Proportion de la population couverte par au moins une prestation en espèces: pourcentage de la population qui bénéficie de prestations en
+1. Enfants espèces pour au moins une des éventualités ou un des domaines de la sécurité sociale (prestations contributives ou non contributives), ou bien
+cotisant activement à au moins un régime de sécurité sociale.
+Proportion de femmes ayant accouché bénéficiant de prestations de maternité: nombre de femmes qui perçoivent des prestations de maternité en
+espèces rapporté au nombre de femmes ayant accouché au cours de la même année (estimation fondée sur les taux de fécondité en fonction de
+2. Maternité
+l’âge publiés par les Nations Unies dans leurs perspectives de la population mondiale (World Population Prospects) ou du nombre de naissances
+vivantes corrigé de la part de naissances de jumeaux ou de triplés).
+Proportion de personnes handicapées bénéficiant de prestations: nombre de personnes qui perçoivent des prestations d’invalidité rapporté au
+3. Invalidité / handicap nombre de personnes lourdement handicapées. Ce dernier est calculé comme le produit des ratios de prévalence du handicap établis par l’OMS
+pour chaque groupe de pays) et de la population de chaque pays.
+Proportion de chômeurs indemnisés: part des bénéficiaires de prestations de chômage en espèces par rapport au nombre de personnes sans
+4. Chômage
+emploi.
+Proportion de travailleurs couverts en cas d’accident du travail: pourcentage de la main-d’œuvre assurée contre les accidents du travail dans la
+5. Accidents du travail
+main-d’œuvre totale.
+Proportion de personnes âgées bénéficiant de prestations de vieillesse: pourcentage de personnes ayant atteint l’âge légal de départ à la retraite
+6. Vieillesse
+qui perçoivent des prestations de vieillesse (contributives ou non contributives).
+Proportion de personnes vulnérables bénéficiant de prestations: pourcentage de personnes vulnérables percevant une prestation d’assistance
+sociale en espèces. Le nombre de personnes vulnérables s’obtient en retranchant de la population totale les personnes en âge de travailler qui
+7. Vulnérabilité
+cotisent à un régime d’assurance sociale ou qui perçoivent des prestations contributives, et les personnes ayant atteint l’âge de la retraite qui
+perçoivent des prestations contributives.
+Santé* Population protégée par un régime social de protection de la santé
+* Indicateur complémentaire du bulletin : hors noyau ODD 1.3.1 et non pris en compte dans l’indicateur agrégé. Atelier 2e Bulletin Statistique RDC | 14 mai 2026 11
+ODD 1.3.1
+Liste des indicateurs ODD 1.3.1
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 11
+EXEMPLE CHIFFRÉ
+Exemple 1 : personnes âgées recevant une pension
+Élément Application —RDC 2022
+Définition Part des personnes âgées recevant une pension de vieillesse
+Numérateur 46 658 personnes couvertes
+▪ Retraite CNSS : 44 094 ;
+Composition du
+▪ retraite anticipée CNSS: 1 235 ;
+numérateur
+▪ retraite CNSSAP: 1 329
+4 519 266 personnes âgées de plus de 60 ans
+Dénominateur
+Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022
+Résultat 46 658 / 4 519 266 = 1,03 %
+Le premier bulletin indique que dans ce cas seul les régimes statutaire et contributifs ont été pris en compte. Les régimes octroyé sont
+discutés séparément faute de données. La réforme de basculement est aussi discuté séparément.
+Lecture : la qualité de l’indicateur dépend autant du numérateur institutionnel que du dénominateur et des hypothèses retenues.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 12
+EXEMPLE CHIFFRÉ
+Exemple 2 : enfants bénéficiant d’une protection sociale
+Élément Application —RDC 2022
+Définition Part des enfants bénéficiant d’une prestation de protection sociale
+Numérateur 1 130 048 enfants couverts
+▪ Allocations familiales CNSS : 1 129 861 ;
+Composition du
+▪ Rentes d’orphelins CNSSAP : 187
+numérateur
+Estimation faite à partir du nombre moyen d’enfants par affiliés.
+52 490 412 personnes de moins de 18 ans
+Dénominateur
+Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022
+Résultat 1 130 048 / 52 490 412 = 2,15 %
+Couverture effective vs couverture légale. LA CNSAPP ne versait pas d’allocation de prestation familiale. L’hypothèse du nombre d’enfant
+bénéficiaire de la CNSS peut être précisé. Discuter
+La qualité de l’indicateur dépend autant du numérateur institutionnel que du dénominateur et des hypothèses retenues
+.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 13
+EXEMPLE CHIFFRÉ —INDICATEUR COMPLÉMENTAIRE
+Exemple 3 : protection sociale en santé*
+Élément Application — RDC 2022
+Définition Part de la population protégée par un régime social de protection de la santé*
+Numérateur 164 877 personnes couvertes par la MESP
+Composition Contributeurs MESP : 80 041 ; membres de famille : 84 836
+Dénominateur 99 010 212 personnes — population totale
+Résultat 164 877 / 99 010 212 = 0,17 %
+Le bulletin indique que dans ce cas seul les régimes statutaire, contributifs et obligatoire ont été pris en compte. Les mutuelles ont été
+volontairement ignoré (POMUCO) car volontaires bien que supervisé par l’état. Discuter
+* Indicateur complémentaire du bulletin : hors noyau ODD 1.3.1 et non pris en compte dans l’indicateur agrégé.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 14
+EXEMPLE CHIFFRÉ
+Exemple 4 : indicateur agrégé ODD 1.3.1
+Élément Application — RDC 2022
+Définition Population couverte par au moins une prestation de protection sociale, hors santé
+Résultat publié 5,2 % de la population couverte par au moins une prestation
+L’agrégé n’est pas la somme brute de tous les cotisants et bénéficiaires des régimes
+Point méthodologique clé
+d’assurance sociales
+Le calcul tient compte d’hypothèses, notamment sur les contributeurs CNSSAP et certaines
+Point d’attention
+prestations non contributives
+Montrer le fichier Calc.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 15
+SYNTHÈSE
+En bref : messages clés
+1 Le bulletin repose sur une méthodologie commune.
+2 Le noyau statistique doit rester comparable et neutre.
+Les initiatives nationales peuvent être présentées dans des encadrés ou annexes clairement distincts.
+3
+Chaque indicateur repose sur une définition précise.
+4
+Les exemples ci dessus montrent l’importance du choix du périmètre et de la méthodologie.
+5
+6 L’outil ESS structure la compilation des données pour le bulletin et le reporting international.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 18
+TRANSITION
+De la méthode aux outils
+La prochaine présentation montrera comment les données nécessaires aux indicateurs seront collectées, structurées et consolidées.
+ESS QPSS EC_Calc Validation
+Canevas de compilation des Plateforme de structuration et Calculs et consolidation des Circuits de contrôle, correction
+données administratives de suivi indicateurs et suivi
+Transition vers la Présentation 3 — Outils, collecte et feuille de route
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 19
+OUTIL
+ESS : l’outil de compilation des données
+L’Enquête de Sécurité Sociale (ESS) permet de compiler les données nécessaires :
+▪
+au Bulletin statistique national ;
+▪
+au suivi des indicateurs ODD 1.3.1
+▪
+au Rapport mondial sur la protection sociale de l’OIT
+▪
+à l’analyse des régimes, prestations, bénéficiaires, cotisants, recettes et dépenses.
+L’ESS est un outil de compilation de données administrative : ce n’est pas une enquête auprès des ménages,
+ni une base de donnée.
+L’ESS existe en temps que fichier Excel et sur la plateforme en ligne.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 16
+OUTIL
+Ce que l’ESS demande aux institutions
+Données de couverture Données sur les prestations Données financières
+Nombre de cotisants Prestations servies Recettes
+Assurés ou affiliés Critères d’éligibilité Dépenses
+Bénéficiaires Période de référence Dépenses administratives
+Personnes protégées Unités de comptage Sources et limites
+Les modalités pratiques de saisie, consolidation et validation seront détaillées dans la présentation suivante.
+Faire avancer la justice sociale, promouvoir le travail décent Atelier 2e Bulletin Statistique RDC | 14 mai 2026 17
+24
+OUTIL
+Liens utiles
+Liens : Rapport Mondial sur la protection sociale de l’OIT
+Liens : Les tableaux de bord des données mondiales sur la protection sociale
+Faire avancer la justice sociale, promouvoir le travail décent
+Atelier 2e Bulletin Statistique RDC | 14 mai 2026 16

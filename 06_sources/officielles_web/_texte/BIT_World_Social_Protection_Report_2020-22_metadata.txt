@@ -1,0 +1,42 @@
+TITRE : World Social Protection Report 2020–22 — Social Protection at the Crossroads — in Pursuit of a Better Future (Rapport mondial sur la protection sociale 2020–22)
+SOURCE / AUTEUR : Bureau International du Travail (BIT / OIT)
+PAYS / RÉGION : International (données mondiales, régionales et par pays)
+DATE : 2021
+LANGUE : Anglais (résumé exécutif ; rapport complet bilingue en/fr)
+TYPE : rapport international
+FICHIER : BIT_World_Social_Protection_Report_2020-22.txt / BIT_World_Social_Protection_Report_2020-22.pdf
+NIVEAU FIABILITE : 1 — Organisation internationale, publication phare OIT (flagship report)
+
+---
+
+CONTENU RÉSUMÉ
+
+Rapport phare biennal du BIT sur l'état de la protection sociale mondiale. L'édition 2020–22 couvre l'impact de la COVID-19, les progrès de la protection sociale dans le monde au cours de la dernière décennie, les lacunes de couverture et de financement, et les perspectives de recovery. Le fichier .txt contient le résumé exécutif du rapport complet. Cinq messages clés émergent : (1) la pandémie a exposé des inégalités profondes et des lacunes significatives dans la couverture ; (2) les systèmes de PS ont prouvé être des mesures anti-crise puissantes ; (3) persistent des déficits de stimulus ; (4) la recovery inégale menace les acquis ; (5) le besoin de financement accru est crucial.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Données mondiales et Afrique — 2020/2021]
+- 53 % de la population mondiale couverte par au moins une prestation (2020)
+- Afrique subsaharienne : 17,4 % couverts par au moins une prestation
+- Déficit financement Afrique subsaharienne : 77,9 milliards USD/an
+- Pays à faible revenu : couverture <25 %
+- COVID-19 : les pays avec meilleure PS ont mieux répondu à la crise
+- « Stimulus gap » : déficit entre besoins de protection et capacités de financement dans les pays à faible revenu
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Document de référence international de niveau 1 pour le contexte global.
+- Le fichier .txt contient uniquement le résumé exécutif (pas le rapport complet — 386 pages).
+- Pour les données sur la RDC spécifiquement, utiliser les sources nationales et le WSPR 2024-26.
+- Données 2020 : plus récentes disponibles dans cette édition. Données 2022 dans le WSPR 2024-26.
+- Source principale pour l'indicateur de couverture mondiale et les comparaisons régionales.
+
+---
+
+CITATION RECOMMANDÉE
+
+BIT (2021), Rapport mondial sur la protection sociale 2020–22 : la protection sociale à la croisée des chemins, Genève, Bureau international du Travail.

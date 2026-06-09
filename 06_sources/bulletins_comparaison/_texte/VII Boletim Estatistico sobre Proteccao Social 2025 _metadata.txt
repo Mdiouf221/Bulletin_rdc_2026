@@ -1,0 +1,59 @@
+TITRE : VII Boletim Estatístico sobre Protecção Social 2025 — Mozambique (données 2020–2024)
+SOURCE / AUTEUR : Ministério do Trabalho e Segurança Social (MITSS), Mozambique — avec l'appui de l'OIT
+PAYS / RÉGION : Mozambique
+DATE : 2025 (données 2020–2024)
+LANGUE : Portugais
+TYPE : bulletin statistique
+FICHIER : VII Boletim Estatistico sobre Proteccao Social 2025 .txt / VII Boletim Estatistico sobre Proteccao Social 2025 .pdf
+NIVEAU FIABILITE : 2 — publication officielle secondaire acceptable
+
+NOTE SUR LE NOM : Le nom de fichier comporte un espace de fin (« 2025 .pdf ») — nom technique conservé pour cohérence. Contenu confirmé : 7e édition, Mozambique, 2025.
+
+---
+
+CONTENU RÉSUMÉ
+
+Septième édition du Bulletin statistique sur la protection sociale du Mozambique, publiée en 2025, couvrant la période 2020–2024 (accent sur 2024). C'est l'édition la plus récente de la série mozambicaine. Structure complète et enrichie par rapport aux éditions précédentes, comportant 5 grandes sections : (1) Population selon caractéristiques sélectionnées (taille, groupes d'âge, pauvreté de consommation et multidimensionnelle, accès aux soins de santé, dépenses des ménages, accès aux services de base, chômage) ; (2) Protection sociale au Mozambique (contributif, non contributif, complémentaire) ; (3) Prestations monétaires et services sociaux (régimes, INSS, INAS, complémentaire) ; (4) Indicateurs statistiques (couverture, dépenses, adéquation) ; (5) Annexes (couverture effective, notes méthodologiques).
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Mozambique, données 2020–2024 — indicateurs confirmés dans la table des matières]
+
+COUVERTURE EFFECTIVE (section 4.1) :
+- Graphique 4.1.1 : Couverture effective de la protection sociale par groupe de population, 2024
+- Graphique 4.1.2 : Évolution de la couverture effective par groupe de population, 2019–2023
+
+RÉGIME CONTRIBUTIF (INSS — secteur privé) :
+- Évolution du nombre de travailleurs salariés inscrits (2020–2024)
+- Évolution des travailleurs indépendants inscrits et actifs (2020–2024)
+- Distribution des travailleurs salariés par sexe (2024)
+- Pensionnistes de l'État par province et par type de pension (2024)
+- Prestations monétaires de court et long terme payées par type (2024)
+
+RÉGIME NON CONTRIBUTIF (INAS) :
+- Distribution des bénéficiaires INAS par programme (2024) : PSSB, PASD, PAUS, PASP, ProSAS
+- Évolution des bénéficiaires PSSB, PASD, PAUS, PASP (2020–2024)
+- Budget alloué aux programmes (en millions de meticais, 2020–2024)
+
+DÉMOGRAPHIE :
+- Population par province et par sexe (2024)
+- Taux de chômage OIT et définition nationale (2022)
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Édition la plus récente (2025) et la plus complète de la série mozambicaine — référence de style prioritaire pour le bulletin RDC.
+- L'édition 7 couvre 5 ans (2020–2024) — série longue permettant des analyses de tendances.
+- Introduction de la section sur la protection sociale complémentaire (3.4) — innovation par rapport aux éditions précédentes.
+- Indicateurs de couverture effective explicitement calculés selon les normes OIT (section 4.1 et annexe 5.1) — méthode directement applicable au bulletin RDC.
+- La mention explicite « Définition nationale et de l'OIT » pour le taux de chômage signale une double approche méthodologique.
+- Note : numérotation non séquentielle dans la table — certains graphiques manquent dans la séquence (peut signaler des révisions de maquette).
+
+---
+
+CITATION RECOMMANDÉE
+
+MITSS, Mozambique (2025), VII Boletim Estatístico sobre Protecção Social 2025 (données 2020–2024), Maputo, 2025. [Avec l'appui de l'OIT]

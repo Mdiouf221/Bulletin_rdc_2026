@@ -1,0 +1,83 @@
+TITRE : 1º Boletim Estatístico sobre Protecção Social
+SOURCE / AUTEUR : Gouvernement du Mozambique (MITSS, MEF, MGCAS, INAS, INPS, INSS) / Appui technique et financier OIT – Mozambique
+PAYS / RÉGION : Mozambique
+DATE : 2019 (données de l'année 2018)
+LANGUE : Portugais
+TYPE : Bulletin statistique
+FICHIER : Mozambique - 1er Boletim Estatistico da Proteccao Social, 2019.txt / Mozambique - 1er Boletim Estatistico da Proteccao Social, 2019.pdf
+NIVEAU FIABILITE : 2 (publication officielle secondaire, appui OIT)
+
+---
+
+CONTENU RÉSUMÉ
+
+Premier bulletin statistique sur la protection sociale au Mozambique, portant sur les activités et données de l'année 2018. Produit par cinq institutions nationales (MITSS, MEF/INPS, MGCAS/INAS, INSS) avec l'appui technique et financier de l'OIT dans le cadre du projet ACTION/Portugal (renforcement des systèmes de protection sociale dans les PALOP et Timor-Leste).
+
+Le bulletin couvre :
+1. Le contexte démographique et la pauvreté au Mozambique (données Recensement 2017, IOF 2014/15)
+2. La sécurité sociale obligatoire (régime contributif) : fonctionnaires de l'État (INPS) et travailleurs du secteur privé (INSS)
+3. La sécurité sociale de base (régime non contributif) : programmes de l'INAS (PSSB, PASD, PSSAS, PASP)
+4. Conclusions et contraintes
+
+Structure légale : Loi de Bases de Protecção Social n° 4/2007. Le système comprend trois niveaux : Segurança Social Básica, Segurança Social Obrigatória, Segurança Social Complementar.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+Contexte démographique (2017-2018) :
+- Population totale Mozambique (Recensement 2017) : 27 909 799 habitants (52% femmes, 48% hommes)
+- Population rurale : 17,9 millions ; urbaine : 8,9 millions
+- Population vivant sous le seuil national de pauvreté (IOF 2014/15) : 46,1% (13 305 319 personnes)
+  → Zone rurale : 50,1% ; Zone urbaine : 37,4%
+  → Par région : Nord 55,1%, Centre 46,2%, Sud 32,8%
+- Population avec un handicap (2017) : ~7,2 millions de personnes
+
+Régime contributif public – INPS (fonctionnaires de l'État, FADM, Députés) :
+- Effectif des pensionnistes et rentiers de l'État (31/12/2018) : 170 699
+  → Militaires : 118 776 (dont 72 719 hommes, 46 057 femmes)
+  → Civils : 51 923 (dont 31 789 hommes, 20 134 femmes)
+- Proportion hommes/femmes parmi fonctionnaires : 61% / 39%
+
+Régime contributif privé – INSS (travailleurs salariés et indépendants) :
+- Travailleurs inscrits à compte propre en 2018 : 11 562 (dont 4 297 à Maputo Cidade, 276 à Niassa)
+- Bénéficiaires de pensions via INSS (2018) : 74 763
+  → Pension de survie (Sobrevivência) : 44 308 (59% du total)
+  → Pension d'invalidité : 1,8% du total
+- Abono de velhice via INSS : 165 personnes (dont 26% à Maputo Cidade)
+- Subsídio de doença : 7 839 cas payés (40% du total des prestations)
+
+Régime non contributif – INAS (MGCAS) :
+- Total bénéficiaires assistés en 2018 : 519 347 personnes
+  → PSSB (Programa Subsídio Social Básico) : 78% des bénéficiaires
+  → PASP (Programa Acção Social Produtiva) : 17%
+  → PASD (Programa Apoio Social Directo) : 3%
+  → PSSAS (Programa Serviços Sociais de Acção Social) : 2%
+- PSSB 2018 : 404 355 ménages assistés (dont 66% dirigés par femmes, 34% par hommes)
+  → 370 069 ménages dirigés par personnes âgées (91,52% du total PSSB)
+  → 21 839 ménages dirigés par personnes handicapées (5,40%)
+- PASD 2018 : 16 628 ménages assistés (12 618 assistance prolongée + 4 010 ponctuelle)
+
+Total bénéficiaires (tous régimes confondus, 2018) : 1 104 791
+  → Régime contributif public (INPS) : 74 928 (5,84%)
+  → Régime contributif privé (INSS) : 510 516 (39,82%)
+  → Régime non contributif (INAS) : 519 347 (40,5%)
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Document de référence de style pour le bulletin RDC (structure, indicateurs, présentation). Ne pas citer comme source RDC.
+- Les données couvrent l'année 2018, publiées en juillet 2019.
+- Distinction claire entre régime contributif (INPS pour fonctionnaires, INSS pour secteur privé) et régime non contributif (INAS/MGCAS).
+- Les chiffres de bénéficiaires INSS (510 516) incluent probablement les bénéficiaires de prestations (pensionnaires + actifs cotisants) — à distinguer des cotisants actifs.
+- Données de pauvreté issues de l'IOF 2014/15 (Inquérito aos Orçamentos Familiares) — méthode PLEASe — décalage temporal par rapport à l'année de publication.
+- Les données démographiques proviennent du Recensement général 2017 (INE).
+- Document produit avec l'appui du projet ACTION/Portugal (PALOP + Timor-Leste) : cadre méthodologique OIT commun avec les bulletins de Guinée-Bissau, Angola, São Tomé, Timor-Leste.
+- Langage : portugais mozambicain. Traductions des termes clés : previdência social = prévoyance sociale ; segurança social = sécurité sociale ; ménage (agregado familiar).
+
+---
+
+CITATION RECOMMANDÉE
+
+MITSS/MEF/MGCAS, Mozambique (2019), 1º Boletim Estatístico sobre Protecção Social, Maputo, Julho 2019. [Appui technique et financier OIT-Mozambique / Projet ACTION/Portugal]

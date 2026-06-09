@@ -1,0 +1,48 @@
+TITRE : 1.º Boletim Estatístico sobre Proteção Social de São Tomé e Príncipe (données 2019–2021)
+SOURCE / AUTEUR : Governo da República Democrática de São Tomé e Príncipe — Ministério da Saúde, Trabalho e Assuntos Sociais / Ministério dos Direitos da Mulher — avec l'appui de l'OIT (Proyecto ACTION/Portugal)
+PAYS / RÉGION : São Tomé-et-Príncipe
+DATE : Novembre 2023 (données 2019–2021)
+LANGUE : Portugais
+TYPE : bulletin statistique
+FICHIER : Sao-Tome-et-Principe - 1er Boletim Estatistico da Proteccao Social.txt / Sao-Tome-et-Principe - 1er Boletim Estatistico da Proteccao Social.pdf
+NIVEAU FIABILITE : 2 — publication officielle secondaire acceptable
+
+---
+
+CONTENU RÉSUMÉ
+
+Premier bulletin statistique sur la protection sociale de São Tomé-et-Príncipe, publié en novembre 2023. Couvre la période 2019–2021. Produit par le GITEPS (Groupe Interinstitutionnel de Travail sur les Statistiques de Protection Sociale) avec la participation de l'INSS, de la Direction de la Protection Sociale, Solidarité et Famille (DPSSF) et de l'INE. Appui technique : OIT (projet ACTION/Portugal), CIF-OIT, Équipe Travail Décent OIT Afrique Centrale, Bureau pays OIT (Cameroun/Guinée Équatoriale/STP). Tirée à 200 exemplaires.
+
+Structure du bulletin :
+1. Aspects socio-démographiques (division administrative, population, emploi, pauvreté, accès aux services)
+2. Protection sociale à STP : cadre général, régime non contributif (protection sociale de la citoyenneté), régime contributif (protection sociale obligatoire), rôle des ONG
+3. Résultats 2019–2021 : pensions de vieillesse, bénéficiaires actifs, invalidité, maternité, prestations non contributives (enfants, adultes)
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Indicateurs 2019–2021 — São Tomé-et-Príncipe]
+- Régime contributif — Pensions de vieillesse (2019–2021) : tendance de bénéficiaires
+- Régime contributif — Bénéficiaires actifs (2019–2021)
+- Régime contributif — Invalides bénéficiaires (2019–2021)
+- Régime contributif — Bénéficiaires d'une prestation de maternité (2019–2021)
+- Régime non contributif — Enfants (0–14 ans) bénéficiaires d'une prestation en espèces (2019–2021)
+- Régime non contributif — Bénéficiaires totaux d'une prestation en espèces (2019–2021)
+- Comparaison contributif vs non contributif — bénéficiaires d'une prestation en espèces
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Premier bulletin (2023) couvrant 2019–2021 — décalage temporel de 2 ans, données relativement anciennes au moment de la publication.
+- São Tomé-et-Príncipe : micro-État insulaire (environ 220 000 habitants), économie de plantation et de services. Contexte très différent de la RDC mais même méthodologie OIT.
+- Même structure que les bulletins Guinée-Bissau, Timor-Leste, Angola (projet ACTION/Portugal).
+- Mention explicite du rôle des ONG dans la protection sociale — pertinent pour la RDC.
+- Implication de l'OIT Bureau Afrique Centrale (même bureau que la RDC) — pertinence institutionnelle.
+
+---
+
+CITATION RECOMMANDÉE
+
+Governo da República Democrática de São Tomé e Príncipe (2023), 1.º Boletim Estatístico sobre Proteção Social de São Tomé e Príncipe (données 2019–2021), São Tomé, Novembro de 2023. [Avec l'appui de l'OIT / Projeto ACTION/Portugal]

@@ -1,0 +1,41 @@
+TITRE : 1.º Boletim Estatístico sobre Proteção Social da Guiné-Bissau
+SOURCE / AUTEUR : Governo da República da Guiné-Bissau — MASFPM / MAPTME — avec l'appui de l'OIT (Projeto ACTION/Portugal)
+PAYS / RÉGION : Guinée-Bissau
+DATE : Octobre 2023
+LANGUE : Portugais
+TYPE : bulletin statistique
+FICHIER : AF_1ºBEPS_Guine__Bissau_Digital_09092024-compressed_0.txt / AF_1ºBEPS_Guine__Bissau_Digital_09092024-compressed_0.pdf
+NIVEAU FIABILITE : 2 — publication officielle secondaire acceptable
+
+NOTE SUR LE NOM : Le nom de fichier reflète le code de diffusion numérique (ACTION/Portugal format). Un renommage descriptif serait : « Guinee_Bissau_1er_Boletim_Estatistico_PS_2023.pdf ». Renommage recommandé mais non obligatoire.
+
+---
+
+CONTENU RÉSUMÉ
+
+Premier bulletin statistique sur la protection sociale de la Guinée-Bissau, publié en octobre 2023 à Bissau. Produit sous la tutelle du Ministère de l'Action Sociale, de la Famille et de la Promotion de la Femme (MASFPM) et du Ministère de l'Administration Publique, du Travail et de la Modernisation de l'État (MAPTME), avec la participation de la Direction Générale de la Protection Sociale (DGPS), de l'Institut National de Sécurité Sociale (INSS) et de l'Institut National de Statistiques (INE). Financement : OIT / Projeto ACTION/Portugal, avec collaboration UNICEF, PAM et FEC (Fondation Foi et Coopération). Tirée à 200 exemplaires.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Les données quantitatives détaillées nécessitent une lecture des chapitres du bulletin]
+- Couverture du système de protection sociale en Guinée-Bissau
+- Régimes contributifs : INSS (secteur formel)
+- Protection sociale non contributive : programmes DGPS
+- Indicateurs selon les standards OIT
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Premier bulletin d'une série en cours pour la Guinée-Bissau. Utile pour comparer la structure du rapport RDC avec un autre pays francophone/lusophone d'Afrique de l'Ouest ayant des défis similaires.
+- Même méthodologie OIT (projet ACTION/Portugal) que les autres PALOP.
+- Guinée-Bissau : pays à faible revenu avec couverture de protection sociale très limitée — contexte comparable à la RDC.
+- Le nom de fichier compressé (« compressed_0 ») ne reflète pas le contenu mais correspond au format de diffusion numérique du projet.
+
+---
+
+CITATION RECOMMANDÉE
+
+Governo da República da Guiné-Bissau (2023), 1.º Boletim Estatístico sobre Proteção Social da Guiné-Bissau, Bissau, Outubro de 2023. [Avec l'appui de l'OIT / Projeto ACTION/Portugal]

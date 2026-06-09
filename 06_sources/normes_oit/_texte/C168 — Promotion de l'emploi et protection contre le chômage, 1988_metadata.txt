@@ -1,0 +1,39 @@
+TITRE : Convention n°168 sur la promotion de l'emploi et la protection contre le chômage, 1988 — Employment Promotion and Protection against Unemployment Convention, 1988 (No. 168)
+SOURCE / AUTEUR : Organisation Internationale du Travail (OIT/BIT)
+PAYS / RÉGION : International
+DATE : 1988 (adoptée le 1er juin 1988, lors de la 75e session de la CIT)
+LANGUE : Anglais (texte NORMLEX consulté)
+TYPE : convention OIT
+FICHIER : C168 — Promotion de l'emploi et protection contre le chômage, 1988.txt / C168 — Promotion de l'emploi et protection contre le chômage, 1988.pdf
+NIVEAU FIABILITE : 1 — Organisation internationale, source primaire normative
+
+---
+
+CONTENU RÉSUMÉ
+
+Convention OIT n°168 sur la promotion de l'emploi et la protection contre le chômage, adoptée le 1er juin 1988 lors de la 75e session de la CIT. Révise la Convention sur l'assurance-chômage de 1934. La convention couvre deux dimensions complémentaires : (1) la promotion de l'emploi productif et librement choisi et (2) la protection contre le chômage (indemnités de chômage). Elle reconnaît l'importance du travail et de l'emploi dans la société, et vise à assurer une protection adéquate à ceux qui perdent leur emploi involontairement. Elle souligne les problèmes spécifiques du chômage des jeunes et des primo-demandeurs d'emploi. Texte extrait de NORMLEX (normlex.ilo.org).
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+- Deux composantes : (1) politiques actives de l'emploi et (2) prestations de chômage passives
+- Renvoie explicitement à la C102 (branche chômage, partie IV) pour les niveaux minimaux
+- Références aux conventions précédentes : C002 (1919), C044 (1934), R067 (1944)
+- Contexte de ratification : applicable aux membres dont le chômage est un risque couvert
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- La branche chômage est NON couverte en RDC (aucun régime dans l'ESS 2023 — lacune explicitement documentée).
+- Cette convention est utile pour documenter l'absence de couverture chômage en RDC et la justifier dans le cadre normatif OIT.
+- La RDC n'a pas ratifié la C168.
+- Dans un contexte d'emploi informel ~96 %, l'absence d'assurance chômage formelle est structurelle.
+- À citer dans la section sur les lacunes de couverture du bulletin (analyse comparative avec la C102).
+
+---
+
+CITATION RECOMMANDÉE
+
+OIT (1988), Convention n°168 sur la promotion de l'emploi et la protection contre le chômage, Genève, Bureau international du Travail.

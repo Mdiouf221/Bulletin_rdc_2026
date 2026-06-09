@@ -1,0 +1,46 @@
+TITRE : 1.º Boletim de Estatísticas da Protecção Social de Angola
+SOURCE / AUTEUR : Ministério da Administração Pública, Trabalho e Segurança Social (MAPTSS), Angola — avec l'appui technique de l'OIT (Projeto ACTION/Portugal et Projet ESSAFE Angola / Union européenne)
+PAYS / RÉGION : Angola
+DATE : Octobre 2024
+LANGUE : Portugais
+TYPE : bulletin statistique
+FICHIER : Boletim de Estatísticas da Protecção Social de Angola.txt / Boletim de Estatísticas da Protecção Social de Angola.pdf
+NIVEAU FIABILITE : 2 — publication officielle secondaire acceptable
+
+---
+
+CONTENU RÉSUMÉ
+
+Première édition du Bulletin statistique de la protection sociale d'Angola, publiée en octobre 2024, dépôt légal 13217/2024, tirée à 1 000 exemplaires. Couvre l'ensemble du système de protection sociale angolais structuré en trois piliers : (1) Protection sociale obligatoire (INSS, ISSFAA, ARSEG, CPSF/SINSE) ; (2) Protection sociale de base non contributive (FAS-IDL et autres programmes) ; (3) Autres programmes sociaux. Inclut un cadrage macroéconomique et socio-démographique, les indicateurs statistiques de protection sociale, les priorités nationales et les objectifs internationaux. Soutien : OIT / ACTION/Portugal + UE / ESSAFE Angola.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Structure du bulletin (table des matières) — données chiffrées dans les chapitres :]
+- Section 1.1 : Macroéconomie (PIB, inflation, comptes nationaux, secteur externe)
+- Section 1.2 : Démographie et marché du travail (population, emploi, conditions de vie)
+- Section 2 : Système de protection sociale angolais (trois sous-sections)
+  - 2.2.1 : Protecção Social Obrigatória (INSS, ISSFAA, ARSEG, CPSF/SINSE)
+  - 2.2.2 : Protecção Social de Base (non contributif)
+  - 2.2.3 : Autres programmes sociaux
+- Section 3 : Priorités nationales
+- Section 4 : Objectifs internationaux (ODD 1.3.1)
+- Section 5 : Développements récents (nouveaux programmes)
+- Section 6 : Indicateurs statistiques de protection sociale
+- Section 7 : Contraintes de collecte de données
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Première édition (octobre 2024) suivie d'une 2e édition en mars 2026. La présente fiche concerne la 1re édition.
+- Structure très proche du modèle ACTION/Portugal utilisé aussi en Mozambique, Guinée-Bissau, São Tomé et Timor-Leste.
+- Utile comme référence de style et de structure pour comparer avec le bulletin RDC.
+- Angola : économie pétrolière, secteur formel plus développé que la RDC, mais défis de couverture similaires pour le secteur informel.
+
+---
+
+CITATION RECOMMANDÉE
+
+MAPTSS, Angola (2024), 1.º Boletim de Estatísticas da Protecção Social de Angola, Luanda, Outubro de 2024. [Avec l'appui de l'OIT / Projeto ACTION/Portugal et de l'Union européenne / ESSAFE Angola]

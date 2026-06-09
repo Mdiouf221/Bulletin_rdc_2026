@@ -1,0 +1,42 @@
+TITRE : ESS CNSS 2022 — Enquête sur les Sources Statistiques de la protection sociale (format OIT)
+SOURCE / AUTEUR : Caisse Nationale de Sécurité Sociale (CNSS), République Démocratique du Congo — Direction des Études et Organisation
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 2022
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : ESS_CNSS_2022.txt / ESS CNSS 2022.xlsm (source)
+NIVEAU FIABILITE : 1 — données institutionnelles primaires (transmission directe de l'institution)
+
+---
+
+CONTENU RÉSUMÉ
+
+Enquête sur les Sources Statistiques (ESS) de la CNSS pour l'année 2022 — année la plus récente de la série CNSS individuelle (2019–2022). Structure identique aux ESS CNSS 2019 et 2021. Feuilles actives : Inventaire des régimes, Prestations aux familles (Régime 1), Risques professionnels (Régime 2), Pension (Régime 3), Info Pauvreté, ADDITIONAL statistics for SDGs, CALCULATIONS. À partir de 2023, les données CNSS sont intégrées dans le fichier consolidé ESS RDC tous régimes 2023 (régimes 5, 17 et 18).
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+RÉGIME 1 — Prestations aux familles (CNSS, 2022) :
+- 4 prestations identiques à 2019–2021
+
+RÉGIME 2 — Risques professionnels (CNSS, 2022) :
+- 11 prestations identiques à 2019–2021
+
+RÉGIME 3 — Pensions (CNSS, 2022) :
+- 7 prestations identiques à 2019–2021
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Dernière année de la série CNSS individuelle. Les données 2023 figurent dans le fichier consolidé ESS RDC tous régimes 2023.
+- Structure et prestations identiques à 2019 et 2021 — stabilité du périmètre déclaré de la CNSS sur 4 ans.
+- Les données quantitatives (effectifs, montants) se trouvent dans les feuilles individuelles des régimes.
+- Monnaie : Franc congolais (CDF).
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSS (2022), Enquête sur les Sources Statistiques (ESS) — format OIT, Caisse Nationale de Sécurité Sociale, Kinshasa, République Démocratique du Congo.

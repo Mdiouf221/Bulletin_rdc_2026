@@ -22,6 +22,7 @@ Règle de travail :
 | PROC-005 | Mise à jour du registre des sources | actif | [PROC-005.md](PROC-005.md) |
 | PROC-006 | Créer, déplacer ou restructurer un chapitre ou une annexe | actif | [PROC-006.md](PROC-006.md) |
 | PROC-007 | Lancer ou relancer le serveur de prévisualisation | actif | [PROC-007.md](PROC-007.md) |
+| PROC-008 | Traitement d'une source entrante (_entrants) | actif | [PROC-008.md](PROC-008.md) |
 
 ---
 

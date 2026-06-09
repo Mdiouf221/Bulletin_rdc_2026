@@ -1,0 +1,41 @@
+TITRE : GIEWS Country Brief — Democratic Republic of the Congo (February 2026)
+SOURCE / AUTEUR : Organisation des Nations Unies pour l'alimentation et l'agriculture (FAO) — GIEWS (Global Information and Early Warning System on Food and Agriculture)
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 5 février 2026 (reference date)
+LANGUE : Anglais
+TYPE : rapport international
+FICHIER : FAO_RDC_agriculture_emploi.txt / FAO_RDC_agriculture_emploi.pdf
+NIVEAU FIABILITE : 1 — Organisation internationale, source primaire
+
+---
+
+CONTENU RÉSUMÉ
+
+Bulletin de pays FAO GIEWS (Système mondial d'information et d'alerte rapide sur l'alimentation et l'agriculture) sur la République Démocratique du Congo, date de référence 5 février 2026. Document de 2 pages. Couvre la sécurité alimentaire, la production céréalière, les prix alimentaires et les perspectives d'insécurité alimentaire pour 2026. Contexte principal : (1) La production de maïs 2025 est affectée par les conflits dans les Kivu et les inondations ; (2) les prix du maïs et du riz importé restent élevés en 2025 ; (3) plus de 26 millions de personnes pourraient faire face à une insécurité alimentaire aiguë début 2026 selon l'analyse IPC de novembre 2025.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Données RDC — 2025–2026]
+- 26 millions de personnes projetées en insécurité alimentaire aiguë (IPC Phase 3+) début 2026
+- 24,8 millions de personnes en insécurité alimentaire aiguë (IPC Phase 3+) évaluées entre novembre 2025 et janvier 2026 — soit plus de 20 % de la population analysée
+- Production de maïs 2025 : en dessous de la moyenne quinquennale (conflits Est + inondations)
+- Conflits : intensification dans les Kivu à partir de fin janvier 2025 — déplacements de population
+- Inondations : avril–septembre 2025, dommages aux cultures dans Kinshasa et infrastructures dans plusieurs provinces
+- Prix alimentaires : maïs local et riz importé à des niveaux élevés tout au long de 2025
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Ce fichier est nommé « FAO_RDC_agriculture_emploi » mais le contenu du GIEWS Country Brief porte principalement sur la sécurité alimentaire et la production céréalière — pas directement sur l'emploi agricole.
+- Note importante : la valeur de l'emploi agricole FAO (~68 % ou ~70 % selon les sources) qui figurait dans le 1er bulletin a été corrigée à 58,9 % (WDI/ILOEST 2024). La valeur FAO correspondait à l'emploi agricole féminin.
+- Pour les données d'emploi agricole, utiliser WDI/ILOEST (source : BanqueMondiale_WDI_RDC_PIB_2023 et données ILOSTAT).
+- L'insécurité alimentaire est un facteur contextuel important pour le bulletin PS (pauvreté, vulnérabilité).
+
+---
+
+CITATION RECOMMANDÉE
+
+FAO (2026), GIEWS Country Brief — Democratic Republic of the Congo, Reference Date: 05 February 2026, Rome, Organisation des Nations Unies pour l'alimentation et l'agriculture.

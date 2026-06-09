@@ -1,0 +1,74 @@
+TITRE : Méthodologie et indicateurs ODD 1.3.1 — 2e Bulletin statistique de la protection sociale en RDC
+SOURCE : OIT / Équipe technique du bulletin
+LIEU : Kinshasa, République Démocratique du Congo
+DATE : 14 mai 2026
+FICHIER : Methodologie_indicateurs_PS_RDC v1.pdf / PPT2_methodologie_indicateurs_PS_RDC v1.pptx
+NIVEAU : Source primaire institutionnelle (document officiel de l'atelier — séquence 7/10)
+
+---
+
+CONTENU
+
+Ce document est la présentation méthodologique centrale de l'atelier. Il fixe le cadre de calcul
+des indicateurs et les règles de périmètre pour le 2e Bulletin.
+
+ARCHITECTURE DU BULLETIN — 3 niveaux distincts :
+  Niveau 1 — Noyau statistique
+    Indicateurs standard (ODD 1.3.1 + autres indicateurs usuels)
+    Statut : standardisé, comparable
+  Niveau 2 — Analyse nationale
+    Évolutions, réformes, tendances, limites de données
+    Statut : interprétation documentée
+  Niveau 3 — Encadrés / Annexes
+    Initiatives, projets, ambitions institutionnelles, efforts sociaux
+    Statut : contextualisation, hors calcul standard
+  → Exemples à contextualiser (hors indicateurs standardisés) : gratuité scolaire, gratuité maternité,
+    cantines scolaires, transferts sociaux, ambitions institutionnelles
+
+PÉRIMÈTRE DES DISPOSITIFS :
+  Programmes statutaires vs non statutaires
+    - Statutaires : encadrés par des textes (CNSS, CNSSAP)
+    - Non statutaires : hors cadre formel complet (assistance sociale, transferts, filets)
+  Contributif vs non contributif
+    - Contributif : cotisants, assurés, bénéficiaires, prestations, recettes, dépenses
+    - Non contributif : bénéficiaires, budget, critères d'éligibilité
+  Couverture légale vs couverture effective (distinction clé du bulletin)
+    - Légale : population prévue par la loi, critères, droits
+    - Effective : affiliés, cotisants, bénéficiaires réels, prestations versées
+    → ACCENT DU BULLETIN : couverture effective principalement
+      (légale en complément pour contextualiser les droits)
+
+MÉTHODE DE CALCUL DES INDICATEURS :
+  Taux de couverture = Numérateur / Dénominateur × 100
+    - Numérateur : personnes effectivement couvertes / bénéficiaires (données administratives institutions)
+    - Dénominateur : population cible de référence (INS, recensements, projections, ILOSTAT, WPP)
+    - Désagrégations : total, hommes, femmes, âge, branche, régime
+    - Conditions de validité : même année, même périmètre, unité de comptage claire
+
+ODD 1.3.1 :
+  Indicateur agrégé — population couverte par au moins une prestation
+  (détails des sous-indicateurs dans les pages suivantes du document)
+
+LECTURE DES RÉSULTATS :
+  - Lecture transversale : que couvre le système à une année donnée ? (cartographie)
+  - Lecture temporelle : comment la couverture évolue-t-elle ? (suivi des progrès)
+  Éléments à narrer : progrès réel, extension d'un régime, amélioration du reporting,
+  changement méthodologique, politique nouvelle
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Ce document fixe officiellement la distinction couverture légale / effective comme principe central.
+- La définition des 3 niveaux du bulletin est importante pour les rédacteurs : ne pas mélanger
+  noyau statistique et contextualisation.
+- La règle de prudence est explicite : "Un programme social n'entre pas automatiquement dans
+  un indicateur OIT. L'inclusion doit être justifiée et documentée."
+- Ce document est la référence pour tout débat sur le périmètre des indicateurs.
+
+---
+
+CITATION RECOMMANDÉE
+
+OIT / Équipe technique (2026), Méthodologie et indicateurs ODD 1.3.1 — Atelier de cadrage et de lancement
+du 2e Bulletin statistique de la protection sociale en RDC, Kinshasa, 14 mai 2026.

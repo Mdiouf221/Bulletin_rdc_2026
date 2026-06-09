@@ -1,0 +1,44 @@
+TITRE : ESS CNSSAP 2022 — Enquête sur les Sources Statistiques de la protection sociale (format OIT)
+SOURCE / AUTEUR : Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP), République Démocratique du Congo
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 2022
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : ESS_CNSSAP_2022.txt / ESS CNSSAP 2022.xlsm (source)
+NIVEAU FIABILITE : 1 — données institutionnelles primaires
+
+---
+
+CONTENU RÉSUMÉ
+
+Enquête sur les Sources Statistiques (ESS) de la CNSSAP pour l'année 2022 — année la plus récente de la série CNSSAP individuelle (2020–2022). Contrairement aux fichiers 2020 et 2021, la date affichée dans l'inventaire (2022) est cohérente avec le nom du fichier. Deux régimes déclarés pour la première fois (contre un seul en 2020 et 2021) : (1) CNSAP Régime de base (pensions) et (2) Réforme du transfert des assurés (régime de transition vieillesse). Feuilles actives : Inventaire des régimes, CNSAP Régime de base (Régime 1), Réforme du transfert (Régime 2), ADDITIONAL statistics for SDGs, CALCULATIONS.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+RÉGIME 1 — CNSAP Régime de base (Branche des pensions) :
+- Fonctions couvertes : Vieillesse, Invalidité/Handicap
+- Type : Contributif, Obligatoire, Public
+
+RÉGIME 2 — Réforme du transfert des assurés du système octroyé [NOUVEAU en 2022] :
+- Nom complet : « Prestations de la Réforme du transfert des assurés du système octroyé »
+- Administrateur : CNSSAP
+- Fonction couverte : Vieillesse uniquement
+- Type : Non précisé (régime de transition)
+- Interprétation : transition entre l'ancien système de pensions octroyées (non contributif) et le régime contributif CNSSAP
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- L'apparition du Régime 2 (Réforme du transfert) en 2022 est un signal institutionnel fort : formalisation de la transition de régime à la CNSSAP cette année-là.
+- Dans le fichier consolidé 2023, la CNSSAP déclare 3 branches complètes : régime de base, allocations familiales, accidents du travail — élargissement notable par rapport à 2022.
+- Première année de la série CNSSAP où la date est cohérente (2022 dans le fichier et dans l'inventaire).
+- Monnaie : non précisée dans les métadonnées.
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSSAP (2022), Enquête sur les Sources Statistiques (ESS) — format OIT, Caisse Nationale de Sécurité Sociale des Agents Publics, Kinshasa, République Démocratique du Congo.

@@ -1,0 +1,43 @@
+TITRE : State of World Population 2025 — The Real Fertility Crisis: The Pursuit of Reproductive Agency in a Changing World
+SOURCE / AUTEUR : Fonds des Nations Unies pour la Population (UNFPA)
+PAYS / RÉGION : International (données mondiales — utilisé pour la RDC)
+DATE : 2025 (rapport SWOP 2025) — données démographiques RDC collectées en 2024
+LANGUE : Anglais (rapport principal) — données RDC disponibles sur le World Population Dashboard
+TYPE : rapport international
+FICHIER : UNFPA_World_Population_Dashboard_RDC_2024.txt / UNFPA_World_Population_Dashboard_RDC_2024.pdf
+NIVEAU FIABILITE : 1 — Organisation internationale, source primaire
+
+---
+
+CONTENU RÉSUMÉ
+
+Le fichier PDF archivé est le rapport « State of World Population 2025 » (SWOP 2025) de l'UNFPA, intitulé « The Real Fertility Crisis: The Pursuit of Reproductive Agency in a Changing World » (ISSN 1020-5195, ISBN 9789211542837, E/500/2025). Rapport de 160 pages. La thématique centrale est la crise de fécondité mondiale et l'agence reproductive des femmes dans un monde en mutation. Les données spécifiques à la RDC citées dans le registre proviennent du World Population Dashboard de l'UNFPA (unfpa.org/data/world-population/CD), accessible en ligne séparément du rapport SWOP.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Données spécifiques RDC — UNFPA World Population Dashboard 2024]
+- Population totale RDC (2024) : 109 millions d'habitants
+- Taux de fécondité : 6,0 enfants par femme
+- Population de moins de 25 ans : 63 %
+- Mortalité maternelle : 547 pour 100 000 naissances vivantes
+- Naissances assistées par personnel qualifié : 80 %
+- Taux de fécondité adolescente : 135 pour 1 000 femmes (15–19 ans)
+- Mariages avant 18 ans : 37 %
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Le fichier PDF est le rapport SWOP 2025 global — les données spécifiques RDC du dashboard ne sont pas dans ce PDF.
+- La thématique SWOP 2025 (crise de fécondité) est peu directement pertinente pour le bulletin PS RDC. Le bulletin utilise ce fichier comme source de données démographiques RDC, non pour le contenu analytique du rapport.
+- Pour les données RDC : consulter le World Population Dashboard en ligne (unfpa.org/data/world-population/CD).
+- Mortalité maternelle (547/100 000) : indicateur important pour la branche maternité de la CNSS. À croiser avec la couverture effective des prestations maternité.
+- Taux de fécondité adolescente élevé (135 ‰) : signal de vulnérabilité pour la branche familles et enfants.
+
+---
+
+CITATION RECOMMANDÉE
+
+UNFPA (2025), State of World Population 2025 — The Real Fertility Crisis, New York, Fonds des Nations Unies pour la Population. [Données RDC : UNFPA World Population Dashboard 2024, https://www.unfpa.org/data/world-population/CD]

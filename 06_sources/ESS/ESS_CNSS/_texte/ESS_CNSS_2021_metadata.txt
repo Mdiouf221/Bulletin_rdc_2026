@@ -1,0 +1,44 @@
+TITRE : ESS CNSS 2021 — Enquête sur les Sources Statistiques de la protection sociale (format OIT)
+SOURCE / AUTEUR : Caisse Nationale de Sécurité Sociale (CNSS), République Démocratique du Congo — Direction des Études et Organisation
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 2021
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : ESS_CNSS_2021.txt / ESS CNSS 2021.xlsm (source)
+NIVEAU FIABILITE : 1 — données institutionnelles primaires (transmission directe de l'institution)
+
+---
+
+CONTENU RÉSUMÉ
+
+Enquête sur les Sources Statistiques (ESS) de la CNSS pour l'année 2021, au format standardisé OIT/BIT. Structure identique à l'ESS CNSS 2019. Feuilles actives : Inventaire des régimes, Prestations aux familles (Régime 1), Risques professionnels (Régime 2), Pension (Régime 3), Info Pauvreté, ADDITIONAL statistics for SDGs, CALCULATIONS. Trois régimes renseignés, avec les mêmes prestations que l'édition 2019.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+RÉGIME 1 — Prestations aux familles (CNSS, 2021) :
+- 4 prestations identiques à 2019 : allocations prénatales, allocation de maternité, allocations familiales, indemnité journalière de maternité
+- Population légalement couverte : travailleurs secteur privé, employés rémunérés
+
+RÉGIME 2 — Risques professionnels (CNSS, 2021) :
+- 11 prestations identiques à 2019
+
+RÉGIME 3 — Pensions (CNSS, 2021) :
+- 7 prestations identiques à 2019
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Structure identique à l'ESS CNSS 2019 — continuité des régimes entre 2019 et 2021.
+- Les sources ne sont pas précisées pour les régimes 1 et 3 (contrairement à 2019 où le Rapport annuel CNSS était cité pour le régime 2).
+- Les données quantitatives (effectifs, montants) se trouvent dans les feuilles individuelles des régimes.
+- Année intermédiaire de la série CNSS : 2019, [2020 manquant — anomalie], 2021, 2022.
+- Monnaie : Franc congolais (CDF).
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSS (2021), Enquête sur les Sources Statistiques (ESS) — format OIT, Caisse Nationale de Sécurité Sociale, Kinshasa, République Démocratique du Congo.

@@ -1,0 +1,61 @@
+TITRE : Bulletin Statistique sur la Protection Sociale — N°1/2023 (Première édition), RDC
+SOURCE / AUTEUR : République Démocratique du Congo — Secrétariat National à la Protection Sociale (SNPS) / Ministère de la Santé Publique, l'Hygiène et la Prévoyance Sociale — avec l'appui technique et financier du Bureau International du Travail (BIT/OIT)
+PAYS / RÉGION : République Démocratique du Congo
+DATE : Septembre 2024 (données de référence 2022 ; bulletin signé 2023)
+LANGUE : Français
+TYPE : bulletin statistique
+FICHIER : Bulletin Statistique RDC- premiere édition.txt / Bulletin Statistique RDC- premiere édition.pdf
+NIVEAU FIABILITE : 1 — publication officielle nationale, source primaire directe
+
+---
+
+CONTENU RÉSUMÉ
+
+Premier bulletin statistique officiel sur la protection sociale en RDC, publié en septembre 2024 (référence 2023). Élaboré par Moustapha Diouf (BIT) et Féza Josée (SNPS), avec révision et contrôle qualité : Valeria Nesterenko (BIT), Ana Carolina De Lima Vieira (BIT), Nathalie Both (BIT), Théophane Bukele (FSS), Jean-Lambert Mandjo (BIT), De Gaulle Mpumbua Mukamba (BIT). Financé par le projet OIT « Bâtir des socles de protection sociale pour tous » (Gouvernements belge et luxembourgeois).
+
+Structure en 3 chapitres principaux :
+1. La RDC en chiffres — Démographie (population ~95,9M en 2021), Économie (PIB, Gini), Marché du travail (emploi informel ~96-97%, agriculture ~70%)
+2. Le système de protection sociale en RDC — Politique (PNPS, SNPS 2016), Cartographie des régimes, Institutions statutaires (CNSS, CNSSAP, régimes spéciaux, MESP, FSS), Programmes non statutaires (mutuelles, interventions gouvernementales, partenaires humanitaires), Responsabilité employeur
+3. Indicateurs de couverture des régimes statutaires — par branche, couverture statutaire globale, indicateurs ODD 1.3.1
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Données de référence : 2022 principalement — RDC]
+
+CONTEXTE MACRO :
+- Population 2021 : 95 894 000 habitants
+- Taux de pauvreté 2012 : 63,9 % (seuil national)
+- Indice de Gini 2012 : 0,421
+- IDH 2021 : 0,48
+- Emploi informel : 97,8 % total (95,7 % hommes, 97,8 % femmes)
+- Taux de chômage BIT 2020 : 4,5 %
+- Agriculture : ~70 % de la population active (source FAO, corrigée à 58,9 % par WDI 2024)
+
+CADRE INSTITUTIONNEL :
+- CNSS : 3 branches (accidents du travail, prestations aux familles, pensions vieillesse/invalidité/survivants) — secteur privé
+- CNSSAP : 3 branches (pensions, risques professionnels, allocations familiales) — agents publics
+- FSS : couverture santé universelle (opérationnel en 2024)
+- MESP : mutuelle santé enseignants
+- Ratification C102 (1987, parties V, VII, IX, X) ; C121 (1967)
+
+INDICATEURS ODD 1.3.1 :
+[Données dans le chapitre 3 — indicateurs de couverture par branche et couverture effective globale]
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Document de référence directe pour le 2e bulletin : c'est le bulletin que ce projet prolonge et améliore.
+- Données de couverture et cartographie à actualiser/enrichir dans le 2e bulletin.
+- Année de données : 2022 pour les régimes statutaires. Le 2e bulletin couvrira 2023 (ESS consolidé) et au-delà.
+- Chiffre de l'emploi informel (96 %) provient de l'ILOSTAT ; la valeur de l'agriculture (70 %) provient de la FAO — note de bas de page dans le bulletin indique la source.
+- La réorganisation ministérielle de mai 2024 a rattaché la Prévoyance sociale au Ministère de la Santé Publique (note p.1 du bulletin).
+- Le FSS n'était pas encore opérationnel lors de la rédaction du 1er bulletin.
+
+---
+
+CITATION RECOMMANDÉE
+
+RDC (2024), Bulletin Statistique sur la Protection Sociale — N°1/2023, Kinshasa, Secrétariat National à la Protection Sociale / Ministère de la Santé Publique, l'Hygiène et la Prévoyance Sociale. [Avec l'appui du BIT, financé par la Belgique et le Luxembourg]

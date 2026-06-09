@@ -1,0 +1,42 @@
+TITRE : Statistical Bulletin of Social Protection Indicators in Jordan, 2020–2021
+SOURCE / AUTEUR : Gouvernement du Royaume hachémite de Jordanie — Department of Statistics (DOS) / Ministry of Planning and International Cooperation (MoPIC) — avec l'appui technique de l'OIT
+PAYS / RÉGION : Jordanie
+DATE : 2021 (couvre la période 2020–2021)
+LANGUE : Anglais
+TYPE : bulletin statistique
+FICHIER : Jordan - Statistical Bulletin of Social Protection Indicators, 2020-2021.txt / Jordan - Statistical Bulletin of Social Protection Indicators, 2020-2021.pdf
+NIVEAU FIABILITE : 2 — publication officielle secondaire acceptable
+
+---
+
+CONTENU RÉSUMÉ
+
+Premier bulletin statistique sur les indicateurs de protection sociale de Jordanie, couvrant la période 2020–2021. Produit par le Département des Statistiques (DOS) sous la coordination du Ministère de la Planification et de la Coopération Internationale (MoPIC), avec la participation de la Caisse de Sécurité Sociale (SSC), le Fonds National d'Aide (NAF), le Ministère du Développement Social (MoSD), le Ministère du Travail (MoL), le Ministère de l'Éducation (MoE) et le Ministère de la Santé (MoH). Financement : Union européenne (programme EU-MADAD via OIT et UNICEF). Appui technique OIT : Dr. Tareq Abuelhaj, Dr. Nooh Alshyab. L'objectif double est de soutenir la mise en œuvre de la Stratégie nationale jordanienne de protection sociale (2019–2025) et de renforcer les capacités nationales en matière de données.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Indicateurs 2020–2021 — Jordanie]
+- Système de protection sociale jordanien structuré selon la C102 de l'OIT (ratifiée en 2014 par la Jordanie)
+- Convention 102 OIT : cadre de référence explicite
+- Indicateurs par branche : vieillesse, invalidité, survivants (SSC) ; assistance sociale (NAF) ; soins médicaux (MoH) ; éducation (MoE)
+- Couverture par les régimes contributifs (SSC) et non contributifs (NAF, MoSD)
+- Données ventilées par sexe et par type de prestation
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Bulletin en anglais : exemple de référence internationale hors zone PALOP/Afrique subsaharienne.
+- Première édition d'une série annuelle — permet de voir la méthodologie de première édition.
+- Jordanie : pays à revenu intermédiaire supérieur, système de protection sociale plus développé que la RDC mais contexte de réforme similaire.
+- Utile pour la comparaison d'indicateurs standardisés OIT et le format de présentation des données.
+- Financé par l'UE et piloté par l'OIT : même partenaire que le bulletin RDC.
+- Cadre normatif explicitement aligné sur C102 et ODD 1.3 — référence méthodologique directement applicable au bulletin RDC.
+
+---
+
+CITATION RECOMMANDÉE
+
+Gouvernement du Royaume hachémite de Jordanie / DOS (2021), Statistical Bulletin of Social Protection Indicators in Jordan, 2020–2021, Amman, Department of Statistics. [Avec l'appui technique de l'OIT / financement UE]

@@ -1,0 +1,44 @@
+TITRE : Democratic Republic of the Congo Country Economic Memorandum (CEM) — Pathways to Economic Diversification and Regional Trade Integration
+SOURCE / AUTEUR : Banque Mondiale (The World Bank)
+PAYS / RÉGION : République Démocratique du Congo
+DATE : Septembre 2023
+LANGUE : Anglais
+TYPE : rapport international
+FICHIER : BanqueMondiale_Pathways_Economic_Diversification_Trade_RDC_2023.txt / BanqueMondiale_Pathways_Economic_Diversification_Trade_RDC_2023.pdf
+NIVEAU FIABILITE : 1 — Organisation internationale, source primaire
+
+---
+
+CONTENU RÉSUMÉ
+
+Mémorandum économique national (Country Economic Memorandum — CEM) de la Banque Mondiale consacré à la RDC, publié en septembre 2023 (137 pages). Titre complet : « Pathways to Economic Diversification and Regional Trade Integration — Fostering Economic Diversification and Regional Integration for Faster Growth, Job Creation and Poverty Reduction ». Analyse en profondeur la structure économique de la RDC, les contraintes à la diversification, les opportunités d'intégration régionale (EAC, AfCFTA) et les chaînes de valeur prioritaires (mines/batteries EV, agrobusiness/manioc). Ne traite pas directement de la protection sociale mais fournit le cadre macroéconomique, les données sur la pauvreté, l'emploi et la productivité du travail nécessaires pour contextualiser le système de PS.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Indicateurs économiques RDC — 2023]
+- Croissance du PIB réel : tirée principalement par l'exploitation minière (cuivre, cobalt)
+- RDC parmi les pays les plus pauvres d'Afrique subsaharienne
+- Emploi : faible productivité du travail, prédominance de l'emploi informel et agricole
+- Indice capital humain (Banque mondiale) : données par province disponibles
+- Environnement des affaires : contraintes réglementaires, fiscales, accès aux financements
+- Intégration régionale : adhésion à l'EAC, scénarios AfCFTA modélisés
+- Vision 2050 du gouvernement congolais : scenarios de réforme macroéconomique modélisés
+- Chaînes de valeur prioritaires : mines (batteries véhicules électriques), agrobusiness (manioc)
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Document de référence pour le contexte macroéconomique du bulletin RDC (chapitres 1 et 2).
+- Ne contient pas de données directes sur la protection sociale — utile uniquement pour le cadrage économique.
+- Document complet (137 pages) converti en texte intégral dans le fichier .txt.
+- Croissance économique tirée par les mines (secteur enclavé) : peu de transmission aux revenus des ménages — pertinent pour expliquer la faible couverture de PS contributive.
+- Vision 2050 du gouvernement : utile pour contextualiser les ambitions de développement du pays.
+
+---
+
+CITATION RECOMMANDÉE
+
+Banque Mondiale (2023), Democratic Republic of the Congo Country Economic Memorandum — Pathways to Economic Diversification and Regional Trade Integration, Washington DC : World Bank, septembre 2023.

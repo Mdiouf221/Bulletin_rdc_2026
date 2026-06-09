@@ -1,0 +1,40 @@
+TITRE : ESS CNSSAP 2021 — Enquête sur les Sources Statistiques de la protection sociale (format OIT)
+SOURCE / AUTEUR : Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP), République Démocratique du Congo
+PAYS / RÉGION : République Démocratique du Congo
+DATE : Nominalement 2021 / Période affichée dans l'inventaire : 2022 (anomalie de date)
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : ESS_CNSSAP_2021.txt / ESS CNSSAP 2021.xlsm (source)
+NIVEAU FIABILITE : 1 — données institutionnelles primaires — avec réserve sur la date
+
+---
+
+CONTENU RÉSUMÉ
+
+Enquête sur les Sources Statistiques (ESS) de la CNSSAP pour l'année nominale 2021, au format standardisé OIT/BIT. Structure et contenu identiques à l'ESS CNSSAP 2020. La même anomalie de date est présente : l'inventaire des régimes affiche 2022 alors que le fichier est nommé 2021. Feuilles actives : Inventaire des régimes, CNSAP Régime de base (régime unique), ADDITIONAL statistics for SDGs, CALCULATIONS. Un seul régime déclaré : CNSAP Régime de base (Branche des pensions).
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+RÉGIME 1 — CNSAP Régime de base (Branche des pensions, CNSSAP) :
+- Administrateur : CNSSAP
+- Fonctions couvertes : Vieillesse, Invalidité/Handicap
+- Type : Contributif, Obligatoire, Public
+- Branches non déclarées en 2021 : allocations familiales, accidents du travail
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Structure et contenu identiques à l'ESS CNSSAP 2020 — même anomalie de date (inventaire affiche 2022).
+- La transition institutionnelle visible entre 2021 et 2022 : en 2022 apparaît la « Réforme du transfert des assurés » — signal important de changement de régime à documenter dans le bulletin.
+- Les branches familiales et AT/MP CNSSAP n'apparaissent que dans le fichier consolidé 2023.
+- Monnaie : non précisée dans les métadonnées.
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSSAP (2021), Enquête sur les Sources Statistiques (ESS) — format OIT, Caisse Nationale de Sécurité Sociale des Agents Publics, Kinshasa, République Démocratique du Congo.
+[Note : date interne du fichier affiche 2022 — à vérifier]

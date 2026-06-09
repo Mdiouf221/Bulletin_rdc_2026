@@ -1,0 +1,49 @@
+TITRE : 1.º Boletim Estatístico sobre Protecção Social (Mozambique — 1re édition)
+SOURCE / AUTEUR : Ministério do Trabalho e Segurança Social (MITSS), Mozambique — avec l'appui de l'OIT (Projeto ACTION/Portugal)
+PAYS / RÉGION : Mozambique
+DATE : Juillet 2019
+LANGUE : Portugais
+TYPE : bulletin statistique
+FICHIER : 55986.txt / [pas de PDF correspondant à ce nom — voir note ci-dessous]
+NIVEAU FIABILITE : 2 — publication officielle secondaire acceptable
+
+---
+
+NOTE SUR LE NOM DE FICHIER
+
+Ce fichier est nommé « 55986.txt » mais son contenu correspond au 1er Boletim Estatístico sobre Protecção Social do Mozambique (Maputo, Julho 2019). Ce numéro mystérieux ne reflète pas le contenu. Il n'existe pas de fichier « 55986.pdf » dans le dossier parent — le PDF correspondant est nommé « Mozambique - 1er Boletim Estatistico da Proteccao Social, 2019.pdf ». Ce fichier .txt est vraisemblablement un doublon du fichier « Mozambique - 1er Boletim Estatistico da Proteccao Social, 2019.txt » présent dans le même dossier. Aucun renommage PDF n'est possible (pas de PDF 55986.pdf). Ce fichier peut être traité comme une copie de référence.
+
+---
+
+CONTENU RÉSUMÉ
+
+Premier bulletin statistique sur la protection sociale du Mozambique, publié en juillet 2019 à Maputo. Couvre les régimes contributifs (sécurité sociale obligatoire : INPS, INSS, FADM, fonctionnaires de l'État) et non contributifs (sécurité sociale de base : INAS — programmes PSSB, PASD, PSSAS, PASP) pour l'année de référence 2018. Comprend un cadrage sur l'incidence de la pauvreté, les données de protection sociale par province et par sexe, ainsi que des conclusions et un glossaire. Élaboré avec l'appui du projet ACTION/Portugal (OIT).
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Indicateurs de 2018, Mozambique — selon table des matières :]
+- Incidence de la pauvreté (2014/15)
+- Population Mozambique 2017
+- Pensionnistes de l'État par province et par sexe (2018)
+- Travailleurs salariés dans le système de sécurité sociale par province (2018)
+- Travailleurs indépendants dans le système par province (2018)
+- Cas payés par type de prestation (subsides, pensions, abonos) selon province (2018)
+- Bénéficiaires INAS par programme (2018) — PSSB, PASD, PSSAS, PASP
+- Bénéficiaires INAS par sexe (2018)
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Ce fichier est vraisemblablement un doublon du fichier « Mozambique - 1er Boletim Estatistico da Proteccao Social, 2019.txt ». Vérifier avant utilisation si les deux fichiers ont le même contenu.
+- Le nom « 55986 » ne correspond pas au contenu. Il est probable qu'il s'agisse d'un identifiant interne ou de téléchargement.
+- Données de 2018 : première édition d'une série qui compte au moins 7 bulletins (jusqu'en 2025).
+- Utile pour comparaisons de style et de structure avec le bulletin RDC.
+
+---
+
+CITATION RECOMMANDÉE
+
+MITSS, Mozambique (2019), 1.º Boletim Estatístico sobre Protecção Social, Maputo, Julho 2019. [Avec l'appui de l'OIT / Projeto ACTION/Portugal]

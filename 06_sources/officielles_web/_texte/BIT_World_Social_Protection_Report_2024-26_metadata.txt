@@ -1,0 +1,45 @@
+TITRE : World Social Protection Report 2024–26 — Universal Social Protection for Climate Action and a Just Transition (Rapport mondial sur la protection sociale 2024–26)
+SOURCE / AUTEUR : Bureau International du Travail (BIT / OIT)
+PAYS / RÉGION : International (données mondiales, régionales et par pays)
+DATE : 2024
+LANGUE : Anglais (rapport complet, extrait pages 1–100 sur 386)
+TYPE : rapport international
+FICHIER : BIT_World_Social_Protection_Report_2024-26.txt / BIT_World_Social_Protection_Report_2024-26.pdf
+NIVEAU FIABILITE : 1 — Organisation internationale, publication phare OIT (flagship report)
+
+---
+
+CONTENU RÉSUMÉ
+
+Rapport phare biennal du BIT sur l'état de la protection sociale mondiale. L'édition 2024–26 se concentre sur l'intersection entre protection sociale universelle, action climatique et transition juste. ISBN 978-92-2-040449-2 (imprimé), 978-92-2-040450-8 (PDF web), ISSN 2789-2417. Publié en 2024 sous licence Creative Commons CC BY 4.0. Le fichier .txt contient les pages 1–100 sur 386 (résumé exécutif + données mondiales + recommandations clés). Le rapport fournit les données mondiales les plus récentes sur la couverture effective de la protection sociale, les niveaux de dépenses et les déficits de financement par région et groupe de revenu.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Données mondiales 2024 — et Afrique / pays à faible revenu]
+- Population mondiale couverte par au moins 1 prestation : 52,4 % (2024)
+- Population non couverte : 3,8 milliards de personnes
+- Afrique : 19,1 % couverts par au moins une prestation
+- Pays à faible revenu (dont RDC) : dépenses PS ~0,8 % du PIB
+- Pays à faible revenu : couverture <25 %
+- Déficit financement pays à faible revenu : 308,5 milliards USD/an
+- Enfants sans couverture effective : 76,1 %
+- Femmes couvertes : 50,1 % / Hommes couverts : 54,6 %
+- Thème directeur : protection sociale universelle pour l'action climatique et une transition juste
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Document de référence internationale de niveau 1 — édition la plus récente (2024).
+- Le fichier .txt contient uniquement les 100 premières pages sur 386 : le rapport complet peut contenir des données plus détaillées sur la RDC dans les chapitres régionaux.
+- Licence CC BY 4.0 : peut être cité et reproduit avec attribution.
+- Pour les données RDC spécifiques, vérifier si des données country-level sont disponibles dans les chapitres régionaux (pages 101–386 — non extraites).
+- Les déficits de financement (308,5 Mrd USD/an) et la couverture Afrique (19,1 %) sont des données de référence cruciales pour le bulletin.
+
+---
+
+CITATION RECOMMANDÉE
+
+BIT (2024), Rapport mondial sur la protection sociale 2024–26 : Protection sociale universelle pour une action climatique et une transition juste, Genève, Bureau international du Travail. ISBN 978-92-2-040449-2.

@@ -1,0 +1,48 @@
+TITRE : World Population Prospects 2024 — Summary of Results
+SOURCE / AUTEUR : Nations Unies, Département des Affaires économiques et sociales (DESA) — Division de la Population
+PAYS / RÉGION : International (données mondiales — utilisé pour la RDC)
+DATE : 2024
+LANGUE : Anglais
+TYPE : rapport international
+FICHIER : ONU_WPP_2024_RDC_population.txt / ONU_WPP_2024_RDC_population.pdf
+NIVEAU FIABILITE : 1 — Organisation internationale, source primaire de référence mondiale
+
+---
+
+CONTENU RÉSUMÉ
+
+Publication phare des Nations Unies sur les perspectives de la population mondiale. Référence de citation officielle : « United Nations (2024). World Population Prospects 2024: Summary of Results. UN DESA/POP/2024/TR/NO. 9. New York: United Nations. » Le document couvre les tendances démographiques mondiales (taille de la population, fécondité, mortalité, migration) pour tous les pays. La Division de la Population des Nations Unies existe depuis 1946 et produit des estimations et projections régulières. Le fichier PDF contient 80 pages — Summary of Results (résumé global, pas le profil pays spécifique RDC). Les données spécifiques à la RDC citées dans le registre proviennent des bases de données WPP 2024 accessibles en ligne.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Données spécifiques RDC — WPP 2024, issues de la base de données en ligne]
+- Population totale RDC (2024) : 109 276 265 habitants
+- Population totale RDC (2025 estimée) : ~112 200 000 habitants
+- Taux de croissance annuel (2024) : 3,18 %
+- Structure par âge (2024) : 0–14 ans = 46,7 % / 15–64 ans = 50,7 % / 65+ = 2,6 %
+- Taux de fécondité (2024) : 5,91 enfants par femme
+- Espérance de vie (2024) : 62,2 ans
+- Population urbaine (2024) : 48,0 % selon WPP (révisée à 44,75 % selon WUP 2025/WDI — valeur retenue dans le bulletin)
+- Projection 2050 : ~215 millions d'habitants
+
+NOTE DE COHÉRENCE : Conflits de chiffres entre sources :
+- INS RDC projette ~124 millions pour 2025 (vs ~112 millions selon WPP 2024)
+- Décision du bulletin : retenir WPP 2024 comme référence principale
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Source démographique de niveau 1 — référence internationale de fait pour les données de population.
+- Le fichier .txt contient le Summary of Results global (pas le profil pays RDC) — les données spécifiques RDC sont dans la base de données en ligne (unpopulation.org).
+- Conflit de données connu (INS vs WPP) documenté dans le registre. Le bulletin retient WPP 2024.
+- La population active (15–64 ans = 50,7 %) est un dénominateur clé pour calculer les indicateurs de couverture.
+- Avec 46,7 % de la population âgée de 0-14 ans, la RDC a une des structures par âge les plus jeunes au monde — pertinent pour la couverture effective des enfants (ODD 1.3.1).
+
+---
+
+CITATION RECOMMANDÉE
+
+Nations Unies, DESA (2024), World Population Prospects 2024: Summary of Results, UN DESA/POP/2024/TR/NO. 9, New York, Nations Unies. [Données RDC disponibles sur : unpopulation.org]

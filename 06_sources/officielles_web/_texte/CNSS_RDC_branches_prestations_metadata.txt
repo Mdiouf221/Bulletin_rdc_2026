@@ -1,0 +1,47 @@
+TITRE : [Document scanné — texte non extractible] CNSS RDC — Branches et prestations
+SOURCE / AUTEUR : Caisse Nationale de Sécurité Sociale (CNSS), République Démocratique du Congo
+PAYS / RÉGION : République Démocratique du Congo
+DATE : Non mentionné dans le document (estimé : 2022–2023 selon le registre)
+LANGUE : Français (supposé — document scanné)
+TYPE : données institutionnelles
+FICHIER : CNSS_RDC_branches_prestations.txt / CNSS_RDC_branches_prestations.pdf
+NIVEAU FIABILITE : 1 — données institutionnelles primaires — mais non lisibles (PDF scanné)
+
+---
+
+CONTENU RÉSUMÉ
+
+⚠️ DOCUMENT PDF SCANNÉ — TEXTE NON EXTRACTIBLE : Toutes les 30 pages du PDF sont marquées « sans texte » dans le fichier .txt. Ce fichier .txt est donc vide de contenu textuel utilisable. Le registre des sources indique que ce fichier est une « publication 2023 — PDF scanné, pas de texte extractible » et que la fiche metadata fait office de source lisible.
+
+Informations sur la CNSS issues du registre et d'autres sources :
+- 3 branches de la CNSS en RDC : (1) Accidents du travail et maladies professionnelles, (2) Prestations aux familles (maternité, allocations familiales), (3) Vieillesse-Invalidité-Survivants (pensions)
+- Population couverte légalement : travailleurs du secteur privé et assimilés
+- Branches NON couvertes : soins médicaux, indemnités de maladie, chômage
+- Base légale : Loi n°16/009 du 15 juillet 2016
+- Site officiel : www.cnss.cd
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Issues du 1er Bulletin RDC 2023 et des fichiers ESS CNSS 2019–2022]
+- Effectifs cotisants CNSS : données dans les fichiers ESS (voir ESS_CNSS_2019.txt à ESS_CNSS_2022.txt)
+- 3 branches déclarées dans les ESS : Familles (régime 1), Risques professionnels (régime 2), Pensions (régime 3)
+- Action sanitaire et sociale : régime 4, non détaillé dans les ESS
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Le PDF est scanné : impossible d'extraire le texte directement. Pour les données CNSS, utiliser :
+  1. Les fichiers ESS CNSS 2019–2022 (source primaire quantitative)
+  2. Le 1er Bulletin RDC 2023 (section 2.3.1 pp. 10-12)
+  3. Le site officiel CNSS (www.cnss.cd)
+- Ce fichier .txt ne peut servir de source textuelle pour le bulletin — son rôle dans le registre est symbolique.
+- Recommandation : obtenir une version OCRisée ou un document Word de la CNSS directement.
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSS (2023), Site officiel cnss.cd — Branches et prestations, Caisse Nationale de Sécurité Sociale, Kinshasa, République Démocratique du Congo. [Document PDF original non lisible en texte]

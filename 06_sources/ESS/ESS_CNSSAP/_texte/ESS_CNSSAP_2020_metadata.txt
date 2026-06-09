@@ -1,0 +1,40 @@
+TITRE : ESS CNSSAP 2020 — Enquête sur les Sources Statistiques de la protection sociale (format OIT)
+SOURCE / AUTEUR : Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP), République Démocratique du Congo
+PAYS / RÉGION : République Démocratique du Congo
+DATE : Nominalement 2020 / Période affichée dans l'inventaire : 2022 (anomalie de date)
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : ESS_CNSSAP_2020.txt / ESS CNSSAP 2020.xlsm (source)
+NIVEAU FIABILITE : 1 — données institutionnelles primaires — avec réserve sur la date
+
+---
+
+CONTENU RÉSUMÉ
+
+Enquête sur les Sources Statistiques (ESS) de la CNSSAP pour l'année nominale 2020, au format standardisé OIT/BIT. Ce fichier présente une incohérence de date : la feuille Inventaire des régimes affiche la période 2022, alors que le fichier est nommé « ESS CNSSAP 2020.xlsm ». La même anomalie de date est présente dans le fichier ESS CNSSAP 2021. Feuilles actives : Inventaire des régimes, CNSAP Régime de base (régime unique), ADDITIONAL statistics for SDGs, CALCULATIONS. Un seul régime déclaré en 2020 : CNSAP Régime de base (Branche des pensions).
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+RÉGIME 1 — CNSAP Régime de base (Branche des pensions, CNSSAP) :
+- Administrateur : CNSSAP
+- Fonctions couvertes : Vieillesse, Invalidité/Handicap, Survivants (implicite)
+- Type : Contributif, Obligatoire, Public
+- Branches non déclarées en 2020 : allocations familiales, accidents du travail (apparaissent à partir de 2022-2023)
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Anomalie de date : inventaire affiche 2022 alors que le fichier est nommé 2020 — possible erreur de saisie ou gabarit partiellement mis à jour. À vérifier avec la CNSSAP.
+- La CNSSAP ne déclare qu'un seul régime en 2020 et 2021 (pensions uniquement). Les branches familiales et AT/MP n'apparaissent qu'à partir de 2022 (Réforme du transfert) et 2023 (consolidé).
+- Cette évolution institutionnelle (élargissement progressif des régimes déclarés) est un signal important pour le bulletin.
+- Monnaie : non précisée dans les métadonnées.
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSSAP (2020), Enquête sur les Sources Statistiques (ESS) — format OIT, Caisse Nationale de Sécurité Sociale des Agents Publics, Kinshasa, République Démocratique du Congo.
+[Note : date interne du fichier affiche 2022 — à vérifier]

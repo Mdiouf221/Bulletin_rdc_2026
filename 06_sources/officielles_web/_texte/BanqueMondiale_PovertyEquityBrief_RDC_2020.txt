@@ -1,0 +1,102 @@
+Poverty & Equity Brief
+Sub-Saharan Africa
+Democratic Republic of Congo
+April 2020
+Despite sustained GDP growth and some poverty reduction in the period, poverty incidence remains high in the
+Democratic Republic of Congo (DRC). The country experienced an average annual per capita GDP growth rate of 2.6 which
+resultedinadeclineoftheproportionofpopulationbelowthenationalpovertylinefrom69.3percentin2005to64percentin
+2012. However, due to high population growth, the number of poor people increased by 7 million. Inaddition, theaggregate
+decline in poverty masks marked regional disparities in poverty trends, with improvement in the northeastern provinces of
+Orientale and North Kivu and worsening in both Kasai and Maniema provinces.
+Extremepovertyisestimatedtohavedeclinedmoreduringthesameperiod.Infact,theinternationalpovertyindexmeasured
+at$1.90adayshowsamuchlargerreductionthantheofficialmeasure from94.1percentin2005to76.6percentin2012.
+However,DRCcontinuestohavethesecondhighestnumberofpoorpopulationsinSub-SaharanAfrica,andoneinsixpersons
+living in extreme poverty in Sub-Saharan Africa lives in DRC. Moreover, the country is currently experiencing the largest
+epidemic of Ebola Virus Disease in its history, with 2045 deaths registered as of September 2019 in both Kivu and Ituri
+provinces,whichwilladverselyimpactsocialandeconomicdevelopment.Thesituationwillgetworsebecauseofthecurrent
+pandemic of COVID-19 which will further slow growth and increase poverty.
+The bottom 40 percent of the population enjoyed a large consumption growth rate of 9.78 percent, while the richest 60
+percent recordeda slightly higher growth rate.Theseresult ina sharedprosperity premiumof-0.1 percent.Because ofthis
+very small difference, inequality measured by the Gini index remained basically unchanged.
+Number of Poor Rate
+POVERTY Period
+(million) (%)
+National Poverty Line 44.1 63.9 2012
+International Poverty Line
+52.9 76.6 2012
+1112.8 in Congo franc (2012) or US$1.90 (2011 PPP) per day per capita
+Lower Middle Income Class Poverty Line
+62.8 91.0 2012
+1874.2 in Congo franc (2012) or US$3.20 (2011 PPP) per day per capita
+Upper Middle Income Class Poverty Line
+67.5 97.7 2012
+3221.2 in Congo franc (2012) or US$5.50 (2011 PPP) per day per capita
+Multidimentional Poverty Measure 82.4 2012
+SHARED PROSPERITY
+Annualized Consumption Growth per capita of the bottom 40 percent 9.78 2004-2012
+INEQUALITY
+Gini Index 42.1 2012
+Shared Prosperity Premium = Growth of the bottom 40 - Average Growth -0.05 2004-2012
+GROWTH
+Annualized GDP per capita growth 2.55 2004-2012
+Annualized Consumption Growth per capita from Household Survey 9.83 2004-2012
+MEDIAN INCOME
+Growth of the annual median income/consumption per capita 10.03 2004-2012
+Sources: WDI for GDP, National Statistical Offices for national poverty rates, POVCALNET as of Feburary 2020, and Global Monitoring Database for the rest.
+Poverty Economist: Yele Maweki Batana
+POVERTY HEADCOUNT RATE, 2004-2012 INEQUALITY TRENDS, 2004-2012
+Gini Index
+45.0
+100 0.9
+90 0.8 40.0
+80 0.7 35.0
+70 0.6 30.0
+60
+0.5 25.0
+50
+0.4 20.0
+40
+0.3 15.0
+30
+20 0.2 10.0
+10 0.1 5.0
+0 0 0.0
+2004 2006 2008 2010 2012 2004 2006 2008 2010 2012
+Poverty International Poverty Line Lower Middle IC Line GDP per
+rate Upper Middle IC Line National Poverty Line capita
+(%) GDP (Thousand)
+Source: World Bank using E123/SSAPOV/GMD Source: World Bank using E123/SSAPOV/GMD
+KEY INDICATORS
+International Poverty Line(%) Relative group (%)
+Distribution among groups: 2012 Multidimensional Poverty Measures (% of people): 2012
+Non-Poor Poor Bottom 40 Top 60
+Urban population 44 56 18 82 Monetary poverty (Consumption)
+Rural population 11 89 54 46 Daily consumption less than US$1.90 per person 76.6
+Males 23 77 40 60 Education
+Females 24 76 40 60 At least one school-aged child is not enrolled in school 8.0
+0 to 14 years old 18 82 46 54 No adult has completed primary education 22.5
+15 to 64 years old 28 72 36 64 Access to basic infrastructure
+65 and older 35 65 25 75 No access to limited-standard drinking water 47.9
+Without education (16+) 17 83 45 55 No access to limited-standard sanitation 80.0
+Primary education (16+) 19 81 43 57 No access to electricity 83.0
+Secondary education (16+) 33 67 29 71
+Tertiary/post-secondary education (16+) 76 24 6 94
+Source: World Bank using E123/SSAPOV/GMD Source: World Bank using E123/SSAPOV/GMD
+Notes: N/A missing value, N/A* value removed due to less than 30 observations
+POVERTY DATA AND METHODOLOGY
+Whilethe2005and2012surveysaresimilar,comparabilityofconsumptionaggregatesisunclear duetolackofdocumentationonthemethodologyadoptedin
+generatingpreviousconsumptionaggregates,especiallyfor2004/5survey.Therefore,theconsumptionaggregatesfor2004/5surveywererecomputedusingthesame
+methodologyasin2012.AnewhouseholdsurveyforKinshasaonlyhasbeencompletedinNovember2018.WhiletheGovernmentplanstoresumethepopulation
+censusbycommissioninganevaluationoftheactivitiesalreadyaccomplishedsofarunderthisoperation,itisexpectedtoimplementanewnationalhouseholdusing
+appropriate technical assistance including the use of a survey expert to update master samples.
+Trackingpovertyovertimealsorequiresnotonlycomparableconsumptiondata,butconsistentconsumerpriceindex(ideallyforfoodandnon-fooditems)toupdate
+povertylines.However,thereisnoconsistentCPIseriesinDRCbetween2004/5and2012bothintermsofgeographiccoverageandincomputationmethodology.In
+the absence of a reliable consumer price index, unit prices from the consumption modules were used to compute price indices for both surveys.
+Unlikenationalpovertyrates,internationalpovertyratesarecomputedusingconsumptionaggregatesthatdonotaccountforspatialpricedifferences.Therefore,there
+is a considerable difference between national and international poverty rates both in levels and in trend.
+HARMONIZATION
+ThenumberspresentedinthisbriefarebasedontheSSAPOVdatabase.SSAPOVisadatabaseofharmonizednationallyrepresentativehouseholdsurveysmanagedby
+Sub-SaharanTeamforStatisticalDevelopment.Itcontainsmorethan100surveyscovering45outofthe48countriesintheSSAregion.Thefourcountriesnotcovered
+in the database are Eritrea, Equatorial Guinea, and Somalia. Terms of use of the data adhere to agreements with the original data producers.
+Sub-Saharan Africa povertydata.worldbank.org
+Democratic Republic of Congo www.worldbank.org/poverty

@@ -1,0 +1,39 @@
+TITRE : Convention n°130 sur les soins médicaux et les indemnités de maladie, 1969 — Medical Care and Sickness Benefits Convention, 1969 (No. 130)
+SOURCE / AUTEUR : Organisation Internationale du Travail (OIT/BIT)
+PAYS / RÉGION : International
+DATE : 1969 (adoptée le 25 juin 1969, lors de la 53e session de la CIT)
+LANGUE : Anglais (texte NORMLEX consulté)
+TYPE : convention OIT
+FICHIER : C130 — Soins médicaux et indemnités de maladie, 1969.txt / C130 — Soins médicaux et indemnités de maladie, 1969.pdf
+NIVEAU FIABILITE : 1 — Organisation internationale, source primaire normative
+
+---
+
+CONTENU RÉSUMÉ
+
+Convention OIT n°130 sur les soins médicaux et les indemnités de maladie, adoptée le 25 juin 1969 lors de la 53e session de la CIT, révisant les Conventions sur l'assurance maladie (industrie et agriculture) de 1927. Structurée en parties : (I) Dispositions générales, (II) Soins médicaux, (III) Indemnités de maladie, (IV) Dispositions diverses. Définit les termes clés (législation, résidence, dépendant, épouse, enfant, bénéficiaire type, stage, maladie, soins médicaux incluant les soins connexes). Prévoit des exceptions temporaires pour les pays dont l'économie et les équipements médicaux sont insuffisamment développés (Article 2). Texte extrait de NORMLEX.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+- Deux branches couvertes : (1) Soins médicaux et (2) Indemnités de maladie (congé maladie)
+- « Bénéficiaire type » : un homme avec épouse et 2 enfants (référentiel de calcul des taux de remplacement)
+- « Stage » : période de cotisation, d'emploi ou de résidence ouvrant droit aux prestations
+- « Maladie » : toute condition morbide quelle qu'en soit la cause
+- Article 2 : Exceptions temporaires applicables aux pays en développement
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- La C130 est directement pertinente pour l'analyse des lacunes de couverture en RDC : ni la CNSS, ni la CNSSAP ne couvre les indemnités de maladie (congé maladie) — lacune identifiée dans les ESS.
+- Le FSS couvre les soins médicaux (branche santé) mais pas les indemnités de maladie.
+- L'analyse de conformité RDC / C130 : branche soins médicaux partiellement couverte (FSS, MESP) ; branche indemnités de maladie = non couverte.
+- La RDC n'a pas ratifié la C130 — document de référence normatif pour documenter les lacunes.
+
+---
+
+CITATION RECOMMANDÉE
+
+OIT (1969), Convention n°130 sur les soins médicaux et les indemnités de maladie, Genève, Bureau international du Travail.

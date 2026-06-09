@@ -1,0 +1,46 @@
+TITRE : ESS CNSS 2019 — Enquête sur les Sources Statistiques de la protection sociale (format OIT)
+SOURCE / AUTEUR : Caisse Nationale de Sécurité Sociale (CNSS), République Démocratique du Congo — Direction des Études et Organisation
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 2019
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : ESS_CNSS_2019.txt / ESS CNSS 2019.xlsm (source)
+NIVEAU FIABILITE : 1 — données institutionnelles primaires (transmission directe de l'institution)
+
+---
+
+CONTENU RÉSUMÉ
+
+Enquête sur les Sources Statistiques (ESS) de la CNSS pour l'année 2019, au format standardisé OIT/BIT. Ce tableau ESS est l'instrument de collecte de données utilisé par l'OIT pour son Rapport mondial sur la protection sociale. La CNSS y déclare 4 régimes, dont 3 renseignés : (1) Branche des Prestations aux familles (famille, maternité) ; (2) Branche des Risques Professionnels (AT/MP) ; (3) Branche des Pensions (vieillesse, invalidité, survivants) ; (4) Action sanitaire et sociale (non détaillée). Feuilles actives : Inventaire des régimes, Prestations aux familles, Risques professionnels, Pension, Info Pauvreté, ADDITIONAL statistics for SDGs, CALCULATIONS. Source citée pour le régime 2 : Rapport annuel d'activités de la CNSS, 2019.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+RÉGIME 1 — Prestations aux familles (CNSS) :
+- 4 prestations : allocations prénatales, allocation de maternité, allocations familiales, indemnité journalière de maternité
+- Population légalement couverte : travailleurs secteur privé, employés rémunérés
+
+RÉGIME 2 — Risques professionnels (CNSS) :
+- 11 prestations : rente incapacité, rentes survivants, indemnité journalière, frais funéraires, réadaptation, soins médicaux et chirurgicaux, fournitures pharmaceutiques, transport victime, appareillage, lunettes, reclassement
+- Source : Rapport annuel d'activités CNSS 2019
+
+RÉGIME 3 — Pensions (CNSS) :
+- 7 prestations : pension de retraite, pension d'invalidité, pension survivants, allocations vieillesse, allocations survivants, retraite anticipée, frais funéraires
+- Population légalement couverte : travailleurs secteur privé
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Les régimes 5 à 40 sont vides (gabarit OIT non renseigné) — seule la CNSS est déclarée dans ce fichier.
+- La branche Risques professionnels mentionne « travailleurs du secteur public » dans les groupes couverts légalement — à vérifier (possible erreur de saisie ou couverture croisée avec CNSSAP).
+- Les données quantitatives (effectifs, montants) se trouvent dans les feuilles individuelles des régimes (non accessibles via ce fichier .txt).
+- Première année de la série CNSS disponible (2019–2022) ; pas de fichier CNSS 2020 valide (voir ESS_CNSS_2020_ANOMALIE.txt).
+- Monnaie : Franc congolais (CDF).
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSS (2019), Enquête sur les Sources Statistiques (ESS) — format OIT, Caisse Nationale de Sécurité Sociale, Kinshasa, République Démocratique du Congo.

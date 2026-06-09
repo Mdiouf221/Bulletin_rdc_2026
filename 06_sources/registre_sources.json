@@ -1,4 +1,4 @@
-﻿{
+{
   "_meta": {
     "description": "Registre centralisé de toutes les sources du deuxième Bulletin statistique de la protection sociale en RDC",
     "version": "1.0",
@@ -22,7 +22,6 @@
       "niveau_fiabilite": 1,
       "url_source": "https://www.ilo.org/publications/flagship-reports/world-social-protection-report-2024-26-universal-social-protection-climate",
       "fichier_pdf": "06_sources/officielles_web/BIT_World_Social_Protection_Report_2024-26.pdf",
-      "fichier_metadata": "06_sources/officielles_web/BIT_World_Social_Protection_Report_2024-26.txt",
       "fichier_texte_extrait": "06_sources/officielles_web/_texte/BIT_World_Social_Protection_Report_2024-26.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti — extrait pages 1-100 sur 386 (résumé + données mondiales + recommandations)",
@@ -38,7 +37,8 @@
         "Femmes couvertes : 50,1 % / Hommes couverts : 54,6 %"
       ],
       "citation_recommandee": "BIT (2024), Rapport mondial sur la protection sociale 2024-26 : Protection sociale universelle pour une action climatique et une transition juste, Bureau international du Travail, Genève.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/officielles_web/_texte/BIT_World_Social_Protection_Report_2024-26_metadata.txt"
     },
     {
       "id": "BIT-WSPR-2020",
@@ -50,7 +50,6 @@
       "url_source": "https://www.ilo.org/publications/world-social-protection-report-2020-22-social-protection-crossroads-pursuit",
       "url_pdf_direct": "https://www.ilo.org/sites/default/files/wcmsp5/groups/public/%40ed_protect/%40soc_sec/documents/publication/wcms_817574.pdf",
       "fichier_pdf": "06_sources/officielles_web/BIT_World_Social_Protection_Report_2020-22.pdf",
-      "fichier_metadata": "06_sources/officielles_web/BIT_World_Social_Protection_Report_2020-22.txt",
       "fichier_texte_extrait": "06_sources/officielles_web/_texte/BIT_World_Social_Protection_Report_2020-22.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
@@ -62,7 +61,8 @@
         "Définition de référence PS : politiques et programmes visant à réduire et prévenir la pauvreté tout au long du cycle de vie"
       ],
       "citation_recommandee": "BIT (2021), Rapport mondial sur la protection sociale 2020-22 : la protection sociale à la croisée des chemins, Genève, OIT.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/officielles_web/_texte/BIT_World_Social_Protection_Report_2020-22_metadata.txt"
     },
     {
       "id": "ONU-WPP-2024",
@@ -72,7 +72,6 @@
       "niveau_fiabilite": 1,
       "url_source": "https://population.un.org/wpp/",
       "fichier_pdf": "06_sources/officielles_web/ONU_WPP_2024_RDC_population.pdf",
-      "fichier_metadata": "06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt",
       "fichier_texte_extrait": "06_sources/officielles_web/_texte/ONU_WPP_2024_RDC_population.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
@@ -89,7 +88,10 @@
       ],
       "note_conflit": "INS RDC projette ~124M pour 2025 vs ~112M selon WPP 2024. Décision bulletin : retenir WPP 2024.",
       "citation_recommandee": "Nations Unies, DESA (2024), World Population Prospects 2024.",
-      "sections_citantes": ["02_introduction_generale/0_1_contexte_demographique.md"]
+      "sections_citantes": [
+        "02_introduction_generale/0_1_contexte_demographique.md"
+      ],
+      "fichier_metadata": "06_sources/officielles_web/_texte/ONU_WPP_2024_RDC_population_metadata.txt"
     },
     {
       "id": "UNFPA-SWOP-2024",
@@ -100,7 +102,6 @@
       "url_source": "https://www.unfpa.org/data/world-population/CD",
       "url_pdf_direct": "https://www.unfpa.org/sites/default/files/pub-pdf/EN_State%20of%20World%20Population%20report%202025.pdf",
       "fichier_pdf": "06_sources/officielles_web/UNFPA_World_Population_Dashboard_RDC_2024.pdf",
-      "fichier_metadata": "06_sources/officielles_web/UNFPA_World_Population_Dashboard_RDC_2024.txt",
       "fichier_texte_extrait": "06_sources/officielles_web/_texte/UNFPA_World_Population_Dashboard_RDC_2024.txt",
       "statut_pdf": "présent (rapport SWOP 2025)",
       "statut_texte": "converti",
@@ -115,7 +116,10 @@
         "Mariages avant 18 ans : 37 %"
       ],
       "citation_recommandee": "UNFPA (2024), World Population Dashboard — RDC.",
-      "sections_citantes": ["02_introduction_generale/0_1_contexte_demographique.md"]
+      "sections_citantes": [
+        "02_introduction_generale/0_1_contexte_demographique.md"
+      ],
+      "fichier_metadata": "06_sources/officielles_web/_texte/UNFPA_World_Population_Dashboard_RDC_2024_metadata.txt"
     },
     {
       "id": "BM-WDI-GINI",
@@ -142,7 +146,9 @@
         "RNB par habitant 2024 : 670 USD (méthode Atlas)"
       ],
       "citation_recommandee": "Banque mondiale (2026), World Development Indicators, RDC — données 2024.",
-      "sections_citantes": ["02_introduction_generale/0_2_contexte_economique_emploi.md"]
+      "sections_citantes": [
+        "02_introduction_generale/0_2_contexte_economique_emploi.md"
+      ]
     },
     {
       "id": "BM-WDI-PIB",
@@ -166,7 +172,9 @@
         "Dépenses de santé courantes (% PIB, 2023) : 3,68 %"
       ],
       "citation_recommandee": "Banque mondiale (2024), World Development Indicators, RDC.",
-      "sections_citantes": ["02_introduction_generale/0_2_contexte_economique_emploi.md"]
+      "sections_citantes": [
+        "02_introduction_generale/0_2_contexte_economique_emploi.md"
+      ]
     },
     {
       "id": "BM-WDI-EMPLOI",
@@ -177,7 +185,7 @@
       "url_source": "https://data.worldbank.org/indicator/SL.AGR.EMPL.ZS?locations=CD",
       "url_api": "https://api.worldbank.org/v2/country/CD/indicator/SL.AGR.EMPL.ZS?format=json&mrv=5",
       "fichier_pdf": null,
-      "fichier_metadata": "06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt",
+      "fichier_metadata": "06_sources/officielles_web/BanqueMondiale_PovertyEquityBrief_RDC_2020.txt",
       "fichier_texte_extrait": null,
       "statut_pdf": "non applicable — source API WDI, pas de PDF unique. Fiche metadata fait office de source.",
       "statut_texte": "fiche metadata disponible dans fichier_metadata",
@@ -192,7 +200,9 @@
       ],
       "note": "Valeur FAO ~68% corrigée à 58,9% (WDI/ILOEST 2024). La valeur FAO correspondait à l'emploi agricole féminin.",
       "citation_recommandee": "Banque mondiale (2026), World Development Indicators — Emploi et informalité, RDC, données 2024.",
-      "sections_citantes": ["02_introduction_generale/0_2_contexte_economique_emploi.md"]
+      "sections_citantes": [
+        "02_introduction_generale/0_2_contexte_economique_emploi.md"
+      ]
     },
     {
       "id": "BM-WDI-URBA",
@@ -218,7 +228,9 @@
       ],
       "note_conflit": "Écart de 3 points entre WPP 2024 (48%) et WUP 2025/WDI (44,75%). Décision : retenir WDI/WUP 2025.",
       "citation_recommandee": "Banque mondiale (2026), Indicateurs du Développement dans le Monde, données 2024, indicateur SP.URB.TOTL.IN.ZS.",
-      "sections_citantes": ["02_introduction_generale/0_1_contexte_demographique.md"]
+      "sections_citantes": [
+        "02_introduction_generale/0_1_contexte_demographique.md"
+      ]
     },
     {
       "id": "FAO-RDC-AGRI",
@@ -229,7 +241,6 @@
       "url_source": "https://www.fao.org/faostat/",
       "url_country_brief": "https://www.fao.org/giews/countrybrief/country.jsp?code=COD",
       "fichier_pdf": "06_sources/officielles_web/FAO_RDC_agriculture_emploi.pdf",
-      "fichier_metadata": "06_sources/officielles_web/FAO_RDC_agriculture_emploi.txt",
       "fichier_texte_extrait": "06_sources/officielles_web/_texte/FAO_RDC_agriculture_emploi.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
@@ -242,7 +253,10 @@
         "26,6 millions de personnes en insécurité alimentaire aiguë prévus début 2026"
       ],
       "citation_recommandee": "FAO (2023), FAOSTAT — Indicateurs RDC ; FAO Country Brief RDC.",
-      "sections_citantes": ["02_introduction_generale/0_2_contexte_economique_emploi.md"]
+      "sections_citantes": [
+        "02_introduction_generale/0_2_contexte_economique_emploi.md"
+      ],
+      "fichier_metadata": "06_sources/officielles_web/_texte/FAO_RDC_agriculture_emploi_metadata.txt"
     },
     {
       "id": "PAM-RDC-2026",
@@ -252,7 +266,6 @@
       "niveau_fiabilite": 2,
       "url_source": "https://www.wfp.org/countries/democratic-republic-congo",
       "fichier_pdf": "06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.pdf",
-      "fichier_metadata": "06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt",
       "fichier_texte_extrait": "06_sources/officielles_web/_texte/PAM_RDC_programmes_transferts_2026.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
@@ -266,7 +279,8 @@
       ],
       "note": "Programmes principalement humanitaires, non permanents. Dépendent des financements annuels des donateurs.",
       "citation_recommandee": "PAM (2026), WFP Democratic Republic of Congo — Country Brief.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/officielles_web/_texte/PAM_RDC_programmes_transferts_2026_metadata.txt"
     },
     {
       "id": "UNICEF-RDC-2021",
@@ -309,7 +323,9 @@
         "Cadre juridique : C102 OIT (ratifiée 1987), R202 OIT, ODD 1.3.1"
       ],
       "citation_recommandee": "Gouvernement de la RDC (2016), Stratégie nationale de la protection sociale, Kinshasa, Ministère des Affaires Sociales.",
-      "sections_citantes": ["03_chapitres/chapitre_1"]
+      "sections_citantes": [
+        "03_chapitres/chapitre_1"
+      ]
     },
     {
       "id": "RDC-PROG-NON-CONTRIB",
@@ -341,7 +357,6 @@
       "niveau_fiabilite": 1,
       "url_source": "https://www.cnss.cd/",
       "fichier_pdf": "06_sources/officielles_web/CNSS_RDC_branches_prestations.pdf",
-      "fichier_metadata": "06_sources/officielles_web/CNSS_RDC_branches_prestations.txt",
       "fichier_texte_extrait": null,
       "statut_pdf": "présent (publication 2023 — PDF scanné, pas de texte extractible)",
       "statut_texte": "PDF scanné — fiche metadata fait office de source lisible",
@@ -353,7 +368,10 @@
         "Base légale : Loi n°16/009 du 15 juillet 2016"
       ],
       "citation_recommandee": "CNSS (2026), Site officiel cnss.cd.",
-      "sections_citantes": ["03_chapitres/chapitre_2"]
+      "sections_citantes": [
+        "03_chapitres/chapitre_2"
+      ],
+      "fichier_metadata": "06_sources/officielles_web/_texte/CNSS_RDC_branches_prestations_metadata.txt"
     },
     {
       "id": "CNSSAP-RDC",
@@ -363,7 +381,6 @@
       "niveau_fiabilite": 1,
       "url_source": "https://www.cnssap.cd/",
       "fichier_pdf": "06_sources/officielles_web/CNSSAP_RDC_branches_prestations.pdf",
-      "fichier_metadata": "06_sources/officielles_web/CNSSAP_RDC_branches_prestations.txt",
       "fichier_texte_extrait": "06_sources/officielles_web/_texte/CNSSAP_RDC_branches_prestations.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
@@ -375,7 +392,10 @@
         "Base légale : Décret n°15/031 du 14/12/2015 ; Loi n°22/031 du 15/07/2022"
       ],
       "citation_recommandee": "CNSSAP (2026), Site officiel cnssap.cd.",
-      "sections_citantes": ["03_chapitres/chapitre_2"]
+      "sections_citantes": [
+        "03_chapitres/chapitre_2"
+      ],
+      "fichier_metadata": "06_sources/officielles_web/_texte/CNSSAP_RDC_branches_prestations_metadata.txt"
     },
     {
       "id": "FSS-RDC",
@@ -399,7 +419,9 @@
       ],
       "note": "Nombre d'affiliés, cotisants et bénéficiaires non disponibles sur le site à la date de consultation.",
       "citation_recommandee": "FSS (2026), Site officiel fss.cd.",
-      "sections_citantes": ["03_chapitres/chapitre_2"]
+      "sections_citantes": [
+        "03_chapitres/chapitre_2"
+      ]
     },
     {
       "id": "BM-PATHWAYS-2023",
@@ -410,7 +432,6 @@
       "niveau_fiabilite": 1,
       "url_source": "https://openknowledge.worldbank.org/",
       "fichier_pdf": "06_sources/officielles_web/BanqueMondiale_Pathways_Economic_Diversification_Trade_RDC_2023.pdf",
-      "fichier_metadata": null,
       "fichier_texte_extrait": "06_sources/officielles_web/_texte/BanqueMondiale_Pathways_Economic_Diversification_Trade_RDC_2023.txt",
       "statut_pdf": "présent — 137 pages",
       "statut_texte": "converti — intégralité du document (361 Ko)",
@@ -430,7 +451,8 @@
       "sections_citantes": [
         "02_introduction_generale",
         "03_chapitres/chapitre_1"
-      ]
+      ],
+      "fichier_metadata": "06_sources/officielles_web/_texte/BanqueMondiale_Pathways_Economic_Diversification_Trade_RDC_2023_metadata.txt"
     },
     {
       "id": "ESS-CNSS-2019",
@@ -439,11 +461,13 @@
       "annee": 2019,
       "niveau_fiabilite": 1,
       "fichier_source": "06_sources/ESS/ESS_CNSS/ESS CNSS 2019.xlsm",
-      "statut_texte": "non converti",
+      "statut_texte": "converti",
       "statut_verification": "à valider",
       "note": "Tableau ESS au format OIT. Source primaire issue de l'institution nationale.",
       "citation_recommandee": "CNSS (2019), Enquête sur les Sources Statistiques (ESS), Caisse Nationale de Sécurité Sociale, Kinshasa.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2019_metadata.txt",
+      "fichier_texte_extrait": "06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2019.txt"
     },
     {
       "id": "ESS-CNSS-2020",
@@ -452,11 +476,13 @@
       "annee": 2020,
       "niveau_fiabilite": 1,
       "fichier_source": "06_sources/ESS/ESS_CNSS/ESS CNSS 2020.xlsm",
-      "statut_texte": "non converti",
+      "statut_texte": "converti",
       "statut_verification": "à valider",
       "note": "Tableau ESS au format OIT. Source primaire issue de l'institution nationale.",
       "citation_recommandee": "CNSS (2020), Enquête sur les Sources Statistiques (ESS), Caisse Nationale de Sécurité Sociale, Kinshasa.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2020_ANOMALIE_metadata.txt",
+      "fichier_texte_extrait": "06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2020_ANOMALIE.txt"
     },
     {
       "id": "ESS-CNSS-2021",
@@ -465,11 +491,13 @@
       "annee": 2021,
       "niveau_fiabilite": 1,
       "fichier_source": "06_sources/ESS/ESS_CNSS/ESS CNSS 2021.xlsm",
-      "statut_texte": "non converti",
+      "statut_texte": "converti",
       "statut_verification": "à valider",
       "note": "Tableau ESS au format OIT. Source primaire issue de l'institution nationale.",
       "citation_recommandee": "CNSS (2021), Enquête sur les Sources Statistiques (ESS), Caisse Nationale de Sécurité Sociale, Kinshasa.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2021_metadata.txt",
+      "fichier_texte_extrait": "06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2021.txt"
     },
     {
       "id": "ESS-CNSS-2022",
@@ -478,11 +506,13 @@
       "annee": 2022,
       "niveau_fiabilite": 1,
       "fichier_source": "06_sources/ESS/ESS_CNSS/ESS CNSS 2022.xlsm",
-      "statut_texte": "non converti",
+      "statut_texte": "converti",
       "statut_verification": "à valider",
       "note": "Tableau ESS au format OIT. Source primaire issue de l'institution nationale.",
       "citation_recommandee": "CNSS (2022), Enquête sur les Sources Statistiques (ESS), Caisse Nationale de Sécurité Sociale, Kinshasa.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022_metadata.txt",
+      "fichier_texte_extrait": "06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt"
     },
     {
       "id": "ESS-CNSSAP-2020",
@@ -491,11 +521,13 @@
       "annee": 2020,
       "niveau_fiabilite": 1,
       "fichier_source": "06_sources/ESS/ESS_CNSSAP/ESS CNSSAP 2020.xlsm",
-      "statut_texte": "non converti",
+      "statut_texte": "converti",
       "statut_verification": "à valider",
       "note": "Tableau ESS au format OIT. Source primaire issue de l'institution nationale.",
       "citation_recommandee": "CNSSAP (2020), Enquête sur les Sources Statistiques (ESS), Caisse Nationale de Sécurité Sociale des Agents Publics, Kinshasa.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/ESS/ESS_CNSSAP/_texte/ESS_CNSSAP_2020_metadata.txt",
+      "fichier_texte_extrait": "06_sources/ESS/ESS_CNSSAP/_texte/ESS_CNSSAP_2020.txt"
     },
     {
       "id": "ESS-CNSSAP-2021",
@@ -504,11 +536,13 @@
       "annee": 2021,
       "niveau_fiabilite": 1,
       "fichier_source": "06_sources/ESS/ESS_CNSSAP/ESS CNSSAP 2021.xlsm",
-      "statut_texte": "non converti",
+      "statut_texte": "converti",
       "statut_verification": "à valider",
       "note": "Tableau ESS au format OIT. Source primaire issue de l'institution nationale.",
       "citation_recommandee": "CNSSAP (2021), Enquête sur les Sources Statistiques (ESS), Caisse Nationale de Sécurité Sociale des Agents Publics, Kinshasa.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/ESS/ESS_CNSSAP/_texte/ESS_CNSSAP_2021_metadata.txt",
+      "fichier_texte_extrait": "06_sources/ESS/ESS_CNSSAP/_texte/ESS_CNSSAP_2021.txt"
     },
     {
       "id": "ESS-CNSSAP-2022",
@@ -517,11 +551,13 @@
       "annee": 2022,
       "niveau_fiabilite": 1,
       "fichier_source": "06_sources/ESS/ESS_CNSSAP/ESS CNSSAP 2022.xlsm",
-      "statut_texte": "non converti",
+      "statut_texte": "converti",
       "statut_verification": "à valider",
       "note": "Tableau ESS au format OIT. Source primaire issue de l'institution nationale.",
       "citation_recommandee": "CNSSAP (2022), Enquête sur les Sources Statistiques (ESS), Caisse Nationale de Sécurité Sociale des Agents Publics, Kinshasa.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/ESS/ESS_CNSSAP/_texte/ESS_CNSSAP_2022_metadata.txt",
+      "fichier_texte_extrait": "06_sources/ESS/ESS_CNSSAP/_texte/ESS_CNSSAP_2022.txt"
     },
     {
       "id": "ESS-RDC-2023",
@@ -530,11 +566,13 @@
       "annee": 2023,
       "niveau_fiabilite": 1,
       "fichier_source": "06_sources/ESS/ESS_RDC_tous_regimes/ESS RDC tous régimes.xlsx",
-      "statut_texte": "non converti",
+      "statut_texte": "converti",
       "statut_verification": "à valider",
       "note": "Tableau ESS consolidé tous régimes au format OIT. Couvre 2023, soit un an au-delà des séries individuelles CNSS/CNSSAP (2022). Vérifier les régimes effectivement inclus dans la consolidation.",
       "citation_recommandee": "CNSS / CNSSAP (2023), Enquête sur les Sources Statistiques (ESS) — tous régimes, Kinshasa.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/ESS/ESS_RDC_tous_regimes/_texte/ESS_RDC_tous_regimes_2023_metadata.txt",
+      "fichier_texte_extrait": "06_sources/ESS/ESS_RDC_tous_regimes/_texte/ESS_RDC_tous_regimes_2023.txt"
     },
     {
       "id": "BULLETIN-RDC-1",
@@ -550,7 +588,8 @@
       "statut_verification": "référence validée",
       "note": "Référence directe : c'est le bulletin que ce projet prolonge et améliore. Retenir la logique institutionnelle, améliorer la rigueur conceptuelle.",
       "citation_recommandee": "RDC (2023), Bulletin statistique de la protection sociale — première édition, Kinshasa.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition_metadata.txt"
     },
     {
       "id": "BULLETIN-MOZAMBIQUE-1",
@@ -566,7 +605,8 @@
       "statut_verification": "à valider",
       "note": "Référence de style uniquement. S'en inspirer pour la structure de chapitres, la présentation d'indicateurs et les formulations types.",
       "citation_recommandee": "Mozambique (2019), 1er Boletim Estatístico da Protecção Social.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/bulletins_comparaison/_texte/Mozambique - 1er Boletim Estatistico da Proteccao Social, 2019_metadata.txt"
     },
     {
       "id": "BULLETIN-MOZAMBIQUE-2",
@@ -582,7 +622,8 @@
       "statut_verification": "à valider",
       "note": "Référence de style uniquement.",
       "citation_recommandee": "Mozambique (2020), 2e Boletim Estatístico da Protecção Social.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/bulletins_comparaison/_texte/Mozambique - 2e Boletim Estatistico da Proteccao Social, 2020_metadata.txt"
     },
     {
       "id": "BULLETIN-MOZAMBIQUE-3",
@@ -598,7 +639,8 @@
       "statut_verification": "à valider",
       "note": "Référence de style uniquement.",
       "citation_recommandee": "Mozambique (2021), 3e Boletim Estatístico da Protecção Social.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/bulletins_comparaison/_texte/Mozambique - 3e Boletim Estatistico da Proteccao Social, 2021_metadata.txt"
     },
     {
       "id": "BULLETIN-MOZAMBIQUE-7",
@@ -614,7 +656,8 @@
       "statut_verification": "à valider",
       "note": "Référence de style. Édition la plus récente disponible — utile pour les évolutions de format.",
       "citation_recommandee": "Mozambique (2025), VII Boletim Estatístico sobre Protecção Social.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/bulletins_comparaison/_texte/VII Boletim Estatistico sobre Proteccao Social 2025 _metadata.txt"
     },
     {
       "id": "BULLETIN-ANGOLA-1",
@@ -630,7 +673,8 @@
       "statut_verification": "à valider",
       "note": "Référence de style uniquement. Année non précisée.",
       "citation_recommandee": "Angola, Boletim de Estatísticas da Protecção Social — 1ère édition.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/bulletins_comparaison/_texte/Boletim de Estatísticas da Protecção Social de Angola_metadata.txt"
     },
     {
       "id": "BULLETIN-ANGOLA-2",
@@ -646,7 +690,8 @@
       "statut_verification": "à valider",
       "note": "Référence de style uniquement.",
       "citation_recommandee": "Angola, 2e Boletim de Estatísticas da Protecção Social.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/bulletins_comparaison/_texte/2º Boletim de Estatísticas da Protecção Social de Angola_metadata.txt"
     },
     {
       "id": "BULLETIN-GUINEE-BISSAU-1",
@@ -656,13 +701,14 @@
       "niveau_fiabilite": 2,
       "sous_dossier": "bulletins_comparaison",
       "fichier_source": "06_sources/bulletins_comparaison/AF_1ºBEPS_Guine__Bissau_Digital_09092024-compressed_0.pdf",
-      "fichier_texte_extrait": "06_sources/bulletins_comparaison/_texte/AF_1ºBEPS_Guine__Bissau_Digital_09092024-compressed_0.txt",
+      "fichier_texte_extrait": "06_sources/bulletins_comparaison/_texte/Guinee_Bissau_1er_Boletim_Estatistico_PS_2023.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
       "statut_verification": "à valider",
       "note": "Référence de style. Utile pour la comparaison avec un pays francophone d'Afrique de l'Ouest.",
       "citation_recommandee": "Guinée-Bissau (2024), 1er Boletim Estatístico da Protecção Social.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/bulletins_comparaison/_texte/Guinee_Bissau_1er_Boletim_Estatistico_PS_2023_metadata.txt"
     },
     {
       "id": "BULLETIN-TIMOR-1",
@@ -672,13 +718,14 @@
       "niveau_fiabilite": 2,
       "sous_dossier": "bulletins_comparaison",
       "fichier_source": "06_sources/bulletins_comparaison/AF_BE_TIMOR_A4_Bilingue_DIGITAL_06072025-compressed.pdf",
-      "fichier_texte_extrait": "06_sources/bulletins_comparaison/_texte/AF_BE_TIMOR_A4_Bilingue_DIGITAL_06072025-compressed.txt",
+      "fichier_texte_extrait": "06_sources/bulletins_comparaison/_texte/Timor_Leste_1er_Boletim_Estatistico_PS_2017_2024.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
       "statut_verification": "à valider",
       "note": "Référence de style. Format bilingue.",
       "citation_recommandee": "Timor-Leste (2025), Boletim Estatístico da Protecção Social.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/bulletins_comparaison/_texte/Timor_Leste_1er_Boletim_Estatistico_PS_2017_2024_metadata.txt"
     },
     {
       "id": "BULLETIN-SAO-TOME-1",
@@ -694,7 +741,8 @@
       "statut_verification": "à valider",
       "note": "Référence de style uniquement.",
       "citation_recommandee": "São Tomé-et-Príncipe, 1er Boletim Estatístico da Protecção Social.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/bulletins_comparaison/_texte/Sao-Tome-et-Principe - 1er Boletim Estatistico da Proteccao Social_metadata.txt"
     },
     {
       "id": "BULLETIN-JORDANIE-2020",
@@ -710,7 +758,8 @@
       "statut_verification": "à valider",
       "note": "Référence de style. Exemple de bulletin en anglais avec indicateurs détaillés.",
       "citation_recommandee": "Jordan (2021), Statistical Bulletin of Social Protection Indicators 2020-2021.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/bulletins_comparaison/_texte/Jordan - Statistical Bulletin of Social Protection Indicators, 2020-2021_metadata.txt"
     },
     {
       "id": "OIT-C102",
@@ -720,13 +769,14 @@
       "niveau_fiabilite": 1,
       "sous_dossier": "normes_oit",
       "fichier_source": "06_sources/normes_oit/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.pdf",
-      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
       "statut_verification": "référence normative",
       "note": "Convention de référence définissant les 9 branches de la sécurité sociale. Cadre normatif central du bulletin.",
       "citation_recommandee": "OIT (1952), Convention n°102 sur la sécurité sociale (norme minimale), Genève : Bureau international du Travail.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952_metadata.txt",
+      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt"
     },
     {
       "id": "OIT-C121",
@@ -736,13 +786,14 @@
       "niveau_fiabilite": 1,
       "sous_dossier": "normes_oit",
       "fichier_source": "06_sources/normes_oit/C121 - Employment Injury Benefits Convention, 1964 [Schedule I amended in 1980] (No. 121).pdf",
-      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C121 - Employment Injury Benefits Convention, 1964 [Schedule I amended in 1980] (No. 121).txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
       "statut_verification": "référence normative",
       "note": "Convention OIT sur les risques professionnels. Pertinente pour les branches AT/MP de la CNSS et CNSSAP.",
       "citation_recommandee": "OIT (1964), Convention n°121 sur les prestations en cas d'accidents du travail, Genève : BIT.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/normes_oit/_texte/C121 - Employment Injury Benefits Convention, 1964 [Schedule I amended in 1980] (No. 121)_metadata.txt",
+      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C121 - Employment Injury Benefits Convention, 1964 [Schedule I amended in 1980] (No. 121).txt"
     },
     {
       "id": "OIT-C128",
@@ -752,13 +803,14 @@
       "niveau_fiabilite": 1,
       "sous_dossier": "normes_oit",
       "fichier_source": "06_sources/normes_oit/C128 - Convention (n° 128) concernant les prestations d'invalidité, de vieillesse et de survivants, 1967.pdf",
-      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C128 - Convention (n° 128) concernant les prestations d'invalidité, de vieillesse et de survivants, 1967.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
       "statut_verification": "référence normative",
       "note": "Pertinente pour les branches pensions de la CNSS et CNSSAP.",
       "citation_recommandee": "OIT (1967), Convention n°128 sur les prestations d'invalidité, de vieillesse et de survivants, Genève : BIT.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/normes_oit/_texte/C128 - Convention (n° 128) concernant les prestations d'invalidité, de vieillesse et de survivants, 1967_metadata.txt",
+      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C128 - Convention (n° 128) concernant les prestations d'invalidité, de vieillesse et de survivants, 1967.txt"
     },
     {
       "id": "OIT-C130",
@@ -768,13 +820,14 @@
       "niveau_fiabilite": 1,
       "sous_dossier": "normes_oit",
       "fichier_source": "06_sources/normes_oit/C130 — Soins médicaux et indemnités de maladie, 1969.pdf",
-      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C130 — Soins médicaux et indemnités de maladie, 1969.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
       "statut_verification": "référence normative",
       "note": "Pertinente pour l'analyse des lacunes de couverture santé en RDC.",
       "citation_recommandee": "OIT (1969), Convention n°130 sur les soins médicaux et les indemnités de maladie, Genève : BIT.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/normes_oit/_texte/C130  Soins médicaux et indemnités de maladie, 1969_metadata.txt",
+      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C130  Soins médicaux et indemnités de maladie, 1969.txt"
     },
     {
       "id": "OIT-C168",
@@ -784,13 +837,14 @@
       "niveau_fiabilite": 1,
       "sous_dossier": "normes_oit",
       "fichier_source": "06_sources/normes_oit/C168 — Promotion de l'emploi et protection contre le chômage, 1988.pdf",
-      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C168 — Promotion de l'emploi et protection contre le chômage, 1988.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
       "statut_verification": "référence normative",
       "note": "Branche chômage — non couverte en RDC. Utile pour documenter l'absence de couverture.",
       "citation_recommandee": "OIT (1988), Convention n°168 sur la promotion de l'emploi et la protection contre le chômage, Genève : BIT.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/normes_oit/_texte/C168  Promotion de l'emploi et protection contre le chômage, 1988_metadata.txt",
+      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C168  Promotion de l'emploi et protection contre le chômage, 1988.txt"
     },
     {
       "id": "OIT-C183",
@@ -800,13 +854,14 @@
       "niveau_fiabilite": 1,
       "sous_dossier": "normes_oit",
       "fichier_source": "06_sources/normes_oit/C183 - Convention sur la protection de la maternite (No. 183), 2000.pdf",
-      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C183 - Convention sur la protection de la maternite (No. 183), 2000.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
       "statut_verification": "référence normative",
       "note": "Pertinente pour la branche prestations aux familles/maternité de la CNSS.",
       "citation_recommandee": "OIT (2000), Convention n°183 sur la protection de la maternité, Genève : BIT.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/normes_oit/_texte/C183 - Convention sur la protection de la maternite (No. 183), 2000_metadata.txt",
+      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C183 - Convention sur la protection de la maternite (No. 183), 2000.txt"
     },
     {
       "id": "OIT-R202",
@@ -816,13 +871,14 @@
       "niveau_fiabilite": 1,
       "sous_dossier": "normes_oit",
       "fichier_source": "06_sources/normes_oit/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.pdf",
-      "fichier_texte_extrait": "06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
       "statut_verification": "référence normative",
       "note": "Recommandation clé sur les socles de protection sociale. Cadre normatif pour les ODD 1.3.1 et la couverture universelle.",
       "citation_recommandee": "OIT (2012), Recommandation n°202 sur les socles de protection sociale, Genève : BIT.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure_metadata.txt",
+      "fichier_texte_extrait": "06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt"
     },
     {
       "id": "OIT-BUILDING-SP",
@@ -832,13 +888,14 @@
       "niveau_fiabilite": 1,
       "sous_dossier": "normes_oit",
       "fichier_source": "06_sources/normes_oit/OIT - Building social protection systems - International standards and human rights instruments.pdf",
-      "fichier_texte_extrait": "06_sources/normes_oit/_texte/OIT - Building social protection systems - International standards and human rights instruments.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
       "statut_verification": "à valider",
       "note": "Guide OIT sur les systèmes de protection sociale et les droits humains. Utile pour le cadre conceptuel.",
       "citation_recommandee": "OIT, Building Social Protection Systems — International standards and human rights instruments, Genève : BIT.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/normes_oit/_texte/OIT - Building social protection systems - International standards and human rights instruments_metadata.txt",
+      "fichier_texte_extrait": "06_sources/normes_oit/_texte/OIT - Building social protection systems - International standards and human rights instruments.txt"
     },
     {
       "id": "ATELIER-CADRAGE-PPT",
@@ -848,13 +905,14 @@
       "niveau_fiabilite": 1,
       "sous_dossier": "atelier_lancement",
       "fichier_source": "06_sources/atelier_lancement/presentations/PPT1_cadrage_atelier_bulletin_PS_RDC v1.pptx",
-      "fichier_texte_extrait": null,
+      "fichier_texte_extrait": "06_sources/atelier_lancement/presentations/_texte/Cadrage_atelier_bulletin_PS_RDC v1.txt",
       "statut_pdf": "présent (PDF: Cadrage_atelier_bulletin_PS_RDC v1.pdf)",
-      "statut_texte": "non converti",
+      "statut_texte": "converti",
       "statut_verification": "à valider",
       "note": "Présentation de cadrage de l'atelier de lancement. Source primaire de l'événement.",
       "citation_recommandee": "OIT / Équipe du bulletin (2026), Présentation de cadrage — Atelier de lancement du Bulletin statistique de la protection sociale en RDC.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/atelier_lancement/presentations/_texte/Cadrage_atelier_bulletin_PS_RDC v1_metadata.txt"
     },
     {
       "id": "ATELIER-METHODOLOGIE-PPT",
@@ -864,13 +922,14 @@
       "niveau_fiabilite": 1,
       "sous_dossier": "atelier_lancement",
       "fichier_source": "06_sources/atelier_lancement/presentations/PPT2_methodologie_indicateurs_PS_RDC v1.pptx",
-      "fichier_texte_extrait": null,
+      "fichier_texte_extrait": "06_sources/atelier_lancement/presentations/_texte/Methodologie_indicateurs_PS_RDC v1.txt",
       "statut_pdf": "présent (PDF: Methodologie_indicateurs_PS_RDC v1.pdf)",
-      "statut_texte": "non converti",
+      "statut_texte": "converti",
       "statut_verification": "à valider",
       "note": "Présentation sur la méthodologie et les indicateurs retenus pour le bulletin. Source clé pour les chapitres méthodologiques.",
       "citation_recommandee": "OIT / Équipe du bulletin (2026), Méthodologie et indicateurs — Atelier de lancement du Bulletin statistique de la protection sociale en RDC.",
-      "sections_citantes": []
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/atelier_lancement/presentations/_texte/Methodologie_indicateurs_PS_RDC v1_metadata.txt"
     },
     {
       "id": "ATELIER-EXEMPLE-ESS",
@@ -882,10 +941,27 @@
       "fichier_source": "06_sources/atelier_lancement/presentations/Exemple ESS.xlsx",
       "fichier_texte_extrait": null,
       "statut_pdf": "absent",
-      "statut_texte": "non converti",
+      "statut_texte": "non convertible (Excel)  metadata cr??e manuellement",
       "statut_verification": "à valider",
       "note": "Exemple de tableau ESS présenté lors de l'atelier. Document de travail pédagogique.",
       "citation_recommandee": "OIT (2026), Exemple ESS — document de travail, Atelier de lancement du Bulletin statistique de la protection sociale en RDC.",
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/atelier_lancement/presentations/_texte/Exemple ESS_metadata.txt"
+    },
+    {
+      "id": "BULLETIN-55986",
+      "titre": "1er Boletim Estatístico sobre Protecção Social (Mozambique  1re édition)  fichier nommé 55986",
+      "organisation": "Gouvernement du Mozambique / OIT",
+      "annee": 2019,
+      "niveau_fiabilite": 2,
+      "sous_dossier": "bulletins_comparaison",
+      "fichier_texte_extrait": "06_sources/bulletins_comparaison/_texte/55986.txt",
+      "fichier_metadata": "06_sources/bulletins_comparaison/_texte/55986_metadata.txt",
+      "statut_pdf": "absent (pas de PDF 55986.pdf dans le dossier)",
+      "statut_texte": "converti",
+      "statut_verification": "à valider",
+      "note": "Fichier nommé 55986.txt  contenu identique au 1er Boletim Mozambique 2019. Doublon probable de Mozambique - 1er Boletim Estatistico da Proteccao Social, 2019.txt. Pas de PDF correspondant.",
+      "citation_recommandee": "MITSS, Mozambique (2019), 1er Boletim Estatístico sobre Protecção Social, Maputo, Julho 2019.",
       "sections_citantes": []
     }
   ]

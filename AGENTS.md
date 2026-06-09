@@ -65,6 +65,7 @@ Processus disponibles :
 - **PROC-003** — Révision et validation d'une section : grille de contrôle fond/terminologie/style, rapport de révision.
 - **PROC-004** — Vérification terminologique : consultation glossaire, conventions, références OIT, mise à jour si nouveau terme.
 - **PROC-005** — Mise à jour du registre des sources : nommage, conversion .txt, enregistrement dans `registre_donnees.md` et `registre_sources.json`.
+- **PROC-008** — Traitement d'une source entrante : dossier `06_sources/_entrants/` → classement, nommage, conversion, métadonnées, enregistrement.
 
 ---
 
@@ -210,6 +211,11 @@ Le registre `06_sources/registre_sources.json` est le tableau de correspondance 
 3. Créer un fichier de métadonnées `.txt` (résumé, données clés, citation recommandée)
 4. Inscrire la source dans `registre_donnees.md` et `registre_sources.json`
 5. Intégrer dans le bulletin si pertinent (avec mention de source et niveau de fiabilité)
+
+**Dossier de réception `06_sources/_entrants/` :**
+Toute source reçue par email ou téléchargée manuellement peut être déposée dans ce dossier transitoire.
+L'agent applique ensuite **PROC-008** pour la traiter entièrement (classement, nommage, conversion, métadonnées, enregistrement).
+Ce dossier doit être vide après traitement.
 
 **Quand consulter ces documents :**
 Ne pas relire ces documents systématiquement. Les consulter uniquement lorsque la tâche l'exige :

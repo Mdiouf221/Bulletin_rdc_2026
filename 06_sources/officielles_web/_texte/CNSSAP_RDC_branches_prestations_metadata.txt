@@ -1,0 +1,45 @@
+TITRE : Bulletin trimestriel d'informations statistiques N°07 — CNSSAP, Kinshasa, 23 avril 2022
+SOURCE / AUTEUR : Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP), République Démocratique du Congo
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 23 avril 2022 (données 1er trimestre 2022)
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : CNSSAP_RDC_branches_prestations.txt / CNSSAP_RDC_branches_prestations.pdf
+NIVEAU FIABILITE : 1 — données institutionnelles primaires (publication officielle CNSSAP)
+
+---
+
+CONTENU RÉSUMÉ
+
+Bulletin trimestriel d'informations statistiques de la CNSSAP, numéro 07, daté du 23 avril 2022. Couvre les activités du premier trimestre 2022. Publié par le Comité de Management (CM) de la CNSSAP sous la direction de TOMBOLA MUKE. Le bulletin présente les indicateurs clés de la CNSSAP : effectifs des cotisants, répartition géographique (par province), répartition par secteur administratif, immatriculations cumulées (depuis 2017), effectifs des retraités, bénéficiaires des prestations, et indicateurs de performance institutionnelle. Constitue une source primaire d'indicateurs quantitatifs de la CNSSAP pour l'année 2022.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+[Données 1er trimestre 2022 — CNSSAP]
+- Effectifs des cotisants : 190 544 au premier trimestre 2022 (vs 171 185 à fin 2021) — hausse de 11,3 %
+- Répartition géographique : Kinshasa = province modale avec 40,5 % des effectifs
+- Répartition par secteur : secteur de la santé = 25,7 % des assurés (premier secteur)
+- Agents actifs immatriculés depuis le début de la campagne (2017) : 88 395 personnes
+  - Hommes : 66,4 % / Femmes : 33,6 %
+- Retraités : effectif en baisse de 6,5 % par rapport à 2021
+- Nombre de bénéficiaires de prestations : légère baisse de 0,20 %
+- Majorité des retraités payés : anciens fonctionnaires publics = 43,6 % du total
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Source primaire institutionnelle directe : données fiables pour les indicateurs CNSSAP 2022.
+- PDF de 40 pages, texte extractible (non scanné).
+- Note importante : la majorité des retraités sont d'anciens fonctionnaires publics (système octroyé/transitionnel, non pleinement contributif) — à distinguer des retraités contributifs.
+- La croissance de 11,3 % des cotisants en un an (2021→2022) indique une dynamique d'immatriculation active.
+- La faible part des femmes (33,6 %) reflète la structure de l'emploi formel public en RDC.
+- Ce bulletin couvre uniquement le régime de base pensions (branche principale en 2022) — les branches AT/MP et allocations familiales CNSSAP sont gérées séparément.
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSSAP (2022), Bulletin trimestriel d'informations statistiques N°07, Kinshasa, 23 avril 2022, Caisse Nationale de Sécurité Sociale des Agents Publics.

@@ -1,0 +1,74 @@
+TITRE : Poverty & Equity Brief — Democratic Republic of Congo
+SOURCE : Banque mondiale — Sub-Saharan Africa Team for Statistical Development (SSAPOV)
+AUTEUR : Poverty Economist : Yele Maweki Batana
+DATE DE PUBLICATION : Avril 2020
+DONNÉES : Enquêtes ménages 2004/05 et 2012 (données les plus récentes disponibles dans ce brief)
+URL : https://povertydata.worldbank.org / www.worldbank.org/poverty
+NIVEAU : Source secondaire officielle
+
+⚠️ NOTE SUR LE NOMMAGE : Ce fichier est nommé "BanqueMondiale_WDI_RDC_emploi_agriculture_2024.pdf"
+mais son contenu est le Poverty & Equity Brief d'avril 2020. Les données datent de 2012.
+À ne pas confondre avec les données WDI sur l'emploi agricole. Renommage recommandé :
+→ BanqueMondiale_PovertyEquityBrief_RDC_2020.pdf
+
+---
+
+CONTENU
+
+Ce document est un brief de 2 pages de la Banque mondiale sur la pauvreté en RDC.
+Données de référence (enquête ménages 2012) :
+
+PAUVRETÉ :
+  Seuil national de pauvreté      : 63,9 % (2012) — 44,1 millions de personnes
+  Seuil international $1,90/j     : 76,6 % (2012) — 52,9 millions
+  Seuil intermédiaire $3,20/j     : 91,0 % (2012) — 62,8 millions
+  Seuil revenu moyen sup $5,50/j  : 97,7 % (2012) — 67,5 millions
+  Pauvreté multidimensionnelle    : 82,4 %
+  Note : taux national passé de 69,3 % (2005) à 64 % (2012) ; mais le nb de pauvres a augmenté de 7M
+
+INÉGALITÉS :
+  Indice de Gini : 42,1 (2012) — stable entre 2004 et 2012
+
+CROISSANCE :
+  Croissance PIB/habitant annualisée : 2,55 % (2004-2012)
+  Croissance consommation/habitant : 9,83 % (2004-2012)
+  Croissance bottom 40 % : 9,78 %
+  Shared prosperity premium : -0,05 % (quasi-nul → croissance bénéficiant peu aux plus pauvres)
+
+DÉSAGRÉGATIONS CLÉS :
+  Population urbaine sous $1,90/j  : 56 % | Rural : 89 %
+  Femmes sous $1,90/j              : 76 % | Hommes : 77 %
+  0-14 ans sous $1,90/j            : 82 %
+  Sans éducation (16+)             : 83 % sous $1,90/j
+  Éducation tertiaire (16+)        : 24 % sous $1,90/j
+
+PAUVRETÉ MULTIDIMENSIONNELLE (2012) :
+  Pauvreté monétaire (<$1,90)      : 76,6 %
+  Au moins 1 enfant non scolarisé  : 8,0 %
+  Aucun adulte n'a achevé primaire  : 22,5 %
+  Pas d'accès à l'eau potable      : 47,9 %
+  Pas d'accès à l'assainissement   : 80,0 %
+  Pas d'accès à l'électricité      : 83,0 %
+
+AVERTISSEMENT MÉTHODOLOGIQUE (mentionné dans le document) :
+  - Comparabilité des enquêtes 2004/05 et 2012 limitée (méthodologie recomputée)
+  - Pas d'IPC cohérent entre 2004/05 et 2012 (prix unitaires utilisés comme proxy)
+  - Données territoriales non représentatives (Kinshasa seulement enquêtée en 2018)
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Ce document est ancien (2020, données 2012) et constitue la dernière source comparative
+  disponible sur la pauvreté multi-dimensionnelle en RDC à l'échelle nationale.
+- Les taux de pauvreté plus récents (BM 2026 : 69 % selon seuil national, enquête INS 2024)
+  sont dans d'autres sources (BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt).
+- Ne pas utiliser les chiffres de ce brief comme données récentes ; les citer uniquement
+  pour les tendances 2004-2012 ou les désagrégations non disponibles ailleurs.
+
+---
+
+CITATION RECOMMANDÉE
+
+Banque mondiale (2020), Poverty & Equity Brief — Democratic Republic of Congo, April 2020,
+Sub-Saharan Africa, Washington DC : World Bank. [données 2012]

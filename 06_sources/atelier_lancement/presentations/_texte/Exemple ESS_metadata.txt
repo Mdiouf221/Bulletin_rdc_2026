@@ -1,0 +1,84 @@
+TITRE : Exemple ESS — Enquête Statistique Structurée tous régimes RDC (modèle atelier)
+SOURCE / AUTEUR : OIT / Équipe technique du bulletin — présenté lors de l'atelier de lancement du 14 mai 2026
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 2026 (données de référence : 2023)
+LANGUE : Français / Anglais (modèle OIT bilingue)
+TYPE : données institutionnelles — fichier ESS modèle (Excel)
+FICHIER : Exemple ESS.xlsx (pas de PDF associé)
+NIVEAU FIABILITE : 1 — source primaire institutionnelle (document de travail OIT/SNPS)
+
+---
+
+CONTENU RÉSUMÉ
+
+Fichier Excel au format ESS (Enquête Statistique Structurée) de l'OIT, utilisé lors de l'atelier de
+lancement du 14 mai 2026 comme exemple pédagogique. Ce fichier contient les données consolidées du
+système de protection sociale de la RDC pour l'année 2023, réparties en 15 régimes ("schemes").
+Il s'agit du fichier source de travail de l'ESS RDC tous régimes 2023 — équivalent atelier du fichier
+`ESS_RDC_tous_regimes_2023.xlsm` déjà dans le dossier ESS.
+
+Structure du fichier :
+  - Feuille "Schemes Inventory" : inventaire des 15 régimes avec caractéristiques générales
+  - Feuilles "Scheme 1" à "Scheme 15" : détail de chaque régime (prestations, population couverte,
+    données financières)
+
+---
+
+RÉGIMES RÉPERTORIÉS (15 régimes — Schemes Inventory)
+
+Numéros présents : 1, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18
+(Numéros 2, 3, 8 absents — probablement supprimés lors de la préparation)
+
+Régimes identifiés :
+  Scheme 1  : STEP/IDA — projet stabilisation Est RDC (AID/Banque mondiale) — Non contributif
+               Fonctions : enfants, invalidité, soins santé, éducation, logement, assistance sociale
+  Scheme 4  : Cantines scolaires (MEPST + partenaires) — Non contributif / Volontaire
+               Fonctions : alimentation et nutrition
+  Scheme 5  : CNSS — Branche pensions vieillesse et invalidité (PVID) — Contributif / Obligatoire
+               Fonctions : vieillesse, survivants
+               Prestations : pension retraite, pension invalidité, pension survivants, retraite anticipée,
+               allocations vieillesse/survivants, frais funéraires
+  Scheme 6  : CNSSAP — Régime de base (agents publics) — Contributif / Obligatoire
+               Fonctions : invalidité, survivants, vieillesse
+               Prestations : pension retraite, rente survie conjoint, rente survie orphelin
+  Scheme 7  : MESP — Couverture santé enseignants secteur public — Contributif / Obligatoire
+               Fonctions : soins de santé
+  Scheme 9  : FSS — Assurance maladie secteur informel — Contributif / Obligatoire
+               Fonctions : soins de santé
+  Scheme 10 : FSS — Assurance maladie agents publics (actifs et retraités) — Contributif / Obligatoire
+               Fonctions : soins de santé
+  [Schemes 11-18 : données dans les feuilles correspondantes — voir fichier source]
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+- 15 régimes répertoriés pour la RDC (2023)
+- Couverture plus large que les ESS individuels CNSS et CNSSAP
+- Inclut régimes non contributifs (STEP/IDA, cantines scolaires) et régimes santé (FSS, MESP)
+- Fonctions couvertes par le système : vieillesse, survivants, invalidité, soins de santé,
+  enfants/familles, alimentation, assistance sociale, logement (partiel)
+- Fonctions NON couvertes : chômage (sauf mention STEP), maladie (indemnités)
+- Pour les données quantitatives détaillées (cotisants, bénéficiaires, dépenses) : voir le fichier
+  ESS_RDC_tous_regimes_2023.xlsm et sa fiche metadata associée
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Ce fichier est un document de travail pédagogique pour l'atelier, pas la version finale ESS.
+  Il peut différer légèrement du fichier ESS officiel ESS_RDC_tous_regimes_2023.xlsm.
+- La numérotation des schemes (1, 4, 5, 6... — sans 2, 3, 8) indique des suppressions en cours
+  de préparation (probablement des programmes retirés du périmètre ESS).
+- Ne pas utiliser ce fichier comme source quantitative primaire — utiliser ESS_RDC_tous_regimes_2023
+  pour les données chiffrées.
+- Utile pour la cartographie institutionnelle et la liste des régimes du système RDC 2023.
+- Le fait que STEP/IDA soit inclus comme Scheme 1 (non contributif, géré par la Banque mondiale)
+  confirme l'approche élargie du bulletin (socle de protection sociale au sens R202).
+
+---
+
+CITATION RECOMMANDÉE
+
+OIT / SNPS (2026), Exemple ESS — document de travail, Atelier de lancement du Bulletin statistique
+de la protection sociale en RDC, Kinshasa, 14 mai 2026. [Fichier Excel de travail — non publié]

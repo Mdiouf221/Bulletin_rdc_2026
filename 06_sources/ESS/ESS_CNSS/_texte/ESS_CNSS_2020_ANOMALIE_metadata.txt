@@ -1,0 +1,46 @@
+TITRE : ESS CNSS 2020 — ANOMALIE — Enquête sur les Sources Statistiques (fichier mal nommé)
+SOURCE / AUTEUR : Fichier nominalement CNSS 2020, mais contenu CNSSAP — voir anomalie
+PAYS / RÉGION : République Démocratique du Congo
+DATE : Nominalement 2020 / Contenu réel : données CNSSAP 2022
+LANGUE : Français
+TYPE : données institutionnelles — À UTILISER AVEC PRÉCAUTION
+FICHIER : ESS_CNSS_2020_ANOMALIE.txt / ESS CNSS 2020.xlsm (source)
+NIVEAU FIABILITE : 1 — source primaire institutionnelle — MAIS anomalie grave de contenu
+
+---
+
+CONTENU RÉSUMÉ
+
+⚠️ ANOMALIE CRITIQUE : Ce fichier est nommé « ESS CNSS 2020.xlsm » mais son contenu correspond à un fichier CNSSAP, non à la CNSS :
+- L'adresse e-mail de contact est celle de la CNSSAP (mpanyakangodie@cnssap.cd), non de la CNSS
+- La feuille principale s'intitule « CNSAP Régime de base » (branche pensions CNSSAP)
+- L'inventaire des régimes affiche la période 2022, non 2020
+- Le seul régime déclaré est : CNSAP Régime de base (Branche des pensions, CNSSAP)
+
+Hypothèses : erreur de nommage lors du dépôt, ou fichier CNSSAP déposé à la place du fichier CNSS 2020. Ce fichier ne contient pas les données habituelles de la CNSS (3 branches). À vérifier avec les institutions avant toute utilisation analytique. Ce manque constitue une lacune dans la série temporelle CNSS (2019, [2020 manquant], 2021, 2022).
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+RÉGIME DÉCLARÉ — CNSAP Régime de base (CNSSAP) :
+- Fonctions couvertes : Vieillesse, Invalidité/Handicap
+- Administrateur : CNSSAP
+- Type : Contributif, Obligatoire, Public
+- Période affichée dans l'inventaire : 2022
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Ne PAS utiliser comme source CNSS 2020 sans vérification préalable auprès de l'institution.
+- La série CNSS individuelle est donc incomplète : 2019, [2020 manquant], 2021, 2022.
+- Les données CNSS 2023 sont disponibles dans le fichier consolidé ESS RDC tous régimes 2023.
+- L'absence d'un ESS CNSS 2020 valide doit être signalée comme limite méthodologique dans le bulletin.
+
+---
+
+CITATION RECOMMANDÉE
+
+À ne pas citer sans vérification. En cas d'utilisation provisoire :
+CNSSAP (2020 ?), Enquête sur les Sources Statistiques (ESS) — format OIT, Caisse Nationale de Sécurité Sociale des Agents Publics, Kinshasa [fichier à vérifier avant utilisation].

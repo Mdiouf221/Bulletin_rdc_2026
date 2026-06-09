@@ -1,0 +1,40 @@
+TITRE : Convention n°102 sur la sécurité sociale (norme minimale), 1952 — Social Security (Minimum Standards) Convention, 1952
+SOURCE / AUTEUR : Organisation Internationale du Travail (OIT/BIT)
+PAYS / RÉGION : International
+DATE : 1952 (en vigueur : 27 avril 1955) ; édition publiée 2008
+LANGUE : Anglais (texte original) ; traduction française disponible
+TYPE : convention OIT
+FICHIER : C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt / C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.pdf
+NIVEAU FIABILITE : 1 — Organisation internationale, source primaire normative (niveau maximum)
+
+---
+
+CONTENU RÉSUMÉ
+
+La Convention n°102 de l'OIT est la convention fondatrice des normes minimales de sécurité sociale au niveau international. Elle définit les 9 branches de la sécurité sociale : (1) soins médicaux, (2) indemnités de maladie, (3) prestations de chômage, (4) prestations de vieillesse, (5) prestations en cas d'accidents du travail et de maladies professionnelles, (6) prestations aux familles, (7) prestations de maternité, (8) prestations d'invalidité, (9) prestations de survivants. La convention fixe des taux de remplacement minimaux, des durées minimales de service et des conditions de couverture pour chaque branche. Un pays peut ratifier la convention en acceptant au moins 3 parties. La RDC a ratifié la C102 le 3 avril 1987, en acceptant les parties V (vieillesse), VII (AT/MP), IX (invalidité) et X (survivants). Édition publiée en 2008 par le BIT (ISBN 978-92-2-021484-8).
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+- 9 branches de la sécurité sociale définies : cadre de référence du bulletin RDC
+- Taux de remplacement minimaux par branche (ex. : 40 % du salaire de référence pour pension vieillesse)
+- Durée minimale du stage ouvrant droit aux prestations
+- Conditions de couverture minimale (% de population à couvrir par branche)
+- RDC : ratification partielle (parties V, VII, IX, X) — 4 branches acceptées sur 9
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Document de référence normative centrale pour le bulletin RDC.
+- Le cadre de la C102 (9 branches) est le référentiel structurant pour la cartographie des régimes et l'analyse des lacunes de couverture.
+- La ratification partielle de la RDC (parties V, VII, IX, X) est un point factuel important à documenter.
+- Ne pas confondre couverture légale (déclarée en ESS) et couverture effective (calculée séparément).
+- Texte juridiquement contraignant pour les États membres qui l'ont ratifié.
+
+---
+
+CITATION RECOMMANDÉE
+
+OIT (1952), Convention n°102 sur la sécurité sociale (norme minimale), Genève, Bureau international du Travail. [En vigueur depuis le 27 avril 1955]
