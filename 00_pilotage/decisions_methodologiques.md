@@ -132,6 +132,57 @@ La décision d'inclusion est rarement binaire. Des programmes qui ressemblent à
 **Impact :** tous les indicateurs ODD, tous les tableaux de couverture  
 **Référence :** PROC-009, `registre_inclusion_programmes.md`
 
+### DM-012 — Distinction des 5 niveaux de couverture par régime
+
+**Principe :**
+Pour chaque régime de protection sociale, le bulletin doit distinguer systématiquement cinq niveaux de population, dès lors que les données sont disponibles :
+
+- **N1 — Population totale de référence** : population totale du secteur ou groupe démographique concerné (ex. : tous les travailleurs RDC, toute la population, tous les enfants 0–17 ans).
+- **N2 — Population légalement couverte** : population que la loi ou le statut désigne comme devant être couverte. Ne présuppose pas l'affiliation effective.
+- **N3 — Population affiliée / enregistrée** : personnes immatriculées auprès de l'institution, indépendamment de la cotisation active.
+- **N4 — Cotisants actifs** : personnes pour lesquelles une cotisation est effectivement versée sur la période de référence. Pour les régimes non contributifs : personnes éligibles activement enregistrées dans le système de ciblage.
+- **N5 — Bénéficiaires effectifs** : personnes ayant effectivement reçu au moins une prestation en espèces sur la période de référence.
+
+**Règles d'application :**
+
+1. **ODD 1.3.1** utilise uniquement N4 et N5 (couverture effective).
+2. **Le gap N2 − (N4 + N5)** mesure le potentiel d'extension de couverture et doit être présenté et commenté dans le bulletin.
+3. **Le gap N3 − N4** mesure la non-conformité des employeurs ou le sous-enregistrement.
+4. Quand une donnée est absente, utiliser le placeholder **N/D** dans la matrice — ne pas omettre le niveau.
+5. Distinguer systématiquement les données **administratives directes** (ESS) des **estimations** (ILOSTAT, ONU, INS).
+
+**Cas CNSSAP illustratif :**
+Le gap entre N2 (~1 623 000 fonctionnaires légalement couverts) et N4 (198 399 cotisants réels en 2022) illustre précisément la différence couverture légale / couverture effective. Ce gap s'explique par les agents non mécanisés (non mis sur liste de paie) et se résorbe progressivement via la réforme de basculement et les vagues de mécanisation (40 000 en 2021-2022, 101 000 en 2023).
+
+**Leçon de méthode :**
+Ces cinq niveaux permettent non seulement de calculer ODD 1.3.1, mais aussi de construire des indicateurs connexes sur les opportunités d'extension de couverture — angle stratégique central pour les politiques de protection sociale.
+
+**Statut :** actée
+**Impact :** tous les régimes, tous les tableaux de couverture, chapitre 3, annexes
+**Référence :** `matrice_couverture_regimes.md`
+
+### DM-013 — Versionnage des paramètres de calcul par année
+
+**Principe :**
+Certains paramètres de calcul des indicateurs peuvent évoluer d'une année à l'autre : âge légal de retraite, facteur de conversion foyers/enfants, seuil de pauvreté national, population de référence. Ces paramètres doivent être **renseignés et documentés pour chaque année** dans la matrice ou les outils de calcul.
+
+**Règle de stabilité des séries publiées :**
+Les paramètres utilisés dans le 1er bulletin sont **figés pour les années qu'il couvre**. Ils ne doivent pas être modifiés rétrospectivement, sauf en cas d'erreur manifeste nécessitant une correction documentée. L'objectif est de préserver la cohérence des séries temporelles publiées.
+
+**Application pour l'âge légal de retraite :**
+- CNSS : 65 ans (hommes) / 60 ans (femmes) selon le Code du travail
+- CNSSAP : 60 ans pour les deux
+- Ce paramètre peut évoluer si une réforme légale intervient
+- Pour chaque nouvelle année intégrée, vérifier si l'âge légal a changé et le documenter explicitement
+- En cas de changement, ne pas recalculer les années antérieures
+
+**Portée générale :**
+Cette règle s'applique à tout paramètre exogène entrant dans le calcul des indicateurs : facteur enfants/foyer (DM-010), âge légal de retraite, seuil de pauvreté, population de référence démographique, etc.
+
+**Statut :** actée
+**Impact :** tous les indicateurs, tous les tableaux, outils de calcul
+**Référence :** `matrice_couverture_regimes.md`, `indicateurs_odd_regles_calcul.md`
+
 ## Décisions en discussion
 
 _Aucune décision en discussion à ce stade._

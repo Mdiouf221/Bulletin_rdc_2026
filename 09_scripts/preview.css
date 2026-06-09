@@ -530,7 +530,7 @@ a.source-ref.r:hover  { background: rgba(156,28,28,0.10);   }
     color         : var(--couleur-texte);
     box-shadow    : 0 4px 20px rgba(0,0,0,0.18);
     z-index       : 500;
-    min-width     : 230px;
+    min-width     : 340px;
     display       : none;
 }
 #val-popup.open { display: block; }
@@ -551,34 +551,85 @@ a.source-ref.r:hover  { background: rgba(156,28,28,0.10);   }
     white-space    : nowrap;
     overflow       : hidden;
     text-overflow  : ellipsis;
-    max-width      : 200px;
+    max-width      : 310px;
     border-bottom  : 1px solid #eee;
     padding-bottom : 8px;
 }
-#val-popup .vp-options {
+
+/* — Toggle bar — */
+#val-popup .vp-toggle-bar {
+    display        : flex;
+    flex-direction : row;
+    border         : 1px solid #dde;
+    border-radius  : 6px;
+    overflow       : hidden;
+    margin-bottom  : 12px;
+}
+#val-popup .vp-seg {
+    flex           : 1;
     display        : flex;
     flex-direction : column;
-    gap            : 2px;
-    margin-bottom  : 10px;
-}
-#val-popup .vp-opt {
-    display        : flex;
     align-items    : center;
-    gap            : 8px;
-    padding        : 5px 8px;
-    border-radius  : 4px;
+    gap            : 5px;
+    padding        : 8px 4px 7px;
     cursor         : pointer;
-    transition     : background 0.10s;
-    font-size      : 12.5px;
+    border         : none;
+    border-right   : 1px solid #dde;
+    background     : #f8f8fb;
+    font-size      : 10.5px;
+    font-family    : var(--police-ui);
+    color          : #99a;
+    transition     : background 0.12s, color 0.12s;
+    position       : relative;
+    line-height    : 1.2;
+    outline        : none;
 }
-#val-popup .vp-opt:hover   { background: #f0f2f8; }
-#val-popup .vp-opt.selected { background: #e8eef8; font-weight: 600; }
-#val-popup .vp-dot {
-    width          : 10px;
-    height         : 10px;
+#val-popup .vp-seg:last-child { border-right: none; }
+
+/* Dot coloré de chaque segment */
+#val-popup .vp-seg-dot {
+    width          : 9px;
+    height         : 9px;
     border-radius  : 50%;
-    flex-shrink    : 0;
+    display        : block;
+    opacity        : 0.30;
+    transition     : opacity 0.12s, transform 0.12s;
 }
+
+/* Trait indicateur "état actuel" sous le segment */
+#val-popup .vp-seg.current::after {
+    content        : '';
+    position       : absolute;
+    bottom         : 3px;
+    left           : 50%;
+    transform      : translateX(-50%);
+    width          : 18px;
+    height         : 2px;
+    border-radius  : 1px;
+    background     : #b0b8c8;
+}
+
+/* Segment sélectionné (état actif) */
+#val-popup .vp-seg.active {
+    background     : #fff;
+    color          : #223;
+    font-weight    : 700;
+    box-shadow     : inset 0 0 0 1px rgba(0,0,0,0.08);
+}
+#val-popup .vp-seg.active .vp-seg-dot {
+    opacity        : 1;
+    transform      : scale(1.2);
+}
+
+/* Hover sur un segment non-actif */
+#val-popup .vp-seg:not(.active):hover {
+    background     : #eef0f8;
+    color          : #445;
+}
+#val-popup .vp-seg:not(.active):hover .vp-seg-dot {
+    opacity        : 0.65;
+}
+
 #val-popup .vp-actions {
     display        : flex;
     justify-content: flex-end;
@@ -600,7 +651,14 @@ a.source-ref.r:hover  { background: rgba(156,28,28,0.10);   }
     color          : #fff;
     border-color   : var(--couleur-principale);
 }
-#val-popup .vp-btn.confirm:hover { background: #254a8e; }
+#val-popup .vp-btn.confirm:hover:not(:disabled) { background: #254a8e; }
+#val-popup .vp-btn.confirm:disabled {
+    background     : #c8cdd8;
+    border-color   : #c8cdd8;
+    color          : #e8eaf0;
+    cursor         : not-allowed;
+    opacity        : 0.75;
+}
 #val-popup .vp-btn.cancel:hover  { background: #f0f0f0; }
 
 /* Tooltip flottant */

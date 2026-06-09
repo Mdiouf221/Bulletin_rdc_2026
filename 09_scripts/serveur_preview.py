@@ -343,6 +343,14 @@ def build_html() -> str:
   Dernière mise à jour : {ts}
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <span id="status">● En ligne</span>
+  &nbsp;&nbsp;
+  <a href="/dashboard" target="_blank"
+     style="display:inline-block;padding:3px 12px;background:#1f4e79;color:#fff;
+            border-radius:4px;text-decoration:none;font-size:0.82em;font-weight:bold;
+            letter-spacing:0.03em;vertical-align:middle;margin-left:8px;"
+     title="Ouvrir le tableau de bord interactif des régimes (ESS)">
+    📊 Tableau de bord
+  </a>
 </div>
 
 <div id="sidebar">
@@ -644,54 +652,64 @@ document.getElementById("main").addEventListener("scroll", onScroll);
   popup.id = 'val-popup';
   document.body.appendChild(popup);
 
-  let currentEl     = null;
+  let currentEl      = null;
   let selectedStatus = null;
+  let originalStatus = null;
 
   function openPopup(el, clientX, clientY) {{
-    currentEl     = el;
-    selectedStatus = el.getAttribute('data-val-status') || 'brouillon';
+    currentEl      = el;
+    originalStatus = el.getAttribute('data-val-status') || 'brouillon';
+    selectedStatus = originalStatus;
     const text = (el.textContent || '').trim().substring(0, 45);
 
-    let opts = '';
+    /* — Barre de segments toggle — */
+    let segs = '';
     STATUS_ORDER.forEach(function(s) {{
-      const sel = s === selectedStatus ? ' selected' : '';
-      const col = STATUS_COLORS[s] || '#999';
-      opts += '<div class="vp-opt' + sel + '" data-status="' + s + '">'
-        + '<span class="vp-dot" style="background:' + col + '"></span>'
-        + s + '</div>';
+      const col        = STATUS_COLORS[s] || '#999';
+      const isCurrent  = s === originalStatus ? ' current' : '';
+      const isActive   = s === originalStatus ? ' active'  : '';
+      segs += '<button class="vp-seg' + isCurrent + isActive + '" data-status="' + s + '">'
+        + '<span class="vp-seg-dot" style="background:' + col + '"></span>'
+        + '<span class="vp-seg-label">' + s + '</span>'
+        + '</button>';
     }});
 
     popup.innerHTML =
-      '<div class="vp-title">Statut de validation</div>'
+      '<div class="vp-title">Modifier le statut</div>'
       + '<div class="vp-label" title="' + text + '">' + (text || '(élément)') + '…</div>'
-      + '<div class="vp-options">' + opts + '</div>'
+      + '<div class="vp-toggle-bar">' + segs + '</div>'
       + '<div class="vp-actions">'
       + '<button class="vp-btn cancel">Annuler</button>'
-      + '<button class="vp-btn confirm">Confirmer</button>'
+      + '<button class="vp-btn confirm" disabled>Enregistrer</button>'
       + '</div>';
 
     /* Positionnement */
     popup.classList.add('open');
-    const pw = popup.offsetWidth  || 240;
-    const ph = popup.offsetHeight || 260;
+    const pw = popup.offsetWidth  || 340;
+    const ph = popup.offsetHeight || 160;
     let px = clientX + 12, py = clientY + 12;
     if (px + pw > window.innerWidth  - 8) px = clientX - pw - 12;
     if (py + ph > window.innerHeight - 8) py = clientY - ph - 12;
     popup.style.left = Math.max(8, px) + 'px';
     popup.style.top  = Math.max(8, py) + 'px';
 
-    /* Clics sur les options */
-    popup.querySelectorAll('.vp-opt').forEach(function(opt) {{
-      opt.addEventListener('click', function() {{
-        popup.querySelectorAll('.vp-opt').forEach(function(o) {{ o.classList.remove('selected'); }});
-        opt.classList.add('selected');
-        selectedStatus = opt.getAttribute('data-status');
+    /* Clics sur les segments */
+    const confirmBtn = popup.querySelector('.confirm');
+    popup.querySelectorAll('.vp-seg').forEach(function(seg) {{
+      seg.addEventListener('click', function() {{
+        popup.querySelectorAll('.vp-seg').forEach(function(s) {{ s.classList.remove('active'); }});
+        seg.classList.add('active');
+        selectedStatus = seg.getAttribute('data-status');
+        /* Activer Enregistrer uniquement si l'état a changé */
+        confirmBtn.disabled = (selectedStatus === originalStatus);
       }});
     }});
 
     popup.querySelector('.cancel').addEventListener('click', closePopup);
     popup.querySelector('.confirm').addEventListener('click', function() {{
-      submitValidation(currentEl, selectedStatus);
+      if (!this.disabled) {{
+        submitValidation(currentEl, selectedStatus);
+      }}
     }});
   }}
 
@@ -879,6 +897,8 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             self._serve_html()
         elif self.path == "/events":
             self._serve_sse()
+        elif self.path == "/dashboard":
+            self._serve_dashboard()
         elif self.path.startswith("/files/"):
             self._serve_file()
         else:
@@ -951,6 +971,26 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(response_body)
         print(f"[VALIDATE] {elem_id} → {new_status} ({file_rel})")
+
+    def _serve_dashboard(self):
+        """Sert le tableau de bord interactif depuis 10_output/dashboard_regimes.html."""
+        dashboard = WORKSPACE_DIR / "10_output" / "dashboard_regimes.html"
+        if not dashboard.exists():
+            self.send_response(404)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(
+                b"<h2>Tableau de bord introuvable</h2>"
+                b"<p>Lancer d'abord : <code>py 09_scripts/visualiser_regimes.py</code></p>"
+            )
+            return
+        content = dashboard.read_bytes()
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Content-Length", str(len(content)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(content)
 
     def _serve_file(self):
         """Sert un fichier du workspace via /files/<chemin_relatif>.
@@ -1104,54 +1144,53 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         val_block = ""
         if val_id and val_file:
             cur_col = STATUS_COLORS_PY.get(val_status, "#999")
-            opts_html = ""
+            segs_html = ""
             for s in STATUS_ORDER_PY:
                 col = STATUS_COLORS_PY.get(s, "#999")
-                if s == val_status:
-                    # Statut actuel : très visible — fond coloré + coche
-                    opts_html += (
-                        f'<button class="vopt selected" data-status="{html_lib.escape(s)}" '
-                        f'style="border-left:4px solid {col}; background:{col}; color:#fff; font-weight:700">'
-                        f'✓ {html_lib.escape(s)}</button>'
-                    )
-                else:
-                    opts_html += (
-                        f'<button class="vopt" data-status="{html_lib.escape(s)}" '
-                        f'style="border-left:4px solid {col}">'
-                        f'{html_lib.escape(s)}</button>'
-                    )
+                is_current = " current" if s == val_status else ""
+                is_active  = " active"  if s == val_status else ""
+                segs_html += (
+                    f'<button class="vseg{is_current}{is_active}" data-status="{html_lib.escape(s)}">'
+                    f'<span class="vseg-dot" style="background:{col}"></span>'
+                    f'<span class="vseg-label">{html_lib.escape(s)}</span>'
+                    f'</button>'
+                )
             val_block = f"""
 <div id="val-section">
-  <div class="val-title">✅ Statut actuel :
-    <span style="display:inline-block;padding:2px 10px;border-radius:10px;
+  <div class="val-title">Statut de validation :
+    <span id="val-current-badge" style="display:inline-block;padding:2px 10px;border-radius:10px;
                  background:{cur_col};color:#fff;font-size:11px;font-weight:700;
                  margin-left:6px;letter-spacing:0.5px">{html_lib.escape(val_status)}</span>
   </div>
   <div class="val-subtitle">Modifier le statut :</div>
-  <div id="val-opts">{opts_html}</div>
+  <div id="val-toggle-bar">{segs_html}</div>
   <div id="val-actions">
-    <button id="val-save" onclick="saveValidation()">💾 Enregistrer</button>
+    <button id="val-save" onclick="saveValidation()" disabled>💾 Enregistrer</button>
     <span id="val-msg"></span>
   </div>
 </div>
 <script>
-  var selectedStatus = {html_lib.escape(repr(val_status))};
-  document.querySelectorAll('.vopt').forEach(function(btn) {{
+  var originalStatus = {json.dumps(val_status)};
+  var selectedStatus = originalStatus;
+  var saveBtn = document.getElementById('val-save');
+  document.querySelectorAll('.vseg').forEach(function(btn) {{
     btn.addEventListener('click', function() {{
-      document.querySelectorAll('.vopt').forEach(function(b) {{ b.classList.remove('selected'); }});
-      btn.classList.add('selected');
+      document.querySelectorAll('.vseg').forEach(function(b) {{ b.classList.remove('active'); }});
+      btn.classList.add('active');
       selectedStatus = btn.getAttribute('data-status');
+      saveBtn.disabled = (selectedStatus === originalStatus);
     }});
   }});
   function saveValidation() {{
+    if (saveBtn.disabled) return;
     var msg = document.getElementById('val-msg');
     msg.textContent = '…';
     fetch('/validate', {{
       method: 'POST',
       headers: {{'Content-Type': 'application/json'}},
       body: JSON.stringify({{
-        file: {html_lib.escape(repr(val_file))},
-        id:   {html_lib.escape(repr(val_id))},
+        file: {json.dumps(val_file)},
+        id:   {json.dumps(val_id)},
         status: selectedStatus
       }})
     }})
@@ -1160,6 +1199,18 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
       if (res.ok) {{
         msg.style.color = '#1a6e3c';
         msg.textContent = '✓ Enregistré — ' + selectedStatus;
+        originalStatus = selectedStatus;
+        saveBtn.disabled = true;
+        /* Mettre à jour le badge statut courant */
+        var badge = document.getElementById('val-current-badge');
+        if (badge) {{
+          badge.textContent = selectedStatus;
+        }}
+        /* Marquer le segment comme état de référence */
+        document.querySelectorAll('.vseg').forEach(function(b) {{ b.classList.remove('current'); }});
+        document.querySelectorAll('.vseg').forEach(function(b) {{
+          if (b.getAttribute('data-status') === selectedStatus) b.classList.add('current');
+        }});
       }} else {{
         msg.style.color = '#d42b2b';
         msg.textContent = '✗ Erreur : ' + res.text;
@@ -1246,19 +1297,50 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
       font-size: 11px; font-weight: 700; text-transform: uppercase;
       letter-spacing: 1px; color: #aaa; margin-bottom: 8px;
     }}
-    #val-opts {{ display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }}
-    .vopt {{
-      padding: 6px 16px; border-radius: 4px; font-size: 12px; font-weight: 600;
-      background: #f4f3ee; border: 1px solid #d0cfc8; cursor: pointer;
-      transition: all 0.12s;
+    /* — Toggle bar — */
+    #val-toggle-bar {{
+      display: flex; flex-direction: row;
+      border: 1px solid #dde; border-radius: 6px;
+      overflow: hidden; margin-bottom: 14px;
     }}
-    .vopt:hover {{ background: #e8eef8; }}
+    .vseg {{
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; gap: 5px;
+      padding: 9px 6px 8px;
+      cursor: pointer; border: none; border-right: 1px solid #dde;
+      background: #f8f8fb; font-size: 11px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #99a; transition: background 0.12s, color 0.12s;
+      position: relative; outline: none;
+    }}
+    .vseg:last-child {{ border-right: none; }}
+    .vseg-dot {{
+      width: 10px; height: 10px; border-radius: 50%;
+      display: block; opacity: 0.28;
+      transition: opacity 0.12s, transform 0.12s;
+    }}
+    .vseg.current::after {{
+      content: ''; position: absolute; bottom: 3px; left: 50%;
+      transform: translateX(-50%); width: 20px; height: 2px;
+      border-radius: 1px; background: #b0b8c8;
+    }}
+    .vseg.active {{
+      background: #fff; color: #223; font-weight: 700;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+    }}
+    .vseg.active .vseg-dot {{ opacity: 1; transform: scale(1.2); }}
+    .vseg:not(.active):hover {{ background: #eef0f8; color: #445; }}
+    .vseg:not(.active):hover .vseg-dot {{ opacity: 0.65; }}
     #val-actions {{ display: flex; align-items: center; gap: 14px; }}
     #val-save {{
       padding: 7px 20px; background: #1a3a6b; color: #fff; border: none;
       border-radius: 5px; font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: background 0.12s;
     }}
-    #val-save:hover {{ background: #254a8e; }}
+    #val-save:hover:not(:disabled) {{ background: #254a8e; }}
+    #val-save:disabled {{
+      background: #c8cdd8; color: #e8eaf0; cursor: not-allowed; opacity: 0.75;
+    }}
     #val-msg {{ font-size: 12px; font-style: italic; }}
     /* Contenu */
     #content {{

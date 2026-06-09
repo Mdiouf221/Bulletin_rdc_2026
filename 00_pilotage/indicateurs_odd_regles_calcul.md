@@ -224,9 +224,9 @@ Or le Tableau 23 ne décompose pas la contribution PAM. Le PAM représente 3,8 m
 
 La CNSSAP n'avait pas mis en œuvre les branches Allocations familiales ni AT/MP en 2022. Ces données sont donc légitimement absentes. En revanche, leur absence doit être documentée explicitement dans le 2e bulletin (et leur mise en œuvre progressive à partir de 2023 mérite un encadré).
 
-### 4.6 Anomalie ESS CNSS 2020
+### 4.6 Anomalie ESS CNSS 2020 — ✅ RÉSOLUE
 
-L'ESS CNSS 2020 (fichier `ESS_CNSS_2020_ANOMALIE.txt`) contient en réalité des données CNSSAP (1 régime) et non des données CNSS. La série temporelle CNSS 2019–2022 est donc incomplète pour 2020. Il faudra soit localiser les données CNSS 2020 correctes, soit signaler explicitement la lacune et traiter 2020 comme une donnée manquante.
+L'ESS CNSS 2020 (fichier `ESS_CNSS_2020_ANOMALIE.txt`) contenait des données CNSSAP. Un fichier corrigé `ESS_CNSS_2020.txt` a été intégré via PROC-008 le 2026-06-10. La série temporelle CNSS 2019–2022 est désormais complète.
 
 ### 4.7 Source ODD 1.3.1 : tableau de bord OIT vs calcul à partir des ESS
 

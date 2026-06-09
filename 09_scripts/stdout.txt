@@ -1,0 +1,15 @@
+============================================================
+  Serveur de prévisualisation — Bulletin RDC 2026
+============================================================
+
+[INIT] Vérification du port 8765…
+[INIT] Port 8765 libre.
+[INIT] Construction initiale de la page…
+[ASSEMBLEUR] OK
+[PREVIEW] Page mise à jour
+[WATCHER] Surveillance des fichiers activée
+
+[OK] Serveur demarre -> http://localhost:8765
+[OK] Ctrl+C pour arrêter
+
+[OK] Ouverture du navigateur…

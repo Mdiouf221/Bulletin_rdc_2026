@@ -1,0 +1,16 @@
+﻿============================================================
+  Serveur de prÚvisualisation ù Bulletin RDC 2026
+============================================================
+
+[INIT] VÚrification du port 8765à
+[INIT] Ancien processus 3932 sur le port 8765 terminÚ.
+[INIT] Port 8765 libÚrÚ. RedÚmarrage en coursà
+[INIT] Construction initiale de la pageà
+[ASSEMBLEUR] OK
+[PREVIEW] Page mise Ó jour
+[WATCHER] Surveillance des fichiers activÚe
+
+[OK] Serveur demarre -> http://localhost:8765
+[OK] Ctrl+C pour arrÛter
+
+[OK] Relance dÚtectÚe ù la page existante se rafra¯chit automatiquement.
