@@ -251,6 +251,54 @@ p em:only-child { color: #aaa; font-style: italic; }
     letter-spacing: 0.3px;
 }
 
+#topbar-info {
+    display       : flex;
+    align-items   : center;
+    white-space   : nowrap;
+    overflow      : hidden;
+    text-overflow : ellipsis;
+}
+
+#topbar-actions {
+    margin-left : auto;
+    display     : inline-flex;
+    align-items : center;
+    gap         : 8px;
+}
+
+.topbar-btn {
+    display         : inline-flex;
+    align-items     : center;
+    justify-content : center;
+    height          : 24px;
+    padding         : 0 10px;
+    border-radius   : 4px;
+    border          : 1px solid #1f4e79;
+    background      : #1f4e79;
+    color           : #ffffff;
+    font-family     : var(--police-ui);
+    font-size       : 11px;
+    font-weight     : 700;
+    text-decoration : none;
+    cursor          : pointer;
+}
+
+.topbar-btn:hover {
+    background      : #2a6196;
+    border-color    : #2a6196;
+    text-decoration : none;
+}
+
+#export-pdf-btn {
+    border-color : #0f2e4f;
+    background   : #0f2e4f;
+}
+
+#export-pdf-btn:hover {
+    border-color : #1b426b;
+    background   : #1b426b;
+}
+
 /* Décale le contenu quand la barre est présente */
 body.with-topbar #main { padding-top: 56px; }
 body.with-topbar #sidebar { padding-top: 32px; }
@@ -680,4 +728,37 @@ a.source-ref.r:hover  { background: rgba(156,28,28,0.10);   }
     box-shadow    : 0 2px 12px rgba(0, 0, 0, 0.35);
     line-height   : 1.6;
     white-space   : pre-wrap;
+}
+
+/* ===== Impression / export PDF ======================================== */
+@media print {
+    body {
+        display    : block;
+        background : #ffffff;
+    }
+
+    #topbar,
+    #sidebar,
+    #page-indicator,
+    #status-legend,
+    #source-tooltip,
+    #val-popup {
+        display: none !important;
+    }
+
+    #main {
+        overflow : visible;
+        padding  : 0;
+    }
+
+    #content {
+        max-width  : none;
+        box-shadow : none;
+        margin     : 0;
+        padding    : 0;
+    }
+
+    .collapsible-section.collapsed {
+        display: block !important;
+    }
 }

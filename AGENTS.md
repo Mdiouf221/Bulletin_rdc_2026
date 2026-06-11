@@ -91,6 +91,7 @@ Processus disponibles :
 - **PROC-004** — Vérification terminologique : consultation glossaire, conventions, références OIT, mise à jour si nouveau terme.
 - **PROC-005** — Mise à jour du registre des sources : nommage, conversion .txt, enregistrement dans `registre_donnees.md` et `registre_sources.json`.
 - **PROC-008** — Traitement d'une source entrante : dossier `06_sources/_entrants/` → classement, nommage, conversion, métadonnées, enregistrement.
+- **PROC-010** — Suppression propre d'un import ESS en base : simulation, suppression sécurisée, traçabilité.
 
 ---
 

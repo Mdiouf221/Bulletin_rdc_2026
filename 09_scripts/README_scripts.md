@@ -6,6 +6,7 @@
 |---|---|
 | `assembler_markdown.py` | Assemble les fichiers Markdown du bulletin en deux versions de sortie |
 | `convertir_pdf_en_texte.py` | Convertit tous les PDF des dossiers de références et de données en fichiers `.txt` lisibles par les agents |
+| `extraire_ess.py` | Charge les fichiers ESS dans `06_donnees/protection_sociale_rdc.db` |
 | `serveur_preview.py` | Serveur de prévisualisation — surveille les fichiers, relance l'assembleur et rafraîchit le navigateur automatiquement |
 | `preview.css` | Feuille de style du rendu navigateur — modifier librement sans toucher aux `.md` |
 
@@ -109,6 +110,37 @@ python 09_scripts/convertir_pdf_en_texte.py
 
 ---
 
+## extraire_ess.py
+
+### Rôle
+
+Charge les fichiers ESS dans la base SQLite `06_donnees/protection_sociale_rdc.db` via le schéma partagé `db_schema.py`. Le script sait traiter soit le catalogue ESS déjà présent, soit le dossier de réception unique `06_sources/_entrants/`.
+
+### Mode courant
+
+```bash
+python 09_scripts/extraire_ess.py
+```
+
+### Mode import progressif
+
+```bash
+python 09_scripts/extraire_ess.py --inbox
+```
+
+Déposer un fichier ESS dans `06_sources/_entrants/`, puis lancer ce mode. Le script normalise le nom, enregistre la source en base, puis déplace le fichier vers le sous-dossier ESS cible.
+
+### Options utiles
+
+```bash
+python 09_scripts/extraire_ess.py --inbox --dry-run
+python 09_scripts/extraire_ess.py --institution CNSS --annee 2022
+python 09_scripts/extraire_ess.py --delete --institution CNSS --annee 2022 --dry-run
+python 09_scripts/extraire_ess.py --delete --source-id 42 --force
+```
+
+---
+
 ## serveur_preview.py
 
 ### Rôle
@@ -135,6 +167,7 @@ python 09_scripts/serveur_preview.py
 
 Le navigateur s'ouvre automatiquement sur `http://localhost:8765`.
 Arrêt : `Ctrl+C` dans le terminal.
+Le bouton **🖨️ Export PDF** (en haut à droite) ouvre la boîte d'impression du navigateur pour enregistrer le rendu courant en PDF.
 
 ### Personnaliser le visuel
 

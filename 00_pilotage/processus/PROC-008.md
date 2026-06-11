@@ -58,6 +58,8 @@ Selon la nature du document, orienter vers :
 
 En cas de doute, proposer deux options à l'utilisateur et attendre sa validation.
 
+Pour un fichier ESS, l'agent peut aussi utiliser le mode d'import progressif `py 09_scripts/extraire_ess.py --inbox`, qui lit le dossier de réception unique `06_sources/_entrants/`, normalise le nom puis charge la source dans la base SQLite.
+
 ---
 
 ## Étape 3 — Nommage normalisé

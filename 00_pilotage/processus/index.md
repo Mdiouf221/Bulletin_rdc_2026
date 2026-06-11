@@ -24,6 +24,7 @@ Règle de travail :
 | PROC-007 | Lancer ou relancer le serveur de prévisualisation | actif | [PROC-007.md](PROC-007.md) |
 | PROC-008 | Traitement d'une source entrante (_entrants) | actif | [PROC-008.md](PROC-008.md) |
 | PROC-009 | Instruction de l'inclusion d'un programme dans les indicateurs ODD | actif | [PROC-009.md](PROC-009.md) |
+| PROC-010 | Suppression propre d'un import ESS en base | actif | [PROC-010.md](PROC-010.md) |
 
 ---
 

@@ -2,6 +2,8 @@
 
 Ce dossier est la **zone de réception** des sources brutes : fichiers téléchargés manuellement, reçus par email, ou transmis par les institutions avant traitement.
 
+Ce dossier est l'unique dossier de réception du workspace. Ne pas créer un second dossier `entrants` ailleurs : les ESS utilisent le même point d'entrée.
+
 ## Comment l'utiliser
 
 1. **Déposer** le fichier ici (PDF, XLSX, PPTX, DOCX, etc.)

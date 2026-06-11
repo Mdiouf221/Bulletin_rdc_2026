@@ -57,6 +57,8 @@ WORKSPACE_DIR = SCRIPT_DIR.parent
 ASSEMBLED     = WORKSPACE_DIR / "10_output" / "bulletin_complet_travail.md"
 CSS_FILE      = SCRIPT_DIR / "preview.css"
 ASSEMBLER     = SCRIPT_DIR / "assembler_markdown.py"
+REGIME_VISUALIZER = SCRIPT_DIR / "visualiser_regimes.py"
+REGIME_DASHBOARD  = WORKSPACE_DIR / "10_output" / "dashboard_regimes.html"
 PORT          = 8765
 
 # ---------------------------------------------------------------------------
@@ -91,6 +93,24 @@ def run_assembler():
         print(f"[ASSEMBLEUR] Erreur :\n{result.stderr.strip()}")
         return False
     print("[ASSEMBLEUR] OK")
+    return True
+
+
+def run_regime_dashboard():
+    """Régénère le tableau de bord des régimes si le générateur est disponible."""
+    if not REGIME_VISUALIZER.exists():
+        return False
+    result = subprocess.run(
+        [sys.executable, str(REGIME_VISUALIZER)],
+        capture_output=True,
+        cwd=str(WORKSPACE_DIR),
+        encoding="cp1252",
+        errors="replace",
+    )
+    if result.returncode != 0:
+        print(f"[DASHBOARD] Erreur :\n{result.stderr.strip()}")
+        return False
+    print("[DASHBOARD] OK")
     return True
 
 
@@ -338,19 +358,23 @@ def build_html() -> str:
 <body class="with-topbar">
 
 <div id="topbar">
-  PRÉVISUALISATION — Deuxième Bulletin statistique de la protection sociale en RDC
-  &nbsp;&nbsp;|&nbsp;&nbsp;
-  Dernière mise à jour : {ts}
-  &nbsp;&nbsp;|&nbsp;&nbsp;
-  <span id="status">● En ligne</span>
-  &nbsp;&nbsp;
-  <a href="/dashboard" target="_blank"
-     style="display:inline-block;padding:3px 12px;background:#1f4e79;color:#fff;
-            border-radius:4px;text-decoration:none;font-size:0.82em;font-weight:bold;
-            letter-spacing:0.03em;vertical-align:middle;margin-left:8px;"
-     title="Ouvrir le tableau de bord interactif des régimes (ESS)">
-    📊 Tableau de bord
-  </a>
+  <div id="topbar-info">
+    PRÉVISUALISATION — Deuxième Bulletin statistique de la protection sociale en RDC
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    Dernière mise à jour : {ts}
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <span id="status">● En ligne</span>
+  </div>
+  <div id="topbar-actions">
+    <a href="/dashboard" target="_blank" class="topbar-btn topbar-link"
+       title="Ouvrir le tableau de bord interactif des régimes (ESS)">
+      📊 Tableau de bord
+    </a>
+    <button type="button" id="export-pdf-btn" class="topbar-btn"
+            title="Exporter la vue actuelle en PDF" onclick="exportPreviewPdf()">
+      🖨️ Export PDF
+    </button>
+  </div>
 </div>
 
 <div id="sidebar">
@@ -378,6 +402,17 @@ evtSource.onerror = function() {{
   const s = document.getElementById("status");
   if (s) {{ s.textContent = "● Déconnecté — relancer le serveur"; s.style.color = "#c00"; }}
 }};
+
+function exportPreviewPdf() {{
+  const originalTitle = document.title;
+  const now = new Date();
+  const stamp = now.getFullYear()
+    + "-" + String(now.getMonth() + 1).padStart(2, "0")
+    + "-" + String(now.getDate()).padStart(2, "0");
+  document.title = "bulletin_rdc_preview_" + stamp;
+  window.print();
+  setTimeout(function() {{ document.title = originalTitle; }}, 500);
+}}
 
 /* ------------------------------------------------------------------ */
 /* 2. Sections repliables dans le contenu principal                    */
@@ -844,6 +879,7 @@ def rebuild(source: str = ""):
     if source:
         print(f"[WATCHER] Modification détectée : {source}")
     run_assembler()
+    run_regime_dashboard()
     html = build_html()
     with _html_lock:
         _html_cache = html
@@ -866,7 +902,7 @@ class ChangeHandler(FileSystemEventHandler):
             return
         if "10_output" in str(path):
             return
-        if path.suffix not in (".md", ".yml", ".yaml", ".css"):
+        if path.suffix not in (".md", ".yml", ".yaml", ".css", ".py"):
             return
         # Debounce : déclencher seulement si pas de modif depuis 1 s
         with self._lock:
@@ -974,7 +1010,13 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
 
     def _serve_dashboard(self):
         """Sert le tableau de bord interactif depuis 10_output/dashboard_regimes.html."""
-        dashboard = WORKSPACE_DIR / "10_output" / "dashboard_regimes.html"
+        dashboard = REGIME_DASHBOARD
+        if REGIME_VISUALIZER.exists():
+            try:
+                if (not dashboard.exists() or REGIME_VISUALIZER.stat().st_mtime > dashboard.stat().st_mtime):
+                    run_regime_dashboard()
+            except OSError:
+                pass
         if not dashboard.exists():
             self.send_response(404)
             self.send_header("Content-Type", "text/html; charset=utf-8")

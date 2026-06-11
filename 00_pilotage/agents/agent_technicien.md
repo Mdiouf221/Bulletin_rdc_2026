@@ -10,6 +10,8 @@ Gérer les tâches techniques : scripts Python, assemblage du bulletin, build, c
 - Lancer le serveur de prévisualisation (`serveur_preview.py`)
 - Assembler les fichiers Markdown en version de travail et version publication
 - Convertir des PDFs en .txt lisibles par les agents (PROC-005)
+- Importer les fichiers ESS déposés dans `06_sources/_entrants/` via `09_scripts/extraire_ess.py --inbox`
+- Supprimer proprement un import ESS obsolète via `09_scripts/extraire_ess.py --delete ...`
 - Maintenir `build_config.yml`
 - Signaler toute anomalie technique dans le workspace
 
