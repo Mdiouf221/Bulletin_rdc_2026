@@ -32,6 +32,9 @@ import re
 import sys
 import webbrowser
 import time
+from urllib.parse import urlparse, parse_qs
+from urllib.request import Request, urlopen
+from urllib.error import URLError, HTTPError
 
 try:
     import markdown
@@ -935,11 +938,70 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             self._serve_sse()
         elif self.path == "/dashboard":
             self._serve_dashboard()
+        elif self.path.startswith("/api/denom/"):
+            self._serve_denom_api()
         elif self.path.startswith("/files/"):
             self._serve_file()
         else:
             self.send_response(404)
             self.end_headers()
+
+    def _serve_denom_api(self):
+        parsed = urlparse(self.path)
+        route = parsed.path
+        qs = parse_qs(parsed.query)
+
+        if route == "/api/denom/wpp":
+            year = qs.get("year", [""])[0]
+            if not re.fullmatch(r"\d{4}", year):
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(b'{"error":"Parametre year invalide"}')
+                return
+            target_url = f"https://www.populationpyramid.net/api/pp/180/{year}/"
+        elif route == "/api/denom/ilo":
+            target_url = (
+                "https://rplumber.ilo.org/data/indicator/"
+                "?id=EMP_TEMP_SEX_AGE_NB_A&ref_area=COD&sex=SEX_T"
+                "&classif1=AGE_AGGREGATE_TOTAL&time_from=2000&time_to=2030"
+                "&type=label&decimals=0"
+            )
+        else:
+            self.send_response(404)
+            self.end_headers()
+            return
+
+        req = Request(
+            target_url,
+            headers={
+                "User-Agent": "RDC-Bulletin-Preview/1.0",
+                "Accept": "application/json,text/plain,*/*",
+            },
+            method="GET",
+        )
+        try:
+            with urlopen(req, timeout=25) as resp:
+                body = resp.read()
+                status = getattr(resp, "status", 200)
+                content_type = resp.headers.get("Content-Type", "application/json")
+        except HTTPError as err:
+            status = err.code if err.code else 502
+            body = err.read() if hasattr(err, "read") else b""
+            if not body:
+                body = json.dumps({"error": f"Upstream HTTP {status}"}).encode("utf-8")
+            content_type = err.headers.get("Content-Type", "application/json") if err.headers else "application/json"
+        except URLError as err:
+            status = 502
+            body = json.dumps({"error": f"Upstream indisponible: {err.reason}"}).encode("utf-8")
+            content_type = "application/json"
+
+        self.send_response(status)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(body)
 
     def do_POST(self):
         if self.path == "/validate":

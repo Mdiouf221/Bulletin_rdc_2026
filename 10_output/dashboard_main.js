@@ -554,6 +554,48 @@ function switchTab(name, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   if (btn) btn.classList.add('active');
+
+  if (name === 'institution' || name === 'institutions') {
+    setTimeout(() => {
+      const filtersHost = document.getElementById('filters-institution');
+      const hasSeriesFilters = !!(filtersHost && filtersHost.querySelector('input[type="checkbox"]'));
+      if (!hasSeriesFilters) {
+        updateInstitution();
+      } else {
+        applyRegimeQuickFilter();
+      }
+      scheduleInstitutionLayoutRefresh();
+    }, 0);
+  }
+}
+
+function refreshInstitutionLayout() {
+  const tab = document.getElementById('tab-institutions') || document.getElementById('tab-institution');
+  if (!tab || !tab.classList.contains('active')) return;
+  if (window.Plotly && Plotly.Plots && typeof Plotly.Plots.resize === 'function') {
+    tab.querySelectorAll('.plotly-graph-div').forEach(div => Plotly.Plots.resize(div));
+  }
+  window.dispatchEvent(new Event('resize'));
+}
+
+function scheduleInstitutionLayoutRefresh() {
+  setTimeout(refreshInstitutionLayout, 0);
+  setTimeout(refreshInstitutionLayout, 80);
+  setTimeout(refreshInstitutionLayout, 220);
+}
+
+function bindDropdownCloseOnOutsideClick(dropdownId) {
+  const dropdown = document.getElementById(dropdownId);
+  if (!dropdown || dropdown.dataset.outsideCloseBound === '1') return;
+
+  document.addEventListener('click', function(event) {
+    if (!dropdown.open) return;
+    if (!dropdown.contains(event.target)) {
+      dropdown.open = false;
+    }
+  });
+
+  dropdown.dataset.outsideCloseBound = '1';
 }
 
 // ── Onglet indicateurs ───────────────────────────────────────────────────────
@@ -1276,6 +1318,7 @@ function applyRegimeQuickFilter() {
     });
     if (filtersHost._setLocked) filtersHost._setLocked(false);
     if (filtersHost._applySeriesFilter) filtersHost._applySeriesFilter();
+    scheduleInstitutionLayoutRefresh();
     return;
   }
 
@@ -1290,6 +1333,7 @@ function applyRegimeQuickFilter() {
     cb.checked = selected.indexOf(cb.value) !== -1;
   });
   if (filtersHost._applySeriesFilter) filtersHost._applySeriesFilter();
+  scheduleInstitutionLayoutRefresh();
 }
 
 // ── Onglet prestations ─────────────────────────────────────────────────────
@@ -1799,4 +1843,6 @@ function updatePrestationRegime() {
   initDenominatorPanel();
   updateInstitution();
   updatePrestationInstitution();
+  bindDropdownCloseOnOutsideClick('criteria-dropdown');
+  bindDropdownCloseOnOutsideClick('criteria-prest-dropdown');
 })();
