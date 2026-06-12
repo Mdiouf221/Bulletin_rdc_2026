@@ -5655,10 +5655,10 @@ return Plotly;
       <details class="odd-breakdown-fold">
         <summary>
           <span>⚙ Construction des numérateurs</span>
+          <button type="button" id="odd-decision-view-toggle" class="odd-view-btn" style="margin:0 auto;" title="Consulter les décisions pour cette année">Consulter</button>
           <span class="odd-edit-controls">
             <label for="odd-year-select" style="color:#2d3748;font-size:0.82rem;font-weight:600;white-space:nowrap;">Année :</label>
             <select id="odd-year-select" style="min-width:80px;border:1px solid #cbd5e0;border-radius:6px;background:#fff;padding:4px 8px;font-size:0.82rem;"></select>
-            <button type="button" id="odd-decision-view-toggle" class="odd-view-btn" title="Consulter les décisions pour cette année">Consulter</button>
             <button type="button" id="odd-decision-edit-open" class="odd-view-btn" style="background:#2c5282;color:#fff;border-color:#2c5282;" title="Éditer les décisions pour cette année">Éditer</button>
           </span>
         </summary>
@@ -7485,9 +7485,8 @@ function renderOddBranchesVisual() {
   // Afficher la règle une seule fois avant la grille
   const ruleHost = document.getElementById('odd-numerator-rule');
   if (ruleHost) {
-    const ruleText = summaries[0] && summaries[0].ruleText ? summaries[0].ruleText : '';
-    ruleHost.textContent = ruleText;
-    ruleHost.style.display = ruleText ? '' : 'none';
+    ruleHost.textContent = '';
+    ruleHost.style.display = 'none';
   }
 
   // Construire la carte couleurs cohérente sur toutes les années
@@ -7582,7 +7581,6 @@ function renderOddBranchesVisual() {
     return '<div class="odd-year-block">' +
       '<h5>Ann&eacute;e ' + escapeHtml(String(summary.year)) + '</h5>' +
       '<div class="odd-year-total">Num&eacute;rateur = ' + escapeHtml(fmtInt(summary.total)) + '</div>' +
-      '<div class="odd-calc-rule">' + escapeHtml(summary.ruleText) + '</div>' +
       '<div class="odd-calc-tree">' + (institutionBlocks || '<p class="empty">Aucune composante incluse.</p>') + '</div>' +
     '</div>';
   }).join('');
