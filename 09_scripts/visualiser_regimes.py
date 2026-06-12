@@ -81,6 +81,18 @@ def load_all(db_path: Path) -> tuple[list[dict], list[dict], dict, dict]:
            FROM regimes_historique
            ORDER BY institution, regime_code, annee ASC"""
     ).fetchall()]
+    
+    # Charger les métadonnées des prestations depuis prestations_historique
+    prestation_meta_rows = [dict(r) for r in conn.execute(
+        """SELECT institution, regime_code, nom_fr, annee,
+                  fonction_oit, type_paiement, periodicite,
+                  groupe_population, groupe_age, zone_geo,
+                  type_financement, critere_eligibilite,
+                  age_legal_h, age_legal_f, duree_service_requise
+           FROM prestations_historique
+           ORDER BY institution, regime_code, nom_fr, annee ASC"""
+    ).fetchall()]
+    
     conn.close()
 
     # Extraire les années ESS réelles depuis les données de séries temporelles
@@ -201,33 +213,76 @@ def load_all(db_path: Path) -> tuple[list[dict], list[dict], dict, dict]:
                 "ess_years": ess_years_by_regime.get((inst, rc), []),
             }
 
-    # Construire prestation_meta avec tous les champs disponibles
-    for row in prestations:
+    # Construire prestation_meta avec versions par année (comme regime_meta)
+    prestation_meta_raw = {}
+    for row in prestation_meta_rows:
         inst = row["institution"]
         rc = row["regime_code"]
         prest_name = row["nom_fr"]
+        annee = row["annee"]
         if not prest_name:
             continue
         
+        key = (inst, rc, prest_name)
+        if key not in prestation_meta_raw:
+            prestation_meta_raw[key] = []
+        
+        prestation_meta_raw[key].append({
+            "annee": annee,
+            "nom_fr": prest_name,
+            "fonction_oit": row.get("fonction_oit"),
+            "type_paiement": row.get("type_paiement"),
+            "periodicite": row.get("periodicite"),
+            "groupe_population": row.get("groupe_population"),
+            "groupe_age": row.get("groupe_age"),
+            "zone_geo": row.get("zone_geo"),
+            "type_financement": row.get("type_financement"),
+            "critere_eligibilite": row.get("critere_eligibilite"),
+            "age_legal_h": row.get("age_legal_h"),
+            "age_legal_f": row.get("age_legal_f"),
+            "duree_service_requise": row.get("duree_service_requise"),
+        })
+    
+    # Créer le dictionnaire final avec sélecteur de versions
+    for (inst, rc, prest_name), versions in prestation_meta_raw.items():
         prestation_meta.setdefault(inst, {})
         prestation_meta[inst].setdefault(rc, {})
         
-        if prest_name not in prestation_meta[inst][rc]:
-            prestation_meta[inst][rc][prest_name] = {
-                "nom_fr": prest_name,
-                "fonction_oit": row.get("fonction_oit"),
-                "type_paiement": row.get("type_paiement"),
-                "periodicite": row.get("periodicite"),
-                "groupe_population": row.get("groupe_population"),
-                "groupe_age": row.get("groupe_age"),
-                "zone_geo": row.get("zone_geo"),
-                "type_financement": row.get("type_financement"),
-                "critere_eligibilite": row.get("critere_eligibilite"),
-                "age_legal_h": row.get("age_legal_h"),
-                "age_legal_f": row.get("age_legal_f"),
-                "duree_service_requise": row.get("duree_service_requise"),
-                "ess_years": ess_years_by_prestation.get((inst, rc, prest_name), []),
-            }
+        # Trier par année décroissante pour avoir la plus récente en premier
+        versions.sort(key=lambda x: x["annee"] if x["annee"] else 0, reverse=True)
+        
+        # Identifier les champs qui varient
+        field_keys = ["fonction_oit", "type_paiement", "periodicite", "groupe_population", 
+                     "groupe_age", "zone_geo", "type_financement", "critere_eligibilite",
+                     "age_legal_h", "age_legal_f", "duree_service_requise"]
+        variation_fields = []
+        for key in field_keys:
+            values = set(str(v.get(key)) for v in versions)
+            if len(values) > 1:
+                variation_fields.append(key)
+        
+        # Créer les selector_versions (uniquement celles qui changent)
+        selector_versions = []
+        unique_sigs = []
+        for item in versions:
+            sig = json.dumps({k: item.get(k) for k in field_keys}, 
+                           ensure_ascii=False, sort_keys=True)
+            if sig not in unique_sigs:
+                unique_sigs.append(sig)
+                selector_versions.append(item)
+        
+        # Si toutes les versions sont identiques, ne garder que la plus récente
+        if len(selector_versions) == 0:
+            selector_versions = [versions[0]] if versions else []
+        
+        prestation_meta[inst][rc][prest_name] = {
+            "versions": versions,
+            "selector_versions": selector_versions,
+            "reference_year": versions[0]["annee"] if versions else None,
+            "latest_year": versions[0]["annee"] if versions else None,
+            "variation_fields": variation_fields,
+            "ess_years": ess_years_by_prestation.get((inst, rc, prest_name), []),
+        }
 
     return regimes, prestations, regime_meta, prestation_meta
 
@@ -1136,9 +1191,13 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
         # Stocker les graphiques de régime par institution
         charts_prestations[inst]["_regime"] = charts_regime_prest
 
-    # Sérialiser pour JS inline sans fermer accidentellement la balise <script>
+    # Sérialiser pour JS inline sans fermer accidentellement la balise <script>.
+    # Le parseur HTML (mode raw text) ferme le script dès qu'il voit la séquence
+    # littérale </script, même précédée d'un backslash (<\/script).
+    # Remplacer </ par \u003c/ (escape JSON/JS pour <) rend la séquence opaque
+    # au parseur HTML tout en étant correctement décodée par le moteur JS.
     def js_safe_json(data) -> str:
-        return json.dumps(data).replace("</script", "<\\/script")
+        return json.dumps(data).replace("</", "\\u003c/")
 
     charts_inst_json  = js_safe_json(charts_institution)
     tables_inst_json  = js_safe_json(tables_institution)
@@ -1150,38 +1209,24 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     indicateurs_json  = js_safe_json(build_indicateurs_payload(regimes))
     denominateurs_json = js_safe_json({
         "sources": {
-            "wpp_local": {
-                "label": "ONU WPP 2024 (local)",
-                "values": {
-                    "2024": {
-                        "population_totale": 109276265,
-                        "part_15_64": 0.507,
-                        "part_65_plus": 0.026,
-                    },
-                    "2025": {
-                        "population_totale": 112200000,
-                        "part_15_64": None,
-                        "part_65_plus": None,
-                    },
-                },
+            "bm_api": {
+                "label": "Banque mondiale (live)",
+                "description": "Population totale, 15-64, 65+, taux natalité — séries SP.POP.* depuis 1960",
             },
-            "unfpa_local": {
-                "label": "UNFPA Dashboard 2024 (local)",
-                "values": {
-                    "2024": {
-                        "population_totale": 109000000,
-                    },
-                },
+        "wpp_api": {
+                "label": "ONU WPP via PopPyramid (live)",
+                "description": "Pyramide des âges quinquennale RDC — données ONU WPP 2024, toutes tranches d'âge personnalisables, 1950–2100",
             },
-            "wb_api": {
-                "label": "Banque mondiale API (live)",
+            "ilostat_api": {
+                "label": "ILOSTAT / OIT (live)",
+                "description": "Population active employée — séries emploi OIT pour la RDC",
             },
         },
         "defaults": {
-            "source_population_totale": "wb_api",
-            "source_population_active": "wb_api",
-            "source_population_retraite": "wb_api",
-            "source_maternite": "wb_api",
+            "source_population_totale": "bm_api",
+            "source_population_active": "wpp_api",
+            "source_population_retraite": "wpp_api",
+            "source_maternite": "bm_api",
             "year_start_total": min(build_indicateurs_payload(regimes).get("years", [2020])),
             "year_end_total": max(build_indicateurs_payload(regimes).get("years", [2024])),
             "year_start_active": min(build_indicateurs_payload(regimes).get("years", [2020])),
@@ -1296,12 +1341,22 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       gap: 16px;
       margin-bottom: 20px;
     }}
+    .indicator-kpis-numerateurs {{
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-bottom: 0;
+    }}
     .kpi-card {{
       background: #fff;
       border: 1px solid #e2e8f0;
       border-radius: 12px;
       padding: 16px 18px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }}
+    .kpi-card-numerateur {{
+      border-color: #2c5282;
+      border-width: 2px;
+      background: linear-gradient(135deg, #ebf4ff 0%, #ffffff 100%);
+      box-shadow: 0 4px 12px rgba(44,82,130,0.12);
     }}
     .kpi-label {{
       color: #4a5568;
@@ -1314,6 +1369,57 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       font-size: 1.45rem;
       font-weight: 700;
       line-height: 1.25;
+    }}
+    .kpi-icon {{
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+    }}
+    .kpi-sublabel {{
+      color: #718096;
+      font-size: 0.78rem;
+      font-style: italic;
+      margin-top: 4px;
+    }}
+    .numerateurs-title {{
+      color: #2c5282;
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 12px 0 10px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-left: 4px solid #2c5282;
+      padding-left: 10px;
+    }}
+    .calc-details {{
+      margin-top: 18px;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+    }}
+    .calc-details > summary {{
+      cursor: pointer;
+      padding: 11px 16px;
+      background: #f7fafc;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: #2d3748;
+      user-select: none;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }}
+    .calc-details > summary::before {{
+      content: '▶';
+      font-size: 0.75rem;
+      transition: transform 0.2s;
+    }}
+    .calc-details[open] > summary::before {{
+      transform: rotate(90deg);
+    }}
+    .calc-details > summary::-webkit-details-marker {{ display: none; }}
+    .calc-details > :not(summary) {{
+      padding: 16px;
     }}
     .indicator-grid {{
       display: grid;
@@ -1398,11 +1504,59 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       color: #2d3748;
     }}
     .denom-source-list {{
-      margin-top: 8px;
-      border-top: 1px dashed #cbd5e0;
-      padding-top: 8px;
       display: grid;
       gap: 5px;
+    }}
+    /* Surcharge : les labels et inputs dans la source-list ne doivent PAS
+       hériter des styles de .denom-control label / .denom-control input */
+    .denom-source-list label.denom-source-item {{
+      display: flex !important;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: #2d3748;
+      cursor: pointer;
+      margin-bottom: 0;
+      padding: 4px 6px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }}
+    .denom-source-list label.denom-source-item:hover:not(.disabled) {{
+      background: #edf2f7;
+    }}
+    .denom-source-list label.denom-source-item.disabled {{
+      color: #a0aec0;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }}
+    .denom-source-list input[type="radio"] {{
+      width: auto !important;
+      padding: 0 !important;
+      border: none !important;
+      background: none !important;
+      border-radius: 0 !important;
+      flex-shrink: 0;
+      cursor: pointer;
+      accent-color: #2c5282;
+    }}
+    .denom-params-separator {{
+      border-top: 1px solid #dbe4f0;
+      margin-top: 4px;
+      padding-top: 6px;
+    }}
+    .denom-params-separator span {{
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #718096;
+    }}
+    .denom-control input.constrained {{
+      background: #edf2f7;
+      color: #718096;
+      border-color: #e2e8f0;
+      cursor: not-allowed;
     }}
     .denom-source-item {{
       display: flex;
@@ -2070,12 +2224,17 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       Cette vue présente des indicateurs agrégés issus des séries ESS (effectifs et finances).
       Elle ne constitue pas un taux de couverture effective au sens ODD 1.3.1, faute de dénominateurs démographiques intégrés à ce stade.
     </p>
-    <div id="ind-kpis" class="indicator-kpis"></div>
-    <div class="indicator-grid">
-      <div id="ind-chart-pop" class="chart-block"></div>
-      <div id="ind-chart-fin" class="chart-block"></div>
-    </div>
-    <div id="ind-chart-inst" class="chart-block" style="margin-top:16px;"></div>
+    <h4 class="numerateurs-title">Numérateurs ODD 1.3.1 disponibles</h4>
+    <div id="ind-numerateurs" class="indicator-kpis indicator-kpis-numerateurs"></div>
+    <details class="calc-details">
+      <summary>Détail du calcul et indicateurs financiers</summary>
+      <div id="ind-kpis" class="indicator-kpis"></div>
+      <div class="indicator-grid">
+        <div id="ind-chart-pop" class="chart-block"></div>
+        <div id="ind-chart-fin" class="chart-block"></div>
+      </div>
+      <div id="ind-chart-inst" class="chart-block" style="margin-top:16px;"></div>
+    </details>
     <div class="denom-panel">
       <h3>Futurs dénominateurs ODD 1.3.1 (paramétrables)</h3>
       <p class="note-source">
@@ -2085,6 +2244,11 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
         <div class="denom-pack" id="pack-total">
           <h4>Population totale</h4>
           <div class="denom-pack-grid">
+            <div class="denom-control full">
+              <label>Source</label>
+              <div id="denom-sources-total" class="denom-source-list"></div>
+            </div>
+            <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
             <div class="denom-control">
               <label for="denom-total-year-start">Année début</label>
               <input id="denom-total-year-start" type="number" min="2000" max="2100">
@@ -2093,15 +2257,16 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
               <label for="denom-total-year-end">Année fin</label>
               <input id="denom-total-year-end" type="number" min="2000" max="2100">
             </div>
-            <div class="denom-control full">
-              <label>Sources possibles</label>
-              <div id="denom-sources-total" class="denom-source-list"></div>
-            </div>
           </div>
         </div>
         <div class="denom-pack" id="pack-active">
           <h4>Population en âge de travailler</h4>
           <div class="denom-pack-grid">
+            <div class="denom-control full">
+              <label>Source</label>
+              <div id="denom-sources-active" class="denom-source-list"></div>
+            </div>
+            <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
             <div class="denom-control">
               <label for="denom-active-age-min">Âge actif min</label>
               <input id="denom-active-age-min" type="number" min="10" max="40">
@@ -2118,15 +2283,16 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
               <label for="denom-active-year-end">Année fin</label>
               <input id="denom-active-year-end" type="number" min="2000" max="2100">
             </div>
-            <div class="denom-control full">
-              <label>Sources possibles</label>
-              <div id="denom-sources-active" class="denom-source-list"></div>
-            </div>
           </div>
         </div>
         <div class="denom-pack" id="pack-retraite">
           <h4>Population au-delà de l'âge de retraite</h4>
           <div class="denom-pack-grid">
+            <div class="denom-control full">
+              <label>Source</label>
+              <div id="denom-sources-ret" class="denom-source-list"></div>
+            </div>
+            <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
             <div class="denom-control">
               <label for="denom-ret-age-h">Âge retraite hommes</label>
               <input id="denom-ret-age-h" type="number" min="40" max="80">
@@ -2143,15 +2309,16 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
               <label for="denom-ret-year-end">Année fin</label>
               <input id="denom-ret-year-end" type="number" min="2000" max="2100">
             </div>
-            <div class="denom-control full">
-              <label>Sources possibles</label>
-              <div id="denom-sources-ret" class="denom-source-list"></div>
-            </div>
           </div>
         </div>
         <div class="denom-pack" id="pack-maternite">
           <h4>Femmes ayant accouché (proxy naissances vivantes)</h4>
           <div class="denom-pack-grid">
+            <div class="denom-control full">
+              <label>Source</label>
+              <div id="denom-sources-mat" class="denom-source-list"></div>
+            </div>
+            <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
             <div class="denom-control">
               <label for="denom-mat-age-min">Âge maternité min</label>
               <input id="denom-mat-age-min" type="number" min="12" max="30">
@@ -2167,10 +2334,6 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             <div class="denom-control">
               <label for="denom-mat-year-end">Année fin</label>
               <input id="denom-mat-year-end" type="number" min="2000" max="2100">
-            </div>
-            <div class="denom-control full">
-              <label>Sources possibles</label>
-              <div id="denom-sources-mat" class="denom-source-list"></div>
             </div>
           </div>
         </div>
@@ -2284,6 +2447,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             <button type="button" class="chart-mode-btn" data-sex-mode="femmes" onclick="setChartRegimePrestSexMode('femmes')">Femmes</button>
           </div>
         </div>
+        <div id="filters-regime-prestations" class="chart-filters" style="display: none;"></div>
         <div id="charts-regime-prestations"></div>
       </div>
     </div>
@@ -2534,8 +2698,41 @@ function renderCriteriaOptions(inst) {{
     '</div>'
   ) : '';
   
-  host.innerHTML = nameSection + (nameSection && criteriaSection ? '<hr style="margin: 16px 0; border: none; border-top: 2px solid #e2e8f0;">' : '') + criteriaSection;
-  
+  const resetBtn = (nameSection || criteriaSection) ? '<div style="text-align:right;margin-top:10px;"><button type="button" id="criteria-reset-btn" style="padding:4px 14px;font-size:0.82rem;border:1px solid #cbd5e0;border-radius:6px;background:#f7fafc;color:#4a5568;cursor:pointer;" title="Effacer tous les critères">✕ Réinitialiser</button></div>' : '';
+  host.innerHTML = nameSection + (nameSection && criteriaSection ? '<hr style="margin: 16px 0; border: none; border-top: 2px solid #e2e8f0;">' : '') + criteriaSection + resetBtn;
+
+  // Bouton réinitialiser
+  const resetButton = host.querySelector('#criteria-reset-btn');
+  if (resetButton) {{
+    resetButton.addEventListener('click', function() {{
+      host.querySelectorAll('input').forEach(inp => {{
+        inp.checked = false;
+        inp.disabled = false;
+        inp.dataset.wasChecked = 'false';
+      }});
+      host.querySelectorAll('[data-section="criteria"], [data-section="name"]').forEach(el => {{
+        el.style.opacity = '1';
+        el.style.pointerEvents = 'auto';
+      }});
+      updateCriteriaSummary({{}});
+      applyRegimeQuickFilter();
+    }});
+  }}
+
+  // Permettre la désélection des radios par double-clic
+  host.querySelectorAll('input[type="radio"]').forEach(radio => {{
+    radio.addEventListener('mousedown', function() {{
+      this.dataset.wasChecked = this.checked ? 'true' : 'false';
+    }});
+    radio.addEventListener('click', function() {{
+      if (this.dataset.wasChecked === 'true') {{
+        this.checked = false;
+        this.dataset.wasChecked = 'false';
+        this.dispatchEvent(new Event('change', {{ bubbles: true }}));
+      }}
+    }});
+  }});
+
   // Event handlers avec logique d'exclusion mutuelle
   host.querySelectorAll('[data-section="name"] input[type="checkbox"]').forEach(checkbox => {{
     checkbox.addEventListener('change', function() {{
@@ -2563,9 +2760,10 @@ function renderCriteriaOptions(inst) {{
         }}
       }}
       updateCriteriaSummary(getSelectedCriteriaMap());
+      applyRegimeQuickFilter();
     }});
   }});
-  
+
   host.querySelectorAll('[data-section="criteria"] input').forEach(input => {{
     input.addEventListener('change', function() {{
       if (this.checked) {{
@@ -2592,9 +2790,10 @@ function renderCriteriaOptions(inst) {{
         }}
       }}
       updateCriteriaSummary(getSelectedCriteriaMap());
+      applyRegimeQuickFilter();
     }});
   }});
-  
+
   const dropdown = document.getElementById('criteria-dropdown');
   if (dropdown && dropdown.dataset.bound !== '1') {{
     dropdown.addEventListener('toggle', function() {{
@@ -2756,16 +2955,37 @@ function initGraphSeriesFilters(plotContainerId, filtersContainerId, label, onSe
     actions.innerHTML = '<button type="button">Tout</button><button type="button">Aucun</button>';
     filtersHost.appendChild(actions);
 
+    const getActivePlotDiv = () => {{
+      const c = document.getElementById(plotContainerId);
+      return c ? c.querySelector('.plotly-graph-div') : null;
+    }};
     const applySeriesFilter = () => {{
-      const selected = Array.from(filtersHost.querySelectorAll('input[type=\"checkbox\"]'))
+      const activePlotDiv = getActivePlotDiv();
+      if (!activePlotDiv || !activePlotDiv.data) return;
+      const selected = Array.from(filtersHost.querySelectorAll('input[type="checkbox"]'))
         .filter(cb => cb.checked)
         .map(cb => cb.value);
-      const visible = plotDiv.data.map(trace => {{
+      const visible = activePlotDiv.data.map(trace => {{
         const key = trace.legendgroup || trace.name;
         return selected.includes(key) ? true : 'legendonly';
       }});
-      Plotly.restyle(plotDiv, {{ visible: visible }});
+      Plotly.restyle(activePlotDiv, {{ visible: visible }});
       if (onSelectionChange) onSelectionChange(selected);
+    }};
+    // Filtre piloté par liste externe (sélection rapide)
+    filtersHost._applySeriesFilterWithSelection = (allowedKeys) => {{
+      const activePlotDiv = getActivePlotDiv();
+      if (!activePlotDiv || !activePlotDiv.data) return;
+      filtersHost.querySelectorAll('input[type="checkbox"]').forEach(cb => {{
+        cb.checked = !allowedKeys.length || allowedKeys.some(k => cb.value === k || cb.value.startsWith(k));
+      }});
+      const sel2 = Array.from(filtersHost.querySelectorAll('input[type="checkbox"]'))
+        .filter(cb => cb.checked).map(cb => cb.value);
+      const vis2 = activePlotDiv.data.map(trace => {{
+        const key = trace.legendgroup || trace.name;
+        return sel2.includes(key) ? true : 'legendonly';
+      }});
+      Plotly.restyle(activePlotDiv, {{ visible: vis2 }});
     }};
 
     filtersHost.querySelectorAll('input[type=\"checkbox\"]').forEach(cb => {{
@@ -2829,23 +3049,48 @@ function renderIndicateurs() {{
   const totaux = payload.totaux || {{}};
   const byInst = payload.institutions_latest || [];
 
+  const numHost = document.getElementById('ind-numerateurs');
   const kpiHost = document.getElementById('ind-kpis');
-  if (!kpiHost) return;
+  if (!numHost || !kpiHost) return;
 
   if (!latest || !years.length) {{
-    kpiHost.innerHTML = '<p class="empty">Aucune donnée indicateur disponible.</p>';
+    numHost.innerHTML = '<p class="empty">Aucune donnée disponible.</p>';
+    kpiHost.innerHTML = '';
     return;
   }}
 
-  const cards = [
-    {{ label: 'Cotisants actifs (' + latest.annee + ')', value: fmtInt(latest.cotisants) }},
-    {{ label: 'Bénéficiaires (' + latest.annee + ')', value: fmtInt(latest.beneficiaires) }},
+  // Numérateurs ODD 1.3.1 : effectifs couverts (affiché en premier, en évidence)
+  const numCards = [
+    {{
+      label: 'Cotisants actifs (' + latest.annee + ')',
+      sublabel: 'Proxy : population active couverte',
+      value: fmtInt(latest.cotisants),
+      icon: '👷'
+    }},
+    {{
+      label: 'Bénéficiaires (' + latest.annee + ')',
+      sublabel: 'Proxy : personnes recevant des prestations',
+      value: fmtInt(latest.beneficiaires),
+      icon: '🧾'
+    }},
+  ];
+  numHost.innerHTML = numCards.map(card =>
+    '<div class="kpi-card kpi-card-numerateur">' +
+      '<div class="kpi-icon">' + card.icon + '</div>' +
+      '<div class="kpi-label">' + escapeHtml(card.label) + '</div>' +
+      '<div class="kpi-value">' + escapeHtml(card.value) + '</div>' +
+      '<div class="kpi-sublabel">' + escapeHtml(card.sublabel) + '</div>' +
+    '</div>'
+  ).join('');
+
+  // Détail du calcul : ratios et indicateurs financiers (dans le <details>)
+  const detailCards = [
     {{ label: 'Bénéficiaires / Cotisants', value: fmtPct(latest.ratio_benef_cotis) }},
     {{ label: 'Dépenses de prestations', value: fmtMds(latest.depenses_mds) }},
     {{ label: 'Recettes', value: fmtMds(latest.recettes_mds) }},
     {{ label: 'Dépenses / Recettes', value: fmtPct(latest.ratio_dep_rec) }},
   ];
-  kpiHost.innerHTML = cards.map(card =>
+  kpiHost.innerHTML = detailCards.map(card =>
     '<div class="kpi-card"><div class="kpi-label">' + escapeHtml(card.label) + '</div><div class="kpi-value">' + escapeHtml(card.value) + '</div></div>'
   ).join('');
 
@@ -2941,11 +3186,6 @@ function setDenomStatus(text) {{
   if (el) el.textContent = text;
 }}
 
-function localSourceValue(sourceKey, year) {{
-  const src = (DENOMINATEURS_CONFIG.sources || {{}})[sourceKey] || {{}};
-  const values = src.values || {{}};
-  return values[String(year)] || null;
-}}
 
 function renderDenominatorTable(rows) {{
   const host = document.getElementById('denom-results');
@@ -2978,12 +3218,13 @@ function renderDenominatorTable(rows) {{
   host.innerHTML = header + body + '</tbody></table>';
 }}
 
+// ── Banque mondiale ────────────────────────────────────────────────────────
 async function fetchWorldBankIndicator(indicatorCode) {{
   window.__WB_CACHE = window.__WB_CACHE || {{}};
   if (window.__WB_CACHE[indicatorCode]) return window.__WB_CACHE[indicatorCode];
   const url = 'https://api.worldbank.org/v2/country/CD/indicator/' + indicatorCode + '?format=json&per_page=200';
   const res = await fetch(url);
-  if (!res.ok) throw new Error('HTTP ' + res.status);
+  if (!res.ok) throw new Error('Banque mondiale HTTP ' + res.status);
   const data = await res.json();
   const rows = Array.isArray(data) && Array.isArray(data[1]) ? data[1] : [];
   const parsed = rows
@@ -2992,6 +3233,69 @@ async function fetchWorldBankIndicator(indicatorCode) {{
     .filter(r => Number.isFinite(r.year) && Number.isFinite(r.value));
   window.__WB_CACHE[indicatorCode] = parsed;
   return parsed;
+}}
+
+// ── ONU WPP via PopulationPyramid.net ───────────────────────────────────────
+// API gratuite basée sur ONU WPP 2024, sans authentification, CORS ouvert.
+// URL : https://www.populationpyramid.net/api/pp/180/{{YEAR}}/  (180 = M49 RDC)
+// Réponse : {{ females: [{{Age:"0-4", F:12345}}, ...], males: [{{Age:"0-4", M:12345}}, ...] }}
+// Valeurs en personnes (pas en milliers).
+// Cache par année (une requête par année demandée).
+window.__WPP_CACHE = window.__WPP_CACHE || {{}};
+
+async function fetchWPPYear(year) {{
+  const y = String(year);
+  if (window.__WPP_CACHE[y]) return window.__WPP_CACHE[y];
+  const url = 'https://www.populationpyramid.net/api/pp/180/' + y + '/';
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('WPP HTTP ' + res.status + ' pour ' + y);
+  const json = await res.json();
+  // Construire tableau : [{{ageStart, ageEnd, value}}]
+  const parse = row => {{
+    const label = (row.Age || '').trim();
+    if (label === '100+') return {{ ageStart: 100, ageEnd: 999 }};
+    const parts = label.split('-');
+    return {{ ageStart: Number(parts[0]), ageEnd: Number(parts[1] !== undefined ? parts[1] : parts[0]) }};
+  }};
+  const groups = [];
+  const males   = Array.isArray(json.males)   ? json.males   : [];
+  const females = Array.isArray(json.females) ? json.females : [];
+  males.forEach(r => {{
+    const ag = parse(r);
+    groups.push({{ ...ag, value: Number(r.M || 0), sex: 'M' }});
+  }});
+  females.forEach(r => {{
+    const ag = parse(r);
+    groups.push({{ ...ag, value: Number(r.F || 0), sex: 'F' }});
+  }});
+  window.__WPP_CACHE[y] = groups;
+  return groups;
+}}
+
+// Somme la pyramide WPP pour une tranche [ageMin, ageMax] et une année donnée.
+// Stratégie : groupes quinquennaux entièrement inclus dans la tranche.
+async function sumWPPForAgeRange(year, ageMin, ageMax) {{
+  const groups = await fetchWPPYear(year);
+  return groups
+    .filter(r => r.ageStart >= ageMin && r.ageEnd <= ageMax)
+    .reduce((s, r) => s + r.value, 0) || null;
+}}
+
+// ── ILOSTAT / OIT ────────────────────────────────────────────────────────
+// Retourne les actifs employés RDC : [{{year, value}}]
+async function fetchILOSTATEmployment() {{
+  if (window.__ILO_CACHE) return window.__ILO_CACHE;
+  // API ILO REST publique — emploi total RDC, les deux sexes
+  const url = 'https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_AGE_NB_A&ref_area=COD&sex=SEX_T&classif1=AGE_AGGREGATE_TOTAL&time_from=2000&time_to=2030&type=label&decimals=0';
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('ILOSTAT HTTP ' + res.status);
+  const json = await res.json();
+  const rows = (Array.isArray(json.data) ? json.data : [])
+    .filter(r => r.obs_value !== null && r.obs_value !== undefined)
+    .map(r => ({{ year: Number(r.time), value: Number(r.obs_value) }}))
+    .filter(r => Number.isFinite(r.year) && Number.isFinite(r.value));
+  window.__ILO_CACHE = rows;
+  return rows;
 }}
 
 function pickSeriesValue(series, year, useNearestPast) {{
@@ -3049,30 +3353,23 @@ function getSelectedMetricSource(metricShortKey) {{
 
 function sourceIsAvailableForMetric(sourceKey, metricKey, params) {{
   if (!sourceKey || !params || !params.yearStart || !params.yearEnd || params.yearEnd < params.yearStart) return false;
-  if (sourceKey === 'wb_api') {{
+  if (sourceKey === 'bm_api') {{
+    // Banque mondiale : tranches fixes seulement
     if (metricKey === 'population_retraite') {{
       return params.retirementH === 65 && params.retirementF === 65;
     }}
     if (metricKey === 'population_active') {{
       return params.workMin === 15 && params.workMax === 64;
     }}
+    return true; // totale, naissances : toujours dispo
+  }}
+  if (sourceKey === 'wpp_api') {{
+    // WPP PopPyramid : pyramide quinquennale → toutes tranches d'âge possibles
     return true;
   }}
-  for (let y = params.yearStart; y <= params.yearEnd; y += 1) {{
-    const local = localSourceValue(sourceKey, y);
-    if (!local) continue;
-    if (metricKey === 'population_totale' && local.population_totale !== undefined && local.population_totale !== null) return true;
-    if (metricKey === 'population_active') {{
-      if (local.population_active !== undefined && local.population_active !== null) return true;
-      if (params.workMin === 15 && params.workMax === 64 && local.population_totale && Number.isFinite(local.part_15_64)) return true;
-    }}
-    if (metricKey === 'population_retraite') {{
-      if (local.population_retraite !== undefined && local.population_retraite !== null) return true;
-      if (params.retirementH === 65 && params.retirementF === 65 && local.population_totale && Number.isFinite(local.part_65_plus)) return true;
-    }}
-    if ((metricKey === 'naissances' || metricKey === 'femmes_accouche') &&
-      ((local.naissances_vivantes !== undefined && local.naissances_vivantes !== null) ||
-       (local.femmes_accouche !== undefined && local.femmes_accouche !== null))) return true;
+  if (sourceKey === 'ilostat_api') {{
+    // ILOSTAT : uniquement population active (emploi total, pas de tranche custom)
+    return metricKey === 'population_active';
   }}
   return false;
 }}
@@ -3107,78 +3404,77 @@ function refreshMetricSources(sources) {{
   renderMetricSourceOptions('mat', 'naissances', getSelectedMetricSource('mat'), sources);
 }}
 
-async function getMetricValue(sourceKey, metricKey, year, params, wbSeriesCache) {{
+async function getMetricValue(sourceKey, metricKey, year, params, seriesCache) {{
   if (!sourceKey) return {{ value: null, meta: 'Source non définie' }};
 
-  const local = localSourceValue(sourceKey, year);
-  if (sourceKey !== 'wb_api') {{
-    if (!local) return {{ value: null, meta: sourceKey + ' : N/D pour ' + year }};
+  // ── Banque mondiale ──────────────────────────────────────────────────────
+  if (sourceKey === 'bm_api') {{
     if (metricKey === 'population_totale') {{
-      return {{ value: local.population_totale || null, meta: sourceKey }};
+      seriesCache.bm_total = seriesCache.bm_total || await fetchWorldBankIndicator('SP.POP.TOTL');
+      return {{ value: pickSeriesValue(seriesCache.bm_total, year, true), meta: 'BM (SP.POP.TOTL)' }};
     }}
     if (metricKey === 'population_active') {{
-      if (local.population_active !== undefined && local.population_active !== null) {{
-        return {{ value: local.population_active, meta: sourceKey + ' (direct)' }};
+      if (params.workMin !== 15 || params.workMax !== 64) {{
+        return {{ value: null, meta: 'BM : tranche 15-64 uniquement' }};
       }}
-      if (params.workMin === 15 && params.workMax === 64 && local.population_totale && Number.isFinite(local.part_15_64)) {{
-        return {{ value: local.population_totale * Number(local.part_15_64), meta: sourceKey + ' (dérivé part_15_64)' }};
-      }}
-      return {{ value: null, meta: sourceKey + ' : N/D' }};
+      seriesCache.bm_active = seriesCache.bm_active || await fetchWorldBankIndicator('SP.POP.1564.TO');
+      return {{ value: pickSeriesValue(seriesCache.bm_active, year, true), meta: 'BM (SP.POP.1564.TO)' }};
     }}
     if (metricKey === 'population_retraite') {{
-      if (local.population_retraite !== undefined && local.population_retraite !== null) {{
-        return {{ value: local.population_retraite, meta: sourceKey + ' (direct)' }};
+      if (params.retirementH !== 65 || params.retirementF !== 65) {{
+        return {{ value: null, meta: 'BM : tranche 65+ uniquement' }};
       }}
-      if (params.retirementH === 65 && params.retirementF === 65 && local.population_totale && Number.isFinite(local.part_65_plus)) {{
-        return {{ value: local.population_totale * Number(local.part_65_plus), meta: sourceKey + ' (dérivé part_65_plus)' }};
-      }}
-      return {{ value: null, meta: sourceKey + ' : âge retraite non supporté localement' }};
+      seriesCache.bm_old = seriesCache.bm_old || await fetchWorldBankIndicator('SP.POP.65UP.TO');
+      return {{ value: pickSeriesValue(seriesCache.bm_old, year, true), meta: 'BM (SP.POP.65UP.TO)' }};
     }}
-    if (metricKey === 'naissances') {{
-      if (local.naissances_vivantes !== undefined && local.naissances_vivantes !== null) {{
-        return {{ value: local.naissances_vivantes, meta: sourceKey + ' (direct)' }};
-      }}
-      return {{ value: null, meta: sourceKey + ' : N/D' }};
+    if (metricKey === 'naissances' || metricKey === 'femmes_accouche') {{
+      seriesCache.bm_total = seriesCache.bm_total || await fetchWorldBankIndicator('SP.POP.TOTL');
+      seriesCache.bm_cbr   = seriesCache.bm_cbr   || await fetchWorldBankIndicator('SP.DYN.CBRT.IN');
+      const pop = pickSeriesValue(seriesCache.bm_total, year, true);
+      const cbr = pickSeriesValue(seriesCache.bm_cbr,   year, true);
+      if (!pop || !cbr) return {{ value: null, meta: 'BM : données natalité incomplètes' }};
+      return {{ value: (pop * cbr) / 1000.0, meta: 'BM (CBR × Pop totale)' }};
     }}
-    if (metricKey === 'femmes_accouche') {{
-      if (local.femmes_accouche !== undefined && local.femmes_accouche !== null) {{
-        return {{ value: local.femmes_accouche, meta: sourceKey + ' (direct)' }};
-      }}
-      if (local.naissances_vivantes !== undefined && local.naissances_vivantes !== null) {{
-        return {{ value: local.naissances_vivantes, meta: sourceKey + ' (proxy naissances)' }};
-      }}
-      return {{ value: null, meta: sourceKey + ' : N/D' }};
-    }}
-    return {{ value: null, meta: sourceKey + ' : métrique non gérée' }};
+    return {{ value: null, meta: 'BM : métrique non gérée' }};
   }}
 
-  if (metricKey === 'population_totale') {{
-    wbSeriesCache.total = wbSeriesCache.total || await fetchWorldBankIndicator('SP.POP.TOTL');
-    return {{ value: pickSeriesValue(wbSeriesCache.total, year, true), meta: 'wb_api (SP.POP.TOTL)' }};
-  }}
-  if (metricKey === 'population_active') {{
-    if (params.workMin !== 15 || params.workMax !== 64) {{
-      return {{ value: null, meta: 'wb_api : direct uniquement pour 15-64' }};
+  // ── ONU WPP via PopulationPyramid.net ───────────────────────────────────
+  if (sourceKey === 'wpp_api') {{
+    if (metricKey === 'population_totale') {{
+      const v = await sumWPPForAgeRange(year, 0, 999);
+      return {{ value: v, meta: 'WPP (pyramide totale ' + year + ')' }};
     }}
-    wbSeriesCache.active = wbSeriesCache.active || await fetchWorldBankIndicator('SP.POP.1564.TO');
-    return {{ value: pickSeriesValue(wbSeriesCache.active, year, true), meta: 'wb_api (SP.POP.1564.TO)' }};
-  }}
-  if (metricKey === 'population_retraite') {{
-    if (params.retirementH !== 65 || params.retirementF !== 65) {{
-      return {{ value: null, meta: 'wb_api : direct uniquement pour 65+' }};
+    if (metricKey === 'population_active') {{
+      const v = await sumWPPForAgeRange(year, params.workMin || 15, params.workMax || 64);
+      return {{ value: v, meta: 'WPP (' + (params.workMin||15) + '-' + (params.workMax||64) + ', ' + year + ')' }};
     }}
-    wbSeriesCache.old = wbSeriesCache.old || await fetchWorldBankIndicator('SP.POP.65UP.TO');
-    return {{ value: pickSeriesValue(wbSeriesCache.old, year, true), meta: 'wb_api (SP.POP.65UP.TO)' }};
+    if (metricKey === 'population_retraite') {{
+      const retMin = Math.min(params.retirementH || 65, params.retirementF || 65);
+      const v = await sumWPPForAgeRange(year, retMin, 999);
+      return {{ value: v, meta: 'WPP (' + retMin + '+, ' + year + ')' }};
+    }}
+    if (metricKey === 'naissances' || metricKey === 'femmes_accouche') {{
+      // Proxy : on utilise taux brut BM × pop WPP totale
+      seriesCache.bm_cbr = seriesCache.bm_cbr || await fetchWorldBankIndicator('SP.DYN.CBRT.IN');
+      const pop = await sumWPPForAgeRange(year, 0, 999);
+      const cbr = pickSeriesValue(seriesCache.bm_cbr, year, true);
+      if (!pop || !cbr) return {{ value: null, meta: 'WPP+BM : données natalité incomplètes' }};
+      return {{ value: (pop * cbr) / 1000.0, meta: 'WPP pop × BM CBR (proxy)' }};
+    }}
+    return {{ value: null, meta: 'WPP : métrique non gérée' }};
   }}
-  if (metricKey === 'naissances' || metricKey === 'femmes_accouche') {{
-    wbSeriesCache.total = wbSeriesCache.total || await fetchWorldBankIndicator('SP.POP.TOTL');
-    wbSeriesCache.cbr = wbSeriesCache.cbr || await fetchWorldBankIndicator('SP.DYN.CBRT.IN');
-    const pop = pickSeriesValue(wbSeriesCache.total, year, true);
-    const cbr = pickSeriesValue(wbSeriesCache.cbr, year, true);
-    if (!pop || !cbr) return {{ value: null, meta: 'wb_api : données incomplètes' }};
-    return {{ value: (pop * cbr) / 1000.0, meta: 'wb_api (SP.DYN.CBRT.IN x SP.POP.TOTL)' }};
+
+  // ── ILOSTAT / OIT ────────────────────────────────────────────────────────
+  if (sourceKey === 'ilostat_api') {{
+    if (metricKey !== 'population_active') {{
+      return {{ value: null, meta: 'ILOSTAT : uniquement population active' }};
+    }}
+    seriesCache.ilo = seriesCache.ilo || await fetchILOSTATEmployment();
+    const v = pickSeriesValue(seriesCache.ilo, year, true);
+    return {{ value: v, meta: 'ILOSTAT (emploi total RDC)' }};
   }}
-  return {{ value: null, meta: 'wb_api : métrique non gérée' }};
+
+  return {{ value: null, meta: sourceKey + ' : source inconnue' }};
 }}
 
 async function computeDenominators() {{
@@ -3201,24 +3497,24 @@ async function computeDenominators() {{
   const maxYear = Math.max(...ranges.map(r => r.yearEnd));
 
   setDenomStatus('Calcul multi-annuel en cours...');
-  const wbSeriesCache = {{}};
+  const seriesCache = {{}};
   const outRows = [];
   try {{
     for (let y = minYear; y <= maxYear; y += 1) {{
       const total = (y >= pTotal.yearStart && y <= pTotal.yearEnd)
-        ? await getMetricValue(srcTotal, 'population_totale', y, pTotal, wbSeriesCache)
+        ? await getMetricValue(srcTotal, 'population_totale', y, pTotal, seriesCache)
         : {{ value: null, meta: 'hors plage' }};
       const active = (y >= pActive.yearStart && y <= pActive.yearEnd)
-        ? await getMetricValue(srcActive, 'population_active', y, pActive, wbSeriesCache)
+        ? await getMetricValue(srcActive, 'population_active', y, pActive, seriesCache)
         : {{ value: null, meta: 'hors plage' }};
       const retraite = (y >= pRet.yearStart && y <= pRet.yearEnd)
-        ? await getMetricValue(srcRet, 'population_retraite', y, pRet, wbSeriesCache)
+        ? await getMetricValue(srcRet, 'population_retraite', y, pRet, seriesCache)
         : {{ value: null, meta: 'hors plage' }};
       const naissances = (y >= pMat.yearStart && y <= pMat.yearEnd)
-        ? await getMetricValue(srcMat, 'naissances', y, pMat, wbSeriesCache)
+        ? await getMetricValue(srcMat, 'naissances', y, pMat, seriesCache)
         : {{ value: null, meta: 'hors plage' }};
       const femmes = (y >= pMat.yearStart && y <= pMat.yearEnd)
-        ? await getMetricValue(srcMat, 'femmes_accouche', y, pMat, wbSeriesCache)
+        ? await getMetricValue(srcMat, 'femmes_accouche', y, pMat, seriesCache)
         : {{ value: null, meta: 'hors plage' }};
       outRows.push({{
         year: y,
@@ -3240,6 +3536,74 @@ async function computeDenominators() {{
   }}
   renderDenominatorTable(outRows);
   setDenomStatus('Dénominateurs calculés pour ' + outRows.length + ' année(s).');
+}}
+
+// Contraintes de paramètres selon la source choisie.
+// Quand BM est sélectionné : tranches d'âge fixes (15-64, 65+) → on verrouille les champs.
+// Quand WPP est sélectionné : tranches libres → on déverrouille.
+// Quand ILOSTAT : pas de tranche d'âge (emploi agrégé) → on masque/verrouille les champs d'âge.
+const SOURCE_CONSTRAINTS = {{
+  bm_api: {{
+    population_active:  {{ workMin: 15, workMax: 64,  lock: ['denom-active-age-min', 'denom-active-age-max'] }},
+    population_retraite: {{ retH: 65,    retF: 65,     lock: ['denom-ret-age-h', 'denom-ret-age-f'] }},
+  }},
+  wpp_api: {{
+    population_active:   {{ lock: [] }},
+    population_retraite: {{ lock: [] }},
+    naissances:          {{ lock: [] }},
+  }},
+  ilostat_api: {{
+    population_active: {{ lock: ['denom-active-age-min', 'denom-active-age-max'], note: "ILOSTAT : emploi total, tranche d'âge non personnalisable" }},
+  }},
+}};
+
+function applySourceConstraints(metricShortKey, metricKey, sourceKey) {{
+  const constraints = (SOURCE_CONSTRAINTS[sourceKey] || {{}})[metricKey] || {{}};
+  const lockIds = constraints.lock || [];
+
+  // Déterminer tous les champs de paramètre de ce paquet
+  const allParamIds = {{
+    population_active:   ['denom-active-age-min', 'denom-active-age-max'],
+    population_retraite: ['denom-ret-age-h', 'denom-ret-age-f'],
+    naissances:          ['denom-mat-age-min', 'denom-mat-age-max'],
+    femmes_accouche:     ['denom-mat-age-min', 'denom-mat-age-max'],
+  }}[metricKey] || [];
+
+  // Déverrouiller tous, puis reverrouiller ceux qui doivent l'être
+  allParamIds.forEach(id => {{
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.readOnly = false;
+    el.classList.remove('constrained');
+    el.title = '';
+  }});
+
+  // Pré-remplir les valeurs contraintes
+  if (sourceKey === 'bm_api' && metricKey === 'population_active') {{
+    const mn = document.getElementById('denom-active-age-min');
+    const mx = document.getElementById('denom-active-age-max');
+    if (mn) {{ mn.value = 15; mn.readOnly = true; mn.classList.add('constrained'); mn.title = 'Banque mondiale : tranche 15-64 uniquement'; }}
+    if (mx) {{ mx.value = 64; mx.readOnly = true; mx.classList.add('constrained'); mx.title = 'Banque mondiale : tranche 15-64 uniquement'; }}
+  }}
+  if (sourceKey === 'bm_api' && metricKey === 'population_retraite') {{
+    const h = document.getElementById('denom-ret-age-h');
+    const f = document.getElementById('denom-ret-age-f');
+    if (h) {{ h.value = 65; h.readOnly = true; h.classList.add('constrained'); h.title = 'Banque mondiale : tranche 65+ uniquement'; }}
+    if (f) {{ f.value = 65; f.readOnly = true; f.classList.add('constrained'); f.title = 'Banque mondiale : tranche 65+ uniquement'; }}
+  }}
+  if (sourceKey === 'ilostat_api' && metricKey === 'population_active') {{
+    const mn = document.getElementById('denom-active-age-min');
+    const mx = document.getElementById('denom-active-age-max');
+    const note = "ILOSTAT : emploi total, tranche d'âge non applicable";
+    if (mn) {{ mn.readOnly = true; mn.classList.add('constrained'); mn.title = note; }}
+    if (mx) {{ mx.readOnly = true; mx.classList.add('constrained'); mx.title = note; }}
+  }}
+}}
+
+function applyAllConstraints() {{
+  applySourceConstraints('active', 'population_active',   getSelectedMetricSource('active'));
+  applySourceConstraints('ret',    'population_retraite',  getSelectedMetricSource('ret'));
+  applySourceConstraints('mat',    'naissances',           getSelectedMetricSource('mat'));
 }}
 
 function initDenominatorPanel() {{
@@ -3269,6 +3633,9 @@ function initDenominatorPanel() {{
   renderMetricSourceOptions('ret', 'population_retraite', defaults.source_population_retraite, sources);
   renderMetricSourceOptions('mat', 'naissances', defaults.source_maternite, sources);
 
+  // Appliquer les contraintes initiales selon les sources par défaut
+  applyAllConstraints();
+
   const refreshBtn = document.getElementById('denom-refresh');
   if (refreshBtn) {{
     refreshBtn.addEventListener('click', () => {{
@@ -3278,7 +3645,11 @@ function initDenominatorPanel() {{
 
   document.querySelectorAll('.denom-pack input').forEach(el => {{
     el.addEventListener('change', () => {{
-      refreshMetricSources(sources);
+      // Si c'est un radio de source : appliquer les contraintes puis rafraîchir
+      if (el.type === 'radio') {{
+        applyAllConstraints();
+        refreshMetricSources(sources);
+      }}
       computeDenominators();
     }});
   }});
@@ -3337,6 +3708,14 @@ function setChartSexMode(mode, instOverride) {{
   const inst = instOverride || document.getElementById('sel-institution').value;
   injectHtmlAndRunScripts('charts-institution', getChartHtml(inst, modeValue));
   syncChartModeButtons(modeValue);
+  // Reconstruire les filtres de séries sur le nouveau graphique injecté
+  initGraphSeriesFilters(
+    'charts-institution',
+    'filters-institution',
+    'Régimes',
+    selected => renderRegimeDescription(inst, selected),
+    () => applyRegimeQuickFilter()
+  );
   window.dispatchEvent(new Event('resize'));
 }}
 
@@ -3380,7 +3759,6 @@ function applyRegimeQuickFilter() {{
   inputs.forEach(cb => {{
     cb.checked = selected.indexOf(cb.value) !== -1;
   }});
-  if (filtersHost._setLocked) filtersHost._setLocked(true);
   if (filtersHost._applySeriesFilter) filtersHost._applySeriesFilter();
 }}
 
@@ -3427,6 +3805,14 @@ function setChartRegimePrestSexMode(mode, instOverride, rcOverride) {{
   const rc = rcOverride || document.getElementById('sel-prest-regime').value;
   injectHtmlAndRunScripts('charts-regime-prestations', getChartRegimePrestHtml(inst, rc, modeValue));
   syncChartRegimePrestModeButtons(modeValue);
+  // Connecter les filtres de séries au nouveau graphique prestation
+  initGraphSeriesFilters(
+    'charts-regime-prestations',
+    'filters-regime-prestations',
+    'Prestations',
+    null,
+    () => applyPrestationQuickFilter()
+  );
   window.dispatchEvent(new Event('resize'));
 }}
 
@@ -3440,46 +3826,72 @@ function setTablePrestSexMode(mode, instOverride, rcOverride) {{
   syncTablePrestModeButtons(modeValue);
 }}
 
-function makePrestationCard(inst, rc, prest_name) {{
-  const meta = getPrestationMetaData(inst, rc, prest_name);
-  if (!meta) {{
+function makePrestationCard(inst, rc, prest_name, activeIndex) {{
+  const data = getPrestationMetaData(inst, rc, prest_name);
+  const versions = data ? (data.selector_versions || []) : [];
+  if (!versions.length) {{
     return '<div class="regime-card"><p class="regime-card-title">' + escapeHtml(prest_name) + '</p><p class="empty">Description indisponible.</p></div>';
   }}
   
-  const asText = (val) => (val === null || val === undefined || String(val).trim() === '')
+  const idx = (activeIndex >= 0 && activeIndex < versions.length) ? activeIndex : 0;
+  const meta = versions[idx];
+  const varied = new Set((data && data.variation_fields) || []);
+  const asText = (val) => (val === null || val === undefined || String(val).trim() === '' || String(val) === 'None')
     ? 'Non renseigné'
     : String(val);
   
-  const essYears = meta.ess_years || [];
+  // Utiliser les années ESS réelles
+  const essYears = (data && data.ess_years) || [];
   const yearsDisplay = essYears.length ? essYears.join(', ') : 'Non renseigné';
   
-  const field = (label, value) => (
+  const otherButtons = versions.map((v, i) =>
+    '<button type="button" class="regime-version-btn' + (i === idx ? ' active' : '') + '" onclick="switchPrestationVersion(' +
+      JSON.stringify(inst) + ',' + JSON.stringify(rc) + ',' + JSON.stringify(prest_name) + ',' + i + ')">' + escapeHtml(asText(v.annee)) + '</button>'
+  ).join('');
+  
+  const otherLine = versions.length > 1
+    ? '<div class="regime-version-row"><span class="k">Années de référence</span>' + otherButtons + '</div>'
+    : '';
+  
+  const field = (label, value, key) => (
     '<div class="k">' + escapeHtml(label) + '</div>' +
-    '<div class="v">' + escapeHtml(asText(value)) + '</div>'
+    '<div class="v' + (varied.has(key) ? ' varied' : '') + '">' + escapeHtml(asText(value)) + '</div>'
   );
   
   return (
-    '<div class="regime-card">' +
-      '<p class="regime-card-title"><span>' + escapeHtml(prest_name) + '</span></p>' +
+    '<div class="regime-card" data-inst="' + escapeHtml(inst) + '" data-rc="' + escapeHtml(rc) + '" data-prest="' + escapeHtml(prest_name) + '" data-active-index="' + idx + '">' +
+      '<p class="regime-card-title">' +
+        '<span>' + escapeHtml(prest_name) + '</span>' +
+        '<span class="regime-year-chip">' + escapeHtml(asText(meta.annee)) + '</span>' +
+      '</p>' +
       '<div class="regime-grid">' +
-        field('Institution', inst) +
-        field('Régime', NOM_COURT[rc] || rc) +
-        field('Nom prestation', prest_name) +
-        field('Années disponibles', yearsDisplay) +
-        field('Fonction OIT', meta.fonction_oit) +
-        field('Type de paiement', meta.type_paiement) +
-        field('Périodicité', meta.periodicite) +
-        field('Groupe de population', meta.groupe_population) +
-        field('Groupe d\\'âge', meta.groupe_age) +
-        field('Zone géographique', meta.zone_geo) +
-        field('Type de financement', meta.type_financement) +
-        field('Critère d\\'éligibilité', meta.critere_eligibilite) +
-        field('Âge légal hommes', meta.age_legal_h) +
-        field('Âge légal femmes', meta.age_legal_f) +
-        field('Durée service requise', meta.duree_service_requise) +
+        field('Institution', inst, 'institution') +
+        field('Régime', NOM_COURT[rc] || rc, 'regime') +
+        field('Nom prestation', prest_name, 'nom_fr') +
+        field('Années disponibles', yearsDisplay, 'available_years') +
+        field('Fonction OIT', meta.fonction_oit, 'fonction_oit') +
+        field('Type de paiement', meta.type_paiement, 'type_paiement') +
+        field('Périodicité', meta.periodicite, 'periodicite') +
+        field('Groupe de population', meta.groupe_population, 'groupe_population') +
+        field('Groupe d\\'âge', meta.groupe_age, 'groupe_age') +
+        field('Zone géographique', meta.zone_geo, 'zone_geo') +
+        field('Type de financement', meta.type_financement, 'type_financement') +
+        field('Critère d\\'éligibilité', meta.critere_eligibilite, 'critere_eligibilite') +
+        field('Âge légal hommes', meta.age_legal_h, 'age_legal_h') +
+        field('Âge légal femmes', meta.age_legal_f, 'age_legal_f') +
+        field('Durée service requise', meta.duree_service_requise, 'duree_service_requise') +
       '</div>' +
+      otherLine +
     '</div>'
   );
+}}
+
+function switchPrestationVersion(inst, rc, prest_name, idx) {{
+  const container = document.getElementById('prestation-description');
+  if (!container) return;
+  const card = container.querySelector('[data-inst="' + inst + '"][data-rc="' + rc + '"][data-prest="' + prest_name + '"]');
+  if (!card) return;
+  card.outerHTML = makePrestationCard(inst, rc, prest_name, idx);
 }}
 
 function renderPrestationDescription(inst, rc, selected) {{
@@ -3499,7 +3911,7 @@ function renderPrestationDescription(inst, rc, selected) {{
   Object.keys(prestMap).forEach(prest_name => {{
     // Filtrer selon la sélection (si applicable)
     if (selectedList.includes(prest_name)) {{
-      cards.push(makePrestationCard(inst, rc, prest_name));
+      cards.push(makePrestationCard(inst, rc, prest_name, 0));
     }}
   }});
   
@@ -3523,7 +3935,12 @@ function buildPrestationCatalog(inst, rc) {{
   }};
   
   Object.keys(prestMap).forEach(prest_name => {{
-    const meta = prestMap[prest_name];
+    const data = prestMap[prest_name];
+    const versions = (data && data.selector_versions) || [];
+    if (!versions.length) return;
+    
+    // Utiliser la version la plus récente (dernière dans le tableau)
+    const meta = versions[versions.length - 1];
     
     // Nom prestation
     if (prest_name && !catalog.nom_prestation.includes(prest_name)) {{
@@ -3532,49 +3949,49 @@ function buildPrestationCatalog(inst, rc) {{
     
     // Fonction OIT
     const func = meta.fonction_oit;
-    if (func && !catalog.fonction_oit.includes(func)) {{
+    if (func && func !== 'None' && !catalog.fonction_oit.includes(func)) {{
       catalog.fonction_oit.push(func);
     }}
     
     // Type paiement
     const typePaie = meta.type_paiement;
-    if (typePaie && !catalog.type_paiement.includes(typePaie)) {{
+    if (typePaie && typePaie !== 'None' && !catalog.type_paiement.includes(typePaie)) {{
       catalog.type_paiement.push(typePaie);
     }}
     
     // Périodicité
     const period = meta.periodicite;
-    if (period && !catalog.periodicite.includes(period)) {{
+    if (period && period !== 'None' && !catalog.periodicite.includes(period)) {{
       catalog.periodicite.push(period);
     }}
     
     // Groupe population
     const grpPop = meta.groupe_population;
-    if (grpPop && !catalog.groupe_population.includes(grpPop)) {{
+    if (grpPop && grpPop !== 'None' && !catalog.groupe_population.includes(grpPop)) {{
       catalog.groupe_population.push(grpPop);
     }}
     
     // Groupe âge
     const grpAge = meta.groupe_age;
-    if (grpAge && !catalog.groupe_age.includes(grpAge)) {{
+    if (grpAge && grpAge !== 'None' && !catalog.groupe_age.includes(grpAge)) {{
       catalog.groupe_age.push(grpAge);
     }}
     
     // Zone géo
     const zone = meta.zone_geo;
-    if (zone && !catalog.zone_geo.includes(zone)) {{
+    if (zone && zone !== 'None' && !catalog.zone_geo.includes(zone)) {{
       catalog.zone_geo.push(zone);
     }}
     
     // Type financement
     const typeFin = meta.type_financement;
-    if (typeFin && !catalog.type_financement.includes(typeFin)) {{
+    if (typeFin && typeFin !== 'None' && !catalog.type_financement.includes(typeFin)) {{
       catalog.type_financement.push(typeFin);
     }}
     
     // Critère éligibilité
     const critElig = meta.critere_eligibilite;
-    if (critElig && !catalog.critere_eligibilite.includes(critElig)) {{
+    if (critElig && critElig !== 'None' && !catalog.critere_eligibilite.includes(critElig)) {{
       catalog.critere_eligibilite.push(critElig);
     }}
   }});
@@ -3590,59 +4007,139 @@ function buildPrestationCatalog(inst, rc) {{
 function renderPrestationCriteriaOptions(inst, rc) {{
   const host = document.getElementById('criteria-prest-options');
   if (!host) return;
-  
+
   const catalog = buildPrestationCatalog(inst, rc);
-  
-  const sections = [
-    {{ key: 'nom_prestation', label: 'Nom de la prestation', is_multi: true }},
-    {{ key: 'fonction_oit', label: 'Fonction OIT', is_multi: true }},
-    {{ key: 'type_paiement', label: 'Type de paiement', is_multi: false }},
-    {{ key: 'periodicite', label: 'Périodicité', is_multi: false }},
-    {{ key: 'groupe_population', label: 'Groupe de population', is_multi: false }},
-    {{ key: 'groupe_age', label: 'Groupe d\\'âge', is_multi: false }},
-    {{ key: 'zone_geo', label: 'Zone géographique', is_multi: false }},
-    {{ key: 'type_financement', label: 'Type de financement', is_multi: false }},
-    {{ key: 'critere_eligibilite', label: 'Critère d\\'éligibilité', is_multi: false }}
+
+  // Section 1 : Sélection directe par nom de prestation
+  const nameSection = catalog.nom_prestation.length ? (
+    '<div class="criteria-section">' +
+      '<div class="criteria-section-title">Sélection directe</div>' +
+      '<div class="criteria-group" data-section="name">' +
+        '<div class="criteria-group-title">Nom de la prestation</div>' +
+        '<div class="criteria-group-items">' +
+          catalog.nom_prestation.map(name => (
+            '<label class="criteria-option">' +
+              '<input type="checkbox" data-section="name" data-field="nom_prestation" data-value="' + escapeHtml(name) + '">' +
+              '<span>' + escapeHtml(name) + '</span>' +
+            '</label>'
+          )).join('') +
+        '</div>' +
+      '</div>' +
+    '</div>'
+  ) : '';
+
+  // Section 2 : Filtrage par critères
+  const criteriaFields = [
+    {{ key: 'fonction_oit',        label: 'Fonction OIT',            is_multi: true }},
+    {{ key: 'type_paiement',       label: 'Type de paiement',        is_multi: false }},
+    {{ key: 'periodicite',         label: 'Périodicité',             is_multi: false }},
+    {{ key: 'groupe_population',   label: 'Groupe de population',    is_multi: false }},
+    {{ key: 'groupe_age',          label: "Groupe d'âge",            is_multi: false }},
+    {{ key: 'zone_geo',            label: 'Zone géographique',       is_multi: false }},
+    {{ key: 'type_financement',    label: 'Type de financement',     is_multi: false }},
+    {{ key: 'critere_eligibilite', label: "Critère d'éligibilité",   is_multi: false }},
   ];
-  
-  let html = '';
-  
-  sections.forEach(section => {{
-    const values = catalog[section.key] || [];
-    if (!values.length) return;
-    
-    html += '<div class="criteria-group" data-section="' + escapeHtml(section.key) + '">';
-    html += '<div class="criteria-group-title">' + escapeHtml(section.label) + '</div>';
-    html += '<div class="criteria-group-items">';
-    
-    const inputType = section.is_multi ? 'checkbox' : 'radio';
-    const inputName = section.is_multi ? '' : 'criteria_' + section.key;
-    
-    values.forEach(value => {{
-      const displayValue = value;
-      const id = 'crit-' + section.key + '-' + String(value).replace(/[^a-zA-Z0-9]/g, '_');
-      html += '<label class="criteria-option">';
-      html += '<input type="' + inputType + '"';
-      if (inputName) html += ' name="' + inputName + '"';
-      html += ' value="' + escapeHtml(value) + '"';
-      html += ' data-field="' + section.key + '"';
-      html += '>';
-      html += '<span>' + escapeHtml(displayValue) + '</span>';
-      html += '</label>';
+
+  const criteriaGroups = criteriaFields
+    .map(f => ({{ ...f, values: catalog[f.key] || [] }}))
+    .filter(f => f.values.length > 0);
+
+  const criteriaSection = criteriaGroups.length ? (
+    '<div class="criteria-section">' +
+      '<div class="criteria-section-title">Filtrage par critères</div>' +
+      criteriaGroups.map(group => (
+        '<div class="criteria-group" data-section="criteria" data-field="' + escapeHtml(group.key) + '">' +
+          '<div class="criteria-group-title">' + escapeHtml(group.label) + '</div>' +
+          '<div class="criteria-group-items">' +
+            group.values.map(value => (
+              '<label class="criteria-option">' +
+                (group.is_multi
+                  ? '<input type="checkbox" data-section="criteria" data-field="' + escapeHtml(group.key) + '" data-value="' + escapeHtml(value) + '">'
+                  : '<input type="radio"    data-section="criteria" name="prest-criteria-' + escapeHtml(group.key) + '" data-field="' + escapeHtml(group.key) + '" data-value="' + escapeHtml(value) + '">') +
+                '<span>' + escapeHtml(value) + '</span>' +
+              '</label>'
+            )).join('') +
+          '</div>' +
+        '</div>'
+      )).join('') +
+    '</div>'
+  ) : '';
+
+  const resetBtn = (nameSection || criteriaSection)
+    ? '<div style="text-align:right;margin-top:10px;"><button type="button" id="criteria-prest-reset-btn" style="padding:4px 14px;font-size:0.82rem;border:1px solid #cbd5e0;border-radius:6px;background:#f7fafc;color:#4a5568;cursor:pointer;">&#x2715; Réinitialiser</button></div>'
+    : '';
+
+  host.innerHTML =
+    nameSection +
+    (nameSection && criteriaSection ? '<hr style="margin:16px 0;border:none;border-top:2px solid #e2e8f0;">' : '') +
+    criteriaSection +
+    resetBtn;
+
+  // ── Logique d'exclusion mutuelle ──────────────────────────────────────────
+  function enableSection(section, enabled) {{
+    host.querySelectorAll('[data-section="' + section + '"] input').forEach(inp => {{
+      inp.disabled = !enabled;
     }});
-    
-    html += '</div></div>';
-  }});
-  
-  host.innerHTML = html;
-  
-  // Attacher les événements
-  host.querySelectorAll('input').forEach(input => {{
-    input.addEventListener('change', function() {{
+    host.querySelectorAll('[data-section="' + section + '"]').forEach(el => {{
+      el.style.opacity = enabled ? '1' : '0.5';
+      el.style.pointerEvents = enabled ? 'auto' : 'none';
+    }});
+  }}
+
+  host.querySelectorAll('[data-section="name"] input[type="checkbox"]').forEach(cb => {{
+    cb.addEventListener('change', function() {{
+      const anyName = Array.from(host.querySelectorAll('[data-section="name"] input')).some(i => i.checked);
+      if (anyName) {{
+        host.querySelectorAll('[data-section="criteria"] input').forEach(i => {{ i.checked = false; }});
+        enableSection('criteria', false);
+      }} else {{
+        enableSection('criteria', true);
+      }}
       applyPrestationQuickFilter();
     }});
   }});
-  
+
+  host.querySelectorAll('[data-section="criteria"] input').forEach(inp => {{
+    // Permettre la désélection des radios (re-clic)
+    inp.addEventListener('mousedown', function() {{
+      this.dataset.wasChecked = this.checked ? 'true' : 'false';
+    }});
+    inp.addEventListener('click', function() {{
+      if (inp.type === 'radio' && this.dataset.wasChecked === 'true') {{
+        this.checked = false;
+        this.dataset.wasChecked = 'false';
+        this.dispatchEvent(new Event('change', {{ bubbles: true }}));
+      }}
+    }});
+    inp.addEventListener('change', function() {{
+      const anyCriteria = Array.from(host.querySelectorAll('[data-section="criteria"] input')).some(i => i.checked);
+      if (anyCriteria) {{
+        host.querySelectorAll('[data-section="name"] input').forEach(i => {{ i.checked = false; }});
+        enableSection('name', false);
+      }} else {{
+        enableSection('name', true);
+      }}
+      applyPrestationQuickFilter();
+    }});
+  }});
+
+  // Bouton réinitialiser
+  const resetButton = host.querySelector('#criteria-prest-reset-btn');
+  if (resetButton) {{
+    resetButton.addEventListener('click', function() {{
+      host.querySelectorAll('input').forEach(inp => {{
+        inp.checked = false;
+        inp.disabled = false;
+        inp.dataset.wasChecked = 'false';
+      }});
+      host.querySelectorAll('[data-section="name"], [data-section="criteria"]').forEach(el => {{
+        el.style.opacity = '1';
+        el.style.pointerEvents = 'auto';
+      }});
+      applyPrestationQuickFilter();
+    }});
+  }}
+
   const dropdown = document.getElementById('criteria-prest-dropdown');
   if (dropdown && dropdown.dataset.bound !== '1') {{
     dropdown.addEventListener('toggle', function() {{
@@ -3655,24 +4152,30 @@ function renderPrestationCriteriaOptions(inst, rc) {{
 function getSelectedPrestationCriteria() {{
   const host = document.getElementById('criteria-prest-options');
   if (!host) return {{}};
-  
+
   const criteria = {{}};
   host.querySelectorAll('input:checked').forEach(input => {{
-    const field = input.dataset.field;
-    const value = input.value;
+    const field = input.getAttribute('data-field');
+    const value = input.getAttribute('data-value') || input.value;
+    if (!field || !value) return;
     if (!criteria[field]) criteria[field] = [];
     criteria[field].push(value);
   }});
-  
+
   return criteria;
 }}
 
 function prestationMatchesCriteria(inst, rc, prest_name, selectedCriteria) {{
-  const meta = getPrestationMetaData(inst, rc, prest_name);
-  if (!meta) return false;
+  const data = getPrestationMetaData(inst, rc, prest_name);
+  if (!data) return false;
   
   const fields = Object.keys(selectedCriteria || {{}});
   if (!fields.length) return true;
+  
+  // Utiliser la version la plus récente (dernière dans selector_versions)
+  const versions = data.selector_versions || [];
+  if (!versions.length) return false;
+  const meta = versions[versions.length - 1];
   
   return fields.every(field => {{
     const wanted = selectedCriteria[field] || [];
@@ -3703,23 +4206,21 @@ function applyPrestationQuickFilter() {{
     }}
   }}
   
-  if (!Object.keys(selectedCriteria).length) {{
-    renderPrestationDescription(inst, rc, []);
-    return;
-  }}
-  
   // Trouver les prestations qui correspondent aux critères
   const prestMetaInst = PRESTATION_META[inst] || {{}};
   const prestMap = prestMetaInst[rc] || {{}};
-  const matched = [];
-  
-  Object.keys(prestMap).forEach(prest_name => {{
-    if (prestationMatchesCriteria(inst, rc, prest_name, selectedCriteria)) {{
-      matched.push(prest_name);
-    }}
-  }});
-  
+  const allPrestations = Object.keys(prestMap);
+  const matched = !Object.keys(selectedCriteria).length
+    ? allPrestations
+    : allPrestations.filter(n => prestationMatchesCriteria(inst, rc, n, selectedCriteria));
+
   renderPrestationDescription(inst, rc, matched);
+
+  // Synchroniser les séries Plotly avec la sélection
+  const fpHost = document.getElementById('filters-regime-prestations');
+  if (fpHost && fpHost._applySeriesFilterWithSelection) {{
+    fpHost._applySeriesFilterWithSelection(matched);
+  }}
 }}
 
 function updatePrestationRegimeOptions(inst) {{
@@ -3795,7 +4296,7 @@ def main():
 
     out_path.write_text(html, encoding="utf-8")
     size_kb = out_path.stat().st_size // 1024
-    print(f"  ✓ Tableau de bord généré : {out_path}  ({size_kb} Ko)")
+    print(f"  OK Tableau de bord genere : {out_path}  ({size_kb} Ko)")
     print(f"    Navigateur : file:///{out_path.as_posix()}")
     print(f"    Serveur local : http://localhost:8765/dashboard")
 
