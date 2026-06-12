@@ -2667,7 +2667,7 @@ function renderCriteriaOptions(inst) {{
         '<div class="criteria-group-items">' +
           catalog.names.map(name => (
             '<label class="criteria-option">' +
-              '<input type="checkbox" data-section="name" data-field="nom_regime" data-value="' + escapeHtml(name) + '">' +
+              '<input type="checkbox" data-section="name" data-field="nom_regime" data-value="' + escapeHtml(name) + '" checked>' +
               '<span>' + escapeHtml(name) + '</span>' +
             '</label>'
           )).join('') +
@@ -2710,11 +2710,21 @@ function renderCriteriaOptions(inst) {{
         inp.disabled = false;
         inp.dataset.wasChecked = 'false';
       }});
+      host.querySelectorAll('[data-section="name"] input[type="checkbox"]').forEach(cb => {{
+        cb.checked = true;
+      }});
+      host.querySelectorAll('[data-section="criteria"] input').forEach(input => {{
+        input.disabled = true;
+      }});
       host.querySelectorAll('[data-section="criteria"], [data-section="name"]').forEach(el => {{
         el.style.opacity = '1';
         el.style.pointerEvents = 'auto';
       }});
-      updateCriteriaSummary({{}});
+      host.querySelectorAll('[data-section="criteria"]').forEach(el => {{
+        el.style.opacity = '0.5';
+        el.style.pointerEvents = 'none';
+      }});
+      updateCriteriaSummary(getSelectedCriteriaMap());
       applyRegimeQuickFilter();
     }});
   }}
@@ -2801,8 +2811,20 @@ function renderCriteriaOptions(inst) {{
     }});
     dropdown.dataset.bound = '1';
   }}
-  
-  updateCriteriaSummary({{}});
+
+  host.querySelectorAll('[data-section="name"] input[type="checkbox"]').forEach(cb => {{
+    cb.checked = true;
+  }});
+  host.querySelectorAll('[data-section="criteria"] input').forEach(input => {{
+    input.disabled = true;
+  }});
+  host.querySelectorAll('[data-section="criteria"]').forEach(el => {{
+    el.style.opacity = '0.5';
+    el.style.pointerEvents = 'none';
+  }});
+
+  updateCriteriaSummary(getSelectedCriteriaMap());
+  applyRegimeQuickFilter();
 }}
 
 function regimeMatchesCriteria(meta, selectedMap) {{
@@ -4019,7 +4041,7 @@ function renderPrestationCriteriaOptions(inst, rc) {{
         '<div class="criteria-group-items">' +
           catalog.nom_prestation.map(name => (
             '<label class="criteria-option">' +
-              '<input type="checkbox" data-section="name" data-field="nom_prestation" data-value="' + escapeHtml(name) + '">' +
+              '<input type="checkbox" data-section="name" data-field="nom_prestation" data-value="' + escapeHtml(name) + '" checked>' +
               '<span>' + escapeHtml(name) + '</span>' +
             '</label>'
           )).join('') +
@@ -4132,9 +4154,19 @@ function renderPrestationCriteriaOptions(inst, rc) {{
         inp.disabled = false;
         inp.dataset.wasChecked = 'false';
       }});
+      host.querySelectorAll('[data-section="name"] input[type="checkbox"]').forEach(cb => {{
+        cb.checked = true;
+      }});
+      host.querySelectorAll('[data-section="criteria"] input').forEach(input => {{
+        input.disabled = true;
+      }});
       host.querySelectorAll('[data-section="name"], [data-section="criteria"]').forEach(el => {{
         el.style.opacity = '1';
         el.style.pointerEvents = 'auto';
+      }});
+      host.querySelectorAll('[data-section="criteria"]').forEach(el => {{
+        el.style.opacity = '0.5';
+        el.style.pointerEvents = 'none';
       }});
       applyPrestationQuickFilter();
     }});
@@ -4147,6 +4179,18 @@ function renderPrestationCriteriaOptions(inst, rc) {{
     }});
     dropdown.dataset.bound = '1';
   }}
+
+  host.querySelectorAll('[data-section="name"] input[type="checkbox"]').forEach(cb => {{
+    cb.checked = true;
+  }});
+  host.querySelectorAll('[data-section="criteria"] input').forEach(input => {{
+    input.disabled = true;
+  }});
+  host.querySelectorAll('[data-section="criteria"]').forEach(el => {{
+    el.style.opacity = '0.5';
+    el.style.pointerEvents = 'none';
+  }});
+  applyPrestationQuickFilter();
 }}
 
 function getSelectedPrestationCriteria() {{
@@ -4254,7 +4298,7 @@ function updatePrestationRegime() {{
   setChartRegimePrestSexMode(CURRENT_CHART_REGIME_PREST_SEX_MODE, inst, rc);
   setTablePrestSexMode(CURRENT_TABLE_PREST_SEX_MODE, inst, rc);
   renderPrestationCriteriaOptions(inst, rc);
-  renderPrestationDescription(inst, rc, []);
+  applyPrestationQuickFilter();
   
   // Mettre à jour le titre
   document.getElementById('title-prestations-regime').textContent =
