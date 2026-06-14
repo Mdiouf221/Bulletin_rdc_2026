@@ -122,7 +122,7 @@ Charge les fichiers ESS dans la base SQLite `06_donnees/protection_sociale_rdc.d
 python 09_scripts/extraire_ess.py
 ```
 
-Le script scanne les sous-dossiers `ESS_CNSS/`, `ESS_CNSSAP/` et `ESS_RDC_tous_regimes/`, déduit l'institution et l'année, puis ignore les doublons évidents (copies, variantes non canoniques) lorsqu'un autre fichier plus propre existe déjà pour le même couple institution/année.
+Le script scanne les sous-dossiers `ESS_*` sous `06_sources/ESS/`, déduit l'institution et l'année, puis ignore les doublons évidents (copies, variantes non canoniques) lorsqu'un autre fichier plus propre existe déjà pour le même couple institution/année.
 
 ### Mode import progressif
 
@@ -130,7 +130,7 @@ Le script scanne les sous-dossiers `ESS_CNSS/`, `ESS_CNSSAP/` et `ESS_RDC_tous_r
 python 09_scripts/extraire_ess.py --inbox
 ```
 
-Déposer un fichier ESS dans `06_sources/_entrants/`, puis lancer ce mode. Le script normalise le nom, enregistre la source en base, puis déplace le fichier vers le sous-dossier ESS cible.
+Déposer un fichier ESS dans `06_sources/_entrants/`, puis lancer ce mode. Le script détecte l'institution (nom + contenu ESS), normalise le nom, enregistre la source en base, crée le sous-dossier `06_sources/ESS/ESS_<INSTITUTION>/` s'il n'existe pas, puis y déplace le fichier.
 
 ### Options utiles
 

@@ -177,6 +177,14 @@ SHEET_TO_REGIME = {
 
 _ESS_EXTENSION_RE = re.compile(r'\.(xlsx|xlsm|xls)$', re.IGNORECASE)
 _ESS_YEAR_RE = re.compile(r'(19|20)\d{2}')
+_ESS_INSTITUTION_RE = re.compile(r'\bESS[\s_-]*([A-Za-z0-9]{2,32})\b', re.IGNORECASE)
+_REGIME_SHEET_RE = re.compile(r'^(?:regime|régime)\s*(\d+)\s*$', re.IGNORECASE)
+_GENERIC_TOKENS = {
+    "RDC", "REPUBLIQUE", "DEMOCRATIQUE", "CONGO", "PAYS", "CONTACT", "PERIODE",
+    "DIRECTION", "ETUDES", "ORGANISATION", "MINISTERE", "MINISTERES",
+    "ENSEIGNEMENT", "NOM", "REGIME", "PROGRAMME", "ASSURANCE", "SOCIALE",
+    "SERVICES", "PUBLICS", "ETAT", "FOND", "SOLIDARITE", "SANTE", "AN",
+}
 
 
 def _safe_year(value):
@@ -201,15 +209,25 @@ def _infer_ess_institution(name, workbook=None):
     if not name:
         return None
 
-    lowered = name.lower()
-    if 'cnssap' in lowered:
-        return 'CNSSAP'
-    if re.search(r'\bcnss\b', lowered):
-        return 'CNSS'
-    if 'tous regimes' in lowered or 'tous régimes' in lowered or 'rdc' in lowered:
-        return 'RDC'
+    base = os.path.splitext(os.path.basename(name))[0]
+    upper = unicodedata.normalize("NFKD", base).encode("ascii", "ignore").decode("ascii").upper()
+    if "CNSSAP" in upper:
+        return "CNSSAP"
+    if re.search(r"\bCNSS\b", upper):
+        return "CNSS"
+    if "RDC" in upper or "TOUS REGIMES" in upper:
+        return "RDC"
+
+    match = _ESS_INSTITUTION_RE.search(upper)
+    if match:
+        token = _sanitize_institution_code(match.group(1))
+        if token:
+            return token
 
     if workbook is not None:
+        from_workbook = _infer_ess_institution_from_workbook(workbook)
+        if from_workbook:
+            return from_workbook
         sheetnames = set(workbook.sheetnames)
         if 'CNSAP Régime de base' in sheetnames or 'Reforme du transfert' in sheetnames:
             return 'CNSSAP'
@@ -223,13 +241,74 @@ def _infer_ess_institution_from_path(filepath):
     """Déduit l'institution ESS à partir du chemin d'archive."""
     if not filepath:
         return None
-    normalized = os.path.normcase(os.path.normpath(filepath))
-    if "ess_cnssap" in normalized:
+    normalized = os.path.normpath(os.path.dirname(filepath))
+    parts = [p for p in normalized.split(os.sep) if p]
+    for part in reversed(parts):
+        upper = unicodedata.normalize("NFKD", part).encode("ascii", "ignore").decode("ascii").upper()
+        if upper.startswith("ESS_"):
+            suffix = upper[4:]
+            if suffix.startswith("RDC"):
+                return "RDC"
+            token = _sanitize_institution_code(suffix)
+            if token:
+                return token
+    return None
+
+
+def _sanitize_institution_code(value):
+    text = unicodedata.normalize("NFKD", str(value or "")).encode("ascii", "ignore").decode("ascii").upper()
+    text = re.sub(r"[^A-Z0-9]+", "_", text).strip("_")
+    return text or None
+
+
+def _extract_institution_from_text(value):
+    text = unicodedata.normalize("NFKD", str(value or "")).encode("ascii", "ignore").decode("ascii")
+    upper = text.upper().strip()
+    if not upper:
+        return None
+    if "CNSSAP" in upper:
         return "CNSSAP"
-    if "ess_cnss" in normalized:
+    if re.search(r"\bCNSS\b", upper):
         return "CNSS"
-    if "ess_rdc_tous_regimes" in normalized:
+    if "RDC" in upper and ("TOUS REGIMES" in upper or "REPUBLIQUE DEMOCRATIQUE DU CONGO" in upper):
         return "RDC"
+
+    for token in re.findall(r"\(([A-Z0-9]{2,32})\)", upper):
+        token = _sanitize_institution_code(token)
+        if token and token not in _GENERIC_TOKENS:
+            return token
+
+    for pattern in (r"^([A-Z0-9]{2,32})\s*[-:/]", r"^([A-Z0-9]{2,32})\b"):
+        m = re.search(pattern, upper)
+        if m:
+            token = _sanitize_institution_code(m.group(1))
+            if token and token not in _GENERIC_TOKENS:
+                return token
+    return None
+
+
+def _infer_ess_institution_from_workbook(workbook):
+    sheet_name = "Inventaire des régimes"
+    if sheet_name not in workbook.sheetnames:
+        return None
+    ws = workbook[sheet_name]
+
+    header_candidates = [ws["B1"].value, ws["D1"].value]
+    for value in header_candidates:
+        token = _extract_institution_from_text(value)
+        if token:
+            return token
+
+    try:
+        for row in ws.iter_rows(min_row=6, max_row=60, values_only=True):
+            if not _is_regime_row(row):
+                continue
+            for idx in (INV_COL["administrateur"], INV_COL["nom_fr"], INV_COL["nom_original"]):
+                token = _extract_institution_from_text(_get_cell(row, idx))
+                if token:
+                    return token
+    except Exception:
+        return None
     return None
 
 
@@ -327,7 +406,16 @@ def _select_ess_import_year(candidates, fallback=None):
 
 
 def _ess_destination_dir(institution):
-    return ESS_DEST_DIRS.get(institution)
+    if not institution:
+        return None
+    normalized = _sanitize_institution_code(institution)
+    if not normalized:
+        return None
+    if normalized in ESS_DEST_DIRS:
+        return ESS_DEST_DIRS[normalized]
+    if normalized == "RDC":
+        return ESS_DEST_DIRS["RDC"]
+    return os.path.normpath(os.path.join(ESS_BASE_DIR, f"ESS_{normalized}"))
 
 
 def _ess_destination_name(filepath, institution, annee):
@@ -336,21 +424,32 @@ def _ess_destination_name(filepath, institution, annee):
     root, ext = os.path.splitext(base)
     lowered = root.lower()
 
-    if institution == 'RDC' and re.search(r'^(ess\s+)?(rdc|ess rdc tous régimes)', lowered):
+    inst = _sanitize_institution_code(institution) if institution else None
+
+    if inst == 'RDC' and re.search(r'^(ess[\s_-]+)?(rdc|ess rdc tous regimes)', lowered):
         return base
 
-    if institution in ('CNSS', 'CNSSAP') and re.search(rf'^ess\s+{institution.lower()}\s+\d{{4}}', lowered):
+    if inst and re.search(rf'^ess[\s_-]+{inst.lower()}(?:[\s_-]+\d{{4}})?', lowered):
         return base
 
-    if institution == 'RDC':
+    if inst == 'RDC':
         suffix = f" {annee}" if annee else ""
         return f"ESS RDC tous regimes{suffix}{ext}"
 
-    if institution in ('CNSS', 'CNSSAP'):
+    if inst:
         suffix = f" {annee}" if annee else ""
-        return f"ESS {institution}{suffix}{ext}"
+        return f"ESS {inst}{suffix}{ext}"
 
     return base
+
+
+def _resolve_sheet_regime_suffix(sheet_name):
+    if sheet_name in SHEET_TO_REGIME:
+        return SHEET_TO_REGIME[sheet_name]
+    match = _REGIME_SHEET_RE.match(str(sheet_name or "").strip())
+    if match:
+        return f"R{int(match.group(1))}"
+    return None
 
 
 def _is_ess_excel_candidate(filename):
@@ -1255,9 +1354,14 @@ def process_ess_file(filepath, institution, annee, note_anomalie=None,
     2. Parse l'inventaire → regimes_historique + indicateurs_regime
     3. Parse chaque feuille de prestation → prestations_historique
     """
+    institution = _sanitize_institution_code(institution)
     nom_fichier = nom_fichier_override or os.path.basename(filepath)
     chemin_rel  = chemin_rel_override or os.path.relpath(filepath, start=os.path.normpath(
                       os.path.join(_SCRIPT_DIR, '..')))
+
+    if not institution:
+        print(f"  ✗ Institution ESS introuvable pour {nom_fichier}")
+        return False
 
     print(f"\n{'─'*65}")
     print(f"  {institution} {annee}  —  {nom_fichier}")
@@ -1349,11 +1453,11 @@ def process_ess_file(filepath, institution, annee, note_anomalie=None,
 
     # ── 3. Parse des feuilles de prestations ────────────────────────────────
     for sheet_name in wb.sheetnames:
-        if sheet_name not in SHEET_TO_REGIME:
+        regime_suffix = _resolve_sheet_regime_suffix(sheet_name)
+        if not regime_suffix:
             continue
 
         # Résoudre le code régime pour cette feuille
-        regime_suffix = SHEET_TO_REGIME[sheet_name]
         regime_code   = f"{institution}_{regime_suffix}"
 
         ws_p = wb[sheet_name]
@@ -1412,6 +1516,7 @@ def process_ess_inbox_file(filepath, conn=None, dry_run=False, verbose=False,
         return False
 
     institution = _infer_ess_institution_for_file(filepath, wb)
+    institution = _sanitize_institution_code(institution)
     year_check = _resolve_ess_year_consistency(filepath, wb)
     year_candidates = year_check.get("candidates") or {}
     annee = _select_ess_import_year(year_candidates)
@@ -1434,7 +1539,7 @@ def process_ess_inbox_file(filepath, conn=None, dry_run=False, verbose=False,
     destination_dir = _ess_destination_dir(institution)
     if not destination_dir:
         wb.close()
-        print(f"  ✗ Aucun sous-dossier de destination défini pour {institution}")
+        print(f"  ✗ Impossible de déterminer le dossier destination pour l'institution {institution!r}")
         return False
 
     destination_name = _ess_destination_name(filepath, institution, annee)
