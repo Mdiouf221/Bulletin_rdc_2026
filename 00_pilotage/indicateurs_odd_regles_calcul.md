@@ -84,9 +84,9 @@ L'indicateur mesure la **couverture effective**, pas seulement la couverture lé
 
 | Élément | Définition |
 |---------|-----------|
-| **Numérateur** | Nombre de travailleurs recevant une prestation en espèces pour accident du travail ou maladie professionnelle (rente ou indemnité journalière AT/MP) |
+| **Numérateur** | Nombre de personnes de la main-d'œuvre couvertes par des prestations en espèces en cas d'accident du travail ou maladie professionnelle (cotisants actifs AT/MP) |
 | **Dénominateur** | Population active totale (force de travail) |
-| **Source OIT recommandée** | ESS — feuille risques professionnels (bénéficiaires rentes, indemnités AT) ; ILOSTAT (population active) |
+| **Source OIT recommandée** | ESS — feuille risques professionnels (cotisants/assurés actifs AT/MP, ou proxy institutionnel documenté) ; ILOSTAT (population active) |
 | **Référence mondiale 2023** | 37,4 % |
 | **Référence mondiale 2020** | 35,4 % |
 | **Unité** | % de la force de travail |
@@ -167,7 +167,7 @@ L'indicateur mesure la **couverture effective**, pas seulement la couverture lé
 | 2.2 Enfants | CNSS Familles, CNSSAP Familles | Foyers bénéficiaires × facteur enfants | Population 0–17 ans (ONU WPP) | ⚠ Partielle (CNSSAP familles non opérationnel 2022) |
 | 2.3 Maternité | CNSS Familles | Indemnités journalières maternité | Naissances vivantes (INS) | ⚠ Possible mais non réalisé dans 1er bulletin |
 | 2.4 Handicap | CNSS Pensions (invalidité) | Bénéficiaires pensions invalidité | Population handicapée grave (à estimer) | ✗ Dénominateur absent |
-| 2.5 AT/MP | CNSS AT/MP, CNSSAP AT/MP | Bénéficiaires rentes AT | Population active (ILOSTAT) | ✓ Bonne (CNSS seule pour 2019-2022) |
+| 2.5 AT/MP | CNSS AT/MP, CNSSAP AT/MP | Cotisants/assurés actifs AT/MP | Population active (ILOSTAT) | ✓ Bonne (CNSS seule pour 2019-2022) |
 | 2.6 Chômage | Aucune | Aucun bénéficiaire | Chômeurs (ILOSTAT) | ✓ = 0,0 % confirmé |
 | 2.7 Vieillesse | CNSS Pensions, CNSSAP Base | Pensionnés vieillesse | Pop. au-delà âge légal (ONU WPP) | ✓ Bonne |
 | 2.8 Assistance sociale | MINAS, PAM, STEP | Bénéficiaires programmes | Population totale | ⚠ Fragmentée, double comptage |
@@ -306,8 +306,8 @@ SOUS-INDICATEUR 2.3 — Maternité
   Dénominateur = Naissances vivantes RDC (INS)
 
 SOUS-INDICATEUR 2.5 — AT/MP
-  Numérateur = Bénéficiaires rentes AT (CNSS Régime 2)
-               + Bénéficiaires CNSSAP AT/MP (à partir 2023)
+  Numérateur = Cotisants/assurés actifs AT/MP (CNSS Régime 2)
+               + Cotisants/assurés actifs CNSSAP AT/MP (à partir 2023)
   Dénominateur = Force de travail (ILOSTAT)
 
 SOUS-INDICATEUR 2.7 — Vieillesse

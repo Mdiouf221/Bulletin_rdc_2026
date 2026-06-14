@@ -62,6 +62,7 @@ CSS_FILE      = SCRIPT_DIR / "preview.css"
 ASSEMBLER     = SCRIPT_DIR / "assembler_markdown.py"
 REGIME_VISUALIZER = SCRIPT_DIR / "visualiser_regimes.py"
 REGIME_DASHBOARD  = WORKSPACE_DIR / "10_output" / "dashboard_regimes.html"
+DASHBOARD_SETTINGS_FILE = WORKSPACE_DIR / "10_output" / "dashboard_settings.json"
 PORT          = 8765
 
 # ---------------------------------------------------------------------------
@@ -938,6 +939,8 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             self._serve_sse()
         elif self.path == "/dashboard":
             self._serve_dashboard()
+        elif self.path == "/api/dashboard-settings":
+            self._serve_dashboard_settings()
         elif self.path.startswith("/api/denom/"):
             self._serve_denom_api()
         elif self.path.startswith("/files/"):
@@ -945,6 +948,26 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         else:
             self.send_response(404)
             self.end_headers()
+
+    def _serve_dashboard_settings(self):
+        payload = {"oddDecisions": {}}
+        if DASHBOARD_SETTINGS_FILE.exists():
+            try:
+                raw = DASHBOARD_SETTINGS_FILE.read_text(encoding="utf-8")
+                parsed = json.loads(raw)
+                if isinstance(parsed, dict):
+                    odd = parsed.get("oddDecisions")
+                    payload["oddDecisions"] = odd if isinstance(odd, dict) else {}
+            except (OSError, json.JSONDecodeError):
+                payload = {"oddDecisions": {}}
+
+        body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(body)
 
     def _serve_denom_api(self):
         parsed = urlparse(self.path)
@@ -1006,9 +1029,52 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
     def do_POST(self):
         if self.path == "/validate":
             self._handle_validate()
+        elif self.path == "/api/dashboard-settings":
+            self._handle_dashboard_settings()
         else:
             self.send_response(404)
             self.end_headers()
+
+    def _handle_dashboard_settings(self):
+        length = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(length)
+        try:
+            try:
+                body_str = body.decode("utf-8")
+            except UnicodeDecodeError:
+                body_str = body.decode("latin-1")
+            data = json.loads(body_str)
+            odd_decisions = data.get("oddDecisions", {})
+            if not isinstance(odd_decisions, dict):
+                raise ValueError("oddDecisions doit être un objet")
+        except (json.JSONDecodeError, ValueError):
+            self.send_response(400)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(b"Corps JSON invalide. Champ requis : oddDecisions (objet)")
+            return
+
+        DASHBOARD_SETTINGS_FILE.parent.mkdir(parents=True, exist_ok=True)
+        payload = {"oddDecisions": odd_decisions}
+        try:
+            DASHBOARD_SETTINGS_FILE.write_text(
+                json.dumps(payload, ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
+        except OSError:
+            self.send_response(500)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(b"Impossible d'ecrire dashboard_settings.json")
+            return
+
+        response_body = json.dumps({"ok": True}, ensure_ascii=False).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(response_body)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(response_body)
 
     def _handle_validate(self):
         """Endpoint POST /validate — met à jour data-val-status dans le fichier source."""

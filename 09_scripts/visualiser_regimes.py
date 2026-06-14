@@ -2661,11 +2661,16 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     .odd-badge.inclus {{ background: #e6fffa; color: #22543d; }}
     .odd-badge.entierement_exclus {{ background: #fff5f5; color: #9b2c2c; }}
     .odd-badge.exclus {{ background: #fff5f5; color: #9b2c2c; }}
-    .odd-badge.autres {{ background: #edf2f7; color: #2d3748; }}
+    .odd-badge.autres {{ background: #eaf4ff; color: #1e3a8a; }}
     .odd-badge.inclus_avec_reserve {{ background: #fff7e6; color: #9c4221; }}
     .odd-badge.exclu_nature, .odd-badge.exclu_non_statutaire, .odd-badge.exclu_hors_indicateur {{ background: #fff5f5; color: #9b2c2c; }}
     .odd-badge.indicateur_connexe {{ background: #ebf8ff; color: #2a4365; }}
     .odd-badge.en_discussion {{ background: #faf5ff; color: #553c9a; }}
+    .odd-badge.odd-badge-proposal {{
+      background: #f8fafc;
+      color: #4a5568;
+      border: 1px solid #d2dae3;
+    }}
     .odd-impact {{
       font-size: 0.78rem;
       color: #4a5568;
@@ -3739,7 +3744,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       <div id="odd-numerator-rule" class="odd-numerator-rule-text"></div>
       <div id="odd-numerator-visual-grid" class="odd-year-aligned-grid odd-visual-permanent"></div>
       <div id="odd-numerator-legend" class="odd-shared-legend"></div>
-      <details class="odd-breakdown-fold">
+      <details class="odd-breakdown-fold" open>
         <summary>
           <span>⚙ Construction des numérateurs</span>
           <span class="odd-edit-controls">
@@ -4660,6 +4665,7 @@ const ODD_DECISION_OPTIONS_BY_TYPE = {{
   regime_ess: [
     {{ value: 'entierement_inclus', label: 'Entièrement inclus' }},
     {{ value: 'entierement_exclus', label: 'Entièrement exclus' }},
+    {{ value: 'autres', label: 'Autres' }},
   ],
   prestation_ess: [
     {{ value: 'inclus', label: 'Inclus' }},
@@ -4680,6 +4686,7 @@ const ODD_DECISION_LABELS = {{
   en_discussion: 'En discussion',
 }};
 const ODD_DECISIONS_STORAGE_KEY = 'rdc_odd131_decisions_v1';
+const DASHBOARD_SETTINGS_API = '/api/dashboard-settings';
 let CURRENT_ODD_DECISIONS = {{}};
 let CURRENT_ODD_INDICATOR = 'global_131';
 let CURRENT_ODD_YEAR = '';
@@ -4775,11 +4782,11 @@ const ODD_INDICATOR_NUMERATOR_SPECS = {{
     numeratorDefinition: "Personnes recevant des prestations liées à l'invalidité ou au handicap.",
   }},
   ind_25_atmp: {{
-    metricKey: 'beneficiaires_estimes',
-    metricLabel: 'Bénéficiaires estimés',
-    modeLabel: 'Prestations classées Accidents du travail / MP',
-    numeratorName: 'Bénéficiaires estimés',
-    numeratorDefinition: 'Personnes recevant des prestations liées aux accidents du travail et maladies professionnelles.',
+    metricKey: 'couverts_bruts_estimes',
+    metricLabel: 'Couverts bruts estimés',
+    modeLabel: 'Cotisants des régimes parents + bénéficiaires des prestations incluses',
+    numeratorName: 'Couverts bruts estimés',
+    numeratorDefinition: "Somme des cotisants des régimes parents (comptés une seule fois par régime) et des bénéficiaires des prestations AT/MP incluses.",
   }},
   ind_26_chomage: {{
     metricKey: 'beneficiaires_estimes',
@@ -4830,23 +4837,58 @@ function getDecisionLabel(code, nodeType) {{
   return ODD_DECISION_LABELS.en_discussion;
 }}
 
-function loadOddDecisions() {{
+function readOddDecisionsFromLocalStorage() {{
   try {{
     const raw = localStorage.getItem(ODD_DECISIONS_STORAGE_KEY);
     if (!raw) return {{}};
     const parsed = JSON.parse(raw);
     if (!parsed || typeof parsed !== 'object') return {{}};
     return parsed;
-  }} catch (_) {{
+  }} catch (err) {{
+    console.warn('[ODD] Lecture localStorage impossible:', err);
     return {{}};
   }}
 }}
 
-function saveOddDecisions() {{
+function writeOddDecisionsToLocalStorage(decisions) {{
   try {{
-    localStorage.setItem(ODD_DECISIONS_STORAGE_KEY, JSON.stringify(CURRENT_ODD_DECISIONS || {{}}));
-  }} catch (_) {{
-    // localStorage indisponible : ignorer silencieusement
+    localStorage.setItem(ODD_DECISIONS_STORAGE_KEY, JSON.stringify(decisions || {{}}));
+  }} catch (err) {{
+    console.warn('[ODD] Ecriture localStorage impossible:', err);
+  }}
+}}
+
+async function loadOddDecisions() {{
+  const localDecisions = readOddDecisionsFromLocalStorage();
+  try {{
+    const res = await fetch(DASHBOARD_SETTINGS_API, {{ cache: 'no-store' }});
+    if (!res.ok) return localDecisions;
+    const payload = await res.json();
+    const serverDecisions = (payload && typeof payload === 'object' && payload.oddDecisions && typeof payload.oddDecisions === 'object')
+      ? payload.oddDecisions
+      : {{}};
+    const finalDecisions = Object.keys(serverDecisions).length ? serverDecisions : localDecisions;
+    writeOddDecisionsToLocalStorage(finalDecisions);
+    return finalDecisions;
+  }} catch (err) {{
+    return localDecisions;
+  }}
+}}
+
+async function saveOddDecisions() {{
+  const decisions = CURRENT_ODD_DECISIONS || {{}};
+  writeOddDecisionsToLocalStorage(decisions);
+  try {{
+    const res = await fetch(DASHBOARD_SETTINGS_API, {{
+      method: 'POST',
+      headers: {{ 'Content-Type': 'application/json' }},
+      body: JSON.stringify({{ oddDecisions: decisions }}),
+    }});
+    if (!res.ok) {{
+      console.warn('[ODD] Sauvegarde serveur non confirmee (HTTP ' + res.status + ').');
+    }}
+  }} catch (err) {{
+    // Dashboard ouvert hors serveur preview : persistance locale maintenue.
   }}
 }}
 
@@ -4910,7 +4952,7 @@ function normalizeDecisionForNode(node, rawDecision) {{
   if (nodeType === 'regime_ess') {{
     if (decision === 'entierement_inclus' || decision === 'inclus' || decision === 'inclus_avec_reserve') return 'entierement_inclus';
     if (decision === 'entierement_exclus' || decision === 'exclus' || ODD_EXCLUDED_STATES.has(decision)) return 'entierement_exclus';
-    return 'entierement_exclus';
+    return 'autres';
   }}
   if (nodeType === 'prestation_ess') {{
     if (decision === 'entierement_inclus' || decision === 'inclus' || decision === 'inclus_avec_reserve') return 'inclus';
@@ -5082,6 +5124,13 @@ function buildNumeratorYearSummary(indicatorKey, yearValue, regimeRows, prestati
   const includeBeneficiaires = metricSpec.metricKey === 'beneficiaires_estimes' || metricSpec.metricKey === 'couverts_bruts_estimes';
   const includedRegimeSet = new Set(getIncludedRegimeIds(indicatorKey, yearKey));
   const includedPrestationSet = new Set(getIncludedPrestationIds(indicatorKey, yearKey));
+  // AT/MP: when prestations are included, also consider their parent regimes for contributor-based numerator.
+  if (indicatorKey === 'ind_25_atmp' && includeCotisants && includedPrestationSet.size) {{
+    (prestationRows || []).forEach(row => {{
+      if (!row || !includedPrestationSet.has(row.programme_id)) return;
+      if (row.parent_regime_id) includedRegimeSet.add(row.parent_regime_id);
+    }});
+  }}
   const instMap = {{}};
 
   function ensureRegime(instEntry, regimeCode, regimeName) {{
@@ -5237,6 +5286,69 @@ function renderIndicateurs() {{
     '</div>'
   ).join('');
   renderActiveDenominatorViews();
+}}
+
+// Mise à jour en place du panneau après un changement de select — sans reconstruire le DOM
+function _patchOddDecisionTable(changedNodeId, indicatorKey, yearKey) {{
+  const host = document.getElementById('odd-decision-table');
+  if (!host) return;
+  const maps = buildOddNodeMaps();
+  const nodeMap = maps.nodeMap || {{}};
+  const memo = {{}};
+
+  // 1. Mettre à jour chaque select : disabled + valeur sélectionnée
+  host.querySelectorAll('select[data-odd-id]').forEach(function(sel) {{
+    const nodeId = sel.getAttribute('data-odd-id');
+    const node = nodeMap[nodeId];
+    if (!node) return;
+    const parentEff = node.parent_id ? getEffectiveDecisionById(node.parent_id, indicatorKey, yearKey, nodeMap, memo) : '';
+    const isLockedByParent = parentEff === 'entierement_inclus' || parentEff === 'entierement_exclus' || parentEff === 'inclus' || parentEff === 'exclus';
+    sel.disabled = isLockedByParent || !ODD_DECISION_EDIT_MODE;
+    const decision = isLockedByParent
+      ? getEffectiveDecisionById(nodeId, indicatorKey, yearKey, nodeMap, memo)
+      : getDecisionForProgram(node, indicatorKey, yearKey);
+    if (sel.value !== decision) sel.value = decision;
+  }});
+
+  // 2. Mettre à jour les badges "Appliqué" (data-badge-applied) et "Proposition" (data-badge-proposal)
+  host.querySelectorAll('[data-badge-node]').forEach(function(badge) {{
+    const nodeId = badge.getAttribute('data-badge-node');
+    const btype = badge.getAttribute('data-badge-type');
+    const node = nodeMap[nodeId];
+    if (!node) return;
+    let newVal, newLabel;
+    if (btype === 'applied') {{
+      newVal = getEffectiveDecisionById(nodeId, indicatorKey, yearKey, nodeMap, memo);
+      newLabel = (typeof getDecisionLabel === 'function') ? getDecisionLabel(newVal, node.type) : newVal;
+      badge.className = badge.className.replace(/\b(entierement_inclus|entierement_exclus|autres|inclus|exclus|inclus_avec_reserve|exclu_nature|exclu_non_statutaire|exclu_hors_indicateur|en_discussion)\b/g, '').trim() + ' odd-badge ' + newVal;
+      badge.textContent = newLabel;
+    }} else if (btype === 'proposal') {{
+      const proposal = (node.propositions && node.propositions[indicatorKey]) || node.proposition || 'en_discussion';
+      newVal = proposal;
+      newLabel = (typeof getDecisionLabel === 'function') ? getDecisionLabel(newVal, node.type) : newVal;
+      badge.className = badge.className.replace(/\b(entierement_inclus|entierement_exclus|autres|inclus|exclus|inclus_avec_reserve|exclu_nature|exclu_non_statutaire|exclu_hors_indicateur|en_discussion)\b/g, '').trim() + ' odd-badge odd-badge-proposal ' + newVal;
+      badge.textContent = 'Proposition : ' + newLabel;
+    }}
+  }});
+
+  // 3. Mettre à jour le verrouillage parent sur les labels
+  host.querySelectorAll('[data-lock-node]').forEach(function(el) {{
+    const nodeId = el.getAttribute('data-lock-node');
+    const node = nodeMap[nodeId];
+    if (!node) return;
+    const parentEff = node.parent_id ? getEffectiveDecisionById(node.parent_id, indicatorKey, yearKey, nodeMap, memo) : '';
+    const isLocked = parentEff === 'entierement_inclus' || parentEff === 'entierement_exclus' || parentEff === 'inclus' || parentEff === 'exclus';
+    el.style.display = isLocked ? '' : 'none';
+  }});
+
+  // 4. Résumé
+  const summaryEl = document.getElementById('odd-decision-summary');
+  if (summaryEl) {{
+    const includedReg = (typeof getIncludedRegimeIds === 'function') ? getIncludedRegimeIds(indicatorKey, yearKey).length : '?';
+    const includedPrest = (typeof getIncludedPrestationIds === 'function') ? getIncludedPrestationIds(indicatorKey, yearKey).length : '?';
+    const indicatorLabel = ODD_INDICATOR_LABELS[indicatorKey] || indicatorKey;
+    summaryEl.textContent = indicatorLabel + ' · ' + yearKey + ' · édition : ' + includedReg + ' régime(s) inclus, ' + includedPrest + ' prestation(s) incluses.';
+  }}
 }}
 
 function renderOddDecisionPanel() {{
@@ -5402,14 +5514,20 @@ function renderOddDecisionPanel() {{
     .filter(id => nodeMap[id] && nodeMap[id].type === 'institution_ess')
     .sort((a, b) => String(nodeMap[a].programme || '').localeCompare(String(nodeMap[b].programme || ''), 'fr', {{ sensitivity: 'base' }}));
 
+  // Mémoriser les nœuds actuellement ouverts avant de reconstruire le HTML
+  const openNodeIds = new Set();
+  host.querySelectorAll('details[data-node-id][open]').forEach(function(d) {{
+    openNodeIds.add(d.getAttribute('data-node-id'));
+  }});
+
   if (!roots.length) {{
     host.innerHTML = '<p class="empty">Aucun programme à instruire.</p>';
     return;
   }}
 
-  function renderSelect(nodeId, isLocked) {{
+  function renderSelect(nodeId, isLocked, selectedDecision) {{
     const node = nodeMap[nodeId];
-    const decision = getDecisionForProgram(node, indicatorKey, yearKey);
+    const decision = selectedDecision || getDecisionForProgram(node, indicatorKey, yearKey);
     const options = ODD_DECISION_OPTIONS_BY_TYPE[node.type] || ODD_DECISION_OPTIONS_BY_TYPE.prestation_ess;
     const disabledAttr = (isLocked || !ODD_DECISION_EDIT_MODE) ? ' disabled' : '';
     return '<select data-odd-id="' + escapeHtml(nodeId) + '"' + disabledAttr + '>' +
@@ -5447,28 +5565,39 @@ function renderOddDecisionPanel() {{
     const kindLabel = (node.type === 'institution_ess')
       ? 'Institution'
       : ((node.type === 'regime_ess') ? 'Régime' : 'Prestation');
+    const hasChildren = children.length > 0;
+    const headerMain = hasChildren
+      ? ''
+      : (
+        '<div class="odd-node-main"><span class="odd-node-kind type-' + escapeHtml(node.type || '') + '">' + escapeHtml(kindLabel) + '</span><span class="odd-node-title">' + escapeHtml(title) + '</span>' +
+          (node.type === 'prestation_ess' ? '<span class="odd-impact"> — ' + escapeHtml(node.institution || '') + ' / ' + escapeHtml(node.regime_code || '') + '</span>' : '') +
+        '</div>'
+      );
+    const headerBadges = hasChildren
+      ? ''
+      : (
+        '<span class="odd-badge odd-badge-proposal ' + escapeHtml(proposal) + '" data-badge-node="' + escapeHtml(nodeId) + '" data-badge-type="proposal">Proposition : ' + escapeHtml(getDecisionLabel(proposal, node.type)) + '</span> ' +
+        '<span class="odd-badge ' + escapeHtml(effective) + '" data-badge-node="' + escapeHtml(nodeId) + '" data-badge-type="applied">Appliqué : ' + escapeHtml(getDecisionLabel(effective, node.type)) + '</span>'
+      );
 
     const header =
       '<div class="odd-node-header level-' + level + '">' +
-        '<div class="odd-node-main"><span class="odd-node-kind type-' + escapeHtml(node.type || '') + '">' + escapeHtml(kindLabel) + '</span><span class="odd-node-title">' + escapeHtml(title) + '</span>' +
-          (node.type === 'prestation_ess' ? '<span class="odd-impact"> — ' + escapeHtml(node.institution || '') + ' / ' + escapeHtml(node.regime_code || '') + '</span>' : '') +
-        '</div>' +
-        '<div class="odd-node-controls">' + renderSelect(nodeId, isLockedByParent) + '</div>' +
+        headerMain +
+        '<div class="odd-node-controls">' + renderSelect(nodeId, isLockedByParent, isLockedByParent ? effective : null) + '</div>' +
       '</div>' +
       '<div class="odd-node-meta">' +
-        '<span class="odd-badge ' + escapeHtml(proposal) + '">Proposition : ' + escapeHtml(getDecisionLabel(proposal, node.type)) + '</span> ' +
-        '<span class="odd-badge ' + escapeHtml(effective) + '">Appliqué : ' + escapeHtml(getDecisionLabel(effective, node.type)) + '</span>' +
-        (isLockedByParent ? '<div class="odd-impact">Décision verrouillée par le niveau supérieur.</div>' : '') +
+        headerBadges +
+        (isLockedByParent ? '<div class="odd-impact" data-lock-node="' + escapeHtml(nodeId) + '">Décision verrouillée par le niveau supérieur.</div>' : '<div class="odd-impact" data-lock-node="' + escapeHtml(nodeId) + '" style="display:none">Décision verrouillée par le niveau supérieur.</div>') +
         (rationale ? '<div class="odd-impact">' + escapeHtml(rationale) + '</div>' : '') +
         (criteria ? '<div class="odd-impact">' + criteria + '</div>' : '') +
       '</div>';
     const summary = '<summary>' +
       '<div class="odd-summary-top">' +
         '<span class="odd-summary-title"><span class="odd-node-kind type-' + escapeHtml(node.type || '') + '">' + escapeHtml(kindLabel) + '</span><span class="odd-node-title">' + escapeHtml(title) + '</span></span>' +
-        '<span class="odd-badge ' + escapeHtml(effective) + '">' + escapeHtml(getDecisionLabel(effective, node.type)) + '</span>' +
+        '<span class="odd-badge ' + escapeHtml(effective) + '" data-badge-node="' + escapeHtml(nodeId) + '" data-badge-type="applied">' + escapeHtml(getDecisionLabel(effective, node.type)) + '</span>' +
       '</div>' +
       '<div class="odd-summary-bottom">' +
-        '<span class="odd-badge ' + escapeHtml(proposal) + '">Proposition : ' + escapeHtml(getDecisionLabel(proposal, node.type)) + '</span>' +
+        '<span class="odd-badge odd-badge-proposal ' + escapeHtml(proposal) + '" data-badge-node="' + escapeHtml(nodeId) + '" data-badge-type="proposal">Proposition : ' + escapeHtml(getDecisionLabel(proposal, node.type)) + '</span>' +
         (rationale ? '<span class="odd-summary-rationale">' + escapeHtml(rationale) + '</span>' : '') +
       '</div>' +
     '</summary>';
@@ -5476,7 +5605,8 @@ function renderOddDecisionPanel() {{
     if (node.type === 'prestation_ess' && !children.length) {{
       return '<div class="odd-node level-' + level + ' type-' + escapeHtml(node.type || '') + '">' + header + '</div>';
     }}
-    return '<details class="odd-node level-' + level + ' type-' + escapeHtml(node.type || '') + '">' +
+    const openAttr = openNodeIds.has(nodeId) ? ' open' : '';
+    return '<details class="odd-node level-' + level + ' type-' + escapeHtml(node.type || '') + '" data-node-id="' + escapeHtml(nodeId) + '"' + openAttr + '>' +
       summary +
       header +
       '<div class="odd-node-children">' + children.map(childId => renderNode(childId, level + 1)).join('') + '</div>' +
@@ -5485,6 +5615,11 @@ function renderOddDecisionPanel() {{
 
   const hierarchyHtml = roots.map(id => renderNode(id, 0)).join('');
   host.innerHTML = '<div class="odd-hierarchy">' + hierarchyHtml + '</div>';
+  // Forcer programmatiquement l'état ouvert (garantie fiable en plus de l'attribut open)
+  openNodeIds.forEach(function(nid) {{
+    const el = host.querySelector('details[data-node-id="' + nid.replace(/"/g, '\\"') + '"]');
+    if (el) el.open = true;
+  }});
 
   host.querySelectorAll('select[data-odd-id]').forEach(sel => {{
     sel.addEventListener('change', function() {{
@@ -5493,9 +5628,11 @@ function renderOddDecisionPanel() {{
       if (!id) return;
       const decisionMap = getActiveOddDecisionMap();
       decisionMap[getOddDecisionStorageKey(id, indicatorKey, yearKey)] = this.value;
+      // Mise à jour en place : ne pas reconstruire tout le panneau, juste patcher les éléments affectés
+      _patchOddDecisionTable(id, indicatorKey, yearKey);
       renderIndicateurs();
       renderOddBranchesVisual();
-      renderOddDecisionPanel();
+      renderActiveDenominatorViews();
     }});
   }});
 
@@ -5526,6 +5663,7 @@ function renderOddDecisionPanel() {{
 function renderOddBranchesVisual() {{
   const visualGrid = document.getElementById('odd-numerator-visual-grid');
   const breakdownGrid = document.getElementById('odd-numerator-breakdown-grid');
+  const legendHost = document.getElementById('odd-numerator-legend');
   if (!visualGrid || !breakdownGrid) return;
 
   const indicatorKey = getCurrentOddIndicator();
@@ -7255,8 +7393,8 @@ function updatePrestationRegime() {{
 }}
 
 // ── Initialisation ─────────────────────────────────────────────────────────
-(function() {{
-  CURRENT_ODD_DECISIONS = loadOddDecisions();
+(async function() {{
+  CURRENT_ODD_DECISIONS = await loadOddDecisions();
   initDenominatorPanel();
   renderOddDecisionPanel();
   renderOddBranchesVisual();

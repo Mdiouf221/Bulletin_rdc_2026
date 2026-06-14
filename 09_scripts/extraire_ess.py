@@ -38,6 +38,7 @@ import json
 import argparse
 import re
 import shutil
+import time
 import warnings
 import unicodedata
 import sqlite3
@@ -553,6 +554,27 @@ def discover_ess_inbox_files(inbox_dir):
             candidates.append(filepath)
 
     return sorted(candidates)
+
+
+def _move_file_with_retry(src_path, dst_path, attempts=6, delay_seconds=1.0):
+    """
+    Déplace un fichier avec plusieurs tentatives pour absorber les verrous
+    temporaires (Excel, antivirus, synchronisation OneDrive).
+    """
+    last_error = None
+    for attempt in range(1, attempts + 1):
+        try:
+            shutil.move(src_path, dst_path)
+            return True, None
+        except PermissionError as exc:
+            last_error = exc
+            if attempt < attempts:
+                time.sleep(delay_seconds * attempt)
+                continue
+            break
+        except OSError as exc:
+            return False, str(exc)
+    return False, str(last_error) if last_error else "Erreur de déplacement inconnue"
 
 
 def _sanitize_slug(value):
@@ -1569,7 +1591,12 @@ def process_ess_inbox_file(filepath, conn=None, dry_run=False, verbose=False,
         return True
 
     if os.path.abspath(filepath) != os.path.abspath(destination_path):
-        shutil.move(filepath, destination_path)
+        moved, move_error = _move_file_with_retry(filepath, destination_path)
+        if not moved:
+            print(f"  ✗ Fichier importé mais non déplacé (verrouillage fichier) : {base}")
+            print("    Fermer Excel/aperçu du fichier et laisser OneDrive finir la synchronisation, puis relancer.")
+            print(f"    Détail : {move_error}")
+            return False
         print(f"  ↳ Déplacé vers {destination_rel}")
 
     return True
