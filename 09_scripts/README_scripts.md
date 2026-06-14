@@ -114,13 +114,15 @@ python 09_scripts/convertir_pdf_en_texte.py
 
 ### Rôle
 
-Charge les fichiers ESS dans la base SQLite `06_donnees/protection_sociale_rdc.db` via le schéma partagé `db_schema.py`. Le script sait traiter soit le catalogue ESS déjà présent, soit le dossier de réception unique `06_sources/_entrants/`.
+Charge les fichiers ESS dans la base SQLite `06_donnees/protection_sociale_rdc.db` via le schéma partagé `db_schema.py`. En mode normal, le script balaie automatiquement les fichiers présents dans `06_sources/ESS/`. Le dossier de réception unique `06_sources/_entrants/` reste disponible pour un flux d'arrivée progressif.
 
 ### Mode courant
 
 ```bash
 python 09_scripts/extraire_ess.py
 ```
+
+Le script scanne les sous-dossiers `ESS_CNSS/`, `ESS_CNSSAP/` et `ESS_RDC_tous_regimes/`, déduit l'institution et l'année, puis ignore les doublons évidents (copies, variantes non canoniques) lorsqu'un autre fichier plus propre existe déjà pour le même couple institution/année.
 
 ### Mode import progressif
 
@@ -137,6 +139,7 @@ python 09_scripts/extraire_ess.py --inbox --dry-run
 python 09_scripts/extraire_ess.py --institution CNSS --annee 2022
 python 09_scripts/extraire_ess.py --delete --institution CNSS --annee 2022 --dry-run
 python 09_scripts/extraire_ess.py --delete --source-id 42 --force
+python 09_scripts/validate_ess.py --annee 2022
 ```
 
 ---

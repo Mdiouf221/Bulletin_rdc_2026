@@ -31,7 +31,8 @@ Ce dossier regroupe les fichiers ESS (tableaux statistiques standardisés) issus
 - **Asymétrie temporelle :** la série CNSS commence en 2019, la série CNSSAP en 2020. À signaler dans toute comparaison inter-régimes.
 - **Fichier consolidé :** le fichier `ESS RDC tous régimes.xlsx` couvre l'année **2023**. Il dépasse donc d'un an la série individuelle CNSS/CNSSAP (2022). À noter lors de toute analyse comparative.
 - Ces fichiers correspondent au **premier bulletin** ; les ESS du deuxième bulletin seront à déposer ici en remplacement ou en complément.
-- Les nouveaux fichiers ESS doivent être déposés dans le dossier de réception unique `06_sources/_entrants/` puis importés via `09_scripts/extraire_ess.py --inbox`.
+- Le mode normal de `09_scripts/extraire_ess.py` balaie directement ce dossier `06_sources/ESS/` et traite les fichiers présents par institution/année.
+- Le dossier `06_sources/_entrants/` reste la zone de réception recommandée lorsqu'un fichier vient d'arriver : `09_scripts/extraire_ess.py --inbox` le normalise, le déplace ici, puis l'importe.
 
 ## Niveau de fiabilité
 
