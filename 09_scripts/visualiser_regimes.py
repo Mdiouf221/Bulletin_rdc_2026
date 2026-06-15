@@ -65,6 +65,118 @@ CRITERIA_FIELDS = [
     {"key": "fonctions_oit", "label": "Fonctions couvertes", "is_multi": True, "is_list": True},
 ]
 
+# ── Bloc questionnaire (défini globalement pour être utilisé par build_html) ────
+questionnaire_html = """
+<!-- Questionnaire Modal Scripts -->
+<script src="questionnaire_modal.js"></script>
+<script src="branch_fusion.js"></script>
+
+<!-- Integration Hooks -->
+<script>
+// Initialise le bouton ⚙️ Paramètres après le chargement du DOM
+function initQuestionnaireButton() {
+  const institutionSelect = document.getElementById('sel-institution');
+  if (!institutionSelect) return;
+  
+  // Crée le bouton Paramètres
+  const parametersBtn = document.createElement('button');
+  parametersBtn.id = 'questionnaire-btn-institution';
+  parametersBtn.className = 'questionnaire-btn';
+  parametersBtn.textContent = '⚙️ Paramètres';
+  parametersBtn.title = "Configurer les règles d'affichage pour cette institution";
+  
+  // Handler du bouton
+  parametersBtn.addEventListener('click', () => {
+    const institution = institutionSelect.value;
+    
+    // Récupère les régimes de cette institution
+    const regimes = window.REGIMES_PAR_INST ? 
+      window.REGIMES_PAR_INST[institution] || [] 
+      : [];
+    
+    if (regimes.length === 0) {
+      alert('Aucun régime trouvé pour cette institution');
+      return;
+    }
+    
+    // Ouvre le questionnaire modal
+    if (window.questionnaire) {
+      window.questionnaire.openModal(institution, regimes);
+    } else {
+      alert('Module questionnaire non chargé');
+    }
+  });
+  
+  // Insère le bouton après le dropdown
+  institutionSelect.parentNode.insertBefore(
+    parametersBtn, 
+    institutionSelect.nextSibling
+  );
+  
+  console.log('✓ Bouton ⚙️ Paramètres initié');
+}
+
+// Exécute après que le DOM soit prêt
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initQuestionnaireButton);
+} else {
+  initQuestionnaireButton();
+}
+
+// Hook de fusion de branches après rendu des graphiques
+const originalUpdateInstitution = window.updateInstitution || (() => {});
+
+window.updateInstitution = function() {
+  // Exécute la fonction originale
+  originalUpdateInstitution.apply(this, arguments);
+  
+  // Puis applique la fusion de branches (si questionnaire rempli)
+  setTimeout(() => {
+    if (!window.branchFusion || !window.questionnaire) return;
+    
+    const institution = document.getElementById('sel-institution').value;
+    const q1Data = window.questionnaire.data[institution]?.Q1 || {};
+    
+    if (Object.keys(q1Data).length === 0) return;
+    
+    const regimes = window.REGIMES_PAR_INST 
+      ? window.REGIMES_PAR_INST[institution] || []
+      : [];
+    
+    const branchMapping = buildBranchMapping(institution, regimes);
+    
+    document.querySelectorAll('.plotly-graph-div').forEach(div => {
+      if (div.id) {
+        window.branchFusion.applyBranchFusion(div.id, q1Data, branchMapping);
+      }
+    });
+  }, 500);
+};
+
+// Hook pour quand l'utilisateur sauvegarde le questionnaire
+window.addEventListener('questionnaire-saved', (e) => {
+  const { institution } = e.detail;
+  
+  if (!window.branchFusion || !window.questionnaire) return;
+  
+  const q1Data = window.questionnaire.data[institution]?.Q1 || {};
+  const regimes = window.REGIMES_PAR_INST 
+    ? window.REGIMES_PAR_INST[institution] || []
+    : [];
+  
+  const branchMapping = buildBranchMapping(institution, regimes);
+  
+  document.querySelectorAll('.plotly-graph-div').forEach(div => {
+    if (div.id) {
+      window.branchFusion.applyBranchFusion(div.id, q1Data, branchMapping);
+    }
+  });
+  
+  console.log('✓ Fusion de branches appliquée après save');
+});
+</script>
+"""
+
 ODD_INDICATORS = [
     {"key": "global_131", "label": "ODD 1.3.1 — Global", "branches": []},
     {"key": "ind_22_enfants", "label": "2.2 Enfants", "branches": ["enfants_famille"]},
@@ -2037,6 +2149,10 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     inst_options = "".join(
         f'<option value="{i}">{i}</option>' for i in institutions
     )
+    # Listes pour les sélecteurs
+    inst_options = "".join(
+        f'<option value="{i}">{i}</option>' for i in institutions
+    )
     # Options régimes par institution (pour onglet prestations)
     regimes_par_inst = {}
     for inst in institutions:
@@ -3704,6 +3820,8 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       box-shadow: 0 0 0 3px rgba(44,82,130,0.1);
     }}
   </style>
+  <!-- Questionnaire Modal CSS -->
+  <link rel="stylesheet" href="questionnaire_modal.css">
 </head>
 <body>
 
@@ -4042,12 +4160,17 @@ const REGIME_META  = {regime_meta_json};
 const REGIME_SEX_SERIES = {regime_sex_series_json};
 const PRESTATION_META = {prestation_meta_json};
 const NOM_COURT    = {nom_court_json};
+const REGIMES_PAR_INST = {regimes_par_inst_json};
 const CRITERIA_FIELDS = {criteres_json};
 const INDICATEURS_DATA = {indicateurs_json};
 const BRANCHES_ESS_DATA = {branches_ess_json};
 const ODD_PROGRAMMES_DATA = {odd_programmes_json};
 const ODD_INDICATORS = {odd_indicators_json};
 const DENOMINATEURS_CONFIG = {denominateurs_json};
+
+// Rendre les variables globales accessibles via window pour les modules externes
+window.REGIMES_PAR_INST = REGIMES_PAR_INST;
+window.NOM_COURT = NOM_COURT;
 
 function escapeHtml(text) {{
   return String(text || '')
@@ -7405,7 +7528,7 @@ function updatePrestationRegime() {{
 </script>
 
 </body>
-</html>"""
+</html>""" + questionnaire_html
 
 
 # ── Point d'entrée ────────────────────────────────────────────────────────────
