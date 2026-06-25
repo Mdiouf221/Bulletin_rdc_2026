@@ -893,7 +893,7 @@ Statut : structure initiale
 
 ---
 
-<!-- SECTION : Chapitre 5  Dépenses et financement de la protection sociale -->
+<!-- SECTION : Chapitre 5  Protection sociale face aux risques de vie -->
 
 
 
@@ -913,12 +913,6 @@ Logique rédactionnelle :
 - Sourcer chaque chiffre (CNSS, CNSSAP, ESS OIT, ou source institutionnelle directe).
 
 Structure :
-
-4.1 Vue d'ensemble de la couverture et des dépenses
-    — Taux de couverture global (population effectivement protégée / population totale)
-    — Dépenses totales de protection sociale en % du PIB
-    — Comparaison régionale (références OIT/World Social Protection Report)
-    — Tableau synthétique : couverture et dépenses par régime
 
 4.2 Protection dans la vieillesse
     — Bénéficiaires de pensions de vieillesse (CNSS : secteur privé ; CNSSAP : agents publics)
@@ -972,6 +966,857 @@ Le détail des données institution par institution (CNSS, CNSSAP, et programmes
 
 Statut : structure initiale
 -->
+
+<!-- FIN FICHIER -->
+
+
+# 4.2 — Protection dans la vieillesse
+
+<!-- NOTE_INTERNE
+Objectif :
+Présenter la couverture et les prestations servies aux personnes âgées en RDC, en croisant les données du régime contributif (CNSS, CNSSAP) et du régime non contributif. Identifier les lacunes de couverture.
+
+Points à couvrir :
+- Régime contributif (CNSS — secteur privé) :
+  · Nombre de pensionnés vieillesse (total, hommes, femmes)
+  · Montant moyen / médian de la pension de vieillesse
+  · Évolution 2019–2023 (série temporelle ESS)
+- Régime contributif (CNSSAP — agents publics) :
+  · Nombre de pensionnés vieillesse (total, hommes, femmes)
+  · Montant moyen / médian de la pension
+  · Évolution 2020–2023
+- Régime non contributif :
+  · Existence de transferts ciblant les personnes âgées ? (vérifier PSNPS, programmes humanitaires)
+  · Bénéficiaires, montants si disponibles
+- Adéquation :
+  · Pension moyenne vs. salaire minimum national
+  · Pension minimum vs. seuil de pauvreté national (63,9 % en 2012 — à actualiser)
+  · Taux de remplacement estimé
+- Lacunes :
+  · Estimation des personnes âgées sans protection (population âgée totale moins pensionnés)
+  · Poids du secteur informel (97,8 % emploi informel → très faible accumulation de droits)
+
+Logique rédactionnelle :
+Ne pas agréger CNSS et CNSSAP sans précaution (risques différents de double comptage, régimes distincts). Présenter d'abord chaque régime séparément, puis la synthèse. Souligner le contraste fort entre couverture des agents publics et couverture du secteur privé.
+
+Sources mobilisables :
+- ESS CNSS 2019–2022 (branche pensions : vieillesse, invalidité, survivants)
+- ESS CNSSAP 2020–2022 (branche pensions)
+- ESS à venir 2023 (si disponible)
+- Données ILOSTAT pour comparaison
+- Programmes non contributifs : à rechercher (PSNPS, partenaires humanitaires)
+
+Séries temporelles :
+CNSS vieillesse : 2019–2023. CNSSAP vieillesse : 2020–2023.
+
+Indicateurs clés attendus :
+- Nombre de pensionnés vieillesse CNSS (total, H/F)
+- Nombre de pensionnés vieillesse CNSSAP (total, H/F)
+- Pension moyenne (en CDF et en USD)
+- Ratio pension moyenne / salaire minimum (%)
+- Taux de couverture vieillesse ODD 1.3.1 (%)
+
+Figures prévues et requêtes SQL :
+
+  FIG_CH4_4.2_1_pensionnes_vieillesse_serie.png
+  — Courbes d'évolution : nombre de pensionnés vieillesse CNSS et CNSSAP (2019–2023), désagrégé H/F
+  — Requête :
+      SELECT ph.institution, ph.annee,
+             ph.beneficiaires_total, ph.beneficiaires_h, ph.beneficiaires_f
+      FROM v_serie_temporelle_prestations ph
+      WHERE ph.fonction_oit = 'Vieillesse'
+      ORDER BY ph.institution, ph.annee;
+
+  FIG_CH4_4.2_2_pension_moyenne_vs_smic.png
+  — Graphique à barres doubles : pension vieillesse moyenne vs. salaire minimum national (par année)
+  — Requête :
+      SELECT ph.annee,
+             ph.institution,
+             ph.montant_unitaire_cdf AS pension_moyenne_cdf
+      FROM v_serie_temporelle_prestations ph
+      WHERE ph.fonction_oit = 'Vieillesse'
+        AND ph.periodicite = 'Périodique'
+      ORDER BY ph.institution, ph.annee;
+  — Complété par le salaire minimum (source externe, à stocker dans `contexte_macro`)
+
+Statut : structure initiale
+-->
+
+## Texte rédigé
+
+### Bénéficiaires de pensions de vieillesse <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+La branche vieillesse constitue la principale branche de long terme des régimes contributifs en RDC. Elle couvre les travailleurs du secteur privé via la CNSS et les agents publics via la CNSSAP. Le tableau suivant retrace l'évolution du nombre de pensionnés de vieillesse sur la période 2019–2025.
+
+| Institution | Prestation | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|---|
+| CNSS | Pension de retraite (bénéf.) | 38 641 | 39 465 | 42 407 | 44 094 | 0 | 0 | 0 |
+| CNSS | Pension de retraite anticipée (bénéf.) | 0 | 78 | 272 | 1 235 | 0 | 0 | 0 |
+| CNSSAP | Pension de vieillesse (bénéf.) | 0 | 814 | 780 | 4 982 | 0 | 0 | 0 |
+| Régimes spéciaux | Pension de vieillesse (bénéf.) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+
+*Source : ESS OIT — CNSS (2019–2022) et CNSSAP (2020–2022). Régimes spéciaux (FARDC, magistrats, parlementaires) : données non disponibles — à instruire.*
+
+### Adéquation des pensions de vieillesse <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+L'adéquation des pensions est appréciée par leur rapport au salaire minimum national et au seuil de pauvreté. Ces deux références permettent de situer le niveau de la prestation dans son contexte socio-économique.
+
+| Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| Pension CNSS — montant unitaire (CDF/mois) | 180 000 CDF | 220 000 CDF | 320 000 CDF | 320 000 CDF | 0 | 0 | 0 |
+| Salaire minimum national (CDF/mois) | [contexte_macro] | [contexte_macro] | [contexte_macro] | [contexte_macro] | 0 | 0 | 0 |
+| Ratio pension / salaire minimum (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+| Seuil de pauvreté (CDF/mois, estimation) | [contexte_macro] | [contexte_macro] | [contexte_macro] | [contexte_macro] | 0 | 0 | 0 |
+
+*Source : ESS OIT — CNSS ; salaire minimum : [source à préciser] ; seuil de pauvreté : estimation à construire à partir des données INS.*
+
+### Lacunes de couverture <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Le tableau suivant met en regard le nombre de pensionnés contributifs et les données démographiques relatives à la population âgée, afin d'estimer le taux de couverture effectif de la branche vieillesse.
+
+| Indicateur | Valeur | Source |
+|---|---|---|
+| Population âgée de 65 ans et plus (RDC) | [contexte_macro] | ONU WPP |
+| Pensionnés vieillesse CNSS + CNSSAP (2022) | [EST.] | ESS OIT |
+| Pensionnés vieillesse régimes spéciaux (2022) | [N/D] | À instruire |
+| Taux de couverture vieillesse estimé (%) | [EST.] | Calcul |
+| Population âgée sans protection estimée | [EST.] | Calcul |
+
+<!-- FIN FICHIER -->
+
+
+# 4.3 — Protection des personnes en âge actif
+
+<!-- NOTE_INTERNE
+Objectif :
+Présenter la couverture de la population active par le système de protection sociale : travailleurs assurés, cotisants actifs, et protection face aux risques spécifiques à la vie active (maternité, maladie, accidents du travail, maladies professionnelles). C'est la section la plus dense car elle concerne le cœur du régime contributif.
+
+Points à couvrir :
+- Couverture des travailleurs — régime contributif :
+  · CNSS : nombre d'employeurs enregistrés, nombre d'assurés, nombre de cotisants actifs
+    Désagrégation : sexe, secteur d'activité (si disponible), province (si disponible)
+  · CNSSAP : nombre d'agents publics assurés, cotisants actifs
+    Désagrégation : sexe, province (si disponible)
+  · Évolution temporelle (séries ESS)
+- Protection maternité :
+  · CNSS : nombre de bénéficiaires d'indemnité maternité, montant total versé, durée moyenne
+  · CNSSAP : idem si données disponibles
+  · Taux de couverture maternité (femmes ayant accouché couvertes / naissances totales)
+- Protection maladie :
+  · Données disponibles ? (selon les branches couvertes par CNSS/CNSSAP)
+  · Si FSS opérationnel en 2023 : premières données à intégrer
+- Accidents du travail et maladies professionnelles (AT/MP) :
+  · CNSS : nombre de sinistres déclarés, rentes AT/MP, montants versés
+  · CNSSAP : idem si données disponibles
+  · Sous-déclaration probable à mentionner explicitement
+- Lacunes :
+  · Travailleurs de l'économie informelle (97,8 % de l'emploi) : non couverts par les régimes contributifs
+  · Travailleurs indépendants, agriculteurs : absence quasi-totale de couverture
+  · Recommandation 202 : rappel du socle minimum
+
+Logique rédactionnelle :
+Souligner le paradoxe : les régimes contributifs couvrent une fraction très minoritaire de la population active en raison du poids de l'économie informelle. Ne pas présenter les taux de couverture sur la population totale sans contextualiser avec le taux d'emploi formel.
+
+Sources mobilisables :
+- ESS CNSS 2019–2022 (toutes branches)
+- ESS CNSSAP 2020–2022
+- ILOSTAT (taux d'emploi informel, population active)
+- INS RDC (démographie, marché du travail)
+- ESS FSS (si données 2023 disponibles)
+
+Séries temporelles :
+CNSS assurés/cotisants : 2019–2023. CNSS maternité : 2019–2023. CNSS AT/MP : 2019–2023. CNSSAP : 2020–2023.
+
+Indicateurs clés attendus :
+- Nombre d'employeurs enregistrés CNSS
+- Nombre d'assurés CNSS (total, H/F)
+- Nombre de cotisants actifs CNSS (total, H/F)
+- Taux de couverture des actifs (%)
+- Nombre de bénéficiaires maternité (total)
+- Nombre de sinistres AT/MP déclarés
+- Taux de couverture actifs ODD 1.3.1 (%)
+
+Figures prévues et requêtes SQL :
+
+  FIG_CH4_4.3_1_cotisants_actifs_serie.png
+  — Courbes d'évolution : cotisants actifs CNSS et CNSSAP (2019–2023), désagrégé H/F
+  — Requête :
+      SELECT institution, annee,
+             cotisants_total, cotisants_h, cotisants_f
+      FROM v_serie_temporelle_regimes
+      ORDER BY institution, annee;
+
+  FIG_CH4_4.3_2_maternite_serie.png
+  — Courbe d'évolution : bénéficiaires prestation maternité CNSS (2019–2023)
+  — Requête :
+      SELECT annee,
+             beneficiaires_total, beneficiaires_h, beneficiaires_f
+      FROM v_serie_temporelle_prestations
+      WHERE institution = 'CNSS'
+        AND fonction_oit = 'Maternité'
+      ORDER BY annee;
+
+  FIG_CH4_4.3_3_atmp_serie.png
+  — Courbe d'évolution : sinistres AT/MP déclarés CNSS (2019–2023)
+  — Requête :
+      SELECT annee,
+             beneficiaires_total
+      FROM v_serie_temporelle_prestations
+      WHERE institution = 'CNSS'
+        AND fonction_oit = 'Risques professionnels'
+      ORDER BY annee;
+
+Statut : structure initiale
+-->
+
+## Texte rédigé
+
+### Couverture des travailleurs — cotisants actifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Les régimes contributifs couvrent les travailleurs du secteur formel. Le tableau présente l'évolution du nombre d'employeurs enregistrés et de cotisants actifs auprès de la CNSS et de la CNSSAP sur la période 2019–2025.
+
+| Institution | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|---|
+| CNSS | Employeurs enregistrés | [ESS 2019] | [ESS 2020] | [ESS 2021] | [ESS 2022] | 0 | 0 | 0 |
+| CNSS | Cotisants actifs (total) | 676 179 | 508 708 | 591 130 | 613 761 | 0 | 0 | 0 |
+| CNSSAP | Cotisants actifs (total) | 0 | 0 | 190 545 | 198 399 | 0 | 0 | 0 |
+| Régimes spéciaux | Cotisants actifs (total) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+
+*Source : ESS OIT — CNSS (2019–2022) et CNSSAP (2020–2022). Régimes spéciaux (FARDC, magistrats, parlementaires) : données non disponibles — à instruire.*
+
+### Protection maternité <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+La protection maternité de la CNSS comprend trois prestations distinctes : l'indemnité journalière (compensation du salaire pendant le congé), l'allocation de maternité (forfait à la naissance) et les allocations prénatales (versées avant l'accouchement). Le taux de couverture maternité au sens de l'ODD 1.3.1 est calculé en rapportant le nombre de bénéficiaires au nombre total de naissances vivantes.
+
+| Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| Bénéf. indemnité journalière maternité (CNSS) | 0 | 2 | 2 | 17 | 0 | 0 | 0 |
+| Bénéf. allocation de maternité (CNSS) | 0 | 108 | 167 | 414 | 0 | 0 | 0 |
+| Bénéf. allocations prénatales (CNSS) | 0 | 162 | 184 | 532 | 0 | 0 | 0 |
+| Bénéf. maternité — régimes spéciaux | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Naissances vivantes totales (RDC) | [contexte_macro] | [contexte_macro] | [contexte_macro] | [contexte_macro] | 0 | 0 | 0 |
+| Taux de couverture maternité ODD 1.3.1 (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+
+*Source : ESS OIT — CNSS ; naissances : INS RDC / ONU. Régimes spéciaux : données non disponibles.*
+
+
+
+### Accidents du travail et maladies professionnelles <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Les accidents du travail et maladies professionnelles (AT/MP) donnent droit à une rente d'incapacité permanente pour le travailleur victime, ou à une rente de survie pour ses ayants droit en cas de décès. Le montant unitaire mensuel est identique pour toutes les rentes AT/MP d'une même année, fixé par arrêté.
+
+| Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| Rentes/allocations incapacité AT/MP (CNSS) | 1 082 | 1 020 | 955 | 1 053 | 0 | 0 | 0 |
+| Rentes AT/MP — régimes spéciaux | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Frais de réadaptation fonctionnelle (CNSS) | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Montant unitaire rente AT/MP (CDF/mois) | 180 000 CDF | 220 000 CDF | 320 000 CDF | 320 000 CDF | 0 | 0 | 0 |
+
+*Source : ESS OIT — CNSS (2019–2022). Régimes spéciaux : données non disponibles.*
+
+
+
+### Lacunes de couverture des actifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Le tableau ci-dessous met en regard le nombre de cotisants actifs et la population active estimée afin de calculer le taux de couverture des travailleurs par les régimes contributifs.
+
+| Indicateur | Valeur | Source |
+|---|---|---|
+| Population active totale RDC (15–64 ans) | [contexte_macro] | ONU WPP / INS |
+| Cotisants CNSS + CNSSAP (2022) | [EST.] | ESS OIT |
+| Cotisants régimes spéciaux (2022) | [N/D] | À instruire |
+| Taux de couverture des actifs (%) | [EST.] | Calcul |
+| Actifs sans couverture contributive (estimation) | [EST.] | Calcul |
+
+<!-- FIN FICHIER -->
+
+
+# 4.4 — Protection des enfants et des familles
+
+<!-- NOTE_INTERNE
+Objectif :
+Présenter la couverture des enfants et des familles par le système de protection sociale en RDC : allocations familiales des régimes contributifs et programmes d'assistance ciblant les enfants et les ménages vulnérables.
+
+Points à couvrir :
+- Allocations familiales — régime contributif :
+  · CNSS : nombre de bénéficiaires (enfants couverts), montant moyen de l'allocation, montant total versé
+    Évolution 2019–2023
+  · CNSSAP : idem — agents publics
+  · Conditions d'éligibilité (enfants d'assurés) — couverture indirecte
+- Programmes d'assistance ciblant enfants et familles — régime non contributif :
+  · Programmes gouvernementaux (PSNPS, filets sociaux) ciblant les ménages avec enfants
+  · Programmes partenaires humanitaires (UNICEF, PAM, etc.) : transferts monétaires, cantines scolaires, etc.
+  · Bénéficiaires par programme, province, sexe (si données disponibles)
+  · Montants distribués
+- Adéquation :
+  · Valeur de l'allocation familiale CNSS/CNSSAP vs. coût de l'enfant / seuil de pauvreté
+  · Adéquation des transferts non contributifs
+- Lacunes :
+  · Enfants non couverts : estimation (enfants dont les parents sont dans l'informel)
+  · Fragmentation des programmes non contributifs : couverture partielle et géographiquement inégale
+
+Logique rédactionnelle :
+Distinguer la couverture directe (enfant bénéficiaire d'une prestation propre) de la couverture indirecte (enfant d'un assuré). L'ODD 1.3.1 mesure les enfants (0-14) couverts par au moins une prestation — préciser la méthodologie retenue.
+
+Sources mobilisables :
+- ESS CNSS 2019–2022 (branche prestations familiales)
+- ESS CNSSAP 2020–2022 (branche allocations familiales)
+- Rapports PSNPS / programmes gouvernementaux (à rechercher)
+- Rapports UNICEF, PAM, partenaires humanitaires (si disponibles)
+- INS RDC : population 0-14 ans
+
+Séries temporelles :
+CNSS allocations familiales : 2019–2023. CNSSAP : 2020–2023. Non contributif : selon disponibilité des rapports.
+
+Indicateurs clés attendus :
+- Nombre d'enfants couverts par allocations familiales CNSS (total)
+- Nombre d'enfants couverts par allocations familiales CNSSAP (total)
+- Montant moyen allocation familiale (CDF)
+- Nombre de bénéficiaires programmes non contributifs enfants/familles
+- Taux de couverture enfants 0-14 ODD 1.3.1 (%)
+
+Figures prévues et requêtes SQL :
+
+  FIG_CH4_4.4_1_allocations_familiales_serie.png
+  — Barres groupées : enfants couverts par allocations familiales CNSS et CNSSAP (2019–2023)
+  — Requête :
+      SELECT institution, annee,
+             beneficiaires_total
+      FROM v_serie_temporelle_prestations
+      WHERE fonction_oit = 'Prestations familiales'
+      ORDER BY institution, annee;
+
+  FIG_CH4_4.4_2_montant_moyen_af.png
+  — Courbe : montant moyen de l'allocation familiale vs. seuil de pauvreté (par année)
+  — Requête :
+      SELECT institution, annee,
+             montant_unitaire_cdf
+      FROM v_serie_temporelle_prestations
+      WHERE fonction_oit = 'Prestations familiales'
+        AND periodicite = 'Périodique'
+      ORDER BY institution, annee;
+  — Complété par le seuil de pauvreté (source externe, à stocker dans `contexte_macro`)
+
+Statut : structure initiale
+-->
+
+## Texte rédigé
+
+### Allocations familiales — régimes contributifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Les allocations familiales constituent, en termes de volume de bénéficiaires, la prestation la plus importante de la CNSS. Elles bénéficient aux enfants des travailleurs assurés du secteur privé, sous conditions d'éligibilité définies par la législation nationale.
+
+| Institution | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|---|
+| CNSS | Enfants couverts (allocations familiales) | 267 445 | 294 346 | 396 399 | 356 423 | 0 | 0 | 0 |
+| CNSSAP | Enfants couverts (allocations familiales) | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Régimes spéciaux | Enfants couverts (allocations familiales) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+
+*Source : ESS OIT — CNSS (2019–2022) et CNSSAP (2020–2022). Régimes spéciaux : données non disponibles — à instruire.*
+
+### Adéquation des allocations familiales <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+L'allocation familiale est versée mensuellement par enfant à charge. Le tableau présente l'évolution du montant unitaire de cette allocation et son rapport au seuil de pauvreté par personne.
+
+| Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| Montant allocation familiale CNSS (CDF/mois) | — | — | — | — | 0 | 0 | 0 |
+| Seuil de pauvreté par personne (CDF/mois) | [contexte_macro] | [contexte_macro] | [contexte_macro] | [contexte_macro] | 0 | 0 | 0 |
+| Ratio allocation / seuil pauvreté (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+
+*Source : ESS OIT — CNSS ; seuil de pauvreté : estimation à construire à partir des données INS.*
+
+### Programmes non contributifs ciblant enfants et familles <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Le tableau recense les programmes d'assistance sociale non contributifs ciblant les enfants et les ménages, ainsi que les données de couverture disponibles pour la période considérée.
+
+| Programme | Gestionnaire | Bénéficiaires (dernière année connue) | Montant moyen | Source |
+|---|---|---|---|---|
+| [Programme 1 — à compléter] | 0 | 0 | 0 | 0 |
+| [Programme 2 — à compléter] | 0 | 0 | 0 | 0 |
+
+
+
+### Lacunes de couverture des enfants <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+L'ODD 1.3.1 mesure la proportion d'enfants de 0 à 14 ans couverts par au moins une prestation de protection sociale. Le tableau ci-dessous confronte les effectifs couverts à la population totale de cette tranche d'âge pour estimer cette proportion en RDC.
+
+| Indicateur | Valeur | Source |
+|---|---|---|
+| Population 0–14 ans (RDC) | [contexte_macro] | ONU WPP |
+| Enfants couverts CNSS + CNSSAP (2022) | [EST.] | ESS OIT |
+| Enfants couverts régimes spéciaux (2022) | [N/D] | À instruire |
+| Enfants couverts programmes non contributifs | 0 | À compléter |
+| Taux de couverture enfants ODD 1.3.1 (%) | [EST.] | Calcul |
+
+<!-- FIN FICHIER -->
+
+
+# 4.5 — Protection en cas d'invalidité
+
+<!-- NOTE_INTERNE
+Objectif :
+Présenter la couverture et les prestations servies aux personnes en situation d'invalidité en RDC, dans les régimes contributifs et non contributifs. Identifier les lacunes de couverture.
+
+Points à couvrir :
+- Régime contributif — CNSS :
+  · Nombre de pensionnés invalidité (total, hommes, femmes)
+  · Montant moyen / médian de la pension d'invalidité
+  · Évolution 2019–2023
+  · Conditions d'accès (taux d'invalidité requis, cotisations préalables)
+- Régime contributif — CNSSAP :
+  · Nombre de pensionnés invalidité (total, hommes, femmes)
+  · Montant moyen de la pension
+  · Évolution 2020–2023
+- Régime non contributif :
+  · Programmes ciblant les personnes handicapées (gouvernementaux, ONG, humanitaires)
+  · Bénéficiaires, montants (si données disponibles)
+  · Note sur l'absence ou la faiblesse d'un système structuré pour les personnes handicapées hors régime contributif
+- Adéquation :
+  · Pension invalidité moyenne vs. seuil de pauvreté
+  · Comparaison pension invalidité / pension vieillesse (même régime)
+- Lacunes :
+  · Personnes handicapées dans l'économie informelle : non couvertes par le régime contributif
+  · Absence d'estimation nationale fiable du nombre de personnes handicapées (à mentionner)
+
+Logique rédactionnelle :
+L'invalidité est souvent la branche la moins documentée. Être prudent sur les chiffres et signaler explicitement les limites des données. Ne pas confondre invalidité professionnelle (AT/MP) couverte en 4.3 et invalidité générale couverte ici.
+
+Sources mobilisables :
+- ESS CNSS 2019–2022 (branche pensions : invalidité)
+- ESS CNSSAP 2020–2022 (branche pensions : invalidité)
+- Données programmes non contributifs (à rechercher)
+- INS RDC / enquêtes ménages pour estimation population handicapée
+
+Séries temporelles :
+CNSS invalidité : 2019–2023. CNSSAP invalidité : 2020–2023.
+
+Indicateurs clés attendus :
+- Nombre de pensionnés invalidité CNSS (total, H/F)
+- Nombre de pensionnés invalidité CNSSAP (total, H/F)
+- Pension invalidité moyenne (CDF)
+- Ratio pension invalidité / seuil de pauvreté (%)
+- Taux de couverture invalidité ODD 1.3.1 (%)
+
+Figures prévues et requêtes SQL :
+
+  FIG_CH4_4.5_1_pensionnes_invalidite_serie.png
+  — Courbes d'évolution : pensionnés invalidité CNSS et CNSSAP (2019–2023), désagrégé H/F
+  — Requête :
+      SELECT institution, annee,
+             beneficiaires_total, beneficiaires_h, beneficiaires_f
+      FROM v_serie_temporelle_prestations
+      WHERE fonction_oit = 'Invalidité'
+      ORDER BY institution, annee;
+
+  FIG_CH4_4.5_2_pension_invalidite_vs_vieillesse.png
+  — Barres comparatives : pension invalidité moyenne vs. pension vieillesse moyenne, par institution et année
+  — Requête :
+      SELECT institution, annee, fonction_oit,
+             montant_unitaire_cdf
+      FROM v_serie_temporelle_prestations
+      WHERE fonction_oit IN ('Invalidité', 'Vieillesse')
+        AND periodicite = 'Périodique'
+      ORDER BY institution, annee, fonction_oit;
+
+Statut : structure initiale
+-->
+
+## Texte rédigé
+
+### Pensions d'invalidité — régimes contributifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+La branche invalidité couvre les assurés reconnus en incapacité permanente de travail, sous conditions de durée de cotisation préalable. Le tableau présente l'évolution du nombre de pensionnés et du montant unitaire de la pension d'invalidité.
+
+| Institution | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|---|
+| CNSS | Pensionnés invalidité (total) | 883 | 568 | 524 | 728 | 0 | 0 | 0 |
+| CNSSAP | Pensionnés invalidité (total) | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Régimes spéciaux | Pensionnés invalidité (total) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| CNSS | Montant unitaire pension invalidité (CDF/mois) | [ESS 2019] | [ESS 2020] | [ESS 2021] | [ESS 2022] | 0 | 0 | 0 |
+
+*Source : ESS OIT — CNSS (2019–2022) et CNSSAP (2020–2022). Régimes spéciaux : données non disponibles — à instruire.*
+
+### Adéquation et comparaison avec la pension de vieillesse <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Dans les régimes de la CNSS, la pension d'invalidité et la pension de vieillesse sont fixées au même montant unitaire mensuel par arrêté. Le tableau met en regard ces montants et le seuil de pauvreté de référence.
+
+| Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| Pension invalidité CNSS (CDF/mois) | 180 000 CDF | 220 000 CDF | 320 000 CDF | 320 000 CDF | 0 | 0 | 0 |
+| Pension vieillesse CNSS (CDF/mois) | 180 000 CDF | 220 000 CDF | 320 000 CDF | 320 000 CDF | 0 | 0 | 0 |
+| Ratio invalidité / vieillesse (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+| Seuil de pauvreté (CDF/mois) | [contexte_macro] | [contexte_macro] | [contexte_macro] | [contexte_macro] | 0 | 0 | 0 |
+
+*Source : ESS OIT — CNSS ; seuil de pauvreté : estimation à construire.*
+
+### Programmes non contributifs pour les personnes handicapées <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Le tableau recense les programmes d'assistance sociale destinés aux personnes handicapées et les données de couverture disponibles pour la période considérée.
+
+| Programme | Gestionnaire | Bénéficiaires | Source |
+|---|---|---|---|
+| [À compléter] | 0 | 0 | 0 |
+
+
+
+### Lacunes de couverture invalidité <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Le taux de couverture invalidité au sens de l'ODD 1.3.1 est calculé en rapportant le nombre de bénéficiaires d'une pension d'invalidité à l'estimation de la population handicapée. Ce calcul est conditionné à la disponibilité d'une estimation nationale du nombre de personnes handicapées.
+
+| Indicateur | Valeur | Source |
+|---|---|---|
+| Estimation personnes handicapées en RDC | 0 | Enquête nationale à rechercher |
+| Pensionnés invalidité CNSS + CNSSAP (2022) | [EST.] | ESS OIT |
+| Pensionnés invalidité régimes spéciaux (2022) | [N/D] | À instruire |
+| Taux de couverture invalidité ODD 1.3.1 (%) | [EST.] | Calcul |
+
+<!-- FIN FICHIER -->
+
+
+# 4.6 — Protection en cas de décès et prestations de survie
+
+<!-- NOTE_INTERNE
+Objectif :
+Présenter les prestations versées aux ayants droit (conjoint, enfants, orphelins) lors du décès d'un assuré, dans les régimes contributifs CNSS et CNSSAP.
+
+Points à couvrir :
+- Régime contributif — CNSS :
+  · Nombre de pensionnés de survie (conjoint survivant, orphelins)
+  · Désagrégation : sexe du bénéficiaire (majorité de veuves dans la plupart des contextes)
+  · Montant moyen de la pension de survie
+  · Capital décès (prestation en capital versée à la famille) : nombre de versements, montant moyen
+  · Évolution 2019–2023
+- Régime contributif — CNSSAP :
+  · Mêmes indicateurs pour les agents publics
+  · Évolution 2020–2023
+- Adéquation :
+  · Pension de survie vs. pension de vieillesse de l'assuré décédé (taux de réversion)
+  · Pension de survie vs. seuil de pauvreté
+- Lacunes :
+  · Ayants droit d'assurés du secteur informel : aucune protection
+  · Note sur le rôle de la famille élargie et des mécanismes informels de solidarité (non comptabilisés)
+
+Logique rédactionnelle :
+Section plus courte que les précédentes en raison de la moindre disponibilité des données désagrégées. Mettre en avant la dimension genre (veuves majoritairement bénéficiaires). Ne pas confondre avec le capital décès versé en cas d'accident du travail (traité en 4.3).
+
+Sources mobilisables :
+- ESS CNSS 2019–2022 (branche pensions : survivants)
+- ESS CNSSAP 2020–2022 (branche pensions : survivants)
+
+Séries temporelles :
+CNSS survie : 2019–2023. CNSSAP survie : 2020–2023.
+
+Indicateurs clés attendus :
+- Nombre de pensionnés de survie CNSS (total, H/F)
+- Nombre de pensionnés de survie CNSSAP (total, H/F)
+- Pension de survie moyenne (CDF)
+- Nombre de capitaux décès versés (CNSS)
+- Taux de réversion moyen (%)
+
+Figures prévues et requêtes SQL :
+
+  FIG_CH4_4.6_1_pensionnes_survie_serie.png
+  — Courbes d'évolution : pensionnés de survie CNSS et CNSSAP (2019–2023), désagrégé H/F
+  — Requête :
+      SELECT institution, annee,
+             beneficiaires_total, beneficiaires_h, beneficiaires_f
+      FROM v_serie_temporelle_prestations
+      WHERE fonction_oit = 'Survivants'
+      ORDER BY institution, annee;
+
+  FIG_CH4_4.6_2_taux_reversion.png
+  — Barres : taux de réversion (pension survie / pension vieillesse) par institution et année
+  — Requête :
+      SELECT s.institution, s.annee,
+             s.montant_unitaire_cdf AS pension_survie,
+             v.montant_unitaire_cdf AS pension_vieillesse,
+             ROUND(s.montant_unitaire_cdf * 100.0 / v.montant_unitaire_cdf, 1) AS taux_reversion_pct
+      FROM v_serie_temporelle_prestations s
+      JOIN v_serie_temporelle_prestations v
+        ON s.institution = v.institution AND s.annee = v.annee
+      WHERE s.fonction_oit = 'Survivants'
+        AND v.fonction_oit = 'Vieillesse'
+        AND s.periodicite = 'Périodique'
+      ORDER BY s.institution, s.annee;
+
+Statut : structure initiale
+-->
+
+## Texte rédigé
+
+### Pensions de survie et prestations aux ayants droit <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Les prestations de survie sont versées aux ayants droit d'un assuré décédé — conjoint survivant et orphelins principalement. La CNSS distingue la pension de survie contributive, les rentes liées aux accidents du travail et une allocation pour frais funéraires.
+
+| Institution | Prestation | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|---|
+| CNSS | Pension des survivants (bénéf.) | 24 725 | 25 720 | 28 355 | 31 524 | 0 | 0 | 0 |
+| CNSS | Rentes de survivants AT/MP (bénéf.) | 1 476 | 1 608 | 1 845 | 1 781 | 0 | 0 | 0 |
+| CNSS | Allocation frais funéraires (bénéf.) | 1 766 | 589 | 849 | 533 | 0 | 0 | 0 |
+| CNSSAP | Pension des survivants (bénéf.) | 0 | 90 | 217 | 6 964 | 0 | 0 | 0 |
+| Régimes spéciaux | Pension des survivants (bénéf.) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+
+*Source : ESS OIT — CNSS (2019–2022) et CNSSAP (2020–2022). Régimes spéciaux : données non disponibles — à instruire.*
+
+### Adéquation des pensions de survie <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Le taux de réversion exprime le rapport entre la pension de survie et la pension de vieillesse du même régime et de la même année. Le tableau présente les montants unitaires correspondants et leur évolution sur la période.
+
+| Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| Pension survie CNSS (CDF/mois) | 180 000 CDF | 220 000 CDF | 320 000 CDF | 320 000 CDF | 0 | 0 | 0 |
+| Pension vieillesse CNSS (CDF/mois) | 180 000 CDF | 220 000 CDF | 320 000 CDF | 320 000 CDF | 0 | 0 | 0 |
+| Taux de réversion estimé (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+| Montant frais funéraires CNSS (CDF) | 180 000 CDF | 220 000 CDF | 320 000 CDF | 320 000 CDF | 0 | 0 | 0 |
+
+*Source : ESS OIT — CNSS. Le taux de réversion est estimé comme le rapport pension survie / pension vieillesse du même régime et de la même année.*
+
+<!-- FIN FICHIER -->
+
+
+# 4.7 — Dépenses et financement du système
+
+<!-- NOTE_INTERNE
+Objectif :
+Présenter les flux financiers du système de protection sociale en RDC dans leur ensemble : recettes (cotisations, transferts publics, autres) et dépenses (prestations, administration). Données agrégées — le détail institution par institution figure en Annexe A.
+
+Points à couvrir :
+- Recettes totales du système :
+  · Cotisations salariales et patronales (CNSS + CNSSAP)
+  · Transferts publics (budget de l'État vers CNSSAP, programmes non contributifs)
+  · Autres sources (bailleurs, humanitaire — si chiffrables)
+  · Évolution temporelle
+- Dépenses de prestations :
+  · Total dépenses de prestations par régime (CNSS, CNSSAP, non contributif)
+  · Répartition par contingence (vieillesse, invalidité, maternité, AT/MP, familles, survie)
+  · Évolution temporelle
+- Dépenses administratives :
+  · Total dépenses administratives par institution
+  · Ratio dépenses administratives / dépenses totales (indicateur d'efficience)
+  · NB : toujours séparer dépenses de prestations et dépenses administratives
+- Dépenses en % du PIB :
+  · Total protection sociale / PIB (%)
+  · Régimes contributifs / PIB (%)
+  · Comparaison régionale (Afrique subsaharienne, pays comparables)
+  · Référence OIT : seuil recommandé / trajectoire cible
+
+Logique rédactionnelle :
+Ne jamais additionner des données de sources différentes sans précaution méthodologique. Préciser pour chaque chiffre agrégé s'il inclut ou exclut le financement humanitaire. Séparer systématiquement dépenses de prestations (transfers to households) et dépenses de gestion administrative.
+
+Sources mobilisables :
+- ESS CNSS 2019–2022 (recettes, dépenses, réserves)
+- ESS CNSSAP 2020–2022 (recettes, dépenses, réserves)
+- Budget de l'État (lois de finances — transferts vers CNSSAP, programmes sociaux)
+- Données programmes non contributifs (à vérifier)
+- World Social Protection Report OIT (comparaison régionale % PIB)
+- FMI / Banque mondiale (données PIB RDC)
+
+Séries temporelles :
+CNSS finances : 2019–2023. CNSSAP finances : 2020–2023.
+
+Indicateurs clés attendus :
+- Recettes totales CNSS (CDF et USD)
+- Recettes totales CNSSAP (CDF et USD)
+- Dépenses de prestations CNSS (total et par branche)
+- Dépenses de prestations CNSSAP (total et par branche)
+- Ratio dépenses administratives / dépenses totales CNSS et CNSSAP (%)
+- Dépenses totales PS / PIB (%)
+- Réserves / fonds de réserve (CNSS, CNSSAP)
+
+Figures prévues et requêtes SQL :
+
+  FIG_CH4_4.7_1_recettes_depenses_serie.png
+  — Barres groupées : recettes vs. dépenses de prestations par institution et par année
+  — Requête :
+      SELECT institution, annee,
+             recettes_cdf, depenses_prestations_cdf, depenses_admin_cdf
+      FROM v_serie_temporelle_regimes
+      ORDER BY institution, annee;
+
+  FIG_CH4_4.7_2_repartition_depenses_par_branche.png
+  — Graphique en aires empilées : dépenses de prestations par fonction OIT (vieillesse,
+    maternité, AT/MP, familles, invalidité, survie) — CNSS et CNSSAP — évolution temporelle
+  — Requête :
+      SELECT institution, annee, fonction_oit,
+             SUM(beneficiaires_total) AS total_beneficiaires
+      FROM v_serie_temporelle_prestations
+      GROUP BY institution, annee, fonction_oit
+      ORDER BY institution, annee, fonction_oit;
+  — Note : proxy par bénéficiaires si les dépenses par branche ne sont pas désagrégées dans l'ESS
+
+  FIG_CH4_4.7_3_ratio_admin.png
+  — Courbe : ratio dépenses administratives / dépenses totales (%) par institution et année
+  — Requête :
+      SELECT institution, annee,
+             depenses_admin_cdf,
+             depenses_prestations_cdf,
+             ROUND(depenses_admin_cdf * 100.0 /
+                   (depenses_prestations_cdf + depenses_admin_cdf), 1) AS ratio_admin_pct
+      FROM v_serie_temporelle_regimes
+      WHERE depenses_prestations_cdf > 0
+      ORDER BY institution, annee;
+
+Statut : structure initiale
+-->
+
+## Texte rédigé
+
+### Recettes des régimes contributifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Les recettes des régimes contributifs proviennent principalement des cotisations salariales et patronales. Le financement des régimes non contributifs repose sur les transferts du budget de l'État et les contributions des partenaires au développement.
+
+| Institution | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| CNSS — recettes totales (milliards CDF) | 577,8 Mds CDF | 725,7 Mds CDF | 926,5 Mds CDF | 1067,8 Mds CDF | 0 | 0 | 0 |
+| CNSSAP — recettes totales (milliards CDF) | 0 | 40,5 Mds CDF | 41,6 Mds CDF | 52,4 Mds CDF | 0 | 0 | 0 |
+| Régimes spéciaux — recettes totales (milliards CDF) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Programmes non contributifs — financement public | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+
+*Source : ESS OIT — CNSS et CNSSAP. Régimes spéciaux : données non disponibles — à instruire.*
+
+### Dépenses de prestations <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Les dépenses de prestations correspondent aux transferts effectifs versés aux bénéficiaires — pensions, allocations, rentes, indemnités. Elles sont distinguées des dépenses administratives, conformément aux standards de l'OIT. Les valeurs sont exprimées en milliards de francs congolais courants.
+
+| Institution | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| CNSS — dépenses de prestations (milliards CDF) | 328,5 Mds CDF | 436,5 Mds CDF | 493,2 Mds CDF | 677,8 Mds CDF | 0 | 0 | 0 |
+| CNSSAP — dépenses de prestations (milliards CDF) | 0 | 7,2 Mds CDF | 8,5 Mds CDF | 34,4 Mds CDF | 0 | 0 | 0 |
+| Régimes spéciaux — dépenses de prestations (milliards CDF) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+
+*Source : ESS OIT — CNSS et CNSSAP. Régimes spéciaux : données non disponibles — à instruire.*
+
+### Dépenses administratives et ratio d'efficience <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+| Institution | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| CNSS — dépenses administratives (milliards CDF) | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| CNSS — ratio admin / dépenses totales (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+| CNSSAP — dépenses administratives (milliards CDF) | 0 | 5,6 Mds CDF | 6,9 Mds CDF | 14,0 Mds CDF | 0 | 0 | 0 |
+| CNSSAP — ratio admin / dépenses totales (%) | 0 | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+| Régimes spéciaux — dépenses administratives | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+
+*Source : ESS OIT — CNSS et CNSSAP. Le ratio est calculé comme : dépenses administratives / (dépenses de prestations + dépenses administratives). Régimes spéciaux : données non disponibles.*
+
+
+
+### Dépenses en proportion du PIB <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Le rapport des dépenses de protection sociale au PIB est calculé pour permettre des comparaisons temporelles et internationales. Les valeurs de référence pour l'Afrique subsaharienne et la moyenne mondiale sont issues du World Social Protection Report de l'OIT.
+
+| Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| Dépenses PS totales (CNSS + CNSSAP) / PIB (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+| Dépenses PS (y.c. rég. spéciaux si données disponibles) / PIB (%) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Moyenne Afrique subsaharienne / PIB (%) | — | — | [WSPR] | [WSPR] | — | — | — |
+| Moyenne mondiale / PIB (%) | — | — | [WSPR] | [WSPR] | — | — | — |
+
+*Source : ESS OIT ; PIB RDC : Banque mondiale WDI ; comparaisons : World Social Protection Report OIT.*
+
+<!-- FIN FICHIER -->
+
+
+# 4.8 — Positionnement de la RDC au regard de l'ODD 1.3.1
+
+<!-- NOTE_INTERNE
+Objectif :
+Clore le chapitre par un tableau de bord synthétique positionant la RDC au regard de l'indicateur mondial de couverture sociale (ODD 1.3.1). Cette section consolide les données des sections 4.2 à 4.6 dans un cadre comparatif international et donne une lecture politique des résultats.
+
+Points à couvrir :
+- Rappel de la définition :
+  · ODD 1.3.1 = proportion de la population couverte par au moins une prestation de protection sociale
+  · Méthodologie OIT : couverture effective (bénéficiaires réels) et non légale
+  · Désagrégation officielle : total, enfants (0-14), femmes ayant accouché, personnes âgées, actifs contributeurs, personnes handicapées, chômeurs
+- Résultats pour la RDC :
+  · Taux ODD 1.3.1 global (%)
+  · Par sous-groupe : enfants, maternité, vieillesse, actifs, invalidité
+  · Désagrégation par sexe
+  · Source et année de référence explicitement indiquées
+  · Note méthodologique si l'estimation est partielle ou comporte des incertitudes
+- Comparaison régionale et internationale :
+  · Afrique subsaharienne (moyenne OIT)
+  · Pays comparables : Angola, Mozambique, RCA, Congo-Brazzaville (si données disponibles)
+  · Moyenne mondiale
+- Trajectoire et objectifs :
+  · Évolution depuis le 1er bulletin (2022 → 2023)
+  · Objectifs du Plan National de Protection Sociale (PNPS) si renseignés
+  · Écart à combler pour atteindre les cibles nationales et régionales
+
+Logique rédactionnelle :
+Cette section est à la fois technique (définition rigoureuse de l'indicateur) et politique (positionnement de la RDC dans un contexte mondial). Adopter un ton prudent sur les comparaisons : les méthodologies nationales varient. Citer explicitement le World Social Protection Report OIT comme source de référence pour les comparaisons.
+Ne pas répéter les chiffres déjà détaillés dans les sections 4.2–4.6 — synthétiser et contextualiser.
+
+Sources mobilisables :
+- ILOSTAT (base de données ODD 1.3.1 par pays)
+- World Social Protection Report OIT (dernière édition)
+- ESS CNSS et CNSSAP (calcul national)
+- 1er Bulletin statistique RDC (valeur 2022 pour la série temporelle)
+
+Indicateurs clés attendus :
+- ODD 1.3.1 global RDC (%) — 2022 et 2023
+- ODD 1.3.1 enfants 0-14 (%)
+- ODD 1.3.1 femmes ayant accouché / maternité (%)
+- ODD 1.3.1 personnes âgées (%)
+- ODD 1.3.1 actifs / contributeurs (%)
+- ODD 1.3.1 personnes handicapées (%)
+- Moyenne Afrique subsaharienne (%) — pour comparaison
+- Moyenne mondiale (%) — pour comparaison
+
+Statut : structure initiale
+-->
+
+## Texte rédigé
+
+### Définition et méthodologie <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+L'indicateur ODD 1.3.1 mesure la proportion de la population effectivement couverte par au moins une prestation de protection sociale. Il est calculé selon la méthodologie de l'OIT, qui distingue la couverture légale (droit formel à une prestation) de la couverture effective (bénéfice réel d'une prestation). Seule la couverture effective est retenue ici.
+
+L'indicateur est décomposé par groupe de population conformément aux catégories officielles de l'OIT :
+
+| Sous-indicateur ODD 1.3.1 | Définition |
+|---|---|
+| Population totale | % de la population couverte par au moins une prestation |
+| Enfants (0–14 ans) | % couverts par une prestation enfance/famille |
+| Femmes ayant accouché | % couvertes par une prestation maternité |
+| Personnes âgées | % recevant une pension de vieillesse |
+| Actifs / contributeurs | % cotisant à un régime contributif |
+| Personnes handicapées | % recevant une prestation invalidité |
+
+### Résultats pour la RDC <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+| Sous-indicateur ODD 1.3.1 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| Population totale (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+| Enfants 0–14 ans (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+| Femmes ayant accouché — maternité (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+| Personnes âgées — pension vieillesse (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+| Actifs — contributeurs (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+| Personnes handicapées — invalidité (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+
+*Source : calculs à partir des ESS OIT (CNSS 2019–2022, CNSSAP 2020–2022) et des données démographiques ONU WPP. Les estimations [EST.] seront calculées par le script `generer_figures_ch4.py` depuis la base.*
+
+
+
+### Comparaison régionale et internationale <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+| Pays / Région | ODD 1.3.1 — population totale (%) | Année | Source |
+|---|---|---|---|
+| RDC | [EST.] | 2022 | ESS OIT / calcul |
+| Angola | [WSPR] | 0 | World Social Protection Report OIT |
+| Mozambique | [WSPR] | 0 | World Social Protection Report OIT |
+| Afrique subsaharienne (moyenne) | [WSPR] | 0 | World Social Protection Report OIT |
+| Monde (moyenne) | [WSPR] | 0 | World Social Protection Report OIT |
+
+*Source : World Social Protection Report OIT (dernière édition disponible) ; ILOSTAT.*
+
+
+
+### Trajectoire et objectifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+| Indicateur | 2022 (référence) | 2025 (cible PNPS) | 2030 (cible ODD) |
+|---|---|---|---|
+| ODD 1.3.1 — population totale (%) | [EST.] | [N/D — cible PNPS à rechercher] | 0 |
 
 <!-- FIN FICHIER -->
 

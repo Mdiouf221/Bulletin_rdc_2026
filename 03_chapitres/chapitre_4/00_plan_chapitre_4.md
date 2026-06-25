@@ -15,12 +15,6 @@ Logique rédactionnelle :
 
 Structure :
 
-4.1 Vue d'ensemble de la couverture et des dépenses
-    — Taux de couverture global (population effectivement protégée / population totale)
-    — Dépenses totales de protection sociale en % du PIB
-    — Comparaison régionale (références OIT/World Social Protection Report)
-    — Tableau synthétique : couverture et dépenses par régime
-
 4.2 Protection dans la vieillesse
     — Bénéficiaires de pensions de vieillesse (CNSS : secteur privé ; CNSSAP : agents publics)
     — Transferts sociaux aux personnes âgées relevant du régime non contributif

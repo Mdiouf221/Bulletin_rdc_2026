@@ -55,10 +55,17 @@ sections:
     files:
       - "03_chapitres/chapitre_3/00_plan_chapitre_3.md"
 
-  - id: "chapitre_5_depenses"
-    title: "Chapitre 5  Dépenses et financement de la protection sociale"
+  - id: "chapitre_5_risques"
+    title: "Chapitre 5  Protection sociale face aux risques de vie"
     files:
       - "03_chapitres/chapitre_4/00_plan_chapitre_4.md"
+      - "03_chapitres/chapitre_4/4.2_vieillesse.md"
+      - "03_chapitres/chapitre_4/4.3_age_actif.md"
+      - "03_chapitres/chapitre_4/4.4_enfants_familles.md"
+      - "03_chapitres/chapitre_4/4.5_invalidite.md"
+      - "03_chapitres/chapitre_4/4.6_deces_survie.md"
+      - "03_chapitres/chapitre_4/4.7_depenses_financement.md"
+      - "03_chapitres/chapitre_4/4.8_odd_131.md"
 
   - id: "chapitre_6_qualite"
     title: "Chapitre 6  Qualité, disponibilité et perspectives"
