@@ -245,9 +245,9 @@ def build_export_html(md_file: pathlib.Path, include_notes: bool = False) -> str
     body = inject_status_dots_html(body, status_map)
     body = neutralize_server_links(body)
 
-    # Ajouter la classe "chapitre-titre" aux h1 qui commencent par "Chapitre"
+    # Ajouter la classe "chapitre-titre" aux h1 qui commencent par "Chapitre" ou "Annexe"
     body = re.sub(
-        r'<h1([^>]*)>((?:(?!</h1>).)*?Chapitre\s+\d)',
+        r'<h1([^>]*)>((?:(?!</h1>).)*?(?:Chapitre\s+\d|Annexe\s+[A-Z]))',
         r'<h1\1 class="chapitre-titre">\2',
         body,
     )

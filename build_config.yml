@@ -69,8 +69,6 @@ sections:
     title: "Annexes"
     files:
       - "04_annexes/annexe_A_fiches_institutionnelles.md"
-      - "04_annexes/annexe_A1_institutions_contributrices.md"
-      - "04_annexes/annexe_A2_correspondance_institutions_indicateurs.md"
       - "04_annexes/annexe_B_programmes_hors_perimetre.md"
       - "04_annexes/annexe_C_definitions_indicateurs.md"
       - "04_annexes/annexe_D_notes_methodologiques.md"
