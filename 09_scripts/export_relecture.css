@@ -165,30 +165,30 @@ body {
 /* ===== Titres ======================================================== */
 h1 {
     font-family   : var(--police-ui);
-    font-size     : 24px;
+    font-size     : 19px;
     font-weight   : 700;
     color         : var(--couleur-principale);
     margin        : 52px 0 18px;
-    padding-bottom: 10px;
-    border-bottom : 3px solid var(--couleur-accent);
     line-height   : 1.3;
     page-break-before: always;
 }
 h1:first-child { margin-top: 0; page-break-before: avoid; }
+h1.chapitre-titre {
+    font-size     : 24px;
+    color         : #cc1a1a;
+}
 
 h2 {
     font-family   : var(--police-ui);
-    font-size     : 18px;
+    font-size     : 14px;
     font-weight   : 700;
     color         : var(--couleur-principale);
     margin        : 38px 0 12px;
-    padding-bottom: 6px;
-    border-bottom : 1px solid var(--couleur-bordure);
 }
 
 h3 {
     font-family : var(--police-ui);
-    font-size   : 15.5px;
+    font-size   : 13.5px;
     font-weight : 600;
     color       : #2a4a80;
     margin      : 26px 0 8px;
@@ -196,7 +196,7 @@ h3 {
 
 h4 {
     font-family : var(--police-ui);
-    font-size   : 14px;
+    font-size   : 12px;
     font-weight : 600;
     color       : #444;
     margin      : 18px 0 6px;
@@ -281,7 +281,7 @@ pre { background: #f5f4f0; padding: 14px 16px; overflow-x: auto; margin: 1em 0; 
 pre code { background: transparent; padding: 0; color: var(--couleur-texte); }
 
 /* ===== Séparateurs =================================================== */
-hr { border: none; border-top: 1px solid var(--couleur-bordure); margin: 2em 0; }
+hr { display: none; }
 
 /* ===== Liens ========================================================= */
 a { color: var(--couleur-principale); text-decoration: none; }
