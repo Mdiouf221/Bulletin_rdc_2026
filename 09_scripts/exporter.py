@@ -256,6 +256,27 @@ def build_export_html(md_file: pathlib.Path, include_notes: bool = False) -> str
     body = re.sub(r'(<table)', r'<div class="table-scroll">\1', body)
     body = re.sub(r'(</table>)', r'\1</div>', body)
 
+    # Ajouter la classe "fig-block" aux blockquotes contenant un intitulé de figure
+    body = re.sub(
+        r'<blockquote>\s*<p><strong>(Figure\s+\d)',
+        r'<blockquote class="fig-block"><p><strong>\1',
+        body,
+    )
+
+    # Ajouter la classe "table-caption" aux paragraphes de légende de tableau (**Tableau…**)
+    body = re.sub(
+        r'<p><strong>(Tableau\s+\d)',
+        r'<p class="table-caption"><strong>\1',
+        body,
+    )
+
+    # Ajouter la classe "fig-source" aux paragraphes de source (*Source :…*)
+    body = re.sub(
+        r'<p><em>(Source\s*:)',
+        r'<p class="fig-source"><em>\1',
+        body,
+    )
+
     # Métadonnées d'export
     now              = datetime.now()
     export_date      = now.strftime("%d %B %Y à %H:%M")

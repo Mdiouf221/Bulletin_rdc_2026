@@ -72,9 +72,8 @@ def style_axe(ax, spines=True):
     ax.tick_params(labelsize=8)
 
 def note_source(fig, texte, y=0.01):
-    """Ajoute une note source en bas de figure."""
-    fig.text(0.5, y, texte, ha="center", fontsize=7.5, color=GRIS,
-             style="italic", wrap=True)
+    """Source citée dans le Markdown — pas dans la figure."""
+    pass
 
 def save(fig, nom, dpi):
     path = os.path.join(OUT_DIR, nom)

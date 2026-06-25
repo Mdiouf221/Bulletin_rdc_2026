@@ -165,41 +165,41 @@ body {
 /* ===== Titres ======================================================== */
 h1 {
     font-family   : var(--police-ui);
-    font-size     : 19px;
+    font-size     : 18px;
     font-weight   : 700;
-    color         : var(--couleur-principale);
-    margin        : 52px 0 18px;
+    color         : #1c1c1c;
+    margin        : 52px 0 16px;
     line-height   : 1.3;
     page-break-before: always;
 }
 h1:first-child { margin-top: 0; page-break-before: avoid; }
 h1.chapitre-titre {
-    font-size     : 24px;
+    font-size     : 22px;
     color         : #cc1a1a;
 }
 
 h2 {
     font-family   : var(--police-ui);
-    font-size     : 14px;
+    font-size     : 15px;
     font-weight   : 700;
-    color         : var(--couleur-principale);
-    margin        : 38px 0 12px;
+    color         : #1c1c1c;
+    margin        : 36px 0 10px;
 }
 
 h3 {
     font-family : var(--police-ui);
-    font-size   : 13.5px;
+    font-size   : 14px;
     font-weight : 600;
-    color       : #2a4a80;
-    margin      : 26px 0 8px;
+    color       : #333333;
+    margin      : 24px 0 8px;
 }
 
 h4 {
     font-family : var(--police-ui);
-    font-size   : 12px;
+    font-size   : 13px;
     font-weight : 600;
-    color       : #444;
-    margin      : 18px 0 6px;
+    color       : #555555;
+    margin      : 16px 0 6px;
 }
 
 /* ===== Paragraphes =================================================== */
@@ -222,7 +222,7 @@ table {
     font-family     : var(--police-ui);
     border          : 1px solid var(--couleur-bordure);
 }
-thead tr { background: var(--couleur-principale); color: #ffffff; }
+thead tr { background: #3a3a3a; color: #ffffff; }
 thead th {
     padding     : 7px 10px;
     text-align  : left;
@@ -231,7 +231,7 @@ thead th {
     border      : 1px solid rgba(255,255,255,0.2);
 }
 tbody tr:nth-child(even) { background: #f4f3ee; }
-tbody tr:hover           { background: #eaeff8; }
+tbody tr:hover           { background: #e8e7e2; }
 td {
     padding       : 6px 10px;
     border        : 1px solid var(--couleur-bordure);
@@ -266,6 +266,51 @@ blockquote {
     margin      : 1.2em 0;
     font-style  : italic;
     color       : #555;
+}
+
+/* Bloc figure (blockquote contenant une image) */
+blockquote.fig-block {
+    border-left   : 2px solid #aaaaaa;
+    background    : transparent;
+    padding       : 0;
+    margin        : 1.6em 0 0.4em;
+    font-style    : normal;
+    color         : inherit;
+}
+blockquote.fig-block p:first-child {
+    display       : inline-block;
+    font-size     : 12px;
+    font-weight   : 600;
+    color         : #333333;
+    background    : #efefef;
+    padding       : 3px 10px;
+    margin        : 0 0 4px;
+    border-radius : 2px;
+}
+blockquote.fig-block img {
+    margin : 0 auto 0.2em;
+}
+
+/* Légende de tableau */
+p.table-caption {
+    font-size     : 12px;
+    font-weight   : 600;
+    color         : #333333;
+    background    : #efefef;
+    display       : inline-block;
+    padding       : 3px 10px;
+    margin        : 1.6em 0 4px;
+    border-left   : 2px solid #aaaaaa;
+    border-radius : 2px;
+}
+
+/* Note source sous figure ou tableau */
+p.fig-source {
+    font-size   : 11px;
+    color       : #777777;
+    font-style  : italic;
+    margin      : 2px 0 2em;
+    line-height : 1.4;
 }
 
 /* ===== Code ========================================================== */

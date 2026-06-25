@@ -171,41 +171,41 @@ body {
 /* ===== Titres ======================================================== */
 h1 {
     font-family   : var(--police-ui);
-    font-size     : 19px;
+    font-size     : 18px;
     font-weight   : 700;
-    color         : var(--couleur-principale);
-    margin        : 52px 0 18px;
+    color         : #1c1c1c;
+    margin        : 52px 0 16px;
     line-height   : 1.3;
     page-break-before: always;
 }
 h1:first-child { margin-top: 0; page-break-before: avoid; }
 h1.chapitre-titre {
-    font-size     : 24px;
+    font-size     : 22px;
     color         : #cc1a1a;
 }
 
 h2 {
     font-family   : var(--police-ui);
-    font-size     : 14px;
+    font-size     : 15px;
     font-weight   : 700;
-    color         : var(--couleur-principale);
-    margin        : 38px 0 12px;
+    color         : #1c1c1c;
+    margin        : 36px 0 10px;
 }
 
 h3 {
     font-family : var(--police-ui);
-    font-size   : 13.5px;
+    font-size   : 14px;
     font-weight : 600;
-    color       : #2a4a80;
-    margin      : 26px 0 8px;
+    color       : #333333;
+    margin      : 24px 0 8px;
 }
 
 h4 {
     font-family : var(--police-ui);
-    font-size   : 12px;
+    font-size   : 13px;
     font-weight : 600;
-    color       : #444;
-    margin      : 18px 0 6px;
+    color       : #555555;
+    margin      : 16px 0 6px;
 }
 
 /* ===== Paragraphes =================================================== */
@@ -228,7 +228,7 @@ table {
     font-family     : var(--police-ui);
     border          : 1px solid var(--couleur-bordure);
 }
-thead tr { background: var(--couleur-principale); color: #ffffff; }
+thead tr { background: #3a3a3a; color: #ffffff; }
 thead th {
     padding     : 7px 10px;
     text-align  : left;
@@ -237,7 +237,7 @@ thead th {
     border      : 1px solid rgba(255,255,255,0.2);
 }
 tbody tr:nth-child(even) { background: #f4f3ee; }
-tbody tr:hover           { background: #eaeff8; }
+tbody tr:hover           { background: #e8e7e2; }
 td {
     padding       : 6px 10px;
     border        : 1px solid var(--couleur-bordure);
@@ -272,6 +272,51 @@ blockquote {
     margin      : 1.2em 0;
     font-style  : italic;
     color       : #555;
+}
+
+/* Bloc figure (blockquote contenant une image) */
+blockquote.fig-block {
+    border-left   : 2px solid #aaaaaa;
+    background    : transparent;
+    padding       : 0;
+    margin        : 1.6em 0 0.4em;
+    font-style    : normal;
+    color         : inherit;
+}
+blockquote.fig-block p:first-child {
+    display       : inline-block;
+    font-size     : 12px;
+    font-weight   : 600;
+    color         : #333333;
+    background    : #efefef;
+    padding       : 3px 10px;
+    margin        : 0 0 4px;
+    border-radius : 2px;
+}
+blockquote.fig-block img {
+    margin : 0 auto 0.2em;
+}
+
+/* Légende de tableau */
+p.table-caption {
+    font-size     : 12px;
+    font-weight   : 600;
+    color         : #333333;
+    background    : #efefef;
+    display       : inline-block;
+    padding       : 3px 10px;
+    margin        : 1.6em 0 4px;
+    border-left   : 2px solid #aaaaaa;
+    border-radius : 2px;
+}
+
+/* Note source sous figure ou tableau */
+p.fig-source {
+    font-size   : 11px;
+    color       : #777777;
+    font-style  : italic;
+    margin      : 2px 0 2em;
+    line-height : 1.4;
 }
 
 /* ===== Code ========================================================== */
@@ -528,12 +573,12 @@ a.source-ref {
 <body>
 
 <!-- Élément porteur de la date pour les pieds de page @page (impression) -->
-<span id="print-date">25/06/2026  22:18</span>
+<span id="print-date">25/06/2026  23:47</span>
 
 <div id="export-header">
   <div id="export-label">VERSION RELECTURE</div>
   <h1 id="export-title">Deuxième Bulletin statistique de la protection sociale en RDC</h1>
-  <div id="export-meta">Exporté le 25 June 2026 à 22:18</div>
+  <div id="export-meta">Exporté le 25 June 2026 à 23:47</div>
   <div class="export-actions">
     <button class="export-btn" onclick="window.print()">🖨️ Imprimer / Enregistrer en PDF</button>
   </div>
@@ -799,19 +844,17 @@ a.source-ref {
 <h1 id="11-contexte-demographique-et-implications-pour-la-protection-sociale">1.1 Contexte démographique et implications pour la protection sociale</h1>
 <h3 id="une-population-en-forte-croissance-non-valide">Une population en forte croissance <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
 <p>La République Démocratique du Congo est l'un des pays les plus peuplés d'Afrique, avec une population estimée à <a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">environ 112 millions d'habitants</a> en 2025. Sa croissance démographique soutenue — avec un taux d'accroissement naturel annuel d'environ <a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">3,2 %</a> — en fait l'un des pays à la démographie la plus dynamique du continent. À ce rythme, les projections indiquent un doublement de la population dans les prochaines décennies, ce qui place la RDC au <a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">4e rang africain</a> par la taille de sa population, après le Nigeria, l'Éthiopie et l'Égypte <em>(Division de la population des Nations Unies, WPP 2024)</em>.</p>
-<blockquote>
-<p><strong>Figure 1</strong> — <em>Évolution de la population totale, urbaine et rurale de la RDC (1950–2025)</em></p>
+<blockquote class="fig-block"><p><strong>Figure 1</strong> — <em>Évolution de la population totale, urbaine et rurale de la RDC (1950–2025)</em></p>
 </blockquote>
 <p><img alt="Évolution de la population totale, urbaine et rurale de la RDC (1950–2025)" src="/files/08_figures/exports/FIG_1_population_totale_urbaine_rurale_1950_2025.png" /></p>
-<p><em>Source : Division de la population des Nations Unies, Perspectives mondiales de la population 2024 (WPP 2024).</em></p>
+<p class="fig-source"><em>Source : Division de la population des Nations Unies, Perspectives mondiales de la population 2024 (WPP 2024).</em></p>
 <hr />
 <h3 id="une-population-jeune-portee-par-des-besoins-de-cycle-de-vie-non-valide">Une population jeune, portée par des besoins de cycle de vie <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
 <p>La population congolaise est structurellement jeune : les personnes âgées de moins de 15 ans représentent <a href="#" data-offline="true" data-src="06_sources/officielles_web/UNFPA_World_Population_Dashboard_RDC_2024.txt" title="Source : UNFPA (2024) — World Population Dashboard RDC 2024" class="source-ref nv">environ 46 %</a> de la population totale, et l'âge médian s'établit à <a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">15,9 ans</a> <em>(UNFPA, 2024 ; Division de la population des Nations Unies, WPP 2024)</em>. Le ratio de dépendance démographique atteint <a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">près de 96 dépendants pour 100 personnes en âge de travailler</a>, ce qui signifie qu'une proportion élevée de la population est composée de personnes non actives — enfants, jeunes et personnes âgées — dont les besoins en prestations sociales (protection de la maternité, prestations familiales, soins de santé, pensions) sont particulièrement importants.</p>
-<blockquote>
-<p><strong>Figure 2</strong> — <em>Structure de la population par grand groupe d'âge, RDC (2025)</em></p>
+<blockquote class="fig-block"><p><strong>Figure 2</strong> — <em>Structure de la population par grand groupe d'âge, RDC (2025)</em></p>
 </blockquote>
 <p><img alt="Structure de la population par grand groupe d'âge, RDC (2025)" src="/files/08_figures/exports/FIG_2_structure_age_2025.png" /></p>
-<p><em>Source : Division de la population des Nations Unies, WPP 2024 / UNFPA.</em></p>
+<p class="fig-source"><em>Source : Division de la population des Nations Unies, WPP 2024 / UNFPA.</em></p>
 <hr />
 <h3 id="une-urbanisation-rapide-sur-fond-de-ruralite-persistante-non-valide">Une urbanisation rapide sur fond de ruralité persistante <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
 <p>Entre 1950 et 2024, la part de la population vivant en milieu urbain est passée de <a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">19 %</a> à <a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_urbanisation_2024.txt" title="Source : Banque mondiale — WDI (2024), d'après WUP 2025 Revision (Nations Unies)" class="source-ref nv">environ 45 %</a> <em>(Banque mondiale, WDI 2024)</em>. Cette urbanisation accélérée transforme les besoins sociaux dans les grandes agglomérations, en premier lieu à Kinshasa qui compte environ <a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">17 millions d'habitants</a> <em>(ONU WPP 2024)</em>, troisième agglomération africaine et plus grande ville francophone du monde. Elle ne doit cependant pas masquer la persistance d'une population majoritairement rurale : <a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_urbanisation_2024.txt" title="Source : Banque mondiale — WDI (2024), d'après WUP 2025 Revision (Nations Unies)" class="source-ref nv">environ 55 %</a> des Congolais vivent encore dans des zones éloignées des grands centres <em>(Banque mondiale WDI, 2024)</em>, avec une densité moyenne de <a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">51 habitants par km²</a> sur un territoire de plus de 2,3 millions de km², mais des disparités provinciales considérables.</p>
@@ -821,27 +864,24 @@ a.source-ref {
 <h1 id="12-contexte-economique-emploi-et-enjeux-dextension-de-la-couverture">1.2 Contexte économique, emploi et enjeux d'extension de la couverture</h1>
 <h3 id="une-croissance-soutenue-sur-fond-de-fragilite-economique-non-valide">Une croissance soutenue sur fond de fragilité économique <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
 <p>La République Démocratique du Congo a enregistré des taux de croissance économique élevés au cours des dernières années : <a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — Croissance du PIB, RDC" class="source-ref nv">+6,4 % en 2021</a>, <a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — Croissance du PIB, RDC" class="source-ref nv">+9,3 % en 2022</a>, <a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — Croissance du PIB, RDC" class="source-ref nv">+8,5 % en 2023</a> et <a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — Croissance du PIB, RDC" class="source-ref nv">+6,1 % en 2024</a> <em>(Banque mondiale, WDI 2026)</em>. Cette dynamique est largement portée par le secteur minier, qui concentre d'importants gisements de cuivre, cobalt, or, diamants et coltan. Elle ne se traduit cependant pas par une amélioration sensible du niveau de vie moyen : le PIB par habitant s'établissait à <a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — PIB par habitant, RDC" class="source-ref nv">649 USD en 2024</a> (USD courants), parmi les plus bas du continent. Les inégalités restent marquées — l'indice de Gini s'établissait à <a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI — Gini 2020 ; enquête INS 2024 : 38,1" class="source-ref nv">0,447 en 2020</a> <em>(Banque mondiale, WDI — enquête ménages 2020 ; l'enquête INS 2024 indique une valeur de 0,381, non encore intégrée dans les bases internationales)</em> — et le taux de pauvreté atteignait <a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale (2026, citant enquête INS 2024) — 69 % de la population sous le seuil national" class="source-ref nv">69 % de la population</a> selon le seuil national <em>(Banque mondiale, mars 2026, citant enquête INS 2024)</em>. Ces données soulignent la persistance d'une vulnérabilité économique structurelle.</p>
-<blockquote>
-<p><strong>Figure 4</strong> — <em>Évolution du taux de croissance annuel du PIB en RDC (2000–2024)</em></p>
+<blockquote class="fig-block"><p><strong>Figure 4</strong> — <em>Évolution du taux de croissance annuel du PIB en RDC (2000–2024)</em></p>
 </blockquote>
 <p><img alt="Évolution du taux de croissance annuel du PIB en RDC (2000–2024)" src="/files/08_figures/exports/FIG_4_croissance_PIB_2000_2024.png" /></p>
-<p><em>Source : Banque mondiale, World Development Indicators (WDI, avril 2026).</em></p>
+<p class="fig-source"><em>Source : Banque mondiale, World Development Indicators (WDI, avril 2026).</em></p>
 <hr />
 <h3 id="un-marche-du-travail-domine-par-linformalite-non-valide">Un marché du travail dominé par l'informalité <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
 <p>La structure du marché du travail congolais est marquée par la prédominance de l'emploi informel et de l'agriculture de subsistance. Selon les estimations modélisées de l'OIT (ILOEST) relayées par la Banque mondiale, <a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : Banque mondiale — WDI (2024) — Emploi agricole, RDC. Total : 58,9 %, femmes : 67,8 %, hommes : 50,3 %" class="source-ref nv">environ 59 % de la population active</a> travaille dans l'agriculture en 2024, avec une part nettement plus élevée chez les femmes (68 %) que chez les hommes (50 %) <em>(Banque mondiale WDI, indicateur ILOEST, 2024)</em>. Malgré un taux de chômage officiel relativement faible — estimé à <a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : Banque mondiale — WDI (2024) — Taux de chômage modèle ILO, RDC" class="source-ref nv">4,4 %</a> en 2024 <em>(Banque mondiale WDI, modèle ILO)</em> —, la grande majorité des actifs occupés exercent dans des conditions précaires : le taux d'emploi informel est estimé à <a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : OIT, ILOSTAT — Estimations modélisées de l'emploi informel, RDC (données 2020) ; proxies WDI 2024 : emploi vulnérable 81,8 %, travailleurs indépendants 85,3 %" class="source-ref nv">environ 96 %</a> selon les estimations modélisées de l'OIT <em>(ILOSTAT, données 2020 — les indicateurs proxy les plus récents confirment une informalité massive et persistante)</em>, avec une légère prépondérance chez les femmes (<a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : OIT, ILOSTAT — Emploi informel par sexe, RDC (2020)" class="source-ref nv">97,8 %</a>) par rapport aux hommes (<a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : OIT, ILOSTAT — Emploi informel par sexe, RDC (2020)" class="source-ref nv">95,7 %</a>). Cette informalité concerne toutes les catégories de statut dans l'emploi : travailleurs indépendants, employés et employeurs.</p>
-<blockquote>
-<p><strong>Figure 5</strong> — <em>Taux d'emploi informel par sexe, RDC</em></p>
+<blockquote class="fig-block"><p><strong>Figure 5</strong> — <em>Taux d'emploi informel par sexe, RDC</em></p>
 </blockquote>
 <p><img alt="Taux d'emploi informel par sexe, RDC" src="/files/08_figures/exports/FIG_5_emploi_informel_par_sexe.png" /></p>
-<p><em>Source : OIT, ILOSTAT — estimations modélisées de l'emploi informel (ILOEST), 2020.</em></p>
+<p class="fig-source"><em>Source : OIT, ILOSTAT — estimations modélisées de l'emploi informel (ILOEST), 2020.</em></p>
 <hr />
 <h3 id="des-secteurs-exposes-a-des-risques-professionnels-specifiques-non-valide">Des secteurs exposés à des risques professionnels spécifiques <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
 <p>L'économie congolaise concentre des activités à forte exposition aux risques professionnels. Le secteur minier artisanal et industriel emploie plusieurs centaines de milliers de travailleurs dans des conditions souvent difficiles, avec des risques d'accidents du travail, de maladies professionnelles et d'exposition à des substances dangereuses. Le secteur agricole, qui mobilise la majorité de la main-d'œuvre active, est lui aussi exposé à des risques liés aux conditions de travail en milieu rural. Ces réalités renforcent l'importance d'un suivi statistique rigoureux des affiliés, des cotisants actifs et des victimes d'accidents du travail — données au cœur du présent bulletin.</p>
-<blockquote>
-<p><strong>Figure 6</strong> — <em>Structure de l'emploi par grand secteur d'activité (agriculture, industrie, services), RDC</em></p>
+<blockquote class="fig-block"><p><strong>Figure 6</strong> — <em>Structure de l'emploi par grand secteur d'activité (agriculture, industrie, services), RDC</em></p>
 </blockquote>
 <p><img alt="Structure de l'emploi par grand secteur d'activité, RDC" src="/files/08_figures/exports/FIG_6_structure_emploi_secteurs.png" /></p>
-<p><em>Source : Banque mondiale, WDI (indicateur ILOEST, 2024). Industrie et services : parts résiduelles estimées.</em></p>
+<p class="fig-source"><em>Source : Banque mondiale, WDI (indicateur ILOEST, 2024). Industrie et services : parts résiduelles estimées.</em></p>
 <hr />
 <h3 id="les-enjeux-dextension-de-la-couverture-contributive-non-valide">Les enjeux d'extension de la couverture contributive <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
 <p>Dans ce contexte — forte informalité, bas revenus, vulnérabilité persistante —, l'extension de la protection sociale se heurte à des contraintes structurelles importantes. La majorité des travailleurs n'est pas enregistrée auprès des régimes contributifs formels, ce qui limite à la fois l'assiette de cotisation des institutions et l'accès effectif aux prestations pour les assurés potentiels. Ces constats, croisés avec les données démographiques de la section précédente, éclairent les orientations stratégiques que la RDC s'est données pour répondre à ces défis, présentées dans la section suivante.</p>
@@ -2009,7 +2049,7 @@ Sont classés à ce niveau les dispositifs dont la finalité protectrice est rec
 </tr>
 </tbody>
 </table></div>
-<p><em>Source : données transmises par le MEPST (2023), reprises dans le premier Bulletin statistique RDC N°1/2023.</em></p>
+<p class="fig-source"><em>Source : données transmises par le MEPST (2023), reprises dans le premier Bulletin statistique RDC N°1/2023.</em></p>
 <h2 id="donnees-financieres_3">Données financières</h2>
 <div class="table-scroll"><table>
 <thead>
