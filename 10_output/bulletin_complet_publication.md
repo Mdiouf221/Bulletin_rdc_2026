@@ -467,7 +467,7 @@ Ces programmes se distinguent des régimes précédents par trois caractéristiq
 
 <!-- SECTION : Chapitre 5  Dépenses et financement de la protection sociale -->
 
-# Chapitre 5 — Dépenses et financement de la protection sociale
+# Chapitre 4 — Protection sociale face aux risques de vie en RDC
 
 <!-- FIN FICHIER -->
 
