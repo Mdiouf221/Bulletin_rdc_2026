@@ -41,6 +41,5 @@ La lecture des indicateurs présentés dans ce bulletin suppose la maîtrise de 
 
 Les limites générales du bulletin sont principalement de trois ordres. La **disponibilité** des données administratives reste inégale selon les institutions et les périodes : certaines institutions n'ont pas encore de système d'information permettant de produire des indicateurs annuels consolidés. La **complétude** des données transmises peut varier selon les exercices, certains tableaux étant partiels ou couvrant uniquement une partie du territoire. La **désagrégation**  par sexe, âge, province ou secteur d'activité  n'est pas systématiquement disponible et sera indiquée au cas par cas.
 
-Ces limites générales ne font pas l'objet d'un traitement global dans ce chapitre. Elles sont signalées au niveau de chaque institution, indicateur ou tableau statistique concerné.[^dm003]
+Ces limites générales ne font pas l'objet d'un traitement global dans ce chapitre. Elles sont signalées au niveau de chaque institution, indicateur ou tableau statistique concerné.
 
-[^dm003]: Cette approche correspond à la décision méthodologique DM-003 (*Documentation des sources au niveau pertinent*), consultable dans `00_pilotage/decisions_methodologiques.md`.

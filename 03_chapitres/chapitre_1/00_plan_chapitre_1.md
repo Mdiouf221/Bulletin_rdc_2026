@@ -8,19 +8,14 @@ Objectif du chapitre :
 Établir les bases conceptuelles et méthodologiques du bulletin.
 Ce chapitre est particulièrement important dans le contexte RDC, où les acteurs n'ont pas de définition commune de la protection sociale. Il doit être pédagogique, rigoureux et ancré sur le cadre BIT/OIT.
 
-Structure retenue (6 sections  mise à jour juin 2026) :
+Structure retenue (5 sections — mise à jour juin 2026) :
 2.1 Définitions et approches de la protection sociale
 2.2 Approche retenue pour le bulletin : cadre BIT/OIT et indicateurs de couverture effective
 2.3 Champ de la protection sociale et critères d'inclusion statistique dans le bulletin
 2.4 Schéma de lecture et classification des régimes, programmes et prestations
-      Tableau 1 : CNSS et CNSSAP (sécurité sociale contributive obligatoire)
-      Tableau 2 : Régimes spéciaux (financement par allocation budgétaire)
-      Tableau 3 : Protection de la santé (organisé par segment de population)
-2.5 Clarification des principaux concepts statistiques (ancienne 2.6)
-      renommé 1_5_concepts_statistiques.md
-2.6 Précautions de lecture : concepts statistiques clés et limites générales
-      fusion de l'ancienne 2.6 (concepts) et 2.7 (limites)
-      fichier : 1_6_precautions_lecture.md
+      (grilles conceptuelles : couverture légale/effective, dimensions de classification,
+       conditions d'accès — les tableaux institutionnels sont au chapitre 3)
+2.5 Précautions de lecture : limites méthodologiques générales
 
 Sections supprimées :
 - 2.5 (Principes de lecture des indicateurs)  contenu absorbé en intro du chapitre 3

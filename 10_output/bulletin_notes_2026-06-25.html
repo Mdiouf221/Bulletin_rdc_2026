@@ -1,0 +1,2559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deuxième Bulletin statistique de la protection sociale en RDC — Relecture</title>
+  <style>/*
+ * export_relecture.css
+ * --------------------
+ * Feuille de style pour les exports HTML de relecture hors ligne.
+ * Optimisée pour la lecture sur écran et l'impression (A4).
+ * Ne pas utiliser dans le serveur de prévisualisation (utiliser preview.css).
+ */
+
+/* ===== Variables ===================================================== */
+:root {
+    --couleur-principale : #1a3a6b;
+    --couleur-accent      : #c8a951;
+    --couleur-texte       : #1c1c1c;
+    --couleur-fond        : #f2f1ec;
+    --couleur-fond-page   : #ffffff;
+    --couleur-bordure     : #d0cfc8;
+    --largeur-toc         : 260px;
+    --police-corps        : Georgia, 'Times New Roman', serif;
+    --police-ui           : 'Segoe UI', Arial, sans-serif;
+    --police-mono         : 'Courier New', monospace;
+}
+
+/* ===== Reset ========================================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ===== Corps ========================================================== */
+html { scroll-behavior: smooth; }
+
+body {
+    font-family : var(--police-corps);
+    font-size   : 16px;
+    line-height : 1.85;
+    color       : var(--couleur-texte);
+    background  : var(--couleur-fond);
+}
+
+/* ===== En-tête d'export ============================================== */
+#export-header {
+    background    : var(--couleur-principale);
+    color         : #dde2ea;
+    padding       : 28px 48px 24px;
+    border-bottom : 4px solid var(--couleur-accent);
+    font-family   : var(--police-ui);
+}
+
+#export-label {
+    font-size      : 10px;
+    font-weight    : 700;
+    text-transform : uppercase;
+    letter-spacing : 2px;
+    color          : var(--couleur-accent);
+    margin-bottom  : 8px;
+}
+
+#export-title {
+    font-size     : 22px;
+    font-weight   : 700;
+    color         : #ffffff;
+    line-height   : 1.3;
+    margin-bottom : 10px;
+    border        : none;
+    padding       : 0;
+}
+
+#export-meta {
+    font-size  : 12px;
+    color      : #8898b0;
+    margin-top : 6px;
+}
+
+#export-header .export-actions {
+    margin-top : 14px;
+    display    : flex;
+    gap        : 8px;
+}
+
+.export-btn {
+    display         : inline-flex;
+    align-items     : center;
+    height          : 28px;
+    padding         : 0 14px;
+    border-radius   : 4px;
+    border          : 1px solid rgba(255,255,255,0.25);
+    background      : rgba(255,255,255,0.10);
+    color           : #dde2ea;
+    font-family     : var(--police-ui);
+    font-size       : 11.5px;
+    font-weight     : 600;
+    cursor          : pointer;
+    text-decoration : none;
+    transition      : background 0.15s;
+}
+.export-btn:hover {
+    background : rgba(255,255,255,0.22);
+    color      : #ffffff;
+    text-decoration: none;
+}
+
+/* ===== Mise en page principale ======================================= */
+#wrapper {
+    display : flex;
+    min-height: calc(100vh - 110px);
+}
+
+/* ===== Panneau TOC (gauche) ========================================== */
+#toc-panel {
+    width      : var(--largeur-toc);
+    min-width  : var(--largeur-toc);
+    height     : calc(100vh - 110px);
+    position   : sticky;
+    top        : 0;
+    overflow-y : auto;
+    background : var(--couleur-principale);
+    color      : #dde2ea;
+    padding    : 0 0 40px;
+    font-family: var(--police-ui);
+    font-size  : 12.5px;
+}
+
+#toc-header {
+    font-size      : 10px;
+    font-weight    : 700;
+    text-transform : uppercase;
+    letter-spacing : 1.8px;
+    color          : var(--couleur-accent);
+    padding        : 20px 16px 12px;
+    border-bottom  : 1px solid rgba(255,255,255,0.1);
+    margin-bottom  : 4px;
+}
+
+#toc-panel .toc { list-style: none; }
+#toc-panel .toc ul { list-style: none; }
+
+#toc-panel .toc a {
+    display        : block;
+    color          : #b8c4d4;
+    text-decoration: none;
+    padding        : 5px 16px;
+    line-height    : 1.4;
+    border-left    : 3px solid transparent;
+    transition     : color 0.12s, background 0.12s;
+}
+#toc-panel .toc a:hover,
+#toc-panel .toc a.active {
+    color             : #ffffff;
+    background        : rgba(255,255,255,0.07);
+    border-left-color : var(--couleur-accent);
+}
+
+#toc-panel .toc ul a       { padding-left: 28px; font-size: 11.5px; color: #8898b0; }
+#toc-panel .toc ul ul a    { padding-left: 40px; font-size: 11px; color: #6a7a90; }
+#toc-panel .toc ul ul ul a { padding-left: 52px; font-size: 11px; }
+
+/* ===== Zone de contenu (droite) ====================================== */
+#content {
+    flex       : 1;
+    padding    : 48px 64px;
+    max-width  : 900px;
+    margin     : 0 auto;
+    background : var(--couleur-fond-page);
+    min-width  : 0;
+    box-shadow : 0 0 24px rgba(0,0,0,0.07);
+}
+
+/* ===== Titres ======================================================== */
+h1 {
+    font-family   : var(--police-ui);
+    font-size     : 24px;
+    font-weight   : 700;
+    color         : var(--couleur-principale);
+    margin        : 52px 0 18px;
+    padding-bottom: 10px;
+    border-bottom : 3px solid var(--couleur-accent);
+    line-height   : 1.3;
+    page-break-before: always;
+}
+h1:first-child { margin-top: 0; page-break-before: avoid; }
+
+h2 {
+    font-family   : var(--police-ui);
+    font-size     : 18px;
+    font-weight   : 700;
+    color         : var(--couleur-principale);
+    margin        : 38px 0 12px;
+    padding-bottom: 6px;
+    border-bottom : 1px solid var(--couleur-bordure);
+}
+
+h3 {
+    font-family : var(--police-ui);
+    font-size   : 15.5px;
+    font-weight : 600;
+    color       : #2a4a80;
+    margin      : 26px 0 8px;
+}
+
+h4 {
+    font-family : var(--police-ui);
+    font-size   : 14px;
+    font-weight : 600;
+    color       : #444;
+    margin      : 18px 0 6px;
+}
+
+/* ===== Paragraphes =================================================== */
+p {
+    margin     : 0 0 1em;
+    text-align : justify;
+    hyphens    : auto;
+}
+
+/* ===== Listes ======================================================== */
+ul, ol { margin: 0 0 1em 1.4em; padding: 0; }
+li     { margin-bottom: 0.3em; }
+
+/* ===== Tableaux ====================================================== */
+table {
+    width           : 100%;
+    border-collapse : collapse;
+    margin          : 1.6em 0;
+    font-size       : 12.5px;
+    font-family     : var(--police-ui);
+}
+thead tr { background: var(--couleur-principale); color: #ffffff; }
+thead th { padding: 7px 10px; text-align: left; font-size: 12px; font-weight: 600; }
+tbody tr:nth-child(even) { background: #f4f3ee; }
+td, th { padding: 6px 10px; border-bottom: 1px solid var(--couleur-bordure); vertical-align: top; }
+
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.6em 0; }
+.table-scroll table { margin: 0; min-width: 600px; }
+
+.table-compact table { font-size: 0.78em; line-height: 1.35; }
+.table-compact table th, .table-compact table td { padding: 4px 7px; }
+
+/* ===== Citations ===================================================== */
+blockquote {
+    border-left : 4px solid var(--couleur-accent);
+    background  : #fdf9ef;
+    padding     : 12px 16px;
+    margin      : 1.2em 0;
+    font-style  : italic;
+    color       : #555;
+}
+
+/* ===== Code ========================================================== */
+code {
+    font-family  : var(--police-mono);
+    font-size    : 13px;
+    background   : #f0eeea;
+    padding      : 1px 5px;
+    border-radius: 3px;
+    color        : #b03060;
+}
+pre { background: #f5f4f0; padding: 14px 16px; overflow-x: auto; margin: 1em 0; }
+pre code { background: transparent; padding: 0; color: var(--couleur-texte); }
+
+/* ===== Séparateurs =================================================== */
+hr { border: none; border-top: 1px solid var(--couleur-bordure); margin: 2em 0; }
+
+/* ===== Liens ========================================================= */
+a { color: var(--couleur-principale); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Liens hors ligne (source-ref sans serveur) */
+a[data-offline] {
+    color            : inherit;
+    text-decoration  : underline;
+    text-decoration-style : dashed;
+    text-decoration-color : #b0b8c8;
+    cursor           : default;
+}
+a[data-offline]:hover { background: rgba(0,0,0,0.04); }
+
+/* ===== Indicateurs de statut des sections ============================ */
+.status-dot {
+    display        : inline-block;
+    font-size      : 0.6em;
+    vertical-align : middle;
+    margin-right   : 6px;
+    cursor         : default;
+    line-height    : 1;
+    opacity        : 0.9;
+}
+.status-brouillon { color: #d42b2b; }
+.status-arevoir   { color: #e07820; }
+.status-redige    { color: #c8a800; }
+.status-revu      { color: #2e78c8; }
+.status-valide    { color: #111111; }
+
+/* ===== Badges de validation par paragraphe =========================== */
+.valid-badge {
+    display        : inline-block;
+    font-size      : 0.52em;
+    vertical-align : middle;
+    margin-left    : 9px;
+    padding        : 2px 7px;
+    border-radius  : 10px;
+    font-family    : var(--police-ui);
+    font-weight    : 700;
+    letter-spacing : 0.4px;
+    text-transform : uppercase;
+    cursor         : default;
+    line-height    : 1.5;
+}
+.valid-badge.nv { background: #e5e5e5; color: #888; border: 1px solid #ccc; }
+.valid-badge.ec { background: #fff0d4; color: #9a5c00; border: 1px solid #f0c070; }
+.valid-badge.v  { background: #d6f0e0; color: #1a6e3c; border: 1px solid #90d4aa; }
+.valid-badge.r  { background: #fce8e8; color: #9c1c1c; border: 1px solid #e09090; }
+
+/* ===== Annotations de validation inline ============================== */
+[data-val-id] {
+    text-decoration          : underline;
+    text-decoration-style    : dotted;
+    text-decoration-thickness: 2px;
+    text-underline-offset    : 3px;
+    border-radius            : 2px;
+}
+[data-val-id][data-val-status="brouillon"]        { text-decoration-color: #d42b2b; }
+[data-val-id][data-val-status="à revoir"]         { text-decoration-color: #e07820; }
+[data-val-id][data-val-status="notes développées"]{ text-decoration-color: #e07820; }
+[data-val-id][data-val-status="rédigé"]           { text-decoration-color: #c8a800; }
+[data-val-id][data-val-status="revu"]             { text-decoration-color: #2e78c8; }
+[data-val-id][data-val-status="révisé"]           { text-decoration-color: #2e78c8; }
+[data-val-id][data-val-status="validé"]           { text-decoration-color: #111111; }
+.val-cite { font-style: italic; }
+
+/* ===== Couverture légale / effective ================================= */
+.cov-eff { color: #1a56db; font-weight: 700; font-size: 1.1em; }
+.cov-leg { color: #9ca3af; font-weight: 400; }
+
+/* ===== Placeholder "Texte à rédiger" ================================= */
+p.a-rediger {
+    color         : #b05000;
+    font-family   : var(--police-ui);
+    font-size     : 13px;
+    font-style    : italic;
+    border        : 1px dashed #e0a070;
+    background    : #fff8f2;
+    border-radius : 4px;
+    padding       : 7px 14px;
+    margin        : 0.8em 0;
+}
+
+/* ===== Source ref statique =========================================== */
+a.source-ref {
+    color                    : inherit;
+    text-decoration          : underline;
+    text-decoration-style    : dashed;
+    text-decoration-thickness: 2px;
+    text-underline-offset    : 3px;
+    text-decoration-color    : #8898b0;
+    cursor                   : help;
+    border-radius            : 2px;
+}
+
+/* ===== Légende des statuts — panneau flottant ======================== */
+#status-legend {
+    position      : fixed;
+    bottom        : 18px;
+    right         : 18px;
+    background    : rgba(255,255,255,0.97);
+    border        : 1px solid var(--couleur-bordure);
+    border-radius : 6px;
+    padding       : 8px 14px;
+    font-family   : var(--police-ui);
+    font-size     : 11.5px;
+    color         : #444;
+    box-shadow    : 0 2px 10px rgba(0,0,0,0.1);
+    line-height   : 1.9;
+    z-index       : 90;
+    user-select   : none;
+}
+#status-legend .legend-title {
+    font-weight    : 700;
+    font-size      : 10px;
+    text-transform : uppercase;
+    letter-spacing : 1.2px;
+    color          : #888;
+    margin-bottom  : 4px;
+}
+#status-legend .l-dot {
+    display        : inline-block;
+    width          : 9px;
+    height         : 9px;
+    border-radius  : 50%;
+    margin-right   : 6px;
+    vertical-align : middle;
+}
+
+/* ===== Responsive ===================================================== */
+@media (max-width: 900px) {
+    #toc-panel { display: none; }
+    #content   { padding: 32px 24px; }
+    #export-header { padding: 20px 24px; }
+}
+
+/* ===== Impression (A4) =============================================== */
+@media print {
+    :root {
+        --couleur-fond      : #ffffff;
+        --couleur-fond-page : #ffffff;
+    }
+
+    body { background: #fff; font-size: 11pt; line-height: 1.7; }
+
+    /* Masquer les éléments non pertinents à l'impression */
+    #toc-panel,
+    #status-legend,
+    .export-btn,
+    #export-header .export-actions { display: none !important; }
+
+    /* Adapter l'en-tête */
+    #export-header {
+        background    : #fff;
+        color         : #1c1c1c;
+        border-bottom : 2px solid #1a3a6b;
+        padding       : 0 0 14px;
+        margin-bottom : 24pt;
+    }
+    #export-label { color: #1a3a6b; }
+    #export-title { color: #1a3a6b; font-size: 18pt; }
+    #export-meta  { color: #666; }
+
+    #wrapper { display: block; }
+
+    #content {
+        padding    : 0;
+        box-shadow : none;
+        max-width  : 100%;
+    }
+
+    /* Sauts de page */
+    h1 { page-break-before: always; }
+    h1:first-child { page-break-before: avoid; }
+    h2, h3 { page-break-after: avoid; }
+    table, figure, blockquote { page-break-inside: avoid; }
+
+    /* Tableaux */
+    thead { display: table-header-group; }
+    tbody tr:nth-child(even) { background: #f5f5f5; }
+
+    /* Masquer les status dots à l'impression (optionnel : commenter pour les garder) */
+    /* .status-dot { display: none; } */
+
+    /* Liens : afficher l'URL en note */
+    a[href]:not([href^="#"]):not([data-offline])::after {
+        content  : " (" attr(href) ")";
+        font-size: 8pt;
+        color    : #666;
+    }
+
+    /* Supprimer les underlines d'annotations à l'impression */
+    [data-val-id] {
+        text-decoration: none;
+    }
+}
+</style>
+</head>
+<body>
+
+<div id="export-header">
+  <div id="export-label">VERSION INTERNE — notes de travail incluses</div>
+  <h1 id="export-title">Deuxième Bulletin statistique de la protection sociale en RDC</h1>
+  <div id="export-meta">Exporté le 25 June 2026 à 20:28</div>
+  <div class="export-actions">
+    <button class="export-btn" onclick="window.print()">🖨️ Imprimer / Enregistrer en PDF</button>
+  </div>
+</div>
+
+<div id="wrapper">
+
+  <nav id="toc-panel">
+    <div id="toc-header">Table des matières</div>
+    <div class="toc">
+<ul>
+<li><a href="#avant-propos">Avant-propos</a></li>
+<li><a href="#remerciements">Remerciements</a></li>
+<li><a href="#liste-des-sigles-et-acronymes">Liste des sigles et acronymes</a></li>
+<li><a href="#listes-des-tableaux-graphiques-et-encadres">Listes des tableaux, graphiques et encadrés</a><ul>
+<li><a href="#liste-des-tableaux">Liste des tableaux</a></li>
+<li><a href="#liste-des-graphiques">Liste des graphiques</a></li>
+<li><a href="#liste-des-encadres">Liste des encadrés</a></li>
+<li><a href="#liste-des-annexes-statistiques">Liste des annexes statistiques</a></li>
+</ul>
+</li>
+<li><a href="#chapitre-1-contexte-general-et-cadre-de-reference-pour-la-protection-sociale-en-rdc">Chapitre 1 — Contexte général et cadre de référence pour la protection sociale en RDC</a></li>
+<li><a href="#11-contexte-demographique-et-implications-pour-la-protection-sociale">1.1 Contexte démographique et implications pour la protection sociale</a><ul>
+<li><a href="#une-population-en-forte-croissance-non-valide">Une population en forte croissance non validé</a></li>
+<li><a href="#une-population-jeune-portee-par-des-besoins-de-cycle-de-vie-non-valide">Une population jeune, portée par des besoins de cycle de vie non validé</a></li>
+<li><a href="#une-urbanisation-rapide-sur-fond-de-ruralite-persistante-non-valide">Une urbanisation rapide sur fond de ruralité persistante non validé</a></li>
+<li><a href="#premiers-enseignements-pour-la-protection-sociale-non-valide">Premiers enseignements pour la protection sociale non validé</a></li>
+</ul>
+</li>
+<li><a href="#12-contexte-economique-emploi-et-enjeux-dextension-de-la-couverture">1.2 Contexte économique, emploi et enjeux d'extension de la couverture</a><ul>
+<li><a href="#une-croissance-soutenue-sur-fond-de-fragilite-economique-non-valide">Une croissance soutenue sur fond de fragilité économique non validé</a></li>
+<li><a href="#un-marche-du-travail-domine-par-linformalite-non-valide">Un marché du travail dominé par l'informalité non validé</a></li>
+<li><a href="#des-secteurs-exposes-a-des-risques-professionnels-specifiques-non-valide">Des secteurs exposés à des risques professionnels spécifiques non validé</a></li>
+<li><a href="#les-enjeux-dextension-de-la-couverture-contributive-non-valide">Les enjeux d'extension de la couverture contributive non validé</a></li>
+</ul>
+</li>
+<li><a href="#13-protection-sociale-strategie-nationale-et-besoin-de-donnees-statistiques">1.3 Protection sociale, stratégie nationale et besoin de données statistiques</a><ul>
+<li><a href="#la-protection-sociale-face-aux-risques-et-vulnerabilites-non-valide">La protection sociale face aux risques et vulnérabilités non validé</a></li>
+<li><a href="#les-engagements-strategiques-de-la-rdc-non-valide">Les engagements stratégiques de la RDC non validé</a></li>
+<li><a href="#des-contraintes-structurelles-a-prendre-en-compte-non-valide">Des contraintes structurelles à prendre en compte non validé</a></li>
+<li><a href="#le-bulletin-comme-instrument-daide-a-la-decision-non-valide">Le bulletin comme instrument d'aide à la décision non validé</a></li>
+</ul>
+</li>
+<li><a href="#chapitre-2-cadre-conceptuel-et-perimetre-statistique">Chapitre 2 — Cadre conceptuel et périmètre statistique</a></li>
+<li><a href="#21-definitions-et-approches-de-la-protection-sociale">2.1 Définitions et approches de la protection sociale</a><ul>
+<li><a href="#la-protection-sociale-comme-droit-fondamental-non-valide">La protection sociale comme droit fondamental non validé</a></li>
+<li><a href="#trois-approches-complementaires-non-valide">Trois approches complémentaires non validé</a></li>
+<li><a href="#un-cadre-operationnel-pour-le-bulletin-non-valide">Un cadre opérationnel pour le bulletin non validé</a></li>
+</ul>
+</li>
+<li><a href="#22-approche-retenue-pour-le-bulletin-cadre-bitoit-et-indicateurs-de-couverture-effective">2.2 Approche retenue pour le bulletin : cadre BIT/OIT et indicateurs de couverture effective</a><ul>
+<li><a href="#lapproche-bitoit-une-grille-normative-et-statistique-non-valide">L'approche BIT/OIT : une grille normative et statistique non validé</a></li>
+<li><a href="#la-double-dimension-de-lextension-de-la-couverture-non-valide">La double dimension de l'extension de la couverture non validé</a></li>
+<li><a href="#ce-que-le-bulletin-mesure-et-ce-quil-documente-sans-mesurer-non-valide">Ce que le bulletin mesure et ce qu'il documente sans mesurer non validé</a></li>
+</ul>
+</li>
+<li><a href="#23-champ-de-la-protection-sociale-et-criteres-dinclusion-statistique-dans-le-bulletin">2.3 Champ de la protection sociale et critères d'inclusion statistique dans le bulletin</a><ul>
+<li><a href="#un-perimetre-defini-par-la-finalite-protectrice-et-la-mesurabilite-non-valide">Un périmètre défini par la finalité protectrice et la mesurabilité non validé</a></li>
+<li><a href="#trois-niveaux-de-traitement-dans-le-bulletin-non-valide">Trois niveaux de traitement dans le bulletin non validé</a></li>
+<li><a href="#un-perimetre-evolutif-non-valide">Un périmètre évolutif non validé</a></li>
+</ul>
+</li>
+<li><a href="#24-schema-de-lecture-et-classification-des-regimes-programmes-et-prestations">2.4 Schéma de lecture et classification des régimes, programmes et prestations</a><ul>
+<li><a href="#couverture-legale-et-couverture-effective-non-valide">Couverture légale et couverture effective non validé</a></li>
+<li><a href="#nature-des-regimes-et-programmes-non-valide">Nature des régimes et programmes non validé</a></li>
+<li><a href="#tableau-1-securite-sociale-contributive-obligatoire-cnss-et-cnssap-non-valide">Tableau 1 Sécurité sociale contributive obligatoire : CNSS et CNSSAP non validé</a></li>
+<li><a href="#tableau-2-regimes-speciaux-non-valide">Tableau 2 Régimes spéciaux non validé</a></li>
+<li><a href="#tableau-3-protection-de-la-sante-non-valide">Tableau 3 Protection de la santé non validé</a></li>
+<li><a href="#tableau-4-programmes-dassistance-sociale-et-initiatives-non-contributives-non-valide">Tableau 4 — Programmes d’assistance sociale et initiatives non contributives non validé</a></li>
+<li><a href="#conditions-dacces-aux-prestations-non-valide">Conditions d'accès aux prestations non validé</a></li>
+</ul>
+</li>
+<li><a href="#26-precautions-de-lecture-concepts-statistiques-cles-et-limites-generales">2.6 Précautions de lecture : concepts statistiques clés et limites générales</a><ul>
+<li><a href="#distinctions-statistiques-indispensables-non-valide">Distinctions statistiques indispensables non validé</a></li>
+<li><a href="#limites-methodologiques-generales-non-valide">Limites méthodologiques générales non validé</a></li>
+</ul>
+</li>
+<li><a href="#chapitre-3-cartographie-institutionnelle-de-la-protection-sociale-en-rdc">Chapitre 3 — Cartographie institutionnelle de la protection sociale en RDC</a></li>
+<li><a href="#chapitre-4-couverture-effective-et-prestations">Chapitre 4 — Couverture effective et prestations</a></li>
+<li><a href="#chapitre-5-depenses-et-financement-de-la-protection-sociale">Chapitre 5 — Dépenses et financement de la protection sociale</a></li>
+<li><a href="#chapitre-6-qualite-disponibilite-et-perspectives">Chapitre 6 — Qualité, disponibilité et perspectives</a></li>
+<li><a href="#annexe-a-fiches-institutionnelles-detaillees">Annexe A — Fiches institutionnelles détaillées</a><ul>
+<li><a href="#a1-caisse-nationale-de-securite-sociale-cnss">A.1 Caisse Nationale de Sécurité Sociale (CNSS)</a><ul>
+<li><a href="#cadre-juridique-et-institutionnel">Cadre juridique et institutionnel</a></li>
+<li><a href="#mission-et-branches-couvertes">Mission et branches couvertes</a></li>
+<li><a href="#financement">Financement</a></li>
+<li><a href="#donnees-de-couverture">Données de couverture</a></li>
+<li><a href="#donnees-financieres">Données financières</a></li>
+<li><a href="#evolutions-et-reformes-en-cours">Évolutions et réformes en cours</a></li>
+<li><a href="#perspective-de-linstitution">Perspective de l'institution</a></li>
+<li><a href="#source-et-limites-des-donnees">Source et limites des données</a></li>
+</ul>
+</li>
+<li><a href="#a2-caisse-nationale-de-securite-sociale-des-agents-publics-de-letat-cnssap">A.2 Caisse Nationale de Sécurité Sociale des Agents Publics de l'État (CNSSAP)</a><ul>
+<li><a href="#cadre-juridique-et-institutionnel_1">Cadre juridique et institutionnel</a></li>
+<li><a href="#mission-et-branches-couvertes_1">Mission et branches couvertes</a></li>
+<li><a href="#financement_1">Financement</a></li>
+<li><a href="#donnees-de-couverture_1">Données de couverture</a></li>
+<li><a href="#donnees-financieres_1">Données financières</a></li>
+<li><a href="#evolutions-et-reformes-en-cours_1">Évolutions et réformes en cours</a></li>
+<li><a href="#perspective-de-linstitution_1">Perspective de l'institution</a></li>
+<li><a href="#source-et-limites-des-donnees_1">Source et limites des données</a></li>
+</ul>
+</li>
+<li><a href="#a3-fonds-national-de-promotion-et-de-service-social-fnpss">A.3 Fonds National de Promotion et de Service Social (FNPSS)</a><ul>
+<li><a href="#cadre-juridique-et-institutionnel_2">Cadre juridique et institutionnel</a></li>
+<li><a href="#mission-et-branches-couvertes_2">Mission et branches couvertes</a></li>
+<li><a href="#financement_2">Financement</a></li>
+<li><a href="#donnees-de-couverture_2">Données de couverture</a></li>
+<li><a href="#donnees-financieres_2">Données financières</a></li>
+<li><a href="#evolutions-et-reformes-en-cours_2">Évolutions et réformes en cours</a></li>
+<li><a href="#perspective-de-linstitution_2">Perspective de l'institution</a></li>
+<li><a href="#source-et-limites-des-donnees_2">Source et limites des données</a></li>
+</ul>
+</li>
+<li><a href="#a4-mutuelle-de-sante-des-enseignants-de-lenseignement-primaire-secondaire-et-professionnel-mesp">A.4 Mutuelle de Santé des Enseignants de l'Enseignement Primaire, Secondaire et Professionnel (MESP)</a><ul>
+<li><a href="#cadre-juridique-et-institutionnel_3">Cadre juridique et institutionnel</a></li>
+<li><a href="#mission-et-branches-couvertes_3">Mission et branches couvertes</a></li>
+<li><a href="#financement_3">Financement</a></li>
+<li><a href="#donnees-de-couverture_3">Données de couverture</a></li>
+<li><a href="#donnees-financieres_3">Données financières</a></li>
+<li><a href="#evolutions-et-reformes-en-cours_3">Évolutions et réformes en cours</a></li>
+<li><a href="#perspective-de-linstitution_3">Perspective de l'institution</a></li>
+<li><a href="#source-et-limites-des-donnees_3">Source et limites des données</a></li>
+</ul>
+</li>
+<li><a href="#a5-fonds-de-solidarite-de-sante-fss">A.5 Fonds de Solidarité de Santé (FSS)</a><ul>
+<li><a href="#cadre-juridique-et-institutionnel_4">Cadre juridique et institutionnel</a></li>
+<li><a href="#mission-et-branches-couvertes_4">Mission et branches couvertes</a></li>
+<li><a href="#financement_4">Financement</a></li>
+<li><a href="#donnees-de-couverture_4">Données de couverture</a></li>
+<li><a href="#donnees-financieres_4">Données financières</a></li>
+<li><a href="#evolutions-et-reformes-en-cours_4">Évolutions et réformes en cours</a></li>
+<li><a href="#perspective-de-linstitution_4">Perspective de l'institution</a></li>
+<li><a href="#source-et-limites-des-donnees_4">Source et limites des données</a></li>
+</ul>
+</li>
+<li><a href="#a6-service-autonome-de-securite-sociale-des-parlementaires-sesopa">A.6 Service Autonome de Sécurité Sociale des Parlementaires (SESOPA)</a><ul>
+<li><a href="#cadre-juridique-et-institutionnel_5">Cadre juridique et institutionnel</a></li>
+<li><a href="#mission-et-branches-couvertes_5">Mission et branches couvertes</a></li>
+<li><a href="#financement_5">Financement</a></li>
+<li><a href="#donnees-de-couverture_5">Données de couverture</a></li>
+<li><a href="#donnees-financieres_5">Données financières</a></li>
+<li><a href="#evolutions-et-reformes-en-cours_5">Évolutions et réformes en cours</a></li>
+<li><a href="#perspective-de-linstitution_5">Perspective de l'institution</a></li>
+<li><a href="#source-et-limites-des-donnees_5">Source et limites des données</a></li>
+</ul>
+</li>
+<li><a href="#a7-regimes-speciaux-non-contributifs-de-la-fonction-publique">A.7 Régimes spéciaux non contributifs de la fonction publique</a><ul>
+<li><a href="#regimes-identifies">Régimes identifiés</a></li>
+<li><a href="#donnees-disponibles">Données disponibles</a></li>
+<li><a href="#perspective-de-collecte">Perspective de collecte</a></li>
+<li><a href="#source-et-limites-des-donnees_6">Source et limites des données</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#annexe-1-liste-des-institutions-contributrices">Annexe 1 — Liste des institutions contributrices</a></li>
+<li><a href="#titre-de-lannexe">Titre de l’annexe</a></li>
+<li><a href="#annexe-b-programmes-et-dispositifs-hors-perimetre-oit">Annexe B — Programmes et dispositifs hors périmètre OIT</a></li>
+<li><a href="#titre-de-lannexe_1">Titre de l’annexe</a></li>
+<li><a href="#titre-de-lannexe_2">Titre de l’annexe</a></li>
+<li><a href="#titre-de-lannexe_3">Titre de l’annexe</a></li>
+<li><a href="#titre-de-lannexe_4">Titre de l’annexe</a></li>
+</ul>
+</div>
+
+  </nav>
+
+  <div id="content">
+    <hr />
+<h1 id="avant-propos">Avant-propos</h1>
+<p class="a-rediger">&#9998; Texte à rédiger</p>
+
+<h1 id="remerciements">Remerciements</h1>
+<p class="a-rediger">&#9998; Texte à rédiger</p>
+
+<h1 id="liste-des-sigles-et-acronymes">Liste des sigles et acronymes</h1>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Sigle</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AT/MP</td>
+<td>Accidents du travail et maladies professionnelles</td>
+</tr>
+<tr>
+<td>BIT</td>
+<td>Bureau international du Travail</td>
+</tr>
+<tr>
+<td>CNSS</td>
+<td>Caisse Nationale de Sécurité Sociale</td>
+</tr>
+<tr>
+<td>CNSSAP</td>
+<td>Caisse Nationale de Sécurité Sociale des Agents Publics de l'État</td>
+</tr>
+<tr>
+<td>CSU</td>
+<td>Couverture Santé Universelle</td>
+</tr>
+<tr>
+<td>FNPSS</td>
+<td>Fonds National de Promotion et de Service Social</td>
+</tr>
+<tr>
+<td>INS</td>
+<td>Institut National de la Statistique</td>
+</tr>
+<tr>
+<td>ODD</td>
+<td>Objectif de développement durable</td>
+</tr>
+<tr>
+<td>OIT</td>
+<td>Organisation internationale du Travail</td>
+</tr>
+<tr>
+<td>OMS</td>
+<td>Organisation mondiale de la Santé</td>
+</tr>
+<tr>
+<td>PIB</td>
+<td>Produit intérieur brut</td>
+</tr>
+<tr>
+<td>PNPS</td>
+<td>Politique nationale de protection sociale</td>
+</tr>
+<tr>
+<td>RDC</td>
+<td>République démocratique du Congo</td>
+</tr>
+<tr>
+<td>SESOPA</td>
+<td>Service de Sécurité Sociale des Parlementaires</td>
+</tr>
+<tr>
+<td>SNPS</td>
+<td>Stratégie nationale de protection sociale</td>
+</tr>
+<tr>
+<td>USD</td>
+<td>Dollar des États-Unis</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="listes-des-tableaux-graphiques-et-encadres">Listes des tableaux, graphiques et encadrés</h1>
+<h2 id="liste-des-tableaux"><span class="status-dot status-valide" title="Validé">&#9679;</span> Liste des tableaux</h2>
+<p>[À compléter]</p>
+<h2 id="liste-des-graphiques"><span class="status-dot status-valide" title="Validé">&#9679;</span> Liste des graphiques</h2>
+<p>[À compléter]</p>
+<h2 id="liste-des-encadres"><span class="status-dot status-valide" title="Validé">&#9679;</span> Liste des encadrés</h2>
+<p>[À compléter]</p>
+<h2 id="liste-des-annexes-statistiques"><span class="status-dot status-valide" title="Validé">&#9679;</span> Liste des annexes statistiques</h2>
+<p>[À compléter]</p>
+<hr />
+<h1 id="chapitre-1-contexte-general-et-cadre-de-reference-pour-la-protection-sociale-en-rdc"><span class="status-dot status-valide" title="Validé">&#9679;</span> Chapitre 1 — Contexte général et cadre de référence pour la protection sociale en RDC</h1>
+<h1 id="11-contexte-demographique-et-implications-pour-la-protection-sociale">1.1 Contexte démographique et implications pour la protection sociale</h1>
+<h3 id="une-population-en-forte-croissance-non-valide">Une population en forte croissance <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>La République Démocratique du Congo est l'un des pays les plus peuplés d'Afrique, avec une population estimée à <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">environ 112 millions d'habitants</a></strong> en 2025. Sa croissance démographique soutenue — avec un taux d'accroissement naturel annuel d'environ <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">3,2 %</a></strong> — en fait l'un des pays à la démographie la plus dynamique du continent. À ce rythme, les projections indiquent un doublement de la population dans les prochaines décennies, ce qui place la RDC au <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">4e rang africain</a></strong> par la taille de sa population, après le Nigeria, l'Éthiopie et l'Égypte <em>(Division de la population des Nations Unies, WPP 2024)</em>.</p>
+<blockquote>
+<p><strong>[FIG_1]</strong> — <em>Évolution de la population totale, urbaine et rurale de la RDC (1950–2025)</em>
+<em>(Source : Division de la population des Nations Unies, Perspectives mondiales de la population 2024)</em></p>
+</blockquote>
+<hr />
+<h3 id="une-population-jeune-portee-par-des-besoins-de-cycle-de-vie-non-valide">Une population jeune, portée par des besoins de cycle de vie <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>La population congolaise est structurellement jeune : les personnes âgées de moins de 15 ans représentent <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/UNFPA_World_Population_Dashboard_RDC_2024.txt" title="Source : UNFPA (2024) — World Population Dashboard RDC 2024" class="source-ref nv">environ 46 %</a></strong> de la population totale, et l'âge médian s'établit à <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">15,9 ans</a></strong> <em>(UNFPA, 2024 ; Division de la population des Nations Unies, WPP 2024)</em>. Le ratio de dépendance démographique atteint <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">près de 96 dépendants pour 100 personnes en âge de travailler</a></strong>, ce qui signifie qu'une proportion élevée de la population est composée de personnes non actives — enfants, jeunes et personnes âgées — dont les besoins en prestations sociales (protection de la maternité, prestations familiales, soins de santé, pensions) sont particulièrement importants.</p>
+<blockquote>
+<p><strong>[FIG_2]</strong> — <em>Structure de la population par grand groupe d'âge, RDC (2025)</em>
+<em>(Source : Division de la population des Nations Unies, WPP 2024 / UNFPA)</em></p>
+</blockquote>
+<hr />
+<h3 id="une-urbanisation-rapide-sur-fond-de-ruralite-persistante-non-valide">Une urbanisation rapide sur fond de ruralité persistante <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>Entre <strong>1950 et 2024</strong>, la part de la population vivant en milieu urbain est passée de <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">19 %</a></strong> à <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_urbanisation_2024.txt" title="Source : Banque mondiale — WDI (2024), d'après WUP 2025 Revision (Nations Unies)" class="source-ref nv">environ 45 %</a></strong> <em>(Banque mondiale, WDI 2024)</em>. Cette urbanisation accélérée transforme les besoins sociaux dans les grandes agglomérations, en premier lieu à Kinshasa qui compte environ <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">17 millions d'habitants</a></strong> <em>(ONU WPP 2024)</em>, troisième agglomération africaine et plus grande ville francophone du monde. Elle ne doit cependant pas masquer la persistance d'une population majoritairement rurale : <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_urbanisation_2024.txt" title="Source : Banque mondiale — WDI (2024), d'après WUP 2025 Revision (Nations Unies)" class="source-ref nv">environ 55 %</a></strong> des Congolais vivent encore dans des zones éloignées des grands centres <em>(Banque mondiale WDI, 2024)</em>, avec une densité moyenne de <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">51 habitants par km²</a></strong> sur un territoire de plus de 2,3 millions de km², mais des disparités provinciales considérables.</p>
+<blockquote>
+<p><strong>[FIG_3]</strong> — <em>Carte de densité de population par province, RDC</em>
+<em>(Source : INS RDC / Division de la population des Nations Unies)</em></p>
+</blockquote>
+<hr />
+<h3 id="premiers-enseignements-pour-la-protection-sociale-non-valide">Premiers enseignements pour la protection sociale <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>Ces caractéristiques démographiques — forte croissance, population jeune, dualisme urbain-rural — définissent l'ampleur du défi auquel fait face le système de protection sociale congolais. Le nombre de personnes potentiellement éligibles aux différentes branches de couverture est considérable, tandis que la dispersion géographique de la population complique l'accès aux prestations et l'enregistrement des bénéficiaires. Ces constats, combinés aux données économiques présentées dans la section suivante, permettront d'apprécier plus finement les conditions dans lesquelles l'extension de la couverture devra se réaliser.</p>
+<h1 id="12-contexte-economique-emploi-et-enjeux-dextension-de-la-couverture">1.2 Contexte économique, emploi et enjeux d'extension de la couverture</h1>
+<h3 id="une-croissance-soutenue-sur-fond-de-fragilite-economique-non-valide">Une croissance soutenue sur fond de fragilité économique <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>La République Démocratique du Congo a enregistré des taux de croissance économique élevés au cours des dernières années : <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — Croissance du PIB, RDC" class="source-ref nv">+6,4 % en 2021</a></strong>, <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — Croissance du PIB, RDC" class="source-ref nv">+9,3 % en 2022</a></strong>, <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — Croissance du PIB, RDC" class="source-ref nv">+8,5 % en 2023</a></strong> et <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — Croissance du PIB, RDC" class="source-ref nv">+6,1 % en 2024</a></strong> <em>(Banque mondiale, WDI 2026)</em>. Cette dynamique est largement portée par le secteur minier, qui concentre d'importants gisements de cuivre, cobalt, or, diamants et coltan. Elle ne se traduit cependant pas par une amélioration sensible du niveau de vie moyen : le PIB par habitant s'établissait à <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — PIB par habitant, RDC" class="source-ref nv">649 USD en 2024</a></strong> (USD courants), parmi les plus bas du continent. Les inégalités restent marquées — l'indice de Gini s'établissait à <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI — Gini 2020 ; enquête INS 2024 : 38,1" class="source-ref nv">0,447 en 2020</a></strong> <em>(Banque mondiale, WDI — enquête ménages 2020 ; l'enquête INS 2024 indique une valeur de 0,381, non encore intégrée dans les bases internationales)</em> — et le taux de pauvreté atteignait <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale (2026, citant enquête INS 2024) — 69 % de la population sous le seuil national" class="source-ref nv">69 % de la population</a></strong> selon le seuil national <em>(Banque mondiale, mars 2026, citant enquête INS 2024)</em>. Ces données soulignent la persistance d'une vulnérabilité économique structurelle.</p>
+<blockquote>
+<p><strong>[FIG_4]</strong> — <em>Évolution du taux de croissance annuel du PIB en RDC (2000–2023)</em>
+<em>(Source : Division des statistiques des Nations Unies / Banque mondiale)</em></p>
+</blockquote>
+<hr />
+<h3 id="un-marche-du-travail-domine-par-linformalite-non-valide">Un marché du travail dominé par l'informalité <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>La structure du marché du travail congolais est marquée par la prédominance de l'emploi informel et de l'agriculture de subsistance. Selon les estimations modélisées de l'OIT (ILOEST) relayées par la Banque mondiale, <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : Banque mondiale — WDI (2024) — Emploi agricole, RDC. Total : 58,9 %, femmes : 67,8 %, hommes : 50,3 %" class="source-ref nv">environ 59 % de la population active</a></strong> travaille dans l'agriculture en 2024, avec une part nettement plus élevée chez les femmes (68 %) que chez les hommes (50 %) <em>(Banque mondiale WDI, indicateur ILOEST, 2024)</em>. Malgré un taux de chômage officiel relativement faible — estimé à <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : Banque mondiale — WDI (2024) — Taux de chômage modèle ILO, RDC" class="source-ref nv">4,4 %</a></strong> en 2024 <em>(Banque mondiale WDI, modèle ILO)</em> —, la grande majorité des actifs occupés exercent dans des conditions précaires : le taux d'emploi informel est estimé à <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : OIT, ILOSTAT — Estimations modélisées de l'emploi informel, RDC (données 2020) ; proxies WDI 2024 : emploi vulnérable 81,8 %, travailleurs indépendants 85,3 %" class="source-ref nv">environ 96 %</a></strong> selon les estimations modélisées de l'OIT <em>(ILOSTAT, données 2020 — les indicateurs proxy les plus récents confirment une informalité massive et persistante)</em>, avec une légère prépondérance chez les femmes (<a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : OIT, ILOSTAT — Emploi informel par sexe, RDC (2020)" class="source-ref nv">97,8 %</a>) par rapport aux hommes (<a href="#" data-offline="true" data-src="06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : OIT, ILOSTAT — Emploi informel par sexe, RDC (2020)" class="source-ref nv">95,7 %</a>). Cette informalité concerne toutes les catégories de statut dans l'emploi : travailleurs indépendants, employés et employeurs.</p>
+<blockquote>
+<p><strong>[FIG_5]</strong> — <em>Taux d'emploi informel par sexe et par statut dans l'emploi, RDC</em>
+<em>(Source : OIT, ILOSTAT — estimations modélisées)</em></p>
+</blockquote>
+<hr />
+<h3 id="des-secteurs-exposes-a-des-risques-professionnels-specifiques-non-valide">Des secteurs exposés à des risques professionnels spécifiques <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>L'économie congolaise concentre des activités à forte exposition aux risques professionnels. Le secteur minier artisanal et industriel emploie plusieurs centaines de milliers de travailleurs dans des conditions souvent difficiles, avec des risques d'accidents du travail, de maladies professionnelles et d'exposition à des substances dangereuses. Le secteur agricole, qui mobilise la majorité de la main-d'œuvre active, est lui aussi exposé à des risques liés aux conditions de travail en milieu rural. Ces réalités renforcent l'importance d'un suivi statistique rigoureux des affiliés, des cotisants actifs et des victimes d'accidents du travail — données au cœur du présent bulletin.</p>
+<blockquote>
+<p><strong>[FIG_6]</strong> — <em>Structure de l'emploi par grand secteur d'activité (agriculture, industrie, services), RDC</em>
+<em>(Source : OIT, ILOSTAT / INS RDC — à préciser)</em></p>
+</blockquote>
+<hr />
+<h3 id="les-enjeux-dextension-de-la-couverture-contributive-non-valide">Les enjeux d'extension de la couverture contributive <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>Dans ce contexte — forte informalité, bas revenus, vulnérabilité persistante —, l'extension de la protection sociale se heurte à des contraintes structurelles importantes. La majorité des travailleurs n'est pas enregistrée auprès des régimes contributifs formels, ce qui limite à la fois l'assiette de cotisation des institutions et l'accès effectif aux prestations pour les assurés potentiels. Ces constats, croisés avec les données démographiques de la section précédente, éclairent les orientations stratégiques que la RDC s'est données pour répondre à ces défis, présentées dans la section suivante.</p>
+<h1 id="13-protection-sociale-strategie-nationale-et-besoin-de-donnees-statistiques"><span class="status-dot status-revu" title="Révisé">&#9679;</span> 1.3 Protection sociale, stratégie nationale et besoin de données statistiques</h1>
+<h3 id="la-protection-sociale-face-aux-risques-et-vulnerabilites-non-valide"><span class="status-dot status-valide" title="Validé">&#9679;</span> La protection sociale face aux risques et vulnérabilités <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>Dans un contexte marqué par une forte croissance démographique, une économie dominée par l'emploi informel et un niveau de revenu par habitant encore très bas, la population congolaise reste largement exposée aux risques sociaux tout au long du cycle de vie : maternité, maladie, accidents du travail, invalidité, vieillesse, perte d'un soutien de famille. L'exposition de nombreux ménages à des chocs économiques, climatiques ou sécuritaires amplifie ces vulnérabilités. La protection sociale, entendue comme <a href="#" data-offline="true" data-src="06_sources/officielles_web/BIT_World_Social_Protection_Report_2024-26.txt" title="Source : Bureau International du Travail (2024) — Rapport mondial sur la protection sociale 2024-26" class="source-ref source-ref-text nv" data-val-id="s3-p1-c1" data-val-status="revise" data-val-file="02_introduction_generale/0_3_strategie_donnees_statistiques.md">l'ensemble des politiques et programmes visant à réduire et prévenir la pauvreté et la vulnérabilité</a> <em>(BIT, 2024)</em>, constitue dans ce cadre une réponse structurelle dont l'organisation et l'extension sont des enjeux prioritaires pour la RDC. À l'échelle mondiale, seulement <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/BIT_World_Social_Protection_Report_2024-26.txt" title="Source : BIT (2024) — 52,4 % de la population mondiale couverte par au moins une prestation" class="source-ref nv">52,4 % de la population mondiale</a></strong> bénéficient d'au moins une prestation de protection sociale, et ce taux tombe à <strong><a href="#" data-offline="true" data-src="06_sources/officielles_web/BIT_World_Social_Protection_Report_2024-26.txt" title="Source : BIT (2024) — 19,1 % de la population africaine couverte par au moins une prestation" class="source-ref nv">19,1 % en Afrique</a></strong> <em>(BIT, 2024)</em>, soulignant l'ampleur des défis communs à la RDC et à son environnement régional.</p>
+<hr />
+<h3 id="les-engagements-strategiques-de-la-rdc-non-valide"><span class="status-dot status-valide" title="Validé">&#9679;</span> Les engagements stratégiques de la RDC <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>La RDC s'est dotée d'un cadre stratégique national pour répondre à ces défis. La Politique Nationale de Protection Sociale (PNPS), instituée par le décret présidentiel n°05/176 du 24 novembre 2005, fixe une vision à l'horizon 2030 : <a href="#" data-offline="true" data-src="06_sources/officielles_web/RDC_SNPS_2016.txt" title="Source : Gouvernement de la RDC (2016) — Stratégie nationale de la protection sociale (SNPS)" class="source-ref source-ref-text nv" data-val-id="s3-p2-c1" data-val-status="à valider" data-val-file="02_introduction_generale/0_3_strategie_donnees_statistiques.md">« à l'horizon 2030, le Congo est une Nation solidaire, soucieuse d'équité, promotrice de bien-être, une Nation qui protège efficacement les couches sociales les plus vulnérables et les plus démunies »</a> <em>(RDC, 2016)</em>. Elle s'articule autour de trois axes stratégiques complémentaires : la promotion de l'accès aux services sociaux de base et à une sécurité élémentaire de revenus pour les personnes vulnérables ; le renforcement et l'extension des systèmes d'assurance sociale ; et le renforcement du cadre institutionnel, des capacités et du financement de la protection sociale. La mise en place progressive de la Couverture Sanitaire Universelle, déclinée dans le Plan stratégique national CSU 2021-2030, s'inscrit dans ce même élan. Ces engagements rejoignent les normes internationales auxquelles la RDC a souscrit, notamment la Convention n°102 de l'OIT sur la sécurité sociale <em>(ratifiée en 1987)</em> et la Recommandation n°202 sur les socles de protection sociale <em>(OIT, 2012)</em>.</p>
+<hr />
+<h3 id="des-contraintes-structurelles-a-prendre-en-compte-non-valide"><span class="status-dot status-valide" title="Validé">&#9679;</span> Des contraintes structurelles à prendre en compte <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>La mise en œuvre de ces orientations stratégiques se heurte à des contraintes bien documentées. La très forte prévalence de l'emploi informel réduit mécaniquement l'assiette des régimes contributifs et limite l'enregistrement des affiliés potentiels. Les capacités de financement public restent sous pression dans un contexte de besoins sociaux considérables. La dispersion géographique de la population, dans un pays de plus de 2,3 millions de km², complique l'accès aux prestations et l'organisation de la collecte des données. Ces contraintes ne remettent pas en cause la pertinence de la stratégie nationale, mais elles en conditionnent le rythme et les modalités de mise en œuvre.</p>
+<hr />
+<h3 id="le-bulletin-comme-instrument-daide-a-la-decision-non-valide"><span class="status-dot status-valide" title="Validé">&#9679;</span> Le bulletin comme instrument d'aide à la décision <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>C'est dans ce contexte que s'inscrit le présent bulletin. La production régulière de statistiques de protection sociale constitue un outil essentiel pour orienter les choix de politique publique sur la base de données factuelles. Ce deuxième bulletin statistique vise à consolider les informations disponibles sur les régimes, institutions et programmes de protection sociale en RDC, à mesurer les niveaux de couverture effective — notamment au regard de l'indicateur ODD 1.3.1 — et à identifier les lacunes qui devront être prises en compte dans l'élaboration et le suivi de la stratégie nationale. Il couvre la période jusqu'à décembre 2025 et s'appuie sur les données transmises par les institutions nationales, les publications des organisations internationales et les registres administratifs disponibles. Le chapitre 1 présente le cadre conceptuel et les choix méthodologiques qui fondent cette démarche.</p>
+<hr />
+<h1 id="chapitre-2-cadre-conceptuel-et-perimetre-statistique"><span class="status-dot status-valide" title="Validé">&#9679;</span> Chapitre 2 — Cadre conceptuel et périmètre statistique</h1>
+<h1 id="21-definitions-et-approches-de-la-protection-sociale"><span class="status-dot status-redige" title="Rédigé">&#9679;</span> 2.1 Définitions et approches de la protection sociale</h1>
+<h3 id="la-protection-sociale-comme-droit-fondamental-non-valide">La protection sociale comme droit fondamental <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>La protection sociale désigne l'ensemble des mécanismes permettant aux individus et aux ménages de faire face aux risques et aux vulnérabilités susceptibles de réduire leurs revenus ou d'alourdir leurs dépenses essentielles. Elle est reconnue comme un droit fondamental par <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/OIT - Building social protection systems - International standards and human rights instruments.txt" title="Source : OIT (2021)  Building social protection systems : International standards and human rights instruments" class="source-ref source-ref-text nv" data-val-id="s21-p1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_1_definitions_approches.md">l'article 22 de la Déclaration universelle des droits de l'homme (1948)</a>, qui reconnaît à toute personne, en tant que membre de la société, le droit à la sécurité sociale. <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/OIT - Building social protection systems - International standards and human rights instruments.txt" title="Source : OIT (2021) — Building social protection systems — DUDH (1948), art. 25 : droit à un niveau de vie suffisant" class="source-ref source-ref-text nv" data-val-id="s21-p1-c2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_1_definitions_approches.md">L'article 25 du même texte précise que toute personne a droit à un niveau de vie suffisant pour assurer sa santé et son bien-être, notamment en cas de maladie, d'invalidité, de veuvage, de vieillesse, ou dans tout autre cas de perte de moyens de subsistance.</a> Cette reconnaissance est reprise à <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/OIT - Building social protection systems - International standards and human rights instruments.txt" title="Source : OIT (2021) — Building social protection systems — PIDESC (1966), art. 9 : droit à la sécurité sociale y compris les assurances sociales" class="source-ref source-ref-text nv" data-val-id="s21-p1-c3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_1_definitions_approches.md">l'article 9 du Pacte international relatif aux droits économiques, sociaux et culturels <em>(PIDESC, 1966)</em>, qui stipule que les États parties reconnaissent le droit de toute personne à la sécurité sociale, y compris les assurances sociales.</a></p>
+<hr />
+<h3 id="trois-approches-complementaires-non-valide"><span class="status-dot status-redige" title="Rédigé">&#9679;</span> Trois approches complémentaires <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>Plusieurs approches coexistent pour traduire ce droit en systèmes concrets. La première est celle de la sécurité sociale au sens normatif, posée par <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="Source : OIT  Convention no 102 sur la sécurité sociale (normes minimales), 1952" class="source-ref source-ref-text nv" data-val-id="s21-p2-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_1_definitions_approches.md">la Convention no 102 de l'OIT sur la sécurité sociale (normes minimales), adoptée en 1952</a>. Cette convention identifie neuf branches de risques : les soins médicaux, les indemnités de maladie, les prestations de chômage, les pensions de vieillesse, les prestations en cas d'accidents du travail ou de maladie professionnelle, les allocations familiales, les prestations de maternité, les pensions d'invalidité et les pensions de survivants. Elle constitue la référence normative minimale en matière de sécurité sociale à l'échelle internationale.</p>
+<p>La deuxième approche, complémentaire de la première, est celle des socles de protection sociale, formalisée par <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="Source : OIT  Recommandation no 202 sur les socles de protection sociale, 2012" class="source-ref source-ref-text nv" data-val-id="s21-p2-c2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_1_definitions_approches.md">la Recommandation no 202 de l'OIT, adoptée à l'unanimité en 2012</a>. Elle invite les États à garantir à l'ensemble de leur population un niveau de base de sécurité sociale tout au long du cycle de vie, articulé autour de quatre garanties minimales : l'accès aux soins de santé essentiels, une sécurité de revenu de base pour les enfants, une sécurité de revenu pour les personnes en âge actif dans l'incapacité de travailler, et une sécurité de revenu pour les personnes âgées. Ce plancher universel est pensé comme un point de départ à partir duquel des niveaux plus élevés de protection peuvent être progressivement construits, en cohérence avec les ressources et les priorités de chaque pays.</p>
+<p>Une troisième acception, plus large, est mobilisée dans les stratégies nationales de développement social. Elle englobe les programmes d'assistance sociale ciblés sur les populations vulnérables, les politiques d'accès aux services sociaux de base et les dispositifs de réponse aux crises. Cette conception rejoint les engagements internationaux formalisés dans les Objectifs de développement durable, notamment l'indicateur ODD 1.3.1, qui mesure la proportion de la population couverte par des socles ou des systèmes de protection sociale.</p>
+<hr />
+<h3 id="un-cadre-operationnel-pour-le-bulletin-non-valide"><span class="status-dot status-redige" title="Rédigé">&#9679;</span> Un cadre opérationnel pour le bulletin <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span></h3>
+<p>Ces trois approches ne sont pas exclusives mais complémentaires. Elles rendent compte de la diversité des dispositifs existants et des objectifs poursuivis. Pour un bulletin statistique centré sur la mesure de la couverture, des prestations et des dépenses, elles soulèvent une question opérationnelle incontournable : comment délimiter un périmètre cohérent permettant de distinguer les dispositifs mesurables des interventions plus générales d'accompagnement social ? Cette délimitation est nécessaire pour produire des indicateurs comparables dans le temps et entre institutions. C'est à cette question que répond le cadre méthodologique retenu pour le présent bulletin, présenté dans les sections suivantes.</p>
+<h1 id="22-approche-retenue-pour-le-bulletin-cadre-bitoit-et-indicateurs-de-couverture-effective"><span class="status-dot status-redige" title="Rédigé">&#9679;</span> 2.2 Approche retenue pour le bulletin : cadre BIT/OIT et indicateurs de couverture effective</h1>
+<h3 id="lapproche-bitoit-une-grille-normative-et-statistique-non-valide">L'approche BIT/OIT : une grille normative et statistique <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>Parmi les approches présentées à la section précédente, le présent bulletin retient comme cadre principal l'approche du Bureau international du Travail (BIT) et de l'Organisation internationale du Travail (OIT). Ce choix repose sur trois raisons complémentaires.</p>
+<p>Premièrement, <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/OIT - Building social protection systems - International standards and human rights instruments.txt" title="Source : OIT (2021)  Building social protection systems : International standards and human rights instruments" class="source-ref source-ref-text nv" data-val-id="s22-p1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_2_approche_bit_oit.md">le cadre OIT organise la protection sociale autour de notions mesurables : les régimes, les branches de risques couvertes, les personnes affiliées, les cotisants actifs, les bénéficiaires, les prestations servies et les dépenses</a>. Ces notions permettent de construire des indicateurs comparables dans le temps et entre systèmes institutionnels différents, ce qui est l'objectif premier d'un bulletin statistique.</p>
+<p>Deuxièmement, ce cadre est suffisamment large pour couvrir à la fois les régimes contributifs, les dispositifs non contributifs et les dispositifs d'accès aux soins de santé, sans réduire la protection sociale à l'assistance sociale ou aux transferts monétaires ciblés sur les seules populations vulnérables. Cette largeur est essentielle pour rendre compte fidèlement de la réalité des systèmes nationaux, dans lesquels coexistent des régimes de sécurité sociale formels, des programmes sociaux financés par l'État et des dispositifs d'assurance santé.</p>
+<p>Troisièmement, ce cadre est celui sur lequel reposent les engagements internationaux de la RDC, notamment la ratification de <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="Source : OIT — Convention no 102 sur la sécurité sociale (normes minimales), 1952 — ratifiée par la RDC en 1987 (Parties V, VII, IX, X)" class="source-ref source-ref-text nv" data-val-id="s22-p1-c2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_2_approche_bit_oit.md">la Convention no 102 de l'OIT <em>(ratifiée par la RDC en 1987)</em></a> et l'adoption des Objectifs de développement durable, dont <a href="#" data-offline="true" data-src="06_sources/officielles_web/BIT_World_Social_Protection_Report_2024-26.txt" title="Source : BIT (2024) — Rapport mondial sur la protection sociale 2024-26 — définition et méthodologie de l'indicateur ODD 1.3.1" class="source-ref source-ref-text nv" data-val-id="s22-p1-c3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_2_approche_bit_oit.md">l'indicateur 1.3.1 est construit selon une méthodologie harmonisée par le BIT</a>.</p>
+<hr />
+<h3 id="la-double-dimension-de-lextension-de-la-couverture-non-valide"><span class="status-dot status-redige" title="Rédigé">&#9679;</span> La double dimension de l'extension de la couverture <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p><a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/OIT - Building social protection systems - International standards and human rights instruments.txt" title="Source : OIT (2021)  Building social protection systems : International standards and human rights instruments" class="source-ref source-ref-text nv" data-val-id="s22-p2-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_2_approche_bit_oit.md">L'OIT structure l'extension de la protection sociale autour d'une double dimension</a>. La dimension horizontale vise à garantir à l'ensemble de la population au moins un niveau minimal de sécurité de revenu et d'accès aux soins de santé, conformément à <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="Source : OIT — Recommandation no 202 sur les socles de protection sociale (2012) — logique du socle universel et garanties minimales" class="source-ref source-ref-text nv" data-val-id="s22-p2-c2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_2_approche_bit_oit.md">la R202 : c'est la logique du socle universel</a>. La dimension verticale vise, pour les personnes déjà couvertes, à élever progressivement les niveaux de protection, conformément aux normes de <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="Source : OIT — Convention no 102 sur la sécurité sociale (normes minimales), 1952 — normes progressives de prestation" class="source-ref source-ref-text nv" data-val-id="s22-p2-c3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_2_approche_bit_oit.md">la Convention no 102 et des conventions ultérieures</a>. Ces deux dimensions sont complémentaires et non substituables : un système qui étend sa couverture sans garantir un niveau minimal de prestations n'assure pas la protection sociale effective ; un système qui améliore les prestations pour les affiliés existants sans élargir sa couverture laisse la majorité de la population sans protection.</p>
+<p>Cette grille de lecture double est particulièrement adaptée à la situation de la RDC, où les systèmes formels coexistent avec une vaste population non couverte et où les enjeux d'extension de la couverture se posent simultanément sur les deux dimensions.</p>
+<hr />
+<h3 id="ce-que-le-bulletin-mesure-et-ce-quil-documente-sans-mesurer-non-valide"><span class="status-dot status-redige" title="Rédigé">&#9679;</span> Ce que le bulletin mesure  et ce qu'il documente sans mesurer <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>Dans le cadre ainsi défini, le bulletin distingue deux niveaux de traitement des dispositifs. Sont directement intégrés dans les indicateurs statistiques les régimes et programmes pour lesquels il est possible d'identifier des personnes couvertes, affiliées, cotisantes ou bénéficiaires, des prestations servies et des dépenses. Sont documentés à titre contextuel  sans être convertis en indicateurs de couverture  les dispositifs pour lesquels ces données ne sont pas disponibles, ou qui ne donnent pas lieu à une prestation individualisable permettant d'identifier un bénéficiaire. Cette distinction n'exprime pas de jugement de valeur sur l'importance respective des dispositifs ; elle traduit uniquement la contrainte statistique inhérente à tout exercice de mesure de la couverture.</p>
+<h1 id="23-champ-de-la-protection-sociale-et-criteres-dinclusion-statistique-dans-le-bulletin"><span class="status-dot status-redige" title="Rédigé">&#9679;</span> 2.3 Champ de la protection sociale et critères d'inclusion statistique dans le bulletin</h1>
+<h3 id="un-perimetre-defini-par-la-finalite-protectrice-et-la-mesurabilite-non-valide">Un périmètre défini par la finalité protectrice et la mesurabilité <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>Le champ statistique du bulletin est délimité à partir de deux critères cumulatifs : la <strong>finalité protectrice</strong> du dispositif et la <strong>mesurabilité statistique</strong> des données qu'il produit.</p>
+<p>Le critère de finalité protectrice exige que le dispositif ait pour objet principal de couvrir une personne ou un ménage contre un risque social identifié — <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="Source : OIT — Convention no 102 (1952) — les neuf branches de risques : maternité, maladie, accident du travail, invalidité, vieillesse, décès, chômage, Parties II à X" class="source-ref source-ref-text nv" data-val-id="s23-p1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_3_champ_statistique.md">maternité, maladie, accident du travail, invalidité, vieillesse, décès du soutien de famille, chômage, pauvreté ou vulnérabilité de revenu</a>. Ce critère écarte les dispositifs dont l'effet protecteur est indirect, accessoire ou non garanti, tels que certaines politiques d'investissement public ou d'accès aux infrastructures.</p>
+<p>Le critère de mesurabilité exige qu'il soit possible d'identifier, à partir des données disponibles, au moins l'une des grandeurs statistiques suivantes : des personnes couvertes ou affiliées, des cotisants actifs, des bénéficiaires, des prestations servies ou des dépenses. Ce critère écarte les dispositifs pour lesquels aucune donnée individuelle ou agrégée ne permet de quantifier la couverture réelle, même si leur finalité protectrice est indéniable.</p>
+<p>Ces deux critères ne constituent pas une liste fermée de dispositifs admis ou exclus. Ils définissent une règle opérationnelle permettant de statuer sur chaque dispositif de façon cohérente et documentée.</p>
+<hr />
+<h3 id="trois-niveaux-de-traitement-dans-le-bulletin-non-valide">Trois niveaux de traitement dans le bulletin <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>Sur la base de ces critères, le bulletin distingue trois niveaux de traitement des dispositifs.</p>
+<p><strong>Niveau 1 — Dispositifs intégrés dans les indicateurs statistiques.</strong><br />
+Sont classés à ce niveau les régimes et programmes pour lesquels les deux critères sont satisfaits : finalité protectrice établie et données disponibles permettant de mesurer la couverture. Entrent notamment dans ce groupe les régimes contributifs de sécurité sociale gérés par des institutions formelles <em>(CNSS, CNSSAP, régimes spéciaux)</em> et <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="Source : OIT — Recommandation no 202 (2012) — les programmes non contributifs font partie intégrante de la protection sociale" class="source-ref source-ref-text nv" data-val-id="s23-t1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_3_champ_statistique.md">les programmes non contributifs disposant de données de ciblage, d'enregistrement ou de paiement documentées</a>.</p>
+<p><strong>Niveau 2  Dispositifs traités séparément.</strong><br />
+Sont classés à ce niveau les dispositifs dont la finalité protectrice est établie mais pour lesquels les données ne permettent pas encore de produire des indicateurs comparables. Ils sont présentés de façon descriptive, avec les données disponibles, sans être agrégés dans les indicateurs globaux de couverture. La couverture sanitaire universelle entre, selon l'état d'avancement des données, dans cette catégorie.</p>
+<p><strong>Niveau 3  Dispositifs mentionnés à titre contextuel.</strong><br />
+Sont classés à ce niveau les dispositifs dont la finalité protectrice est reconnue mais qui ne donnent pas lieu à des prestations individualisables ou à des données de couverture. Ils sont mentionnés pour la complétude du tableau institutionnel, sans influer sur les indicateurs. C'est le cas de certains services sociaux, gratuités sectorielles, dispositifs d'urgence ou programmes d'accompagnement social dont le périmètre et les bénéficiaires ne sont pas documentés de façon consolidée.</p>
+<hr />
+<h3 id="un-perimetre-evolutif-non-valide"><span class="status-dot status-redige" title="Rédigé">&#9679;</span> Un périmètre évolutif <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>La classification d'un dispositif dans l'un de ces trois niveaux n'est pas définitive. Elle reflète l'état des données disponibles au moment de la préparation du bulletin et est susceptible d'évoluer à mesure que les systèmes d'information des institutions s'améliorent et que de nouvelles données deviennent accessibles. Le passage d'un dispositif du niveau 2 au niveau 1, ou du niveau 3 au niveau 2, constitue en soi un indicateur de progrès dans la gouvernance statistique de la protection sociale en RDC.</p>
+<h1 id="24-schema-de-lecture-et-classification-des-regimes-programmes-et-prestations"><span class="status-dot status-redige" title="Rédigé">&#9679;</span> 2.4 Schéma de lecture et classification des régimes, programmes et prestations</h1>
+<h3 id="couverture-legale-et-couverture-effective-non-valide">Couverture légale et couverture effective <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>Le bulletin articule deux notions hiérarchiquement liées, non interchangeables.</p>
+<p>La <strong>couverture légale</strong> désigne les personnes ou catégories de personnes auxquelles un régime ou un programme est applicable selon les textes juridiques, réglementaires ou statutaires en vigueur. Elle est une condition nécessaire : on ne peut bénéficier d'une protection effective sans que celle-ci soit d'abord prévue par un texte. Elle n'est pas suffisante : un dispositif peut être légalement prévu sans être effectivement mis en œuvre, faute d'affiliation systématique, de ressources, ou de données disponibles.</p>
+<p>La <strong>couverture effective</strong> désigne les personnes réellement protégées : affiliées et cotisantes, ou ayant effectivement reçu une prestation au cours de la période de référence, selon des données administratives ou d'enquête. Une couverture effective est nécessairement aussi légale : elle en est le sous-ensemble mis en œuvre. C'est cet angle statistique qui constitue le principal objet de mesure du présent bulletin.[^dm001]</p>
+<p>[^dm001]: Cette orientation correspond à la décision méthodologique DM-001 (<em>Couverture effective comme angle statistique principal</em>), consultable dans <code>00_pilotage/decisions_methodologiques.md</code>.</p>
+<hr />
+<h3 id="nature-des-regimes-et-programmes-non-valide">Nature des régimes et programmes <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>Les dispositifs de protection sociale se différencient selon plusieurs dimensions de classification.</p>
+<p><span data-val-id="s24-nat-r1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><strong>Selon le caractère obligatoire ou volontaire de l'affiliation.</strong> Les régimes légalement obligatoires concernent des catégories de travailleurs ou de résidents définis par la loi et gèrent une affiliation de droit. Les dispositifs à adhésion volontaire  mutuelles, assurances privées, épargne retraite individuelle  fonctionnent sur la base d'un consentement individuel ou collectif.</span> <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="OIT - Convention no 102 (1952) - art. 6 : assurance volontaire supervisee par l'Etat" class="source-ref source-ref-text nv" data-val-id="s24-nat-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">[C102, art. 6]</a></p>
+<p><span data-val-id="s24-nat-r2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><strong>Selon la nature du financement.</strong> Les régimes <strong>contributifs</strong> sont financés principalement par des cotisations de l'employeur et du travailleur, proportionnelles aux revenus d'activité. Les dispositifs <strong>non contributifs</strong> sont financés par l'État ou par des partenaires extérieurs, sans cotisation préalable de la personne protégée. Ces deux modes de financement peuvent coexister au sein d'un même système national et doivent être traités comme complémentaires.</span> <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="OIT - Recommandation no 202 (2012) - par. 5 : les socles peuvent etre mis en oeuvre par des transferts contributifs ou non contributifs" class="source-ref source-ref-text nv" data-val-id="s24-nat-c2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">[R202, par. 5]</a></p>
+<p><span data-val-id="s24-nat-r3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><strong>Selon le statut réglementaire.</strong> Les régimes <strong>statutaires</strong> sont créés et régis par des textes législatifs ou réglementaires formels. Les dispositifs <strong>non statutaires</strong>  programmes sociaux à durée limitée, transferts conditionnels, projets d'appui  opèrent dans un cadre plus souple, souvent sans base légale permanente. Cette distinction est pertinente pour apprécier la pérennité institutionnelle d'un dispositif.</span> <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/OIT - Building social protection systems - International standards and human rights instruments.txt" title="OIT (2021) - Building social protection systems - cadre analytique des dispositifs statutaires et non statutaires" class="source-ref source-ref-text nv" data-val-id="s24-nat-c3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">[OIT 2021]</a></p>
+<p><span data-val-id="s24-nat-r4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><strong>Selon la nature des prestations.</strong> Les prestations <strong>en espèces</strong> (pensions, indemnités, allocations) procurent un revenu ou compensent une perte de revenu. Les prestations <strong>en nature</strong> (soins de santé, équipements, services) procurent directement un bien ou un service. Cette distinction est importante pour la lecture des indicateurs de dépenses et de bénéficiaires.</span> <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="OIT - Convention no 102 (1952) - art. 1 par. 2 : la prestation peut etre directe (en nature) ou indirecte (remboursement)" class="source-ref source-ref-text nv" data-val-id="s24-nat-c4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">[C102, art. 1]</a></p>
+<hr />
+<h3 id="tableau-1-securite-sociale-contributive-obligatoire-cnss-et-cnssap-non-valide">Tableau 1  Sécurité sociale contributive obligatoire : CNSS et CNSSAP <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p><a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="Source : OIT  Convention no 102 sur la sécurité sociale (normes minimales), 1952" class="source-ref source-ref-text nv" data-val-id="s24-t1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">Les neuf branches de la Convention no 102 de l'OIT</a> servent de grille de lecture pour situer chaque institution dans le panorama de la protection sociale.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: center;"><a href="#" data-offline="true" data-src="06_sources/officielles_web/CNSS_RDC_branches_prestations.txt" title="Source : CNSS RDC  Site officiel cnss.cd, consulté juin 2026" class="source-ref source-ref-text nv" data-val-id="s24-t1-c2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">CNSS</a></th>
+<th style="text-align: center;"><a href="#" data-offline="true" data-src="06_sources/officielles_web/CNSSAP_RDC_branches_prestations.txt" title="Source : CNSSAP RDC  Site officiel cnssap.cd, consulté juin 2026" class="source-ref source-ref-text nv" data-val-id="s24-t1-c3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">CNSSAP</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Population assujettie</strong></td>
+<td style="text-align: center;">Travailleurs du secteur privé formel et assimilés <a href="#" data-offline="true" data-src="06_sources/officielles_web/CNSS_RDC_branches_prestations.txt" title="CNSS RDC - branches et populations couvertes (cnss.cd, loi n°16/009)" class="source-ref source-ref-text nv" data-val-id="s24-t1-src1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[1]</sup></a></td>
+<td style="text-align: center;">Agents de carrière, militaires, policiers, enseignants, contractuels de l'État <a href="#" data-offline="true" data-src="06_sources/officielles_web/CNSSAP_RDC_branches_prestations.txt" title="CNSSAP RDC - branches et populations couvertes (cnssap.cd, décret 15/031, loi 22/031)" class="source-ref source-ref-text nv" data-val-id="s24-t1-src2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[2]</sup></a></td>
+</tr>
+<tr>
+<td><strong>Caractère</strong></td>
+<td style="text-align: center;">Obligatoire, statutaire</td>
+<td style="text-align: center;">Obligatoire, statutaire</td>
+</tr>
+<tr>
+<td><strong>Mode de financement</strong></td>
+<td style="text-align: center;">Cotisations employeur + salarié <a href="#" data-offline="true" data-src="06_sources/officielles_web/CNSS_RDC_branches_prestations.txt" title="CNSS RDC - branches et populations couvertes (cnss.cd, loi n°16/009)" class="source-ref source-ref-text nv" data-val-id="s24-t1-src1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[1]</sup></a></td>
+<td style="text-align: center;">Cotisations État employeur + agent <a href="#" data-offline="true" data-src="06_sources/officielles_web/CNSSAP_RDC_branches_prestations.txt" title="CNSSAP RDC - branches et populations couvertes (cnssap.cd, décret 15/031, loi 22/031)" class="source-ref source-ref-text nv" data-val-id="s24-t1-src2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[2]</sup></a></td>
+</tr>
+<tr>
+<td><strong>Base légale principale</strong></td>
+<td style="text-align: center;">Loi n°16/009 du 15 juillet 2016 <a href="#" data-offline="true" data-src="06_sources/officielles_web/CNSS_RDC_branches_prestations.txt" title="CNSS RDC - branches et populations couvertes (cnss.cd, loi n°16/009)" class="source-ref source-ref-text nv" data-val-id="s24-t1-src1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[1]</sup></a></td>
+<td style="text-align: center;">Décret n°15/031 du 14 déc. 2015 ; Loi n°22/031 du 15 juil. 2022 <a href="#" data-offline="true" data-src="06_sources/officielles_web/CNSSAP_RDC_branches_prestations.txt" title="CNSSAP RDC - branches et populations couvertes (cnssap.cd, décret 15/031, loi 22/031)" class="source-ref source-ref-text nv" data-val-id="s24-t1-src2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[2]</sup></a></td>
+</tr>
+<tr>
+<td><em>Branche C102</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Soins médicaux (Partie II)</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td>Indemnités de maladie (Partie III)</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td>Chômage (Partie IV)</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td>Vieillesse (Partie V)</td>
+<td style="text-align: center;"><span class="cov-eff">✓</span></td>
+<td style="text-align: center;"><span class="cov-eff">✓</span></td>
+</tr>
+<tr>
+<td>Accidents du travail / mal. prof. (Partie VI)</td>
+<td style="text-align: center;"><span class="cov-eff">✓</span></td>
+<td style="text-align: center;"><span class="cov-leg">✓</span></td>
+</tr>
+<tr>
+<td>Allocations familiales (Partie VII)</td>
+<td style="text-align: center;"><span class="cov-eff">✓</span></td>
+<td style="text-align: center;"><span class="cov-leg">✓</span></td>
+</tr>
+<tr>
+<td>Maternité (Partie VIII)</td>
+<td style="text-align: center;"><span class="cov-eff">✓</span></td>
+<td style="text-align: center;"><span class="cov-leg">✓</span></td>
+</tr>
+<tr>
+<td>Invalidité (Partie IX)</td>
+<td style="text-align: center;"><span class="cov-eff">✓</span></td>
+<td style="text-align: center;"><span class="cov-leg">✓</span></td>
+</tr>
+<tr>
+<td>Survivants (Partie X)</td>
+<td style="text-align: center;"><span class="cov-eff">✓</span></td>
+<td style="text-align: center;"><span class="cov-eff">✓</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Légende : <span class="cov-eff">✓</span> = branche couverte de façon effective (données disponibles) — <span class="cov-leg">✓</span> = branche prévue légalement, données non encore consolidées — — = branche non prévue dans le régime.</em></p>
+<div class="table-sources"><small>Sources : <a href="#" data-offline="true" data-src="06_sources/officielles_web/CNSS_RDC_branches_prestations.txt" title="CNSS RDC - Site officiel cnss.cd et loi n°16/009 du 15 juillet 2016 - branches et populations couvertes" class="source-ref source-ref-text nv" data-val-id="s24-t1-src1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">CNSS (cnss.cd, 2026)</a> · <a href="#" data-offline="true" data-src="06_sources/officielles_web/CNSSAP_RDC_branches_prestations.txt" title="CNSSAP RDC - Site officiel cnssap.cd ; décret n°15/031 du 14 déc. 2015 ; loi n°22/031 du 15 juil. 2022" class="source-ref source-ref-text nv" data-val-id="s24-t1-src2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">CNSSAP (cnssap.cd, 2026)</a> · <a href="#" data-offline="true" data-src="06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) - tableaux 3 à 7" class="source-ref source-ref-text nv" data-val-id="s24-t1-src3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">Premier bulletin RDC (2023)</a></small></div>
+
+<hr />
+<h3 id="tableau-2-regimes-speciaux-non-valide">Tableau 2  Régimes spéciaux <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>Les régimes spéciaux couvrent des catégories professionnelles spécifiques de l'État. À l'exception du régime des parlementaires, ces régimes sont en grande partie financés par allocation budgétaire du Trésor public et non par cotisations.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Régime</th>
+<th>Population couverte</th>
+<th style="text-align: center;">Mode de financement</th>
+<th style="text-align: center;">Caractère</th>
+<th style="text-align: center;">Branches C102 prévues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Régime des militaires (FAC, PNC)</td>
+<td>Forces armées, Police nationale</td>
+<td style="text-align: center;">Allocation budgétaire</td>
+<td style="text-align: center;">Non contributif</td>
+<td style="text-align: center;">Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span></td>
+</tr>
+<tr>
+<td>Régime des magistrats civils</td>
+<td>Magistrats du siège et du parquet</td>
+<td style="text-align: center;">Allocation budgétaire</td>
+<td style="text-align: center;">Non contributif</td>
+<td style="text-align: center;">Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span></td>
+</tr>
+<tr>
+<td>Régime des parlementaires</td>
+<td>Membres de l'Assemblée nationale et du Sénat</td>
+<td style="text-align: center;">Cotisations + dotation</td>
+<td style="text-align: center;">Mixte</td>
+<td style="text-align: center;">Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span></td>
+</tr>
+<tr>
+<td>Autres régimes budgétaires</td>
+<td>Autres catégories spécifiques</td>
+<td style="text-align: center;">Allocation budgétaire</td>
+<td style="text-align: center;">Non contributif</td>
+<td style="text-align: center;">À préciser</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-sources"><small>Légende : <span class="cov-eff">✓</span> = branche couverte de façon effective.<br>Note : les branches couvertes par les régimes spéciaux sont identifiées sur base du premier bulletin (2023). La collecte des données effectives fera l'objet de démarches spécifiques dans le cadre du présent bulletin.<br>Source : <a href="#" data-offline="true" data-src="06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) - cartographie institutionnelle des régimes spéciaux" class="source-ref source-ref-text nv" data-val-id="s24-t2-src1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">Premier bulletin RDC (2023)</a></small></div>
+
+<hr />
+<h3 id="tableau-3-protection-de-la-sante-non-valide">Tableau 3  Protection de la santé <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>La protection de la santé est organisée par segment de population. L'axe principal est la <strong>population bénéficiaire</strong>, ce qui permet de visualiser les lacunes de couverture entre segments.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Segment de population</th>
+<th>Dispositif</th>
+<th>Institution</th>
+<th style="text-align: center;">Caractère</th>
+<th style="text-align: center;">Mode de financement</th>
+<th style="text-align: center;">Statut du dispositif</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Travailleurs privé formel + dépendants</td>
+<td><a href="#" data-offline="true" data-src="06_sources/officielles_web/FSS_RDC_produits_regimes.txt" title="Source : FSS RDC  Site officiel fss.cd, consulté juin 2026" class="source-ref source-ref-text nv" data-val-id="s24-t3-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">FSS — Afia Bora (paquet de base obligatoire)</a> <a href="#" data-offline="true" data-src="06_sources/officielles_web/FSS_RDC_produits_regimes.txt" title="FSS RDC - produits et régimes opérationnels (fss.cd, juin 2026)" class="source-ref source-ref-text nv" data-val-id="s24-t3-src1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[1]</sup></a></td>
+<td>FSS</td>
+<td style="text-align: center;">Obligatoire</td>
+<td style="text-align: center;">Cotisations employeur/salarié</td>
+<td style="text-align: center;">Opérationnel (2026)</td>
+</tr>
+<tr>
+<td>Travailleurs informels + dépendants</td>
+<td>FSS — régime informel <a href="#" data-offline="true" data-src="06_sources/officielles_web/FSS_RDC_produits_regimes.txt" title="FSS RDC - produits et régimes opérationnels (fss.cd, juin 2026)" class="source-ref source-ref-text nv" data-val-id="s24-t3-src1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[1]</sup></a></td>
+<td>FSS</td>
+<td style="text-align: center;">À confirmer</td>
+<td style="text-align: center;">À confirmer</td>
+<td style="text-align: center;">En déploiement</td>
+</tr>
+<tr>
+<td>Mères et nouveau-nés</td>
+<td>FSS — Kobota Ofele (gratuité maternité) <a href="#" data-offline="true" data-src="06_sources/officielles_web/FSS_RDC_produits_regimes.txt" title="FSS RDC - produits et régimes opérationnels (fss.cd, juin 2026)" class="source-ref source-ref-text nv" data-val-id="s24-t3-src1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[1]</sup></a></td>
+<td>FSS / État</td>
+<td style="text-align: center;">Non contributif</td>
+<td style="text-align: center;">Financement État</td>
+<td style="text-align: center;">Opérationnel (2026)</td>
+</tr>
+<tr>
+<td>Couverture complémentaire</td>
+<td>FSS — Afia Bora Prime <a href="#" data-offline="true" data-src="06_sources/officielles_web/FSS_RDC_produits_regimes.txt" title="FSS RDC - produits et régimes opérationnels (fss.cd, juin 2026)" class="source-ref source-ref-text nv" data-val-id="s24-t3-src1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[1]</sup></a></td>
+<td>FSS</td>
+<td style="text-align: center;">Volontaire</td>
+<td style="text-align: center;">Cotisations</td>
+<td style="text-align: center;">Opérationnel (2026)</td>
+</tr>
+<tr>
+<td>Enseignants EPST + dépendants</td>
+<td>MESP (Mutuelle agréée) <a href="#" data-offline="true" data-src="06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique RDC (2023) - tableau 9 : MESP" class="source-ref source-ref-text nv" data-val-id="s24-t3-src2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[2]</sup></a></td>
+<td>MESP</td>
+<td style="text-align: center;">Obligatoire, statutaire</td>
+<td style="text-align: center;">Cotisations membres + État</td>
+<td style="text-align: center;">Opérationnel</td>
+</tr>
+<tr>
+<td>Population générale (volontaire)</td>
+<td>Mutuelles de santé volontaires (&gt; 200)</td>
+<td>Diverses</td>
+<td style="text-align: center;">Volontaire</td>
+<td style="text-align: center;">Cotisations membres</td>
+<td style="text-align: center;">Actif, non consolidé</td>
+</tr>
+<tr>
+<td>Militaires, magistrats + dépendants</td>
+<td>Régime d'assistance médicale de l'État</td>
+<td>Ministère compétent</td>
+<td style="text-align: center;">Non contributif</td>
+<td style="text-align: center;">Allocation budgétaire</td>
+<td style="text-align: center;">Actif</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Légende : Opérationnel = dispositif juridiquement institué et fonctionnant à la date de rédaction — En déploiement = cadre légal adopté, mise en œuvre en cours — Actif = dispositif en activité, données non consolidées au niveau national.</em></p>
+<div class="table-sources"><small>Sources : <a href="#" data-offline="true" data-src="06_sources/officielles_web/FSS_RDC_produits_regimes.txt" title="FSS RDC - Site officiel fss.cd (juin 2026) - produits et régimes opérationnels" class="source-ref source-ref-text nv" data-val-id="s24-t3-src1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">FSS (fss.cd, juin 2026)</a> · <a href="#" data-offline="true" data-src="06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) - tableau 9 : MESP" class="source-ref source-ref-text nv" data-val-id="s24-t3-src2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">Premier bulletin RDC (2023), tableau 9</a> · <a href="#" data-offline="true" data-src="06_sources/officielles_web/CNSSAP_RDC_branches_prestations.txt" title="CNSSAP RDC - Base légale MESP incluse dans le champ CNSSAP / santé des agents publics" class="source-ref source-ref-text nv" data-val-id="s24-t3-src3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">Loi n°18/035 (2018) / Décret n°22/13 (2022)</a><br>Note : Les mutuelles volontaires ne sont pas incluses dans les indicateurs de couverture du présent bulletin, conformément aux critères définis en section 2.3.</small></div>
+
+<hr />
+<h3 id="tableau-4-programmes-dassistance-sociale-et-initiatives-non-contributives-non-valide">Tableau 4 — Programmes d’assistance sociale et initiatives non contributives <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span></h3>
+<p>Les régimes décrits dans les tableaux précédents reposent sur un fondement contributif ou statutaire permanent. Ils ne couvrent cependant qu’une fraction de la population, principalement celle intégrée dans l’emploi formel ou dans des catégories de fonctionnaires identifiées. La grande majorité de la population congolaise — travailleurs informels, ménages ruraux, déplacés, personnes vulnérables — ne bénéficie d’aucun de ces régimes.</p>
+<p>La <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="OIT — Recommandation no 202 (2012) — §8 : les socles de protection sociale comprennent des garanties minimales pour les populations non couvertes par les régimes contributifs" class="source-ref source-ref-text nv" data-val-id="s24-t4-r202" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">Recommandation no 202 de l’OIT (2012)</a> définit les <strong>socles de protection sociale</strong> comme des garanties élémentaires devant couvrir toute la population, y compris ceux qui ne participent à aucun régime contributif. En RDC, cette fonction est partiellement assurée par un ensemble de <strong>programmes non contributifs et d’initiatives sectorielles</strong>, portés soit par le gouvernement, soit par des partenaires techniques et financiers. <a href="#" data-offline="true" data-src="06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) — ch. 2.3 : programmes non contributifs d’assistance sociale" class="source-ref source-ref-text nv" data-val-id="s24-t4-bul1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">[Premier bulletin 2023]</a></p>
+<p>Ces programmes se distinguent des régimes précédents par trois caractéristiques structurelles : ils sont entièrement <strong>financés par des ressources publiques ou des contributions extérieures</strong>, sans cotisation des bénéficiaires ; ils ne confèrent généralement <strong>aucun droit statutaire permanent</strong> susceptible d’être invoqué par les intéressés ; et leur pérennité dépend des décisions budgétaires annuelles ou des cycles de financement des bailleurs. Cette fragilité institutionnelle est une limite importante à leur intégration dans les indicateurs de couverture ; ils sont néanmoins recensés ici car ils constituent, pour les populations concernées, la seule forme de protection sociale accessible.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Programme</th>
+<th>Type d’intervention</th>
+<th>Population cible</th>
+<th>Bailleur principal</th>
+<th>Responsable mise en œuvre</th>
+<th style="text-align: center;">Périmètre</th>
+<th style="text-align: center;">Statut au 31.12.2025</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#" data-offline="true" data-src="06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM — Transferts de ressources sans conditions (TRC) — 4 037 575 bénéficiaires en 2021, 3 795 530 en 2022" class="source-ref source-ref-text nv" data-val-id="s24-t4-pam1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">PAM — Transferts de ressources sans conditions</a><br><small><em>Début : continu (2000s) — Actif au 31.12.2025</em></small> <a href="#" data-offline="true" data-src="06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM RDC — site officiel wfp.org (consulté juin 2026) et Premier bulletin (2023)" class="source-ref source-ref-text nv" data-val-id="s24-t4-pam1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[1]</sup></a></td>
+<td>Transferts monétaires et alimentaires inconditionnels</td>
+<td>Ménages en insécurité alimentaire ; déplacés internes ; zones de conflit</td>
+<td>Donateurs internationaux (UE, USAID, RU…)</td>
+<td>PAM</td>
+<td style="text-align: center;">Est DRC (prioritaire) ; national</td>
+<td style="text-align: center;">Actif</td>
+</tr>
+<tr>
+<td><a href="#" data-offline="true" data-src="06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM + MEPST — Programme national de cantines scolaires — phase pilote initiée en 2023 pour consolider la gratuité de l’enseignement primaire" class="source-ref source-ref-text nv" data-val-id="s24-t4-cantine" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">PAM — Cantines scolaires</a><br><small><em>Début : 2023 (pilote) — Statut 2025 : en cours (données non consolidées)</em></small> <a href="#" data-offline="true" data-src="06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM RDC — cantines scolaires : phase pilote, écoles publiques, objectif nutritionnel et scolarisation" class="source-ref source-ref-text nv" data-val-id="s24-t4-cantine-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[1]</sup></a></td>
+<td>Transferts en nature (repas nutritifs en milieu scolaire)</td>
+<td>Enfants scolarisés dans les écoles publiques</td>
+<td>PAM + donateurs</td>
+<td>PAM + MEPST</td>
+<td style="text-align: center;">Phase pilote (périmètre à préciser)</td>
+<td style="text-align: center;">Actif (pilote)</td>
+</tr>
+<tr>
+<td><a href="#" data-offline="true" data-src="06_sources/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt" title="UNICEF — Cash + Nutrition (Tanganyika) — 226 648 enfants bénéficiaires en 2021 ; programme humanitaire récurrent" class="source-ref source-ref-text nv" data-val-id="s24-t4-unicef1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">UNICEF — Cash + Nutrition</a><br><small><em>Début : 2021 (données disponibles) — Actif (intermittent) au 31.12.2025</em></small> <a href="#" data-offline="true" data-src="06_sources/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt" title="Source : Premier bulletin (2023) citant données UNICEF 2021 — province de Tanganyika" class="source-ref source-ref-text nv" data-val-id="s24-t4-unicef1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[2]</sup></a></td>
+<td>Transferts monétaires + soutien nutritionnel</td>
+<td>Enfants malnutris ; ménages vulnérables (urgence humanitaire)</td>
+<td>UNICEF + donateurs institutionnels</td>
+<td>UNICEF + partenaires</td>
+<td style="text-align: center;">Tanganyika (et autres provinces)</td>
+<td style="text-align: center;">Actif (intermittent)</td>
+</tr>
+<tr>
+<td><a href="#" data-offline="true" data-src="06_sources/officielles_web/RDC_programmes_non_contributifs_gouvernementaux.txt" title="Gratuité de l’enseignement primaire — instruction ministérielle MEPST 2019 — suppression des frais de scolarité dans les écoles primaires publiques" class="source-ref source-ref-text nv" data-val-id="s24-t4-gratuit-educ" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">Gratuité de l’enseignement primaire public</a><br><small><em>Début : rentrée sept. 2019 — Actif au 31.12.2025</em></small> <a href="#" data-offline="true" data-src="06_sources/officielles_web/RDC_programmes_non_contributifs_gouvernementaux.txt" title="Banque mondiale DRC Overview (juin 2026) : +4,4 millions d’élèves supplémentaires en 2023-2024" class="source-ref source-ref-text nv" data-val-id="s24-t4-gratuit-educ-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md"><sup>[3]</sup></a></td>
+<td>Exonération de frais (accès gratuit à un service public d’éducation)</td>
+<td>Enfants en âge scolaire — écoles primaires publiques</td>
+<td>Gouvernement RDC + appui Banque mondiale</td>
+<td>MEPST</td>
+<td style="text-align: center;">National</td>
+<td style="text-align: center;">Actif</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Légende : tableau limité aux programmes actifs à un moment de l’année 2025 (période de référence : 1er janvier au 31 décembre 2025). Les programmes clotûrés avant 2025 (STEP, clôture févr. 2024 ; UNICEF+FAO, ponctuel 2022) ne sont pas repris. Les programmes « actifs intermittents » dépendent des financements des bailleurs et peuvent être interrompus entre deux cycles.</em></p>
+<div class="table-sources"><small>Sources : <a href="#" data-offline="true" data-src="06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) — ch. 2.3 : cartographie des programmes non contributifs" class="source-ref source-ref-text nv" data-val-id="s24-t4-src-bul" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">Premier bulletin RDC (2023), ch. 2.3</a> · <a href="#" data-offline="true" data-src="06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM — site officiel wfp.org (consulté juin 2026)" class="source-ref source-ref-text nv" data-val-id="s24-t4-src-pam" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">PAM (wfp.org, 2026)</a> · <a href="#" data-offline="true" data-src="06_sources/officielles_web/RDC_programmes_non_contributifs_gouvernementaux.txt" title="Programmes gouvernementaux non contributifs RDC — MEPST, gratuité enseignement (2019–2025)" class="source-ref source-ref-text nv" data-val-id="s24-t4-src-gouv" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">Programmes gouvernementaux RDC (2019–2025)</a> · <a href="#" data-offline="true" data-src="06_sources/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt" title="UNICEF RDC — transferts monétaires humanitaires (2021-2022, actif intermittent)" class="source-ref source-ref-text nv" data-val-id="s24-t4-src-uni" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">UNICEF RDC (2021–2025)</a> · <a href="#" data-offline="true" data-src="06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="OIT — Recommandation no 202 sur les socles de protection sociale (2012)" class="source-ref source-ref-text nv" data-val-id="s24-t4-src-r202" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">R202 (OIT, 2012)</a><br><em>La liste est indicative et non exhaustive. Une cartographie complète des initiatives actives en 2025 dépasse le périmètre du présent chapitre.</em></small></div>
+
+<hr />
+<h3 id="conditions-dacces-aux-prestations-non-valide"><span class="status-dot status-redige" title="Rédigé">&#9679;</span> Conditions d'accès aux prestations <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>Les conditions d'accès varient selon la nature du dispositif et structurent la répartition réelle de la couverture. Le bulletin distingue les principaux modes d'accès suivants :</p>
+<ul>
+<li><strong>Affiliation et cotisation</strong> : accès subordonné à l'enregistrement préalable dans un régime et au versement de cotisations sur une durée minimale. Applicable aux régimes contributifs obligatoires (CNSS, CNSSAP, FSS).</li>
+<li><strong>Statut professionnel ou catégoriel</strong> : accès réservé à une catégorie définie de travailleurs (agents publics, militaires, magistrats, enseignants). Applicable aux régimes spéciaux et à la MESP.</li>
+<li><strong>Condition de ressources</strong> : accès subordonné à un niveau de revenu ou à une situation de pauvreté documentée. Applicable aux programmes sociaux ciblés.</li>
+<li><strong>Ciblage catégoriel</strong> : accès réservé à une catégorie démographique ou de vulnérabilité définie (mères et nouveau-nés pour Kobota Ofele) sans condition de revenu explicite.</li>
+<li><strong>Résidence</strong> : accès lié au fait de résider sur un territoire donné, indépendamment du statut professionnel ou économique.</li>
+<li><strong>Accès universel ou quasi universel</strong> : accès non conditionné, ouvert à l'ensemble de la population ou d'un groupe très large, sans critère d'éligibilité restrictif.</li>
+</ul>
+<p>Ces conditions d'accès ont une incidence directe sur les indicateurs de couverture : deux régimes couvrant formellement le même risque peuvent produire des taux de couverture très différents selon les conditions qu'ils imposent et la capacité institutionnelle à les faire respecter.</p>
+<h1 id="26-precautions-de-lecture-concepts-statistiques-cles-et-limites-generales"><span class="status-dot status-redige" title="Rédigé">&#9679;</span> 2.6 Précautions de lecture : concepts statistiques clés et limites générales</h1>
+<h3 id="distinctions-statistiques-indispensables-non-valide">Distinctions statistiques indispensables <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>La lecture des indicateurs présentés dans ce bulletin suppose la maîtrise de quelques distinctions statistiques que l'usage courant tend à confondre. Ces distinctions sont définies de façon opérationnelle dans le glossaire du bulletin <em>(05_references/glossaire.md)</em> ; elles sont rappelées ici dans leur portée analytique.</p>
+<p><strong>Affilié  cotisant actif.</strong> Une personne affiliée à un régime est enregistrée comme assujettie à ce régime. Elle n'est pas nécessairement en train de cotiser activement : l'affiliation peut précéder la première cotisation, persister après une interruption de carrière ou être maintenue à titre historique. Les indicateurs de cotisants actifs sont plus restrictifs que les indicateurs d'affiliés et généralement plus proches de la couverture effective réelle.</p>
+<p><strong>Bénéficiaire  personne couverte.</strong> Un bénéficiaire est une personne qui a effectivement reçu une prestation au cours d'une période donnée. Une personne couverte est une personne qui a droit à une prestation si le risque se réalise, même si elle n'a pas encore eu à en bénéficier. Ces deux notions ne sont pas interchangeables : un indicateur de bénéficiaires mesure la demande effective de prestations, non l'étendue de la protection offerte.</p>
+<p><strong>Prestation servie  bénéficiaire unique.</strong> Un même bénéficiaire peut recevoir plusieurs prestations au cours d'une année. Un dénombrement de prestations servies peut donc conduire à une surestimation du nombre de personnes distinctes bénéficiaires si les doublons ne sont pas traités.</p>
+<p><strong>Ménage bénéficiaire  individus couverts.</strong> Certains programmes sociaux déclarent leurs résultats en ménages bénéficiaires. La conversion en nombre d'individus couverts nécessite des hypothèses explicites sur la taille moyenne des ménages, lesquelles seront documentées lorsqu'elles sont mobilisées dans le bulletin.</p>
+<p><strong>Couverture légale  couverture effective.</strong> Cette distinction, centrale pour l'ensemble du bulletin, est rappelée en section 2.4 et dans chaque indicateur concerné.</p>
+<hr />
+<h3 id="limites-methodologiques-generales-non-valide">Limites méthodologiques générales <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span></h3>
+<p>Les limites générales du bulletin sont principalement de trois ordres. La <strong>disponibilité</strong> des données administratives reste inégale selon les institutions et les périodes : certaines institutions n'ont pas encore de système d'information permettant de produire des indicateurs annuels consolidés. La <strong>complétude</strong> des données transmises peut varier selon les exercices, certains tableaux étant partiels ou couvrant uniquement une partie du territoire. La <strong>désagrégation</strong>  par sexe, âge, province ou secteur d'activité  n'est pas systématiquement disponible et sera indiquée au cas par cas.</p>
+<p>Ces limites générales ne font pas l'objet d'un traitement global dans ce chapitre. Elles sont signalées au niveau de chaque institution, indicateur ou tableau statistique concerné.[^dm003]</p>
+<p>[^dm003]: Cette approche correspond à la décision méthodologique DM-003 (<em>Documentation des sources au niveau pertinent</em>), consultable dans <code>00_pilotage/decisions_methodologiques.md</code>.</p>
+<hr />
+<h1 id="chapitre-3-cartographie-institutionnelle-de-la-protection-sociale-en-rdc"><span class="status-dot status-brouillon" title="Structure initiale">&#9679;</span> Chapitre 3 — Cartographie institutionnelle de la protection sociale en RDC</h1>
+<hr />
+<h1 id="chapitre-4-couverture-effective-et-prestations"><span class="status-dot status-brouillon" title="Structure initiale">&#9679;</span> Chapitre 4 — Couverture effective et prestations</h1>
+<hr />
+<h1 id="chapitre-5-depenses-et-financement-de-la-protection-sociale"><span class="status-dot status-brouillon" title="Structure initiale">&#9679;</span> Chapitre 5 — Dépenses et financement de la protection sociale</h1>
+<hr />
+<h1 id="chapitre-6-qualite-disponibilite-et-perspectives"><span class="status-dot status-brouillon" title="Structure initiale">&#9679;</span> Chapitre 6 — Qualité, disponibilité et perspectives</h1>
+<hr />
+<h1 id="annexe-a-fiches-institutionnelles-detaillees"><span class="status-dot status-brouillon" title="Structure initiale">&#9679;</span> Annexe A — Fiches institutionnelles détaillées</h1>
+<p class="a-rediger">&#9998; Texte à rédiger</p>
+
+<h2 id="a1-caisse-nationale-de-securite-sociale-cnss">A.1 Caisse Nationale de Sécurité Sociale (CNSS)</h2>
+<h3 id="cadre-juridique-et-institutionnel">Cadre juridique et institutionnel</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Texte fondateur</td>
+<td>Décret-loi n° 87-021 du 5 août 1987 portant organisation de la sécurité sociale</td>
+</tr>
+<tr>
+<td>Tutelle ministérielle</td>
+<td>Ministère de la Santé Publique, Hygiène et Prévoyance Sociale</td>
+</tr>
+<tr>
+<td>Statut juridique</td>
+<td>Établissement public à caractère social</td>
+</tr>
+<tr>
+<td>Année de création</td>
+<td>1987 (refonte du régime de sécurité sociale)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="mission-et-branches-couvertes">Mission et branches couvertes</h3>
+<p>La CNSS a pour mission de coordonner et d'administrer les prestations de sécurité sociale pour les travailleurs du secteur privé formel et leurs ayants droit.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Branche</th>
+<th>Couverte ?</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vieillesse, invalidité, décès</td>
+<td></td>
+<td>Pension de vieillesse normale, proportionnelle, anticipée, de survivant ; allocation de décès</td>
+</tr>
+<tr>
+<td>Accidents du travail / maladies professionnelles (AT/MP)</td>
+<td></td>
+<td>Rentes d'incapacité, rentes de survivant</td>
+</tr>
+<tr>
+<td>Prestations familiales</td>
+<td></td>
+<td>Allocations familiales</td>
+</tr>
+<tr>
+<td>Maternité</td>
+<td></td>
+<td>Indemnités de maternité</td>
+</tr>
+<tr>
+<td>Soins de santé</td>
+<td></td>
+<td>Non gérée directement par la CNSS</td>
+</tr>
+<tr>
+<td>Chômage</td>
+<td></td>
+<td>Non couverte</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Population assujettie :</strong> travailleurs salariés du secteur privé (formel), congolais et étrangers, exerçant sur le territoire national.</p>
+<h3 id="financement">Financement</h3>
+<p>Régime contributif financé par les cotisations patronales et salariales.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Branche</th>
+<th>Taux employeur</th>
+<th>Taux salarié</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pensions (vieillesse, invalidité, décès)</td>
+<td>5 %</td>
+<td>5 %</td>
+<td>10 %</td>
+</tr>
+<tr>
+<td>Allocations familiales</td>
+<td>6,5 %</td>
+<td></td>
+<td>6,5 %</td>
+</tr>
+<tr>
+<td>AT/MP</td>
+<td>1,5 %</td>
+<td></td>
+<td>1,5 %</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>13 %</strong></td>
+<td><strong>5 %</strong></td>
+<td><strong>18 %</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Sources : CNSS / premier Bulletin statistique RDC (2023). À confirmer sur la période de référence du présent bulletin.</em></p>
+<h3 id="donnees-de-couverture">Données de couverture</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Indicateur</th>
+<th>2019</th>
+<th>2020</th>
+<th>2021</th>
+<th>2022</th>
+<th>2023</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Affiliés enregistrés</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Cotisants actifs (contributeurs)</td>
+<td>676 179</td>
+<td>508 708</td>
+<td>591 130</td>
+<td>613 761</td>
+<td></td>
+</tr>
+<tr>
+<td>Bénéficiaires de pensions (vieillesse + invalidité)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bénéficiaires AT/MP (rentes d'incapacité)</td>
+<td>1 082</td>
+<td>1 020</td>
+<td>955</td>
+<td>1 053</td>
+<td></td>
+</tr>
+<tr>
+<td>Bénéficiaires AT/MP (rentes de survivant)</td>
+<td>1 476</td>
+<td>1 608</td>
+<td>1 845</td>
+<td>1 781</td>
+<td></td>
+</tr>
+<tr>
+<td>Bénéficiaires d'allocations familiales</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Sources : premier Bulletin statistique RDC (2023) pour 20192022. Données 2023 à transmettre par la CNSS.</em></p>
+<h3 id="donnees-financieres">Données financières</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Indicateur (en CDF)</th>
+<th>2019</th>
+<th>2020</th>
+<th>2021</th>
+<th>2022</th>
+<th>2023</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recettes totales</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dont cotisations</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Dépenses de prestations</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Dépenses administratives</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>À compléter à réception des données de la CNSS.</em></p>
+<h3 id="evolutions-et-reformes-en-cours">Évolutions et réformes en cours</h3>
+<p>Le nombre de cotisants actifs à la CNSS a enregistré une baisse significative en 2020 (24,7 %), passant de 676 179 à 508 708, sous l'effet de la pandémie de COVID-19. Une reprise progressive a été observée dès 2021 (+16,2 %), puis en 2022 (+3,8 %), portant le total à 613 761 cotisants. La couverture n'a cependant pas encore retrouvé son niveau d'avant-crise.</p>
+<p><em>[À compléter : réformes législatives récentes, extension géographique, informatisation du registre, etc.]</em></p>
+<h3 id="perspective-de-linstitution">Perspective de l'institution</h3>
+<p><em>[À rédiger en coordination avec la CNSS  1 à 2 paragraphes présentant les orientations stratégiques, priorités et engagements de l'institution pour la période couverte par le bulletin. Ce texte sera clairement attribué à la CNSS dans la version finale.]</em></p>
+<h3 id="source-et-limites-des-donnees">Source et limites des données</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source principale</td>
+<td>CNSS  données administratives transmises directement</td>
+</tr>
+<tr>
+<td>Source complémentaire</td>
+<td>Premier Bulletin statistique RDC N°1/2023</td>
+</tr>
+<tr>
+<td>Période couverte</td>
+<td>20192022 (données complètes) ; 2023 à confirmer</td>
+</tr>
+<tr>
+<td>Limites connues</td>
+<td>Distinction affiliés / cotisants actifs non systématique dans les données disponibles ; données sur les prestations familiales partielles</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="a2-caisse-nationale-de-securite-sociale-des-agents-publics-de-letat-cnssap">A.2 Caisse Nationale de Sécurité Sociale des Agents Publics de l'État (CNSSAP)</h2>
+<h3 id="cadre-juridique-et-institutionnel_1">Cadre juridique et institutionnel</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Texte fondateur</td>
+<td>Décret n° 15/031 du 14 décembre 2015</td>
+</tr>
+<tr>
+<td>Tutelle ministérielle</td>
+<td>Ministère de la Santé Publique, Hygiène et Prévoyance Sociale</td>
+</tr>
+<tr>
+<td>Statut juridique</td>
+<td>Établissement public à caractère administratif</td>
+</tr>
+<tr>
+<td>Année de création</td>
+<td>2015</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="mission-et-branches-couvertes_1">Mission et branches couvertes</h3>
+<p>La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécurité sociale pour les agents publics de l'État et leurs ayants droit.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Branche</th>
+<th>Couverte ?</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vieillesse, invalidité, décès</td>
+<td></td>
+<td>En cours de déploiement</td>
+</tr>
+<tr>
+<td>Accidents du travail / maladies professionnelles (AT/MP)</td>
+<td></td>
+<td>Branche officiellement lancée en mai 2023</td>
+</tr>
+<tr>
+<td>Prestations familiales</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Maternité</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Soins de santé</td>
+<td></td>
+<td>Non gérée directement</td>
+</tr>
+<tr>
+<td>Chômage</td>
+<td></td>
+<td>Non couverte</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Population assujettie :</strong> agents de carrière des services publics de l'État, fonctionnaires contractuels, stagiaires et apprentis sous contrat. Les militaires et policiers relèvent de régimes spéciaux distincts.</p>
+<h3 id="financement_1">Financement</h3>
+<p>Régime contributif et partiellement financé par le budget de l'État.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cotisations salariales</td>
+<td>À préciser</td>
+</tr>
+<tr>
+<td>Cotisations patronales (État employeur)</td>
+<td>À préciser</td>
+</tr>
+<tr>
+<td>Transferts budgétaires</td>
+<td>Pour les agents non encore mécanisés</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>À compléter à réception des données de la CNSSAP.</em></p>
+<h3 id="donnees-de-couverture_1">Données de couverture</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Indicateur</th>
+<th>2019</th>
+<th>2020</th>
+<th>2021</th>
+<th>2022</th>
+<th>2023</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contributeurs actifs (total)</td>
+<td>172 204</td>
+<td></td>
+<td></td>
+<td>198 399</td>
+<td></td>
+</tr>
+<tr>
+<td>dont hommes</td>
+<td>110 912</td>
+<td></td>
+<td></td>
+<td>138 443</td>
+<td></td>
+</tr>
+<tr>
+<td>dont femmes</td>
+<td></td>
+<td>65 624</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bénéficiaires de pensions</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bénéficiaires AT/MP</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Sources : premier Bulletin statistique RDC (2023) pour 20192022. Données 2023 à transmettre par la CNSSAP.</em></p>
+<h3 id="donnees-financieres_1">Données financières</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Indicateur (en CDF)</th>
+<th>2019</th>
+<th>2020</th>
+<th>2021</th>
+<th>2022</th>
+<th>2023</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recettes totales</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dont cotisations</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Dépenses de prestations</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Dépenses administratives</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>À compléter à réception des données de la CNSSAP.</em></p>
+<h3 id="evolutions-et-reformes-en-cours_1">Évolutions et réformes en cours</h3>
+<p><strong>Mécanisation des agents publics.</strong> La RDC est confrontée depuis plusieurs décennies au problème des agents et fonctionnaires de l'État dits  non mécanisés  : des agents possédant un numéro de matricule mais n'apparaissant pas sur la liste de paie officielle, ne percevant donc aucune rémunération et ne bénéficiant d'aucune prestation sociale. Une politique d'inclusion salariale progressive  dite de  mécanisation   a été engagée pour régulariser leur situation. Entre octobre 2021 et décembre 2022, environ 40 000 agents ont été mécanisés, suivis de 101 000 agents supplémentaires.</p>
+<p><strong>Mise à la retraite par vagues.</strong> En 2022, le Vice-Premier Ministre en charge de la Fonction Publique a annoncé que 350 000 agents étaient éligibles à la retraite, dont certains âgés de plus de 90 ans. Des départs ont été organisés en vagues successives : 4 400 agents (septembre 2022), puis 6 369 agents (février 2023), avec une prévision de 50 000 départs supplémentaires en 2023. Ce processus représente un enjeu financier majeur pour la CNSSAP.</p>
+<p><strong>Lancement de la branche AT/MP.</strong> En mai 2023, la branche accidents du travail et maladies professionnelles a été officiellement lancée, étendant la couverture de la CNSSAP à l'ensemble de ses contributeurs.</p>
+<p><em>[À compléter : autres réformes en cours, extension aux enseignants, déploiement du système informatique, etc.]</em></p>
+<h3 id="perspective-de-linstitution_1">Perspective de l'institution</h3>
+<p><em>[À rédiger en coordination avec la CNSSAP  1 à 2 paragraphes présentant les orientations stratégiques, priorités et engagements de l'institution. Ce texte sera clairement attribué à la CNSSAP dans la version finale.]</em></p>
+<h3 id="source-et-limites-des-donnees_1">Source et limites des données</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source principale</td>
+<td>CNSSAP  données administratives transmises directement</td>
+</tr>
+<tr>
+<td>Source complémentaire</td>
+<td>Premier Bulletin statistique RDC N°1/2023</td>
+</tr>
+<tr>
+<td>Période couverte</td>
+<td>20192022 (données partielles) ; 2023 à confirmer</td>
+</tr>
+<tr>
+<td>Limites connues</td>
+<td>Données incomplètes sur la désagrégation par sexe ; articulation complexe entre agents mécanisés et non mécanisés dans le décompte des affiliés</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="a3-fonds-national-de-promotion-et-de-service-social-fnpss">A.3 Fonds National de Promotion et de Service Social (FNPSS)</h2>
+<h3 id="cadre-juridique-et-institutionnel_2">Cadre juridique et institutionnel</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Texte fondateur</td>
+<td><em>À préciser</em></td>
+</tr>
+<tr>
+<td>Tutelle ministérielle</td>
+<td><em>À préciser</em></td>
+</tr>
+<tr>
+<td>Statut juridique</td>
+<td><em>À préciser</em></td>
+</tr>
+<tr>
+<td>Année de création</td>
+<td><em>À préciser</em></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="mission-et-branches-couvertes_2">Mission et branches couvertes</h3>
+<p><em>[À rédiger à réception des informations du FNPSS.]</em></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Branche</th>
+<th>Couverte ?</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vieillesse, invalidité, décès</td>
+<td><em>À confirmer</em></td>
+<td></td>
+</tr>
+<tr>
+<td>AT/MP</td>
+<td><em>À confirmer</em></td>
+<td></td>
+</tr>
+<tr>
+<td>Prestations familiales</td>
+<td><em>À confirmer</em></td>
+<td></td>
+</tr>
+<tr>
+<td>Maternité</td>
+<td><em>À confirmer</em></td>
+<td></td>
+</tr>
+<tr>
+<td>Soins de santé</td>
+<td><em>À confirmer</em></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Population assujettie :</strong> <em>À préciser.</em></p>
+<h3 id="financement_2">Financement</h3>
+<p><em>À compléter à réception des données du FNPSS.</em></p>
+<h3 id="donnees-de-couverture_2">Données de couverture</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Indicateur</th>
+<th>2019</th>
+<th>2020</th>
+<th>2021</th>
+<th>2022</th>
+<th>2023</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Affiliés enregistrés</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Cotisants actifs</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bénéficiaires</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="donnees-financieres_2">Données financières</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Indicateur (en CDF)</th>
+<th>2019</th>
+<th>2020</th>
+<th>2021</th>
+<th>2022</th>
+<th>2023</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recettes totales</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Dépenses de prestations</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Dépenses administratives</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="evolutions-et-reformes-en-cours_2">Évolutions et réformes en cours</h3>
+<p><em>[À rédiger à réception des informations du FNPSS.]</em></p>
+<h3 id="perspective-de-linstitution_2">Perspective de l'institution</h3>
+<p><em>[À rédiger en coordination avec le FNPSS  1 à 2 paragraphes sur les orientations stratégiques et priorités. Ce texte sera clairement attribué au FNPSS dans la version finale.]</em></p>
+<h3 id="source-et-limites-des-donnees_2">Source et limites des données</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source principale</td>
+<td>FNPSS  données à transmettre</td>
+</tr>
+<tr>
+<td>Période attendue</td>
+<td>20192023</td>
+</tr>
+<tr>
+<td>Limites connues</td>
+<td>Données non encore reçues au moment de la rédaction</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="a4-mutuelle-de-sante-des-enseignants-de-lenseignement-primaire-secondaire-et-professionnel-mesp">A.4 Mutuelle de Santé des Enseignants de l'Enseignement Primaire, Secondaire et Professionnel (MESP)</h2>
+<h3 id="cadre-juridique-et-institutionnel_3">Cadre juridique et institutionnel</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Texte fondateur</td>
+<td>Arrêté n° 027/CAB/MINETAT/MTEPS/01/2019 (agrément) ; Arrêté n° 042/CAB/MIN/JGSDH/2015 (reconnaissance)</td>
+</tr>
+<tr>
+<td>Tutelle ministérielle</td>
+<td>Ministère de l'Enseignement Primaire, Secondaire et Technique (MEPST)</td>
+</tr>
+<tr>
+<td>Statut juridique</td>
+<td>Mutuelle de santé agréée, obligatoire et statutaire</td>
+</tr>
+<tr>
+<td>Année de création / agrément</td>
+<td>2015 (reconnaissance) ; 2019 (agrément)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="mission-et-branches-couvertes_3">Mission et branches couvertes</h3>
+<p>La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une société d'assurance maladie obligatoire de type corporatif qui regroupe tous les enseignants du secteur public.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Branche</th>
+<th>Couverte ?</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Soins de santé (assurance maladie)</td>
+<td></td>
+<td>Paquet étendu : soins ambulatoires, spécialisés, hospitaliers, médicaments, examens</td>
+</tr>
+<tr>
+<td>Maternité</td>
+<td></td>
+<td>Incluse dans le paquet de soins</td>
+</tr>
+<tr>
+<td>Vieillesse / pensions</td>
+<td></td>
+<td>Non couverte</td>
+</tr>
+<tr>
+<td>AT/MP</td>
+<td></td>
+<td>Non couverte</td>
+</tr>
+<tr>
+<td>Prestations familiales</td>
+<td></td>
+<td>Non couverte</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Population assujettie :</strong> enseignants du secteur public de l'enseignement primaire, secondaire et technique, ainsi que leur conjoint et un maximum de 3 enfants de moins de 18 ans (ou encore étudiants ; 5 enfants si les deux conjoints sont enseignants). L'affiliation est conditionnée à la détention d'une carte MESP.</p>
+<h3 id="financement_3">Financement</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cotisations mensuelles</td>
+<td>Retenues à la source, versées via le comptable d'État</td>
+</tr>
+<tr>
+<td>Subventions de l'État</td>
+<td>Complément public</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Taux de cotisation exact : à préciser.</em></p>
+<h3 id="donnees-de-couverture_3">Données de couverture</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Indicateur</th>
+<th>2019</th>
+<th>2020</th>
+<th>2021</th>
+<th>2022</th>
+<th>2023</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contributeurs (titulaires enseignants)</td>
+<td>50 256</td>
+<td>54 383</td>
+<td>60 745</td>
+<td>80 041</td>
+<td></td>
+</tr>
+<tr>
+<td>Membres de famille à charge</td>
+<td>72 291</td>
+<td>76 578</td>
+<td>81 081</td>
+<td>84 836</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Total couvert</strong></td>
+<td><strong>122 547</strong></td>
+<td><strong>130 961</strong></td>
+<td><strong>141 826</strong></td>
+<td><strong>164 877</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Source : données transmises par le MEPST (2023), reprises dans le premier Bulletin statistique RDC N°1/2023.</em></p>
+<h3 id="donnees-financieres_3">Données financières</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Indicateur (en CDF)</th>
+<th>2019</th>
+<th>2020</th>
+<th>2021</th>
+<th>2022</th>
+<th>2023</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recettes totales</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dont cotisations</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Dépenses de prestations de santé</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Dépenses administratives</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>À compléter à réception des données du MEPST / MESP.</em></p>
+<h3 id="evolutions-et-reformes-en-cours_3">Évolutions et réformes en cours</h3>
+<p>Entre 2019 et 2022, le nombre de contributeurs à la MESP a progressé de <strong>59,3 %</strong>, passant de 50 256 à 80 041. Le nombre de personnes à charge a également augmenté, atteignant 84 836 en 2022, pour un total couvert de 164 877 personnes.</p>
+<p>Cette dynamique reste cependant très en deçà du potentiel : si chaque enseignant détenait une carte MESP, la mutuelle compterait plus de 700 000 titulaires et potentiellement 2 800 000 bénéficiaires au total. À fin 2022, la MESP n'était opérationnelle que dans 7 des 26 provinces (Kinshasa, Haut-Katanga, Équateur, Kasaï-Oriental, Kasaï, Tshopo et Nord-Kivu), laissant 19 provinces sans couverture effective.</p>
+<p>L'extension géographique progressive constitue le principal enjeu stratégique de la MESP pour les années à venir.</p>
+<h3 id="perspective-de-linstitution_3">Perspective de l'institution</h3>
+<p><em>[À rédiger en coordination avec la direction de la MESP  1 à 2 paragraphes sur les priorités stratégiques, le calendrier d'extension provinciale et les objectifs de couverture. Ce texte sera clairement attribué à la MESP dans la version finale.]</em></p>
+<h3 id="source-et-limites-des-donnees_3">Source et limites des données</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source principale</td>
+<td>MEPST  données transmises en 2023</td>
+</tr>
+<tr>
+<td>Source complémentaire</td>
+<td>Premier Bulletin statistique RDC N°1/2023</td>
+</tr>
+<tr>
+<td>Période couverte</td>
+<td>20192022 ; 2023 à confirmer</td>
+</tr>
+<tr>
+<td>Limites connues</td>
+<td>Couverture partielle (7 provinces sur 26) ; absence de données financières ; décompte des bénéficiaires conditionné à la détention d'une carte</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="a5-fonds-de-solidarite-de-sante-fss">A.5 Fonds de Solidarité de Santé (FSS)</h2>
+<h3 id="cadre-juridique-et-institutionnel_4">Cadre juridique et institutionnel</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Texte fondateur</td>
+<td>Loi n° 18/035 du 13 décembre 2018 fixant les principes fondamentaux relatifs à l'organisation de la santé publique</td>
+</tr>
+<tr>
+<td>Décret d'organisation</td>
+<td>Décret n° 22/13 du 09 avril 2022</td>
+</tr>
+<tr>
+<td>Tutelle ministérielle</td>
+<td>Ministère de la Santé Publique, Hygiène et Prévoyance Sociale</td>
+</tr>
+<tr>
+<td>Statut juridique</td>
+<td>Établissement public à caractère administratif, doté de la personnalité juridique et de l'autonomie de gestion</td>
+</tr>
+<tr>
+<td>Année de création</td>
+<td>2018 (loi) ; organisation précisée en 2022</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="mission-et-branches-couvertes_4">Mission et branches couvertes</h3>
+<p>Le FSS est l'instrument central de la mise en œuvre de la Couverture Santé Universelle (CSU) en RDC. Il est chargé d'organiser la solidarité financière des cotisants de la CSU, de collecter les fonds, de contractualiser avec les établissements de santé et pharmaceutiques, et d'assurer un financement équitable des soins pour tous.</p>
+<p>Le FSS a vocation à regrouper, à terme, plusieurs régimes :</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Régime</th>
+<th>Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assurance maladie obligatoire pour les agents publics actifs et retraités</td>
+<td>En cours d'opérationnalisation</td>
+</tr>
+<tr>
+<td>Assurance maladie obligatoire pour les travailleurs du secteur privé</td>
+<td>En cours</td>
+</tr>
+<tr>
+<td>Assurance maladie obligatoire scolaire et estudiantine</td>
+<td>En cours</td>
+</tr>
+<tr>
+<td>Assurance maladie du secteur informel</td>
+<td>En cours</td>
+</tr>
+<tr>
+<td>Assistance médicale aux personnes vulnérables (non contributif)</td>
+<td>En cours</td>
+</tr>
+<tr>
+<td>Régime spécial sur la gratuité de la maternité</td>
+<td><strong>Opérationnel depuis septembre 2023</strong> (Kinshasa)</td>
+</tr>
+<tr>
+<td>Assurance maladie complémentaire</td>
+<td>En cours</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="financement_4">Financement</h3>
+<p>À la date du premier bulletin (janvier 2024), le FSS ne prélevait pas encore de contributions des assurés. Il finançait exclusivement la gratuité de la maternité à travers des transferts budgétaires de l'État.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cotisations des assurés</td>
+<td>Non encore activées</td>
+</tr>
+<tr>
+<td>Transferts budgétaires de l'État</td>
+<td>Opérationnel (financement de la gratuité maternité)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="donnees-de-couverture_4">Données de couverture</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Indicateur</th>
+<th>2022</th>
+<th>2023</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bénéficiaires de la gratuité de la maternité</td>
+<td></td>
+<td><em>En cours de déploiement</em></td>
+<td>Lancé en septembre 2023 à Kinshasa</td>
+</tr>
+<tr>
+<td>Population cible (ville-province de Kinshasa)</td>
+<td></td>
+<td>1618 millions</td>
+<td>Première phase</td>
+</tr>
+<tr>
+<td>Contributeurs actifs</td>
+<td></td>
+<td></td>
+<td>Contributions non encore prélevées</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>À compléter à réception des données du FSS.</em></p>
+<h3 id="donnees-financieres_4">Données financières</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Indicateur (en CDF)</th>
+<th>2022</th>
+<th>2023</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dépenses pour la gratuité de la maternité</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Dépenses administratives</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>À compléter à réception des données du FSS.</em></p>
+<h3 id="evolutions-et-reformes-en-cours_4">Évolutions et réformes en cours</h3>
+<p>Le FSS représente l'architecture institutionnelle centrale de la CSU en RDC, mais son déploiement effectif est progressif. En septembre 2023, la politique de gratuité des accouchements et des soins néonatals a été lancée dans la ville-province de Kinshasa. Ce paquet couvre les consultations prénatales, l'échographie obstétricale, les accouchements simples et par césarienne, les soins du nouveau-né, la vaccination, les consultations post-natales et l'accès aux médicaments essentiels.</p>
+<p>L'extension est prévue vers le Sud-Kivu, le Kasaï-Oriental et le Kongo-Central, avant une généralisation progressive à l'ensemble du territoire national. La vocation du FSS est à terme de remplacer tous les régimes particuliers de financement des soins médicaux existants pour assurer une couverture universelle.</p>
+<h3 id="perspective-de-linstitution_4">Perspective de l'institution</h3>
+<p><em>[À rédiger en coordination avec le FSS  1 à 2 paragraphes sur le calendrier de déploiement de la CSU, les priorités d'extension et les perspectives de mise en place des cotisations. Ce texte sera clairement attribué au FSS dans la version finale.]</em></p>
+<h3 id="source-et-limites-des-donnees_4">Source et limites des données</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source principale</td>
+<td>FSS  données à transmettre</td>
+</tr>
+<tr>
+<td>Source complémentaire</td>
+<td>Premier Bulletin statistique RDC N°1/2023</td>
+</tr>
+<tr>
+<td>Période couverte</td>
+<td>2023 (première année opérationnelle)</td>
+</tr>
+<tr>
+<td>Limites connues</td>
+<td>Institution en phase de déploiement ; données statistiques très limitées ; contributions non encore prélevées ; périmètre réel difficile à mesurer</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="a6-service-autonome-de-securite-sociale-des-parlementaires-sesopa">A.6 Service Autonome de Sécurité Sociale des Parlementaires (SESOPA)</h2>
+<h3 id="cadre-juridique-et-institutionnel_5">Cadre juridique et institutionnel</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Texte fondateur</td>
+<td>Loi n° 88-002 du 29 janvier 1988</td>
+</tr>
+<tr>
+<td>Autorité de tutelle</td>
+<td>Assemblée Nationale</td>
+</tr>
+<tr>
+<td>Statut juridique</td>
+<td>Service autonome placé sous la responsabilité de l'Assemblée Nationale</td>
+</tr>
+<tr>
+<td>Régime</td>
+<td>Régime spécial contributif (partiellement)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="mission-et-branches-couvertes_5">Mission et branches couvertes</h3>
+<p>La SESOPA gère le régime de protection sociale des parlementaires nationaux.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Branche</th>
+<th>Couverte ?</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vieillesse</td>
+<td></td>
+<td>Pension de retraite</td>
+</tr>
+<tr>
+<td>Décès</td>
+<td></td>
+<td>Allocation aux ayants droit</td>
+</tr>
+<tr>
+<td>Invalidité</td>
+<td></td>
+<td>Non mentionnée explicitement</td>
+</tr>
+<tr>
+<td>Soins de santé</td>
+<td></td>
+<td>Non couverte par ce régime</td>
+</tr>
+<tr>
+<td>AT/MP</td>
+<td></td>
+<td>Non couverte</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Population assujettie :</strong> parlementaires nationaux (Assemblée Nationale) et leurs ayants droit.</p>
+<h3 id="financement_5">Financement</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cotisations des parlementaires</td>
+<td>Contributif  taux à préciser</td>
+</tr>
+<tr>
+<td>Trésor public</td>
+<td>Complément budgétaire</td>
+</tr>
+<tr>
+<td>Revenus de placements</td>
+<td>Troisième source de financement</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Note : la SESOPA est le seul régime spécial partiellement contributif parmi les régimes spéciaux identifiés dans le premier bulletin.</em></p>
+<h3 id="donnees-de-couverture_5">Données de couverture</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Indicateur</th>
+<th>2019</th>
+<th>2020</th>
+<th>2021</th>
+<th>2022</th>
+<th>2023</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parlementaires affiliés</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bénéficiaires de pensions</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Données non disponibles au moment du premier bulletin. À transmettre par la SESOPA.</em></p>
+<h3 id="donnees-financieres_5">Données financières</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Indicateur (en CDF)</th>
+<th>2019</th>
+<th>2020</th>
+<th>2021</th>
+<th>2022</th>
+<th>2023</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recettes totales</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Dépenses de prestations</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>À compléter à réception des données de la SESOPA.</em></p>
+<h3 id="evolutions-et-reformes-en-cours_5">Évolutions et réformes en cours</h3>
+<p><em>[À compléter à réception des informations de la SESOPA.]</em></p>
+<h3 id="perspective-de-linstitution_5">Perspective de l'institution</h3>
+<p><em>[À rédiger en coordination avec la SESOPA  1 à 2 paragraphes sur les orientations et priorités. Ce texte sera clairement attribué à la SESOPA dans la version finale.]</em></p>
+<h3 id="source-et-limites-des-donnees_5">Source et limites des données</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source principale</td>
+<td>SESOPA  données à transmettre</td>
+</tr>
+<tr>
+<td>Source complémentaire</td>
+<td>Premier Bulletin statistique RDC N°1/2023 (mention uniquement)</td>
+</tr>
+<tr>
+<td>Limites connues</td>
+<td>Données non obtenues lors du premier bulletin ; périmètre exact à confirmer</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="a7-regimes-speciaux-non-contributifs-de-la-fonction-publique">A.7 Régimes spéciaux non contributifs de la fonction publique</h2>
+<p><em>Ces régimes sont financés par le Trésor public et destinés à des catégories spécifiques d'agents de l'État. Leur identification exhaustive est difficile : le premier bulletin note explicitement qu'il a été impossible d'en obtenir une liste complète et des données détaillées.</em></p>
+<h3 id="regimes-identifies">Régimes identifiés</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Régime</th>
+<th>Autorité en charge</th>
+<th>Texte juridique</th>
+<th>Population protégée</th>
+<th>Financement</th>
+<th>Branches couvertes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Régime de la Présidence et Primature</td>
+<td>Présidence de la République et Primature</td>
+<td>Ordonnance n° 82-046 du 31 mars 1982</td>
+<td>Agents publics de l'État et leurs ayants droit</td>
+<td>Trésor public</td>
+<td>Soins médicaux, indemnité de cessation de mandat, vieillesse, décès, invalidité</td>
+</tr>
+<tr>
+<td>Régime militaire</td>
+<td>Ministère de la Défense et des Anciens Combattants</td>
+<td>N/A (non précisé)</td>
+<td>Militaires et leurs ayants droit</td>
+<td>Trésor public</td>
+<td>Vieillesse, décès, invalidité</td>
+</tr>
+<tr>
+<td>Régime des magistrats</td>
+<td>Ministère de la Justice</td>
+<td>Ordonnance-Loi n° 88-056 du 29 septembre 1988</td>
+<td>Magistrats civils et militaires de l'ordre de justice et leurs ayants droit</td>
+<td>Trésor public</td>
+<td>Vieillesse, décès, invalidité</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="donnees-disponibles">Données disponibles</h3>
+<p>Aucune donnée statistique détaillée n'a pu être obtenue pour ces régimes lors de la préparation du premier bulletin. L'obtention de données auprès des ministères de tutelle constitue un objectif prioritaire pour le présent bulletin.</p>
+<h3 id="perspective-de-collecte">Perspective de collecte</h3>
+<p><em>[À compléter selon les données reçues des ministères concernés : Présidence / Primature, Défense, Justice.]</em></p>
+<h3 id="source-et-limites-des-donnees_6">Source et limites des données</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Premier Bulletin statistique RDC N°1/2023 (tableau 8, p. 17)</td>
+</tr>
+<tr>
+<td>Limites</td>
+<td>Données non obtenues ; liste des régimes probablement non exhaustive</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="annexe-1-liste-des-institutions-contributrices">Annexe 1 — Liste des institutions contributrices</h1>
+<p class="a-rediger">&#9998; Texte à rédiger</p>
+
+<h1 id="titre-de-lannexe">Titre de l’annexe</h1>
+<p class="a-rediger">&#9998; Texte à rédiger</p>
+
+<h1 id="annexe-b-programmes-et-dispositifs-hors-perimetre-oit"><span class="status-dot status-brouillon" title="Structure initiale">&#9679;</span> Annexe B — Programmes et dispositifs hors périmètre OIT</h1>
+<p class="a-rediger">&#9998; Texte à rédiger</p>
+
+<h1 id="titre-de-lannexe_1">Titre de l’annexe</h1>
+<p class="a-rediger">&#9998; Texte à rédiger</p>
+
+<h1 id="titre-de-lannexe_2">Titre de l’annexe</h1>
+<p class="a-rediger">&#9998; Texte à rédiger</p>
+
+<h1 id="titre-de-lannexe_3">Titre de l’annexe</h1>
+<p class="a-rediger">&#9998; Texte à rédiger</p>
+
+<h1 id="titre-de-lannexe_4">Titre de l’annexe</h1>
+<p class="a-rediger">&#9998; Texte à rédiger</p>
+  </div>
+
+</div>
+
+<script>
+/* Légende des statuts */
+(function() {
+  var legend = document.createElement("div");
+  legend.id = "status-legend";
+  var items = [
+    ["#d42b2b", "Brouillon / Structure initiale"],
+    ["#e07820", "À revoir / Notes développées"],
+    ["#c8a800", "Rédigé"],
+    ["#2e78c8", "Revu / Révisé"],
+    ["#111111", "Validé"],
+  ];
+  var inner = '<div class="legend-title">Statut des sections</div>';
+  items.forEach(function(item) {
+    inner += '<div><span class="l-dot" style="background:' + item[0] + '"></span>' + item[1] + '</div>';
+  });
+  legend.innerHTML = inner;
+  document.body.appendChild(legend);
+})();
+
+/* Highlight de la section active dans la TOC */
+(function() {
+  var headings = document.querySelectorAll("h1[id], h2[id], h3[id]");
+  var tocLinks = document.querySelectorAll("#toc-panel a");
+  function onScroll() {
+    var current = "";
+    headings.forEach(function(h) {
+      if (window.scrollY + 80 >= h.offsetTop) current = h.id;
+    });
+    tocLinks.forEach(function(l) {
+      var active = l.getAttribute("href") === "#" + current;
+      l.classList.toggle("active", active);
+    });
+  }
+  window.addEventListener("scroll", onScroll);
+  onScroll();
+})();
+
+/* Tooltip sur les liens source hors ligne */
+(function() {
+  var tip = document.createElement("div");
+  tip.style.cssText = "position:fixed;background:#333;color:#fff;padding:6px 10px;border-radius:4px;"
+    + "font-size:12px;font-family:sans-serif;pointer-events:none;z-index:999;"
+    + "opacity:0;transition:opacity 0.15s;max-width:420px;line-height:1.4;";
+  document.body.appendChild(tip);
+
+  document.querySelectorAll("a[data-offline]").forEach(function(el) {
+    var src = el.getAttribute("data-src") || "";
+    el.title = src ? "Source : " + src + " (disponible via le serveur de prévisualisation)" : "";
+    el.addEventListener("mouseover", function(e) {
+      if (!el.title) return;
+      tip.textContent = el.title;
+      tip.style.opacity = "1";
+    });
+    el.addEventListener("mousemove", function(e) {
+      tip.style.left = Math.min(e.clientX + 14, window.innerWidth - 440) + "px";
+      tip.style.top  = (e.clientY + 20) + "px";
+    });
+    el.addEventListener("mouseout", function() {
+      tip.style.opacity = "0";
+    });
+    el.addEventListener("click", function(e) {
+      e.preventDefault();
+      alert("Ce lien pointe vers un fichier source du bulletin (06_sources/...).
+"
+          + "Il est accessible via le serveur de prévisualisation local (localhost:8765).
+
+"
+          + "Fichier : " + (src || "(inconnu)"));
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

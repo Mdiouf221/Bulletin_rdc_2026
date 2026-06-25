@@ -187,6 +187,20 @@ td, th {
     min-width : 600px;
 }
 
+/* ===== Images ======================================================== */
+img {
+    max-width   : 100%;
+    height      : auto;
+    display     : block;
+    margin      : 1em auto;
+}
+
+/* Figures insérées dans un blockquote (légende de figure) */
+blockquote img {
+    margin-top    : 0.5em;
+    margin-bottom : 0.5em;
+}
+
 /* ===== Citations ===================================================== */
 blockquote {
     border-left : 4px solid var(--couleur-accent);

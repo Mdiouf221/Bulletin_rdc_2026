@@ -8,7 +8,9 @@
 | `convertir_pdf_en_texte.py` | Convertit tous les PDF des dossiers de références et de données en fichiers `.txt` lisibles par les agents |
 | `extraire_ess.py` | Charge les fichiers ESS dans `06_donnees/protection_sociale_rdc.db` |
 | `serveur_preview.py` | Serveur de prévisualisation — surveille les fichiers, relance l'assembleur et rafraîchit le navigateur automatiquement |
+| `exporter.py` | Génère des versions exportables du bulletin (HTML, Word, PDF) pour relecture hors ligne |
 | `preview.css` | Feuille de style du rendu navigateur — modifier librement sans toucher aux `.md` |
+| `export_relecture.css` | Feuille de style des exports HTML de relecture (optimisée lecture + impression A4) |
 
 ---
 
@@ -170,7 +172,11 @@ python 09_scripts/serveur_preview.py
 
 Le navigateur s'ouvre automatiquement sur `http://localhost:8765`.
 Arrêt : `Ctrl+C` dans le terminal.
-Le bouton **🖨️ Export PDF** (en haut à droite) ouvre la boîte d'impression du navigateur pour enregistrer le rendu courant en PDF.
+
+Boutons disponibles dans la barre d'en-tête :
+- **📊 Tableau de bord** — ouvre le tableau de bord interactif des régimes (ESS)
+- **📤 Exporter HTML** — génère un fichier HTML autonome pour relecture hors ligne et l'ouvre dans un nouvel onglet
+- **🖨️ Export PDF** — ouvre la boîte d'impression du navigateur pour enregistrer le rendu courant en PDF
 
 ### Personnaliser le visuel
 
@@ -178,9 +184,62 @@ Modifier `09_scripts/preview.css` : polices, couleurs, taille des textes, style 
 
 ---
 
+## exporter.py
+
+### Rôle
+
+Génère des versions exportables du bulletin pour relecture et partage hors ligne. Produit les fichiers dans `10_output/` avec la date du jour dans le nom.
+
+| Fichier produit | Contenu |
+|---|---|
+| `bulletin_relecture_YYYY-MM-DD.html` | Version relecture — HTML autonome, CSS intégrée, aucune dépendance serveur |
+| `bulletin_notes_YYYY-MM-DD.html` | Version interne — idem avec les blocs `<!-- NOTE_INTERNE -->` visibles |
+| `bulletin_relecture_YYYY-MM-DD.docx` | Version Word via pandoc (si installé) |
+| `bulletin_relecture_YYYY-MM-DD.pdf` | Version PDF via weasyprint ou pandoc (si disponibles) |
+
+### Prérequis
+
+```bash
+pip install markdown   # déjà requis par le serveur de prévisualisation
+
+# Pour l'export Word :
+# Installer pandoc : https://pandoc.org/installing.html
+
+# Pour l'export PDF (option 1 — recommandé) :
+pip install weasyprint
+
+# Pour l'export PDF (option 2 — via pandoc) :
+# Installer pandoc + une distribution LaTeX (MiKTeX ou TeX Live)
+```
+
+### Usages
+
+```bash
+python 09_scripts/exporter.py             # HTML relecture (défaut)
+python 09_scripts/exporter.py --all       # tous les formats
+python 09_scripts/exporter.py --word      # Word uniquement
+python 09_scripts/exporter.py --pdf       # PDF uniquement
+python 09_scripts/exporter.py --notes     # HTML version interne (avec notes)
+python 09_scripts/exporter.py --open      # générer et ouvrir automatiquement
+```
+
+Le fichier HTML produit est **autonome** : CSS intégrée, aucune connexion réseau requise, partageable par email, clé USB ou OneDrive. Il contient la table des matières, les indicateurs de statut, un bouton d'impression, et les règles CSS A4.
+
+### Depuis le serveur de prévisualisation
+
+Le bouton **📤 Exporter HTML** dans la barre d'en-tête (`http://localhost:8765`) déclenche l'export automatiquement et ouvre le résultat dans un nouvel onglet.
+
+---
+
 ## preview.css
 
 Feuille de style indépendante pour la prévisualisation navigateur. Contient des variables CSS en haut du fichier (`--couleur-principale`, `--police-corps`, etc.) pour faciliter les ajustements rapides.
+
+---
+
+## export_relecture.css
+
+Feuille de style des exports HTML de relecture. Optimisée pour la lecture sur écran (mise en page linéaire, TOC latérale) et l'impression A4 (marges, sauts de page, masquage des éléments non pertinents). Ne pas utiliser dans le serveur de prévisualisation.
 
 ---
 

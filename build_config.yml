@@ -47,7 +47,8 @@ sections:
   - id: "chapitre_3_cartographie"
     title: "Chapitre 3  Cartographie institutionnelle de la protection sociale"
     files:
-      - "03_chapitres/chapitre_2/00_plan_chapitre_2.md"
+      - "03_chapitres/chapitre_2/00_intro_chapitre_2.md"
+      - "03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"
 
   - id: "chapitre_4_couverture"
     title: "Chapitre 4  Couverture effective et prestations"

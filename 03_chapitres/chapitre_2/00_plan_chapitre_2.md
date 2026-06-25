@@ -2,27 +2,31 @@
 
 <!-- NOTE_INTERNE
 Objectif du chapitre :
-Présenter les acteurs, institutions, régimes et programmes de protection sociale en RDC en les situant dans le cadre conceptuel du chapitre 1. Ce chapitre est le tableau de référence institutionnel du bulletin : il doit permettre au lecteur de comprendre qui fait quoi, dans quel régime, pour quelle branche.
+Appliquer le cadre conceptuel du chapitre 2 à la réalité institutionnelle de la RDC.
+Présenter les acteurs, institutions, régimes et programmes de protection sociale en les
+situant selon les dimensions définies au chapitre 2 : couverture légale vs effective,
+caractère obligatoire/volontaire, financement contributif/non contributif, statut
+réglementaire, nature des prestations, conditions d'accès.
 
-Ce chapitre présente le système dans son ensemble — les données chiffrées détaillées par institution sont en Annexe A. Le chapitre 3 reprendra les chiffres agrégés.
+Ce chapitre est le tableau de référence institutionnel du bulletin : il doit permettre
+au lecteur de comprendre qui fait quoi, dans quel régime, pour quelle branche.
 
-Structure provisoire :
-2.1 Vue d'ensemble du système de protection sociale en RDC
-    — Les trois niveaux : contributif obligatoire / non contributif / complémentaire
-2.2 Régime contributif obligatoire
-    — CNSS (secteur privé)
-    — CNSSAP (fonctionnaires)
-    — FNPSS (forces armées / police)
-    — Autres régimes spéciaux si identifiés
-2.3 Régime non contributif
-    — Programmes d'assistance sociale publics
-    — SESOPA et dispositifs identifiés
-2.4 Régime complémentaire
-    — Mutuelles, assurances privées, dispositifs d'entreprise
-2.5 Tableau de synthèse : institutions × régimes × branches × données disponibles
+Structure retenue :
+3.1 Panorama des régimes et programmes (Tableaux 1 à 4)
+    — Tableau 1 : CNSS et CNSSAP (sécurité sociale contributive obligatoire)
+    — Tableau 2 : Régimes spéciaux (financement par allocation budgétaire)
+    — Tableau 3 : Protection de la santé (par segment de population)
+    — Tableau 4 : Programmes d'assistance sociale et initiatives non contributives
+3.2 Synthèse : lacunes de couverture et enjeux d'extension (à rédiger)
+
+Fichiers du chapitre (ordre d'assemblage) :
+1. 00_intro_chapitre_2.md
+2. 2_1_cartographie_tableaux.md
 
 Logique rédactionnelle :
-Présentation factuelle et institutionnelle. Ne pas mélanger description du système et données chiffrées. Les chiffres détaillés par institution vont en Annexe A.
+Le chapitre 2 définit les outils conceptuels. Ce chapitre les applique.
+Présentation factuelle et institutionnelle. Les données chiffrées détaillées
+par institution figurent en Annexe A.
 
-Statut : structure initiale
+Statut global : en cours de rédaction (section 3.1 rédigée)
 -->

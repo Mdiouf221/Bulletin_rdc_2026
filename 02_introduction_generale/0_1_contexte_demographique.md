@@ -38,9 +38,9 @@ Données renseignées (source : Division de la population des Nations Unies, Per
 [STAT_DENSITE] → 51 habitants par km² en moyenne (ONU WPP 2024, 2025), sur un territoire de 2 344 858 km²
 
 Éléments visuels proposés :
-[FIG_1] — Graphique : Évolution de la population totale, urbaine et rurale (série temporelle 1950–2025, source : ONU WPP 2024)
-[FIG_2] — Pyramide des âges ou histogramme de la structure par grand groupe d'âge (source : ONU WPP 2024 ou UNFPA)
-[FIG_3] — Carte de densité de population par province (source : INS RDC ou ONU)
+[FIG_1] — Graphique : Évolution de la population totale, urbaine et rurale (série temporelle 1950–2025, source : ONU WPP 2024) → produit
+[FIG_2] — Pyramide des âges ou histogramme de la structure par grand groupe d'âge (source : ONU WPP 2024 ou UNFPA) → produit
+[FIG_3] — Carte de densité de population par province (source : INS RDC ou ONU) → retiré (données provinciales non disponibles)
 
 Statut :
 révisé (données renseignées — ONU WPP 2024 ; figures à produire)
@@ -52,8 +52,11 @@ révisé (données renseignées — ONU WPP 2024 ; figures à produire)
 
 La République Démocratique du Congo est l'un des pays les plus peuplés d'Afrique, avec une population estimée à **<a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">environ 112 millions d'habitants</a>** en 2025. Sa croissance démographique soutenue — avec un taux d'accroissement naturel annuel d'environ **<a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">3,2 %</a>** — en fait l'un des pays à la démographie la plus dynamique du continent. À ce rythme, les projections indiquent un doublement de la population dans les prochaines décennies, ce qui place la RDC au **<a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">4e rang africain</a>** par la taille de sa population, après le Nigeria, l'Éthiopie et l'Égypte *(Division de la population des Nations Unies, WPP 2024)*.
 
-> **[FIG_1]** — *Évolution de la population totale, urbaine et rurale de la RDC (1950–2025)*
-> *(Source : Division de la population des Nations Unies, Perspectives mondiales de la population 2024)*
+> **Figure 1** — *Évolution de la population totale, urbaine et rurale de la RDC (1950–2025)*
+
+![Évolution de la population totale, urbaine et rurale de la RDC (1950–2025)](/files/08_figures/exports/FIG_1_population_totale_urbaine_rurale_1950_2025.png)
+
+*Source : Division de la population des Nations Unies, Perspectives mondiales de la population 2024 (WPP 2024).*
 
 ---
 
@@ -61,17 +64,17 @@ La République Démocratique du Congo est l'un des pays les plus peuplés d'Afri
 
 La population congolaise est structurellement jeune : les personnes âgées de moins de 15 ans représentent **<a href="/files/06_sources/officielles_web/UNFPA_World_Population_Dashboard_RDC_2024.txt" title="Source : UNFPA (2024) — World Population Dashboard RDC 2024" class="source-ref nv">environ 46 %</a>** de la population totale, et l'âge médian s'établit à **<a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">15,9 ans</a>** *(UNFPA, 2024 ; Division de la population des Nations Unies, WPP 2024)*. Le ratio de dépendance démographique atteint **<a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">près de 96 dépendants pour 100 personnes en âge de travailler</a>**, ce qui signifie qu'une proportion élevée de la population est composée de personnes non actives — enfants, jeunes et personnes âgées — dont les besoins en prestations sociales (protection de la maternité, prestations familiales, soins de santé, pensions) sont particulièrement importants.
 
-> **[FIG_2]** — *Structure de la population par grand groupe d'âge, RDC (2025)*
-> *(Source : Division de la population des Nations Unies, WPP 2024 / UNFPA)*
+> **Figure 2** — *Structure de la population par grand groupe d'âge, RDC (2025)*
+
+![Structure de la population par grand groupe d'âge, RDC (2025)](/files/08_figures/exports/FIG_2_structure_age_2025.png)
+
+*Source : Division de la population des Nations Unies, WPP 2024 / UNFPA.*
 
 ---
 
 ### Une urbanisation rapide sur fond de ruralité persistante <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
 Entre **1950 et 2024**, la part de la population vivant en milieu urbain est passée de **<a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">19 %</a>** à **<a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_urbanisation_2024.txt" title="Source : Banque mondiale — WDI (2024), d'après WUP 2025 Revision (Nations Unies)" class="source-ref nv">environ 45 %</a>** *(Banque mondiale, WDI 2024)*. Cette urbanisation accélérée transforme les besoins sociaux dans les grandes agglomérations, en premier lieu à Kinshasa qui compte environ **<a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">17 millions d'habitants</a>** *(ONU WPP 2024)*, troisième agglomération africaine et plus grande ville francophone du monde. Elle ne doit cependant pas masquer la persistance d'une population majoritairement rurale : **<a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_urbanisation_2024.txt" title="Source : Banque mondiale — WDI (2024), d'après WUP 2025 Revision (Nations Unies)" class="source-ref nv">environ 55 %</a>** des Congolais vivent encore dans des zones éloignées des grands centres *(Banque mondiale WDI, 2024)*, avec une densité moyenne de **<a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">51 habitants par km²</a>** sur un territoire de plus de 2,3 millions de km², mais des disparités provinciales considérables.
-
-> **[FIG_3]** — *Carte de densité de population par province, RDC*
-> *(Source : INS RDC / Division de la population des Nations Unies)*
 
 ---
 

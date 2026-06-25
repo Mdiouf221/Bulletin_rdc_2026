@@ -374,6 +374,10 @@ def build_html() -> str:
        title="Ouvrir le tableau de bord interactif des régimes (ESS)">
       📊 Tableau de bord
     </a>
+    <a href="/export" target="_blank" class="topbar-btn topbar-link"
+       title="Générer et ouvrir un fichier HTML autonome pour relecture hors ligne">
+      📤 Exporter HTML
+    </a>
     <button type="button" id="export-pdf-btn" class="topbar-btn"
             title="Exporter la vue actuelle en PDF" onclick="exportPreviewPdf()">
       🖨️ Export PDF
@@ -939,6 +943,8 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             self._serve_sse()
         elif self.path == "/dashboard":
             self._serve_dashboard()
+        elif self.path in ("/export", "/export-notes"):
+            self._handle_export(include_notes=(self.path == "/export-notes"))
         elif self.path == "/api/dashboard-settings":
             self._serve_dashboard_settings()
         elif self.path.startswith("/api/denom/"):
@@ -1135,6 +1141,51 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(response_body)
         print(f"[VALIDATE] {elem_id} → {new_status} ({file_rel})")
+
+    def _handle_export(self, include_notes: bool = False):
+        """GET /export ou /export-notes — Génère le HTML autonome et redirige vers lui."""
+        from datetime import datetime as _dt
+        exporter = SCRIPT_DIR / "exporter.py"
+        stamp = _dt.now().strftime("%Y-%m-%d")
+        label = "notes" if include_notes else "relecture"
+        export_file = WORKSPACE_DIR / "10_output" / f"bulletin_{label}_{stamp}.html"
+
+        if not exporter.exists():
+            self.send_response(503)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(b"exporter.py introuvable dans 09_scripts/")
+            return
+
+        cmd = [sys.executable, str(exporter)]
+        if include_notes:
+            cmd.append("--notes")
+        else:
+            cmd.append("--html")
+
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            cwd=str(WORKSPACE_DIR),
+            encoding="utf-8",
+            errors="replace",
+        )
+
+        if result.returncode != 0 or not export_file.exists():
+            self.send_response(500)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            err = (result.stderr or result.stdout or "Erreur inconnue")[:800]
+            self.wfile.write(
+                f"Erreur lors de la génération du fichier HTML :\n\n{err}".encode("utf-8")
+            )
+            return
+
+        redirect_url = f"/files/10_output/bulletin_{label}_{stamp}.html"
+        self.send_response(302)
+        self.send_header("Location", redirect_url)
+        self.end_headers()
+        print(f"[EXPORT] Fichier généré : bulletin_{label}_{stamp}.html")
 
     def _serve_dashboard(self):
         """Sert le tableau de bord interactif depuis 10_output/dashboard_regimes.html."""
