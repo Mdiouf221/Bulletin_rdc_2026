@@ -1,65 +1,65 @@
-ï»¿# 1.3 Protection sociale, stratÃ©gie nationale et besoin de donnÃ©es statistiques
+# 1.3 Protection sociale, stratégie nationale et besoin de données statistiques
 
 <!-- NOTE_INTERNE
 Grand axe :
-Faire le lien entre le contexte national, les enjeux de couverture et l'utilitÃ© du bulletin pour la prÃ©paration de la stratÃ©gie et de la politique nationale de protection sociale.
+Faire le lien entre le contexte national, les enjeux de couverture et l'utilité du bulletin pour la préparation de la stratégie et de la politique nationale de protection sociale.
 
 Structure retenue (4 paragraphes) :
-1. La protection sociale face aux risques et vulnÃ©rabilitÃ©s en RDC
-2. Les engagements stratÃ©giques nationaux
-3. Les contraintes structurelles Ã  surmonter
-4. Le bulletin comme instrument d'aide Ã  la dÃ©cision
+1. La protection sociale face aux risques et vulnérabilités en RDC
+2. Les engagements stratégiques nationaux
+3. Les contraintes structurelles à surmonter
+4. Le bulletin comme instrument d'aide à la décision
 
-Logique rÃ©dactionnelle :
-Cette section conclut l'introduction en reliant la lecture dÃ©mographique et Ã©conomique (sections 0.1 et 0.2) Ã  l'objet du bulletin. Elle montre que les statistiques ne sont pas seulement descriptives : elles permettent d'orienter les choix de politique publique. Le ton reste institutionnel et factuel. Ne pas faire de la politique  constater, documenter, outiller.
+Logique rédactionnelle :
+Cette section conclut l'introduction en reliant la lecture démographique et économique (sections 0.1 et 0.2) à l'objet du bulletin. Elle montre que les statistiques ne sont pas seulement descriptives : elles permettent d'orienter les choix de politique publique. Le ton reste institutionnel et factuel. Ne pas faire de la politique  constater, documenter, outiller.
 
-RÃ©fÃ©rences mobilisÃ©es :
-- Politique Nationale de Protection Sociale (PNPS), dÃ©cret prÃ©sidentiel nÂ°05/176 du 24 novembre 2005
-- StratÃ©gie nationale de la protection sociale (SNPS), RDC, 2016
-- Vision SNPS : "Ã  l'horizon 2030, le Congo est une Nation solidaire..." (RDC, 2016)
-- 3 axes stratÃ©giques de la SNPS : accÃ¨s aux services de base, extension des assurances sociales, renforcement institutionnel et du financement
-- Couverture Sanitaire Universelle : Plan stratÃ©gique national CSU 2021-2030
-- Ratification de la Convention nÂ°102 de l'OIT (RDC, 1987  parties V, VII, IX, X)
-- Recommandation nÂ°202 de l'OIT sur les socles de protection sociale (2012)
+Références mobilisées :
+- Politique Nationale de Protection Sociale (PNPS), décret présidentiel n°05/176 du 24 novembre 2005
+- Stratégie nationale de la protection sociale (SNPS), RDC, 2016
+- Vision SNPS : "à l'horizon 2030, le Congo est une Nation solidaire..." (RDC, 2016)
+- 3 axes stratégiques de la SNPS : accès aux services de base, extension des assurances sociales, renforcement institutionnel et du financement
+- Couverture Sanitaire Universelle : Plan stratégique national CSU 2021-2030
+- Ratification de la Convention n°102 de l'OIT (RDC, 1987  parties V, VII, IX, X)
+- Recommandation n°202 de l'OIT sur les socles de protection sociale (2012)
 
-Ã‰lÃ©ments visuels :
-Pas de figure spÃ©cifique prÃ©vue pour cette section  section de transition et de cadrage.
+Éléments visuels :
+Pas de figure spécifique prévue pour cette section  section de transition et de cadrage.
 
-NOTE POUR SECTIONS FUTURES â€” Programmes d'assistance sociale et filets de sÃ©curitÃ© (STEP, HIMO, gouvernement) :
-  Un tableau/section distinct est prÃ©vu pour couvrir les programmes de type :
-  - STEP (Banque mondiale) : programme actif, 695 M USD cumulÃ©s (financements additionnels 2020-2021)
-    P171821 (445 M USD) + P176360 (250 M USD) â€” filets de sÃ©curitÃ© productifs, transferts monÃ©taires, HIMO
-  - Projets de stabilisation Est-RDC (P175834, 250 M USD, 2022-2027) â€” composante PS zones de conflit
-  - Programmes gouvernementaux d'assistance sociale (PDL-145T, gratuitÃ© maternitÃ© CSU, etc.)
-  Ces programmes non contributifs constituent un 4e registre Ã  documenter dans les chapitres analytiques,
-  en complÃ©ment des rÃ©gimes CNSS, CNSSAP et FNPSS.
-  Sources : projets.worldbank.org ; rapport annuel rÃ©sultats EPNU-RDC 2023 (Reliefweb)
+NOTE POUR SECTIONS FUTURES — Programmes d'assistance sociale et filets de sécurité (STEP, HIMO, gouvernement) :
+  Un tableau/section distinct est prévu pour couvrir les programmes de type :
+  - STEP (Banque mondiale) : programme actif, 695 M USD cumulés (financements additionnels 2020-2021)
+    P171821 (445 M USD) + P176360 (250 M USD) — filets de sécurité productifs, transferts monétaires, HIMO
+  - Projets de stabilisation Est-RDC (P175834, 250 M USD, 2022-2027) — composante PS zones de conflit
+  - Programmes gouvernementaux d'assistance sociale (PDL-145T, gratuité maternité CSU, etc.)
+  Ces programmes non contributifs constituent un 4e registre à documenter dans les chapitres analytiques,
+  en complément des régimes CNSS, CNSSAP et FNPSS.
+  Sources : projets.worldbank.org ; rapport annuel résultats EPNU-RDC 2023 (Reliefweb)
 
 Statut :
-rÃ©visÃ©
+révisé
 -->
 
-## Texte rÃ©digÃ©
+## Texte rédigé
 
-### La protection sociale face aux risques et vulnÃ©rabilitÃ©s <span class="valid-badge nv" title="Non validÃ©  processus de validation non dÃ©clenchÃ©">non validÃ©</span>
+### La protection sociale face aux risques et vulnérabilités <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
-Dans un contexte marquÃ© par une forte croissance dÃ©mographique, une Ã©conomie dominÃ©e par l'emploi informel et un niveau de revenu par habitant encore trÃ¨s bas, la population congolaise reste largement exposÃ©e aux risques sociaux tout au long du cycle de vie : maternitÃ©, maladie, accidents du travail, invaliditÃ©, vieillesse, perte d'un soutien de famille. L'exposition de nombreux mÃ©nages Ã  des chocs Ã©conomiques, climatiques ou sÃ©curitaires amplifie ces vulnÃ©rabilitÃ©s. La protection sociale, entendue comme <a href="/files/06_sources/officielles_web/BIT_World_Social_Protection_Report_2024-26.txt" title="Source : Bureau International du Travail (2024) â€” Rapport mondial sur la protection sociale 2024-26" class="source-ref source-ref-text nv" data-val-id="s3-p1-c1" data-val-status="revise" data-val-file="02_introduction_generale/0_3_strategie_donnees_statistiques.md">l'ensemble des politiques et programmes visant Ã  rÃ©duire et prÃ©venir la pauvretÃ© et la vulnÃ©rabilitÃ©</a> *(BIT, 2024)*, constitue dans ce cadre une rÃ©ponse structurelle dont l'organisation et l'extension sont des enjeux prioritaires pour la RDC. Ã€ l'Ã©chelle mondiale, seulement <a href="/files/06_sources/officielles_web/BIT_World_Social_Protection_Report_2024-26.txt" title="Source : BIT (2024) â€” 52,4 % de la population mondiale couverte par au moins une prestation" class="source-ref nv">52,4 % de la population mondiale</a> bÃ©nÃ©ficient d'au moins une prestation de protection sociale, et ce taux tombe Ã  <a href="/files/06_sources/officielles_web/BIT_World_Social_Protection_Report_2024-26.txt" title="Source : BIT (2024) â€” 19,1 % de la population africaine couverte par au moins une prestation" class="source-ref nv">19,1 % en Afrique</a> *(BIT, 2024)*, soulignant l'ampleur des dÃ©fis communs Ã  la RDC et Ã  son environnement rÃ©gional.
-
----
-
-### Les engagements stratÃ©giques de la RDC <span class="valid-badge nv" title="Non validÃ©  processus de validation non dÃ©clenchÃ©">non validÃ©</span>
-
-La RDC s'est dotÃ©e d'un cadre stratÃ©gique national pour rÃ©pondre Ã  ces dÃ©fis. La Politique Nationale de Protection Sociale (PNPS), instituÃ©e par le dÃ©cret prÃ©sidentiel nÂ°05/176 du 24 novembre 2005, fixe une vision Ã  l'horizon 2030 : <a href="/files/06_sources/officielles_web/RDC_SNPS_2016.txt" title="Source : Gouvernement de la RDC (2016) â€” StratÃ©gie nationale de la protection sociale (SNPS)" class="source-ref source-ref-text nv" data-val-id="s3-p2-c1" data-val-status="Ã  valider" data-val-file="02_introduction_generale/0_3_strategie_donnees_statistiques.md">Â« Ã  l'horizon 2030, le Congo est une Nation solidaire, soucieuse d'Ã©quitÃ©, promotrice de bien-Ãªtre, une Nation qui protÃ¨ge efficacement les couches sociales les plus vulnÃ©rables et les plus dÃ©munies Â»</a> *(RDC, 2016)*. Elle s'articule autour de trois axes stratÃ©giques complÃ©mentaires : la promotion de l'accÃ¨s aux services sociaux de base et Ã  une sÃ©curitÃ© Ã©lÃ©mentaire de revenus pour les personnes vulnÃ©rables ; le renforcement et l'extension des systÃ¨mes d'assurance sociale ; et le renforcement du cadre institutionnel, des capacitÃ©s et du financement de la protection sociale. La mise en place progressive de la Couverture Sanitaire Universelle, dÃ©clinÃ©e dans le Plan stratÃ©gique national CSU 2021-2030, s'inscrit dans ce mÃªme Ã©lan. Ces engagements rejoignent les normes internationales auxquelles la RDC a souscrit, notamment la Convention nÂ°102 de l'OIT sur la sÃ©curitÃ© sociale *(ratifiÃ©e en 1987)* et la Recommandation nÂ°202 sur les socles de protection sociale *(OIT, 2012)*.
+Dans un contexte marqué par une forte croissance démographique, une économie dominée par l'emploi informel et un niveau de revenu par habitant encore très bas, la population congolaise reste largement exposée aux risques sociaux tout au long du cycle de vie : maternité, maladie, accidents du travail, invalidité, vieillesse, perte d'un soutien de famille. L'exposition de nombreux ménages à des chocs économiques, climatiques ou sécuritaires amplifie ces vulnérabilités. La protection sociale, entendue comme <a href="/files/06_sources/officielles_web/BIT_World_Social_Protection_Report_2024-26.txt" title="Source : Bureau International du Travail (2024) — Rapport mondial sur la protection sociale 2024-26" class="source-ref source-ref-text nv" data-val-id="s3-p1-c1" data-val-status="à valider" data-val-file="02_introduction_generale/0_3_strategie_donnees_statistiques.md">l'ensemble des politiques et programmes visant à réduire et prévenir la pauvreté et la vulnérabilité</a> *(BIT, 2024)*, constitue dans ce cadre une réponse structurelle dont l'organisation et l'extension sont des enjeux prioritaires pour la RDC. À l'échelle mondiale, seulement <a href="/files/06_sources/officielles_web/BIT_World_Social_Protection_Report_2024-26.txt" title="Source : BIT (2024) — 52,4 % de la population mondiale couverte par au moins une prestation" class="source-ref nv">52,4 % de la population mondiale</a> bénéficient d'au moins une prestation de protection sociale, et ce taux tombe à <a href="/files/06_sources/officielles_web/BIT_World_Social_Protection_Report_2024-26.txt" title="Source : BIT (2024) — 19,1 % de la population africaine couverte par au moins une prestation" class="source-ref nv">19,1 % en Afrique</a> *(BIT, 2024)*, soulignant l'ampleur des défis communs à la RDC et à son environnement régional.
 
 ---
 
-### Des contraintes structurelles Ã  prendre en compte <span class="valid-badge nv" title="Non validÃ©  processus de validation non dÃ©clenchÃ©">non validÃ©</span>
+### Les engagements stratégiques de la RDC <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
-La mise en Å“uvre de ces orientations stratÃ©giques se heurte Ã  des contraintes bien documentÃ©es. La trÃ¨s forte prÃ©valence de l'emploi informel rÃ©duit mÃ©caniquement l'assiette des rÃ©gimes contributifs et limite l'enregistrement des affiliÃ©s potentiels. Les capacitÃ©s de financement public restent sous pression dans un contexte de besoins sociaux considÃ©rables. La dispersion gÃ©ographique de la population, dans un pays de plus de 2,3 millions de kmÂ², complique l'accÃ¨s aux prestations et l'organisation de la collecte des donnÃ©es. Ces contraintes ne remettent pas en cause la pertinence de la stratÃ©gie nationale, mais elles en conditionnent le rythme et les modalitÃ©s de mise en Å“uvre.
+La RDC s'est dotée d'un cadre stratégique national pour répondre à ces défis. La Politique Nationale de Protection Sociale (PNPS), instituée par le décret présidentiel n°05/176 du 24 novembre 2005, fixe une vision à l'horizon 2030 : <a href="/files/06_sources/officielles_web/RDC_SNPS_2016.txt" title="Source : Gouvernement de la RDC (2016) — Stratégie nationale de la protection sociale (SNPS)" class="source-ref source-ref-text nv" data-val-id="s3-p2-c1" data-val-status="à valider" data-val-file="02_introduction_generale/0_3_strategie_donnees_statistiques.md">« à l'horizon 2030, le Congo est une Nation solidaire, soucieuse d'équité, promotrice de bien-être, une Nation qui protège efficacement les couches sociales les plus vulnérables et les plus démunies »</a> *(RDC, 2016)*. Elle s'articule autour de trois axes stratégiques complémentaires : la promotion de l'accès aux services sociaux de base et à une sécurité élémentaire de revenus pour les personnes vulnérables ; le renforcement et l'extension des systèmes d'assurance sociale ; et le renforcement du cadre institutionnel, des capacités et du financement de la protection sociale. La mise en place progressive de la Couverture Sanitaire Universelle, déclinée dans le Plan stratégique national CSU 2021-2030, s'inscrit dans ce même élan. Ces engagements rejoignent les normes internationales auxquelles la RDC a souscrit, notamment la Convention n°102 de l'OIT sur la sécurité sociale *(ratifiée en 1987)* et la Recommandation n°202 sur les socles de protection sociale *(OIT, 2012)*.
 
 ---
 
-### Le bulletin comme instrument d'aide Ã  la dÃ©cision <span class="valid-badge nv" title="Non validÃ©  processus de validation non dÃ©clenchÃ©">non validÃ©</span>
+### Des contraintes structurelles à prendre en compte <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
-C'est dans ce contexte que s'inscrit le prÃ©sent bulletin. La production rÃ©guliÃ¨re de statistiques de protection sociale constitue un outil essentiel pour orienter les choix de politique publique sur la base de donnÃ©es factuelles. Ce deuxiÃ¨me bulletin statistique vise Ã  consolider les informations disponibles sur les rÃ©gimes, institutions et programmes de protection sociale en RDC, Ã  mesurer les niveaux de couverture effective â€” notamment au regard de l'indicateur ODD 1.3.1 â€” et Ã  identifier les lacunes qui devront Ãªtre prises en compte dans l'Ã©laboration et le suivi de la stratÃ©gie nationale. Il couvre la pÃ©riode jusqu'Ã  dÃ©cembre 2025 et s'appuie sur les donnÃ©es transmises par les institutions nationales, les publications des organisations internationales et les registres administratifs disponibles. Le chapitre 1 prÃ©sente le cadre conceptuel et les choix mÃ©thodologiques qui fondent cette dÃ©marche.
+La mise en œuvre de ces orientations stratégiques se heurte à des contraintes bien documentées. La très forte prévalence de l'emploi informel réduit mécaniquement l'assiette des régimes contributifs et limite l'enregistrement des affiliés potentiels. Les capacités de financement public restent sous pression dans un contexte de besoins sociaux considérables. La dispersion géographique de la population, dans un pays de plus de 2,3 millions de km², complique l'accès aux prestations et l'organisation de la collecte des données. Ces contraintes ne remettent pas en cause la pertinence de la stratégie nationale, mais elles en conditionnent le rythme et les modalités de mise en œuvre.
+
+---
+
+### Le bulletin comme instrument d'aide à la décision <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
+
+C'est dans ce contexte que s'inscrit le présent bulletin. La production régulière de statistiques de protection sociale constitue un outil essentiel pour orienter les choix de politique publique sur la base de données factuelles. Ce deuxième bulletin statistique vise à consolider les informations disponibles sur les régimes, institutions et programmes de protection sociale en RDC, à mesurer les niveaux de couverture effective — notamment au regard de l'indicateur ODD 1.3.1 — et à identifier les lacunes qui devront être prises en compte dans l'élaboration et le suivi de la stratégie nationale. Il couvre la période jusqu'à décembre 2025 et s'appuie sur les données transmises par les institutions nationales, les publications des organisations internationales et les registres administratifs disponibles. Le chapitre 1 présente le cadre conceptuel et les choix méthodologiques qui fondent cette démarche.
 

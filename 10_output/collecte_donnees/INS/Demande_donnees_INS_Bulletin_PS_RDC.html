@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Demande de données — INS RDC — Bulletin statistique protection sociale</title>
+  <style>
+    body {
+      font-family: Calibri, Arial, sans-serif;
+      font-size: 11pt;
+      margin: 2.5cm;
+      color: #000000;
+      line-height: 1.5;
+    }
+    h1 {
+      font-size: 16pt;
+      font-weight: bold;
+      color: #1F3864;
+      margin-top: 24pt;
+      margin-bottom: 6pt;
+    }
+    h2 {
+      font-size: 13pt;
+      font-weight: bold;
+      color: #1F3864;
+      margin-top: 18pt;
+      margin-bottom: 4pt;
+      border-bottom: 1px solid #1F3864;
+      padding-bottom: 3pt;
+    }
+    p { margin: 4pt 0 6pt 0; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 8pt 0 16pt 0;
+      font-size: 10pt;
+    }
+    th {
+      background-color: #1F3864;
+      color: #ffffff;
+      font-weight: bold;
+      padding: 5pt 8pt;
+      text-align: left;
+      border: 1px solid #999;
+    }
+    td {
+      padding: 5pt 8pt;
+      border: 1px solid #AAAAAA;
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background-color: #EEF2F8; }
+    .priorite-critique { color: #C00000; font-weight: bold; }
+    .priorite-haute    { color: #E07820; font-weight: bold; }
+    .priorite-compl    { color: #7F7F00; font-weight: bold; }
+    .note {
+      background-color: #FFF8DC;
+      border-left: 4px solid #C8A800;
+      padding: 6pt 10pt;
+      margin: 8pt 0 14pt 0;
+      font-size: 10pt;
+    }
+    .objet-ligne {
+      background-color: #EBF3FB;
+      padding: 8pt 12pt;
+      margin-bottom: 14pt;
+      font-size: 10.5pt;
+      border: 1px solid #AAAAAA;
+    }
+    ul { margin: 4pt 0 8pt 16pt; }
+    li { margin-bottom: 3pt; }
+
+    /* Bouton PDF */
+    .btn-pdf {
+      display: inline-block;
+      margin: 0 0 18pt 0;
+      padding: 7pt 18pt;
+      background-color: #C00000;
+      color: #ffffff;
+      font-family: Calibri, Arial, sans-serif;
+      font-size: 11pt;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-pdf:hover { background-color: #9A0000; }
+
+    /* Masquer le bouton à l'impression */
+    @media print {
+      .btn-pdf { display: none; }
+      body { margin: 1.5cm; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="btn-pdf" onclick="window.print()">⬇ Exporter en PDF</button>
+
+<h1>Demande de données statistiques<br>à l'Institut National de la Statistique (INS)</h1>
+
+<div class="objet-ligne">
+  <strong>Objet :</strong> Données nécessaires à la préparation du deuxième Bulletin statistique sur la protection sociale en RDC<br>
+  <strong>Date :</strong> Juin 2026<br>
+  <strong>Demandeur :</strong> [À compléter]<br>
+  <strong>Contact INS :</strong> [À compléter]
+</div>
+
+<p>
+Dans le cadre de la préparation du deuxième Bulletin statistique sur la protection sociale en RDC, nous sollicitons auprès de l'INS un ensemble de données servant de <strong>dénominateurs</strong> pour le calcul des indicateurs ODD 1.3.1 (taux de couverture de la protection sociale) et de <strong>données de contexte</strong> pour les sections démographique et économique du bulletin.
+</p>
+
+<div class="note">
+  <strong>Précisions sur le format souhaité :</strong>
+  <ul>
+    <li>Les données de population sont attendues en <strong>valeur annuelle</strong> (au 1<sup>er</sup> juillet ou au 31 décembre de chaque année).</li>
+    <li>Pour les données issues d'enquêtes ménages, merci de joindre les éléments méthodologiques de base (enquête source, période de collecte, couverture géographique).</li>
+    <li>Pour le seuil de pauvreté, la valeur souhaitée est exprimée <strong>par tête et par mois en CDF</strong>.</li>
+    <li><strong>Années de référence souhaitées : 2019 à 2024</strong> (et 2025 si disponible).</li>
+  </ul>
+</div>
+
+<!-- ===== A ===== -->
+<h2>A — Dénominateurs pour le calcul des indicateurs ODD 1.3.1</h2>
+<p><span class="priorite-critique">Priorité critique</span> — Ces données conditionnent directement le calcul des taux de couverture.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:5%">#</th>
+      <th style="width:35%">Donnée demandée</th>
+      <th style="width:40%">Usage dans le bulletin</th>
+      <th style="width:10%">Désagrégation</th>
+      <th style="width:10%">Années</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A1</td>
+      <td><strong>Population totale</strong></td>
+      <td>Dénominateur de l'indicateur global ODD 1.3.1 et du sous-indicateur assistance sociale</td>
+      <td>Par sexe</td>
+      <td>2019–2025</td>
+    </tr>
+    <tr>
+      <td>A2</td>
+      <td><strong>Population âgée de 0 à 14 ans</strong></td>
+      <td>Dénominateur sous-indicateur enfants — proportion d'enfants couverts par une prestation familiale</td>
+      <td>Par sexe</td>
+      <td>2019–2025</td>
+    </tr>
+    <tr>
+      <td>A3</td>
+      <td><strong>Population âgée de 0 à 17 ans</strong></td>
+      <td>Variante du dénominateur enfants (l'OIT utilise tantôt 0–15, tantôt 0–17 selon les pays)</td>
+      <td>Par sexe</td>
+      <td>2019–2025</td>
+    </tr>
+    <tr>
+      <td>A4</td>
+      <td><strong>Nombre de naissances vivantes</strong></td>
+      <td>Dénominateur sous-indicateur maternité — proportion de femmes ayant accouché couvertes par une prestation maternité</td>
+      <td>—</td>
+      <td>2019–2025</td>
+    </tr>
+    <tr>
+      <td>A5</td>
+      <td><strong>Population âgée de 60 ans et plus</strong><br><strong>Population âgée de 65 ans et plus</strong></td>
+      <td>Dénominateur sous-indicateur vieillesse — les deux seuils correspondent aux âges légaux de retraite distincts (CNSSAP : 60 ans ; CNSS : 60 ans femmes / 65 ans hommes)</td>
+      <td>Par sexe</td>
+      <td>2019–2025</td>
+    </tr>
+    <tr>
+      <td>A6</td>
+      <td><strong>Population active (15 ans et plus)</strong></td>
+      <td>Dénominateur sous-indicateurs accidents du travail / maladies professionnelles et cotisants actifs à un régime de retraite</td>
+      <td>Par sexe</td>
+      <td>2019–2025 ou dernière année disponible</td>
+    </tr>
+    <tr>
+      <td>A7</td>
+      <td><strong>Nombre de personnes au chômage</strong> (définition BIT)</td>
+      <td>Dénominateur sous-indicateur chômage — attendu à 0 % en RDC (absence de régime d'assurance chômage) mais doit être documenté</td>
+      <td>Par sexe</td>
+      <td>2019–2024 ou dernière année disponible</td>
+    </tr>
+    <tr>
+      <td>A8</td>
+      <td><strong>Population en situation de handicap grave</strong></td>
+      <td>Dénominateur sous-indicateur invalidité — actuellement absent ; l'OIT utilise par défaut une estimation OMS (~3–4 % de la population)</td>
+      <td>Par sexe</td>
+      <td>2019–2024 ou dernière année disponible</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ===== B ===== -->
+<h2>B — Seuils de référence pour l'adéquation des prestations</h2>
+<p><span class="priorite-critique">Priorité critique</span> — Ces données permettent de mesurer si les pensions et allocations couvrent les besoins de base.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:5%">#</th>
+      <th style="width:35%">Donnée demandée</th>
+      <th style="width:40%">Usage dans le bulletin</th>
+      <th style="width:10%">Désagrégation</th>
+      <th style="width:10%">Années</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>B1</td>
+      <td><strong>Seuil national de pauvreté</strong> (CDF par personne et par mois)</td>
+      <td>Comparé aux montants unitaires des pensions (vieillesse, invalidité, survie) et des allocations familiales pour évaluer leur adéquation</td>
+      <td>—</td>
+      <td>2019–2024</td>
+    </tr>
+    <tr>
+      <td>B2</td>
+      <td><strong>Salaire minimum interprofessionnel garanti (SMIG)</strong> en CDF par mois</td>
+      <td>Ratio pension moyenne / SMIG — mesure de l'adéquation relative des pensions de retraite</td>
+      <td>—</td>
+      <td>2019–2024</td>
+    </tr>
+    <tr>
+      <td>B3</td>
+      <td><strong>Indice des prix à la consommation (IPC)</strong></td>
+      <td>Déflateur pour exprimer les montants de prestations en termes réels dans les séries temporelles</td>
+      <td>—</td>
+      <td>2019–2024</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ===== C ===== -->
+<h2>C — Structure du marché du travail</h2>
+<p><span class="priorite-haute">Priorité importante</span> — Complètent les estimations modélisées de l'OIT avec des données nationales directes.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:5%">#</th>
+      <th style="width:35%">Donnée demandée</th>
+      <th style="width:40%">Usage dans le bulletin</th>
+      <th style="width:10%">Désagrégation</th>
+      <th style="width:10%">Années</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C1</td>
+      <td><strong>Taux d'emploi informel</strong> (%)</td>
+      <td>Section contexte économique — confirmer ou nuancer la valeur utilisée (~96 % selon estimations modélisées OIT 2020)</td>
+      <td>Par sexe</td>
+      <td>2019–2024 ou dernière année disponible</td>
+    </tr>
+    <tr>
+      <td>C2</td>
+      <td><strong>Structure de l'emploi par secteur</strong> (agriculture, industrie, services)</td>
+      <td>Figure sur la structure de l'emploi dans la section contexte économique</td>
+      <td>Par sexe</td>
+      <td>2019–2024 ou dernière année disponible</td>
+    </tr>
+    <tr>
+      <td>C3</td>
+      <td><strong>Effectif des agents de la fonction publique</strong></td>
+      <td>Dénominateur légal de la CNSSAP — mesure de l'écart entre agents légalement couverts et cotisants actifs réels (198 399 en 2022)</td>
+      <td>Par sexe</td>
+      <td>2019–2024 ou dernière année disponible</td>
+    </tr>
+    <tr>
+      <td>C4</td>
+      <td><strong>Nombre de travailleurs salariés du secteur privé formel</strong></td>
+      <td>Dénominateur légal de la CNSS — estimation du taux de couverture par rapport aux assujettis</td>
+      <td>Par sexe</td>
+      <td>2019–2024 ou dernière année disponible</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ===== D ===== -->
+<h2>D — Données démographiques et état civil</h2>
+<p><span class="priorite-compl">Priorité complémentaire</span> — Utiles pour les analyses contextuelles et la vérification des dénominateurs.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:5%">#</th>
+      <th style="width:35%">Donnée demandée</th>
+      <th style="width:40%">Usage dans le bulletin</th>
+      <th style="width:10%">Désagrégation</th>
+      <th style="width:10%">Années</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>D1</td>
+      <td><strong>Espérance de vie à la naissance</strong></td>
+      <td>Contexte protection vieillesse — durée moyenne de perception des pensions après l'âge légal de la retraite</td>
+      <td>Par sexe</td>
+      <td>2019–2024 ou dernière année disponible</td>
+    </tr>
+    <tr>
+      <td>D2</td>
+      <td><strong>Nombre moyen d'enfants par foyer</strong></td>
+      <td>Facteur de conversion foyers / enfants pour le calcul des bénéficiaires d'allocations familiales CNSS — paramètre clé du sous-indicateur ODD 1.3.1 enfants (DM-010 du bulletin)</td>
+      <td>—</td>
+      <td>2019–2024 ou dernière année disponible</td>
+    </tr>
+    <tr>
+      <td>D3</td>
+      <td><strong>Taille moyenne des ménages</strong></td>
+      <td>Contexte démographique et calcul des indicateurs de couverture par ménage — conversion entre effectifs de ménages et individus couverts</td>
+      <td>—</td>
+      <td>2019–2024 ou dernière année disponible</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ===== E ===== -->
+<h2>E — Données économiques nationales</h2>
+<p><span class="priorite-compl">Priorité complémentaire</span> — <em>Certaines de ces données peuvent relever de la BCC ou du Ministère des Finances.</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:5%">#</th>
+      <th style="width:35%">Donnée demandée</th>
+      <th style="width:40%">Usage dans le bulletin</th>
+      <th style="width:10%">Désagrégation</th>
+      <th style="width:10%">Années</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>E1</td>
+      <td><strong>PIB nominal en CDF courants</strong></td>
+      <td>Calcul du ratio dépenses de protection sociale / PIB</td>
+      <td>—</td>
+      <td>2019–2024</td>
+    </tr>
+    <tr>
+      <td>E2</td>
+      <td><strong>Taux de pauvreté national</strong> (%)</td>
+      <td>Contexte économique — confirmation directe INS de la valeur 2024 (69 % citée via la Banque mondiale)</td>
+      <td>—</td>
+      <td>Enquête 2024</td>
+    </tr>
+    <tr>
+      <td>E3</td>
+      <td><strong>Indice de Gini</strong></td>
+      <td>Contexte inégalités — confirmation de la valeur INS 2024 (0,381), non encore intégrée dans les bases internationales</td>
+      <td>—</td>
+      <td>Enquête 2024</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ===== Synthèse ===== -->
+<h2>Synthèse des priorités</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:18%">Priorité</th>
+      <th style="width:25%">Données</th>
+      <th>Raison</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="priorite-critique">🔴 Critique</span></td>
+      <td>A1 à A8 — B1, B2, B3</td>
+      <td>Sans ces données, les indicateurs ODD 1.3.1 ne peuvent pas être calculés ou restent des estimations non vérifiables.</td>
+    </tr>
+    <tr>
+      <td><span class="priorite-haute">🟠 Importante</span></td>
+      <td>C1 à C4</td>
+      <td>Améliorent la rigueur du bulletin en remplaçant les estimations modélisées extérieures par des données nationales directes.</td>
+    </tr>
+    <tr>
+      <td><span class="priorite-compl">🟡 Complémentaire</span></td>
+      <td>D1 à D3 — E1 à E3</td>
+      <td>Enrichissent le contexte et les analyses géographiques. Intégrées si disponibles dans les délais.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<p style="font-size:9pt; color:#666666; border-top: 1px solid #CCCCCC; padding-top: 6pt;">
+Document préparé dans le cadre du deuxième Bulletin statistique sur la protection sociale en RDC — Juin 2026.
+</p>
+
+</body>
+</html>
+
+

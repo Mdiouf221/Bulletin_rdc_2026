@@ -378,6 +378,10 @@ def build_html() -> str:
        title="Générer et ouvrir un fichier HTML autonome pour relecture hors ligne">
       📤 Exporter HTML
     </a>
+    <a href="/download" class="topbar-btn topbar-link"
+       title="Télécharger le bulletin en HTML autonome (fichier à envoyer)">
+      ⬇️ Télécharger
+    </a>
     <button type="button" id="export-pdf-btn" class="topbar-btn"
             title="Exporter la vue actuelle en PDF" onclick="exportPreviewPdf()">
       🖨️ Export PDF
@@ -945,6 +949,8 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             self._serve_dashboard()
         elif self.path in ("/export", "/export-notes"):
             self._handle_export(include_notes=(self.path == "/export-notes"))
+        elif self.path == "/download":
+            self._handle_download()
         elif self.path == "/api/dashboard-settings":
             self._serve_dashboard_settings()
         elif self.path.startswith("/api/denom/"):
@@ -1186,6 +1192,49 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         self.send_header("Location", redirect_url)
         self.end_headers()
         print(f"[EXPORT] Fichier généré : bulletin_{label}_{stamp}.html")
+
+    def _handle_download(self):
+        """GET /download — Génère le HTML autonome et le sert en téléchargement direct."""
+        from datetime import datetime as _dt
+        exporter = SCRIPT_DIR / "exporter.py"
+        stamp = _dt.now().strftime("%Y-%m-%d")
+        export_file = WORKSPACE_DIR / "10_output" / f"bulletin_relecture_{stamp}.html"
+        filename = f"bulletin_relecture_{stamp}.html"
+
+        if not exporter.exists():
+            self.send_response(503)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(b"exporter.py introuvable dans 09_scripts/")
+            return
+
+        result = subprocess.run(
+            [sys.executable, str(exporter), "--html"],
+            capture_output=True,
+            cwd=str(WORKSPACE_DIR),
+            encoding="utf-8",
+            errors="replace",
+        )
+
+        if result.returncode != 0 or not export_file.exists():
+            self.send_response(500)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            err = (result.stderr or result.stdout or "Erreur inconnue")[:800]
+            self.wfile.write(
+                f"Erreur lors de la génération du fichier HTML :\n\n{err}".encode("utf-8")
+            )
+            return
+
+        data = export_file.read_bytes()
+        self.send_response(200)
+        self.send_header("Content-Type", "application/octet-stream")
+        self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(data)
+        print(f"[DOWNLOAD] Fichier téléchargé : {filename}")
 
     def _serve_dashboard(self):
         """Sert le tableau de bord interactif depuis 10_output/dashboard_regimes.html."""
