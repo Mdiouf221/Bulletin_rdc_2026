@@ -40,9 +40,9 @@ sections:
       - "03_chapitres/chapitre_1/00_intro_chapitre_1.md"
       - "03_chapitres/chapitre_1/1_1_definitions_approches.md"
       - "03_chapitres/chapitre_1/1_2_approche_bit_oit.md"
-      - "03_chapitres/chapitre_1/1_3_champ_statistique.md"
       - "03_chapitres/chapitre_1/1_4_classification_regimes.md"
       - "03_chapitres/chapitre_1/1_5_precautions_lecture.md"
+      # 1_3_champ_statistique.md exclu — contenu déplacé en Annexe D.1
 
   - id: "chapitre_3_cartographie"
     title: "Chapitre 3  Cartographie institutionnelle de la protection sociale"
@@ -55,29 +55,34 @@ sections:
     files:
       - "03_chapitres/chapitre_3/00_plan_chapitre_3.md"
 
-  - id: "chapitre_5_risques"
-    title: "Chapitre 5  Protection sociale face aux risques de vie"
+  - id: "chapitre_4_risques"
+    title: "Chapitre 4  Protection sociale face aux risques de vie"
     files:
-      - "03_chapitres/chapitre_4/00_plan_chapitre_4.md"
       - "03_chapitres/chapitre_4/4.2_vieillesse.md"
       - "03_chapitres/chapitre_4/4.3_age_actif.md"
       - "03_chapitres/chapitre_4/4.4_enfants_familles.md"
       - "03_chapitres/chapitre_4/4.5_invalidite.md"
       - "03_chapitres/chapitre_4/4.6_deces_survie.md"
-      - "03_chapitres/chapitre_4/4.7_depenses_financement.md"
-      - "03_chapitres/chapitre_4/4.8_odd_131.md"
+      - "03_chapitres/chapitre_4/4.7_sante.md"
+      - "03_chapitres/chapitre_4/4.8_depenses_financement.md"
+      # 4.9_odd_131.md déplacé dans le chapitre 5 ODD
+
+  - id: "chapitre_5_odd"
+    title: "Chapitre 5  Positionnement de la RDC au regard des indicateurs ODD"
+    files:
+      - "03_chapitres/chapitre_5/00_plan_chapitre_5.md"
 
   - id: "chapitre_6_qualite"
     title: "Chapitre 6  Qualité, disponibilité et perspectives"
     files:
-      - "03_chapitres/chapitre_5/00_plan_chapitre_5.md"
+      - "03_chapitres/chapitre_6/00_plan_chapitre_6.md"
 
   - id: "annexes"
     title: "Annexes"
     files:
-      - "04_annexes/annexe_A_fiches_institutionnelles.md"
-      - "04_annexes/annexe_B_programmes_hors_perimetre.md"
-      - "04_annexes/annexe_C_definitions_indicateurs.md"
-      - "04_annexes/annexe_D_notes_methodologiques.md"
+      - "04_annexes/annexe_A_notes_methodologiques.md"
+      - "04_annexes/annexe_B_fiches_institutionnelles.md"
+      - "04_annexes/annexe_C_programmes_hors_perimetre.md"
+      - "04_annexes/annexe_D_definitions_indicateurs.md"
       - "04_annexes/annexe_E_tableaux_statistiques.md"
       - "04_annexes/annexe_F_outil_collecte.md"

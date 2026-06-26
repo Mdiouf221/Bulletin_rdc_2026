@@ -228,127 +228,33 @@ Le présent bulletin retient comme cadre principal l'approche du Bureau internat
 
 ---
 
-### La double dimension de l'extension de la couverture <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
-
-<a href="/files/06_sources/normes_oit/_texte/OIT - Building social protection systems - International standards and human rights instruments.txt" title="Source : OIT (2021)  Building social protection systems : International standards and human rights instruments" class="source-ref source-ref-text nv" data-val-id="s22-p2-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_2_approche_bit_oit.md">L'OIT structure l'extension de la couverture autour de deux dimensions complémentaires.</a> La dimension horizontale — issue de <a href="/files/06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="Source : OIT — Recommandation no 202 sur les socles de protection sociale (2012) — logique du socle universel et garanties minimales" class="source-ref source-ref-text nv" data-val-id="s22-p2-c2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_2_approche_bit_oit.md">la R202</a> — vise à garantir un niveau minimal de protection à l'ensemble de la population. La dimension verticale vise à élever progressivement les niveaux de prestations pour les personnes déjà couvertes, conformément aux normes de <a href="/files/06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="Source : OIT — Convention no 102 sur la sécurité sociale (normes minimales), 1952 — normes progressives de prestation" class="source-ref source-ref-text nv" data-val-id="s22-p2-c3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_2_approche_bit_oit.md">la Convention no 102</a>. En RDC, les enjeux d'extension se posent simultanément sur ces deux fronts.
-
----
-
 ### Ce que le bulletin mesure et ce qu'il documente sans mesurer <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
 Le bulletin distingue deux niveaux de traitement des dispositifs. Sont intégrés dans les indicateurs statistiques les régimes et programmes pour lesquels il est possible d'identifier des personnes couvertes, des prestations servies et des dépenses. Sont documentés à titre contextuel les dispositifs pour lesquels ces données ne sont pas disponibles ou ne permettent pas d'identifier un bénéficiaire individualisable. Cette distinction traduit une contrainte statistique, non un jugement sur l'importance des dispositifs.
 
 <!-- FIN FICHIER -->
 
-# 2.3 Champ de la protection sociale et critères d'inclusion statistique dans le bulletin
+# 2.4 Grilles de lecture : classification des régimes, programmes et prestations
 
 ## Texte rédigé
 
-### Un périmètre défini par la finalité protectrice et la mesurabilité <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
+Le bulletin distingue deux notions fondamentales, non interchangeables. La couverture légale désigne les personnes auxquelles un régime est applicable selon les textes en vigueur. La couverture effective désigne les personnes réellement protégées, mesurées par les données administratives ou d'enquête. La couverture effective est un sous-ensemble de la couverture légale ; c'est elle qui constitue le principal objet de mesure du bulletin.
 
-Le champ statistique du bulletin est délimité à partir de deux critères cumulatifs : la **finalité protectrice** du dispositif et la **mesurabilité statistique** des données qu'il produit.
+Les dispositifs sont analysés selon quatre dimensions complémentaires : le caractère obligatoire ou volontaire de l'affiliation ; la nature du financement (contributif ou non contributif) ; le statut réglementaire (statutaire ou non) ; la nature des prestations (en espèces ou en nature). Ces dimensions s'appliquent à l'ensemble des régimes cartographiés au chapitre 3. Les conditions d'accès — affiliation et cotisation, statut professionnel, condition de ressources, ciblage catégoriel ou résidence — sont précisées pour chaque dispositif.
 
-Le critère de finalité protectrice exige que le dispositif ait pour objet principal de couvrir une personne ou un ménage contre un risque social identifié — <a href="/files/06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="Source : OIT — Convention no 102 (1952) — les neuf branches de risques : maternité, maladie, accident du travail, invalidité, vieillesse, décès, chômage, Parties II à X" class="source-ref source-ref-text nv" data-val-id="s23-p1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_3_champ_statistique.md">maternité, maladie, accident du travail, invalidité, vieillesse, décès du soutien de famille, chômage, pauvreté ou vulnérabilité de revenu</a>. Ce critère écarte les dispositifs dont l'effet protecteur est indirect, accessoire ou non garanti, tels que certaines politiques d'investissement public ou d'accès aux infrastructures.
-
-Le critère de mesurabilité exige qu'il soit possible d'identifier, à partir des données disponibles, au moins l'une des grandeurs statistiques suivantes : des personnes couvertes ou affiliées, des cotisants actifs, des bénéficiaires, des prestations servies ou des dépenses. Ce critère écarte les dispositifs pour lesquels aucune donnée individuelle ou agrégée ne permet de quantifier la couverture réelle, même si leur finalité protectrice est indéniable.
-
-Ces deux critères ne constituent pas une liste fermée de dispositifs admis ou exclus. Ils définissent une règle opérationnelle permettant de statuer sur chaque dispositif de façon cohérente et documentée.
-
----
-
-### Trois niveaux de traitement dans le bulletin <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
-
-Sur la base de ces critères, le bulletin distingue trois niveaux de traitement des dispositifs.
-
-**Niveau 1 — Dispositifs intégrés dans les indicateurs statistiques.**  
-Sont classés à ce niveau les régimes et programmes pour lesquels les deux critères sont satisfaits : finalité protectrice établie et données disponibles permettant de mesurer la couverture. Entrent notamment dans ce groupe les régimes contributifs de sécurité sociale gérés par des institutions formelles *(CNSS, CNSSAP, régimes spéciaux)* et <a href="/files/06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="Source : OIT — Recommandation no 202 (2012) — les programmes non contributifs font partie intégrante de la protection sociale" class="source-ref source-ref-text nv" data-val-id="s23-t1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_3_champ_statistique.md">les programmes non contributifs disposant de données de ciblage, d'enregistrement ou de paiement documentées</a>.
-
-**Niveau 2  Dispositifs traités séparément.**  
-Sont classés à ce niveau les dispositifs dont la finalité protectrice est établie mais pour lesquels les données ne permettent pas encore de produire des indicateurs comparables. Ils sont présentés de façon descriptive, avec les données disponibles, sans être agrégés dans les indicateurs globaux de couverture. La couverture sanitaire universelle entre, selon l'état d'avancement des données, dans cette catégorie.
-
-**Niveau 3  Dispositifs mentionnés à titre contextuel.**  
-Sont classés à ce niveau les dispositifs dont la finalité protectrice est reconnue mais qui ne donnent pas lieu à des prestations individualisables ou à des données de couverture. Ils sont mentionnés pour la complétude du tableau institutionnel, sans influer sur les indicateurs. C'est le cas de certains services sociaux, gratuités sectorielles, dispositifs d'urgence ou programmes d'accompagnement social dont le périmètre et les bénéficiaires ne sont pas documentés de façon consolidée.
-
----
-
-### Un périmètre évolutif <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
-
-La classification d'un dispositif dans l'un de ces trois niveaux n'est pas définitive. Elle reflète l'état des données disponibles au moment de la préparation du bulletin et est susceptible d'évoluer à mesure que les systèmes d'information des institutions s'améliorent et que de nouvelles données deviennent accessibles. Le passage d'un dispositif du niveau 2 au niveau 1, ou du niveau 3 au niveau 2, constitue en soi un indicateur de progrès dans la gouvernance statistique de la protection sociale en RDC.
+*→ Les définitions complètes et les grilles de classification détaillées sont développées en [Annexe A.2 — Classification des régimes, programmes et prestations](../../04_annexes/annexe_A_notes_methodologiques.md#d2).*
 
 <!-- FIN FICHIER -->
 
-# 2.4 Schéma de lecture et classification des régimes, programmes et prestations
+# 2.5 Précautions de lecture : distinctions statistiques et limites méthodologiques
 
 ## Texte rédigé
 
-### Couverture légale et couverture effective <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
+La lecture des indicateurs du bulletin suppose quelques distinctions que l'usage courant tend à confondre. Un affilié n'est pas nécessairement un cotisant actif : l'affiliation peut précéder la première cotisation ou persister après une interruption. Un bénéficiaire (ayant reçu une prestation) n'est pas une personne couverte (ayant droit à une prestation si le risque se réalise). Une même personne peut recevoir plusieurs prestations dans l'année : le dénombrement de prestations servies n'équivaut pas à un décompte de personnes distinctes. Lorsque les résultats sont exprimés en ménages bénéficiaires, la conversion en individus couverts repose sur des hypothèses de taille de ménage documentées dans le bulletin. La distinction entre couverture légale et couverture effective, centrale pour l'ensemble du bulletin, est rappelée à chaque indicateur concerné.
 
-Le bulletin articule deux notions hiérarchiquement liées, non interchangeables.
+Les limites générales du bulletin sont de trois ordres. La disponibilité des données administratives reste inégale selon les institutions et les périodes. La complétude des données transmises peut varier selon les exercices. La désagrégation — par sexe, âge, province ou secteur — n'est pas systématiquement disponible et est indiquée au cas par cas.
 
-La **couverture légale** désigne les personnes ou catégories de personnes auxquelles un régime ou un programme est applicable selon les textes juridiques, réglementaires ou statutaires en vigueur. Elle est une condition nécessaire : on ne peut bénéficier d'une protection effective sans que celle-ci soit d'abord prévue par un texte. Elle n'est pas suffisante : un dispositif peut être légalement prévu sans être effectivement mis en œuvre, faute d'affiliation systématique, de ressources, ou de données disponibles.
-
-La **couverture effective** désigne les personnes réellement protégées : affiliées et cotisantes, ou ayant effectivement reçu une prestation au cours de la période de référence, selon des données administratives ou d'enquête. Une couverture effective est nécessairement aussi légale : elle en est le sous-ensemble mis en œuvre. C'est cet angle statistique qui constitue le principal objet de mesure du présent bulletin.
-
----
-
-### Nature des régimes et programmes <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
-
-Les dispositifs de protection sociale se différencient selon plusieurs dimensions de classification.
-
-**Selon le caractère obligatoire ou volontaire de l'affiliation.** Les régimes légalement obligatoires concernent des catégories de travailleurs ou de résidents définis par la loi et gèrent une affiliation de droit. Les dispositifs à adhésion volontaire  mutuelles, assurances privées, épargne retraite individuelle  fonctionnent sur la base d'un consentement individuel ou collectif.<a href="/files/06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="OIT - Convention no 102 (1952) - art. 6 : assurance volontaire supervisee par l'Etat" class="source-ref source-ref-text nv" data-val-id="s24-nat-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">[C102, art. 6]</a>
-
-**Selon la nature du financement.** Les régimes **contributifs** sont financés principalement par des cotisations de l'employeur et du travailleur, proportionnelles aux revenus d'activité. Les dispositifs **non contributifs** sont financés par l'État ou par des partenaires extérieurs, sans cotisation préalable de la personne protégée. Ces deux modes de financement peuvent coexister au sein d'un même système national et doivent être traités comme complémentaires.<a href="/files/06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="OIT - Recommandation no 202 (2012) - par. 5 : les socles peuvent etre mis en oeuvre par des transferts contributifs ou non contributifs" class="source-ref source-ref-text nv" data-val-id="s24-nat-c2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">[R202, par. 5]</a>
-
-**Selon le statut réglementaire.** Les régimes **statutaires** sont créés et régis par des textes législatifs ou réglementaires formels. Les dispositifs **non statutaires**  programmes sociaux à durée limitée, transferts conditionnels, projets d'appui  opèrent dans un cadre plus souple, souvent sans base légale permanente. Cette distinction est pertinente pour apprécier la pérennité institutionnelle d'un dispositif.<a href="/files/06_sources/normes_oit/_texte/OIT - Building social protection systems - International standards and human rights instruments.txt" title="OIT (2021) - Building social protection systems - cadre analytique des dispositifs statutaires et non statutaires" class="source-ref source-ref-text nv" data-val-id="s24-nat-c3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">[OIT 2021]</a>
-
-**Selon la nature des prestations.** Les prestations **en espèces** (pensions, indemnités, allocations) procurent un revenu ou compensent une perte de revenu. Les prestations **en nature** (soins de santé, équipements, services) procurent directement un bien ou un service. Cette distinction est importante pour la lecture des indicateurs de dépenses et de bénéficiaires.<a href="/files/06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="OIT - Convention no 102 (1952) - art. 1 par. 2 : la prestation peut etre directe (en nature) ou indirecte (remboursement)" class="source-ref source-ref-text nv" data-val-id="s24-nat-c4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_1/1_4_classification_regimes.md">[C102, art. 1]</a>
-
----
-
-### Conditions d'accès aux prestations <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
-
-Les conditions d'accès varient selon la nature du dispositif et structurent la répartition réelle de la couverture. Le bulletin distingue les principaux modes d'accès suivants :
-
-- **Affiliation et cotisation** : accès subordonné à l'enregistrement préalable dans un régime et au versement de cotisations sur une durée minimale. Applicable aux régimes contributifs obligatoires (CNSS, CNSSAP, FSS).
-- **Statut professionnel ou catégoriel** : accès réservé à une catégorie définie de travailleurs (agents publics, militaires, magistrats, enseignants). Applicable aux régimes spéciaux et à la MESP.
-- **Condition de ressources** : accès subordonné à un niveau de revenu ou à une situation de pauvreté documentée. Applicable aux programmes sociaux ciblés.
-- **Ciblage catégoriel** : accès réservé à une catégorie démographique ou de vulnérabilité définie (mères et nouveau-nés pour Kobota Ofele) sans condition de revenu explicite.
-- **Résidence** : accès lié au fait de résider sur un territoire donné, indépendamment du statut professionnel ou économique.
-- **Accès universel ou quasi universel** : accès non conditionné, ouvert à l'ensemble de la population ou d'un groupe très large, sans critère d'éligibilité restrictif.
-
-Ces conditions d'accès ont une incidence directe sur les indicateurs de couverture : deux régimes couvrant formellement le même risque peuvent produire des taux de couverture très différents selon les conditions qu'ils imposent et la capacité institutionnelle à les faire respecter.
-
----
-
-Ces grilles de lecture — couverture légale et effective, caractère obligatoire ou volontaire, financement contributif ou non contributif, statut réglementaire, nature des prestations, conditions d'accès — constituent le référentiel analytique appliqué dans le chapitre suivant. Le chapitre 3 cartographie l'ensemble des régimes, programmes et institutions de protection sociale en RDC en mobilisant ces dimensions, et présente les tableaux de correspondance entre institutions, branches de risques couvertes et disponibilité des données statistiques.
-
-<!-- FIN FICHIER -->
-
-# 2.6 Précautions de lecture : concepts statistiques clés et limites générales
-
-## Texte rédigé
-
-### Distinctions statistiques indispensables <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
-
-La lecture des indicateurs présentés dans ce bulletin suppose la maîtrise de quelques distinctions statistiques que l'usage courant tend à confondre. Ces distinctions sont définies de façon opérationnelle dans le glossaire du bulletin *(05_references/glossaire.md)* ; elles sont rappelées ici dans leur portée analytique.
-
-**Affilié  cotisant actif.** Une personne affiliée à un régime est enregistrée comme assujettie à ce régime. Elle n'est pas nécessairement en train de cotiser activement : l'affiliation peut précéder la première cotisation, persister après une interruption de carrière ou être maintenue à titre historique. Les indicateurs de cotisants actifs sont plus restrictifs que les indicateurs d'affiliés et généralement plus proches de la couverture effective réelle.
-
-**Bénéficiaire  personne couverte.** Un bénéficiaire est une personne qui a effectivement reçu une prestation au cours d'une période donnée. Une personne couverte est une personne qui a droit à une prestation si le risque se réalise, même si elle n'a pas encore eu à en bénéficier. Ces deux notions ne sont pas interchangeables : un indicateur de bénéficiaires mesure la demande effective de prestations, non l'étendue de la protection offerte.
-
-**Prestation servie  bénéficiaire unique.** Un même bénéficiaire peut recevoir plusieurs prestations au cours d'une année. Un dénombrement de prestations servies peut donc conduire à une surestimation du nombre de personnes distinctes bénéficiaires si les doublons ne sont pas traités.
-
-**Ménage bénéficiaire  individus couverts.** Certains programmes sociaux déclarent leurs résultats en ménages bénéficiaires. La conversion en nombre d'individus couverts nécessite des hypothèses explicites sur la taille moyenne des ménages, lesquelles seront documentées lorsqu'elles sont mobilisées dans le bulletin.
-
-**Couverture légale  couverture effective.** Cette distinction, centrale pour l'ensemble du bulletin, est rappelée en section 2.4 et dans chaque indicateur concerné.
-
----
-
-### Limites méthodologiques générales <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
-
-Les limites générales du bulletin sont principalement de trois ordres. La **disponibilité** des données administratives reste inégale selon les institutions et les périodes : certaines institutions n'ont pas encore de système d'information permettant de produire des indicateurs annuels consolidés. La **complétude** des données transmises peut varier selon les exercices, certains tableaux étant partiels ou couvrant uniquement une partie du territoire. La **désagrégation**  par sexe, âge, province ou secteur d'activité  n'est pas systématiquement disponible et sera indiquée au cas par cas.
-
-Ces limites générales ne font pas l'objet d'un traitement global dans ce chapitre. Elles sont signalées au niveau de chaque institution, indicateur ou tableau statistique concerné.
+*→ Les définitions opérationnelles complètes figurent dans le [Glossaire](../../05_references/glossaire.md).*
 
 <!-- FIN FICHIER -->
 
@@ -465,11 +371,7 @@ Ces programmes se distinguent des régimes précédents par trois caractéristiq
 
 ---
 
-<!-- SECTION : Chapitre 5  Protection sociale face aux risques de vie -->
-
-# Chapitre 4 — Protection sociale face aux risques de vie en RDC
-
-<!-- FIN FICHIER -->
+<!-- SECTION : Chapitre 4  Protection sociale face aux risques de vie -->
 
 # 4.2 — Protection dans la vieillesse
 
@@ -490,28 +392,14 @@ La branche vieillesse constitue la principale branche de long terme des régimes
 
 ### Adéquation des pensions de vieillesse <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-L'adéquation des pensions est appréciée par leur rapport au salaire minimum national et au seuil de pauvreté. Ces deux références permettent de situer le niveau de la prestation dans son contexte socio-économique.
+L'adéquation des pensions est appréciée par leur rapport au seuil de pauvreté national. Le tableau présente les montants unitaires de pension et le seuil de pauvreté de référence pour la même période.
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
-| Pension CNSS — montant unitaire (CDF/mois) | 180 000 CDF | 220 000 CDF | 320 000 CDF | 320 000 CDF | 0 | 0 | 0 |
-| Salaire minimum national (CDF/mois) | [contexte_macro] | [contexte_macro] | [contexte_macro] | [contexte_macro] | 0 | 0 | 0 |
-| Ratio pension / salaire minimum (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+| Pension CNSS — montant unitaire (CDF/mois) | 180 000 | 220 000 | 320 000 | 320 000 | 0 | 0 | 0 |
 | Seuil de pauvreté (CDF/mois, estimation) | [contexte_macro] | [contexte_macro] | [contexte_macro] | [contexte_macro] | 0 | 0 | 0 |
 
-*Source : ESS OIT — CNSS ; salaire minimum : [source à préciser] ; seuil de pauvreté : estimation à construire à partir des données INS.*
-
-### Lacunes de couverture <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
-
-Le tableau suivant met en regard le nombre de pensionnés contributifs et les données démographiques relatives à la population âgée, afin d'estimer le taux de couverture effectif de la branche vieillesse.
-
-| Indicateur | Valeur | Source |
-|---|---|---|
-| Population âgée de 65 ans et plus (RDC) | [contexte_macro] | ONU WPP |
-| Pensionnés vieillesse CNSS + CNSSAP (2022) | [EST.] | ESS OIT |
-| Pensionnés vieillesse régimes spéciaux (2022) | [N/D] | À instruire |
-| Taux de couverture vieillesse estimé (%) | [EST.] | Calcul |
-| Population âgée sans protection estimée | [EST.] | Calcul |
+*Source : ESS OIT — CNSS ; seuil de pauvreté : estimation à construire à partir des données INS.*
 
 <!-- FIN FICHIER -->
 
@@ -534,7 +422,7 @@ Les régimes contributifs couvrent les travailleurs du secteur formel. Le tablea
 
 ### Protection maternité <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-La protection maternité de la CNSS comprend trois prestations distinctes : l'indemnité journalière (compensation du salaire pendant le congé), l'allocation de maternité (forfait à la naissance) et les allocations prénatales (versées avant l'accouchement). Le taux de couverture maternité au sens de l'ODD 1.3.1 est calculé en rapportant le nombre de bénéficiaires au nombre total de naissances vivantes.
+La protection maternité de la CNSS comprend trois prestations distinctes : l'indemnité journalière (compensation du salaire pendant le congé), l'allocation de maternité (forfait à la naissance) et les allocations prénatales (versées avant l'accouchement).
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
@@ -542,10 +430,8 @@ La protection maternité de la CNSS comprend trois prestations distinctes : l'in
 | Bénéf. allocation de maternité (CNSS) | 0 | 108 | 167 | 414 | 0 | 0 | 0 |
 | Bénéf. allocations prénatales (CNSS) | 0 | 162 | 184 | 532 | 0 | 0 | 0 |
 | Bénéf. maternité — régimes spéciaux | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Naissances vivantes totales (RDC) | [contexte_macro] | [contexte_macro] | [contexte_macro] | [contexte_macro] | 0 | 0 | 0 |
-| Taux de couverture maternité ODD 1.3.1 (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
 
-*Source : ESS OIT — CNSS ; naissances : INS RDC / ONU. Régimes spéciaux : données non disponibles.*
+*Source : ESS OIT — CNSS. Régimes spéciaux : données non disponibles.*
 
 ### Accidents du travail et maladies professionnelles <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
@@ -559,18 +445,6 @@ Les accidents du travail et maladies professionnelles (AT/MP) donnent droit à u
 | Montant unitaire rente AT/MP (CDF/mois) | 180 000 CDF | 220 000 CDF | 320 000 CDF | 320 000 CDF | 0 | 0 | 0 |
 
 *Source : ESS OIT — CNSS (2019–2022). Régimes spéciaux : données non disponibles.*
-
-### Lacunes de couverture des actifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
-
-Le tableau ci-dessous met en regard le nombre de cotisants actifs et la population active estimée afin de calculer le taux de couverture des travailleurs par les régimes contributifs.
-
-| Indicateur | Valeur | Source |
-|---|---|---|
-| Population active totale RDC (15–64 ans) | [contexte_macro] | ONU WPP / INS |
-| Cotisants CNSS + CNSSAP (2022) | [EST.] | ESS OIT |
-| Cotisants régimes spéciaux (2022) | [N/D] | À instruire |
-| Taux de couverture des actifs (%) | [EST.] | Calcul |
-| Actifs sans couverture contributive (estimation) | [EST.] | Calcul |
 
 <!-- FIN FICHIER -->
 
@@ -592,13 +466,12 @@ Les allocations familiales constituent, en termes de volume de bénéficiaires, 
 
 ### Adéquation des allocations familiales <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-L'allocation familiale est versée mensuellement par enfant à charge. Le tableau présente l'évolution du montant unitaire de cette allocation et son rapport au seuil de pauvreté par personne.
+L'allocation familiale est versée mensuellement par enfant à charge. Le tableau présente l'évolution du montant unitaire de cette allocation et le seuil de pauvreté par personne pour la même période.
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
 | Montant allocation familiale CNSS (CDF/mois) | — | — | — | — | 0 | 0 | 0 |
 | Seuil de pauvreté par personne (CDF/mois) | [contexte_macro] | [contexte_macro] | [contexte_macro] | [contexte_macro] | 0 | 0 | 0 |
-| Ratio allocation / seuil pauvreté (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
 
 *Source : ESS OIT — CNSS ; seuil de pauvreté : estimation à construire à partir des données INS.*
 
@@ -610,18 +483,6 @@ Le tableau recense les programmes d'assistance sociale non contributifs ciblant 
 |---|---|---|---|---|
 | [Programme 1 — à compléter] | 0 | 0 | 0 | 0 |
 | [Programme 2 — à compléter] | 0 | 0 | 0 | 0 |
-
-### Lacunes de couverture des enfants <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
-
-L'ODD 1.3.1 mesure la proportion d'enfants de 0 à 14 ans couverts par au moins une prestation de protection sociale. Le tableau ci-dessous confronte les effectifs couverts à la population totale de cette tranche d'âge pour estimer cette proportion en RDC.
-
-| Indicateur | Valeur | Source |
-|---|---|---|
-| Population 0–14 ans (RDC) | [contexte_macro] | ONU WPP |
-| Enfants couverts CNSS + CNSSAP (2022) | [EST.] | ESS OIT |
-| Enfants couverts régimes spéciaux (2022) | [N/D] | À instruire |
-| Enfants couverts programmes non contributifs | 0 | À compléter |
-| Taux de couverture enfants ODD 1.3.1 (%) | [EST.] | Calcul |
 
 <!-- FIN FICHIER -->
 
@@ -642,18 +503,17 @@ La branche invalidité couvre les assurés reconnus en incapacité permanente de
 
 *Source : ESS OIT — CNSS (2019–2022) et CNSSAP (2020–2022). Régimes spéciaux : données non disponibles — à instruire.*
 
-### Adéquation et comparaison avec la pension de vieillesse <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### Adéquation de la pension d'invalidité <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-Dans les régimes de la CNSS, la pension d'invalidité et la pension de vieillesse sont fixées au même montant unitaire mensuel par arrêté. Le tableau met en regard ces montants et le seuil de pauvreté de référence.
+Dans les régimes de la CNSS, la pension d'invalidité et la pension de vieillesse sont fixées au même montant unitaire mensuel par arrêté. Le tableau présente ces montants et le seuil de pauvreté de référence pour la même période.
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
-| Pension invalidité CNSS (CDF/mois) | 180 000 CDF | 220 000 CDF | 320 000 CDF | 320 000 CDF | 0 | 0 | 0 |
-| Pension vieillesse CNSS (CDF/mois) | 180 000 CDF | 220 000 CDF | 320 000 CDF | 320 000 CDF | 0 | 0 | 0 |
-| Ratio invalidité / vieillesse (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+| Pension invalidité CNSS (CDF/mois) | 180 000 | 220 000 | 320 000 | 320 000 | 0 | 0 | 0 |
+| Pension vieillesse CNSS (CDF/mois) | 180 000 | 220 000 | 320 000 | 320 000 | 0 | 0 | 0 |
 | Seuil de pauvreté (CDF/mois) | [contexte_macro] | [contexte_macro] | [contexte_macro] | [contexte_macro] | 0 | 0 | 0 |
 
-*Source : ESS OIT — CNSS ; seuil de pauvreté : estimation à construire.*
+*Source : ESS OIT — CNSS ; seuil de pauvreté : estimation à construire à partir des données INS.*
 
 ### Programmes non contributifs pour les personnes handicapées <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
@@ -662,17 +522,6 @@ Le tableau recense les programmes d'assistance sociale destinés aux personnes h
 | Programme | Gestionnaire | Bénéficiaires | Source |
 |---|---|---|---|
 | [À compléter] | 0 | 0 | 0 |
-
-### Lacunes de couverture invalidité <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
-
-Le taux de couverture invalidité au sens de l'ODD 1.3.1 est calculé en rapportant le nombre de bénéficiaires d'une pension d'invalidité à l'estimation de la population handicapée. Ce calcul est conditionné à la disponibilité d'une estimation nationale du nombre de personnes handicapées.
-
-| Indicateur | Valeur | Source |
-|---|---|---|
-| Estimation personnes handicapées en RDC | 0 | Enquête nationale à rechercher |
-| Pensionnés invalidité CNSS + CNSSAP (2022) | [EST.] | ESS OIT |
-| Pensionnés invalidité régimes spéciaux (2022) | [N/D] | À instruire |
-| Taux de couverture invalidité ODD 1.3.1 (%) | [EST.] | Calcul |
 
 <!-- FIN FICHIER -->
 
@@ -696,20 +545,65 @@ Les prestations de survie sont versées aux ayants droit d'un assuré décédé 
 
 ### Adéquation des pensions de survie <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-Le taux de réversion exprime le rapport entre la pension de survie et la pension de vieillesse du même régime et de la même année. Le tableau présente les montants unitaires correspondants et leur évolution sur la période.
+Le tableau présente les montants unitaires de pension de survie et de pension de vieillesse du même régime, ainsi que le seuil de pauvreté de référence pour la même période.
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
-| Pension survie CNSS (CDF/mois) | 180 000 CDF | 220 000 CDF | 320 000 CDF | 320 000 CDF | 0 | 0 | 0 |
-| Pension vieillesse CNSS (CDF/mois) | 180 000 CDF | 220 000 CDF | 320 000 CDF | 320 000 CDF | 0 | 0 | 0 |
-| Taux de réversion estimé (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
-| Montant frais funéraires CNSS (CDF) | 180 000 CDF | 220 000 CDF | 320 000 CDF | 320 000 CDF | 0 | 0 | 0 |
+| Pension survie CNSS (CDF/mois) | 180 000 | 220 000 | 320 000 | 320 000 | 0 | 0 | 0 |
+| Pension vieillesse CNSS (CDF/mois) | 180 000 | 220 000 | 320 000 | 320 000 | 0 | 0 | 0 |
+| Montant frais funéraires CNSS (CDF) | 180 000 | 220 000 | 320 000 | 320 000 | 0 | 0 | 0 |
+| Seuil de pauvreté (CDF/mois) | [contexte_macro] | [contexte_macro] | [contexte_macro] | [contexte_macro] | 0 | 0 | 0 |
 
-*Source : ESS OIT — CNSS. Le taux de réversion est estimé comme le rapport pension survie / pension vieillesse du même régime et de la même année.*
+*Source : ESS OIT — CNSS ; seuil de pauvreté : estimation à construire à partir des données INS.*
 
 <!-- FIN FICHIER -->
 
-# 4.7 — Dépenses et financement du système
+# 4.7 — Protection en matière de santé
+
+## Texte rédigé
+
+La protection de la santé en RDC s'organise autour de trois types de dispositifs : un régime national d'assurance maladie à double composante contributive et non contributive (FSS), un régime statutaire obligatoire pour les enseignants (MESP), et un secteur de mutuelles de santé volontaires sans données statistiques consolidées à ce stade. Ces dispositifs coexistent sans qu'un système d'enregistrement commun permette d'en agréger la couverture effective à l'échelle nationale.
+
+---
+
+### Le FSS — Fonds de Solidarité de Santé <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+<a href="/files/06_sources/officielles_web/FSS_RDC_produits_regimes.txt" title="Source : FSS RDC — Site officiel fss.cd, consulté juin 2026 — Loi n°18/035 du 13 décembre 2018 ; Décret n°22/13 du 09 avril 2022" class="source-ref source-ref-text nv" data-val-id="s47-p1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">Institué par la loi n°18/035 du 13 décembre 2018 et organisé par le décret n°22/13 du 9 avril 2022, le FSS est la caisse nationale d'assurance maladie de la RDC.</a> Il est devenu opérationnel en 2022 et constitue l'un des instruments de mise en œuvre de la couverture sanitaire universelle. Il propose trois produits : Afia Bora (paquet de base obligatoire, régime contributif pour les travailleurs du secteur formel), Afia Bora Prime (paquet complémentaire contributif), et Kobota Ofele (programme d'assistance de l'État pour les mères et les nouveau-nés, financement non contributif).
+
+| Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| Affiliés FSS — régime contributif | [N/A] | [N/A] | [N/A] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Cotisants actifs FSS | [N/A] | [N/A] | [N/A] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Bénéficiaires Afia Bora | [N/A] | [N/A] | [N/A] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Bénéficiaires Kobota Ofele (non contributif) | [N/A] | [N/A] | [N/A] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Dépenses de prestations (CDF) | [N/A] | [N/A] | [N/A] | [N/D] | [N/D] | [N/D] | [N/D] |
+
+*[N/A] = institution non encore opérationnelle. [N/D] = donnée non disponible — à extraire des ESS ou à collecter auprès du FSS. Source : ESS OIT — FSS 2022 ; FSS, fss.cd, juin 2026.*
+
+---
+
+### La MESP — Mutuelle des Enseignants de l'EPST <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+La Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique (MESP) est un régime de santé statutaire obligatoire antérieur au FSS. Elle couvre les enseignants relevant du ministère de l'EPST selon un mécanisme contributif. Les ESS disponibles portent sur les exercices 2019 à 2022.
+
+| Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| Affiliés MESP | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Cotisants actifs MESP | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Bénéficiaires couverts | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Dépenses de prestations (CDF) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+
+*Source : ESS OIT — MESP 2019–2022 (fichiers disponibles, données à extraire). Données 2023–2025 : à collecter auprès de la MESP.*
+
+---
+
+### Mutuelles de santé volontaires <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Les mutuelles de santé à adhésion volontaire constituent un troisième niveau de protection. Elles incluent notamment les structures d'assurance médicale du secteur privé (type SESOPA pour les secteurs pétrolier et bancaire) ainsi que les mutuelles communautaires et associatives. Ces dispositifs sont mentionnés à titre contextuel : ils ne font pas l'objet d'une collecte statistique consolidée dans le cadre de la présente édition du bulletin et leurs données de couverture ne sont pas agrégées dans les indicateurs.
+
+<!-- FIN FICHIER -->
+
+# 4.8 — Dépenses et financement du système
 
 ## Texte rédigé
 
@@ -765,9 +659,15 @@ Le rapport des dépenses de protection sociale au PIB est calculé pour permettr
 
 <!-- FIN FICHIER -->
 
-# 4.8 — Positionnement de la RDC au regard de l'ODD 1.3.1
+---
+
+<!-- SECTION : Chapitre 5  Positionnement de la RDC au regard des indicateurs ODD -->
+
+# Chapitre 5 — Positionnement de la RDC au regard des indicateurs ODD
 
 ## Texte rédigé
+
+## 5.1 — ODD 1.3.1 : couverture par les régimes de protection sociale
 
 ### Définition et méthodologie <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
@@ -788,12 +688,12 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 
 | Sous-indicateur ODD 1.3.1 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
-| Population totale (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
-| Enfants 0–14 ans (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
-| Femmes ayant accouché — maternité (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
-| Personnes âgées — pension vieillesse (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
-| Actifs — contributeurs (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
-| Personnes handicapées — invalidité (%) | [EST.] | [EST.] | [EST.] | [EST.] | 0 | 0 | 0 |
+| Population totale (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
+| Enfants 0–14 ans (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
+| Femmes ayant accouché — maternité (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
+| Personnes âgées — pension vieillesse (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
+| Actifs — contributeurs (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
+| Personnes handicapées — invalidité (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
 
 *Source : calculs à partir des ESS OIT (CNSS 2019–2022, CNSSAP 2020–2022) et des données démographiques ONU WPP. Les estimations [EST.] seront calculées par le script `generer_figures_ch4.py` depuis la base.*
 
@@ -802,18 +702,54 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 | Pays / Région | ODD 1.3.1 — population totale (%) | Année | Source |
 |---|---|---|---|
 | RDC | [EST.] | 2022 | ESS OIT / calcul |
-| Angola | [WSPR] | 0 | World Social Protection Report OIT |
-| Mozambique | [WSPR] | 0 | World Social Protection Report OIT |
-| Afrique subsaharienne (moyenne) | [WSPR] | 0 | World Social Protection Report OIT |
-| Monde (moyenne) | [WSPR] | 0 | World Social Protection Report OIT |
+| Angola | [WSPR] | — | World Social Protection Report OIT |
+| Mozambique | [WSPR] | — | World Social Protection Report OIT |
+| Afrique subsaharienne (moyenne) | [WSPR] | — | World Social Protection Report OIT |
+| Monde (moyenne) | [WSPR] | — | World Social Protection Report OIT |
 
-*Source : World Social Protection Report OIT (dernière édition disponible) ; ILOSTAT.*
+*Source : World Social Protection Report OIT (2024–26) ; ILOSTAT.*
 
 ### Trajectoire et objectifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 | Indicateur | 2022 (référence) | 2025 (cible PNPS) | 2030 (cible ODD) |
 |---|---|---|---|
-| ODD 1.3.1 — population totale (%) | [EST.] | [N/D — cible PNPS à rechercher] | 0 |
+| ODD 1.3.1 — population totale (%) | [EST.] | [N/D — cible PNPS à rechercher] | — |
+
+---
+
+## 5.2 — ODD 3.8.1 : couverture sanitaire universelle
+
+### Définition et méthodologie <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+L'indicateur ODD 3.8.1 mesure l'indice de couverture des services de santé essentiels, calculé par l'OMS à partir d'une sélection de services traceurs couvrant la santé reproductive, maternelle, néonatale et infantile, les maladies infectieuses, les maladies non transmissibles et la capacité d'accès aux soins. Il est exprimé sur une échelle de 0 à 100. Il complète l'ODD 1.3.1 : là où ce dernier mesure la couverture par les régimes de protection sociale, l'ODD 3.8.1 mesure l'accès effectif aux services de santé, indépendamment du mécanisme de financement.
+
+### Résultats pour la RDC <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+| Indicateur | 2015 | 2017 | 2019 | 2021 | 2023 |
+|---|---|---|---|---|---|
+| Indice ODD 3.8.1 — RDC (0–100) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+
+*Source : OMS, Global Health Observatory, indicateur UHC Service Coverage Index (SDG 3.8.1) — données à collecter sur data.who.int.*
+
+### Comparaison régionale et internationale <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+| Pays / Région | Indice ODD 3.8.1 (0–100) | Année | Source |
+|---|---|---|---|
+| RDC | [N/D] | — | OMS GHO |
+| Angola | [N/D] | — | OMS GHO |
+| Mozambique | [N/D] | — | OMS GHO |
+| Afrique subsaharienne (moyenne) | [N/D] | — | OMS GHO |
+| Monde (moyenne) | [N/D] | — | OMS GHO |
+
+*Source : OMS, Global Health Observatory.*
+
+### Trajectoire et objectifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+| Indicateur | Valeur de référence | 2030 (cible ODD) |
+|---|---|---|
+| Indice ODD 3.8.1 — RDC (0–100) | [N/D] | 80 |
+
+*Note : la cible ODD 3.8.1 est fixée à 80 (sur 100) pour 2030. La valeur nationale de référence sera renseignée à partir des données OMS GHO.*
 
 <!-- FIN FICHIER -->
 
@@ -828,6 +764,84 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 ---
 
 <!-- SECTION : Annexes -->
+
+# Annexe A — Notes méthodologiques
+
+## A.1 — Champ de la protection sociale et critères d'inclusion statistique
+
+### Un périmètre défini par la finalité protectrice et la mesurabilité
+
+Le champ statistique du bulletin est délimité à partir de deux critères cumulatifs : la **finalité protectrice** du dispositif et la **mesurabilité statistique** des données qu'il produit.
+
+Le critère de finalité protectrice exige que le dispositif ait pour objet principal de couvrir une personne ou un ménage contre un risque social identifié — <a href="/files/06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="Source : OIT — Convention no 102 (1952) — les neuf branches de risques : maternité, maladie, accident du travail, invalidité, vieillesse, décès, chômage, Parties II à X" class="source-ref source-ref-text nv" data-val-id="sD1-p1-c1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_notes_methodologiques.md">maternité, maladie, accident du travail, invalidité, vieillesse, décès du soutien de famille, chômage, pauvreté ou vulnérabilité de revenu</a>. Ce critère écarte les dispositifs dont l'effet protecteur est indirect, accessoire ou non garanti, tels que certaines politiques d'investissement public ou d'accès aux infrastructures.
+
+Le critère de mesurabilité exige qu'il soit possible d'identifier, à partir des données disponibles, au moins l'une des grandeurs statistiques suivantes : des personnes couvertes ou affiliées, des cotisants actifs, des bénéficiaires, des prestations servies ou des dépenses. Ce critère écarte les dispositifs pour lesquels aucune donnée individuelle ou agrégée ne permet de quantifier la couverture réelle, même si leur finalité protectrice est indéniable.
+
+Ces deux critères ne constituent pas une liste fermée de dispositifs admis ou exclus. Ils définissent une règle opérationnelle permettant de statuer sur chaque dispositif de façon cohérente et documentée.
+
+---
+
+### Trois niveaux de traitement dans le bulletin
+
+Sur la base de ces critères, le bulletin distingue trois niveaux de traitement des dispositifs.
+
+**Niveau 1 — Dispositifs intégrés dans les indicateurs statistiques.**
+Sont classés à ce niveau les régimes et programmes pour lesquels les deux critères sont satisfaits : finalité protectrice établie et données disponibles permettant de mesurer la couverture. Entrent notamment dans ce groupe les régimes contributifs de sécurité sociale gérés par des institutions formelles *(CNSS, CNSSAP, régimes spéciaux)* et <a href="/files/06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="Source : OIT — Recommandation no 202 (2012) — les programmes non contributifs font partie intégrante de la protection sociale" class="source-ref source-ref-text nv" data-val-id="sD1-t1-c1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_notes_methodologiques.md">les programmes non contributifs disposant de données de ciblage, d'enregistrement ou de paiement documentées</a>.
+
+**Niveau 2 — Dispositifs traités séparément.**
+Sont classés à ce niveau les dispositifs dont la finalité protectrice est établie mais pour lesquels les données ne permettent pas encore de produire des indicateurs comparables. Ils sont présentés de façon descriptive, avec les données disponibles, sans être agrégés dans les indicateurs globaux de couverture. La couverture sanitaire universelle entre, selon l'état d'avancement des données, dans cette catégorie.
+
+**Niveau 3 — Dispositifs mentionnés à titre contextuel.**
+Sont classés à ce niveau les dispositifs dont la finalité protectrice est reconnue mais qui ne donnent pas lieu à des prestations individualisables ou à des données de couverture. Ils sont mentionnés pour la complétude du tableau institutionnel, sans influer sur les indicateurs. C'est le cas de certains services sociaux, gratuités sectorielles, dispositifs d'urgence ou programmes d'accompagnement social dont le périmètre et les bénéficiaires ne sont pas documentés de façon consolidée.
+
+---
+
+### Un périmètre évolutif
+
+La classification d'un dispositif dans l'un de ces trois niveaux n'est pas définitive. Elle reflète l'état des données disponibles au moment de la préparation du bulletin et est susceptible d'évoluer à mesure que les systèmes d'information des institutions s'améliorent et que de nouvelles données deviennent accessibles. Le passage d'un dispositif du niveau 2 au niveau 1, ou du niveau 3 au niveau 2, constitue en soi un indicateur de progrès dans la gouvernance statistique de la protection sociale en RDC.
+
+---
+
+## A.2 — Classification des régimes, programmes et prestations
+
+### Couverture légale et couverture effective
+
+Le bulletin articule deux notions hiérarchiquement liées, non interchangeables.
+
+La **couverture légale** désigne les personnes ou catégories de personnes auxquelles un régime ou un programme est applicable selon les textes juridiques, réglementaires ou statutaires en vigueur. Elle est une condition nécessaire : on ne peut bénéficier d'une protection effective sans que celle-ci soit d'abord prévue par un texte. Elle n'est pas suffisante : un dispositif peut être légalement prévu sans être effectivement mis en œuvre, faute d'affiliation systématique, de ressources, ou de données disponibles.
+
+La **couverture effective** désigne les personnes réellement protégées : affiliées et cotisantes, ou ayant effectivement reçu une prestation au cours de la période de référence, selon des données administratives ou d'enquête. Une couverture effective est nécessairement aussi légale : elle en est le sous-ensemble mis en œuvre. C'est cet angle statistique qui constitue le principal objet de mesure du présent bulletin.
+
+---
+
+### Nature des régimes et programmes
+
+Les dispositifs de protection sociale se différencient selon plusieurs dimensions de classification.
+
+**Selon le caractère obligatoire ou volontaire de l'affiliation.** Les régimes légalement obligatoires concernent des catégories de travailleurs ou de résidents définis par la loi et gèrent une affiliation de droit. Les dispositifs à adhésion volontaire — mutuelles, assurances privées, épargne retraite individuelle — fonctionnent sur la base d'un consentement individuel ou collectif. <a href="/files/06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="OIT - Convention no 102 (1952) - art. 6 : assurance volontaire supervisée par l'État" class="source-ref source-ref-text nv" data-val-id="sD2-nat-c1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_notes_methodologiques.md">[C102, art. 6]</a>
+
+**Selon la nature du financement.** Les régimes **contributifs** sont financés principalement par des cotisations de l'employeur et du travailleur, proportionnelles aux revenus d'activité. Les dispositifs **non contributifs** sont financés par l'État ou par des partenaires extérieurs, sans cotisation préalable de la personne protégée. Ces deux modes de financement peuvent coexister au sein d'un même système national et doivent être traités comme complémentaires. <a href="/files/06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="OIT - Recommandation no 202 (2012) - par. 5 : les socles peuvent être mis en œuvre par des transferts contributifs ou non contributifs" class="source-ref source-ref-text nv" data-val-id="sD2-nat-c2" data-val-status="à valider" data-val-file="04_annexes/annexe_D_notes_methodologiques.md">[R202, par. 5]</a>
+
+**Selon le statut réglementaire.** Les régimes **statutaires** sont créés et régis par des textes législatifs ou réglementaires formels. Les dispositifs **non statutaires** — programmes sociaux à durée limitée, transferts conditionnels, projets d'appui — opèrent dans un cadre plus souple, souvent sans base légale permanente. Cette distinction est pertinente pour apprécier la pérennité institutionnelle d'un dispositif. <a href="/files/06_sources/normes_oit/_texte/OIT - Building social protection systems - International standards and human rights instruments.txt" title="OIT (2021) - Building social protection systems - cadre analytique des dispositifs statutaires et non statutaires" class="source-ref source-ref-text nv" data-val-id="sD2-nat-c3" data-val-status="à valider" data-val-file="04_annexes/annexe_D_notes_methodologiques.md">[OIT 2021]</a>
+
+**Selon la nature des prestations.** Les prestations **en espèces** (pensions, indemnités, allocations) procurent un revenu ou compensent une perte de revenu. Les prestations **en nature** (soins de santé, équipements, services) procurent directement un bien ou un service. Cette distinction est importante pour la lecture des indicateurs de dépenses et de bénéficiaires. <a href="/files/06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="OIT - Convention no 102 (1952) - art. 1 par. 2 : la prestation peut être directe (en nature) ou indirecte (remboursement)" class="source-ref source-ref-text nv" data-val-id="sD2-nat-c4" data-val-status="à valider" data-val-file="04_annexes/annexe_D_notes_methodologiques.md">[C102, art. 1]</a>
+
+---
+
+### Conditions d'accès aux prestations
+
+Les conditions d'accès varient selon la nature du dispositif et structurent la répartition réelle de la couverture. Le bulletin distingue les principaux modes d'accès suivants :
+
+- **Affiliation et cotisation** : accès subordonné à l'enregistrement préalable dans un régime et au versement de cotisations sur une durée minimale. Applicable aux régimes contributifs obligatoires (CNSS, CNSSAP).
+- **Statut professionnel ou catégoriel** : accès réservé à une catégorie définie de travailleurs (agents publics, militaires, policiers, magistrats, enseignants). Applicable aux régimes spéciaux.
+- **Condition de ressources** : accès subordonné à un niveau de revenu ou à une situation de pauvreté documentée. Applicable aux programmes sociaux ciblés.
+- **Ciblage catégoriel** : accès réservé à une catégorie démographique ou de vulnérabilité définie sans condition de revenu explicite.
+- **Résidence** : accès lié au fait de résider sur un territoire donné, indépendamment du statut professionnel ou économique.
+- **Accès universel ou quasi universel** : accès non conditionné, ouvert à l'ensemble de la population ou d'un groupe très large, sans critère d'éligibilité restrictif.
+
+Ces conditions d'accès ont une incidence directe sur les indicateurs de couverture : deux régimes couvrant formellement le même risque peuvent produire des taux de couverture très différents selon les conditions qu'ils imposent et la capacité institutionnelle à les faire respecter.
+
+<!-- FIN FICHIER -->
 
 # Annexe A — Fiches institutionnelles détaillées
 
@@ -1328,14 +1342,6 @@ Aucune donnée statistique détaillée n'a pu être obtenue pour ces régimes lo
 ## Texte rédigé
 
 *[À rédiger — un tableau ou une fiche par programme, selon le modèle défini ci-dessus.]*
-
-<!-- FIN FICHIER -->
-
-# Titre de l’annexe
-
-## Texte rédigé
-
-[À compléter]
 
 <!-- FIN FICHIER -->
 

@@ -1,10 +1,10 @@
-# Chapitre 4 — Couverture effective et prestations
+﻿# Chapitre 4 — Couverture effective et prestations
 
 <!-- NOTE_INTERNE
 Objectif du chapitre :
 C'est le cœur statistique du bulletin. Il présente les indicateurs de couverture effective selon le cadre ODD 1.3.1 / BIT, organisés par branche, avec une lecture par cycle de vie à l'intérieur de chaque branche. La santé et la couverture sanitaire universelle (CSU) sont intégrées ici comme branche à part entière.
 
-Les données présentées sont des chiffres AGRÉGÉS. Le détail par institution figure en Annexe A.
+Les données présentées sont des chiffres AGRÉGÉS. Le détail par institution figure en Annexe B.
 
 Principe d'organisation :
 Axe principal → par branche ODD 1.3.1 (couverture légale vs effective)

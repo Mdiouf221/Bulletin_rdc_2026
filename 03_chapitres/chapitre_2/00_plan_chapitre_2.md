@@ -1,4 +1,4 @@
-# Chapitre 3 — Cartographie institutionnelle de la protection sociale en RDC
+﻿# Chapitre 3 — Cartographie institutionnelle de la protection sociale en RDC
 
 <!-- NOTE_INTERNE
 Objectif du chapitre :
@@ -26,7 +26,7 @@ Fichiers du chapitre (ordre d'assemblage) :
 Logique rédactionnelle :
 Le chapitre 2 définit les outils conceptuels. Ce chapitre les applique.
 Présentation factuelle et institutionnelle. Les données chiffrées détaillées
-par institution figurent en Annexe A.
+par institution figurent en Annexe B.
 
 Statut global : en cours de rédaction (section 3.1 rédigée)
 -->

@@ -1,4 +1,4 @@
-﻿# Annexe A — Fiches institutionnelles détaillées
+﻿# Annexe B — Fiches institutionnelles détaillées
 
 <!-- NOTE_INTERNE
 Objectif de l'annexe :
@@ -60,7 +60,7 @@ Règle rédactionnelle pour la section "Perspective de l'institution" :
 
 ---
 
-# A.1 Caisse Nationale de Sécurité Sociale (CNSS)
+# B.1 Caisse Nationale de Sécurité Sociale (CNSS)
 
 ## Cadre juridique et institutionnel
 
@@ -86,19 +86,6 @@ La CNSS a pour mission de coordonner et d'administrer les prestations de sécuri
 
 **Population assujettie :** travailleurs salariés du secteur privé (formel), congolais et étrangers, exerçant sur le territoire national.
 
-## Financement
-
-Régime contributif financé par les cotisations patronales et salariales.
-
-| Branche | Taux employeur | Taux salarié | Total |
-|---|---|---|---|
-| Pensions (vieillesse, invalidité, décès) | 5 % | 5 % | 10 % |
-| Allocations familiales | 6,5 % |  | 6,5 % |
-| AT/MP | 1,5 % |  | 1,5 % |
-| **Total** | **13 %** | **5 %** | **18 %** |
-
-*Sources : CNSS / premier Bulletin statistique RDC (2023). À confirmer sur la période de référence du présent bulletin.*
-
 ## Données de couverture
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 |
@@ -112,39 +99,13 @@ Régime contributif financé par les cotisations patronales et salariales.
 
 *Sources : premier Bulletin statistique RDC (2023) pour 20192022. Données 2023 à transmettre par la CNSS.*
 
-## Données financières
-
-| Indicateur (en CDF) | 2019 | 2020 | 2021 | 2022 | 2023 |
-|---|---|---|---|---|---|
-| Recettes totales |  |  |  |  |  |
-| dont cotisations |  |  |  |  |  |
-| Dépenses de prestations |  |  |  |  |  |
-| Dépenses administratives |  |  |  |  |  |
-
-*À compléter à réception des données de la CNSS.*
-
 ## Évolutions et réformes en cours
 
 Le nombre de cotisants actifs à la CNSS a enregistré une baisse significative en 2020 (24,7 %), passant de 676 179 à 508 708, sous l'effet de la pandémie de COVID-19. Une reprise progressive a été observée dès 2021 (+16,2 %), puis en 2022 (+3,8 %), portant le total à 613 761 cotisants. La couverture n'a cependant pas encore retrouvé son niveau d'avant-crise.
 
 *[À compléter : réformes législatives récentes, extension géographique, informatisation du registre, etc.]*
 
-## Perspective de l'institution
-
-*[À rédiger en coordination avec la CNSS  1 à 2 paragraphes présentant les orientations stratégiques, priorités et engagements de l'institution pour la période couverte par le bulletin. Ce texte sera clairement attribué à la CNSS dans la version finale.]*
-
-## Source et limites des données
-
-| Élément | Détail |
-|---|---|
-| Source principale | CNSS  données administratives transmises directement |
-| Source complémentaire | Premier Bulletin statistique RDC N°1/2023 |
-| Période couverte | 20192022 (données complètes) ; 2023 à confirmer |
-| Limites connues | Distinction affiliés / cotisants actifs non systématique dans les données disponibles ; données sur les prestations familiales partielles |
-
----
-
-# A.2 Caisse Nationale de Sécurité Sociale des Agents Publics de l'État (CNSSAP)
+# B.2 Caisse Nationale de Sécurité Sociale des Agents Publics de l'État (CNSSAP)
 
 ## Cadre juridique et institutionnel
 
@@ -170,18 +131,6 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 
 **Population assujettie :** agents de carrière des services publics de l'État, fonctionnaires contractuels, stagiaires et apprentis sous contrat. Les militaires et policiers relèvent de régimes spéciaux distincts.
 
-## Financement
-
-Régime contributif et partiellement financé par le budget de l'État.
-
-| Source | Détail |
-|---|---|
-| Cotisations salariales | À préciser |
-| Cotisations patronales (État employeur) | À préciser |
-| Transferts budgétaires | Pour les agents non encore mécanisés |
-
-*À compléter à réception des données de la CNSSAP.*
-
 ## Données de couverture
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 |
@@ -194,17 +143,6 @@ Régime contributif et partiellement financé par le budget de l'État.
 
 *Sources : premier Bulletin statistique RDC (2023) pour 20192022. Données 2023 à transmettre par la CNSSAP.*
 
-## Données financières
-
-| Indicateur (en CDF) | 2019 | 2020 | 2021 | 2022 | 2023 |
-|---|---|---|---|---|---|
-| Recettes totales |  |  |  |  |  |
-| dont cotisations |  |  |  |  |  |
-| Dépenses de prestations |  |  |  |  |  |
-| Dépenses administratives |  |  |  |  |  |
-
-*À compléter à réception des données de la CNSSAP.*
-
 ## Évolutions et réformes en cours
 
 **Mécanisation des agents publics.** La RDC est confrontée depuis plusieurs décennies au problème des agents et fonctionnaires de l'État dits  non mécanisés  : des agents possédant un numéro de matricule mais n'apparaissant pas sur la liste de paie officielle, ne percevant donc aucune rémunération et ne bénéficiant d'aucune prestation sociale. Une politique d'inclusion salariale progressive  dite de  mécanisation   a été engagée pour régulariser leur situation. Entre octobre 2021 et décembre 2022, environ 40 000 agents ont été mécanisés, suivis de 101 000 agents supplémentaires.
@@ -215,22 +153,7 @@ Régime contributif et partiellement financé par le budget de l'État.
 
 *[À compléter : autres réformes en cours, extension aux enseignants, déploiement du système informatique, etc.]*
 
-## Perspective de l'institution
-
-*[À rédiger en coordination avec la CNSSAP  1 à 2 paragraphes présentant les orientations stratégiques, priorités et engagements de l'institution. Ce texte sera clairement attribué à la CNSSAP dans la version finale.]*
-
-## Source et limites des données
-
-| Élément | Détail |
-|---|---|
-| Source principale | CNSSAP  données administratives transmises directement |
-| Source complémentaire | Premier Bulletin statistique RDC N°1/2023 |
-| Période couverte | 20192022 (données partielles) ; 2023 à confirmer |
-| Limites connues | Données incomplètes sur la désagrégation par sexe ; articulation complexe entre agents mécanisés et non mécanisés dans le décompte des affiliés |
-
----
-
-# A.3 Fonds National de Promotion et de Service Social (FNPSS)
+# B.3 Fonds National de Promotion et de Service Social (FNPSS)
 
 ## Cadre juridique et institutionnel
 
@@ -255,10 +178,6 @@ Régime contributif et partiellement financé par le budget de l'État.
 
 **Population assujettie :** *À préciser.*
 
-## Financement
-
-*À compléter à réception des données du FNPSS.*
-
 ## Données de couverture
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 |
@@ -267,33 +186,11 @@ Régime contributif et partiellement financé par le budget de l'État.
 | Cotisants actifs |  |  |  |  |  |
 | Bénéficiaires |  |  |  |  |  |
 
-## Données financières
-
-| Indicateur (en CDF) | 2019 | 2020 | 2021 | 2022 | 2023 |
-|---|---|---|---|---|---|
-| Recettes totales |  |  |  |  |  |
-| Dépenses de prestations |  |  |  |  |  |
-| Dépenses administratives |  |  |  |  |  |
-
 ## Évolutions et réformes en cours
 
 *[À rédiger à réception des informations du FNPSS.]*
 
-## Perspective de l'institution
-
-*[À rédiger en coordination avec le FNPSS  1 à 2 paragraphes sur les orientations stratégiques et priorités. Ce texte sera clairement attribué au FNPSS dans la version finale.]*
-
-## Source et limites des données
-
-| Élément | Détail |
-|---|---|
-| Source principale | FNPSS  données à transmettre |
-| Période attendue | 20192023 |
-| Limites connues | Données non encore reçues au moment de la rédaction |
-
----
-
-# A.4 Mutuelle de Santé des Enseignants de l'Enseignement Primaire, Secondaire et Professionnel (MESP)
+# B.4 Mutuelle de Santé des Enseignants de l'Enseignement Primaire, Secondaire et Professionnel (MESP)
 
 ## Cadre juridique et institutionnel
 
@@ -318,15 +215,6 @@ La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une soc
 
 **Population assujettie :** enseignants du secteur public de l'enseignement primaire, secondaire et technique, ainsi que leur conjoint et un maximum de 3 enfants de moins de 18 ans (ou encore étudiants ; 5 enfants si les deux conjoints sont enseignants). L'affiliation est conditionnée à la détention d'une carte MESP.
 
-## Financement
-
-| Source | Détail |
-|---|---|
-| Cotisations mensuelles | Retenues à la source, versées via le comptable d'État |
-| Subventions de l'État | Complément public |
-
-*Taux de cotisation exact : à préciser.*
-
 ## Données de couverture
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 |
@@ -337,17 +225,6 @@ La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une soc
 
 *Source : données transmises par le MEPST (2023), reprises dans le premier Bulletin statistique RDC N°1/2023.*
 
-## Données financières
-
-| Indicateur (en CDF) | 2019 | 2020 | 2021 | 2022 | 2023 |
-|---|---|---|---|---|---|
-| Recettes totales |  |  |  |  |  |
-| dont cotisations |  |  |  |  |  |
-| Dépenses de prestations de santé |  |  |  |  |  |
-| Dépenses administratives |  |  |  |  |  |
-
-*À compléter à réception des données du MEPST / MESP.*
-
 ## Évolutions et réformes en cours
 
 Entre 2019 et 2022, le nombre de contributeurs à la MESP a progressé de **59,3 %**, passant de 50 256 à 80 041. Le nombre de personnes à charge a également augmenté, atteignant 84 836 en 2022, pour un total couvert de 164 877 personnes.
@@ -356,22 +233,7 @@ Cette dynamique reste cependant très en deçà du potentiel : si chaque enseign
 
 L'extension géographique progressive constitue le principal enjeu stratégique de la MESP pour les années à venir.
 
-## Perspective de l'institution
-
-*[À rédiger en coordination avec la direction de la MESP  1 à 2 paragraphes sur les priorités stratégiques, le calendrier d'extension provinciale et les objectifs de couverture. Ce texte sera clairement attribué à la MESP dans la version finale.]*
-
-## Source et limites des données
-
-| Élément | Détail |
-|---|---|
-| Source principale | MEPST  données transmises en 2023 |
-| Source complémentaire | Premier Bulletin statistique RDC N°1/2023 |
-| Période couverte | 20192022 ; 2023 à confirmer |
-| Limites connues | Couverture partielle (7 provinces sur 26) ; absence de données financières ; décompte des bénéficiaires conditionné à la détention d'une carte |
-
----
-
-# A.5 Fonds de Solidarité de Santé (FSS)
+# B.5 Fonds de Solidarité de Santé (FSS)
 
 ## Cadre juridique et institutionnel
 
@@ -399,15 +261,6 @@ Le FSS a vocation à regrouper, à terme, plusieurs régimes :
 | Régime spécial sur la gratuité de la maternité | **Opérationnel depuis septembre 2023** (Kinshasa) |
 | Assurance maladie complémentaire | En cours |
 
-## Financement
-
-À la date du premier bulletin (janvier 2024), le FSS ne prélevait pas encore de contributions des assurés. Il finançait exclusivement la gratuité de la maternité à travers des transferts budgétaires de l'État.
-
-| Source | Statut |
-|---|---|
-| Cotisations des assurés | Non encore activées |
-| Transferts budgétaires de l'État | Opérationnel (financement de la gratuité maternité) |
-
 ## Données de couverture
 
 | Indicateur | 2022 | 2023 | Note |
@@ -418,37 +271,13 @@ Le FSS a vocation à regrouper, à terme, plusieurs régimes :
 
 *À compléter à réception des données du FSS.*
 
-## Données financières
-
-| Indicateur (en CDF) | 2022 | 2023 |
-|---|---|---|
-| Dépenses pour la gratuité de la maternité |  |  |
-| Dépenses administratives |  |  |
-
-*À compléter à réception des données du FSS.*
-
 ## Évolutions et réformes en cours
 
 Le FSS représente l'architecture institutionnelle centrale de la CSU en RDC, mais son déploiement effectif est progressif. En septembre 2023, la politique de gratuité des accouchements et des soins néonatals a été lancée dans la ville-province de Kinshasa. Ce paquet couvre les consultations prénatales, l'échographie obstétricale, les accouchements simples et par césarienne, les soins du nouveau-né, la vaccination, les consultations post-natales et l'accès aux médicaments essentiels.
 
 L'extension est prévue vers le Sud-Kivu, le Kasaï-Oriental et le Kongo-Central, avant une généralisation progressive à l'ensemble du territoire national. La vocation du FSS est à terme de remplacer tous les régimes particuliers de financement des soins médicaux existants pour assurer une couverture universelle.
 
-## Perspective de l'institution
-
-*[À rédiger en coordination avec le FSS  1 à 2 paragraphes sur le calendrier de déploiement de la CSU, les priorités d'extension et les perspectives de mise en place des cotisations. Ce texte sera clairement attribué au FSS dans la version finale.]*
-
-## Source et limites des données
-
-| Élément | Détail |
-|---|---|
-| Source principale | FSS  données à transmettre |
-| Source complémentaire | Premier Bulletin statistique RDC N°1/2023 |
-| Période couverte | 2023 (première année opérationnelle) |
-| Limites connues | Institution en phase de déploiement ; données statistiques très limitées ; contributions non encore prélevées ; périmètre réel difficile à mesurer |
-
----
-
-# A.6 Service Autonome de Sécurité Sociale des Parlementaires (SESOPA)
+# B.6 Service Autonome de Sécurité Sociale des Parlementaires (SESOPA)
 
 ## Cadre juridique et institutionnel
 
@@ -473,16 +302,6 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 
 **Population assujettie :** parlementaires nationaux (Assemblée Nationale) et leurs ayants droit.
 
-## Financement
-
-| Source | Détail |
-|---|---|
-| Cotisations des parlementaires | Contributif  taux à préciser |
-| Trésor public | Complément budgétaire |
-| Revenus de placements | Troisième source de financement |
-
-*Note : la SESOPA est le seul régime spécial partiellement contributif parmi les régimes spéciaux identifiés dans le premier bulletin.*
-
 ## Données de couverture
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 |
@@ -492,34 +311,11 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 
 *Données non disponibles au moment du premier bulletin. À transmettre par la SESOPA.*
 
-## Données financières
-
-| Indicateur (en CDF) | 2019 | 2020 | 2021 | 2022 | 2023 |
-|---|---|---|---|---|---|
-| Recettes totales |  |  |  |  |  |
-| Dépenses de prestations |  |  |  |  |  |
-
-*À compléter à réception des données de la SESOPA.*
-
 ## Évolutions et réformes en cours
 
 *[À compléter à réception des informations de la SESOPA.]*
 
-## Perspective de l'institution
-
-*[À rédiger en coordination avec la SESOPA  1 à 2 paragraphes sur les orientations et priorités. Ce texte sera clairement attribué à la SESOPA dans la version finale.]*
-
-## Source et limites des données
-
-| Élément | Détail |
-|---|---|
-| Source principale | SESOPA  données à transmettre |
-| Source complémentaire | Premier Bulletin statistique RDC N°1/2023 (mention uniquement) |
-| Limites connues | Données non obtenues lors du premier bulletin ; périmètre exact à confirmer |
-
----
-
-# A.7 Régimes spéciaux non contributifs de la fonction publique
+# B.7 Régimes spéciaux non contributifs de la fonction publique
 
 *Ces régimes sont financés par le Trésor public et destinés à des catégories spécifiques d'agents de l'État. Leur identification exhaustive est difficile : le premier bulletin note explicitement qu'il a été impossible d'en obtenir une liste complète et des données détaillées.*
 
@@ -538,10 +334,3 @@ Aucune donnée statistique détaillée n'a pu être obtenue pour ces régimes lo
 ## Perspective de collecte
 
 *[À compléter selon les données reçues des ministères concernés : Présidence / Primature, Défense, Justice.]*
-
-## Source et limites des données
-
-| Élément | Détail |
-|---|---|
-| Source | Premier Bulletin statistique RDC N°1/2023 (tableau 8, p. 17) |
-| Limites | Données non obtenues ; liste des régimes probablement non exhaustive |

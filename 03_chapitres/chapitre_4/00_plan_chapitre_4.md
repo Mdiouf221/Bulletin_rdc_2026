@@ -1,8 +1,8 @@
-# Chapitre 4 — Protection sociale face aux risques de vie en RDC
+﻿# Chapitre 4 — Protection sociale face aux risques de vie en RDC
 
 <!-- NOTE_INTERNE
 Objectif du chapitre :
-Présenter les résultats du système de protection sociale en RDC en les organisant par contingences sociales (risques de vie), conformément à la logique de la Convention n° 102 de l'OIT et de la Recommandation 202. Chaque section correspond à un risque (vieillesse, vie active, enfance/famille, invalidité, décès) et croise les données des régimes contributifs et non contributifs. Le chapitre se clôt sur le positionnement de la RDC au regard de l'ODD 1.3.1. Le détail par institution figure dans les fiches annexes (Annexe A).
+Présenter les résultats du système de protection sociale en RDC en les organisant par contingences sociales (risques de vie), conformément à la logique de la Convention n° 102 de l'OIT et de la Recommandation 202. Chaque section correspond à un risque (vieillesse, vie active, enfance/famille, invalidité, décès) et croise les données des régimes contributifs et non contributifs. Le chapitre se clôt sur le positionnement de la RDC au regard de l'ODD 1.3.1. Le détail par institution figure dans les fiches annexes (Annexe B).
 
 Logique narrative :
 Partir du risque social → identifier qui est couvert (et comment) → présenter les données de couverture, de bénéficiaires et de dépenses → conclure sur les lacunes. Cette lecture transversale est plus parlante pour les décideurs et pour le grand public que la présentation institution par institution. Les fiches institutionnelles en annexe assurent la traçabilité des données.
@@ -48,13 +48,19 @@ Structure :
     — Capital décès et autres prestations
     — Désagrégation : sexe, type de bénéficiaire (conjoint, enfants)
 
-4.7 Dépenses et financement du système
+4.7 Protection en matière de santé
+    — FSS (Fonds de Solidarité de Santé) : régime contributif Afia Bora (travailleurs formels)
+      et non contributif Kobota Ofele (mères et nouveau-nés, financement État)
+    — MESP (Mutuelle des Enseignants de l'EPST) : régime statutaire contributif pour les enseignants
+    — Mutuelles de santé volontaires : mentionnées à titre contextuel (pas de données consolidées)
+
+4.8 Dépenses et financement du système
     — Recettes totales : cotisations, transferts publics, autres
     — Dépenses de prestations par contingence et par régime
     — Dépenses administratives (séparées des dépenses de prestations)
     — Évolution temporelle
 
-4.8 Positionnement au regard de l'ODD 1.3.1
+4.9 Positionnement au regard de l'ODD 1.3.1
     — Définition et méthodologie de l'indicateur
     — Proportion de la population totale couverte par au moins une prestation
     — Sous-indicateurs : enfants (0-14), femmes ayant accouché (maternité), personnes âgées, actifs contributeurs
@@ -63,7 +69,7 @@ Structure :
     — Trajectoire et objectifs nationaux
 
 Note sur les fiches annexes :
-Le détail des données institution par institution (CNSS, CNSSAP, et programmes non contributifs) figure dans les fiches de l'Annexe A. Ces fiches couvrent : présentation institutionnelle, régime, branches, affiliés, cotisants actifs, bénéficiaires par type de prestation, recettes, dépenses, réserves.
+Le détail des données institution par institution (CNSS, CNSSAP, et programmes non contributifs) figure dans les fiches de l'Annexe B. Ces fiches couvrent : présentation institutionnelle, régime, branches, affiliés, cotisants actifs, bénéficiaires par type de prestation, recettes, dépenses, réserves.
 
 Statut : structure initiale
 -->

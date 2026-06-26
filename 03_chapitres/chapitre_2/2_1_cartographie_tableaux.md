@@ -1,4 +1,4 @@
-# 3.1 Panorama des régimes et programmes de protection sociale en RDC
+﻿# 3.1 Panorama des régimes et programmes de protection sociale en RDC
 
 <!-- NOTE_INTERNE
 Grand axe :
@@ -15,7 +15,7 @@ Ce que contient cette section :
 Logique rédactionnelle :
 Cette section est la traduction institutionnelle du cadre conceptuel du chapitre 2.
 Elle ne redéfinit pas les concepts mais les applique. Les données chiffrées détaillées
-par institution figurent en Annexe A. Ce chapitre présente la cartographie qualitative :
+par institution figurent en Annexe B. Ce chapitre présente la cartographie qualitative :
 qui fait quoi, dans quel régime, pour quelle branche.
 
 Sources principales :
