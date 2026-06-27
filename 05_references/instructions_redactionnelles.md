@@ -58,3 +58,47 @@ Le bulletin doit adopter un style institutionnel, clair, analytique et prudent. 
 - Ne pas présenter les ménages bénéficiaires comme des individus couverts sans hypothèse explicite.
 - Ne pas convertir des prestations servies en bénéficiaires uniques sans information méthodologique.
 - Distinguer les données observées, les estimations, les hypothèses et les commentaires méthodologiques.
+
+## Conventions visuelles — Figures et tableaux
+
+### Figures
+
+Les figures (graphiques, cartes, schémas) sont insérées avec la légende immédiatement avant l'image, en utilisant `<p class="fig-caption">` :
+
+```markdown
+<p class="fig-caption"><strong>Figure 2.1</strong> — Titre de la figure</p>
+
+![Texte alternatif](/files/08_figures/exports/FIG_xxx.png)
+
+*Source : Organisation (Année).*
+```
+
+### Tableaux
+
+Les tableaux doivent porter un titre qui apparaît **immédiatement avant le tableau**, sous la forme :
+
+```html
+<p class="table-caption"><strong>Tableau X.Y</strong> — Titre du tableau</p>
+```
+
+**Convention de numérotation :** `Tableau <chapitre>.<numéro-séquentiel>` (ex. : Tableau 4.3 = troisième tableau du chapitre 4).
+
+**Règles :**
+- Le titre doit être concis, précis et indiquer l'objet du tableau (institutions, indicateurs) et le périmètre temporel si applicable.
+- Le `<p class="table-caption">` se place directement avant la première ligne `|` du tableau markdown, sans ligne vide entre les deux.
+- Les `###` de section peuvent précéder le paragraphe d'introduction, mais la caption est toujours juste avant le tableau.
+- Chaque tableau nommé doit être enregistré dans `07_tableaux/registre_tableaux.md`.
+
+**Exemple complet :**
+
+```markdown
+### Bénéficiaires de pensions de vieillesse
+
+La branche vieillesse couvre les travailleurs via la CNSS et la CNSSAP...
+
+<p class="table-caption"><strong>Tableau 4.1</strong> — Bénéficiaires de pensions de vieillesse, CNSS et CNSSAP (2019–2025)</p>
+
+| Institution | Prestation | 2019 | 2020 | … |
+|---|---|---|---|---|
+| CNSS | Pension de retraite | … | … | … |
+```

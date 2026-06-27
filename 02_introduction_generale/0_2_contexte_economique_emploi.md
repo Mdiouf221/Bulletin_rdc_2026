@@ -1,4 +1,4 @@
-﻿# 1.2 Contexte économique, emploi et enjeux d'extension de la couverture
+﻿## 1.2 Contexte économique, emploi et enjeux d'extension de la couverture
 
 <!-- NOTE_INTERNE
 Grand axe :
@@ -27,6 +27,7 @@ Données renseignées :
 - Indice de Gini : 0,447 en 2020 (WDI) ; note : enquête INS 2024 donne 0,381 (non encore dans WDI)
 - Taux de pauvreté national : 69 %  Banque mondiale, mars 2026 (citant enquête INS 2024)
 - Emploi informel : ~96 % (OIT, ILOSTAT, estimations modélisées 2020) ; femmes : 97,8 % ; hommes : 95,7 %
+- Taux d'activité (LFPR 15+) : 70,9 % ensemble ; hommes : 78,5 % ; femmes : 63,5 % (OIT, ILOSTAT, estimations modélisées, EAP_DWAP_SEX_AGE_RT_A, 2023)
 - Agriculture : ~59 % de l'emploi total (Banque mondiale WDI / ILOEST, 2024) ; 68 % femmes ; 50 % hommes
 - Taux de chômage officiel : 4,4 % en 2024 (Banque mondiale WDI, modèle ILO)
 
@@ -36,7 +37,7 @@ Données agriculture révisées à 59% (vs 70% erroné dans la version initiale 
 
 Éléments visuels proposés :
 [FIG_4]  Graphique : Évolution du taux de croissance annuel du PIB en RDC (20002023)
-[FIG_5]  Graphique : Taux d'emploi informel par sexe et statut dans l'emploi (OIT, ILOSTAT)
+[FIG_5]  Graphique double : Taux d'activité (15+) par sexe + Taux d'emploi informel par sexe (OIT, ILOSTAT)
 [FIG_6]  Graphique ou tableau : Structure de l'emploi par secteur (agriculture, industrie, services)
 
 Statut :
@@ -49,23 +50,25 @@ révisé (données partiellement renseignées  données pauvreté/Gini à actual
 
 La République Démocratique du Congo a enregistré des taux de croissance économique élevés au cours des dernières années : <a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — Croissance du PIB, RDC" class="source-ref nv">+6,4 % en 2021</a>, <a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — Croissance du PIB, RDC" class="source-ref nv">+9,3 % en 2022</a>, <a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — Croissance du PIB, RDC" class="source-ref nv">+8,5 % en 2023</a> et <a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — Croissance du PIB, RDC" class="source-ref nv">+6,1 % en 2024</a> *(Banque mondiale, WDI 2026)*. Cette dynamique est largement portée par le secteur minier, qui concentre d'importants gisements de cuivre, cobalt, or, diamants et coltan. Elle ne se traduit cependant pas par une amélioration sensible du niveau de vie moyen : le PIB par habitant s'établissait à <a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI (2024) — PIB par habitant, RDC" class="source-ref nv">649 USD en 2024</a> (USD courants), parmi les plus bas du continent. Les inégalités restent marquées — l'indice de Gini s'établissait à <a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale — WDI — Gini 2020 ; enquête INS 2024 : 38,1" class="source-ref nv">0,447 en 2020</a> *(Banque mondiale, WDI — enquête ménages 2020 ; l'enquête INS 2024 indique une valeur de 0,381, non encore intégrée dans les bases internationales)* — et le taux de pauvreté atteignait <a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" title="Source : Banque mondiale (2026, citant enquête INS 2024) — 69 % de la population sous le seuil national" class="source-ref nv">69 % de la population</a> selon le seuil national *(Banque mondiale, mars 2026, citant enquête INS 2024)*. Ces données soulignent la persistance d'une vulnérabilité économique structurelle.
 
-> **Figure 4** — *Évolution du taux de croissance annuel du PIB en RDC (2000–2024)*
+<p class="fig-caption"><strong>Figure 4</strong> — Évolution du taux de croissance annuel du PIB en RDC (2000–2024)</p>
 
 ![Évolution du taux de croissance annuel du PIB en RDC (2000–2024)](/files/08_figures/exports/FIG_4_croissance_PIB_2000_2024.png)
 
-*Source : Banque mondiale, World Development Indicators (WDI, avril 2026).*
+*Source : <a href="/files/08_figures/donnees/fig_intro_4_croissance_pib_metadata.txt" class="source-ref fig-data" title="Données : croissance PIB RDC 2000-2024 — Banque mondiale WDI">Banque mondiale, World Development Indicators (WDI, avril 2026)</a>.*
 
 ---
 
 ### Un marché du travail dominé par l'informalité <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
-La structure du marché du travail congolais est marquée par la prédominance de l'emploi informel et de l'agriculture de subsistance. Selon les estimations modélisées de l'OIT (ILOEST) relayées par la Banque mondiale, <a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : Banque mondiale — WDI (2024) — Emploi agricole, RDC. Total : 58,9 %, femmes : 67,8 %, hommes : 50,3 %" class="source-ref nv">environ 59 % de la population active</a> travaille dans l'agriculture en 2024, avec une part nettement plus élevée chez les femmes (68 %) que chez les hommes (50 %) *(Banque mondiale WDI, indicateur ILOEST, 2024)*. Malgré un taux de chômage officiel relativement faible — estimé à <a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : Banque mondiale — WDI (2024) — Taux de chômage modèle ILO, RDC" class="source-ref nv">4,4 %</a> en 2024 *(Banque mondiale WDI, modèle ILO)* —, la grande majorité des actifs occupés exercent dans des conditions précaires : le taux d'emploi informel est estimé à <a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : OIT, ILOSTAT — Estimations modélisées de l'emploi informel, RDC (données 2020) ; proxies WDI 2024 : emploi vulnérable 81,8 %, travailleurs indépendants 85,3 %" class="source-ref nv">environ 96 %</a> selon les estimations modélisées de l'OIT *(ILOSTAT, données 2020 — les indicateurs proxy les plus récents confirment une informalité massive et persistante)*, avec une légère prépondérance chez les femmes (<a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : OIT, ILOSTAT — Emploi informel par sexe, RDC (2020)" class="source-ref nv">97,8 %</a>) par rapport aux hommes (<a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : OIT, ILOSTAT — Emploi informel par sexe, RDC (2020)" class="source-ref nv">95,7 %</a>). Cette informalité concerne toutes les catégories de statut dans l'emploi : travailleurs indépendants, employés et employeurs.
+La population active — c'est-à-dire les personnes de 15 ans et plus qui travaillent ou qui recherchent un emploi — représente environ <span class="val" data-val-id="s2-p3-d1" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">70,9 %</span> de la population en âge de travailler en RDC *(OIT, ILOSTAT, estimations modélisées, 2023)*. Ce taux d'activité masque cependant une forte disparité entre les sexes : il atteint <span class="val" data-val-id="s2-p3-d2" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">78,5 %</span> chez les hommes, contre <span class="val" data-val-id="s2-p3-d3" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">63,5 %</span> chez les femmes, ces dernières étant plus fréquemment maintenues hors du marché du travail visible du fait de responsabilités familiales et de barrières d'accès à l'emploi.
 
-> **Figure 5** — *Taux d'emploi informel par sexe, RDC*
+Au sein de cette population active, la structure du marché du travail est marquée par la prédominance écrasante de l'emploi informel et de l'agriculture de subsistance. Selon les estimations modélisées de l'OIT (ILOEST) relayées par la Banque mondiale, <a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : Banque mondiale — WDI (2024) — Emploi agricole, RDC. Total : 58,9 %, femmes : 67,8 %, hommes : 50,3 %" class="source-ref nv">environ 59 % de la population active</a> travaille dans l'agriculture en 2024, avec une part nettement plus élevée chez les femmes (68 %) que chez les hommes (50 %) *(Banque mondiale WDI, indicateur ILOEST, 2024)*. Malgré un taux de chômage officiel relativement faible — estimé à <a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : Banque mondiale — WDI (2024) — Taux de chômage modèle ILO, RDC" class="source-ref nv">4,4 %</a> en 2024 *(Banque mondiale WDI, modèle ILO)* —, la grande majorité des actifs occupés exercent dans des conditions précaires : le taux d'emploi informel est estimé à <a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : OIT, ILOSTAT — Estimations modélisées de l'emploi informel, RDC (données 2020) ; proxies WDI 2024 : emploi vulnérable 81,8 %, travailleurs indépendants 85,3 %" class="source-ref nv">environ 96 %</a> selon les estimations modélisées de l'OIT *(ILOSTAT, données 2020)*, avec une légère prépondérance chez les femmes (<a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : OIT, ILOSTAT — Emploi informel par sexe, RDC (2020)" class="source-ref nv">97,8 %</a>) par rapport aux hommes (<a href="/files/06_sources/officielles_web/BanqueMondiale_WDI_RDC_emploi_agriculture_2024.txt" title="Source : OIT, ILOSTAT — Emploi informel par sexe, RDC (2020)" class="source-ref nv">95,7 %</a>). Cette informalité concerne toutes les catégories de statut dans l'emploi : travailleurs indépendants, employés et employeurs. La combinaison d'un taux d'activité inférieur chez les femmes et d'une informalité légèrement plus élevée explique leur moindre représentation dans les régimes contributifs de protection sociale.
 
-![Taux d'emploi informel par sexe, RDC](/files/08_figures/exports/FIG_5_emploi_informel_par_sexe.png)
+<p class="fig-caption"><strong>Figure 5</strong> — Marché du travail en RDC : taux d'activité et emploi informel par sexe</p>
 
-*Source : OIT, ILOSTAT — estimations modélisées de l'emploi informel (ILOEST), 2020.*
+![Marché du travail en RDC : taux d'activité (15+) et emploi informel par sexe](/files/08_figures/exports/FIG_5_emploi_informel_par_sexe.png)
+
+*Source : <a href="/files/08_figures/donnees/fig_intro_5a_taux_activite_par_sexe_metadata.txt" class="source-ref fig-data" title="Données : taux d'activité 15+ par sexe, RDC 2023 — OIT ILOSTAT">OIT, ILOSTAT — estimations modélisées (ILOEST). Taux d'activité (15+) : indicateur EAP_DWAP_SEX_AGE_RT_A, 2023.</a> <a href="/files/08_figures/donnees/fig_intro_5b_emploi_informel_par_sexe_metadata.txt" class="source-ref fig-data" title="Données : emploi informel par sexe, RDC 2020 — OIT ILOSTAT">Emploi informel : indicateur INF_2INF_NOC_RT_A, 2020.</a>*
 
 ---
 
@@ -73,11 +76,11 @@ La structure du marché du travail congolais est marquée par la prédominance d
 
 L'économie congolaise concentre des activités à forte exposition aux risques professionnels. Le secteur minier artisanal et industriel emploie plusieurs centaines de milliers de travailleurs dans des conditions souvent difficiles, avec des risques d'accidents du travail, de maladies professionnelles et d'exposition à des substances dangereuses. Le secteur agricole, qui mobilise la majorité de la main-d'œuvre active, est lui aussi exposé à des risques liés aux conditions de travail en milieu rural. Ces réalités renforcent l'importance d'un suivi statistique rigoureux des affiliés, des cotisants actifs et des victimes d'accidents du travail — données au cœur du présent bulletin.
 
-> **Figure 6** — *Structure de l'emploi par grand secteur d'activité (agriculture, industrie, services), RDC*
+<p class="fig-caption"><strong>Figure 6</strong> — Structure de l'emploi par grand secteur d'activité (agriculture, industrie, services), RDC</p>
 
 ![Structure de l'emploi par grand secteur d'activité, RDC](/files/08_figures/exports/FIG_6_structure_emploi_secteurs.png)
 
-*Source : Banque mondiale, WDI (indicateur ILOEST, 2024). Industrie et services : parts résiduelles estimées.*
+*Source : <a href="/files/08_figures/donnees/fig_intro_6_structure_emploi_par_secteur_metadata.txt" class="source-ref fig-data" title="Données : emploi par secteur RDC 2024 — Banque mondiale WDI / ILOEST">Banque mondiale, WDI (indicateur ILOEST, 2024). Industrie et services : parts résiduelles estimées.</a>*
 
 ---
 

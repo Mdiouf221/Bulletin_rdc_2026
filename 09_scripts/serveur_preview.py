@@ -374,18 +374,26 @@ def build_html() -> str:
        title="Ouvrir le tableau de bord interactif des régimes (ESS)">
       📊 Tableau de bord
     </a>
-    <a href="/export" target="_blank" class="topbar-btn topbar-link"
-       title="Générer et ouvrir un fichier HTML autonome pour relecture hors ligne">
-      📤 Exporter HTML
-    </a>
-    <a href="/download" class="topbar-btn topbar-link"
-       title="Télécharger le bulletin en HTML autonome (fichier à envoyer)">
-      ⬇️ Télécharger
-    </a>
-    <button type="button" id="export-pdf-btn" class="topbar-btn"
-            title="Exporter la vue actuelle en PDF" onclick="exportPreviewPdf()">
-      🖨️ Export PDF
-    </button>
+    <div class="topbar-dropdown">
+      <button class="topbar-btn topbar-dropdown-toggle" title="Options d'exportation">
+        📤 Exporter ▾
+      </button>
+      <div class="topbar-dropdown-menu">
+        <a href="/export" target="_blank" class="topbar-dropdown-item">
+          🌐 HTML (relecture)
+        </a>
+        <a href="/export-word" class="topbar-dropdown-item">
+          📝 Word (.docx)
+        </a>
+        <a href="/download" class="topbar-dropdown-item">
+          ⬇️ Télécharger HTML
+        </a>
+        <div class="topbar-dropdown-divider"></div>
+        <a href="#" class="topbar-dropdown-item" onclick="exportPreviewPdf(); return false;">
+          🖨️ PDF (impression)
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -949,6 +957,8 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             self._serve_dashboard()
         elif self.path in ("/export", "/export-notes"):
             self._handle_export(include_notes=(self.path == "/export-notes"))
+        elif self.path == "/export-word":
+            self._handle_export_word()
         elif self.path == "/download":
             self._handle_download()
         elif self.path == "/api/dashboard-settings":
@@ -1193,7 +1203,63 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
         print(f"[EXPORT] Fichier généré : bulletin_{label}_{stamp}.html")
 
-    def _handle_download(self):
+    def _handle_export_word(self):
+        """GET /export-word — Génère le .docx avec corrections et le sert en téléchargement."""
+        from datetime import datetime as _dt
+        exporter = SCRIPT_DIR / "exporter.py"
+        stamp = _dt.now().strftime("%Y-%m-%d")
+        export_file = WORKSPACE_DIR / "10_output" / f"bulletin_relecture_{stamp}.docx"
+        filename = f"bulletin_relecture_{stamp}.docx"
+
+        if not exporter.exists():
+            self.send_response(503)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(b"exporter.py introuvable dans 09_scripts/")
+            return
+
+        # Supprimer l'ancien .docx pour forcer la régénération complète
+        # (évite de servir un fichier périmé si le fichier est verrouillé ou si la génération échoue)
+        if export_file.exists():
+            try:
+                export_file.unlink()
+            except OSError as e:
+                self.send_response(500)
+                self.send_header("Content-Type", "text/plain; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(
+                    f"Impossible de supprimer l'ancien fichier Word.\n"
+                    f"Fermez le fichier dans Word avant d'exporter.\n\nDétail : {e}".encode("utf-8")
+                )
+                return
+
+        result = subprocess.run(
+            [sys.executable, str(exporter), "--word"],
+            capture_output=True,
+            cwd=str(WORKSPACE_DIR),
+            encoding="utf-8",
+            errors="replace",
+        )
+
+        if result.returncode != 0 or not export_file.exists():
+            self.send_response(500)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            err = (result.stderr or result.stdout or "Erreur inconnue")[:800]
+            self.wfile.write(
+                f"Erreur lors de la génération du fichier Word :\n\n{err}".encode("utf-8")
+            )
+            return
+
+        data = export_file.read_bytes()
+        self.send_response(200)
+        self.send_header("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+        self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(data)
+        print(f"[EXPORT WORD] Fichier servi : {filename}")
         """GET /download — Génère le HTML autonome et le sert en téléchargement direct."""
         from datetime import datetime as _dt
         exporter = SCRIPT_DIR / "exporter.py"
@@ -1291,7 +1357,10 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
                 return
 
             # Fichiers .txt de sources → page HTML enrichie
-            if target.suffix.lower() == ".txt" and "06_sources" in str(target):
+            if target.suffix.lower() == ".txt" and (
+                "06_sources" in str(target) or
+                "08_figures/donnees" in str(target).replace("\\", "/")
+            ):
                 data = self._build_source_viewer(
                     target, rel, val_id, val_file, val_status, ctx, anchor
                 ).encode("utf-8")
@@ -1305,11 +1374,14 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
 
             mime, _ = mimetypes.guess_type(str(target))
             mime = mime or "application/octet-stream"
+            # Forcer charset=utf-8 pour tous les fichiers texte
+            if mime == "text/plain":
+                mime = "text/plain; charset=utf-8"
             data = target.read_bytes()
             self.send_response(200)
             self.send_header("Content-Type", mime)
             self.send_header("Content-Length", str(len(data)))
-            if mime in ("application/pdf", "text/plain"):
+            if "text/plain" in mime or mime == "application/pdf":
                 self.send_header("Content-Disposition", "inline")
             self.end_headers()
             self.wfile.write(data)

@@ -6,6 +6,7 @@ LANGUE : Français
 TYPE : bulletin statistique
 FICHIER : Bulletin Statistique RDC- premiere édition.txt / Bulletin Statistique RDC- premiere édition.pdf
 NIVEAU FIABILITE : 1 — publication officielle nationale, source primaire directe
+LIEN SOURCE — PDF local (present) : 06_sources/bulletins_rdc/Bulletin Statistique RDC- premiere édition.pdf
 
 ---
 

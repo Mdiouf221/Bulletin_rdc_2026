@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit Phase 1 — Bulletin RDC 2026-06-27 11:34</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin:0; background:#f4f6f9; color:#222; }
+  header { background:#1a3a5c; color:#fff; padding:24px 40px; }
+  header h1 { margin:0; font-size:1.4rem; }
+  header p { margin:4px 0 0; opacity:.75; font-size:.9rem; }
+  .container { max-width:1100px; margin:0 auto; padding:32px 24px; }
+  .dashboard { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:16px; margin-bottom:40px; }
+  .card { background:#fff; border-radius:8px; padding:20px; box-shadow:0 1px 4px rgba(0,0,0,.08); text-align:center; }
+  .card .number { font-size:2.2rem; font-weight:700; margin:4px 0; }
+  .card .label { font-size:.8rem; color:#666; }
+  .card.ok .number { color:#1a7a3a; }
+  .card.warn .number { color:#d4820a; }
+  .card.err .number { color:#c0392b; }
+  .section { background:#fff; border-radius:8px; padding:24px; margin-bottom:28px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+  .section h2 { margin-top:0; font-size:1.1rem; border-bottom:2px solid #e8edf2; padding-bottom:8px; }
+  .section h2 .ico { margin-right:6px; }
+  table { width:100%; border-collapse:collapse; font-size:.85rem; }
+  th { background:#f0f4f8; text-align:left; padding:8px 10px; font-weight:600; }
+  td { padding:7px 10px; border-bottom:1px solid #eee; vertical-align:top; }
+  tr:hover td { background:#fafbfc; }
+  code { background:#f0f0f0; padding:1px 5px; border-radius:3px; font-size:.82rem; word-break:break-all; }
+  .badge-ok { color:#1a7a3a; font-weight:700; }
+  .badge-err { color:#c0392b; font-weight:700; }
+  .tag { display:inline-block; padding:2px 7px; border-radius:10px; font-size:.75rem; font-weight:600; }
+  .tag-err { background:#fde8e8; color:#c0392b; }
+  .tag-warn { background:#fef3e2; color:#d4820a; }
+  .tag-ok { background:#e8f5e9; color:#1a7a3a; }
+  .tag-info { background:#e3edf7; color:#1a3a5c; }
+  .summary-bar { background:#e8f0fa; border-left:4px solid #1a3a5c; padding:12px 16px; border-radius:4px; margin-bottom:24px; font-size:.95rem; }
+  .collapse-btn { cursor:pointer; color:#1a3a5c; text-decoration:underline; font-size:.85rem; }
+  details summary { cursor:pointer; padding:4px 0; color:#1a3a5c; font-weight:600; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🔍 Audit Phase 1 — Bulletin statistique de la protection sociale en RDC</h1>
+  <p>Rapport généré le 2026-06-27 11:34 · 72 fichiers .md analysés · 48 sources dans le registre</p>
+</header>
+<div class="container">
+
+<div class="dashboard">
+<div class="card err"><div class="number">⚠️ 245</div><div class="label">problèmes structurels</div></div>
+<div class="card ok"><div class="number">183</div><div class="label">annotations data-val-id</div></div>
+<div class="card ok"><div class="number">0</div><div class="label">data-val-id dupliqués</div></div>
+<div class="card ok"><div class="number">0</div><div class="label">liens brisés</div></div>
+<div class="card warn"><div class="number">245</div><div class="label">chiffres non annotés</div></div>
+<div class="card ok"><div class="number">0</div><div class="label">PDF manquants</div></div>
+<div class="card ok"><div class="number">0</div><div class="label">TXT manquants</div></div>
+<div class="card warn"><div class="number">36</div><div class="label">sources sans backlink</div></div>
+<div class="card warn"><div class="number">36</div><div class="label">sources à valider (vérif. PDF)</div></div>
+<div class="card ok"><div class="number">0</div><div class="label">données-clés non vérifiables</div></div>
+<div class="card warn"><div class="number">18</div><div class="label">données à vérifier en ligne</div></div>
+</div>
+<div class="summary-bar">⚠️ <strong>245 problèmes identifiés</strong> nécessitant attention avant publication. Détail ci-dessous.</div>
+<div class="section"><h2><span class="ico">🔗</span> 1. Liens brisés (source-ref href introuvables sur disque)</h2>
+<p class="badge-ok">✅ Aucun lien brisé détecté.</p>
+</div>
+<div class="section"><h2><span class="ico">🔁</span> 2. data-val-id dupliqués (unicité requise)</h2>
+<p class="badge-ok">✅ Tous les data-val-id sont uniques.</p>
+</div>
+<div class="section"><h2><span class="ico">🔢</span> 3. Chiffres dans tableaux Markdown sans annotation data-val-id</h2>
+<p style="color:#666;font-size:.85rem">Un chiffre dans un tableau qui n'est entouré d'aucun <code>&lt;span class="val"&gt;</code> ou <code>&lt;a class="source-ref"&gt;</code> ne peut pas être tracé jusqu'à sa source. Risque d'hallucination non détectable.</p>
+<p class="badge-err">⚠️ 245 chiffre(s) non annoté(s) dans des tableaux</p>
+<details><summary>00_pilotage\agents\README.md — 7 chiffre(s)</summary>
+<table><tr><th>Ligne</th><th>Valeur</th><th>Extrait de la ligne</th></tr>
+<tr><td>7</td><td><strong>4.6</strong></td><td><code>| Orchestrateur | `agent_orchestrateur.md` | `claude-sonnet-4.6` | Dispatcher central |</code></td></tr>
+<tr><td>8</td><td><strong>4.6</strong></td><td><code>| Rédacteur | `agent_redacteur.md` | `claude-sonnet-4.6` | Passe 3 — rédaction |</code></td></tr>
+<tr><td>9</td><td><strong>4.5</strong></td><td><code>| Structureur | `agent_structureur.md` | `claude-haiku-4.5` | Passe 1 — structure |</code></td></tr>
+<tr><td>10</td><td><strong>4.5</strong></td><td><code>| Analyste sources | `agent_analyste_sources.md` | `claude-sonnet-4.5` | Passe 2 — notes |</code></td></tr>
+<tr><td>11</td><td><strong>5.4</strong></td><td><code>| Chercheur web | `agent_chercheur_web.md` | `gpt-5.4` | PROC-001 — recherche |</code></td></tr>
+<tr><td>12</td><td><strong>4.5</strong></td><td><code>| Réviseur | `agent_reviseur.md` | `claude-haiku-4.5` | PROC-003/004 — révision |</code></td></tr>
+<tr><td>13</td><td><strong>5.3</strong></td><td><code>| Technicien | `agent_technicien.md` | `gpt-5.3-codex` | Scripts, build |</code></td></tr>
+</table></details>
+<details><summary>00_pilotage\indicateurs_odd_regles_calcul.md — 67 chiffre(s)</summary>
+<table><tr><th>Ligne</th><th>Valeur</th><th>Extrait de la ligne</th></tr>
+<tr><td>42</td><td><strong>52,4 %</strong></td><td><code>| **Référence mondiale 2023** | 52,4 % (Afrique : 19,1 %) |</code></td></tr>
+<tr><td>42</td><td><strong>19,1 %</strong></td><td><code>| **Référence mondiale 2023** | 52,4 % (Afrique : 19,1 %) |</code></td></tr>
+<tr><td>43</td><td><strong>46,9 %</strong></td><td><code>| **Référence mondiale 2020** | 46,9 % |</code></td></tr>
+<tr><td>45</td><td><strong>2.2</strong></td><td><code>| **Note** | Cet indicateur est la somme non-dupliquée des sous-indicateurs 2.2 à 2.8 ; le double comptage entre groupes</code></td></tr>
+<tr><td>45</td><td><strong>2.8</strong></td><td><code>| **Note** | Cet indicateur est la somme non-dupliquée des sous-indicateurs 2.2 à 2.8 ; le double comptage entre groupes</code></td></tr>
+<tr><td>54</td><td><strong>28,2 %</strong></td><td><code>| **Référence mondiale 2023** | 28,2 % (enfants 0–15) / 23,9 % (enfants 0–18) |</code></td></tr>
+<tr><td>54</td><td><strong>23,9 %</strong></td><td><code>| **Référence mondiale 2023** | 28,2 % (enfants 0–15) / 23,9 % (enfants 0–18) |</code></td></tr>
+<tr><td>55</td><td><strong>26,4 %</strong></td><td><code>| **Référence mondiale 2020** | 26,4 % |</code></td></tr>
+<tr><td>66</td><td><strong>36,4 %</strong></td><td><code>| **Référence mondiale 2023** | 36,4 % |</code></td></tr>
+<tr><td>67</td><td><strong>44,9 %</strong></td><td><code>| **Référence mondiale 2020** | 44,9 % |</code></td></tr>
+<tr><td>78</td><td><strong>38,9 %</strong></td><td><code>| **Référence mondiale 2023** | 38,9 % |</code></td></tr>
+<tr><td>79</td><td><strong>33,5 %</strong></td><td><code>| **Référence mondiale 2020** | 33,5 % |</code></td></tr>
+<tr><td>81</td><td><strong>1 781</strong></td><td><code>| **Note** | En RDC : affiché N/A dans le 1er bulletin alors que la CNSS déclare 1 781 bénéficiaires de pensions d&#x27;inval</code></td></tr>
+<tr><td>90</td><td><strong>37,4 %</strong></td><td><code>| **Référence mondiale 2023** | 37,4 % |</code></td></tr>
+<tr><td>91</td><td><strong>35,4 %</strong></td><td><code>| **Référence mondiale 2020** | 35,4 % |</code></td></tr>
+<tr><td>93</td><td><strong>1,8 %</strong></td><td><code>| **Note** | En RDC : 1,8 % affiché dans le 1er bulletin. La CNSS Régime 2 est la source principale (bien documentée). L</code></td></tr>
+<tr><td>102</td><td><strong>16,7 %</strong></td><td><code>| **Référence mondiale 2023** | 16,7 % |</code></td></tr>
+<tr><td>103</td><td><strong>18,6 %</strong></td><td><code>| **Référence mondiale 2020** | 18,6 % |</code></td></tr>
+<tr><td>105</td><td><strong>0,0 %</strong></td><td><code>| **Note** | En RDC : 0,0 % — aucun régime d&#x27;assurance chômage n&#x27;existe. Valeur correcte et stable. |</code></td></tr>
+<tr><td>114</td><td><strong>79,6 %</strong></td><td><code>| **Référence mondiale 2023** | 79,6 % |</code></td></tr>
+<tr><td>115</td><td><strong>77,5 %</strong></td><td><code>| **Référence mondiale 2020** | 77,5 % |</code></td></tr>
+<tr><td>126</td><td><strong>37,3 %</strong></td><td><code>| **Référence mondiale 2023** | 37,3 % |</code></td></tr>
+<tr><td>127</td><td><strong>28,9 %</strong></td><td><code>| **Référence mondiale 2020** | 28,9 % |</code></td></tr>
+<tr><td>129</td><td><strong>2,9 %</strong></td><td><code>| **Note** | Indicateur le plus sujet à interprétation nationale. L&#x27;OIT précise : *&quot;This indicator refers to social assi</code></td></tr>
+<tr><td>140</td><td><strong>6,4 %</strong></td><td><code>| **Note** | Indicateur complémentaire mesurant la couverture contributive, distinct de la couverture effective par pres</code></td></tr>
+<tr><td>156</td><td><strong>1.3</strong></td><td><code>| FSS — Santé | FSS | Santé | Non inclus ODD 1.3.1 (exclusion santé) | N/A | — |</code></td></tr>
+<tr><td>161</td><td><strong>1.3</strong></td><td><code>| MESP | MESP | Santé enseignants | Non inclus ODD 1.3.1 (exclusion santé) | N/A | — |</code></td></tr>
+<tr><td>167</td><td><strong>2.2</strong></td><td><code>| 2.2 Enfants | CNSS Familles, CNSSAP Familles | Foyers bénéficiaires × facteur enfants | Population 0–17 ans (ONU WPP) </code></td></tr>
+<tr><td>168</td><td><strong>2.3</strong></td><td><code>| 2.3 Maternité | CNSS Familles | Indemnités journalières maternité | Naissances vivantes (INS) | ⚠ Possible mais non ré</code></td></tr>
+<tr><td>169</td><td><strong>2.4</strong></td><td><code>| 2.4 Handicap | CNSS Pensions (invalidité) | Bénéficiaires pensions invalidité | Population handicapée grave (à estimer</code></td></tr>
+<tr><td>170</td><td><strong>2.5</strong></td><td><code>| 2.5 AT/MP | CNSS AT/MP, CNSSAP AT/MP | Cotisants/assurés actifs AT/MP | Population active (ILOSTAT) | ✓ Bonne (CNSS se</code></td></tr>
+<tr><td>171</td><td><strong>2.6</strong></td><td><code>| 2.6 Chômage | Aucune | Aucun bénéficiaire | Chômeurs (ILOSTAT) | ✓ = 0,0 % confirmé |</code></td></tr>
+<tr><td>171</td><td><strong>0,0 %</strong></td><td><code>| 2.6 Chômage | Aucune | Aucun bénéficiaire | Chômeurs (ILOSTAT) | ✓ = 0,0 % confirmé |</code></td></tr>
+<tr><td>172</td><td><strong>2.7</strong></td><td><code>| 2.7 Vieillesse | CNSS Pensions, CNSSAP Base | Pensionnés vieillesse | Pop. au-delà âge légal (ONU WPP) | ✓ Bonne |</code></td></tr>
+<tr><td>173</td><td><strong>2.8</strong></td><td><code>| 2.8 Assistance sociale | MINAS, PAM, STEP | Bénéficiaires programmes | Population totale | ⚠ Fragmentée, double compta</code></td></tr>
+<tr><td>174</td><td><strong>2.9</strong></td><td><code>| 2.9 Cotisants retraite | CNSS Pensions, CNSSAP Base | Cotisants actifs déclarés | Force de travail (ILOSTAT) | ⚠ Probl</code></td></tr>
+<tr><td>186</td><td><strong>6,4 %</strong></td><td><code>| Cotisants actifs retraite | 6,4 % | (613 761 CNSS + 198 399 CNSSAP) / 35 059 191 ≈ **2,3 %** | **+4,1 points** |</code></td></tr>
+<tr><td>186</td><td><strong>613 761</strong></td><td><code>| Cotisants actifs retraite | 6,4 % | (613 761 CNSS + 198 399 CNSSAP) / 35 059 191 ≈ **2,3 %** | **+4,1 points** |</code></td></tr>
+<tr><td>186</td><td><strong>198 399</strong></td><td><code>| Cotisants actifs retraite | 6,4 % | (613 761 CNSS + 198 399 CNSSAP) / 35 059 191 ≈ **2,3 %** | **+4,1 points** |</code></td></tr>
+<tr><td>186</td><td><strong>35 059 191</strong></td><td><code>| Cotisants actifs retraite | 6,4 % | (613 761 CNSS + 198 399 CNSSAP) / 35 059 191 ≈ **2,3 %** | **+4,1 points** |</code></td></tr>
+<tr><td>186</td><td><strong>2,3 %</strong></td><td><code>| Cotisants actifs retraite | 6,4 % | (613 761 CNSS + 198 399 CNSSAP) / 35 059 191 ≈ **2,3 %** | **+4,1 points** |</code></td></tr>
+<tr><td>186</td><td><strong>4,1</strong></td><td><code>| Cotisants actifs retraite | 6,4 % | (613 761 CNSS + 198 399 CNSSAP) / 35 059 191 ≈ **2,3 %** | **+4,1 points** |</code></td></tr>
+<tr><td>201</td><td><strong>2,9 %</strong></td><td><code>| Vulnérables — assistance sociale | 2,9 % | 1 130 048 / 99 010 212 ≈ **1,14 %** | **+1,76 points** |</code></td></tr>
+<tr><td>201</td><td><strong>1 130 048</strong></td><td><code>| Vulnérables — assistance sociale | 2,9 % | 1 130 048 / 99 010 212 ≈ **1,14 %** | **+1,76 points** |</code></td></tr>
+<tr><td>201</td><td><strong>99 010 212</strong></td><td><code>| Vulnérables — assistance sociale | 2,9 % | 1 130 048 / 99 010 212 ≈ **1,14 %** | **+1,76 points** |</code></td></tr>
+<tr><td>201</td><td><strong>1,14 %</strong></td><td><code>| Vulnérables — assistance sociale | 2,9 % | 1 130 048 / 99 010 212 ≈ **1,14 %** | **+1,76 points** |</code></td></tr>
+<tr><td>201</td><td><strong>1,76</strong></td><td><code>| Vulnérables — assistance sociale | 2,9 % | 1 130 048 / 99 010 212 ≈ **1,14 %** | **+1,76 points** |</code></td></tr>
+<tr><td>209</td><td><strong>2,6 %</strong></td><td><code>| Enfants (0–17) | 2,6 % | 1 130 048 / 52 490 412 ≈ **2,15 %** | **+0,45 points** |</code></td></tr>
+<tr><td>209</td><td><strong>1 130 048</strong></td><td><code>| Enfants (0–17) | 2,6 % | 1 130 048 / 52 490 412 ≈ **2,15 %** | **+0,45 points** |</code></td></tr>
+<tr><td>209</td><td><strong>52 490 412</strong></td><td><code>| Enfants (0–17) | 2,6 % | 1 130 048 / 52 490 412 ≈ **2,15 %** | **+0,45 points** |</code></td></tr>
+<tr><td>209</td><td><strong>2,15 %</strong></td><td><code>| Enfants (0–17) | 2,6 % | 1 130 048 / 52 490 412 ≈ **2,15 %** | **+0,45 points** |</code></td></tr>
+<tr><td>209</td><td><strong>0,45</strong></td><td><code>| Enfants (0–17) | 2,6 % | 1 130 048 / 52 490 412 ≈ **2,15 %** | **+0,45 points** |</code></td></tr>
+<tr><td>246</td><td><strong>2.2</strong></td><td><code>| Q1 | ~~Quel facteur enfants/foyer utiliser pour la CNSS ?~~ → **RÉSOLUE — voir DM-010** | Sous-indicateur 2.2 | ✅ |</code></td></tr>
+<tr><td>247</td><td><strong>1.3</strong></td><td><code>| Q2 | Inclure ou exclure le PAM dans ODD 1.3.1 ? Et dans quel sous-indicateur ? | Sous-indicateurs 2.2 et 2.8 | Haute |</code></td></tr>
+<tr><td>247</td><td><strong>2.2</strong></td><td><code>| Q2 | Inclure ou exclure le PAM dans ODD 1.3.1 ? Et dans quel sous-indicateur ? | Sous-indicateurs 2.2 et 2.8 | Haute |</code></td></tr>
+<tr><td>247</td><td><strong>2.8</strong></td><td><code>| Q2 | Inclure ou exclure le PAM dans ODD 1.3.1 ? Et dans quel sous-indicateur ? | Sous-indicateurs 2.2 et 2.8 | Haute |</code></td></tr>
+<tr><td>248</td><td><strong>1,6</strong></td><td><code>| Q3 | Utiliser estimation CNSSAP (1,6M) ou données ESS réelles (198 399) pour les cotisants ? | Sous-indicateur 2.9 | H</code></td></tr>
+<tr><td>248</td><td><strong>198 399</strong></td><td><code>| Q3 | Utiliser estimation CNSSAP (1,6M) ou données ESS réelles (198 399) pour les cotisants ? | Sous-indicateur 2.9 | H</code></td></tr>
+<tr><td>248</td><td><strong>2.9</strong></td><td><code>| Q3 | Utiliser estimation CNSSAP (1,6M) ou données ESS réelles (198 399) pour les cotisants ? | Sous-indicateur 2.9 | H</code></td></tr>
+<tr><td>249</td><td><strong>2.7</strong></td><td><code>| Q4 | Quel dénominateur pour les personnes âgées ? (âge légal retraite = 60 ou 65 ans selon régime) | Sous-indicateur 2</code></td></tr>
+<tr><td>253</td><td><strong>2.4</strong></td><td><code>| Q8 | Quel est le dénominateur pour le sous-indicateur handicap (prévalence nationale du handicap grave) ? | Sous-indic</code></td></tr>
+<tr><td>254</td><td><strong>4.7</strong></td><td><code>| Q9 | ODD calculé à partir des ESS ou tableau de bord OIT ? (Options A/B/C — voir section 4.7) | Tous | Critique |</code></td></tr>
+<tr><td>340</td><td><strong>1.3</strong></td><td><code>| Pays | Couverture globale ODD 1.3.1 | Approche notable |</code></td></tr>
+<tr><td>342</td><td><strong>27,0 %</strong></td><td><code>| **Timor-Leste** (2024) | 27,0 % | Distinction contributif (12,2 %) / non-contributif (14,8 %) présentée séparément |</code></td></tr>
+<tr><td>342</td><td><strong>12,2 %</strong></td><td><code>| **Timor-Leste** (2024) | 27,0 % | Distinction contributif (12,2 %) / non-contributif (14,8 %) présentée séparément |</code></td></tr>
+<tr><td>342</td><td><strong>14,8 %</strong></td><td><code>| **Timor-Leste** (2024) | 27,0 % | Distinction contributif (12,2 %) / non-contributif (14,8 %) présentée séparément |</code></td></tr>
+<tr><td>343</td><td><strong>22,1 %</strong></td><td><code>| **São Tomé-et-Príncipe** (2021) | 22,1 % | Tableau par régime et par sexe (H/F) ; limites du secteur informel document</code></td></tr>
+</table></details>
+<details><summary>00_pilotage\journal_modifications.md — 13 chiffre(s)</summary>
+<table><tr><th>Ligne</th><th>Valeur</th><th>Extrait de la ligne</th></tr>
+<tr><td>14</td><td><strong>2.1</strong></td><td><code>| 2026-06-27 | `09_scripts/preview.css`, `05_references/instructions_redactionnelles.md`, `07_tableaux/registre_tableaux</code></td></tr>
+<tr><td>14</td><td><strong>2.4</strong></td><td><code>| 2026-06-27 | `09_scripts/preview.css`, `05_references/instructions_redactionnelles.md`, `07_tableaux/registre_tableaux</code></td></tr>
+<tr><td>14</td><td><strong>4.1</strong></td><td><code>| 2026-06-27 | `09_scripts/preview.css`, `05_references/instructions_redactionnelles.md`, `07_tableaux/registre_tableaux</code></td></tr>
+<tr><td>14</td><td><strong>4.19</strong></td><td><code>| 2026-06-27 | `09_scripts/preview.css`, `05_references/instructions_redactionnelles.md`, `07_tableaux/registre_tableaux</code></td></tr>
+<tr><td>14</td><td><strong>5.1</strong></td><td><code>| 2026-06-27 | `09_scripts/preview.css`, `05_references/instructions_redactionnelles.md`, `07_tableaux/registre_tableaux</code></td></tr>
+<tr><td>14</td><td><strong>5.7</strong></td><td><code>| 2026-06-27 | `09_scripts/preview.css`, `05_references/instructions_redactionnelles.md`, `07_tableaux/registre_tableaux</code></td></tr>
+<tr><td>16</td><td><strong>4.2</strong></td><td><code>| 2026-06-26 | `03_chapitres/chapitre_4/4.2_vieillesse.md` | Amélioration rédactionnelle | Ajout note contextuelle sur l</code></td></tr>
+<tr><td>17</td><td><strong>4.3</strong></td><td><code>| 2026-06-26 | `03_chapitres/chapitre_4/4.3_age_actif.md` | Amélioration rédactionnelle | Ajout note méthodologique sur </code></td></tr>
+<tr><td>18</td><td><strong>4.4</strong></td><td><code>| 2026-06-26 | `03_chapitres/chapitre_4/4.4_enfants_familles.md` à `4.8_depenses_financement.md` | Correction données | </code></td></tr>
+<tr><td>18</td><td><strong>4.8</strong></td><td><code>| 2026-06-26 | `03_chapitres/chapitre_4/4.4_enfants_familles.md` à `4.8_depenses_financement.md` | Correction données | </code></td></tr>
+<tr><td>37</td><td><strong>0.1</strong></td><td><code>| 2026-06-01 | `11_references_externes/` | Structure | Création du dossier de références externes et du registre README_</code></td></tr>
+<tr><td>62</td><td><strong>226 648</strong></td><td><code>| 2026-06-10 | `06_donnees/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt` | Source | Création : données</code></td></tr>
+<tr><td>62</td><td><strong>4 000</strong></td><td><code>| 2026-06-10 | `06_donnees/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt` | Source | Création : données</code></td></tr>
+</table></details>
+<details><summary>00_pilotage\matrice_couverture_regimes.md — 20 chiffre(s)</summary>
+<table><tr><th>Ligne</th><th>Valeur</th><th>Extrait de la ligne</th></tr>
+<tr><td>29</td><td><strong>1.3</strong></td><td><code>| **N4** | **Cotisants actifs** | Personnes pour lesquelles une cotisation est effectivement versée ou enregistrée sur l</code></td></tr>
+<tr><td>30</td><td><strong>1.3</strong></td><td><code>| **N5** | **Bénéficiaires effectifs** | Personnes ayant effectivement reçu au moins une prestation en espèces au cours </code></td></tr>
+<tr><td>54</td><td><strong>19,5</strong></td><td><code>| N1 | Travailleurs RDC (estimé) | N/D | ~19,5M | ~20M | ~20,5M | ~21M | ILOSTAT modelled | Estimée |</code></td></tr>
+<tr><td>54</td><td><strong>20,5</strong></td><td><code>| N1 | Travailleurs RDC (estimé) | N/D | ~19,5M | ~20M | ~20,5M | ~21M | ILOSTAT modelled | Estimée |</code></td></tr>
+<tr><td>58</td><td><strong>613 761</strong></td><td><code>| N4 | Cotisants actifs pensions | N/D | N/D | N/D | 613 761 | N/D | ESS CNSS 2022 | Robuste |</code></td></tr>
+<tr><td>71</td><td><strong>19,5</strong></td><td><code>| N1 | Force de travail RDC | N/D | ~19,5M | ~20M | ~20,5M | ~21M | ILOSTAT | Estimée |</code></td></tr>
+<tr><td>71</td><td><strong>20,5</strong></td><td><code>| N1 | Force de travail RDC | N/D | ~19,5M | ~20M | ~20,5M | ~21M | ILOSTAT | Estimée |</code></td></tr>
+<tr><td>85</td><td><strong>52,5</strong></td><td><code>| N1 enfants | Population 0–17 ans RDC | N/D | N/D | N/D | ~52,5M | N/D | ONU WPP 2024 | Bonne |</code></td></tr>
+<tr><td>103</td><td><strong>1,6</strong></td><td><code>| N1 | Travailleurs secteur public RDC (estimé) | N/D | ~1,6M | N/D | N/D | N/D | ILOSTAT | Estimée |</code></td></tr>
+<tr><td>104</td><td><strong>2,4</strong></td><td><code>| N1b | Travailleurs secteur public total (avec non-mécanisés) | N/D | ~2,4M | N/D | N/D | N/D | OIT/ILOSTAT | Estimée |</code></td></tr>
+<tr><td>105</td><td><strong>1,6</strong></td><td><code>| N2 | Fonctionnaires légalement couverts CNSSAP | N/D | ~1,6M | N/D | N/D | N/D | ILOSTAT 2020 | Estimée |</code></td></tr>
+<tr><td>107</td><td><strong>172 304</strong></td><td><code>| N4 | Cotisants actifs CNSSAP | N/D | 172 304 | 190 545 | 198 399 | N/D | ESS CNSSAP | Robuste |</code></td></tr>
+<tr><td>107</td><td><strong>190 545</strong></td><td><code>| N4 | Cotisants actifs CNSSAP | N/D | 172 304 | 190 545 | 198 399 | N/D | ESS CNSSAP | Robuste |</code></td></tr>
+<tr><td>107</td><td><strong>198 399</strong></td><td><code>| N4 | Cotisants actifs CNSSAP | N/D | 172 304 | 190 545 | 198 399 | N/D | ESS CNSSAP | Robuste |</code></td></tr>
+<tr><td>108</td><td><strong>1 329</strong></td><td><code>| N5 | Bénéficiaires pensions CNSSAP (classique + réforme basculement) | 845 | 814 | 780 | 1 329 + 3 653 = ~4 982 | N/D </code></td></tr>
+<tr><td>108</td><td><strong>3 653</strong></td><td><code>| N5 | Bénéficiaires pensions CNSSAP (classique + réforme basculement) | 845 | 814 | 780 | 1 329 + 3 653 = ~4 982 | N/D </code></td></tr>
+<tr><td>108</td><td><strong>4 982</strong></td><td><code>| N5 | Bénéficiaires pensions CNSSAP (classique + réforme basculement) | 845 | 814 | 780 | 1 329 + 3 653 = ~4 982 | N/D </code></td></tr>
+<tr><td>149</td><td><strong>3 790 107</strong></td><td><code>| N5 (connexe) | Bénéficiaires transferts monétaires PAM | ~3 790 107 | N/D | ESS 2023 / PAM | Externe |</code></td></tr>
+<tr><td>150</td><td><strong>246 530</strong></td><td><code>| N5b (connexe) | Bénéficiaires repas scolaires PAM | ~246 530 | N/D | ESS 2023 / PAM | Externe |</code></td></tr>
+<tr><td>161</td><td><strong>1.3</strong></td><td><code>| **Taux de couverture effective** | (N4 + N5) / N1 | **Numérateur ODD 1.3.1** |</code></td></tr>
+</table></details>
+<details><summary>00_pilotage\processus\PROC-009.md — 1 chiffre(s)</summary>
+<table><tr><th>Ligne</th><th>Valeur</th><th>Extrait de la ligne</th></tr>
+<tr><td>40</td><td><strong>1.3</strong></td><td><code>| C1 | **Nature de la prestation** | La prestation est-elle versée en espèces (cash) ? Les prestations en nature (alimen</code></td></tr>
+</table></details>
+<details><summary>00_pilotage\registre_inclusion_programmes.md — 11 chiffre(s)</summary>
+<table><tr><th>Ligne</th><th>Valeur</th><th>Extrait de la ligne</th></tr>
+<tr><td>48</td><td><strong>2.8</strong></td><td><code>| **Sous-indicateur ODD concerné** | 2.8 — Personnes vulnérables / assistance sociale |</code></td></tr>
+<tr><td>76</td><td><strong>1.3</strong></td><td><code>| **Sous-indicateur ODD concerné** | Non applicable à ODD 1.3.1 |</code></td></tr>
+<tr><td>83</td><td><strong>1.3</strong></td><td><code>| C1 — Prestation en espèces | **Non** | Prestation en nature (alimentation) ; ODD 1.3.1 est limité aux cash benefits |</code></td></tr>
+<tr><td>104</td><td><strong>2.8</strong></td><td><code>| **Sous-indicateur ODD concerné** | 2.8 — Personnes vulnérables / assistance sociale |</code></td></tr>
+<tr><td>132</td><td><strong>2.4</strong></td><td><code>| **Sous-indicateurs ODD concernés** | 2.4 (invalidité), 2.7 (vieillesse), indicateur global |</code></td></tr>
+<tr><td>132</td><td><strong>2.7</strong></td><td><code>| **Sous-indicateurs ODD concernés** | 2.4 (invalidité), 2.7 (vieillesse), indicateur global |</code></td></tr>
+<tr><td>148</td><td><strong>2.7</strong></td><td><code>| **Sous-indicateurs ODD concernés** | 2.7 (vieillesse), 2.9 (cotisants actifs), indicateur global |</code></td></tr>
+<tr><td>148</td><td><strong>2.9</strong></td><td><code>| **Sous-indicateurs ODD concernés** | 2.7 (vieillesse), 2.9 (cotisants actifs), indicateur global |</code></td></tr>
+<tr><td>164</td><td><strong>2.2</strong></td><td><code>| **Sous-indicateurs ODD concernés** | 2.2 (enfants/famille), 2.5 (AT/MP) |</code></td></tr>
+<tr><td>164</td><td><strong>2.5</strong></td><td><code>| **Sous-indicateurs ODD concernés** | 2.2 (enfants/famille), 2.5 (AT/MP) |</code></td></tr>
+<tr><td>180</td><td><strong>2.8</strong></td><td><code>| **Sous-indicateur ODD concerné** | 2.8 — Personnes vulnérables / assistance sociale |</code></td></tr>
+</table></details>
+<details><summary>03_chapitres\chapitre_4\4.9_odd_131.md — 4 chiffre(s)</summary>
+<table><tr><th>Ligne</th><th>Valeur</th><th>Extrait de la ligne</th></tr>
+<tr><td>61</td><td><strong>1.3</strong></td><td><code>| Sous-indicateur ODD 1.3.1 | Définition |</code></td></tr>
+<tr><td>72</td><td><strong>1.3</strong></td><td><code>| Sous-indicateur ODD 1.3.1 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |</code></td></tr>
+<tr><td>87</td><td><strong>1.3</strong></td><td><code>| Pays / Région | ODD 1.3.1 — population totale (%) | Année | Source |</code></td></tr>
+<tr><td>103</td><td><strong>1.3</strong></td><td><code>| ODD 1.3.1 — population totale (%) | [EST.] | [N/D — cible PNPS à rechercher] | 0 |</code></td></tr>
+</table></details>
+<details><summary>03_chapitres\chapitre_5\00_plan_chapitre_5.md — 4 chiffre(s)</summary>
+<table><tr><th>Ligne</th><th>Valeur</th><th>Extrait de la ligne</th></tr>
+<tr><td>28</td><td><strong>1.3</strong></td><td><code>| Sous-indicateur ODD 1.3.1 | Définition |</code></td></tr>
+<tr><td>41</td><td><strong>1.3</strong></td><td><code>| Sous-indicateur ODD 1.3.1 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |</code></td></tr>
+<tr><td>56</td><td><strong>1.3</strong></td><td><code>| Pays / Région | ODD 1.3.1 — population totale (%) | Année | Source |</code></td></tr>
+<tr><td>96</td><td><strong>3.8</strong></td><td><code>| Pays / Région | Indice ODD 3.8.1 (0–100) | Année | Source |</code></td></tr>
+</table></details>
+<details><summary>04_annexes\annexe_B_fiches_institutionnelles.md — 28 chiffre(s)</summary>
+<table><tr><th>Ligne</th><th>Valeur</th><th>Extrait de la ligne</th></tr>
+<tr><td>94</td><td><strong>676 179</strong></td><td><code>| Cotisants actifs (contributeurs) | 676 179 | 508 708 | 591 130 | 613 761 |  |</code></td></tr>
+<tr><td>94</td><td><strong>508 708</strong></td><td><code>| Cotisants actifs (contributeurs) | 676 179 | 508 708 | 591 130 | 613 761 |  |</code></td></tr>
+<tr><td>94</td><td><strong>591 130</strong></td><td><code>| Cotisants actifs (contributeurs) | 676 179 | 508 708 | 591 130 | 613 761 |  |</code></td></tr>
+<tr><td>94</td><td><strong>613 761</strong></td><td><code>| Cotisants actifs (contributeurs) | 676 179 | 508 708 | 591 130 | 613 761 |  |</code></td></tr>
+<tr><td>96</td><td><strong>1 082</strong></td><td><code>| Bénéficiaires AT/MP (rentes d&#x27;incapacité) | 1 082 | 1 020 | 955 | 1 053 |  |</code></td></tr>
+<tr><td>96</td><td><strong>1 020</strong></td><td><code>| Bénéficiaires AT/MP (rentes d&#x27;incapacité) | 1 082 | 1 020 | 955 | 1 053 |  |</code></td></tr>
+<tr><td>96</td><td><strong>1 053</strong></td><td><code>| Bénéficiaires AT/MP (rentes d&#x27;incapacité) | 1 082 | 1 020 | 955 | 1 053 |  |</code></td></tr>
+<tr><td>97</td><td><strong>1 476</strong></td><td><code>| Bénéficiaires AT/MP (rentes de survivant) | 1 476 | 1 608 | 1 845 | 1 781 |  |</code></td></tr>
+<tr><td>97</td><td><strong>1 608</strong></td><td><code>| Bénéficiaires AT/MP (rentes de survivant) | 1 476 | 1 608 | 1 845 | 1 781 |  |</code></td></tr>
+<tr><td>97</td><td><strong>1 845</strong></td><td><code>| Bénéficiaires AT/MP (rentes de survivant) | 1 476 | 1 608 | 1 845 | 1 781 |  |</code></td></tr>
+<tr><td>97</td><td><strong>1 781</strong></td><td><code>| Bénéficiaires AT/MP (rentes de survivant) | 1 476 | 1 608 | 1 845 | 1 781 |  |</code></td></tr>
+<tr><td>138</td><td><strong>172 204</strong></td><td><code>| Contributeurs actifs (total) | 172 204 |  |  | 198 399 |  |</code></td></tr>
+<tr><td>138</td><td><strong>198 399</strong></td><td><code>| Contributeurs actifs (total) | 172 204 |  |  | 198 399 |  |</code></td></tr>
+<tr><td>139</td><td><strong>110 912</strong></td><td><code>| dont hommes | 110 912 |  |  | 138 443 |  |</code></td></tr>
+<tr><td>139</td><td><strong>138 443</strong></td><td><code>| dont hommes | 110 912 |  |  | 138 443 |  |</code></td></tr>
+<tr><td>140</td><td><strong>65 624</strong></td><td><code>| dont femmes |  | 65 624 |  |  |  |</code></td></tr>
+<tr><td>222</td><td><strong>50 256</strong></td><td><code>| Contributeurs (titulaires enseignants) | 50 256 | 54 383 | 60 745 | 80 041 |  |</code></td></tr>
+<tr><td>222</td><td><strong>54 383</strong></td><td><code>| Contributeurs (titulaires enseignants) | 50 256 | 54 383 | 60 745 | 80 041 |  |</code></td></tr>
+<tr><td>222</td><td><strong>60 745</strong></td><td><code>| Contributeurs (titulaires enseignants) | 50 256 | 54 383 | 60 745 | 80 041 |  |</code></td></tr>
+<tr><td>222</td><td><strong>80 041</strong></td><td><code>| Contributeurs (titulaires enseignants) | 50 256 | 54 383 | 60 745 | 80 041 |  |</code></td></tr>
+<tr><td>223</td><td><strong>72 291</strong></td><td><code>| Membres de famille à charge | 72 291 | 76 578 | 81 081 | 84 836 |  |</code></td></tr>
+<tr><td>223</td><td><strong>76 578</strong></td><td><code>| Membres de famille à charge | 72 291 | 76 578 | 81 081 | 84 836 |  |</code></td></tr>
+<tr><td>223</td><td><strong>81 081</strong></td><td><code>| Membres de famille à charge | 72 291 | 76 578 | 81 081 | 84 836 |  |</code></td></tr>
+<tr><td>223</td><td><strong>84 836</strong></td><td><code>| Membres de famille à charge | 72 291 | 76 578 | 81 081 | 84 836 |  |</code></td></tr>
+<tr><td>224</td><td><strong>122 547</strong></td><td><code>| **Total couvert** | **122 547** | **130 961** | **141 826** | **164 877** |  |</code></td></tr>
+<tr><td>224</td><td><strong>130 961</strong></td><td><code>| **Total couvert** | **122 547** | **130 961** | **141 826** | **164 877** |  |</code></td></tr>
+<tr><td>224</td><td><strong>141 826</strong></td><td><code>| **Total couvert** | **122 547** | **130 961** | **141 826** | **164 877** |  |</code></td></tr>
+<tr><td>224</td><td><strong>164 877</strong></td><td><code>| **Total couvert** | **122 547** | **130 961** | **141 826** | **164 877** |  |</code></td></tr>
+</table></details>
+<details><summary>07_tableaux\registre_tableaux.md — 90 chiffre(s)</summary>
+<table><tr><th>Ligne</th><th>Valeur</th><th>Extrait de la ligne</th></tr>
+<tr><td>26</td><td><strong>2.1</strong></td><td><code>| Tableau 2.1 | Sécurité sociale contributive obligatoire : CNSS et CNSSAP | Chapitre 2 — Cartographie institutionnelle </code></td></tr>
+<tr><td>27</td><td><strong>2.2</strong></td><td><code>| Tableau 2.2 | Régimes spéciaux (financement par allocation budgétaire) | Chapitre 2 — Cartographie institutionnelle | </code></td></tr>
+<tr><td>28</td><td><strong>2.3</strong></td><td><code>| Tableau 2.3 | Protection de la santé par segment de population | Chapitre 2 — Cartographie institutionnelle | `03_chap</code></td></tr>
+<tr><td>29</td><td><strong>2.4</strong></td><td><code>| Tableau 2.4 | Programmes d&#x27;assistance sociale et initiatives non contributives (actifs au 31.12.2025) | Chapitre 2 — C</code></td></tr>
+<tr><td>29</td><td><strong>31.12</strong></td><td><code>| Tableau 2.4 | Programmes d&#x27;assistance sociale et initiatives non contributives (actifs au 31.12.2025) | Chapitre 2 — C</code></td></tr>
+<tr><td>30</td><td><strong>4.1</strong></td><td><code>| Tableau 4.1 | Bénéficiaires de pensions de vieillesse, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.2 Vieillesse | `0</code></td></tr>
+<tr><td>30</td><td><strong>4.2</strong></td><td><code>| Tableau 4.1 | Bénéficiaires de pensions de vieillesse, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.2 Vieillesse | `0</code></td></tr>
+<tr><td>30</td><td><strong>4.2</strong></td><td><code>| Tableau 4.1 | Bénéficiaires de pensions de vieillesse, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.2 Vieillesse | `0</code></td></tr>
+<tr><td>31</td><td><strong>4.2</strong></td><td><code>| Tableau 4.2 | Adéquation des pensions de vieillesse, CNSS (2019–2025) | Chapitre 4 — § 4.2 Vieillesse | `03_chapitres/</code></td></tr>
+<tr><td>31</td><td><strong>4.2</strong></td><td><code>| Tableau 4.2 | Adéquation des pensions de vieillesse, CNSS (2019–2025) | Chapitre 4 — § 4.2 Vieillesse | `03_chapitres/</code></td></tr>
+<tr><td>31</td><td><strong>4.2</strong></td><td><code>| Tableau 4.2 | Adéquation des pensions de vieillesse, CNSS (2019–2025) | Chapitre 4 — § 4.2 Vieillesse | `03_chapitres/</code></td></tr>
+<tr><td>32</td><td><strong>4.3</strong></td><td><code>| Tableau 4.3 | Employeurs enregistrés et cotisants actifs, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.3 Âge actif | </code></td></tr>
+<tr><td>32</td><td><strong>4.3</strong></td><td><code>| Tableau 4.3 | Employeurs enregistrés et cotisants actifs, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.3 Âge actif | </code></td></tr>
+<tr><td>32</td><td><strong>4.3</strong></td><td><code>| Tableau 4.3 | Employeurs enregistrés et cotisants actifs, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.3 Âge actif | </code></td></tr>
+<tr><td>33</td><td><strong>4.4</strong></td><td><code>| Tableau 4.4 | Bénéficiaires de prestations maternité, CNSS (2019–2025) | Chapitre 4 — § 4.3 Âge actif | `03_chapitres/</code></td></tr>
+<tr><td>33</td><td><strong>4.3</strong></td><td><code>| Tableau 4.4 | Bénéficiaires de prestations maternité, CNSS (2019–2025) | Chapitre 4 — § 4.3 Âge actif | `03_chapitres/</code></td></tr>
+<tr><td>33</td><td><strong>4.3</strong></td><td><code>| Tableau 4.4 | Bénéficiaires de prestations maternité, CNSS (2019–2025) | Chapitre 4 — § 4.3 Âge actif | `03_chapitres/</code></td></tr>
+<tr><td>34</td><td><strong>4.5</strong></td><td><code>| Tableau 4.5 | Bénéficiaires de rentes d&#x27;accidents du travail et maladies professionnelles, CNSS (2019–2025) | Chapitre</code></td></tr>
+<tr><td>34</td><td><strong>4.3</strong></td><td><code>| Tableau 4.5 | Bénéficiaires de rentes d&#x27;accidents du travail et maladies professionnelles, CNSS (2019–2025) | Chapitre</code></td></tr>
+<tr><td>34</td><td><strong>4.3</strong></td><td><code>| Tableau 4.5 | Bénéficiaires de rentes d&#x27;accidents du travail et maladies professionnelles, CNSS (2019–2025) | Chapitre</code></td></tr>
+<tr><td>35</td><td><strong>4.6</strong></td><td><code>| Tableau 4.6 | Enfants couverts par les allocations familiales, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.4 Enfants</code></td></tr>
+<tr><td>35</td><td><strong>4.4</strong></td><td><code>| Tableau 4.6 | Enfants couverts par les allocations familiales, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.4 Enfants</code></td></tr>
+<tr><td>35</td><td><strong>4.4</strong></td><td><code>| Tableau 4.6 | Enfants couverts par les allocations familiales, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.4 Enfants</code></td></tr>
+<tr><td>36</td><td><strong>4.7</strong></td><td><code>| Tableau 4.7 | Montant de l&#x27;allocation familiale CNSS et seuil de pauvreté de référence (2019–2025) | Chapitre 4 — § 4.</code></td></tr>
+<tr><td>36</td><td><strong>4.4</strong></td><td><code>| Tableau 4.7 | Montant de l&#x27;allocation familiale CNSS et seuil de pauvreté de référence (2019–2025) | Chapitre 4 — § 4.</code></td></tr>
+<tr><td>36</td><td><strong>4.4</strong></td><td><code>| Tableau 4.7 | Montant de l&#x27;allocation familiale CNSS et seuil de pauvreté de référence (2019–2025) | Chapitre 4 — § 4.</code></td></tr>
+<tr><td>37</td><td><strong>4.8</strong></td><td><code>| Tableau 4.8 | Programmes non contributifs ciblant les enfants et les familles | Chapitre 4 — § 4.4 Enfants et familles</code></td></tr>
+<tr><td>37</td><td><strong>4.4</strong></td><td><code>| Tableau 4.8 | Programmes non contributifs ciblant les enfants et les familles | Chapitre 4 — § 4.4 Enfants et familles</code></td></tr>
+<tr><td>37</td><td><strong>4.4</strong></td><td><code>| Tableau 4.8 | Programmes non contributifs ciblant les enfants et les familles | Chapitre 4 — § 4.4 Enfants et familles</code></td></tr>
+<tr><td>38</td><td><strong>4.9</strong></td><td><code>| Tableau 4.9 | Bénéficiaires de pensions d&#x27;invalidité, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.5 Invalidité | `03</code></td></tr>
+<tr><td>38</td><td><strong>4.5</strong></td><td><code>| Tableau 4.9 | Bénéficiaires de pensions d&#x27;invalidité, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.5 Invalidité | `03</code></td></tr>
+<tr><td>38</td><td><strong>4.5</strong></td><td><code>| Tableau 4.9 | Bénéficiaires de pensions d&#x27;invalidité, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.5 Invalidité | `03</code></td></tr>
+<tr><td>39</td><td><strong>4.10</strong></td><td><code>| Tableau 4.10 | Adéquation de la pension d&#x27;invalidité CNSS et seuil de pauvreté (2019–2025) | Chapitre 4 — § 4.5 Invali</code></td></tr>
+<tr><td>39</td><td><strong>4.5</strong></td><td><code>| Tableau 4.10 | Adéquation de la pension d&#x27;invalidité CNSS et seuil de pauvreté (2019–2025) | Chapitre 4 — § 4.5 Invali</code></td></tr>
+<tr><td>39</td><td><strong>4.5</strong></td><td><code>| Tableau 4.10 | Adéquation de la pension d&#x27;invalidité CNSS et seuil de pauvreté (2019–2025) | Chapitre 4 — § 4.5 Invali</code></td></tr>
+<tr><td>40</td><td><strong>4.11</strong></td><td><code>| Tableau 4.11 | Programmes non contributifs pour les personnes handicapées | Chapitre 4 — § 4.5 Invalidité | `03_chapit</code></td></tr>
+<tr><td>40</td><td><strong>4.5</strong></td><td><code>| Tableau 4.11 | Programmes non contributifs pour les personnes handicapées | Chapitre 4 — § 4.5 Invalidité | `03_chapit</code></td></tr>
+<tr><td>40</td><td><strong>4.5</strong></td><td><code>| Tableau 4.11 | Programmes non contributifs pour les personnes handicapées | Chapitre 4 — § 4.5 Invalidité | `03_chapit</code></td></tr>
+<tr><td>41</td><td><strong>4.12</strong></td><td><code>| Tableau 4.12 | Bénéficiaires de prestations de survie, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.6 Décès et survie</code></td></tr>
+<tr><td>41</td><td><strong>4.6</strong></td><td><code>| Tableau 4.12 | Bénéficiaires de prestations de survie, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.6 Décès et survie</code></td></tr>
+<tr><td>41</td><td><strong>4.6</strong></td><td><code>| Tableau 4.12 | Bénéficiaires de prestations de survie, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.6 Décès et survie</code></td></tr>
+<tr><td>42</td><td><strong>4.13</strong></td><td><code>| Tableau 4.13 | Adéquation des pensions de survie CNSS et seuil de pauvreté (2019–2025) | Chapitre 4 — § 4.6 Décès et s</code></td></tr>
+<tr><td>42</td><td><strong>4.6</strong></td><td><code>| Tableau 4.13 | Adéquation des pensions de survie CNSS et seuil de pauvreté (2019–2025) | Chapitre 4 — § 4.6 Décès et s</code></td></tr>
+<tr><td>42</td><td><strong>4.6</strong></td><td><code>| Tableau 4.13 | Adéquation des pensions de survie CNSS et seuil de pauvreté (2019–2025) | Chapitre 4 — § 4.6 Décès et s</code></td></tr>
+<tr><td>43</td><td><strong>4.14</strong></td><td><code>| Tableau 4.14 | Indicateurs de couverture FSS (2019–2025) | Chapitre 4 — § 4.7 Santé | `03_chapitres/chapitre_4/4.7_san</code></td></tr>
+<tr><td>43</td><td><strong>4.7</strong></td><td><code>| Tableau 4.14 | Indicateurs de couverture FSS (2019–2025) | Chapitre 4 — § 4.7 Santé | `03_chapitres/chapitre_4/4.7_san</code></td></tr>
+<tr><td>43</td><td><strong>4.7</strong></td><td><code>| Tableau 4.14 | Indicateurs de couverture FSS (2019–2025) | Chapitre 4 — § 4.7 Santé | `03_chapitres/chapitre_4/4.7_san</code></td></tr>
+<tr><td>44</td><td><strong>4.15</strong></td><td><code>| Tableau 4.15 | Indicateurs de couverture MESP (2019–2025) | Chapitre 4 — § 4.7 Santé | `03_chapitres/chapitre_4/4.7_sa</code></td></tr>
+<tr><td>44</td><td><strong>4.7</strong></td><td><code>| Tableau 4.15 | Indicateurs de couverture MESP (2019–2025) | Chapitre 4 — § 4.7 Santé | `03_chapitres/chapitre_4/4.7_sa</code></td></tr>
+<tr><td>44</td><td><strong>4.7</strong></td><td><code>| Tableau 4.15 | Indicateurs de couverture MESP (2019–2025) | Chapitre 4 — § 4.7 Santé | `03_chapitres/chapitre_4/4.7_sa</code></td></tr>
+<tr><td>45</td><td><strong>4.16</strong></td><td><code>| Tableau 4.16 | Recettes des régimes contributifs (2019–2025) | Chapitre 4 — § 4.8 Dépenses et financement | `03_chapit</code></td></tr>
+<tr><td>45</td><td><strong>4.8</strong></td><td><code>| Tableau 4.16 | Recettes des régimes contributifs (2019–2025) | Chapitre 4 — § 4.8 Dépenses et financement | `03_chapit</code></td></tr>
+<tr><td>45</td><td><strong>4.8</strong></td><td><code>| Tableau 4.16 | Recettes des régimes contributifs (2019–2025) | Chapitre 4 — § 4.8 Dépenses et financement | `03_chapit</code></td></tr>
+<tr><td>46</td><td><strong>4.17</strong></td><td><code>| Tableau 4.17 | Dépenses de prestations par institution (2019–2025) | Chapitre 4 — § 4.8 Dépenses et financement | `03_</code></td></tr>
+<tr><td>46</td><td><strong>4.8</strong></td><td><code>| Tableau 4.17 | Dépenses de prestations par institution (2019–2025) | Chapitre 4 — § 4.8 Dépenses et financement | `03_</code></td></tr>
+<tr><td>46</td><td><strong>4.8</strong></td><td><code>| Tableau 4.17 | Dépenses de prestations par institution (2019–2025) | Chapitre 4 — § 4.8 Dépenses et financement | `03_</code></td></tr>
+<tr><td>47</td><td><strong>4.18</strong></td><td><code>| Tableau 4.18 | Dépenses administratives et ratio d&#x27;efficience (2019–2025) | Chapitre 4 — § 4.8 Dépenses et financement</code></td></tr>
+<tr><td>47</td><td><strong>4.8</strong></td><td><code>| Tableau 4.18 | Dépenses administratives et ratio d&#x27;efficience (2019–2025) | Chapitre 4 — § 4.8 Dépenses et financement</code></td></tr>
+<tr><td>47</td><td><strong>4.8</strong></td><td><code>| Tableau 4.18 | Dépenses administratives et ratio d&#x27;efficience (2019–2025) | Chapitre 4 — § 4.8 Dépenses et financement</code></td></tr>
+<tr><td>48</td><td><strong>4.19</strong></td><td><code>| Tableau 4.19 | Dépenses de protection sociale en proportion du PIB (2019–2025) | Chapitre 4 — § 4.8 Dépenses et financ</code></td></tr>
+<tr><td>48</td><td><strong>4.8</strong></td><td><code>| Tableau 4.19 | Dépenses de protection sociale en proportion du PIB (2019–2025) | Chapitre 4 — § 4.8 Dépenses et financ</code></td></tr>
+<tr><td>48</td><td><strong>4.8</strong></td><td><code>| Tableau 4.19 | Dépenses de protection sociale en proportion du PIB (2019–2025) | Chapitre 4 — § 4.8 Dépenses et financ</code></td></tr>
+<tr><td>49</td><td><strong>5.1</strong></td><td><code>| Tableau 5.1 | Définitions des sous-indicateurs de l&#x27;ODD 1.3.1 | Chapitre 5 — § 5.1 ODD 1.3.1 | `03_chapitres/chapitre_</code></td></tr>
+<tr><td>49</td><td><strong>1.3</strong></td><td><code>| Tableau 5.1 | Définitions des sous-indicateurs de l&#x27;ODD 1.3.1 | Chapitre 5 — § 5.1 ODD 1.3.1 | `03_chapitres/chapitre_</code></td></tr>
+<tr><td>49</td><td><strong>5.1</strong></td><td><code>| Tableau 5.1 | Définitions des sous-indicateurs de l&#x27;ODD 1.3.1 | Chapitre 5 — § 5.1 ODD 1.3.1 | `03_chapitres/chapitre_</code></td></tr>
+<tr><td>49</td><td><strong>1.3</strong></td><td><code>| Tableau 5.1 | Définitions des sous-indicateurs de l&#x27;ODD 1.3.1 | Chapitre 5 — § 5.1 ODD 1.3.1 | `03_chapitres/chapitre_</code></td></tr>
+<tr><td>50</td><td><strong>5.2</strong></td><td><code>| Tableau 5.2 | Valeurs de l&#x27;ODD 1.3.1 pour la RDC par groupe de population (2019–2025) | Chapitre 5 — § 5.1 ODD 1.3.1 |</code></td></tr>
+<tr><td>50</td><td><strong>1.3</strong></td><td><code>| Tableau 5.2 | Valeurs de l&#x27;ODD 1.3.1 pour la RDC par groupe de population (2019–2025) | Chapitre 5 — § 5.1 ODD 1.3.1 |</code></td></tr>
+<tr><td>50</td><td><strong>5.1</strong></td><td><code>| Tableau 5.2 | Valeurs de l&#x27;ODD 1.3.1 pour la RDC par groupe de population (2019–2025) | Chapitre 5 — § 5.1 ODD 1.3.1 |</code></td></tr>
+<tr><td>50</td><td><strong>1.3</strong></td><td><code>| Tableau 5.2 | Valeurs de l&#x27;ODD 1.3.1 pour la RDC par groupe de population (2019–2025) | Chapitre 5 — § 5.1 ODD 1.3.1 |</code></td></tr>
+<tr><td>51</td><td><strong>5.3</strong></td><td><code>| Tableau 5.3 | Comparaison régionale et internationale de l&#x27;ODD 1.3.1 | Chapitre 5 — § 5.1 ODD 1.3.1 | `03_chapitres/ch</code></td></tr>
+<tr><td>51</td><td><strong>1.3</strong></td><td><code>| Tableau 5.3 | Comparaison régionale et internationale de l&#x27;ODD 1.3.1 | Chapitre 5 — § 5.1 ODD 1.3.1 | `03_chapitres/ch</code></td></tr>
+<tr><td>51</td><td><strong>5.1</strong></td><td><code>| Tableau 5.3 | Comparaison régionale et internationale de l&#x27;ODD 1.3.1 | Chapitre 5 — § 5.1 ODD 1.3.1 | `03_chapitres/ch</code></td></tr>
+<tr><td>51</td><td><strong>1.3</strong></td><td><code>| Tableau 5.3 | Comparaison régionale et internationale de l&#x27;ODD 1.3.1 | Chapitre 5 — § 5.1 ODD 1.3.1 | `03_chapitres/ch</code></td></tr>
+<tr><td>52</td><td><strong>5.4</strong></td><td><code>| Tableau 5.4 | Trajectoire et objectifs de l&#x27;indicateur ODD 1.3.1 pour la RDC | Chapitre 5 — § 5.1 ODD 1.3.1 | `03_chap</code></td></tr>
+<tr><td>52</td><td><strong>1.3</strong></td><td><code>| Tableau 5.4 | Trajectoire et objectifs de l&#x27;indicateur ODD 1.3.1 pour la RDC | Chapitre 5 — § 5.1 ODD 1.3.1 | `03_chap</code></td></tr>
+<tr><td>52</td><td><strong>5.1</strong></td><td><code>| Tableau 5.4 | Trajectoire et objectifs de l&#x27;indicateur ODD 1.3.1 pour la RDC | Chapitre 5 — § 5.1 ODD 1.3.1 | `03_chap</code></td></tr>
+<tr><td>52</td><td><strong>1.3</strong></td><td><code>| Tableau 5.4 | Trajectoire et objectifs de l&#x27;indicateur ODD 1.3.1 pour la RDC | Chapitre 5 — § 5.1 ODD 1.3.1 | `03_chap</code></td></tr>
+<tr><td>53</td><td><strong>5.5</strong></td><td><code>| Tableau 5.5 | Évolution de l&#x27;indice ODD 3.8.1 pour la RDC (2015–2023) | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chapitres/c</code></td></tr>
+<tr><td>53</td><td><strong>3.8</strong></td><td><code>| Tableau 5.5 | Évolution de l&#x27;indice ODD 3.8.1 pour la RDC (2015–2023) | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chapitres/c</code></td></tr>
+<tr><td>53</td><td><strong>5.2</strong></td><td><code>| Tableau 5.5 | Évolution de l&#x27;indice ODD 3.8.1 pour la RDC (2015–2023) | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chapitres/c</code></td></tr>
+<tr><td>53</td><td><strong>3.8</strong></td><td><code>| Tableau 5.5 | Évolution de l&#x27;indice ODD 3.8.1 pour la RDC (2015–2023) | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chapitres/c</code></td></tr>
+<tr><td>54</td><td><strong>5.6</strong></td><td><code>| Tableau 5.6 | Comparaison régionale et internationale de l&#x27;ODD 3.8.1 | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chapitres/ch</code></td></tr>
+<tr><td>54</td><td><strong>3.8</strong></td><td><code>| Tableau 5.6 | Comparaison régionale et internationale de l&#x27;ODD 3.8.1 | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chapitres/ch</code></td></tr>
+<tr><td>54</td><td><strong>5.2</strong></td><td><code>| Tableau 5.6 | Comparaison régionale et internationale de l&#x27;ODD 3.8.1 | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chapitres/ch</code></td></tr>
+<tr><td>54</td><td><strong>3.8</strong></td><td><code>| Tableau 5.6 | Comparaison régionale et internationale de l&#x27;ODD 3.8.1 | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chapitres/ch</code></td></tr>
+<tr><td>55</td><td><strong>5.7</strong></td><td><code>| Tableau 5.7 | Trajectoire et objectifs de l&#x27;indicateur ODD 3.8.1 pour la RDC | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chap</code></td></tr>
+<tr><td>55</td><td><strong>3.8</strong></td><td><code>| Tableau 5.7 | Trajectoire et objectifs de l&#x27;indicateur ODD 3.8.1 pour la RDC | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chap</code></td></tr>
+<tr><td>55</td><td><strong>5.2</strong></td><td><code>| Tableau 5.7 | Trajectoire et objectifs de l&#x27;indicateur ODD 3.8.1 pour la RDC | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chap</code></td></tr>
+<tr><td>55</td><td><strong>3.8</strong></td><td><code>| Tableau 5.7 | Trajectoire et objectifs de l&#x27;indicateur ODD 3.8.1 pour la RDC | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chap</code></td></tr>
+</table></details>
+</div>
+<div class="section"><h2><span class="ico">📄</span> 4. Fichiers sources manquants (PDF ou TXT)</h2>
+<p class="badge-ok">✅ Tous les fichiers référencés dans le registre sont présents sur disque.</p>
+</div>
+<div class="section"><h2><span class="ico">🔀</span> 5. Sources sans sections_citantes (backlink manquant)</h2>
+<p style="color:#666;font-size:.85rem">Ces sources sont dans le registre mais aucun fichier de chapitre ne les référence explicitement dans le champ <code>sections_citantes</code>. Elles sont peut-être utilisées sans backlink, ou inutilisées.</p>
+<p style="color:#d4820a">⚠️ 36 source(s) sans backlink</p>
+<table><tr><th>ID</th><th>Titre</th></tr>
+<tr><td><code>BIT-WSPR-2024</code></td><td>Rapport mondial sur la protection sociale 2024-26 : Protection sociale universel</td></tr>
+<tr><td><code>BIT-WSPR-2020</code></td><td>Rapport mondial sur la protection sociale 2020-22 : la protection sociale à la c</td></tr>
+<tr><td><code>PAM-RDC-2026</code></td><td>Programme Alimentaire Mondial — Activités en RDC (2021-2026)</td></tr>
+<tr><td><code>UNICEF-RDC-2021</code></td><td>UNICEF — Programmes de transferts monétaires en RDC (2021-2022)</td></tr>
+<tr><td><code>RDC-PROG-NON-CONTRIB</code></td><td>Programmes gouvernementaux non contributifs — RDC (2019-2026)</td></tr>
+<tr><td><code>ESS-CNSS-2019</code></td><td>Enquête sur les Sources Statistiques — CNSS 2019</td></tr>
+<tr><td><code>ESS-CNSS-2020</code></td><td>Enquête sur les Sources Statistiques — CNSS 2020</td></tr>
+<tr><td><code>ESS-CNSS-2021</code></td><td>Enquête sur les Sources Statistiques — CNSS 2021</td></tr>
+<tr><td><code>ESS-CNSS-2022</code></td><td>Enquête sur les Sources Statistiques — CNSS 2022</td></tr>
+<tr><td><code>ESS-CNSSAP-2020</code></td><td>Enquête sur les Sources Statistiques — CNSSAP 2020</td></tr>
+<tr><td><code>ESS-CNSSAP-2021</code></td><td>Enquête sur les Sources Statistiques — CNSSAP 2021</td></tr>
+<tr><td><code>ESS-CNSSAP-2022</code></td><td>Enquête sur les Sources Statistiques — CNSSAP 2022</td></tr>
+<tr><td><code>ESS-RDC-2023</code></td><td>Enquête sur les Sources Statistiques — RDC tous régimes 2023</td></tr>
+<tr><td><code>BULLETIN-RDC-1</code></td><td>Premier Bulletin statistique de la protection sociale en RDC</td></tr>
+<tr><td><code>BULLETIN-MOZAMBIQUE-1</code></td><td>1er Boletim Estatístico da Protecção Social — Mozambique</td></tr>
+<tr><td><code>BULLETIN-MOZAMBIQUE-2</code></td><td>2e Boletim Estatístico da Protecção Social — Mozambique</td></tr>
+<tr><td><code>BULLETIN-MOZAMBIQUE-3</code></td><td>3e Boletim Estatístico da Protecção Social — Mozambique</td></tr>
+<tr><td><code>BULLETIN-MOZAMBIQUE-7</code></td><td>VII Boletim Estatístico sobre Protecção Social — Mozambique</td></tr>
+<tr><td><code>BULLETIN-ANGOLA-1</code></td><td>1er Boletim de Estatísticas da Protecção Social — Angola</td></tr>
+<tr><td><code>BULLETIN-ANGOLA-2</code></td><td>2e Boletim de Estatísticas da Protecção Social — Angola</td></tr>
+<tr><td><code>BULLETIN-GUINEE-BISSAU-1</code></td><td>1er Boletim Estatístico da Protecção Social — Guinée-Bissau</td></tr>
+<tr><td><code>BULLETIN-TIMOR-1</code></td><td>Boletim Estatístico da Protecção Social — Timor-Leste (bilingue)</td></tr>
+<tr><td><code>BULLETIN-SAO-TOME-1</code></td><td>1er Boletim Estatístico da Protecção Social — São Tomé-et-Príncipe</td></tr>
+<tr><td><code>BULLETIN-JORDANIE-2020</code></td><td>Statistical Bulletin of Social Protection Indicators — Jordan 2020-2021</td></tr>
+<tr><td><code>OIT-C102</code></td><td>Convention n°102 sur la sécurité sociale (norme minimale), 1952</td></tr>
+<tr><td><code>OIT-C121</code></td><td>Convention n°121 sur les prestations en cas d&#x27;accidents du travail et de maladie</td></tr>
+<tr><td><code>OIT-C128</code></td><td>Convention n°128 concernant les prestations d&#x27;invalidité, de vieillesse et de su</td></tr>
+<tr><td><code>OIT-C130</code></td><td>Convention n°130 sur les soins médicaux et les indemnités de maladie, 1969</td></tr>
+<tr><td><code>OIT-C168</code></td><td>Convention n°168 sur la promotion de l&#x27;emploi et la protection contre le chômage</td></tr>
+<tr><td><code>OIT-C183</code></td><td>Convention n°183 sur la protection de la maternité, 2000</td></tr>
+<tr><td><code>OIT-R202</code></td><td>Recommandation n°202 sur les socles de protection sociale, 2012</td></tr>
+<tr><td><code>OIT-BUILDING-SP</code></td><td>Building Social Protection Systems — International standards and human rights in</td></tr>
+<tr><td><code>ATELIER-CADRAGE-PPT</code></td><td>Présentation de cadrage — Atelier de lancement du Bulletin statistique PS RDC</td></tr>
+<tr><td><code>ATELIER-METHODOLOGIE-PPT</code></td><td>Présentation méthodologie indicateurs PS RDC — Atelier de lancement</td></tr>
+<tr><td><code>ATELIER-EXEMPLE-ESS</code></td><td>Exemple ESS — Atelier de lancement</td></tr>
+<tr><td><code>BULLETIN-55986</code></td><td>1er Boletim Estatístico sobre Protecção Social (Mozambique  1re édition)  fichie</td></tr>
+</table>
+</div>
+<div class="section"><h2><span class="ico">🔍</span> 6. Données-clés du registre non retrouvées dans le fichier TXT source</h2>
+<p style="color:#666;font-size:.85rem">Chaque <code>donnees_cles</code> du registre devrait contenir un chiffre retrouvable dans le fichier <code>.txt</code> extrait correspondant. Si ce n'est pas le cas, la donnée-clé a peut-être été mal transcrite ou hallucin&eacute;e.</p>
+<p class="badge-ok">✅ Toutes les données-clés vérifiables ont été retrouvées dans leurs sources .txt.</p>
+</div>
+<div class="section"><h2><span class="ico">🌐</span> 6b. Données-clés sourcées en ligne (vérification manuelle requise)</h2>
+<p style="color:#666;font-size:.85rem">Ces données-clés sont marquées <code>[SOURCE_ONLINE]</code> : elles proviennent de bases de données en ligne (FAOSTAT, WPP portail, wfp.org…) et non d'un PDF local. Le PDF associé dans le registre est un document de référence contextuel, pas la source directe du chiffre. <strong>Vérification humaine en ligne requise avant publication.</strong></p>
+<p style="color:#d4820a">⚠️ 18 donnée(s)-clé(s) à vérifier directement en ligne</p>
+<table><tr><th>Source</th><th>Donnée-clé</th><th>URL à consulter</th></tr>
+<tr><td><code>ONU-WPP-2024</code></td><td>Population totale (2024) : 109 276 265 habitants [SOURCE_ONLINE — population.un.org/wpp/]</td><td><a href="https://population.un.org/wpp/" target="_blank">https://population.un.org/wpp/</a></td></tr>
+<tr><td><code>ONU-WPP-2024</code></td><td>Population totale (2025 estimée) : 112 200 000 habitants [SOURCE_ONLINE — population.un.org/wpp/]</td><td><a href="https://population.un.org/wpp/" target="_blank">https://population.un.org/wpp/</a></td></tr>
+<tr><td><code>ONU-WPP-2024</code></td><td>Taux de croissance annuel (2024) : 3,18 % [SOURCE_ONLINE — population.un.org/wpp/]</td><td><a href="https://population.un.org/wpp/" target="_blank">https://population.un.org/wpp/</a></td></tr>
+<tr><td><code>ONU-WPP-2024</code></td><td>Structure par âge : 0-14 ans 46,7 % / 15-64 ans 50,7 % / 65+ 2,6 % [SOURCE_ONLINE — population.un.or</td><td><a href="https://population.un.org/wpp/" target="_blank">https://population.un.org/wpp/</a></td></tr>
+<tr><td><code>ONU-WPP-2024</code></td><td>Taux de fécondité (2024) : 5,91 enfants par femme [SOURCE_ONLINE — population.un.org/wpp/]</td><td><a href="https://population.un.org/wpp/" target="_blank">https://population.un.org/wpp/</a></td></tr>
+<tr><td><code>ONU-WPP-2024</code></td><td>Espérance de vie (2024) : 62,2 ans [SOURCE_ONLINE — population.un.org/wpp/]</td><td><a href="https://population.un.org/wpp/" target="_blank">https://population.un.org/wpp/</a></td></tr>
+<tr><td><code>ONU-WPP-2024</code></td><td>Population urbaine (2024) : 48,0 % — NOTE : valeur WPP, révisée à 44,75 % par WUP 2025/Banque mondia</td><td><a href="https://population.un.org/wpp/" target="_blank">https://population.un.org/wpp/</a></td></tr>
+<tr><td><code>ONU-WPP-2024</code></td><td>Projection 2050 : ~215 millions d&#x27;habitants [SOURCE_ONLINE — population.un.org/wpp/]</td><td><a href="https://population.un.org/wpp/" target="_blank">https://population.un.org/wpp/</a></td></tr>
+<tr><td><code>FAO-RDC-AGRI</code></td><td>Part de l&#x27;agriculture dans le PIB (2022) : 18,9 % [SOURCE_ONLINE — FAOSTAT/WDI]</td><td><a href="https://www.fao.org/faostat/" target="_blank">https://www.fao.org/faostat/</a></td></tr>
+<tr><td><code>FAO-RDC-AGRI</code></td><td>Part de la population active agricole (FAO 2022) : ~68 % — corrigée à 58,9% (WDI 2024) [SOURCE_ONLIN</td><td><a href="https://www.fao.org/faostat/" target="_blank">https://www.fao.org/faostat/</a></td></tr>
+<tr><td><code>FAO-RDC-AGRI</code></td><td>Prévalence de la sous-alimentation (2022) : 42,1 % (~43 millions de personnes) [SOURCE_ONLINE — FAOS</td><td><a href="https://www.fao.org/faostat/" target="_blank">https://www.fao.org/faostat/</a></td></tr>
+<tr><td><code>FAO-RDC-AGRI</code></td><td>Indice de la faim dans le monde (GHI 2023) : 42,3 — niveau alarmant [SOURCE_ONLINE — FAOSTAT/WDI]</td><td><a href="https://www.fao.org/faostat/" target="_blank">https://www.fao.org/faostat/</a></td></tr>
+<tr><td><code>FAO-RDC-AGRI</code></td><td>26,6 millions de personnes en insécurité alimentaire aiguë prévus début 2026 [SOURCE_ONLINE — FAOSTA</td><td><a href="https://www.fao.org/faostat/" target="_blank">https://www.fao.org/faostat/</a></td></tr>
+<tr><td><code>PAM-RDC-2026</code></td><td>Bénéficiaires transferts urgence 2021 : 4 037 575 personnes [SOURCE_ONLINE — wfp.org/countries/DRC]</td><td><a href="https://www.wfp.org/countries/democratic-republic-congo" target="_blank">https://www.wfp.org/countries/democratic-republic-congo</a></td></tr>
+<tr><td><code>PAM-RDC-2026</code></td><td>Bénéficiaires transferts urgence 2022 : 3 795 530 personnes [SOURCE_ONLINE — wfp.org/countries/DRC]</td><td><a href="https://www.wfp.org/countries/democratic-republic-congo" target="_blank">https://www.wfp.org/countries/democratic-republic-congo</a></td></tr>
+<tr><td><code>PAM-RDC-2026</code></td><td>Bénéficiaires 2026 (Est RDC) : 1,3 million de personnes [SOURCE_ONLINE — wfp.org/countries/DRC]</td><td><a href="https://www.wfp.org/countries/democratic-republic-congo" target="_blank">https://www.wfp.org/countries/democratic-republic-congo</a></td></tr>
+<tr><td><code>PAM-RDC-2026</code></td><td>Financement requis 2026 : 214 millions USD [SOURCE_ONLINE — wfp.org/countries/DRC]</td><td><a href="https://www.wfp.org/countries/democratic-republic-congo" target="_blank">https://www.wfp.org/countries/democratic-republic-congo</a></td></tr>
+<tr><td><code>PAM-RDC-2026</code></td><td>Programme cantines scolaires : phase pilote (2023) [SOURCE_ONLINE — wfp.org/countries/DRC]</td><td><a href="https://www.wfp.org/countries/democratic-republic-congo" target="_blank">https://www.wfp.org/countries/democratic-republic-congo</a></td></tr>
+</table>
+</div>
+<div class="section"><h2><span class="ico">✔️</span> 7. Sources avec statut_verification "à valider"</h2>
+<p style="color:#d4820a">⚠️ 36 source(s) sur 48 n'ont pas encore été formellement vérifiées contre leur PDF d'origine.</p>
+<table><tr><th>ID</th><th>Titre</th></tr>
+<tr><td><code>BIT-WSPR-2024</code></td><td>Rapport mondial sur la protection sociale 2024-26 : Protection sociale universel</td></tr>
+<tr><td><code>BIT-WSPR-2020</code></td><td>Rapport mondial sur la protection sociale 2020-22 : la protection sociale à la c</td></tr>
+<tr><td><code>UNFPA-SWOP-2024</code></td><td>State of World Population 2025 / World Population Dashboard — RDC</td></tr>
+<tr><td><code>BM-WDI-GINI</code></td><td>World Development Indicators — Gini, pauvreté, PIB — RDC</td></tr>
+<tr><td><code>BM-WDI-PIB</code></td><td>World Development Indicators — PIB et indicateurs macroéconomiques — RDC</td></tr>
+<tr><td><code>BM-WDI-EMPLOI</code></td><td>World Development Indicators — Emploi agricole, emploi vulnérable et informalité</td></tr>
+<tr><td><code>BM-WDI-URBA</code></td><td>World Development Indicators — Urbanisation et population rurale — RDC</td></tr>
+<tr><td><code>UNICEF-RDC-2021</code></td><td>UNICEF — Programmes de transferts monétaires en RDC (2021-2022)</td></tr>
+<tr><td><code>RDC-SNPS-2016</code></td><td>Stratégie nationale de la protection sociale (SNPS) — RDC, 2016</td></tr>
+<tr><td><code>RDC-PROG-NON-CONTRIB</code></td><td>Programmes gouvernementaux non contributifs — RDC (2019-2026)</td></tr>
+<tr><td><code>CNSS-RDC</code></td><td>Caisse Nationale de Sécurité Sociale (CNSS) — Branches et prestations</td></tr>
+<tr><td><code>CNSSAP-RDC</code></td><td>Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP) — Branches et p</td></tr>
+<tr><td><code>FSS-RDC</code></td><td>Fonds de Solidarité de Santé (FSS) — Missions, produits et régimes</td></tr>
+<tr><td><code>BM-PATHWAYS-2023</code></td><td>République Démocratique du Congo — Mémorandum économique national : Voies vers l</td></tr>
+<tr><td><code>ESS-CNSS-2019</code></td><td>Enquête sur les Sources Statistiques — CNSS 2019</td></tr>
+<tr><td><code>ESS-CNSS-2020</code></td><td>Enquête sur les Sources Statistiques — CNSS 2020</td></tr>
+<tr><td><code>ESS-CNSS-2021</code></td><td>Enquête sur les Sources Statistiques — CNSS 2021</td></tr>
+<tr><td><code>ESS-CNSS-2022</code></td><td>Enquête sur les Sources Statistiques — CNSS 2022</td></tr>
+<tr><td><code>ESS-CNSSAP-2020</code></td><td>Enquête sur les Sources Statistiques — CNSSAP 2020</td></tr>
+<tr><td><code>ESS-CNSSAP-2021</code></td><td>Enquête sur les Sources Statistiques — CNSSAP 2021</td></tr>
+<tr><td><code>ESS-CNSSAP-2022</code></td><td>Enquête sur les Sources Statistiques — CNSSAP 2022</td></tr>
+<tr><td><code>BULLETIN-MOZAMBIQUE-1</code></td><td>1er Boletim Estatístico da Protecção Social — Mozambique</td></tr>
+<tr><td><code>BULLETIN-MOZAMBIQUE-2</code></td><td>2e Boletim Estatístico da Protecção Social — Mozambique</td></tr>
+<tr><td><code>BULLETIN-MOZAMBIQUE-3</code></td><td>3e Boletim Estatístico da Protecção Social — Mozambique</td></tr>
+<tr><td><code>BULLETIN-MOZAMBIQUE-7</code></td><td>VII Boletim Estatístico sobre Protecção Social — Mozambique</td></tr>
+<tr><td><code>BULLETIN-ANGOLA-1</code></td><td>1er Boletim de Estatísticas da Protecção Social — Angola</td></tr>
+<tr><td><code>BULLETIN-ANGOLA-2</code></td><td>2e Boletim de Estatísticas da Protecção Social — Angola</td></tr>
+<tr><td><code>BULLETIN-GUINEE-BISSAU-1</code></td><td>1er Boletim Estatístico da Protecção Social — Guinée-Bissau</td></tr>
+<tr><td><code>BULLETIN-TIMOR-1</code></td><td>Boletim Estatístico da Protecção Social — Timor-Leste (bilingue)</td></tr>
+<tr><td><code>BULLETIN-SAO-TOME-1</code></td><td>1er Boletim Estatístico da Protecção Social — São Tomé-et-Príncipe</td></tr>
+<tr><td><code>BULLETIN-JORDANIE-2020</code></td><td>Statistical Bulletin of Social Protection Indicators — Jordan 2020-2021</td></tr>
+<tr><td><code>OIT-BUILDING-SP</code></td><td>Building Social Protection Systems — International standards and human rights in</td></tr>
+<tr><td><code>ATELIER-CADRAGE-PPT</code></td><td>Présentation de cadrage — Atelier de lancement du Bulletin statistique PS RDC</td></tr>
+<tr><td><code>ATELIER-METHODOLOGIE-PPT</code></td><td>Présentation méthodologie indicateurs PS RDC — Atelier de lancement</td></tr>
+<tr><td><code>ATELIER-EXEMPLE-ESS</code></td><td>Exemple ESS — Atelier de lancement</td></tr>
+<tr><td><code>BULLETIN-55986</code></td><td>1er Boletim Estatístico sobre Protecção Social (Mozambique  1re édition)  fichie</td></tr>
+</table>
+</div>
+<div class="section"><h2><span class="ico">📋</span> 8. Inventaire complet des annotations par fichier</h2>
+<table><tr><th>Fichier</th><th>data-val-id</th><th>Liens sources</th><th>Chiffres non annotés</th></tr>
+<tr><td><code>00_pilotage\agents\README.md</code></td><td>0</td><td>0</td><td><span class="tag tag-err">7</span></td></tr>
+<tr><td><code>00_pilotage\agents\agent_analyste_sources.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\agents\agent_chercheur_web.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\agents\agent_orchestrateur.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\agents\agent_redacteur.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\agents\agent_reviseur.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\agents\agent_structureur.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\agents\agent_technicien.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\architecture_rapport.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\decisions_methodologiques.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\feuille_de_route.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\indicateurs_odd_regles_calcul.md</code></td><td>0</td><td>0</td><td><span class="tag tag-err">67</span></td></tr>
+<tr><td><code>00_pilotage\journal_modifications.md</code></td><td>0</td><td>0</td><td><span class="tag tag-err">13</span></td></tr>
+<tr><td><code>00_pilotage\matrice_couverture_regimes.md</code></td><td>0</td><td>0</td><td><span class="tag tag-err">20</span></td></tr>
+<tr><td><code>00_pilotage\processus\PROC-001.md</code></td><td>0</td><td>2</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\processus\PROC-002.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\processus\PROC-003.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\processus\PROC-004.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\processus\PROC-005.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\processus\PROC-006.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\processus\PROC-007.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\processus\PROC-008.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\processus\PROC-009.md</code></td><td>0</td><td>0</td><td><span class="tag tag-err">1</span></td></tr>
+<tr><td><code>00_pilotage\processus\PROC-010.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\processus\index.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>00_pilotage\registre_inclusion_programmes.md</code></td><td>0</td><td>0</td><td><span class="tag tag-err">11</span></td></tr>
+<tr><td><code>01_pages_preliminaires\00_plan_pages_preliminaires.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>01_pages_preliminaires\avant_propos.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>01_pages_preliminaires\listes_tableaux_figures_encadres.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>01_pages_preliminaires\remerciements.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>01_pages_preliminaires\sigles_acronymes.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>01_pages_preliminaires\table_des_matieres.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>02_introduction_generale\00_intro_chapitre_1.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>02_introduction_generale\00_plan_introduction.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>02_introduction_generale\0_1_contexte_demographique.md</code></td><td>0</td><td>13</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>02_introduction_generale\0_2_contexte_economique_emploi.md</code></td><td>3</td><td>16</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>02_introduction_generale\0_3_strategie_donnees_statistiques.md</code></td><td>2</td><td>4</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_1\00_intro_chapitre_1.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_1\00_plan_chapitre_1.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_1\1_1_definitions_approches.md</code></td><td>4</td><td>4</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_1\1_2_approche_bit_oit.md</code></td><td>3</td><td>3</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_1\1_3_champ_statistique.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_1\1_4_classification_regimes.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_1\1_5_precautions_lecture.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_2\00_intro_chapitre_2.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_2\00_plan_chapitre_2.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_2\2_1_cartographie_tableaux.md</code></td><td>43</td><td>43</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_3\00_plan_chapitre_3.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_4\00_plan_chapitre_4.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_4\4.2_vieillesse.md</code></td><td>15</td><td>2</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_4\4.3_age_actif.md</code></td><td>23</td><td>3</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_4\4.4_enfants_familles.md</code></td><td>7</td><td>3</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_4\4.5_invalidite.md</code></td><td>15</td><td>3</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_4\4.6_deces_survie.md</code></td><td>28</td><td>2</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_4\4.7_sante.md</code></td><td>1</td><td>1</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_4\4.8_depenses_financement.md</code></td><td>21</td><td>4</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_4\4.9_odd_131.md</code></td><td>0</td><td>0</td><td><span class="tag tag-err">4</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_5\00_plan_chapitre_5.md</code></td><td>12</td><td>7</td><td><span class="tag tag-err">4</span></td></tr>
+<tr><td><code>03_chapitres\chapitre_6\00_plan_chapitre_6.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>04_annexes\annexe_A1_institutions_contributrices.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>04_annexes\annexe_A2_correspondance_institutions_indicateurs.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>04_annexes\annexe_A_notes_methodologiques.md</code></td><td>6</td><td>6</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>04_annexes\annexe_B_fiches_institutionnelles.md</code></td><td>0</td><td>0</td><td><span class="tag tag-err">28</span></td></tr>
+<tr><td><code>04_annexes\annexe_C_programmes_hors_perimetre.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>04_annexes\annexe_D_definitions_indicateurs.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>04_annexes\annexe_E_tableaux_statistiques.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>04_annexes\annexe_F_outil_collecte.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>05_references\conventions_terminologiques.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>05_references\glossaire.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>05_references\instructions_redactionnelles.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>05_references\sources_bibliographiques.md</code></td><td>0</td><td>0</td><td><span class="tag tag-ok">0</span></td></tr>
+<tr><td><code>07_tableaux\registre_tableaux.md</code></td><td>0</td><td>0</td><td><span class="tag tag-err">90</span></td></tr>
+</table>
+</div>
+
+<div style="text-align:center;color:#999;font-size:.8rem;margin-top:40px;padding-bottom:40px">
+  Rapport généré automatiquement par <code>09_scripts/audit_phase1.py</code><br>
+  Bulletin statistique de la protection sociale en RDC — 2026-06-27 11:34
+</div>
+</div></body></html>

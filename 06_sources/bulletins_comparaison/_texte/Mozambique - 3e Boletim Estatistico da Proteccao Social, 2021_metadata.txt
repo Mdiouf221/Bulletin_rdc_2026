@@ -6,6 +6,7 @@ LANGUE : Portugais
 TYPE : bulletin statistique
 FICHIER : Mozambique - 3e Boletim Estatistico da Proteccao Social, 2021.txt / Mozambique - 3e Boletim Estatistico da Proteccao Social, 2021.pdf
 NIVEAU FIABILITE : 2 — publication officielle secondaire acceptable
+LIEN SOURCE — PDF local (present) : 06_sources/bulletins_comparaison/Mozambique - 3e Boletim Estatistico da Proteccao Social, 2021.pdf
 
 ---
 

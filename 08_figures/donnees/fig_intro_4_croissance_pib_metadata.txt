@@ -1,0 +1,43 @@
+FIGURE          : fig_intro_4 — Évolution du taux de croissance annuel du PIB, RDC (2000-2024)
+SOURCE          : Banque mondiale — World Development Indicators (WDI, avril 2026)
+ORGANISATION    : Banque mondiale
+INDICATEURS     : NY.GDP.MKTP.KD.ZG — Taux de croissance annuel du PIB (%)
+PERIODE         : 2000–2024
+FREQUENCE       : Annuelle
+NIVEAU          : 1 — Organisation internationale, source primaire
+MODE_COLLECTE   : API automatisée
+URL_API         : https://api.worldbank.org/v2/country/CD/indicator/NY.GDP.MKTP.KD.ZG?format=json&mrv=25
+URL_VERIFICATION: https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=CD
+DATE_CONSULTATION: 2026-04-08
+FICHIER_CSV     : 08_figures/donnees/fig_intro_4_croissance_pib.csv
+SCRIPT          : 09_scripts/generer_figures_intro.py → def fig4()
+EXPORT          : 08_figures/exports/FIG_4_croissance_PIB_2000_2024.png
+
+---
+
+NOTE MÉTHODOLOGIQUE
+
+Les valeurs 2000–2020 sont issues des séries WDI historiques connues pour la RDC.
+Les valeurs 2021–2024 ont été documentées dans les métadonnées sources du bulletin
+(BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt — source primaire, consultée avril 2026).
+
+L'année 2020 reflète l'impact limité du COVID-19 sur l'économie congolaise (+1,7 %),
+portée principalement par le secteur minier (cuivre, cobalt).
+La forte reprise 2022 (+9,3 %) est liée à l'envolée des cours des matières premières.
+
+---
+
+VALEURS CLÉS ARCHIVÉES
+
+Pire année : 2000 (-6,9 %) — contexte post-conflits
+Meilleure année : 2014 (+9,5 %)
+Croissance récente : 2021 +6,4 % / 2022 +9,3 % / 2023 +8,5 % / 2024 +6,1 %
+PIB par habitant 2024 : 649 USD courants (Banque mondiale WDI)
+
+---
+
+CITATION RECOMMANDÉE
+
+Banque mondiale (2026), World Development Indicators — Croissance du PIB, RDC,
+indicateur NY.GDP.MKTP.KD.ZG. Données consultées en avril 2026.
+https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=CD

@@ -6,6 +6,7 @@ LANGUE : Anglais (texte original) ; traduction française disponible
 TYPE : convention OIT
 FICHIER : C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt / C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.pdf
 NIVEAU FIABILITE : 1 — Organisation internationale, source primaire normative (niveau maximum)
+LIEN SOURCE — PDF local (present) : 06_sources/normes_oit/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.pdf
 
 ---
 

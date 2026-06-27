@@ -6,6 +6,7 @@ LANGUE : Portugais
 TYPE : bulletin statistique
 FICHIER : 2º Boletim de Estatísticas da Protecção Social de Angola.txt / 2º Boletim de Estatísticas da Protecção Social de Angola.pdf
 NIVEAU FIABILITE : 2 — publication officielle secondaire acceptable
+LIEN SOURCE — PDF local (present) : 06_sources/bulletins_comparaison/2º Boletim de Estatísticas da Protecção Social de Angola.pdf
 
 ---
 

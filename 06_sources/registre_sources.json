@@ -33,7 +33,7 @@
         "Pays à faible revenu (dont RDC) : dépenses PS ~0,8 % du PIB",
         "Pays à faible revenu : couverture <25 %",
         "Déficit financement pays à faible revenu : 308,5 milliards USD/an",
-        "Enfants sans couverture effective : 76,1 %",
+        "Enfants sans couverture effective : 76,1 % [DÉRIVÉ: 100% - 23,9% (couverture effective) = 76,1% — valeur non écrite telle quelle dans le PDF]",
         "Femmes couvertes : 50,1 % / Hommes couverts : 54,6 %"
       ],
       "citation_recommandee": "BIT (2024), Rapport mondial sur la protection sociale 2024-26 : Protection sociale universelle pour une action climatique et une transition juste, Bureau international du Travail, Genève.",
@@ -75,23 +75,24 @@
       "fichier_texte_extrait": "06_sources/officielles_web/_texte/ONU_WPP_2024_RDC_population.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
-      "statut_verification": "à valider",
+      "statut_verification": "à valider — données pays via portail en ligne WPP",
       "donnees_cles": [
-        "Population totale (2024) : 109 276 265 habitants",
-        "Population totale (2025 estimée) : 112 200 000 habitants",
-        "Taux de croissance annuel (2024) : 3,18 %",
-        "Structure par âge : 0-14 ans 46,7 % / 15-64 ans 50,7 % / 65+ 2,6 %",
-        "Taux de fécondité (2024) : 5,91 enfants par femme",
-        "Espérance de vie (2024) : 62,2 ans",
-        "Population urbaine (2024) : 48,0 % — NOTE : valeur WPP, révisée à 44,75 % par WUP 2025/Banque mondiale",
-        "Projection 2050 : ~215 millions d'habitants"
+        "Population totale (2024) : 109 276 265 habitants [SOURCE_ONLINE — population.un.org/wpp/]",
+        "Population totale (2025 estimée) : 112 200 000 habitants [SOURCE_ONLINE — population.un.org/wpp/]",
+        "Taux de croissance annuel (2024) : 3,18 % [SOURCE_ONLINE — population.un.org/wpp/]",
+        "Structure par âge : 0-14 ans 46,7 % / 15-64 ans 50,7 % / 65+ 2,6 % [SOURCE_ONLINE — population.un.org/wpp/]",
+        "Taux de fécondité (2024) : 5,91 enfants par femme [SOURCE_ONLINE — population.un.org/wpp/]",
+        "Espérance de vie (2024) : 62,2 ans [SOURCE_ONLINE — population.un.org/wpp/]",
+        "Population urbaine (2024) : 48,0 % — NOTE : valeur WPP, révisée à 44,75 % par WUP 2025/Banque mondiale [SOURCE_ONLINE — population.un.org/wpp/]",
+        "Projection 2050 : ~215 millions d'habitants [SOURCE_ONLINE — population.un.org/wpp/]"
       ],
       "note_conflit": "INS RDC projette ~124M pour 2025 vs ~112M selon WPP 2024. Décision bulletin : retenir WPP 2024.",
       "citation_recommandee": "Nations Unies, DESA (2024), World Population Prospects 2024.",
       "sections_citantes": [
         "02_introduction_generale/0_1_contexte_demographique.md"
       ],
-      "fichier_metadata": "06_sources/officielles_web/_texte/ONU_WPP_2024_RDC_population_metadata.txt"
+      "fichier_metadata": "06_sources/officielles_web/_texte/ONU_WPP_2024_RDC_population_metadata.txt",
+      "note_source_donnees_cles": "Le PDF WPP 2024 Summary of Results est un document de synthèse mondial. Les chiffres spécifiques RDC (109 276 265 hab., etc.) viennent du portail en ligne population.un.org/wpp/ — non présents dans le PDF summary. Vérification via le portail ou les tableaux Excel WPP 2024."
     },
     {
       "id": "UNFPA-SWOP-2024",
@@ -242,21 +243,22 @@
       "url_country_brief": "https://www.fao.org/giews/countrybrief/country.jsp?code=COD",
       "fichier_pdf": "06_sources/officielles_web/FAO_RDC_agriculture_emploi.pdf",
       "fichier_texte_extrait": "06_sources/officielles_web/_texte/FAO_RDC_agriculture_emploi.txt",
-      "statut_pdf": "présent",
-      "statut_texte": "converti",
-      "statut_verification": "à valider",
+      "statut_pdf": "présent (GIEWS brief céréalier 2026 — document contextuel FAO, ne contient PAS les chiffres d'emploi agricole des donnees_cles)",
+      "statut_texte": "converti — ATTENTION : ce TXT est le brief GIEWS, pas la source des donnees_cles emploi/agriculture. Source réelle des données : FAOSTAT en ligne (fao.org/faostat)",
+      "statut_verification": "à valider — source en ligne, vérification manuelle requise",
       "donnees_cles": [
-        "Part de l'agriculture dans le PIB (2022) : 18,9 %",
-        "Part de la population active agricole (FAO 2022) : ~68 % — corrigée à 58,9% (WDI 2024)",
-        "Prévalence de la sous-alimentation (2022) : 42,1 % (~43 millions de personnes)",
-        "Indice de la faim dans le monde (GHI 2023) : 42,3 — niveau alarmant",
-        "26,6 millions de personnes en insécurité alimentaire aiguë prévus début 2026"
+        "Part de l'agriculture dans le PIB (2022) : 18,9 % [SOURCE_ONLINE — FAOSTAT/WDI]",
+        "Part de la population active agricole (FAO 2022) : ~68 % — corrigée à 58,9% (WDI 2024) [SOURCE_ONLINE — FAOSTAT/WDI]",
+        "Prévalence de la sous-alimentation (2022) : 42,1 % (~43 millions de personnes) [SOURCE_ONLINE — FAOSTAT/WDI]",
+        "Indice de la faim dans le monde (GHI 2023) : 42,3 — niveau alarmant [SOURCE_ONLINE — FAOSTAT/WDI]",
+        "26,6 millions de personnes en insécurité alimentaire aiguë prévus début 2026 [SOURCE_ONLINE — FAOSTAT/WDI]"
       ],
       "citation_recommandee": "FAO (2023), FAOSTAT — Indicateurs RDC ; FAO Country Brief RDC.",
       "sections_citantes": [
         "02_introduction_generale/0_2_contexte_economique_emploi.md"
       ],
-      "fichier_metadata": "06_sources/officielles_web/_texte/FAO_RDC_agriculture_emploi_metadata.txt"
+      "fichier_metadata": "06_sources/officielles_web/_texte/FAO_RDC_agriculture_emploi_metadata.txt",
+      "note_source_donnees_cles": "Les chiffres d'emploi agricole (~68 % / 58,9 %) viennent de FAOSTAT (fao.org/faostat/, indicateur EM_STF_AN) et WDI Banque mondiale — non présents dans le PDF GIEWS. Vérification directe en ligne requise."
     },
     {
       "id": "PAM-RDC-2026",
@@ -267,20 +269,21 @@
       "url_source": "https://www.wfp.org/countries/democratic-republic-congo",
       "fichier_pdf": "06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.pdf",
       "fichier_texte_extrait": "06_sources/officielles_web/_texte/PAM_RDC_programmes_transferts_2026.txt",
-      "statut_pdf": "présent",
-      "statut_texte": "converti",
-      "statut_verification": "à valider",
+      "statut_pdf": "présent (rapport genre WFP Afrique de l'Est 2022 — document de référence WFP, ne contient PAS les chiffres de bénéficiaires DRC des donnees_cles)",
+      "statut_texte": "converti — ATTENTION : ce TXT est le rapport genre régional WFP, pas la source des donnees_cles sur les transferts DRC. Source réelle : wfp.org/countries/democratic-republic-congo (données pays en ligne)",
+      "statut_verification": "à valider — source en ligne, vérification manuelle requise",
       "donnees_cles": [
-        "Bénéficiaires transferts urgence 2021 : 4 037 575 personnes",
-        "Bénéficiaires transferts urgence 2022 : 3 795 530 personnes",
-        "Bénéficiaires 2026 (Est RDC) : 1,3 million de personnes",
-        "Financement requis 2026 : 214 millions USD",
-        "Programme cantines scolaires : phase pilote (2023)"
+        "Bénéficiaires transferts urgence 2021 : 4 037 575 personnes [SOURCE_ONLINE — wfp.org/countries/DRC]",
+        "Bénéficiaires transferts urgence 2022 : 3 795 530 personnes [SOURCE_ONLINE — wfp.org/countries/DRC]",
+        "Bénéficiaires 2026 (Est RDC) : 1,3 million de personnes [SOURCE_ONLINE — wfp.org/countries/DRC]",
+        "Financement requis 2026 : 214 millions USD [SOURCE_ONLINE — wfp.org/countries/DRC]",
+        "Programme cantines scolaires : phase pilote (2023) [SOURCE_ONLINE — wfp.org/countries/DRC]"
       ],
       "note": "Programmes principalement humanitaires, non permanents. Dépendent des financements annuels des donateurs.",
       "citation_recommandee": "PAM (2026), WFP Democratic Republic of Congo — Country Brief.",
       "sections_citantes": [],
-      "fichier_metadata": "06_sources/officielles_web/_texte/PAM_RDC_programmes_transferts_2026_metadata.txt"
+      "fichier_metadata": "06_sources/officielles_web/_texte/PAM_RDC_programmes_transferts_2026_metadata.txt",
+      "note_source_donnees_cles": "Les chiffres de bénéficiaires (4 037 575 en 2021, 3 795 530 en 2022) viennent du tableau de bord pays WFP DRC (wfp.org/countries/democratic-republic-congo) et du Premier bulletin RDC (2023). Vérification directe en ligne requise."
     },
     {
       "id": "UNICEF-RDC-2021",
@@ -566,13 +569,13 @@
       "annee": 2023,
       "niveau_fiabilite": 1,
       "fichier_source": "06_sources/ESS/ESS_RDC_tous_regimes/ESS RDC tous régimes.xlsx",
-      "statut_texte": "converti",
-      "statut_verification": "à valider",
+      "statut_texte": "non disponible — données 2023 non encore transmises",
+      "statut_verification": "en attente",
       "note": "Tableau ESS consolidé tous régimes au format OIT. Couvre 2023, soit un an au-delà des séries individuelles CNSS/CNSSAP (2022). Vérifier les régimes effectivement inclus dans la consolidation.",
       "citation_recommandee": "CNSS / CNSSAP (2023), Enquête sur les Sources Statistiques (ESS) — tous régimes, Kinshasa.",
       "sections_citantes": [],
       "fichier_metadata": "06_sources/ESS/ESS_RDC_tous_regimes/_texte/ESS_RDC_tous_regimes_2023_metadata.txt",
-      "fichier_texte_extrait": "06_sources/ESS/ESS_RDC_tous_regimes/_texte/ESS_RDC_tous_regimes_2023.txt"
+      "fichier_texte_extrait": null
     },
     {
       "id": "BULLETIN-RDC-1",
@@ -650,7 +653,7 @@
       "niveau_fiabilite": 2,
       "sous_dossier": "bulletins_comparaison",
       "fichier_source": "06_sources/bulletins_comparaison/VII Boletim Estatistico sobre Proteccao Social 2025 .pdf",
-      "fichier_texte_extrait": "06_sources/bulletins_comparaison/_texte/VII Boletim Estatistico sobre Proteccao Social 2025 .txt",
+      "fichier_texte_extrait": "06_sources/bulletins_comparaison/_texte/Mozambique_VII_Boletim_Estatistico_Proteccao_Social_2025.txt",
       "statut_pdf": "présent",
       "statut_texte": "converti",
       "statut_verification": "à valider",
@@ -827,7 +830,7 @@
       "citation_recommandee": "OIT (1969), Convention n°130 sur les soins médicaux et les indemnités de maladie, Genève : BIT.",
       "sections_citantes": [],
       "fichier_metadata": "06_sources/normes_oit/_texte/C130  Soins médicaux et indemnités de maladie, 1969_metadata.txt",
-      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C130  Soins médicaux et indemnités de maladie, 1969.txt"
+      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C130 — Soins médicaux et indemnités de maladie, 1969.txt"
     },
     {
       "id": "OIT-C168",
@@ -844,7 +847,7 @@
       "citation_recommandee": "OIT (1988), Convention n°168 sur la promotion de l'emploi et la protection contre le chômage, Genève : BIT.",
       "sections_citantes": [],
       "fichier_metadata": "06_sources/normes_oit/_texte/C168  Promotion de l'emploi et protection contre le chômage, 1988_metadata.txt",
-      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C168  Promotion de l'emploi et protection contre le chômage, 1988.txt"
+      "fichier_texte_extrait": "06_sources/normes_oit/_texte/C168 — Promotion de l’emploi et protection contre le chômage, 1988.txt"
     },
     {
       "id": "OIT-C183",
@@ -955,7 +958,7 @@
       "annee": 2019,
       "niveau_fiabilite": 2,
       "sous_dossier": "bulletins_comparaison",
-      "fichier_texte_extrait": "06_sources/bulletins_comparaison/_texte/55986.txt",
+      "fichier_texte_extrait": "06_sources/bulletins_comparaison/_texte/Mozambique_1er_Boletim_Estatistico_Proteccao_Social_2019_v2.txt",
       "fichier_metadata": "06_sources/bulletins_comparaison/_texte/55986_metadata.txt",
       "statut_pdf": "absent (pas de PDF 55986.pdf dans le dossier)",
       "statut_texte": "converti",

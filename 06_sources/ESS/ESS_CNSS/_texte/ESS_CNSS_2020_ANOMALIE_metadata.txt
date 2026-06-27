@@ -6,6 +6,7 @@ LANGUE : Français
 TYPE : données institutionnelles — À UTILISER AVEC PRÉCAUTION
 FICHIER : ESS_CNSS_2020_ANOMALIE.txt / ESS CNSS 2020.xlsm (source)
 NIVEAU FIABILITE : 1 — source primaire institutionnelle — MAIS anomalie grave de contenu
+LIEN SOURCE — Fichier source Excel (present) : 06_sources/ESS/ESS_CNSS/ESS CNSS 2020.xlsm
 
 ---
 

@@ -6,6 +6,9 @@ LANGUE : Anglais (rapport principal) — données RDC disponibles sur le World P
 TYPE : rapport international
 FICHIER : UNFPA_World_Population_Dashboard_RDC_2024.txt / UNFPA_World_Population_Dashboard_RDC_2024.pdf
 NIVEAU FIABILITE : 1 — Organisation internationale, source primaire
+LIEN SOURCE — URL source officielle : https://www.unfpa.org/data/world-population/CD
+LIEN SOURCE — URL PDF direct : https://www.unfpa.org/sites/default/files/pub-pdf/EN_State%20of%20World%20Population%20report%202025.pdf
+LIEN SOURCE — PDF local (present) : 06_sources/officielles_web/UNFPA_World_Population_Dashboard_RDC_2024.pdf
 
 ---
 

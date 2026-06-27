@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Checklist de verification des sources — Bulletin PS RDC</title>
+<style>
+:root {
+  --ok: #2a7a2a; --warn: #d4820a; --err: #c0392b; --info: #2563a8;
+  --bg: #f8f9fa; --card: #ffffff; --border: #dce3ea;
+  --font: 'Segoe UI', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--bg); color: #222; font-size: 14px; }
+header {
+  background: #1a3a5c; color: white; padding: 20px 32px;
+  position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+header h1 { font-size: 1.2rem; margin-bottom: 4px; }
+header p { font-size: .8rem; opacity: .8; }
+.progress-bar-wrap { background: #0d2540; border-radius: 4px; margin-top: 10px; height: 8px; }
+.progress-bar { background: #4caf50; height: 8px; border-radius: 4px; transition: width .3s; }
+.progress-label { font-size:.75rem; opacity:.8; margin-top:3px; }
+
+.container { max-width: 1200px; margin: 24px auto; padding: 0 20px; }
+.stats-row { display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap; }
+.stat-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 20px; min-width: 140px; text-align: center;
+}
+.stat-card .n { font-size: 1.6rem; font-weight: bold; color: var(--info); }
+.stat-card .l { font-size: .75rem; color: #666; margin-top: 2px; }
+
+.section-title {
+  font-size: 1rem; font-weight: 600; color: #1a3a5c;
+  border-bottom: 2px solid #1a3a5c; padding-bottom: 6px; margin: 28px 0 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-title .count {
+  background: #1a3a5c; color: white; border-radius: 10px;
+  font-size: .72rem; padding: 2px 8px; font-weight: 400;
+}
+
+.source-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.source-header {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  gap: 12px; align-items: start;
+  padding: 12px 16px; cursor: pointer;
+  transition: background .15s;
+}
+.source-header:hover { background: #f0f4f8; }
+.source-header.verified { border-left: 4px solid var(--ok); }
+.source-header.issue    { border-left: 4px solid var(--err); }
+
+.cb-wrap { display:flex; align-items:center; justify-content:center; padding-top:2px; }
+input[type=checkbox] { width:18px; height:18px; cursor:pointer; accent-color: var(--ok); }
+
+.src-title { font-weight: 600; font-size: .9rem; color: #1a3a5c; }
+.src-meta  { font-size: .78rem; color: #555; margin-top: 3px; }
+.src-meta span { margin-right: 10px; }
+
+.badges { display:flex; gap:6px; align-items:flex-start; flex-wrap:wrap; padding-top:2px; }
+.badge-niv {
+  border-radius: 4px; font-size: .68rem; font-weight: bold; padding: 2px 6px;
+}
+.niv1 { background:#e8f5e9; color:#2a7a2a; border:1px solid #a5d6a7; }
+.niv2 { background:#e3f2fd; color:#1565c0; border:1px solid #90caf9; }
+.niv3 { background:#fff3e0; color:#e65100; border:1px solid #ffcc80; }
+.niv4 { background:#f3e5f5; color:#6a1b9a; border:1px solid #ce93d8; }
+.niv5 { background:#ffebee; color:#b71c1c; border:1px solid #ef9a9a; }
+.badge-type {
+  border-radius: 4px; font-size: .68rem; font-weight: bold; padding: 2px 6px;
+}
+.pdf   { background:#fff3e0; color:#e65100; border:1px solid #ffb74d; }
+.web   { background:#e3f2fd; color:#1565c0; border:1px solid #64b5f6; }
+.excel { background:#e8f5e9; color:#2a7a2a; border:1px solid #81c784; }
+.mixte { background:#f3e5f5; color:#6a1b9a; border:1px solid #ce93d8; }
+.meta  { background:#eceff1; color:#546e7a; border:1px solid #b0bec5; }
+.ref   { background:#e8f5e9; color:#1b5e20; border:1px solid #a5d6a7; font-style:italic; }
+
+.source-body {
+  padding: 0 16px 16px 16px; border-top: 1px solid #f0f0f0; display: none;
+}
+.source-body.open { display: block; }
+
+.liens-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0 10px; }
+.lien-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 12px; border-radius: 5px; font-size: .8rem;
+  text-decoration: none; font-weight: 500; border: 1px solid;
+  transition: background .15s;
+}
+.lien-btn.pdf-btn  { background:#fff3e0; color:#e65100; border-color:#ffb74d; }
+.lien-btn.web-btn  { background:#e3f2fd; color:#1565c0; border-color:#64b5f6; }
+.lien-btn.xlsx-btn { background:#e8f5e9; color:#2a7a2a; border-color:#81c784; }
+.lien-btn.meta-btn { background:#eceff1; color:#546e7a; border-color:#b0bec5; }
+.lien-btn:hover { filter: brightness(.93); }
+.lien-btn.absent { opacity:.5; cursor:not-allowed; text-decoration:line-through; }
+
+.dk-list { margin: 8px 0; padding-left: 0; list-style: none; }
+.dk-list li {
+  padding: 5px 10px; border-left: 3px solid #dce3ea;
+  margin-bottom: 4px; font-size: .82rem; color: #333;
+  background: #fafafa; border-radius: 0 4px 4px 0;
+}
+.dk-list li.online { border-left-color: #64b5f6; background: #f0f7ff; }
+.dk-list li.derive { border-left-color: #ce93d8; background: #fdf4ff; }
+.dk-list li.attente{ border-left-color: #ffb74d; background: #fffbf0; }
+
+.note-box {
+  background: #fff8e1; border: 1px solid #ffe082; border-radius: 5px;
+  padding: 8px 12px; font-size: .8rem; color: #555; margin-top: 8px;
+}
+
+.statut-verif-badge {
+  display: inline-block; border-radius: 4px; padding: 2px 8px;
+  font-size: .72rem; font-weight: bold;
+}
+.sv-ok    { background:#e8f5e9; color:#2a7a2a; }
+.sv-warn  { background:#fff3e0; color:#e65100; }
+.sv-wait  { background:#eceff1; color:#546e7a; }
+
+.filter-bar {
+  display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; align-items: center;
+}
+.filter-bar label { font-size: .82rem; color: #555; margin-right: -4px; }
+.filter-bar select, .filter-bar input {
+  border: 1px solid var(--border); border-radius: 5px; padding: 5px 10px; font-size: .82rem;
+}
+.reset-btn {
+  background: #1a3a5c; color: white; border: none; border-radius: 5px;
+  padding: 5px 14px; font-size: .82rem; cursor: pointer;
+}
+.reset-btn:hover { background: #2a5080; }
+.export-btn {
+  background: #2a7a2a; color: white; border: none; border-radius: 5px;
+  padding: 5px 14px; font-size: .82rem; cursor: pointer; margin-left: auto;
+}
+.export-btn:hover { background: #3a9a3a; }
+
+.hidden { display: none !important; }
+
+@media print {
+  header { position: static; }
+  .source-body { display: block !important; }
+  .filter-bar, .export-btn, .reset-btn { display: none; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>&#128270; Checklist de verification des sources — Bulletin statistique de la protection sociale en RDC</h1>
+  <p>Genere le 27/06/2026 13:49 &middot; 48 sources a verifier</p>
+  <div class="progress-bar-wrap"><div class="progress-bar" id="pbar" style="width:0%"></div></div>
+  <div class="progress-label" id="plabel">0 / 48 verifiees</div>
+</header>
+<div class="container">
+
+<div class="stats-row">
+  <div class="stat-card"><div class="n">48</div><div class="l">sources totales</div></div>
+  <div class="stat-card"><div class="n">25</div><div class="l">PDF sur disque</div></div>
+  <div class="stat-card"><div class="n">15</div><div class="l">avec URL web</div></div>
+  <div class="stat-card"><div class="n" style="color:#d4820a">18</div><div class="l">donnees en ligne a verifier</div></div>
+  <div class="stat-card"><div class="n" style="color:var(--ok)">0</div><div class="l">references validees</div></div>
+</div>
+<div class="filter-bar">
+  <label>Filtrer :</label>
+  <select id="filter-cat" onchange="filtrer()">
+    <option value="">Toutes les categories</option>
+    <option value="ESS">ESS</option>
+    <option value="nationales">Sources nationales</option>
+    <option value="internationales">Sources internationales</option>
+    <option value="normes">Normes OIT</option>
+    <option value="bulletins">Bulletins comparaison</option>
+    <option value="atelier">Atelier</option>
+  </select>
+  <select id="filter-statut" onchange="filtrer()">
+    <option value="">Tous les statuts</option>
+    <option value="non-verifiee">Non verifiees seulement</option>
+    <option value="verifiee">Verifiees seulement</option>
+  </select>
+  <input id="filter-search" type="text" placeholder="Rechercher..." oninput="filtrer()">
+  <button class="reset-btn" onclick="resetFiltres()">Reinitialiser</button>
+  <button class="export-btn" onclick="exporterCSV()">Exporter CSV</button>
+</div>
+<div class="section-title" data-cat="ESS">ESS — Enquetes institutionnelles (CNSS / CNSSAP)<span class="count">8</span></div>
+
+<div class="source-card" id="card-ESS-CNSS-2019" data-cat="ESS" data-id="ESS-CNSS-2019"
+     data-titre="enquête sur les sources statistiques — cnss 2019">
+  <div class="source-header" onclick="toggleCard('ESS-CNSS-2019')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-ESS-CNSS-2019"
+             onchange="sauvegarder('ESS-CNSS-2019')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Enquête sur les Sources Statistiques — CNSS 2019</div>
+      <div class="src-meta">
+        <span>&#127970; Caisse Nationale de Sécurité Sociale (CNSS)</span>
+        <span>&#128197; 2019</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type excel">EXCEL</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-ESS-CNSS-2019">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSS/ESS%20CNSS%202019.xlsm" class="lien-btn xlsx-btn" target="_blank">&#128202; Ouvrir Excel (ESS)</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2019_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2019.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Tableau ESS au format OIT. Source primaire issue de l&#x27;institution nationale.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-ESS-CNSS-2020" data-cat="ESS" data-id="ESS-CNSS-2020"
+     data-titre="enquête sur les sources statistiques — cnss 2020">
+  <div class="source-header" onclick="toggleCard('ESS-CNSS-2020')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-ESS-CNSS-2020"
+             onchange="sauvegarder('ESS-CNSS-2020')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Enquête sur les Sources Statistiques — CNSS 2020</div>
+      <div class="src-meta">
+        <span>&#127970; Caisse Nationale de Sécurité Sociale (CNSS)</span>
+        <span>&#128197; 2020</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type excel">EXCEL</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-ESS-CNSS-2020">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSS/ESS%20CNSS%202020.xlsm" class="lien-btn xlsx-btn" target="_blank">&#128202; Ouvrir Excel (ESS)</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2020_ANOMALIE_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2020_ANOMALIE.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Tableau ESS au format OIT. Source primaire issue de l&#x27;institution nationale.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-ESS-CNSS-2021" data-cat="ESS" data-id="ESS-CNSS-2021"
+     data-titre="enquête sur les sources statistiques — cnss 2021">
+  <div class="source-header" onclick="toggleCard('ESS-CNSS-2021')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-ESS-CNSS-2021"
+             onchange="sauvegarder('ESS-CNSS-2021')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Enquête sur les Sources Statistiques — CNSS 2021</div>
+      <div class="src-meta">
+        <span>&#127970; Caisse Nationale de Sécurité Sociale (CNSS)</span>
+        <span>&#128197; 2021</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type excel">EXCEL</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-ESS-CNSS-2021">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSS/ESS%20CNSS%202021.xlsm" class="lien-btn xlsx-btn" target="_blank">&#128202; Ouvrir Excel (ESS)</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2021_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2021.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Tableau ESS au format OIT. Source primaire issue de l&#x27;institution nationale.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-ESS-CNSS-2022" data-cat="ESS" data-id="ESS-CNSS-2022"
+     data-titre="enquête sur les sources statistiques — cnss 2022">
+  <div class="source-header" onclick="toggleCard('ESS-CNSS-2022')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-ESS-CNSS-2022"
+             onchange="sauvegarder('ESS-CNSS-2022')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Enquête sur les Sources Statistiques — CNSS 2022</div>
+      <div class="src-meta">
+        <span>&#127970; Caisse Nationale de Sécurité Sociale (CNSS)</span>
+        <span>&#128197; 2022</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type excel">EXCEL</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-ESS-CNSS-2022">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSS/ESS%20CNSS%202022.xlsm" class="lien-btn xlsx-btn" target="_blank">&#128202; Ouvrir Excel (ESS)</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Tableau ESS au format OIT. Source primaire issue de l&#x27;institution nationale.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-ESS-CNSSAP-2020" data-cat="ESS" data-id="ESS-CNSSAP-2020"
+     data-titre="enquête sur les sources statistiques — cnssap 2020">
+  <div class="source-header" onclick="toggleCard('ESS-CNSSAP-2020')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-ESS-CNSSAP-2020"
+             onchange="sauvegarder('ESS-CNSSAP-2020')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Enquête sur les Sources Statistiques — CNSSAP 2020</div>
+      <div class="src-meta">
+        <span>&#127970; Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP)</span>
+        <span>&#128197; 2020</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type excel">EXCEL</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-ESS-CNSSAP-2020">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSSAP/ESS%20CNSSAP%202020.xlsm" class="lien-btn xlsx-btn" target="_blank">&#128202; Ouvrir Excel (ESS)</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSSAP/_texte/ESS_CNSSAP_2020_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSSAP/_texte/ESS_CNSSAP_2020.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Tableau ESS au format OIT. Source primaire issue de l&#x27;institution nationale.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-ESS-CNSSAP-2021" data-cat="ESS" data-id="ESS-CNSSAP-2021"
+     data-titre="enquête sur les sources statistiques — cnssap 2021">
+  <div class="source-header" onclick="toggleCard('ESS-CNSSAP-2021')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-ESS-CNSSAP-2021"
+             onchange="sauvegarder('ESS-CNSSAP-2021')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Enquête sur les Sources Statistiques — CNSSAP 2021</div>
+      <div class="src-meta">
+        <span>&#127970; Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP)</span>
+        <span>&#128197; 2021</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type excel">EXCEL</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-ESS-CNSSAP-2021">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSSAP/ESS%20CNSSAP%202021.xlsm" class="lien-btn xlsx-btn" target="_blank">&#128202; Ouvrir Excel (ESS)</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSSAP/_texte/ESS_CNSSAP_2021_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSSAP/_texte/ESS_CNSSAP_2021.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Tableau ESS au format OIT. Source primaire issue de l&#x27;institution nationale.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-ESS-CNSSAP-2022" data-cat="ESS" data-id="ESS-CNSSAP-2022"
+     data-titre="enquête sur les sources statistiques — cnssap 2022">
+  <div class="source-header" onclick="toggleCard('ESS-CNSSAP-2022')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-ESS-CNSSAP-2022"
+             onchange="sauvegarder('ESS-CNSSAP-2022')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Enquête sur les Sources Statistiques — CNSSAP 2022</div>
+      <div class="src-meta">
+        <span>&#127970; Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP)</span>
+        <span>&#128197; 2022</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type excel">EXCEL</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-ESS-CNSSAP-2022">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSSAP/ESS%20CNSSAP%202022.xlsm" class="lien-btn xlsx-btn" target="_blank">&#128202; Ouvrir Excel (ESS)</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSSAP/_texte/ESS_CNSSAP_2022_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/ESS/ESS_CNSSAP/_texte/ESS_CNSSAP_2022.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Tableau ESS au format OIT. Source primaire issue de l&#x27;institution nationale.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-ESS-RDC-2023" data-cat="ESS" data-id="ESS-RDC-2023"
+     data-titre="enquête sur les sources statistiques — rdc tous régimes 2023">
+  <div class="source-header" onclick="toggleCard('ESS-RDC-2023')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-ESS-RDC-2023"
+             onchange="sauvegarder('ESS-RDC-2023')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Enquête sur les Sources Statistiques — RDC tous régimes 2023</div>
+      <div class="src-meta">
+        <span>&#127970; Compilation multi-régimes (CNSS + CNSSAP)</span>
+        <span>&#128197; 2023</span>
+        <span class="statut-verif-badge sv-wait">En attente</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type excel">EXCEL</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-ESS-RDC-2023">
+    <div class="liens-row"></div>
+    
+    <div class="note-box">&#9888; Tableau ESS consolidé tous régimes au format OIT. Couvre 2023, soit un an au-delà des séries individuelles CNSS/CNSSAP (2022). Vérifier les régimes effectivement inclus dans la consolidation.</div>
+  </div>
+</div>
+<div class="section-title" data-cat="nationales">Sources nationales RDC<span class="count">6</span></div>
+
+<div class="source-card" id="card-RDC-SNPS-2016" data-cat="nationales" data-id="RDC-SNPS-2016"
+     data-titre="stratégie nationale de la protection sociale (snps) — rdc, 2016">
+  <div class="source-header" onclick="toggleCard('RDC-SNPS-2016')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-RDC-SNPS-2016"
+             onchange="sauvegarder('RDC-SNPS-2016')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Stratégie nationale de la protection sociale (SNPS) — RDC, 2016</div>
+      <div class="src-meta">
+        <span>&#127970; Gouvernement RDC — Ministère des Affaires Sociales</span>
+        <span>&#128197; 2016</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type meta">META</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-RDC-SNPS-2016">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/RDC_SNPS_2016.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="">Vision 2030 : Nation solidaire protégeant efficacement les couches vulnérables</li><li class="">3 axes stratégiques : socle PS / assurances sociales (CNSS, CNSSAP, mutuelles) / cadre institutionnel</li><li class="">Groupes cibles : enfants vulnérables, personnes âgées sans pension, handicapés, femmes enceintes, travailleurs informels</li><li class="">Cadre juridique : C102 OIT (ratifiée 1987), R202 OIT, ODD 1.3.1</li></ul>
+    
+  </div>
+</div>
+
+<div class="source-card" id="card-RDC-PROG-NON-CONTRIB" data-cat="nationales" data-id="RDC-PROG-NON-CONTRIB"
+     data-titre="programmes gouvernementaux non contributifs — rdc (2019-2026)">
+  <div class="source-header" onclick="toggleCard('RDC-PROG-NON-CONTRIB')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-RDC-PROG-NON-CONTRIB"
+             onchange="sauvegarder('RDC-PROG-NON-CONTRIB')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Programmes gouvernementaux non contributifs — RDC (2019-2026)</div>
+      <div class="src-meta">
+        <span>&#127970; Diverses sources officielles RDC compilées</span>
+        <span>&#128197; 2026</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv2" title="Niveau 2 — Source secondaire acceptable">N2</span>
+      <span class="badge-type meta">META</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-RDC-PROG-NON-CONTRIB">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/RDC_programmes_non_contributifs_gouvernementaux.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="">Gratuité enseignement primaire (depuis 2019) : +4,4 millions d&#x27;élèves inscrits en 2023-2024</li><li class="">Gratuité maternité : partiellement opérationnel dans formations sanitaires publiques</li><li class="">Programme STEP (BM) : clôturé février 2024 — 150 000 THIMO + 470 000 transferts monétaires</li><li class="">PNPS : organe de coordination, décret présidentiel n°05/176 du 24 novembre 2005</li></ul>
+    
+  </div>
+</div>
+
+<div class="source-card" id="card-CNSS-RDC" data-cat="nationales" data-id="CNSS-RDC"
+     data-titre="caisse nationale de sécurité sociale (cnss) — branches et prestations">
+  <div class="source-header" onclick="toggleCard('CNSS-RDC')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-CNSS-RDC"
+             onchange="sauvegarder('CNSS-RDC')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Caisse Nationale de Sécurité Sociale (CNSS) — Branches et prestations</div>
+      <div class="src-meta">
+        <span>&#127970; CNSS — République Démocratique du Congo</span>
+        <span>&#128197; 2026</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type mixte">PDF+WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-CNSS-RDC">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/CNSS_RDC_branches_prestations.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="https://www.cnss.cd/" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/CNSS_RDC_branches_prestations_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="">3 branches : accidents du travail / prestations aux familles / vieillesse-invalidité-survivants</li><li class="">Population : travailleurs secteur privé et assimilés</li><li class="">Branches non couvertes : soins médicaux, indemnités maladie, chômage</li><li class="">Base légale : Loi n°16/009 du 15 juillet 2016</li></ul>
+    
+  </div>
+</div>
+
+<div class="source-card" id="card-CNSSAP-RDC" data-cat="nationales" data-id="CNSSAP-RDC"
+     data-titre="caisse nationale de sécurité sociale des agents publics (cnssap) — branches et prestations">
+  <div class="source-header" onclick="toggleCard('CNSSAP-RDC')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-CNSSAP-RDC"
+             onchange="sauvegarder('CNSSAP-RDC')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP) — Branches et prestations</div>
+      <div class="src-meta">
+        <span>&#127970; CNSSAP — République Démocratique du Congo</span>
+        <span>&#128197; 2026</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type mixte">PDF+WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-CNSSAP-RDC">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/CNSSAP_RDC_branches_prestations.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="https://www.cnssap.cd/" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/CNSSAP_RDC_branches_prestations_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/CNSSAP_RDC_branches_prestations.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="">3 branches : pensions / risques professionnels / prestations aux familles</li><li class="">Population : agents publics de l&#x27;État, militaires, policiers, enseignants, fonctionnaires contractuels</li><li class="">Branches non couvertes : soins médicaux formels, indemnités maladie, chômage</li><li class="">Base légale : Décret n°15/031 du 14/12/2015 ; Loi n°22/031 du 15/07/2022</li></ul>
+    
+  </div>
+</div>
+
+<div class="source-card" id="card-FSS-RDC" data-cat="nationales" data-id="FSS-RDC"
+     data-titre="fonds de solidarité de santé (fss) — missions, produits et régimes">
+  <div class="source-header" onclick="toggleCard('FSS-RDC')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-FSS-RDC"
+             onchange="sauvegarder('FSS-RDC')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Fonds de Solidarité de Santé (FSS) — Missions, produits et régimes</div>
+      <div class="src-meta">
+        <span>&#127970; Fonds de Solidarité de Santé (FSS) — République Démocratique du Congo</span>
+        <span>&#128197; 2026</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type web">WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-FSS-RDC">
+    <div class="liens-row"><a href="https://www.fss.cd/" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/FSS_RDC_produits_regimes.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="">Caisse nationale d&#x27;assurance maladie de la RDC (CSU)</li><li class="">Créé par Loi n°18/035 du 13/12/2018 ; organisé par Décret n°22/13 du 09/04/2022</li><li class="">Produits : Afia Bora (paquet de base) / Kobota Ofele (mère et enfant) / Afia Bora Prime (complémentaire)</li><li class="">Statut 2026 : opérationnel (pas encore opérationnel au moment du 1er bulletin 2024)</li><li class="">Assemblée générale FSS : 15 avril 2026</li></ul>
+    <div class="note-box">&#9888; Nombre d&#x27;affiliés, cotisants et bénéficiaires non disponibles sur le site à la date de consultation.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-BULLETIN-RDC-1" data-cat="nationales" data-id="BULLETIN-RDC-1"
+     data-titre="premier bulletin statistique de la protection sociale en rdc">
+  <div class="source-header" onclick="toggleCard('BULLETIN-RDC-1')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BULLETIN-RDC-1"
+             onchange="sauvegarder('BULLETIN-RDC-1')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Premier Bulletin statistique de la protection sociale en RDC</div>
+      <div class="src-meta">
+        <span>&#127970; République Démocratique du Congo — Ministère des Affaires sociales / OIT</span>
+        <span>&#128197; 2023</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BULLETIN-RDC-1">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_rdc/Bulletin%20Statistique%20RDC-%20premiere%20%C3%A9dition.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_rdc/_texte/Bulletin%20Statistique%20RDC-%20premiere%20%C3%A9dition_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_rdc/_texte/Bulletin%20Statistique%20RDC-%20premiere%20%C3%A9dition.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Référence directe : c&#x27;est le bulletin que ce projet prolonge et améliore. Retenir la logique institutionnelle, améliorer la rigueur conceptuelle.</div>
+  </div>
+</div>
+<div class="section-title" data-cat="internationales">Sources internationales — rapports et statistiques<span class="count">12</span></div>
+
+<div class="source-card" id="card-BIT-WSPR-2024" data-cat="internationales" data-id="BIT-WSPR-2024"
+     data-titre="rapport mondial sur la protection sociale 2024-26 : protection sociale universelle pour une action climatique et une transition juste">
+  <div class="source-header" onclick="toggleCard('BIT-WSPR-2024')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BIT-WSPR-2024"
+             onchange="sauvegarder('BIT-WSPR-2024')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Rapport mondial sur la protection sociale 2024-26 : Protection sociale universelle pour une action climatique et une transition juste</div>
+      <div class="src-meta">
+        <span>&#127970; Bureau International du Travail (BIT / OIT)</span>
+        <span>&#128197; 2024</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type mixte">PDF+WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BIT-WSPR-2024">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/BIT_World_Social_Protection_Report_2024-26.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="https://www.ilo.org/publications/flagship-reports/world-social-protection-report-2024-26-universal-social-protection-climate" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/BIT_World_Social_Protection_Report_2024-26_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/BIT_World_Social_Protection_Report_2024-26.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="">Population mondiale couverte par au moins 1 prestation : 52,4 % (2024)</li><li class="">Population non couverte : 3,8 milliards de personnes</li><li class="">Afrique : 19,1 % couverts par au moins une prestation</li><li class="">Pays à faible revenu (dont RDC) : dépenses PS ~0,8 % du PIB</li><li class="">Pays à faible revenu : couverture &lt;25 %</li><li class="">Déficit financement pays à faible revenu : 308,5 milliards USD/an</li><li class="">Enfants sans couverture effective : 76,1 % [DÉRIVÉ: 100% - 23,9% (couverture effective) = 76,1% — valeur non écrite telle quelle dans le PDF]</li><li class="">Femmes couvertes : 50,1 % / Hommes couverts : 54,6 %</li></ul>
+    
+  </div>
+</div>
+
+<div class="source-card" id="card-BIT-WSPR-2020" data-cat="internationales" data-id="BIT-WSPR-2020"
+     data-titre="rapport mondial sur la protection sociale 2020-22 : la protection sociale à la croisée des chemins">
+  <div class="source-header" onclick="toggleCard('BIT-WSPR-2020')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BIT-WSPR-2020"
+             onchange="sauvegarder('BIT-WSPR-2020')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Rapport mondial sur la protection sociale 2020-22 : la protection sociale à la croisée des chemins</div>
+      <div class="src-meta">
+        <span>&#127970; Bureau International du Travail (BIT / OIT)</span>
+        <span>&#128197; 2021</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type mixte">PDF+WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BIT-WSPR-2020">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/BIT_World_Social_Protection_Report_2020-22.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="https://www.ilo.org/publications/world-social-protection-report-2020-22-social-protection-crossroads-pursuit" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="https://www.ilo.org/sites/default/files/wcmsp5/groups/public/%40ed_protect/%40soc_sec/documents/publication/wcms_817574.pdf" class="lien-btn web-btn" target="_blank">&#127760; PDF direct</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/BIT_World_Social_Protection_Report_2020-22_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/BIT_World_Social_Protection_Report_2020-22.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="">53 % de la population mondiale couverte par au moins une prestation (2020)</li><li class="">Afrique subsaharienne : 17,4 % couverts</li><li class="">Déficit financement Afrique subsaharienne : 77,9 milliards USD/an</li><li class="">Définition de référence PS : politiques et programmes visant à réduire et prévenir la pauvreté tout au long du cycle de vie</li></ul>
+    
+  </div>
+</div>
+
+<div class="source-card" id="card-ONU-WPP-2024" data-cat="internationales" data-id="ONU-WPP-2024"
+     data-titre="world population prospects 2024 — country profile: democratic republic of the congo">
+  <div class="source-header" onclick="toggleCard('ONU-WPP-2024')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-ONU-WPP-2024"
+             onchange="sauvegarder('ONU-WPP-2024')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">World Population Prospects 2024 — Country Profile: Democratic Republic of the Congo</div>
+      <div class="src-meta">
+        <span>&#127970; Nations Unies, DESA</span>
+        <span>&#128197; 2024</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type mixte">PDF+WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-ONU-WPP-2024">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/ONU_WPP_2024_RDC_population.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="https://population.un.org/wpp/" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/ONU_WPP_2024_RDC_population_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/ONU_WPP_2024_RDC_population.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="online">Population totale (2024) : 109 276 265 habitants [SOURCE_ONLINE — population.un.org/wpp/]</li><li class="online">Population totale (2025 estimée) : 112 200 000 habitants [SOURCE_ONLINE — population.un.org/wpp/]</li><li class="online">Taux de croissance annuel (2024) : 3,18 % [SOURCE_ONLINE — population.un.org/wpp/]</li><li class="online">Structure par âge : 0-14 ans 46,7 % / 15-64 ans 50,7 % / 65+ 2,6 % [SOURCE_ONLINE — population.un.org/wpp/]</li><li class="online">Taux de fécondité (2024) : 5,91 enfants par femme [SOURCE_ONLINE — population.un.org/wpp/]</li><li class="online">Espérance de vie (2024) : 62,2 ans [SOURCE_ONLINE — population.un.org/wpp/]</li><li class="online">Population urbaine (2024) : 48,0 % — NOTE : valeur WPP, révisée à 44,75 % par WUP 2025/Banque mondiale [SOURCE_ONLINE — population.un.org/wpp/]</li><li class="online">Projection 2050 : ~215 millions d&#x27;habitants [SOURCE_ONLINE — population.un.org/wpp/]</li></ul>
+    <div class="note-box">&#9888; INS RDC projette ~124M pour 2025 vs ~112M selon WPP 2024. Décision bulletin : retenir WPP 2024.</div><div class="note-box">&#9888; Le PDF WPP 2024 Summary of Results est un document de synthèse mondial. Les chiffres spécifiques RDC (109 276 265 hab., etc.) viennent du portail en ligne population.un.org/wpp/ — non présents dans le PDF summary. Vérification via le portail ou les tableaux Excel WPP 2024.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-UNFPA-SWOP-2024" data-cat="internationales" data-id="UNFPA-SWOP-2024"
+     data-titre="state of world population 2025 / world population dashboard — rdc">
+  <div class="source-header" onclick="toggleCard('UNFPA-SWOP-2024')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-UNFPA-SWOP-2024"
+             onchange="sauvegarder('UNFPA-SWOP-2024')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">State of World Population 2025 / World Population Dashboard — RDC</div>
+      <div class="src-meta">
+        <span>&#127970; Fonds des Nations Unies pour la Population (UNFPA)</span>
+        <span>&#128197; 2024</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type mixte">PDF+WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-UNFPA-SWOP-2024">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/UNFPA_World_Population_Dashboard_RDC_2024.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="https://www.unfpa.org/data/world-population/CD" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="https://www.unfpa.org/sites/default/files/pub-pdf/EN_State%20of%20World%20Population%20report%202025.pdf" class="lien-btn web-btn" target="_blank">&#127760; PDF direct</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/UNFPA_World_Population_Dashboard_RDC_2024_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/UNFPA_World_Population_Dashboard_RDC_2024.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="">Population (2024) : 109 millions</li><li class="">Taux de fécondité : 6,0 enfants par femme</li><li class="">Population de moins de 25 ans : 63 %</li><li class="">Mortalité maternelle : 547 pour 100 000 naissances vivantes</li><li class="">Naissances assistées par personnel qualifié : 80 %</li><li class="">Taux de fécondité adolescente : 135 pour 1 000 femmes (15-19 ans)</li><li class="">Mariages avant 18 ans : 37 %</li></ul>
+    
+  </div>
+</div>
+
+<div class="source-card" id="card-BM-WDI-GINI" data-cat="internationales" data-id="BM-WDI-GINI"
+     data-titre="world development indicators — gini, pauvreté, pib — rdc">
+  <div class="source-header" onclick="toggleCard('BM-WDI-GINI')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BM-WDI-GINI"
+             onchange="sauvegarder('BM-WDI-GINI')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">World Development Indicators — Gini, pauvreté, PIB — RDC</div>
+      <div class="src-meta">
+        <span>&#127970; Banque mondiale</span>
+        <span>&#128197; 2024</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type web">WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BM-WDI-GINI">
+    <div class="liens-row"><a href="https://data.worldbank.org/indicator/SI.POV.GINI?locations=CD" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="https://api.worldbank.org/v2/country/CD/indicator/SI.POV.GINI?format=json&amp;mrv=10" class="lien-btn web-btn" target="_blank">&#127760; API WDI</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="">Indice de Gini (2020, WDI) : 44,7 — valeur retenue dans le bulletin</li><li class="">Indice de Gini (2024, enquête INS) : 38,1 — à surveiller lors publication WDI</li><li class="">Taux de pauvreté national (2024, INS cité BM) : 69 %</li><li class="">Taux de pauvreté extrême &lt;3,65 USD/jour PPP (2025) : 81,1 %</li><li class="">Croissance PIB 2024 : +6,1 %</li><li class="">PIB total 2024 : 70,96 milliards USD</li><li class="">PIB par habitant 2024 : 649 USD</li><li class="">RNB par habitant 2024 : 670 USD (méthode Atlas)</li></ul>
+    
+  </div>
+</div>
+
+<div class="source-card" id="card-BM-WDI-PIB" data-cat="internationales" data-id="BM-WDI-PIB"
+     data-titre="world development indicators — pib et indicateurs macroéconomiques — rdc">
+  <div class="source-header" onclick="toggleCard('BM-WDI-PIB')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BM-WDI-PIB"
+             onchange="sauvegarder('BM-WDI-PIB')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">World Development Indicators — PIB et indicateurs macroéconomiques — RDC</div>
+      <div class="src-meta">
+        <span>&#127970; Banque mondiale</span>
+        <span>&#128197; 2023</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type web">WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BM-WDI-PIB">
+    <div class="liens-row"><a href="https://data.worldbank.org/country/CD" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/BanqueMondiale_WDI_RDC_PIB_2023.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="">PIB courant (2023) : 65,0 milliards USD</li><li class="">Croissance PIB (2023) : 8,4 %</li><li class="">PIB par habitant (2023) : 632 USD (méthode Atlas)</li><li class="">Inflation (déflateur PIB, 2023) : 21,8 %</li><li class="">Couverture protection sociale (ASPIRE, 2012) : 11 % de la population</li><li class="">Dépenses de santé courantes (% PIB, 2023) : 3,68 %</li></ul>
+    
+  </div>
+</div>
+
+<div class="source-card" id="card-BM-WDI-EMPLOI" data-cat="internationales" data-id="BM-WDI-EMPLOI"
+     data-titre="world development indicators — emploi agricole, emploi vulnérable et informalité — rdc">
+  <div class="source-header" onclick="toggleCard('BM-WDI-EMPLOI')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BM-WDI-EMPLOI"
+             onchange="sauvegarder('BM-WDI-EMPLOI')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">World Development Indicators — Emploi agricole, emploi vulnérable et informalité — RDC</div>
+      <div class="src-meta">
+        <span>&#127970; Banque mondiale / ILO ILOEST</span>
+        <span>&#128197; 2024</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type web">WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BM-WDI-EMPLOI">
+    <div class="liens-row"><a href="https://data.worldbank.org/indicator/SL.AGR.EMPL.ZS?locations=CD" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="https://api.worldbank.org/v2/country/CD/indicator/SL.AGR.EMPL.ZS?format=json&amp;mrv=5" class="lien-btn web-btn" target="_blank">&#127760; API WDI</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="">Emploi agricole total (2024) : 58,9 % — valeur retenue dans le bulletin</li><li class="">Emploi agricole femmes (2024) : 67,8 %</li><li class="">Emploi agricole hommes (2024) : 50,3 %</li><li class="">Emploi vulnérable (2024) : 81,8 %</li><li class="">Travailleurs indépendants (2024) : 85,3 %</li><li class="">Taux de chômage BIT (2024) : 4,4 %</li></ul>
+    <div class="note-box">&#9888; Valeur FAO ~68% corrigée à 58,9% (WDI/ILOEST 2024). La valeur FAO correspondait à l&#x27;emploi agricole féminin.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-BM-WDI-URBA" data-cat="internationales" data-id="BM-WDI-URBA"
+     data-titre="world development indicators — urbanisation et population rurale — rdc">
+  <div class="source-header" onclick="toggleCard('BM-WDI-URBA')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BM-WDI-URBA"
+             onchange="sauvegarder('BM-WDI-URBA')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">World Development Indicators — Urbanisation et population rurale — RDC</div>
+      <div class="src-meta">
+        <span>&#127970; Banque mondiale / WUP 2025 (ONU)</span>
+        <span>&#128197; 2024</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type web">WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BM-WDI-URBA">
+    <div class="liens-row"><a href="https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS?locations=CD" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="https://api.worldbank.org/v2/country/CD/indicator/SP.URB.TOTL.IN.ZS?format=json&amp;mrv=5" class="lien-btn web-btn" target="_blank">&#127760; API WDI</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/BanqueMondiale_WDI_RDC_urbanisation_2024.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="">Population urbaine (2024) : 44,75 % — valeur retenue dans le bulletin (WUP 2025)</li><li class="">Population urbaine (2024) : 48,0 % selon WPP 2024 — valeur non retenue</li><li class="">Taux de croissance urbaine (2024) : 4,07 %</li><li class="">Taux de croissance population totale (2024) : 3,24 %</li><li class="">Ratio de dépendance (2024) : 96,5 %</li><li class="">Densité (2023) : 46,7 hab/km²</li></ul>
+    <div class="note-box">&#9888; Écart de 3 points entre WPP 2024 (48%) et WUP 2025/WDI (44,75%). Décision : retenir WDI/WUP 2025.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-FAO-RDC-AGRI" data-cat="internationales" data-id="FAO-RDC-AGRI"
+     data-titre="faostat — indicateurs de marché du travail rural / country brief rdc">
+  <div class="source-header" onclick="toggleCard('FAO-RDC-AGRI')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-FAO-RDC-AGRI"
+             onchange="sauvegarder('FAO-RDC-AGRI')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">FAOSTAT — Indicateurs de marché du travail rural / Country Brief RDC</div>
+      <div class="src-meta">
+        <span>&#127970; Organisation des Nations Unies pour l&#x27;alimentation et l&#x27;agriculture (FAO)</span>
+        <span>&#128197; 2023</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type mixte">PDF+WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-FAO-RDC-AGRI">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/FAO_RDC_agriculture_emploi.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="https://www.fao.org/faostat/" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="https://www.fao.org/giews/countrybrief/country.jsp?code=COD" class="lien-btn web-btn" target="_blank">&#127760; Country Brief</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/FAO_RDC_agriculture_emploi_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/FAO_RDC_agriculture_emploi.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="online">Part de l&#x27;agriculture dans le PIB (2022) : 18,9 % [SOURCE_ONLINE — FAOSTAT/WDI]</li><li class="online">Part de la population active agricole (FAO 2022) : ~68 % — corrigée à 58,9% (WDI 2024) [SOURCE_ONLINE — FAOSTAT/WDI]</li><li class="online">Prévalence de la sous-alimentation (2022) : 42,1 % (~43 millions de personnes) [SOURCE_ONLINE — FAOSTAT/WDI]</li><li class="online">Indice de la faim dans le monde (GHI 2023) : 42,3 — niveau alarmant [SOURCE_ONLINE — FAOSTAT/WDI]</li><li class="online">26,6 millions de personnes en insécurité alimentaire aiguë prévus début 2026 [SOURCE_ONLINE — FAOSTAT/WDI]</li></ul>
+    <div class="note-box">&#9888; Les chiffres d&#x27;emploi agricole (~68 % / 58,9 %) viennent de FAOSTAT (fao.org/faostat/, indicateur EM_STF_AN) et WDI Banque mondiale — non présents dans le PDF GIEWS. Vérification directe en ligne requise.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-PAM-RDC-2026" data-cat="internationales" data-id="PAM-RDC-2026"
+     data-titre="programme alimentaire mondial — activités en rdc (2021-2026)">
+  <div class="source-header" onclick="toggleCard('PAM-RDC-2026')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-PAM-RDC-2026"
+             onchange="sauvegarder('PAM-RDC-2026')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Programme Alimentaire Mondial — Activités en RDC (2021-2026)</div>
+      <div class="src-meta">
+        <span>&#127970; Programme Alimentaire Mondial (PAM / WFP)</span>
+        <span>&#128197; 2026</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv2" title="Niveau 2 — Source secondaire acceptable">N2</span>
+      <span class="badge-type mixte">PDF+WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-PAM-RDC-2026">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="https://www.wfp.org/countries/democratic-republic-congo" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/PAM_RDC_programmes_transferts_2026_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/PAM_RDC_programmes_transferts_2026.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="online">Bénéficiaires transferts urgence 2021 : 4 037 575 personnes [SOURCE_ONLINE — wfp.org/countries/DRC]</li><li class="online">Bénéficiaires transferts urgence 2022 : 3 795 530 personnes [SOURCE_ONLINE — wfp.org/countries/DRC]</li><li class="online">Bénéficiaires 2026 (Est RDC) : 1,3 million de personnes [SOURCE_ONLINE — wfp.org/countries/DRC]</li><li class="online">Financement requis 2026 : 214 millions USD [SOURCE_ONLINE — wfp.org/countries/DRC]</li><li class="online">Programme cantines scolaires : phase pilote (2023) [SOURCE_ONLINE — wfp.org/countries/DRC]</li></ul>
+    <div class="note-box">&#9888; Programmes principalement humanitaires, non permanents. Dépendent des financements annuels des donateurs.</div><div class="note-box">&#9888; Les chiffres de bénéficiaires (4 037 575 en 2021, 3 795 530 en 2022) viennent du tableau de bord pays WFP DRC (wfp.org/countries/democratic-republic-congo) et du Premier bulletin RDC (2023). Vérification directe en ligne requise.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-UNICEF-RDC-2021" data-cat="internationales" data-id="UNICEF-RDC-2021"
+     data-titre="unicef — programmes de transferts monétaires en rdc (2021-2022)">
+  <div class="source-header" onclick="toggleCard('UNICEF-RDC-2021')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-UNICEF-RDC-2021"
+             onchange="sauvegarder('UNICEF-RDC-2021')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">UNICEF — Programmes de transferts monétaires en RDC (2021-2022)</div>
+      <div class="src-meta">
+        <span>&#127970; UNICEF</span>
+        <span>&#128197; 2022</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv2" title="Niveau 2 — Source secondaire acceptable">N2</span>
+      <span class="badge-type web">WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-UNICEF-RDC-2021">
+    <div class="liens-row"><a href="https://www.unicef.org/drcongo/" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="">Programme Cash + Nutrition (Tanganyika) 2021 : 226 648 enfants bénéficiaires</li><li class="">Programme UNICEF + FAO transferts inconditionnels + AGR (2022) : 4 000 ménages vulnérables</li></ul>
+    <div class="note-box">&#9888; Données issues du premier bulletin (2023). Pour les données 2024-2026, consulter directement UNICEF DRC.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-BM-PATHWAYS-2023" data-cat="internationales" data-id="BM-PATHWAYS-2023"
+     data-titre="république démocratique du congo — mémorandum économique national : voies vers la diversification économique et l&#x27;intégration commerciale régionale">
+  <div class="source-header" onclick="toggleCard('BM-PATHWAYS-2023')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BM-PATHWAYS-2023"
+             onchange="sauvegarder('BM-PATHWAYS-2023')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">République Démocratique du Congo — Mémorandum économique national : Voies vers la diversification économique et l&#x27;intégration commerciale régionale</div>
+      <div class="src-meta">
+        <span>&#127970; Banque Mondiale</span>
+        <span>&#128197; 2023</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type mixte">PDF+WEB</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BM-PATHWAYS-2023">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/BanqueMondiale_Pathways_Economic_Diversification_Trade_RDC_2023.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="https://openknowledge.worldbank.org/" class="lien-btn web-btn" target="_blank">&#127760; Site source</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/BanqueMondiale_Pathways_Economic_Diversification_Trade_RDC_2023_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/officielles_web/_texte/BanqueMondiale_Pathways_Economic_Diversification_Trade_RDC_2023.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    <p style="font-size:.78rem;color:#888;margin:6px 0 4px"><b>Donnees cles a verifier :</b></p><ul class="dk-list"><li class="">PIB réel RDC : croissance tirée principalement par l&#x27;exploitation minière (cuivre, cobalt)</li><li class="">Pauvreté : RDC parmi les pays les plus pauvres d&#x27;Afrique subsaharienne</li><li class="">Emploi : faible productivité du travail, prédominance de l&#x27;emploi informel et agricole</li><li class="">Indice capital humain (BM) : données par province disponibles</li><li class="">Environnement des affaires : contraintes réglementaires, fiscales, accès aux financements</li><li class="">Intégration régionale : adhésion à l&#x27;EAC, scénarios AfCFTA modélisés</li><li class="">Horizon Vision 2050 du gouvernement congolais : scenarios de réforme modélisés</li><li class="">Chaînes de valeur prioritaires : mines (batteries EV), agrobusiness (manioc)</li></ul>
+    <div class="note-box">&#9888; Document de référence pour le contexte macroéconomique, la structure de l&#x27;emploi et les défis de couverture de la protection sociale. Ne traite pas directement de la protection sociale mais fournit le cadre économique de référence.</div>
+  </div>
+</div>
+<div class="section-title" data-cat="normes">Normes OIT<span class="count">8</span></div>
+
+<div class="source-card" id="card-OIT-C102" data-cat="normes" data-id="OIT-C102"
+     data-titre="convention n°102 sur la sécurité sociale (norme minimale), 1952">
+  <div class="source-header" onclick="toggleCard('OIT-C102')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-OIT-C102"
+             onchange="sauvegarder('OIT-C102')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Convention n°102 sur la sécurité sociale (norme minimale), 1952</div>
+      <div class="src-meta">
+        <span>&#127970; Organisation Internationale du Travail (OIT/BIT)</span>
+        <span>&#128197; 1952</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-OIT-C102">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/C102%20-%20Convention%20sur%20la%20securite%20sociale%20normes%20minimales%20%28No.%20102%29%2C%201952.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/_texte/C102%20-%20Convention%20sur%20la%20securite%20sociale%20normes%20minimales%20%28No.%20102%29%2C%201952_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/_texte/C102%20-%20Convention%20sur%20la%20securite%20sociale%20normes%20minimales%20%28No.%20102%29%2C%201952.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Convention de référence définissant les 9 branches de la sécurité sociale. Cadre normatif central du bulletin.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-OIT-C121" data-cat="normes" data-id="OIT-C121"
+     data-titre="convention n°121 sur les prestations en cas d&#x27;accidents du travail et de maladies professionnelles, 1964">
+  <div class="source-header" onclick="toggleCard('OIT-C121')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-OIT-C121"
+             onchange="sauvegarder('OIT-C121')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Convention n°121 sur les prestations en cas d&#x27;accidents du travail et de maladies professionnelles, 1964</div>
+      <div class="src-meta">
+        <span>&#127970; Organisation Internationale du Travail (OIT/BIT)</span>
+        <span>&#128197; 1964</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-OIT-C121">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/C121%20-%20Employment%20Injury%20Benefits%20Convention%2C%201964%20%5BSchedule%20I%20amended%20in%201980%5D%20%28No.%20121%29.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/_texte/C121%20-%20Employment%20Injury%20Benefits%20Convention%2C%201964%20%5BSchedule%20I%20amended%20in%201980%5D%20%28No.%20121%29_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/_texte/C121%20-%20Employment%20Injury%20Benefits%20Convention%2C%201964%20%5BSchedule%20I%20amended%20in%201980%5D%20%28No.%20121%29.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Convention OIT sur les risques professionnels. Pertinente pour les branches AT/MP de la CNSS et CNSSAP.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-OIT-C128" data-cat="normes" data-id="OIT-C128"
+     data-titre="convention n°128 concernant les prestations d&#x27;invalidité, de vieillesse et de survivants, 1967">
+  <div class="source-header" onclick="toggleCard('OIT-C128')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-OIT-C128"
+             onchange="sauvegarder('OIT-C128')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Convention n°128 concernant les prestations d&#x27;invalidité, de vieillesse et de survivants, 1967</div>
+      <div class="src-meta">
+        <span>&#127970; Organisation Internationale du Travail (OIT/BIT)</span>
+        <span>&#128197; 1967</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-OIT-C128">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/C128%20-%20Convention%20%28n%C2%B0%20128%29%20concernant%20les%20prestations%20d%27invalidit%C3%A9%2C%20de%20vieillesse%20et%20de%20survivants%2C%201967.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/_texte/C128%20-%20Convention%20%28n%C2%B0%20128%29%20concernant%20les%20prestations%20d%27invalidit%C3%A9%2C%20de%20vieillesse%20et%20de%20survivants%2C%201967_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/_texte/C128%20-%20Convention%20%28n%C2%B0%20128%29%20concernant%20les%20prestations%20d%27invalidit%C3%A9%2C%20de%20vieillesse%20et%20de%20survivants%2C%201967.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Pertinente pour les branches pensions de la CNSS et CNSSAP.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-OIT-C130" data-cat="normes" data-id="OIT-C130"
+     data-titre="convention n°130 sur les soins médicaux et les indemnités de maladie, 1969">
+  <div class="source-header" onclick="toggleCard('OIT-C130')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-OIT-C130"
+             onchange="sauvegarder('OIT-C130')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Convention n°130 sur les soins médicaux et les indemnités de maladie, 1969</div>
+      <div class="src-meta">
+        <span>&#127970; Organisation Internationale du Travail (OIT/BIT)</span>
+        <span>&#128197; 1969</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-OIT-C130">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/C130%20%E2%80%94%20Soins%20m%C3%A9dicaux%20et%20indemnit%C3%A9s%20de%20maladie%2C%201969.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/_texte/C130%20%E2%80%94%20Soins%20m%C3%A9dicaux%20et%20indemnit%C3%A9s%20de%20maladie%2C%201969.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Pertinente pour l&#x27;analyse des lacunes de couverture santé en RDC.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-OIT-C168" data-cat="normes" data-id="OIT-C168"
+     data-titre="convention n°168 sur la promotion de l&#x27;emploi et la protection contre le chômage, 1988">
+  <div class="source-header" onclick="toggleCard('OIT-C168')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-OIT-C168"
+             onchange="sauvegarder('OIT-C168')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Convention n°168 sur la promotion de l&#x27;emploi et la protection contre le chômage, 1988</div>
+      <div class="src-meta">
+        <span>&#127970; Organisation Internationale du Travail (OIT/BIT)</span>
+        <span>&#128197; 1988</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-OIT-C168">
+    <div class="liens-row"><span class="lien-btn pdf-btn absent">&#128196; PDF absent : C168 — Promotion de l&#x27;emploi et protection contre le chômage, 1988.pdf</span><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/_texte/C168%20%E2%80%94%20Promotion%20de%20l%E2%80%99emploi%20et%20protection%20contre%20le%20ch%C3%B4mage%2C%201988.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Branche chômage — non couverte en RDC. Utile pour documenter l&#x27;absence de couverture.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-OIT-C183" data-cat="normes" data-id="OIT-C183"
+     data-titre="convention n°183 sur la protection de la maternité, 2000">
+  <div class="source-header" onclick="toggleCard('OIT-C183')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-OIT-C183"
+             onchange="sauvegarder('OIT-C183')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Convention n°183 sur la protection de la maternité, 2000</div>
+      <div class="src-meta">
+        <span>&#127970; Organisation Internationale du Travail (OIT/BIT)</span>
+        <span>&#128197; 2000</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-OIT-C183">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/C183%20-%20Convention%20sur%20la%20protection%20de%20la%20maternite%20%28No.%20183%29%2C%202000.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/_texte/C183%20-%20Convention%20sur%20la%20protection%20de%20la%20maternite%20%28No.%20183%29%2C%202000_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/_texte/C183%20-%20Convention%20sur%20la%20protection%20de%20la%20maternite%20%28No.%20183%29%2C%202000.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Pertinente pour la branche prestations aux familles/maternité de la CNSS.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-OIT-R202" data-cat="normes" data-id="OIT-R202"
+     data-titre="recommandation n°202 sur les socles de protection sociale, 2012">
+  <div class="source-header" onclick="toggleCard('OIT-R202')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-OIT-R202"
+             onchange="sauvegarder('OIT-R202')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Recommandation n°202 sur les socles de protection sociale, 2012</div>
+      <div class="src-meta">
+        <span>&#127970; Organisation Internationale du Travail (OIT/BIT)</span>
+        <span>&#128197; 2012</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-OIT-R202">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/R202%20-%20Recommandation%20sur%20les%20socles%20de%20protection%20sociale%20%28No.%20202%29%2C%202012%20-%20Brochure.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/_texte/R202%20-%20Recommandation%20sur%20les%20socles%20de%20protection%20sociale%20%28No.%20202%29%2C%202012%20-%20Brochure_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/_texte/R202%20-%20Recommandation%20sur%20les%20socles%20de%20protection%20sociale%20%28No.%20202%29%2C%202012%20-%20Brochure.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Recommandation clé sur les socles de protection sociale. Cadre normatif pour les ODD 1.3.1 et la couverture universelle.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-OIT-BUILDING-SP" data-cat="normes" data-id="OIT-BUILDING-SP"
+     data-titre="building social protection systems — international standards and human rights instruments">
+  <div class="source-header" onclick="toggleCard('OIT-BUILDING-SP')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-OIT-BUILDING-SP"
+             onchange="sauvegarder('OIT-BUILDING-SP')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Building Social Protection Systems — International standards and human rights instruments</div>
+      <div class="src-meta">
+        <span>&#127970; Organisation Internationale du Travail (OIT/BIT)</span>
+        
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-OIT-BUILDING-SP">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/OIT%20-%20Building%20social%20protection%20systems%20-%20International%20standards%20and%20human%20rights%20instruments.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/_texte/OIT%20-%20Building%20social%20protection%20systems%20-%20International%20standards%20and%20human%20rights%20instruments_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/normes_oit/_texte/OIT%20-%20Building%20social%20protection%20systems%20-%20International%20standards%20and%20human%20rights%20instruments.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Guide OIT sur les systèmes de protection sociale et les droits humains. Utile pour le cadre conceptuel.</div>
+  </div>
+</div>
+<div class="section-title" data-cat="bulletins">Bulletins de comparaison<span class="count">11</span></div>
+
+<div class="source-card" id="card-BULLETIN-MOZAMBIQUE-1" data-cat="bulletins" data-id="BULLETIN-MOZAMBIQUE-1"
+     data-titre="1er boletim estatístico da protecção social — mozambique">
+  <div class="source-header" onclick="toggleCard('BULLETIN-MOZAMBIQUE-1')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BULLETIN-MOZAMBIQUE-1"
+             onchange="sauvegarder('BULLETIN-MOZAMBIQUE-1')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">1er Boletim Estatístico da Protecção Social — Mozambique</div>
+      <div class="src-meta">
+        <span>&#127970; Gouvernement du Mozambique / OIT</span>
+        <span>&#128197; 2019</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv2" title="Niveau 2 — Source secondaire acceptable">N2</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BULLETIN-MOZAMBIQUE-1">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/Mozambique%20-%201er%20Boletim%20Estatistico%20da%20Proteccao%20Social%2C%202019.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Mozambique%20-%201er%20Boletim%20Estatistico%20da%20Proteccao%20Social%2C%202019_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Mozambique%20-%201er%20Boletim%20Estatistico%20da%20Proteccao%20Social%2C%202019.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Référence de style uniquement. S&#x27;en inspirer pour la structure de chapitres, la présentation d&#x27;indicateurs et les formulations types.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-BULLETIN-MOZAMBIQUE-2" data-cat="bulletins" data-id="BULLETIN-MOZAMBIQUE-2"
+     data-titre="2e boletim estatístico da protecção social — mozambique">
+  <div class="source-header" onclick="toggleCard('BULLETIN-MOZAMBIQUE-2')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BULLETIN-MOZAMBIQUE-2"
+             onchange="sauvegarder('BULLETIN-MOZAMBIQUE-2')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">2e Boletim Estatístico da Protecção Social — Mozambique</div>
+      <div class="src-meta">
+        <span>&#127970; Gouvernement du Mozambique / OIT</span>
+        <span>&#128197; 2020</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv2" title="Niveau 2 — Source secondaire acceptable">N2</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BULLETIN-MOZAMBIQUE-2">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/Mozambique%20-%202e%20Boletim%20Estatistico%20da%20Proteccao%20Social%2C%202020.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Mozambique%20-%202e%20Boletim%20Estatistico%20da%20Proteccao%20Social%2C%202020_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Mozambique%20-%202e%20Boletim%20Estatistico%20da%20Proteccao%20Social%2C%202020.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Référence de style uniquement.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-BULLETIN-MOZAMBIQUE-3" data-cat="bulletins" data-id="BULLETIN-MOZAMBIQUE-3"
+     data-titre="3e boletim estatístico da protecção social — mozambique">
+  <div class="source-header" onclick="toggleCard('BULLETIN-MOZAMBIQUE-3')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BULLETIN-MOZAMBIQUE-3"
+             onchange="sauvegarder('BULLETIN-MOZAMBIQUE-3')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">3e Boletim Estatístico da Protecção Social — Mozambique</div>
+      <div class="src-meta">
+        <span>&#127970; Gouvernement du Mozambique / OIT</span>
+        <span>&#128197; 2021</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv2" title="Niveau 2 — Source secondaire acceptable">N2</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BULLETIN-MOZAMBIQUE-3">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/Mozambique%20-%203e%20Boletim%20Estatistico%20da%20Proteccao%20Social%2C%202021.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Mozambique%20-%203e%20Boletim%20Estatistico%20da%20Proteccao%20Social%2C%202021_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Mozambique%20-%203e%20Boletim%20Estatistico%20da%20Proteccao%20Social%2C%202021.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Référence de style uniquement.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-BULLETIN-MOZAMBIQUE-7" data-cat="bulletins" data-id="BULLETIN-MOZAMBIQUE-7"
+     data-titre="vii boletim estatístico sobre protecção social — mozambique">
+  <div class="source-header" onclick="toggleCard('BULLETIN-MOZAMBIQUE-7')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BULLETIN-MOZAMBIQUE-7"
+             onchange="sauvegarder('BULLETIN-MOZAMBIQUE-7')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">VII Boletim Estatístico sobre Protecção Social — Mozambique</div>
+      <div class="src-meta">
+        <span>&#127970; Gouvernement du Mozambique / OIT</span>
+        <span>&#128197; 2025</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv2" title="Niveau 2 — Source secondaire acceptable">N2</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BULLETIN-MOZAMBIQUE-7">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/VII%20Boletim%20Estatistico%20sobre%20Proteccao%20Social%202025%20.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Mozambique_VII_Boletim_Estatistico_Proteccao_Social_2025.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Référence de style. Édition la plus récente disponible — utile pour les évolutions de format.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-BULLETIN-ANGOLA-1" data-cat="bulletins" data-id="BULLETIN-ANGOLA-1"
+     data-titre="1er boletim de estatísticas da protecção social — angola">
+  <div class="source-header" onclick="toggleCard('BULLETIN-ANGOLA-1')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BULLETIN-ANGOLA-1"
+             onchange="sauvegarder('BULLETIN-ANGOLA-1')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">1er Boletim de Estatísticas da Protecção Social — Angola</div>
+      <div class="src-meta">
+        <span>&#127970; Gouvernement de l&#x27;Angola / OIT</span>
+        
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv2" title="Niveau 2 — Source secondaire acceptable">N2</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BULLETIN-ANGOLA-1">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/Boletim%20de%20Estat%C3%ADsticas%20da%20Protec%C3%A7%C3%A3o%20Social%20de%20Angola.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Boletim%20de%20Estat%C3%ADsticas%20da%20Protec%C3%A7%C3%A3o%20Social%20de%20Angola_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Boletim%20de%20Estat%C3%ADsticas%20da%20Protec%C3%A7%C3%A3o%20Social%20de%20Angola.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Référence de style uniquement. Année non précisée.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-BULLETIN-ANGOLA-2" data-cat="bulletins" data-id="BULLETIN-ANGOLA-2"
+     data-titre="2e boletim de estatísticas da protecção social — angola">
+  <div class="source-header" onclick="toggleCard('BULLETIN-ANGOLA-2')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BULLETIN-ANGOLA-2"
+             onchange="sauvegarder('BULLETIN-ANGOLA-2')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">2e Boletim de Estatísticas da Protecção Social — Angola</div>
+      <div class="src-meta">
+        <span>&#127970; Gouvernement de l&#x27;Angola / OIT</span>
+        
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv2" title="Niveau 2 — Source secondaire acceptable">N2</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BULLETIN-ANGOLA-2">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/2%C2%BA%20Boletim%20de%20Estat%C3%ADsticas%20da%20Protec%C3%A7%C3%A3o%20Social%20de%20Angola.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/2%C2%BA%20Boletim%20de%20Estat%C3%ADsticas%20da%20Protec%C3%A7%C3%A3o%20Social%20de%20Angola_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/2%C2%BA%20Boletim%20de%20Estat%C3%ADsticas%20da%20Protec%C3%A7%C3%A3o%20Social%20de%20Angola.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Référence de style uniquement.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-BULLETIN-GUINEE-BISSAU-1" data-cat="bulletins" data-id="BULLETIN-GUINEE-BISSAU-1"
+     data-titre="1er boletim estatístico da protecção social — guinée-bissau">
+  <div class="source-header" onclick="toggleCard('BULLETIN-GUINEE-BISSAU-1')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BULLETIN-GUINEE-BISSAU-1"
+             onchange="sauvegarder('BULLETIN-GUINEE-BISSAU-1')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">1er Boletim Estatístico da Protecção Social — Guinée-Bissau</div>
+      <div class="src-meta">
+        <span>&#127970; Gouvernement de la Guinée-Bissau / OIT</span>
+        <span>&#128197; 2024</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv2" title="Niveau 2 — Source secondaire acceptable">N2</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BULLETIN-GUINEE-BISSAU-1">
+    <div class="liens-row"><span class="lien-btn pdf-btn absent">&#128196; PDF absent : AF_1ºBEPS_Guine__Bissau_Digital_09092024-compressed_0.pdf</span><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Guinee_Bissau_1er_Boletim_Estatistico_PS_2023_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Guinee_Bissau_1er_Boletim_Estatistico_PS_2023.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Référence de style. Utile pour la comparaison avec un pays francophone d&#x27;Afrique de l&#x27;Ouest.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-BULLETIN-TIMOR-1" data-cat="bulletins" data-id="BULLETIN-TIMOR-1"
+     data-titre="boletim estatístico da protecção social — timor-leste (bilingue)">
+  <div class="source-header" onclick="toggleCard('BULLETIN-TIMOR-1')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BULLETIN-TIMOR-1"
+             onchange="sauvegarder('BULLETIN-TIMOR-1')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Boletim Estatístico da Protecção Social — Timor-Leste (bilingue)</div>
+      <div class="src-meta">
+        <span>&#127970; Gouvernement du Timor-Leste / OIT</span>
+        <span>&#128197; 2025</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv2" title="Niveau 2 — Source secondaire acceptable">N2</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BULLETIN-TIMOR-1">
+    <div class="liens-row"><span class="lien-btn pdf-btn absent">&#128196; PDF absent : AF_BE_TIMOR_A4_Bilingue_DIGITAL_06072025-compressed.pdf</span><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Timor_Leste_1er_Boletim_Estatistico_PS_2017_2024_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Timor_Leste_1er_Boletim_Estatistico_PS_2017_2024.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Référence de style. Format bilingue.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-BULLETIN-SAO-TOME-1" data-cat="bulletins" data-id="BULLETIN-SAO-TOME-1"
+     data-titre="1er boletim estatístico da protecção social — são tomé-et-príncipe">
+  <div class="source-header" onclick="toggleCard('BULLETIN-SAO-TOME-1')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BULLETIN-SAO-TOME-1"
+             onchange="sauvegarder('BULLETIN-SAO-TOME-1')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">1er Boletim Estatístico da Protecção Social — São Tomé-et-Príncipe</div>
+      <div class="src-meta">
+        <span>&#127970; Gouvernement de São Tomé-et-Príncipe / OIT</span>
+        
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv2" title="Niveau 2 — Source secondaire acceptable">N2</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BULLETIN-SAO-TOME-1">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/Sao-Tome-et-Principe%20-%201er%20Boletim%20Estatistico%20da%20Proteccao%20Social.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Sao-Tome-et-Principe%20-%201er%20Boletim%20Estatistico%20da%20Proteccao%20Social_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Sao-Tome-et-Principe%20-%201er%20Boletim%20Estatistico%20da%20Proteccao%20Social.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Référence de style uniquement.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-BULLETIN-JORDANIE-2020" data-cat="bulletins" data-id="BULLETIN-JORDANIE-2020"
+     data-titre="statistical bulletin of social protection indicators — jordan 2020-2021">
+  <div class="source-header" onclick="toggleCard('BULLETIN-JORDANIE-2020')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BULLETIN-JORDANIE-2020"
+             onchange="sauvegarder('BULLETIN-JORDANIE-2020')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Statistical Bulletin of Social Protection Indicators — Jordan 2020-2021</div>
+      <div class="src-meta">
+        <span>&#127970; Gouvernement de la Jordanie / OIT</span>
+        <span>&#128197; 2021</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv2" title="Niveau 2 — Source secondaire acceptable">N2</span>
+      <span class="badge-type pdf">PDF</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BULLETIN-JORDANIE-2020">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/Jordan%20-%20Statistical%20Bulletin%20of%20Social%20Protection%20Indicators%2C%202020-2021.pdf" class="lien-btn pdf-btn" target="_blank">&#128196; Ouvrir PDF</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Jordan%20-%20Statistical%20Bulletin%20of%20Social%20Protection%20Indicators%2C%202020-2021_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Jordan%20-%20Statistical%20Bulletin%20of%20Social%20Protection%20Indicators%2C%202020-2021.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Référence de style. Exemple de bulletin en anglais avec indicateurs détaillés.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-BULLETIN-55986" data-cat="bulletins" data-id="BULLETIN-55986"
+     data-titre="1er boletim estatístico sobre protecção social (mozambique  1re édition)  fichier nommé 55986">
+  <div class="source-header" onclick="toggleCard('BULLETIN-55986')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-BULLETIN-55986"
+             onchange="sauvegarder('BULLETIN-55986')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">1er Boletim Estatístico sobre Protecção Social (Mozambique  1re édition)  fichier nommé 55986</div>
+      <div class="src-meta">
+        <span>&#127970; Gouvernement du Mozambique / OIT</span>
+        <span>&#128197; 2019</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv2" title="Niveau 2 — Source secondaire acceptable">N2</span>
+      <span class="badge-type meta">META</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-BULLETIN-55986">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/bulletins_comparaison/_texte/Mozambique_1er_Boletim_Estatistico_Proteccao_Social_2019_v2.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Fichier nommé 55986.txt  contenu identique au 1er Boletim Mozambique 2019. Doublon probable de Mozambique - 1er Boletim Estatistico da Proteccao Social, 2019.txt. Pas de PDF correspondant.</div>
+  </div>
+</div>
+<div class="section-title" data-cat="atelier">Atelier de lancement<span class="count">3</span></div>
+
+<div class="source-card" id="card-ATELIER-CADRAGE-PPT" data-cat="atelier" data-id="ATELIER-CADRAGE-PPT"
+     data-titre="présentation de cadrage — atelier de lancement du bulletin statistique ps rdc">
+  <div class="source-header" onclick="toggleCard('ATELIER-CADRAGE-PPT')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-ATELIER-CADRAGE-PPT"
+             onchange="sauvegarder('ATELIER-CADRAGE-PPT')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Présentation de cadrage — Atelier de lancement du Bulletin statistique PS RDC</div>
+      <div class="src-meta">
+        <span>&#127970; OIT / Équipe du bulletin</span>
+        <span>&#128197; 2026</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type meta">META</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-ATELIER-CADRAGE-PPT">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/atelier_lancement/presentations/_texte/Cadrage_atelier_bulletin_PS_RDC%20v1_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/atelier_lancement/presentations/_texte/Cadrage_atelier_bulletin_PS_RDC%20v1.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Présentation de cadrage de l&#x27;atelier de lancement. Source primaire de l&#x27;événement.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-ATELIER-METHODOLOGIE-PPT" data-cat="atelier" data-id="ATELIER-METHODOLOGIE-PPT"
+     data-titre="présentation méthodologie indicateurs ps rdc — atelier de lancement">
+  <div class="source-header" onclick="toggleCard('ATELIER-METHODOLOGIE-PPT')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-ATELIER-METHODOLOGIE-PPT"
+             onchange="sauvegarder('ATELIER-METHODOLOGIE-PPT')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Présentation méthodologie indicateurs PS RDC — Atelier de lancement</div>
+      <div class="src-meta">
+        <span>&#127970; OIT / Équipe du bulletin</span>
+        <span>&#128197; 2026</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type meta">META</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-ATELIER-METHODOLOGIE-PPT">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/atelier_lancement/presentations/_texte/Methodologie_indicateurs_PS_RDC%20v1_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/atelier_lancement/presentations/_texte/Methodologie_indicateurs_PS_RDC%20v1.txt" class="lien-btn meta-btn" target="_blank">&#128202; TXT extrait</a></div>
+    
+    <div class="note-box">&#9888; Présentation sur la méthodologie et les indicateurs retenus pour le bulletin. Source clé pour les chapitres méthodologiques.</div>
+  </div>
+</div>
+
+<div class="source-card" id="card-ATELIER-EXEMPLE-ESS" data-cat="atelier" data-id="ATELIER-EXEMPLE-ESS"
+     data-titre="exemple ess — atelier de lancement">
+  <div class="source-header" onclick="toggleCard('ATELIER-EXEMPLE-ESS')">
+    <div class="cb-wrap">
+      <input type="checkbox" id="cb-ATELIER-EXEMPLE-ESS"
+             onchange="sauvegarder('ATELIER-EXEMPLE-ESS')"
+             onclick="event.stopPropagation()"
+             title="Marquer comme verifie">
+    </div>
+    <div>
+      <div class="src-title">Exemple ESS — Atelier de lancement</div>
+      <div class="src-meta">
+        <span>&#127970; OIT / Équipe du bulletin</span>
+        <span>&#128197; 2026</span>
+        <span class="statut-verif-badge sv-warn">A valider</span>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge-niv niv1" title="Niveau 1 — Source primaire">N1</span>
+      <span class="badge-type excel">EXCEL</span>
+    </div>
+  </div>
+  <div class="source-body" id="body-ATELIER-EXEMPLE-ESS">
+    <div class="liens-row"><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/atelier_lancement/presentations/Exemple%20ESS.xlsx" class="lien-btn xlsx-btn" target="_blank">&#128202; Ouvrir Excel (ESS)</a><a href="file:///C:/Users/M.Diouf/OneDrive/Bureau/RDC%20Bulletin%20V1/Bulletin_rdc_2026_agents/06_sources/atelier_lancement/presentations/_texte/Exemple%20ESS_metadata.txt" class="lien-btn meta-btn" target="_blank">&#128203; Metadata .txt</a></div>
+    
+    <div class="note-box">&#9888; Exemple de tableau ESS présenté lors de l&#x27;atelier. Document de travail pédagogique.</div>
+  </div>
+</div>
+
+<script>
+const TOTAL = 48;
+
+// ── Persistence checkboxes ──────────────────────────────────────────────────
+function sauvegarder(id) {
+  const cb = document.getElementById('cb-' + id);
+  const card = document.getElementById('card-' + id);
+  if (cb.checked) {
+    localStorage.setItem('verif-' + id, '1');
+    card.querySelector('.source-header').classList.add('verified');
+  } else {
+    localStorage.removeItem('verif-' + id);
+    card.querySelector('.source-header').classList.remove('verified');
+  }
+  mettreAJourProgres();
+}
+
+function chargerEtat() {
+  document.querySelectorAll('input[type=checkbox]').forEach(cb => {
+    const id = cb.id.replace('cb-', '');
+    if (localStorage.getItem('verif-' + id)) {
+      cb.checked = true;
+      const card = document.getElementById('card-' + id);
+      if (card) card.querySelector('.source-header').classList.add('verified');
+    }
+  });
+  mettreAJourProgres();
+}
+
+function mettreAJourProgres() {
+  const n = document.querySelectorAll('input[type=checkbox]:checked').length;
+  const pct = Math.round(n / TOTAL * 100);
+  document.getElementById('pbar').style.width = pct + '%';
+  document.getElementById('plabel').textContent = n + ' / ' + TOTAL + ' verifiees (' + pct + ' %)';
+}
+
+// ── Toggle body ─────────────────────────────────────────────────────────────
+function toggleCard(id) {
+  const body = document.getElementById('body-' + id);
+  body.classList.toggle('open');
+}
+
+// ── Filtres ─────────────────────────────────────────────────────────────────
+function filtrer() {
+  const cat    = document.getElementById('filter-cat').value;
+  const statut = document.getElementById('filter-statut').value;
+  const search = document.getElementById('filter-search').value.toLowerCase();
+
+  document.querySelectorAll('.source-card').forEach(card => {
+    const cardCat   = card.dataset.cat || '';
+    const cardTitre = card.dataset.titre || '';
+    const cardId    = card.dataset.id || '';
+    const cb = document.getElementById('cb-' + cardId);
+    const isVerif = cb && cb.checked;
+
+    const okCat    = !cat    || cardCat === cat;
+    const okStatut = !statut || (statut === 'verifiee' ? isVerif : !isVerif);
+    const okSearch = !search || cardTitre.includes(search) || cardId.toLowerCase().includes(search);
+
+    card.classList.toggle('hidden', !(okCat && okStatut && okSearch));
+  });
+}
+
+function resetFiltres() {
+  document.getElementById('filter-cat').value = '';
+  document.getElementById('filter-statut').value = '';
+  document.getElementById('filter-search').value = '';
+  filtrer();
+}
+
+// ── Export CSV ──────────────────────────────────────────────────────────────
+function exporterCSV() {
+  const rows = [['ID', 'Titre', 'Organisation', 'Verifie', 'PDF', 'URL']];
+  document.querySelectorAll('.source-card').forEach(card => {
+    const id = card.dataset.id;
+    const titre = card.dataset.titre;
+    const cb = document.getElementById('cb-' + id);
+    rows.push([id, titre, '', cb && cb.checked ? 'oui' : 'non', '', '']);
+  });
+  const csv = rows.map(r => r.map(c => '"' + String(c).replace(/"/g,'""') + '"').join(',')).join('\n');
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'checklist_sources_' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+}
+
+// ── Init ─────────────────────────────────────────────────────────────────────
+window.addEventListener('load', chargerEtat);
+</script>
+</div></body></html>

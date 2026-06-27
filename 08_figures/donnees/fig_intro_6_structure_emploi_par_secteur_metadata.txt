@@ -1,0 +1,54 @@
+FIGURE          : fig_intro_6 — Structure de l'emploi par grand secteur d'activité, RDC
+SOURCE          : Banque mondiale — World Development Indicators (WDI, indicateur ILOEST, 2024)
+ORGANISATION    : Banque mondiale / OIT (données sous-jacentes ILOEST)
+INDICATEURS     : SL.AGR.EMPL.ZS — Emploi agricole (% emploi total)
+                  SL.IND.EMPL.ZS — Emploi industriel (% emploi total)
+                  SL.SRV.EMPL.ZS — Emploi dans les services (% emploi total)
+                  + désagrégations par sexe (suffixe .FE.ZS et .MA.ZS)
+PERIODE         : 2024
+FREQUENCE       : Annuelle
+NIVEAU          : 1 — Organisation internationale, source primaire
+MODE_COLLECTE   : API automatisée
+URL_API         : https://api.worldbank.org/v2/country/CD/indicator/SL.AGR.EMPL.ZS?format=json&mrv=5
+URL_VERIFICATION: https://data.worldbank.org/indicator/SL.AGR.EMPL.ZS?locations=CD
+DATE_CONSULTATION: 2026-06-08
+FICHIER_CSV     : 08_figures/donnees/fig_intro_6_structure_emploi_par_secteur.csv
+SCRIPT          : 09_scripts/generer_figures_intro.py → def fig6()
+EXPORT          : 08_figures/exports/FIG_6_structure_emploi_secteurs.png
+
+---
+
+NOTE MÉTHODOLOGIQUE
+
+L'agriculture comprend les activités agricoles, sylviculture, chasse et pêche.
+L'industrie comprend les industries extractives, manufacturières, construction et énergie.
+Les services regroupent toutes les autres activités.
+
+Note : industrie et services sont des parts résiduelles estimées. Seule l'agriculture est
+directement disponible avec désagrégation par sexe dans les séries WDI. Les parts industrie
+et services par sexe sont cohérentes avec les tables ILOEST mais ont pu faire l'objet
+d'ajustements pour s'assurer que la somme des trois secteurs = 100 % par catégorie.
+
+Évolution agriculture (total) : 61,4 % (2021) → 60,4 % (2022) → 59,5 % (2023) → 58,9 % (2024)
+Tendance baissière lente, reflétant une transition structurelle graduelle vers l'industrie
+et les services, portée notamment par l'urbanisation et le secteur minier.
+
+---
+
+VALEURS CLÉS ARCHIVÉES (2024)
+
+Secteur      | Ensemble | Femmes | Hommes
+Agriculture  |  58,9 %  | 67,8 % | 50,3 %
+Industrie    |  15,3 %  | 12,1 % | 18,2 %
+Services     |  25,8 %  | 20,1 % | 31,5 %
+
+Écart F/H agriculture : +17,5 points (les femmes sont surreprésentées dans l'agriculture)
+Écart F/H services : -11,4 points (les femmes sont sous-représentées dans les services)
+
+---
+
+CITATION RECOMMANDÉE
+
+Banque mondiale (2026), World Development Indicators — Emploi par secteur d'activité, RDC,
+indicateurs SL.AGR/IND/SRV.EMPL.ZS (et variantes par sexe). Données consultées avril 2026.
+https://data.worldbank.org/indicator/SL.AGR.EMPL.ZS?locations=CD

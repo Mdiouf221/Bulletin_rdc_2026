@@ -6,6 +6,7 @@ LANGUE : Anglais
 TYPE : rapport international
 FICHIER : OIT - Building social protection systems - International standards and human rights instruments.txt / OIT - Building social protection systems - International standards and human rights instruments.pdf
 NIVEAU FIABILITE : 1 — Organisation internationale, publication officielle de référence
+LIEN SOURCE — PDF local (present) : 06_sources/normes_oit/OIT - Building social protection systems - International standards and human rights instruments.pdf
 
 ---
 

@@ -1,4 +1,4 @@
-﻿# 2.2 Approche retenue pour le bulletin : cadre BIT/OIT et indicateurs de couverture effective
+﻿## 2.2 Approche retenue pour le bulletin : cadre BIT/OIT et indicateurs de couverture effective
 
 <!-- NOTE_INTERNE
 Contenu à couvrir :

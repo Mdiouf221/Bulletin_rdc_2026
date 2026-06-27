@@ -30,6 +30,33 @@ import sys
 from datetime import datetime
 
 # ---------------------------------------------------------------------------
+# Résolution de pandoc (PATH courant + emplacements connus Windows/Linux/macOS)
+
+def _find_pandoc() -> str:
+    """Retourne le chemin de l'exécutable pandoc, même si le PATH est obsolète."""
+    import shutil
+    found = shutil.which("pandoc")
+    if found:
+        return found
+    candidates = [
+        # Windows — installation utilisateur (winget / installeur officiel)
+        pathlib.Path.home() / "AppData" / "Local" / "Pandoc" / "pandoc.exe",
+        # Windows — installation système
+        pathlib.Path("C:/Program Files/Pandoc/pandoc.exe"),
+        # macOS Homebrew
+        pathlib.Path("/opt/homebrew/bin/pandoc"),
+        pathlib.Path("/usr/local/bin/pandoc"),
+        # Linux
+        pathlib.Path("/usr/bin/pandoc"),
+    ]
+    for c in candidates:
+        if c.exists():
+            return str(c)
+    return "pandoc"  # fallback — laisse subprocess générer l'erreur habituelle
+
+PANDOC = _find_pandoc()
+
+# ---------------------------------------------------------------------------
 # Chemins
 
 SCRIPT_DIR    = pathlib.Path(__file__).resolve().parent
@@ -450,57 +477,44 @@ def export_html(include_notes: bool = False, open_after: bool = False) -> "pathl
 # Export Word (via pandoc)
 
 def export_word(include_notes: bool = False, open_after: bool = False) -> "pathlib.Path | None":
-    """Génère un .docx via pandoc."""
-    # Vérifier que pandoc est disponible
-    try:
-        r = subprocess.run(
-            ["pandoc", "--version"],
-            capture_output=True,
-            encoding="utf-8",
+    """
+    Délègue entièrement à exporter_word.py (pipeline complet : styles, sauts de
+    page, TOF, autofit…).  Cette fonction reste le point d'entrée appelé par le
+    serveur de prévisualisation et par --word / --all.
+    """
+    label = "notes" if include_notes else "relecture"
+    stamp = STAMP
+    html_source = OUTPUT_DIR / f"bulletin_{label}_{stamp}.html"
+
+    # Générer le HTML source s'il est absent
+    if not html_source.exists():
+        subprocess.run(
+            [sys.executable, str(pathlib.Path(__file__)),
+             "--notes" if include_notes else "--html"],
+            capture_output=True, cwd=str(WORKSPACE_DIR),
+            encoding="utf-8", errors="replace",
         )
-        if r.returncode != 0:
-            raise FileNotFoundError
-    except FileNotFoundError:
-        print("[EXPORT WORD] pandoc n'est pas installé ou introuvable dans le PATH.")
-        print("              Télécharger : https://pandoc.org/installing.html")
+        if not html_source.exists():
+            print(f"[EXPORT WORD] Fichier HTML source introuvable : {html_source.name}")
+            print("              Lancez d'abord : python 09_scripts/exporter.py --html")
+            return None
+
+    # Déléguer au pipeline Word complet
+    exporter_word_path = SCRIPT_DIR / "exporter_word.py"
+    if not exporter_word_path.exists():
+        print("[EXPORT WORD] exporter_word.py introuvable dans 09_scripts/")
         return None
 
-    label  = "notes" if include_notes else "relecture"
-    source = MD_TRAVAIL if include_notes else MD_PUBLICATION
-    output = OUTPUT_DIR / f"bulletin_{label}_{STAMP}.docx"
-
-    if not source.exists():
-        print(f"[EXPORT WORD] Fichier source introuvable : {source.name}")
-        print("              Lancez d'abord : python 09_scripts/assembler_markdown.py")
-        return None
-
-    cmd = [
-        "pandoc", str(source),
-        "--from",  "markdown+smart+raw_html",
-        "--to",    "docx",
-        "--output", str(output),
-        "--toc",
-        "--toc-depth=3",
-        "--highlight-style=tango",
-        "--strip-comments",
-    ]
-
-    # Utiliser un fichier reference.docx si disponible (mise en forme personnalisée)
-    ref_docx = SCRIPT_DIR / "reference.docx"
-    if ref_docx.exists():
-        cmd += ["--reference-doc", str(ref_docx)]
-        print(f"[EXPORT WORD] Utilisation du modèle : reference.docx")
-
-    print("[EXPORT WORD] Conversion pandoc…")
     result = subprocess.run(
-        cmd,
-        capture_output=True,
-        encoding="utf-8",
-        errors="replace",
+        [sys.executable, str(exporter_word_path), str(html_source)],
+        capture_output=True, cwd=str(WORKSPACE_DIR),
+        encoding="utf-8", errors="replace",
     )
 
-    if result.returncode != 0:
-        print(f"[ERREUR WORD] {result.stderr.strip()}")
+    output = OUTPUT_DIR / f"bulletin_{label}_{stamp}.docx"
+    if result.returncode != 0 or not output.exists():
+        err = (result.stderr or result.stdout or "Erreur inconnue").strip()
+        print(f"[ERREUR WORD] {err[:600]}")
         return None
 
     size_kb = output.stat().st_size // 1024
@@ -510,8 +524,7 @@ def export_word(include_notes: bool = False, open_after: bool = False) -> "pathl
         try:
             os.startfile(str(output))
         except AttributeError:
-            import subprocess as sp
-            sp.Popen(["xdg-open", str(output)])
+            subprocess.Popen(["xdg-open", str(output)])
 
     return output
 
@@ -556,7 +569,7 @@ def export_pdf(include_notes: bool = False, open_after: bool = False) -> "pathli
     # — Tentative 2 : pandoc + xelatex —
     try:
         r = subprocess.run(
-            ["pandoc", "--version"], capture_output=True, encoding="utf-8"
+            [PANDOC, "--version"], capture_output=True, encoding="utf-8"
         )
         if r.returncode == 0:
             source = MD_TRAVAIL if include_notes else MD_PUBLICATION
@@ -564,7 +577,7 @@ def export_pdf(include_notes: bool = False, open_after: bool = False) -> "pathli
                 print(f"[EXPORT PDF] Fichier source introuvable : {source.name}")
                 return None
             cmd = [
-                "pandoc", str(source),
+                PANDOC, str(source),
                 "--from",   "markdown+smart+raw_html",
                 "--to",     "pdf",
                 "--output", str(output),

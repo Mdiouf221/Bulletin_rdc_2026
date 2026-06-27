@@ -6,6 +6,7 @@ LANGUE : Portugais
 TYPE : bulletin statistique
 FICHIER : Sao-Tome-et-Principe - 1er Boletim Estatistico da Proteccao Social.txt / Sao-Tome-et-Principe - 1er Boletim Estatistico da Proteccao Social.pdf
 NIVEAU FIABILITE : 2 — publication officielle secondaire acceptable
+LIEN SOURCE — PDF local (present) : 06_sources/bulletins_comparaison/Sao-Tome-et-Principe - 1er Boletim Estatistico da Proteccao Social.pdf
 
 ---
 

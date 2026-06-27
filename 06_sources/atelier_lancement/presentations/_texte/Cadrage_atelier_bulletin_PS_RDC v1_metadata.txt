@@ -3,6 +3,7 @@ SOURCE : Secrétariat National de la Protection Sociale (SNPS) avec appui techni
 LIEU : Kinshasa, République Démocratique du Congo
 DATE : 14 mai 2026
 FICHIER : Cadrage_atelier_bulletin_PS_RDC v1.pdf / PPT1_cadrage_atelier_bulletin_PS_RDC v1.pptx
+LIEN SOURCE : non renseigne
 NIVEAU : Source primaire institutionnelle (document officiel de l'atelier)
 
 ---

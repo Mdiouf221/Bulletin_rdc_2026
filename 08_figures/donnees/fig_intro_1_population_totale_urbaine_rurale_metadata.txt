@@ -1,0 +1,44 @@
+FIGURE          : fig_intro_1 — Évolution de la population totale, urbaine et rurale de la RDC (1950-2025)
+SOURCE          : Division de la population des Nations Unies — World Population Prospects 2024 (WPP 2024)
+ORGANISATION    : Nations Unies, DESA (Département des affaires économiques et sociales)
+INDICATEURS     : Population totale (millions) ; taux d'urbanisation (%) ; population urbaine et rurale dérivées
+PERIODE         : 1950–2025 (estimation mi-année)
+FREQUENCE       : Quinquennale (1950–2020) + estimation 2025
+NIVEAU          : 1 — Organisation internationale, source primaire de référence mondiale
+MODE_COLLECTE   : Consultation web manuelle
+URL_VERIFICATION: https://population.un.org/wpp/Download/Standard/MostUsed/
+DATE_CONSULTATION: 2026-06-08
+FICHIER_CSV     : 08_figures/donnees/fig_intro_1_population_totale_urbaine_rurale.csv
+SCRIPT          : 09_scripts/generer_figures_intro.py → def fig1()
+EXPORT          : 08_figures/exports/FIG_1_population_totale_urbaine_rurale_1950_2025.png
+
+---
+
+NOTE MÉTHODOLOGIQUE
+
+Les valeurs de population totale sont des estimations mi-année issues des tables WPP 2024 standard
+pour la RDC. Les valeurs de population urbaine et rurale sont dérivées par le script à partir du
+taux d'urbanisation (World Urbanization Prospects 2024). La valeur 2025 (112 millions) est une
+estimation provisoire.
+
+Conflit de données documenté : l'INS RDC projette ~124 millions pour 2025 (vs ~112 millions WPP
+2024). Décision du bulletin : retenir WPP 2024 comme référence principale pour la cohérence avec
+les indicateurs internationaux.
+
+---
+
+VALEURS CLÉS ARCHIVÉES
+
+Population totale 2025 : ~112,0 millions
+Population urbaine 2025 : ~51,5 millions (46,0 %)
+Population rurale 2025 : ~60,5 millions (54,0 %)
+Taux d'urbanisation 1950 : 19,0 %
+Taux d'urbanisation 2025 : 46,0 %
+
+---
+
+CITATION RECOMMANDÉE
+
+Nations Unies, DESA (2024), World Population Prospects 2024 : Summary of Results,
+UN DESA/POP/2024/TR/NO. 9, New York, Nations Unies.
+Données RDC disponibles sur : https://population.un.org/wpp/

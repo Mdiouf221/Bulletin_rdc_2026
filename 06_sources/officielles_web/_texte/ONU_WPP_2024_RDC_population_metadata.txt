@@ -6,6 +6,8 @@ LANGUE : Anglais
 TYPE : rapport international
 FICHIER : ONU_WPP_2024_RDC_population.txt / ONU_WPP_2024_RDC_population.pdf
 NIVEAU FIABILITE : 1 — Organisation internationale, source primaire de référence mondiale
+LIEN SOURCE — URL source officielle : https://population.un.org/wpp/
+LIEN SOURCE — PDF local (present) : 06_sources/officielles_web/ONU_WPP_2024_RDC_population.pdf
 
 ---
 

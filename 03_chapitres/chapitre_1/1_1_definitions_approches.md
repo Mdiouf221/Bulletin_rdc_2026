@@ -1,4 +1,4 @@
-﻿# 2.1 Définitions et approches de la protection sociale
+﻿## 2.1 Définitions et approches de la protection sociale
 
 <!-- NOTE_INTERNE
 Contenu à couvrir :

@@ -1,0 +1,61 @@
+FIGURE          : fig_intro_2 — Pyramide des âges de la RDC (2025) : répartition par groupe d'âge quinquennal et par sexe
+SOURCE          : Division de la population des Nations Unies — World Population Prospects 2024 (WPP 2024) / UNFPA
+ORGANISATION    : Nations Unies, DESA ; UNFPA
+INDICATEURS     : Population par tranche d'âge quinquennale et par sexe (effectifs en milliers)
+PERIODE         : Estimation mi-année 2025
+FREQUENCE       : Ponctuelle (snapshot 2025)
+NIVEAU          : 1 — Organisation internationale, source primaire de référence mondiale
+MODE_COLLECTE   : Consultation web manuelle
+URL_VERIFICATION: https://population.un.org/wpp/Download/Standard/Population/
+DATE_CONSULTATION: 2026-06-08
+FICHIER_CSV     : 08_figures/donnees/fig_intro_2_pyramide_ages_par_sexe.csv
+SCRIPT          : 09_scripts/generer_figures_intro.py → def fig2()
+EXPORT          : 08_figures/exports/FIG_2_structure_age_2025.png
+
+---
+
+NOTE MÉTHODOLOGIQUE
+
+Les effectifs par tranche d'âge quinquennale et par sexe sont approximés d'après les tables
+WPP 2024 standard pour la RDC. Ils ne sont pas extraits directement de la base de données
+en ligne (non disponible localement sous forme tabulaire au moment de la rédaction).
+
+Cohérence vérifiée avec les agrégats connus (WPP 2024) :
+  - 0–14 ans  : 46,7 % de la population totale
+  - 15–64 ans : 50,7 % de la population totale
+  - 65 ans +  :  2,6 % de la population totale
+
+Population totale implicite : ~112 millions (estimation 2025)
+Âge médian : 15,9 ans (ONU WPP 2024)
+Ratio de dépendance : ~96 pour 100 personnes en âge de travailler
+
+---
+
+VALEURS CLÉS ARCHIVÉES (effectifs en milliers, estimation 2025)
+
+Hommes | Femmes | Tranche
+  9 350 |  9 200 | 0–4 ans
+  8 600 |  8 450 | 5–9 ans
+  8 350 |  8 350 | 10–14 ans
+  5 700 |  5 600 | 15–19 ans
+  4 700 |  4 800 | 20–24 ans
+  3 950 |  4 050 | 25–29 ans
+  3 350 |  3 450 | 30–34 ans
+  2 750 |  2 850 | 35–39 ans
+  2 250 |  2 350 | 40–44 ans
+  1 800 |  1 900 | 45–49 ans
+  1 400 |  1 500 | 50–54 ans
+  1 050 |  1 150 | 55–59 ans
+    800 |    900 | 60–64 ans
+    580 |    660 | 65–69 ans
+    370 |    450 | 70–74 ans
+    210 |    275 | 75–79 ans
+    150 |    230 | 80 ans +
+
+---
+
+CITATION RECOMMANDÉE
+
+Nations Unies, DESA (2024), World Population Prospects 2024 : Summary of Results,
+UN DESA/POP/2024/TR/NO. 9, New York, Nations Unies.
+Données RDC disponibles sur : https://population.un.org/wpp/

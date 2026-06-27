@@ -1,4 +1,4 @@
-﻿# 2.5 Précautions de lecture : distinctions statistiques et limites méthodologiques
+﻿## 2.5 Précautions de lecture : distinctions statistiques et limites méthodologiques
 
 <!-- NOTE_INTERNE
 Fusion de l'ancienne 2.6 (concepts statistiques) et 2.7 (limites méthodologiques).

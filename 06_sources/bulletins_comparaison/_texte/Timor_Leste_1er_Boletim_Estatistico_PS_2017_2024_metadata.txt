@@ -6,6 +6,7 @@ LANGUE : Portugais / Tetum (bilingue)
 TYPE : bulletin statistique
 FICHIER : AF_BE_TIMOR_A4_Bilingue_DIGITAL_06072025-compressed.txt / AF_BE_TIMOR_A4_Bilingue_DIGITAL_06072025-compressed.pdf
 NIVEAU FIABILITE : 2 — publication officielle secondaire acceptable
+LIEN SOURCE — PDF local (ABSENT) : 06_sources/bulletins_comparaison/AF_BE_TIMOR_A4_Bilingue_DIGITAL_06072025-compressed.pdf
 
 NOTE SUR LE NOM : Le nom de fichier reflète le code de diffusion (ACTION/Portugal, format A4, bilingue, date 06/07/2025). Un renommage descriptif serait : « Timor_Leste_1er_Boletim_Estatistico_PS_2017_2024.pdf ».
 

@@ -6,6 +6,7 @@ LANGUE : Anglais (texte officiel)
 TYPE : convention OIT
 FICHIER : C183 - Convention sur la protection de la maternite (No. 183), 2000.txt / C183 - Convention sur la protection de la maternite (No. 183), 2000.pdf
 NIVEAU FIABILITE : 1 — Organisation internationale, source primaire normative
+LIEN SOURCE — PDF local (present) : 06_sources/normes_oit/C183 - Convention sur la protection de la maternite (No. 183), 2000.pdf
 
 ---
 

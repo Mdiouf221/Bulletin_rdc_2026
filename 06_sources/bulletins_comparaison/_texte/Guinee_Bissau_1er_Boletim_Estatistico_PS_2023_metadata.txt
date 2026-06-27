@@ -6,6 +6,7 @@ LANGUE : Portugais
 TYPE : bulletin statistique
 FICHIER : AF_1ºBEPS_Guine__Bissau_Digital_09092024-compressed_0.txt / AF_1ºBEPS_Guine__Bissau_Digital_09092024-compressed_0.pdf
 NIVEAU FIABILITE : 2 — publication officielle secondaire acceptable
+LIEN SOURCE — PDF local (ABSENT) : 06_sources/bulletins_comparaison/AF_1ºBEPS_Guine__Bissau_Digital_09092024-compressed_0.pdf
 
 NOTE SUR LE NOM : Le nom de fichier reflète le code de diffusion numérique (ACTION/Portugal format). Un renommage descriptif serait : « Guinee_Bissau_1er_Boletim_Estatistico_PS_2023.pdf ». Renommage recommandé mais non obligatoire.
 

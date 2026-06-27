@@ -6,6 +6,7 @@ LANGUE : Français / Anglais (modèle OIT bilingue)
 TYPE : données institutionnelles — fichier ESS modèle (Excel)
 FICHIER : Exemple ESS.xlsx (pas de PDF associé)
 NIVEAU FIABILITE : 1 — source primaire institutionnelle (document de travail OIT/SNPS)
+LIEN SOURCE — Fichier source Excel (present) : 06_sources/atelier_lancement/presentations/Exemple ESS.xlsx
 
 ---
 

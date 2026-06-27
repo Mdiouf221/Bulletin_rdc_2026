@@ -6,6 +6,7 @@ LANGUE : Anglais (brochure syndicale consulté)
 TYPE : convention OIT
 FICHIER : R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt / R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.pdf
 NIVEAU FIABILITE : 1 — Organisation internationale, source primaire normative
+LIEN SOURCE — PDF local (present) : 06_sources/normes_oit/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.pdf
 
 ---
 

@@ -1,4 +1,4 @@
-﻿# 2.4 Grilles de lecture : classification des régimes, programmes et prestations
+﻿## 2.4 Grilles de lecture : classification des régimes, programmes et prestations
 
 <!-- NOTE_INTERNE
 Contenu à couvrir :

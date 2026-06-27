@@ -6,6 +6,7 @@ LANGUE : Portugais
 TYPE : bulletin statistique
 FICHIER : Mozambique - 2e Boletim Estatistico da Proteccao Social, 2020.txt / Mozambique - 2e Boletim Estatistico da Proteccao Social, 2020.pdf
 NIVEAU FIABILITE : 2 — publication officielle secondaire acceptable
+LIEN SOURCE — PDF local (present) : 06_sources/bulletins_comparaison/Mozambique - 2e Boletim Estatistico da Proteccao Social, 2020.pdf
 
 ---
 

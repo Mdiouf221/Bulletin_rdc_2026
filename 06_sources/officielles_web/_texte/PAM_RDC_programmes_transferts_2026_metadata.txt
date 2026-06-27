@@ -6,6 +6,8 @@ LANGUE : Anglais
 TYPE : rapport international
 FICHIER : PAM_RDC_programmes_transferts_2026.txt / PAM_RDC_programmes_transferts_2026.pdf
 NIVEAU FIABILITE : 1 — Organisation internationale, publication officielle
+LIEN SOURCE — URL source officielle : https://www.wfp.org/countries/democratic-republic-congo
+LIEN SOURCE — PDF local (present) : 06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.pdf
 
 ---
 

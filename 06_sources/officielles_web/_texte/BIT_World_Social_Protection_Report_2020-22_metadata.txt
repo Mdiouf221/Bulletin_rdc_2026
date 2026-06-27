@@ -6,6 +6,9 @@ LANGUE : Anglais (résumé exécutif ; rapport complet bilingue en/fr)
 TYPE : rapport international
 FICHIER : BIT_World_Social_Protection_Report_2020-22.txt / BIT_World_Social_Protection_Report_2020-22.pdf
 NIVEAU FIABILITE : 1 — Organisation internationale, publication phare OIT (flagship report)
+LIEN SOURCE — URL source officielle : https://www.ilo.org/publications/world-social-protection-report-2020-22-social-protection-crossroads-pursuit
+LIEN SOURCE — URL PDF direct : https://www.ilo.org/sites/default/files/wcmsp5/groups/public/%40ed_protect/%40soc_sec/documents/publication/wcms_817574.pdf
+LIEN SOURCE — PDF local (present) : 06_sources/officielles_web/BIT_World_Social_Protection_Report_2020-22.pdf
 
 ---
 

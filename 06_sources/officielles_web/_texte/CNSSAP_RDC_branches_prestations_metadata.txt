@@ -6,6 +6,8 @@ LANGUE : Français
 TYPE : données institutionnelles
 FICHIER : CNSSAP_RDC_branches_prestations.txt / CNSSAP_RDC_branches_prestations.pdf
 NIVEAU FIABILITE : 1 — données institutionnelles primaires (publication officielle CNSSAP)
+LIEN SOURCE — URL source officielle : https://www.cnssap.cd/
+LIEN SOURCE — PDF local (present) : 06_sources/officielles_web/CNSSAP_RDC_branches_prestations.pdf
 
 ---
 

@@ -6,6 +6,8 @@ LANGUE : Français (supposé — document scanné)
 TYPE : données institutionnelles
 FICHIER : CNSS_RDC_branches_prestations.txt / CNSS_RDC_branches_prestations.pdf
 NIVEAU FIABILITE : 1 — données institutionnelles primaires — mais non lisibles (PDF scanné)
+LIEN SOURCE — URL source officielle : https://www.cnss.cd/
+LIEN SOURCE — PDF local (present) : 06_sources/officielles_web/CNSS_RDC_branches_prestations.pdf
 
 ---
 

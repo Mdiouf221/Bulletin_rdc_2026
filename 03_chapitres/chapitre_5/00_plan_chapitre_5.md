@@ -1,4 +1,4 @@
-# Chapitre 5 — Positionnement de la RDC au regard des indicateurs ODD
+﻿# Chapitre 5 — Positionnement de la RDC au regard des indicateurs ODD
 
 <!-- NOTE_INTERNE
 Objectif :
@@ -23,6 +23,8 @@ L'indicateur ODD 1.3.1 mesure la proportion de la population effectivement couve
 
 L'indicateur est décomposé par groupe de population conformément aux catégories officielles de l'OIT :
 
+<p class="table-caption"><strong>Tableau 5.1</strong> — Définitions des sous-indicateurs de l'ODD 1.3.1 <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s5-t1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_5/00_plan_chapitre_5.md">[src]</a></p>
+
 | Sous-indicateur ODD 1.3.1 | Définition |
 |---|---|
 | Population totale | % de la population couverte par au moins une prestation |
@@ -33,6 +35,8 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 | Personnes handicapées | % recevant une prestation invalidité |
 
 ### Résultats pour la RDC <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+<p class="table-caption"><strong>Tableau 5.2</strong> — Valeurs de l'ODD 1.3.1 pour la RDC par groupe de population (2019–2025) <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s5-t2-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_5/00_plan_chapitre_5.md">[src]</a></p>
 
 | Sous-indicateur ODD 1.3.1 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
@@ -47,6 +51,8 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 
 ### Comparaison régionale et internationale <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
+<p class="table-caption"><strong>Tableau 5.3</strong> — Comparaison régionale et internationale de l'ODD 1.3.1 <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s5-t3-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_5/00_plan_chapitre_5.md">[src]</a></p>
+
 | Pays / Région | ODD 1.3.1 — population totale (%) | Année | Source |
 |---|---|---|---|
 | RDC | [EST.] | 2022 | ESS OIT / calcul |
@@ -59,9 +65,11 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 
 ### Trajectoire et objectifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
+<p class="table-caption"><strong>Tableau 5.4</strong> — Trajectoire et objectifs de l'indicateur ODD 1.3.1 pour la RDC <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s5-t4-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_5/00_plan_chapitre_5.md">[src]</a></p>
+
 | Indicateur | 2022 (référence) | 2025 (cible PNPS) | 2030 (cible ODD) |
 |---|---|---|---|
-| ODD 1.3.1 — population totale (%) | [EST.] | [N/D — cible PNPS à rechercher] | — |
+| ODD <span class="val" data-val-id="s5-t4-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_5/00_plan_chapitre_5.md">1.3</span>.1 — population totale (%) | [EST.] | [N/D — cible PNPS à rechercher] | — |
 
 ---
 
@@ -73,13 +81,17 @@ L'indicateur ODD 3.8.1 mesure l'indice de couverture des services de santé esse
 
 ### Résultats pour la RDC <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
+<p class="table-caption"><strong>Tableau 5.5</strong> — Évolution de l'indice ODD 3.8.1 pour la RDC (2015–2023) <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s5-t5-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_5/00_plan_chapitre_5.md">[src]</a></p>
+
 | Indicateur | 2015 | 2017 | 2019 | 2021 | 2023 |
 |---|---|---|---|---|---|
-| Indice ODD 3.8.1 — RDC (0–100) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Indice ODD <span class="val" data-val-id="s5-t5-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_5/00_plan_chapitre_5.md">3.8</span>.1 — RDC (0–<span class="val" data-val-id="s5-t5-d3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_5/00_plan_chapitre_5.md">100</span>) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
 *Source : OMS, Global Health Observatory, indicateur UHC Service Coverage Index (SDG 3.8.1) — données à collecter sur data.who.int.*
 
 ### Comparaison régionale et internationale <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+<p class="table-caption"><strong>Tableau 5.6</strong> — Comparaison régionale et internationale de l'ODD 3.8.1 <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s5-t6-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_5/00_plan_chapitre_5.md">[src]</a></p>
 
 | Pays / Région | Indice ODD 3.8.1 (0–100) | Année | Source |
 |---|---|---|---|
@@ -93,9 +105,11 @@ L'indicateur ODD 3.8.1 mesure l'indice de couverture des services de santé esse
 
 ### Trajectoire et objectifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
+<p class="table-caption"><strong>Tableau 5.7</strong> — Trajectoire et objectifs de l'indicateur ODD 3.8.1 pour la RDC <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s5-t7-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_5/00_plan_chapitre_5.md">[src]</a></p>
+
 | Indicateur | Valeur de référence | 2030 (cible ODD) |
 |---|---|---|
-| Indice ODD 3.8.1 — RDC (0–100) | [N/D] | 80 |
+| Indice ODD <span class="val" data-val-id="s5-t7-d4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_5/00_plan_chapitre_5.md">3.8</span>.1 — RDC (0–<span class="val" data-val-id="s5-t7-d5" data-val-status="à valider" data-val-file="03_chapitres/chapitre_5/00_plan_chapitre_5.md">100</span>) | [N/D] | 80 |
 
 *Note : la cible ODD 3.8.1 est fixée à 80 (sur 100) pour 2030. La valeur nationale de référence sera renseignée à partir des données OMS GHO.*
 

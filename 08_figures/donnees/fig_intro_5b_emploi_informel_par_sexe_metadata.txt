@@ -1,0 +1,47 @@
+FIGURE          : fig_intro_5b — Taux d'emploi informel par sexe, RDC
+SOURCE          : OIT, ILOSTAT — estimations modélisées (ILOEST)
+ORGANISATION    : Organisation internationale du Travail (OIT / ILO)
+INDICATEURS     : INF_2INF_NOC_RT_A — Emploi informel en % de l'emploi total
+PERIODE         : 2020 (dernières estimations disponibles pour cet indicateur)
+FREQUENCE       : Annuelle (estimations modélisées)
+NIVEAU          : 1 — Organisation internationale, source primaire
+MODE_COLLECTE   : Consultation web manuelle
+URL_VERIFICATION: https://ilostat.ilo.org/data/#INF_2INF_NOC_RT_A
+DATE_CONSULTATION: 2026-06-08
+FICHIER_CSV     : 08_figures/donnees/fig_intro_5b_emploi_informel_par_sexe.csv
+SERIE_LIEE      : 08_figures/donnees/fig_intro_5a_taux_activite_par_sexe.csv
+SCRIPT          : 09_scripts/generer_figures_intro.py → def fig5() panneau droit
+EXPORT          : 08_figures/exports/FIG_5_emploi_informel_par_sexe.png
+
+---
+
+NOTE MÉTHODOLOGIQUE
+
+L'emploi informel selon la définition large de l'OIT comprend :
+  - Les travailleurs du secteur informel (unités de production informelles)
+  - Les travailleurs formellement salariés sans protection sociale (emploi informel dans le secteur formel)
+
+Les estimations ILOSTAT 2020 sont les plus récentes disponibles pour la RDC pour cet indicateur.
+Les proxies WDI 2024 confirment une informalité très élevée et persistante :
+  - Emploi vulnérable (SL.EMP.VULN.ZS) : 81,8 % en 2024
+  - Travailleurs indépendants (SL.EMP.SELF.ZS) : 85,3 % en 2024
+
+La légère prépondérance chez les femmes (97,8 % vs 95,7 % pour les hommes) s'explique par
+leur surreprésentation dans l'agriculture de subsistance et le commerce informel.
+
+---
+
+VALEURS CLÉS ARCHIVÉES (2020)
+
+Emploi informel ensemble : 96,0 %  → emploi formel : 4,0 %
+Emploi informel hommes  : 95,7 %  → emploi formel : 4,3 %
+Emploi informel femmes  : 97,8 %  → emploi formel : 2,2 %
+Écart F/H               : +2,1 points de pourcentage
+
+---
+
+CITATION RECOMMANDÉE
+
+OIT (2020), ILOSTAT — Estimations modélisées de l'emploi informel (ILOEST),
+indicateur INF_2INF_NOC_RT_A, République Démocratique du Congo.
+https://ilostat.ilo.org/data/

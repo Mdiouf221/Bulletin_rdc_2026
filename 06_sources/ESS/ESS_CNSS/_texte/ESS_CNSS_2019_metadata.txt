@@ -6,6 +6,7 @@ LANGUE : Français
 TYPE : données institutionnelles
 FICHIER : ESS_CNSS_2019.txt / ESS CNSS 2019.xlsm (source)
 NIVEAU FIABILITE : 1 — données institutionnelles primaires (transmission directe de l'institution)
+LIEN SOURCE — Fichier source Excel (present) : 06_sources/ESS/ESS_CNSS/ESS CNSS 2019.xlsm
 
 ---
 

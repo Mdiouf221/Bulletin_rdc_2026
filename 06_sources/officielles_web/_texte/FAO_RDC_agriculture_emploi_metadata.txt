@@ -6,6 +6,9 @@ LANGUE : Anglais
 TYPE : rapport international
 FICHIER : FAO_RDC_agriculture_emploi.txt / FAO_RDC_agriculture_emploi.pdf
 NIVEAU FIABILITE : 1 — Organisation internationale, source primaire
+LIEN SOURCE — URL source officielle : https://www.fao.org/faostat/
+LIEN SOURCE — URL Country Brief : https://www.fao.org/giews/countrybrief/country.jsp?code=COD
+LIEN SOURCE — PDF local (present) : 06_sources/officielles_web/FAO_RDC_agriculture_emploi.pdf
 
 ---
 

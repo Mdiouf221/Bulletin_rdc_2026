@@ -3,6 +3,7 @@ SOURCE : OIT / Équipe technique du bulletin
 LIEU : Kinshasa, République Démocratique du Congo
 DATE : 14 mai 2026
 FICHIER : Methodologie_indicateurs_PS_RDC v1.pdf / PPT2_methodologie_indicateurs_PS_RDC v1.pptx
+LIEN SOURCE : non renseigne
 NIVEAU : Source primaire institutionnelle (document officiel de l'atelier — séquence 7/10)
 
 ---

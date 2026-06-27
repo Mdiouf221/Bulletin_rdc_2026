@@ -1,0 +1,13 @@
+# figure: fig_intro_5b — Taux d'emploi informel par sexe, RDC
+# source: OIT, ILOSTAT — estimations modélisées (ILOEST)
+# indicateur: INF_2INF_NOC_RT_A — Emploi informel en % de l'emploi total
+# date_reference: 2020 (dernières données disponibles)
+# note: estimations modélisées OIT (ILOEST) 2020 — confirmées par les proxies WDI 2024
+#       (emploi vulnérable 81,8 % ; travailleurs indépendants 85,3 %)
+#       série complémentaire : voir fig_intro_5a pour le taux d'activité
+# metadata: 08_figures/donnees/fig_intro_5b_emploi_informel_par_sexe_metadata.txt
+# script: 09_scripts/generer_figures_intro.py → def fig5() panneau droit
+categorie,emploi_informel_pct,emploi_formel_pct
+Ensemble,96.0,4.0
+Hommes,95.7,4.3
+Femmes,97.8,2.2

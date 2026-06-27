@@ -1,4 +1,4 @@
-﻿# 2.3 — [Contenu déplacé en Annexe A.1]
+﻿## 2.3 — [Contenu déplacé en Annexe A.1]
 
 <!-- NOTE_INTERNE
 Section supprimée du corps du bulletin (juin 2026).

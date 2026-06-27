@@ -6,6 +6,8 @@ LANGUE : Anglais
 TYPE : rapport international
 FICHIER : BanqueMondiale_Pathways_Economic_Diversification_Trade_RDC_2023.txt / BanqueMondiale_Pathways_Economic_Diversification_Trade_RDC_2023.pdf
 NIVEAU FIABILITE : 1 — Organisation internationale, source primaire
+LIEN SOURCE — URL source officielle : https://openknowledge.worldbank.org/
+LIEN SOURCE — PDF local (present) : 06_sources/officielles_web/BanqueMondiale_Pathways_Economic_Diversification_Trade_RDC_2023.pdf
 
 ---
 

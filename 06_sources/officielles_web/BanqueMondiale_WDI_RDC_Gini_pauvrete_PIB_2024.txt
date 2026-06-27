@@ -1,3 +1,5 @@
+LIEN SOURCE — URL source officielle : https://data.worldbank.org/indicator/SI.POV.GINI?locations=CD
+LIEN SOURCE — URL API : https://api.worldbank.org/v2/country/CD/indicator/SI.POV.GINI?format=json&mrv=10
 SOURCE : Banque mondiale — World Development Indicators (WDI) + Enquête INS RDC 2024
 TITRE   : Gini, pauvreté, croissance PIB — République Démocratique du Congo
 URL     : https://data.worldbank.org/indicator/SI.POV.GINI?locations=CD

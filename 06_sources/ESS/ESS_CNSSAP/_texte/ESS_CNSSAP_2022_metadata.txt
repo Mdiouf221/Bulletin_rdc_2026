@@ -6,6 +6,7 @@ LANGUE : Français
 TYPE : données institutionnelles
 FICHIER : ESS_CNSSAP_2022.txt / ESS CNSSAP 2022.xlsm (source)
 NIVEAU FIABILITE : 1 — données institutionnelles primaires
+LIEN SOURCE — Fichier source Excel (present) : 06_sources/ESS/ESS_CNSSAP/ESS CNSSAP 2022.xlsm
 
 ---
 

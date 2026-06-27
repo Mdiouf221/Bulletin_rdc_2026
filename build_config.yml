@@ -24,6 +24,7 @@ sections:
       - "01_pages_preliminaires/avant_propos.md"
       - "01_pages_preliminaires/remerciements.md"
       - "01_pages_preliminaires/sigles_acronymes.md"
+      - "01_pages_preliminaires/table_des_matieres.md"
       - "01_pages_preliminaires/listes_tableaux_figures_encadres.md"
 
   - id: "chapitre_1_contexte"

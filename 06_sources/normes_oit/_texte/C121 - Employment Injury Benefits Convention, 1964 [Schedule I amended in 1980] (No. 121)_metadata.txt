@@ -6,6 +6,7 @@ LANGUE : Anglais (texte NORMLEX consulté)
 TYPE : convention OIT
 FICHIER : C121 - Employment Injury Benefits Convention, 1964 [Schedule I amended in 1980] (No. 121).txt / C121 - Employment Injury Benefits Convention, 1964 [Schedule I amended in 1980] (No. 121).pdf
 NIVEAU FIABILITE : 1 — Organisation internationale, source primaire normative
+LIEN SOURCE — PDF local (present) : 06_sources/normes_oit/C121 - Employment Injury Benefits Convention, 1964 [Schedule I amended in 1980] (No. 121).pdf
 
 ---
 

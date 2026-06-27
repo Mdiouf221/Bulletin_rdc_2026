@@ -6,6 +6,7 @@ LANGUE : Anglais
 TYPE : bulletin statistique
 FICHIER : Jordan - Statistical Bulletin of Social Protection Indicators, 2020-2021.txt / Jordan - Statistical Bulletin of Social Protection Indicators, 2020-2021.pdf
 NIVEAU FIABILITE : 2 — publication officielle secondaire acceptable
+LIEN SOURCE — PDF local (present) : 06_sources/bulletins_comparaison/Jordan - Statistical Bulletin of Social Protection Indicators, 2020-2021.pdf
 
 ---
 

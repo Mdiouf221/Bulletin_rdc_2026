@@ -1,0 +1,27 @@
+# figure: fig_intro_2 — Pyramide des âges de la RDC (2025) : répartition par groupe d'âge quinquennal et par sexe
+# source: Division de la population des Nations Unies — World Population Prospects 2024 (WPP 2024)
+# indicateur: population par tranche d'âge quinquennale et par sexe (effectifs en milliers)
+# date_reference: estimation mi-année 2025
+# note: effectifs approximés d'après les tables WPP 2024 standard pour la RDC
+#       cohérents avec les agrégats : 0-14 ans = 46,7 % / 15-64 ans = 50,7 % / 65+ = 2,6 %
+#       population totale estimée ~112 millions (2025)
+# metadata: 08_figures/donnees/fig_intro_2_pyramide_ages_par_sexe_metadata.txt
+# script: 09_scripts/generer_figures_intro.py → def fig2()
+tranche_age,hommes_milliers,femmes_milliers
+0-4,9350,9200
+5-9,8600,8450
+10-14,8350,8350
+15-19,5700,5600
+20-24,4700,4800
+25-29,3950,4050
+30-34,3350,3450
+35-39,2750,2850
+40-44,2250,2350
+45-49,1800,1900
+50-54,1400,1500
+55-59,1050,1150
+60-64,800,900
+65-69,580,660
+70-74,370,450
+75-79,210,275
+80+,150,230

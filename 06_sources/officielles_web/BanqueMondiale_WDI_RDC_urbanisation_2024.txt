@@ -1,3 +1,5 @@
+LIEN SOURCE — URL source officielle : https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS?locations=CD
+LIEN SOURCE — URL API : https://api.worldbank.org/v2/country/CD/indicator/SP.URB.TOTL.IN.ZS?format=json&mrv=5
 SOURCE : Banque mondiale — World Development Indicators (WDI)
 TITRE   : World Development Indicators — Urbanisation et population rurale, République Démocratique du Congo
 URL     : https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS?locations=CD

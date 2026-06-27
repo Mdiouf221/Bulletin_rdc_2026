@@ -1,4 +1,4 @@
-﻿# 1.1 Contexte démographique et implications pour la protection sociale
+﻿## 1.1 Contexte démographique et implications pour la protection sociale
 
 <!-- NOTE_INTERNE
 Grand axe :
@@ -52,11 +52,11 @@ révisé (données renseignées — ONU WPP 2024 ; figures à produire)
 
 La République Démocratique du Congo est l'un des pays les plus peuplés d'Afrique, avec une population estimée à <a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">environ 112 millions d'habitants</a> en 2025. Sa croissance démographique soutenue — avec un taux d'accroissement naturel annuel d'environ <a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">3,2 %</a> — en fait l'un des pays à la démographie la plus dynamique du continent. À ce rythme, les projections indiquent un doublement de la population dans les prochaines décennies, ce qui place la RDC au <a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">4e rang africain</a> par la taille de sa population, après le Nigeria, l'Éthiopie et l'Égypte *(Division de la population des Nations Unies, WPP 2024)*.
 
-> **Figure 1** — *Évolution de la population totale, urbaine et rurale de la RDC (1950–2025)*
+<p class="fig-caption"><strong>Figure 1</strong> — Évolution de la population totale, urbaine et rurale de la RDC (1950–2025)</p>
 
 ![Évolution de la population totale, urbaine et rurale de la RDC (1950–2025)](/files/08_figures/exports/FIG_1_population_totale_urbaine_rurale_1950_2025.png)
 
-*Source : Division de la population des Nations Unies, Perspectives mondiales de la population 2024 (WPP 2024).*
+*Source : <a href="/files/08_figures/donnees/fig_intro_1_population_totale_urbaine_rurale_metadata.txt" class="source-ref fig-data" title="Données : population totale, urbaine, rurale RDC 1950-2025 — ONU WPP 2024">Division de la population des Nations Unies, Perspectives mondiales de la population 2024 (WPP 2024)</a>.*
 
 ---
 
@@ -64,11 +64,11 @@ La République Démocratique du Congo est l'un des pays les plus peuplés d'Afri
 
 La population congolaise est structurellement jeune : les personnes âgées de moins de 15 ans représentent <a href="/files/06_sources/officielles_web/UNFPA_World_Population_Dashboard_RDC_2024.txt" title="Source : UNFPA (2024) — World Population Dashboard RDC 2024" class="source-ref nv">environ 46 %</a> de la population totale, et l'âge médian s'établit à <a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">15,9 ans</a> *(UNFPA, 2024 ; Division de la population des Nations Unies, WPP 2024)*. Le ratio de dépendance démographique atteint <a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">près de 96 dépendants pour 100 personnes en âge de travailler</a>, ce qui signifie qu'une proportion élevée de la population est composée de personnes non actives — enfants, jeunes et personnes âgées — dont les besoins en prestations sociales (protection de la maternité, prestations familiales, soins de santé, pensions) sont particulièrement importants.
 
-> **Figure 2** — *Structure de la population par grand groupe d'âge, RDC (2025)*
+<p class="fig-caption"><strong>Figure 2</strong> — Pyramide des âges de la RDC (2025) : répartition de la population par groupe d'âge quinquennal et par sexe</p>
 
-![Structure de la population par grand groupe d'âge, RDC (2025)](/files/08_figures/exports/FIG_2_structure_age_2025.png)
+![Pyramide des âges de la RDC (2025) : répartition par groupe d'âge quinquennal et par sexe](/files/08_figures/exports/FIG_2_structure_age_2025.png)
 
-*Source : Division de la population des Nations Unies, WPP 2024 / UNFPA.*
+*Source : <a href="/files/08_figures/donnees/fig_intro_2_pyramide_ages_par_sexe_metadata.txt" class="source-ref fig-data" title="Données : pyramide des âges RDC 2025 par sexe — ONU WPP 2024">Division de la population des Nations Unies, WPP 2024 / UNFPA. Effectifs approximés d'après les tables WPP 2024 standard — estimation mi-2025.</a>*
 
 ---
 

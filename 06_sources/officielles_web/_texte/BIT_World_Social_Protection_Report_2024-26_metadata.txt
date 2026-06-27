@@ -6,6 +6,8 @@ LANGUE : Anglais (rapport complet, extrait pages 1–100 sur 386)
 TYPE : rapport international
 FICHIER : BIT_World_Social_Protection_Report_2024-26.txt / BIT_World_Social_Protection_Report_2024-26.pdf
 NIVEAU FIABILITE : 1 — Organisation internationale, publication phare OIT (flagship report)
+LIEN SOURCE — URL source officielle : https://www.ilo.org/publications/flagship-reports/world-social-protection-report-2024-26-universal-social-protection-climate
+LIEN SOURCE — PDF local (present) : 06_sources/officielles_web/BIT_World_Social_Protection_Report_2024-26.pdf
 
 ---
 

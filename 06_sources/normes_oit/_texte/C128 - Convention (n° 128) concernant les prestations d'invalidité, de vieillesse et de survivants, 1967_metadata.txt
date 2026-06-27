@@ -6,6 +6,7 @@ LANGUE : Français (texte NORMLEX consulté)
 TYPE : convention OIT
 FICHIER : C128 - Convention (n° 128) concernant les prestations d'invalidité, de vieillesse et de survivants, 1967.txt / C128 - Convention (n° 128) concernant les prestations d'invalidité, de vieillesse et de survivants, 1967.pdf
 NIVEAU FIABILITE : 1 — Organisation internationale, source primaire normative
+LIEN SOURCE — PDF local (present) : 06_sources/normes_oit/C128 - Convention (n° 128) concernant les prestations d'invalidité, de vieillesse et de survivants, 1967.pdf
 
 ---
 

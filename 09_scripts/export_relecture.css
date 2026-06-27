@@ -268,40 +268,34 @@ blockquote {
     color       : #555;
 }
 
-/* Bloc figure (blockquote contenant une image) */
-blockquote.fig-block {
-    border-left   : 2px solid #aaaaaa;
-    background    : transparent;
-    padding       : 0;
-    margin        : 1.6em 0 0.4em;
-    font-style    : normal;
-    color         : inherit;
-}
-blockquote.fig-block p:first-child {
-    display       : inline-block;
-    font-size     : 12px;
-    font-weight   : 600;
-    color         : #333333;
-    background    : #efefef;
-    padding       : 3px 10px;
-    margin        : 0 0 4px;
-    border-radius : 2px;
-}
-blockquote.fig-block img {
-    margin : 0 auto 0.2em;
-}
-
 /* Légende de tableau */
 p.table-caption {
-    font-size     : 12px;
-    font-weight   : 600;
-    color         : #333333;
-    background    : #efefef;
-    display       : inline-block;
-    padding       : 3px 10px;
-    margin        : 1.6em 0 4px;
-    border-left   : 2px solid #aaaaaa;
-    border-radius : 2px;
+    font-family    : var(--police-ui);
+    font-size      : 11.5px;
+    font-weight    : 600;
+    color          : #1a3a6b;
+    background     : rgba(26, 58, 107, 0.06);
+    display        : block;
+    padding        : 3px 10px;
+    margin         : 1.8em 0 0;
+    border-left    : 3px solid #1a3a6b;
+    border-radius  : 0 2px 2px 0;
+    line-height    : 1.5;
+}
+
+/* Légende de figure */
+p.fig-caption {
+    font-family    : var(--police-ui);
+    font-size      : 11.5px;
+    font-weight    : 600;
+    color          : #7a5e00;
+    background     : rgba(200, 169, 81, 0.10);
+    display        : block;
+    padding        : 3px 10px;
+    margin         : 1.8em 0 0;
+    border-left    : 3px solid var(--couleur-accent);
+    border-radius  : 0 2px 2px 0;
+    line-height    : 1.5;
 }
 
 /* Note source sous figure ou tableau */

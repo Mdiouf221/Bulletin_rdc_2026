@@ -6,6 +6,7 @@ LANGUE : Portugais
 TYPE : Bulletin statistique
 FICHIER : Mozambique - 1er Boletim Estatistico da Proteccao Social, 2019.txt / Mozambique - 1er Boletim Estatistico da Proteccao Social, 2019.pdf
 NIVEAU FIABILITE : 2 (publication officielle secondaire, appui OIT)
+LIEN SOURCE — PDF local (present) : 06_sources/bulletins_comparaison/Mozambique - 1er Boletim Estatistico da Proteccao Social, 2019.pdf
 
 ---
 

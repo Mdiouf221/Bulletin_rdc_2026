@@ -1,0 +1,48 @@
+FIGURE          : fig_intro_5a — Taux d'activité (15+) par sexe, RDC
+SOURCE          : OIT, ILOSTAT — estimations modélisées (ILOEST)
+ORGANISATION    : Organisation internationale du Travail (OIT / ILO)
+INDICATEURS     : EAP_DWAP_SEX_AGE_RT_A — Taux d'activité, population 15 ans et plus (%)
+PERIODE         : 2023 (dernières estimations disponibles)
+FREQUENCE       : Annuelle (estimations modélisées)
+NIVEAU          : 1 — Organisation internationale, source primaire
+MODE_COLLECTE   : Consultation web manuelle
+URL_VERIFICATION: https://ilostat.ilo.org/data/#EAP_DWAP_SEX_AGE_RT_A
+DATE_CONSULTATION: 2026-06-08
+FICHIER_CSV     : 08_figures/donnees/fig_intro_5a_taux_activite_par_sexe.csv
+SERIE_LIEE      : 08_figures/donnees/fig_intro_5b_emploi_informel_par_sexe.csv
+SCRIPT          : 09_scripts/generer_figures_intro.py → def fig5() panneau gauche
+EXPORT          : 08_figures/exports/FIG_5_emploi_informel_par_sexe.png
+
+---
+
+NOTE MÉTHODOLOGIQUE
+
+Le taux d'activité (Labour Force Participation Rate — LFPR) mesure la part de la population
+de 15 ans et plus qui est soit en emploi, soit au chômage (cherche activement un emploi).
+Il exclut les inactifs : retraités, étudiants, personnes au foyer non chercheurs d'emploi.
+
+Les estimations ILOSTAT sont des estimations modélisées (ILOEST) qui harmonisent les données
+nationales pour garantir la comparabilité internationale. Pour la RDC, elles reposent
+principalement sur les enquêtes ménages disponibles et des modèles de régression.
+
+L'écart entre hommes (78,5 %) et femmes (63,5 %) reflète notamment :
+  - La charge de travail non rémunéré des femmes (soin, agriculture domestique)
+  - Les barrières d'accès à l'emploi formel
+  - La sous-déclaration du travail agricole féminin dans certaines zones rurales
+
+---
+
+VALEURS CLÉS ARCHIVÉES (2023)
+
+Taux d'activité ensemble : 70,9 %  → taux d'inactivité : 29,1 %
+Taux d'activité hommes  : 78,5 %  → taux d'inactivité : 21,5 %
+Taux d'activité femmes  : 63,5 %  → taux d'inactivité : 36,5 %
+Écart H/F               : 15,0 points de pourcentage
+
+---
+
+CITATION RECOMMANDÉE
+
+OIT (2023), ILOSTAT — Estimations modélisées du marché du travail (ILOEST),
+indicateur EAP_DWAP_SEX_AGE_RT_A, République Démocratique du Congo.
+https://ilostat.ilo.org/data/

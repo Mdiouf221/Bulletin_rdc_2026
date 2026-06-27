@@ -176,6 +176,51 @@ td, th {
     vertical-align: top;
 }
 
+/* ===== Titre de tableau (caption) ======================================= */
+/*
+ * Placé immédiatement avant le tableau markdown.
+ * Exemple :
+ *   <p class="table-caption"><strong>Tableau 2.1</strong> — Titre du tableau</p>
+ *
+ * Convention identique à celle des figures. Le numéro suit la structure :
+ *   Tableau <chapitre>.<numéro-séquentiel>
+ */
+p.table-caption {
+    font-family    : var(--police-ui);
+    font-size      : 11.5px;
+    font-weight    : 600;
+    color          : var(--couleur-principale);
+    background     : rgba(26, 58, 107, 0.06);
+    display        : block;
+    padding        : 3px 10px;
+    margin         : 1.8em 0 0;
+    border-left    : 3px solid var(--couleur-principale);
+    border-radius  : 0 2px 2px 0;
+    line-height    : 1.5;
+}
+
+/* ===== Titre de figure (caption) ======================================== */
+/*
+ * Placé immédiatement avant l'image markdown.
+ * Exemple :
+ *   <p class="fig-caption"><strong>Figure 4.1</strong> — Titre de la figure</p>
+ *
+ * Même structure que .table-caption, couleur dorée (--couleur-accent).
+ */
+p.fig-caption {
+    font-family    : var(--police-ui);
+    font-size      : 11.5px;
+    font-weight    : 600;
+    color          : #7a5e00;
+    background     : rgba(200, 169, 81, 0.10);
+    display        : block;
+    padding        : 3px 10px;
+    margin         : 1.8em 0 0;
+    border-left    : 3px solid var(--couleur-accent);
+    border-radius  : 0 2px 2px 0;
+    line-height    : 1.5;
+}
+
 /* Conteneur scrollable automatique pour tous les tableaux */
 .table-scroll {
     overflow-x : auto;
@@ -325,6 +370,59 @@ p em:only-child { color: #aaa; font-style: italic; }
 #export-pdf-btn:hover {
     border-color : #1b426b;
     background   : #1b426b;
+}
+
+/* ===== Dropdown d'export ============================================= */
+.topbar-dropdown {
+    position : relative;
+    display  : inline-block;
+}
+
+.topbar-dropdown-toggle {
+    gap : 4px;
+}
+
+.topbar-dropdown-menu {
+    display       : none;
+    position      : absolute;
+    top           : calc(100% + 4px);
+    right         : 0;
+    min-width     : 190px;
+    background    : #ffffff;
+    border        : 1px solid #c8d4e0;
+    border-radius : 5px;
+    box-shadow    : 0 4px 14px rgba(0,0,0,0.15);
+    z-index       : 200;
+    overflow      : hidden;
+}
+
+.topbar-dropdown:hover .topbar-dropdown-menu,
+.topbar-dropdown-toggle:focus + .topbar-dropdown-menu {
+    display : block;
+}
+
+.topbar-dropdown-item {
+    display         : block;
+    padding         : 8px 14px;
+    font-family     : var(--police-ui);
+    font-size       : 12px;
+    font-weight     : 500;
+    color           : #1c2e40;
+    text-decoration : none;
+    white-space     : nowrap;
+    cursor          : pointer;
+}
+
+.topbar-dropdown-item:hover {
+    background      : #eef4fb;
+    color           : #1a3a6b;
+    text-decoration : none;
+}
+
+.topbar-dropdown-divider {
+    height     : 1px;
+    background : #e0e8f0;
+    margin     : 4px 0;
 }
 
 /* Décale le contenu quand la barre est présente */
