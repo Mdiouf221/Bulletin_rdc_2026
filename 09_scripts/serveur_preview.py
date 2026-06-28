@@ -62,7 +62,8 @@ CSS_FILE      = SCRIPT_DIR / "preview.css"
 ASSEMBLER     = SCRIPT_DIR / "assembler_markdown.py"
 REGIME_VISUALIZER = SCRIPT_DIR / "visualiser_regimes.py"
 REGIME_DASHBOARD  = WORKSPACE_DIR / "10_output" / "dashboard_regimes.html"
-DASHBOARD_SETTINGS_FILE = WORKSPACE_DIR / "10_output" / "dashboard_settings.json"
+DASHBOARD_SETTINGS_FILE   = WORKSPACE_DIR / "10_output" / "dashboard_settings.json"
+QUESTIONNAIRE_DATA_FILE   = WORKSPACE_DIR / "10_output" / "questionnaire_data.json"
 PORT          = 8765
 
 # ---------------------------------------------------------------------------
@@ -963,10 +964,14 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             self._handle_download()
         elif self.path == "/api/dashboard-settings":
             self._serve_dashboard_settings()
+        elif self.path == "/api/questionnaire-data":
+            self._serve_questionnaire_data()
         elif self.path.startswith("/api/denom/"):
             self._serve_denom_api()
         elif self.path.startswith("/files/"):
             self._serve_file()
+        elif self.path.startswith("/output/"):
+            self._serve_output_static()
         else:
             self.send_response(404)
             self.end_headers()
@@ -990,6 +995,59 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
         self.wfile.write(body)
+
+    def _serve_questionnaire_data(self):
+        """GET /api/questionnaire-data — retourne questionnaire_data.json."""
+        if QUESTIONNAIRE_DATA_FILE.exists():
+            try:
+                raw = QUESTIONNAIRE_DATA_FILE.read_text(encoding="utf-8")
+                data = json.loads(raw)
+            except (OSError, json.JSONDecodeError):
+                data = {}
+        else:
+            data = {}
+        body = json.dumps(data, ensure_ascii=False).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _handle_questionnaire_data(self):
+        """POST|PUT /api/questionnaire-data — sauvegarde questionnaire_data.json."""
+        length = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(length)
+        try:
+            data = json.loads(body.decode("utf-8"))
+            if not isinstance(data, dict):
+                raise ValueError("JSON doit être un objet")
+        except (json.JSONDecodeError, ValueError, UnicodeDecodeError):
+            self.send_response(400)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(b"Corps JSON invalide")
+            return
+        try:
+            QUESTIONNAIRE_DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
+            QUESTIONNAIRE_DATA_FILE.write_text(
+                json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
+            )
+        except OSError:
+            self.send_response(500)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(b"Erreur d'ecriture questionnaire_data.json")
+            return
+        resp = json.dumps({"ok": True}, ensure_ascii=False).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(resp)))
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(resp)
 
     def _serve_denom_api(self):
         parsed = urlparse(self.path)
@@ -1053,8 +1111,17 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             self._handle_validate()
         elif self.path == "/api/dashboard-settings":
             self._handle_dashboard_settings()
+        elif self.path == "/api/questionnaire-data":
+            self._handle_questionnaire_data()
         else:
             self.send_response(404)
+            self.end_headers()
+
+    def do_PUT(self):
+        if self.path == "/api/questionnaire-data":
+            self._handle_questionnaire_data()
+        else:
+            self.send_response(405)
             self.end_headers()
 
     def _handle_dashboard_settings(self):
@@ -1320,13 +1387,51 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
                 b"<p>Lancer d'abord : <code>py 09_scripts/visualiser_regimes.py</code></p>"
             )
             return
-        content = dashboard.read_bytes()
+        html = dashboard.read_text(encoding="utf-8")
+        # Réécrire uniquement les fichiers statiques connus de 10_output/
+        # (remplacement ciblé pour éviter de toucher le JS inline ou les liens d'onglets)
+        _static_files = [
+            "questionnaire_modal.js",
+            "questionnaire_modal.css",
+            "branch_fusion.js",
+            "dashboard_main.js",
+        ]
+        for _fname in _static_files:
+            html = html.replace(f'src="{_fname}"', f'src="/output/{_fname}"')
+            html = html.replace(f"src='{_fname}'", f"src='/output/{_fname}'")
+            html = html.replace(f'href="{_fname}"', f'href="/output/{_fname}"')
+            html = html.replace(f"href='{_fname}'", f"href='/output/{_fname}'")
+        content = html.encode("utf-8")
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Content-Length", str(len(content)))
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
         self.wfile.write(content)
+
+    def _serve_output_static(self):
+        """Sert les fichiers statiques de 10_output/ via /output/<fichier>."""
+        import mimetypes
+        from urllib.parse import unquote
+        rel = unquote(self.path[len("/output/"):])
+        # Empêche les path traversal
+        if ".." in rel or rel.startswith("/"):
+            self.send_response(403)
+            self.end_headers()
+            return
+        target = WORKSPACE_DIR / "10_output" / rel
+        if not target.exists() or not target.is_file():
+            self.send_response(404)
+            self.end_headers()
+            return
+        mime, _ = mimetypes.guess_type(str(target))
+        data = target.read_bytes()
+        self.send_response(200)
+        self.send_header("Content-Type", mime or "application/octet-stream")
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(data)
 
     def _serve_file(self):
         """Sert un fichier du workspace via /files/<chemin_relatif>.

@@ -145,34 +145,108 @@ window.updateInstitution = function() {
     
     const branchMapping = buildBranchMapping(institution, regimes);
     
-    document.querySelectorAll('.plotly-graph-div').forEach(div => {
-      if (div.id) {
-        window.branchFusion.applyBranchFusion(div.id, q1Data, branchMapping);
-      }
-    });
+    // Q1 concerne la population partagée : cibler uniquement charts-institution-pop
+    const _pop1 = document.getElementById('charts-institution-pop');
+    if (_pop1) {
+      _pop1.querySelectorAll('.plotly-graph-div').forEach(div => {
+        if (div.id) window.branchFusion.applyBranchFusion(div.id, q1Data, branchMapping);
+      });
+    }
   }, 500);
 };
+
+// Cache des traces originales des graphiques financiers
+window._finOriginalTraces = window._finOriginalTraces || {};
+
+function applyQ2FinanceFusion(graphId, q2Data) {
+  const plotDiv = document.getElementById(graphId);
+  if (!plotDiv || !plotDiv.data) return;
+  if (!window._finOriginalTraces[graphId]) {
+    window._finOriginalTraces[graphId] = JSON.parse(JSON.stringify(plotDiv.data));
+  }
+  const origTraces = window._finOriginalTraces[graphId];
+  const buildGroups = (type) => {
+    const edges = [];
+    Object.entries(q2Data).forEach(([key, regimes]) => {
+      if (!Array.isArray(regimes) || !key.endsWith('_' + type)) return;
+      const regime = key.slice(3, -(type.length + 1));
+      regimes.forEach(r => edges.push([regime, r]));
+    });
+    if (edges.length === 0) return {};
+    const parent = {};
+    const find = (x) => { if (!parent[x]) parent[x] = x; if (parent[x] !== x) parent[x] = find(parent[x]); return parent[x]; };
+    edges.forEach(([a, b]) => { parent[find(a)] = find(b); });
+    const regimeToRoot = {};
+    [...new Set(edges.flat())].forEach(r => { regimeToRoot[r] = find(r); });
+    return regimeToRoot;
+  };
+  const depGroups = buildGroups('depenses');
+  const recGroups = buildGroups('recettes');
+  const applyToAxis = (traces, groups, yaxisMatch) => {
+    const processedRoots = new Set();
+    const result = [];
+    traces.forEach(t => {
+      const tAxis = t.yaxis || 'y';
+      if (tAxis !== yaxisMatch) { result.push(t); return; }
+      const root = groups[t.legendgroup] || t.legendgroup;
+      if (processedRoots.has(root)) return;
+      processedRoots.add(root);
+      const groupTraces = traces.filter(t2 => (t2.yaxis || 'y') === yaxisMatch && (groups[t2.legendgroup] || t2.legendgroup) === root);
+      if (groupTraces.length <= 1) { result.push(JSON.parse(JSON.stringify(t))); return; }
+      const merged = JSON.parse(JSON.stringify(groupTraces[0]));
+      merged.y = (merged.y || []).map((_, i) => {
+        const vals = groupTraces.map(t2 => t2.y?.[i]).filter(v => v != null);
+        return vals.length ? Math.max(...vals) : null;
+      });
+      merged.name = groupTraces.map(t2 => t2.name).filter((v, i, a) => a.indexOf(v) === i).join(' + ');
+      result.push(merged);
+    });
+    return result;
+  };
+  if (Object.keys(q2Data).length === 0) {
+    Plotly.react(graphId, origTraces, plotDiv.layout, { responsive: true });
+    return;
+  }
+  let newTraces = JSON.parse(JSON.stringify(origTraces));
+  newTraces = applyToAxis(newTraces, depGroups, 'y');
+  newTraces = applyToAxis(newTraces, recGroups, 'y3');
+  Plotly.react(graphId, newTraces, plotDiv.layout, { responsive: true });
+}
 
 // Hook pour quand l'utilisateur sauvegarde le questionnaire
 window.addEventListener('questionnaire-saved', (e) => {
   const { institution } = e.detail;
-  
-  if (!window.branchFusion || !window.questionnaire) return;
-  
-  const q1Data = window.questionnaire.data[institution]?.Q1 || {};
-  const regimes = window.REGIMES_PAR_INST 
-    ? window.REGIMES_PAR_INST[institution] || []
-    : [];
-  
-  const branchMapping = buildBranchMapping(institution, regimes);
-  
-  document.querySelectorAll('.plotly-graph-div').forEach(div => {
-    if (div.id) {
-      window.branchFusion.applyBranchFusion(div.id, q1Data, branchMapping);
+  if (!window.questionnaire) return;
+
+  // Q1 — déduplication cotisants (graphiques Plotly population)
+  if (window.branchFusion) {
+    const q1Data = window.questionnaire.data[institution]?.Q1 || {};
+    const regimes = window.REGIMES_PAR_INST ? window.REGIMES_PAR_INST[institution] || [] : [];
+    const branchMapping = buildBranchMapping(institution, regimes);
+    const _pop2 = document.getElementById('charts-institution-pop');
+    if (_pop2) {
+      _pop2.querySelectorAll('.plotly-graph-div').forEach(div => {
+        if (div.id) window.branchFusion.applyBranchFusion(div.id, q1Data, branchMapping);
+      });
     }
-  });
-  
-  console.log('✓ Fusion de branches appliquée après save');
+  }
+
+  // Q1b — déduplication bénéficiaires (graphiques camembert sexe)
+  const selectedRegimes = getSelectedInstitutionRegimes ? getSelectedInstitutionRegimes() : null;
+  if (typeof renderInstitutionSexDistributions === 'function') {
+    renderInstitutionSexDistributions(institution, selectedRegimes);
+  }
+
+  // Q2 — déduplication financière (recettes et dépenses totales)
+  const q2Data = window.questionnaire.data[institution]?.Q2 || {};
+  const finContainer = document.getElementById('charts-institution-fin');
+  if (finContainer) {
+    finContainer.querySelectorAll('.plotly-graph-div').forEach(div => {
+      if (div.id) applyQ2FinanceFusion(div.id, q2Data);
+    });
+  }
+
+  console.log('✓ Questionnaire appliqué aux graphiques (Q1 + Q1b + Q2)');
 });
 </script>
 """
@@ -827,8 +901,6 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
 
         def trace(y_vals, row, col, fmt, unit, showleg=False):
             import re as _re
-            # stackgroup unique par sous-graphique pour aires cumulées
-            sg = f"stack_r{row}_c{col}"
             # Couleur de remplissage semi-transparente dérivée de la couleur de ligne
             hex_c = color.lstrip("#")
             if len(hex_c) == 6:
@@ -838,12 +910,16 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
                 fill_color = f"rgba({r_int},{g_int},{b_int},0.18)"
             else:
                 fill_color = color
+            # Colonne 1 (cotisants) : aires empilées ; colonne 2 (bénéficiaires) : lignes simples
+            is_cotisants_col = (col == 1)
+            sg = f"stack_r{row}_c{col}" if is_cotisants_col else None
             fig.add_trace(go.Scatter(
                 x=annees, y=y_vals,
                 name=label, legendgroup=key,
                 showlegend=showleg,
                 mode="lines+markers",
                 stackgroup=sg,
+                fill="tozeroy" if (sg is None) else None,
                 line=dict(color=color, width=2.5),
                 fillcolor=fill_color,
                 marker=dict(size=8, color=color, line=dict(width=2, color='white')),
@@ -4171,6 +4247,7 @@ const DENOMINATEURS_CONFIG = {denominateurs_json};
 // Rendre les variables globales accessibles via window pour les modules externes
 window.REGIMES_PAR_INST = REGIMES_PAR_INST;
 window.NOM_COURT = NOM_COURT;
+window.REGIME_META = REGIME_META;
 
 function escapeHtml(text) {{
   return String(text || '')
@@ -6910,18 +6987,67 @@ function renderInstitutionSexDistributions(inst, selectedRegimes) {{
     return;
   }}
 
-  const byYear = {{}};
+  // Groupes de fusion Q1b (bénéficiaires partagés) via union-find
+  const _q1bData = (window.questionnaire && window.questionnaire.data[inst] && window.questionnaire.data[inst].Q1b) || {{}};
+  const _q1bFusionGroups = (() => {{
+    const edges = [];
+    Object.entries(_q1bData).forEach(([key, val]) => {{
+      if (val !== 'true') return;
+      const parts = key.split('__');
+      if (parts.length === 2) edges.push([parts[0], parts[1]]);
+    }});
+    if (edges.length === 0) return {{}};
+    const parent = {{}};
+    const find = (x) => {{ if (parent[x] === undefined) parent[x] = x; if (parent[x] !== x) parent[x] = find(parent[x]); return parent[x]; }};
+    edges.forEach(([a, b]) => {{ parent[find(a)] = find(b); }});
+    const regimeToRoot = {{}};
+    [...new Set(edges.flat())].forEach(r => {{ regimeToRoot[r] = find(r); }});
+    return regimeToRoot;
+  }})();
+
+  // Accumuler les données par régime et par année
+  const _byYearByRegime = {{}};
   selected.forEach(rc => {{
     const series = instData[rc] || {{}};
     Object.keys(series).forEach(year => {{
       const row = series[year] || {{}};
-      byYear[year] = byYear[year] || {{ cot_h: 0, cot_f: 0, cot_total: 0, cot_total_known: false, ben_h: 0, ben_f: 0, ben_total: 0, ben_total_known: false, hasCot: false, hasBen: false }};
-      if (row.cotisants_total !== null && row.cotisants_total !== undefined) {{ byYear[year].cot_total += Number(row.cotisants_total) || 0; byYear[year].cot_total_known = true; byYear[year].hasCot = true; }}
-      if (row.cotisants_h !== null && row.cotisants_h !== undefined) {{ byYear[year].cot_h += Number(row.cotisants_h) || 0; byYear[year].hasCot = true; }}
-      if (row.cotisants_f !== null && row.cotisants_f !== undefined) {{ byYear[year].cot_f += Number(row.cotisants_f) || 0; byYear[year].hasCot = true; }}
-      if (row.beneficiaires_total !== null && row.beneficiaires_total !== undefined) {{ byYear[year].ben_total += Number(row.beneficiaires_total) || 0; byYear[year].ben_total_known = true; byYear[year].hasBen = true; }}
-      if (row.beneficiaires_h !== null && row.beneficiaires_h !== undefined) {{ byYear[year].ben_h += Number(row.beneficiaires_h) || 0; byYear[year].hasBen = true; }}
-      if (row.beneficiaires_f !== null && row.beneficiaires_f !== undefined) {{ byYear[year].ben_f += Number(row.beneficiaires_f) || 0; byYear[year].hasBen = true; }}
+      if (!_byYearByRegime[year]) _byYearByRegime[year] = {{}};
+      if (!_byYearByRegime[year][rc]) _byYearByRegime[year][rc] = {{ cot_h: 0, cot_f: 0, cot_total: 0, cot_total_known: false, ben_h: 0, ben_f: 0, ben_total: 0, ben_total_known: false }};
+      const d = _byYearByRegime[year][rc];
+      if (row.cotisants_total != null) {{ d.cot_total += Number(row.cotisants_total) || 0; d.cot_total_known = true; }}
+      if (row.cotisants_h != null) d.cot_h += Number(row.cotisants_h) || 0;
+      if (row.cotisants_f != null) d.cot_f += Number(row.cotisants_f) || 0;
+      if (row.beneficiaires_total != null) {{ d.ben_total += Number(row.beneficiaires_total) || 0; d.ben_total_known = true; }}
+      if (row.beneficiaires_h != null) d.ben_h += Number(row.beneficiaires_h) || 0;
+      if (row.beneficiaires_f != null) d.ben_f += Number(row.beneficiaires_f) || 0;
+    }});
+  }});
+
+  // Agréger : cotisants = somme, bénéficiaires = max par groupe Q1b
+  const byYear = {{}};
+  Object.keys(_byYearByRegime).forEach(year => {{
+    byYear[year] = {{ cot_h: 0, cot_f: 0, cot_total: 0, cot_total_known: false, ben_h: 0, ben_f: 0, ben_total: 0, ben_total_known: false, hasCot: false, hasBen: false }};
+    const rd = _byYearByRegime[year];
+    // Cotisants : somme directe
+    Object.entries(rd).forEach(([rc, d]) => {{
+      if (d.cot_total_known) {{ byYear[year].cot_total += d.cot_total; byYear[year].cot_total_known = true; byYear[year].hasCot = true; }}
+      if (d.cot_h) {{ byYear[year].cot_h += d.cot_h; byYear[year].hasCot = true; }}
+      if (d.cot_f) {{ byYear[year].cot_f += d.cot_f; byYear[year].hasCot = true; }}
+    }});
+    // Bénéficiaires : max par groupe Q1b
+    const processedRoots = new Set();
+    Object.entries(rd).forEach(([rc, d]) => {{
+      const root = _q1bFusionGroups[rc] || rc;
+      if (processedRoots.has(root)) return;
+      processedRoots.add(root);
+      const group = Object.keys(rd).filter(r => (_q1bFusionGroups[r] || r) === root);
+      const maxTotal = Math.max(...group.map(r => rd[r].ben_total_known ? (rd[r].ben_total || 0) : -Infinity));
+      const maxH = Math.max(...group.map(r => rd[r].ben_h || 0));
+      const maxF = Math.max(...group.map(r => rd[r].ben_f || 0));
+      const anyKnown = group.some(r => rd[r].ben_total_known);
+      if (anyKnown && maxTotal > -Infinity) {{ byYear[year].ben_total += maxTotal; byYear[year].ben_total_known = true; byYear[year].hasBen = true; }}
+      if (maxH > 0) {{ byYear[year].ben_h += maxH; byYear[year].hasBen = true; }}
+      if (maxF > 0) {{ byYear[year].ben_f += maxF; byYear[year].hasBen = true; }}
     }});
   }});
 

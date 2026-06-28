@@ -53,47 +53,63 @@ class BranchFusion {
   }
 
   /**
-   * Identifie les groupes de branches à fusionner basés sur Q1
-   * @returns {object} ex: { "Prestations familiales + Risques prof": ["CNSS_R1", "CNSS_R2"], ... }
+   * Identifie les groupes de régimes à fusionner à partir de Q1.
+   *
+   * Les clés Q1 ont le format "CNSS_R1__CNSS_R2" : "true"|"false".
+   * On construit les composantes connexes (union-find) : si R1↔R2 et R1↔R3
+   * sont tous deux "true", alors {R1, R2, R3} forment un seul groupe.
+   *
+   * @param {object} q1Data   - { "CNSS_R1__CNSS_R2": "true", ... }
+   * @param {object} branchMapping - { "Prestations familiales": ["CNSS_R1"], ... }
+   *   (utilisé uniquement pour construire le libellé du groupe)
+   * @returns {object} { "label": ["CNSS_R1", "CNSS_R2", "CNSS_R3"], ... }
    */
   identifyFusionGroups(q1Data, branchMapping) {
+    // 1. Collecter toutes les paires cochées
+    const edges = [];
+    Object.entries(q1Data).forEach(([key, val]) => {
+      if (val !== 'true') return;
+      const parts = key.split('__');
+      if (parts.length === 2) edges.push([parts[0], parts[1]]);
+    });
+
+    if (edges.length === 0) return {};
+
+    // 2. Union-Find pour construire les composantes connexes
+    const parent = {};
+    const find = (x) => {
+      if (parent[x] === undefined) parent[x] = x;
+      if (parent[x] !== x) parent[x] = find(parent[x]);
+      return parent[x];
+    };
+    const union = (a, b) => { parent[find(a)] = find(b); };
+
+    edges.forEach(([a, b]) => union(a, b));
+
+    // 3. Regrouper les régimes par composante
+    const components = {};
+    [...new Set(edges.flat())].forEach(regime => {
+      const root = find(regime);
+      if (!components[root]) components[root] = [];
+      if (!components[root].includes(regime)) components[root].push(regime);
+    });
+
+    // 4. Ne garder que les composantes de taille > 1 (fusion réelle)
     const groups = {};
-    const processed = new Set();
+    Object.values(components).forEach(regimes => {
+      if (regimes.length < 2) return;
 
-    Object.entries(branchMapping).forEach(([branche, regimes]) => {
-      if (processed.has(branche)) return;
+      // Construire le libellé à partir de branchMapping ou NOM_COURT
+      const nomMapping = window.NOM_COURT || {};
+      const label = regimes
+        .map(r => {
+          // Chercher le nom de branche dans branchMapping
+          const branch = Object.keys(branchMapping).find(b => branchMapping[b].includes(r));
+          return branch || nomMapping[r] || r;
+        })
+        .join(' + ');
 
-      const fusionPartners = [];
-      
-      regimes.forEach((regime1) => {
-        regimes.forEach((regime2) => {
-          if (regime1 === regime2) return;
-          
-          // Vérifie Q1 : ces deux régimes partagent-ils la même population ?
-          const key1 = `${regime1}__${regime2}`;
-          const key2 = `${regime2}__${regime1}`;
-          const shouldFuse = q1Data[key1] === 'true' || q1Data[key2] === 'true';
-          
-          if (shouldFuse && !fusionPartners.includes(regime2)) {
-            fusionPartners.push(regime2);
-          }
-        });
-      });
-
-      if (fusionPartners.length > 0) {
-        // Crée un groupe de fusion
-        const groupKey = [branche, ...fusionPartners.map(r => 
-          Object.keys(branchMapping).find(b => branchMapping[b].includes(r))
-        )].join(' + ');
-        
-        groups[groupKey] = regimes.concat(fusionPartners);
-        processed.add(branche);
-        fusionPartners.forEach(p => {
-          Object.entries(branchMapping).forEach(([k, v]) => {
-            if (v.includes(p)) processed.add(k);
-          });
-        });
-      }
+      groups[label] = regimes;
     });
 
     return groups;
@@ -112,6 +128,14 @@ class BranchFusion {
     const processed = new Set();
 
     originalTraces.forEach((trace, idx) => {
+      // Q1 ne s'applique qu'aux cotisants (col 1, yaxis par défaut).
+      // Les traces bénéficiaires (col 2, yaxis="y2") sont laissées intactes.
+      const isCotisantsAxis = !trace.yaxis || trace.yaxis === 'y';
+      if (!isCotisantsAxis) {
+        newTraces.push(JSON.parse(JSON.stringify(trace)));
+        return;
+      }
+
       // Identifie le groupe de fusion de cette trace
       let traceGroup = null;
       for (const [groupKey, regimes] of Object.entries(fusionGroups)) {
@@ -132,11 +156,11 @@ class BranchFusion {
         return;
       }
 
-      // Trouve toutes les traces du même groupe
+      // Trouve toutes les traces du même groupe (cotisants uniquement)
       const tracesInGroup = originalTraces.filter(t => 
+        (!t.yaxis || t.yaxis === 'y') &&
         this.traceMatchesRegimes(t, fusionGroups[traceGroup]) &&
         t.xaxis === trace.xaxis && 
-        t.yaxis === trace.yaxis &&
         t.stackgroup === (trace.stackgroup || undefined)
       );
 
@@ -153,30 +177,40 @@ class BranchFusion {
   }
 
   /**
-   * Fusionne plusieurs traces en une seule
-   * Additionne les valeurs y et crée une légende combinée
+   * Fusionne plusieurs traces en une seule.
+   *
+   * Stratégie Q1 — population PARTAGÉE :
+   * Les branches cochées partagent les MÊMES personnes (ex. CNSS : 613 761 cotisants
+   * apparaissent dans 3 branches). On ne doit PAS additionner : on prend la valeur
+   * représentative (max sur chaque point, qui correspond au chiffre réel).
+   *
+   * On désactive également stackgroup pour que la trace fusionnée ne s'empile pas
+   * avec elle-même.
    */
   mergeTracesInGroup(tracesInGroup, groupLabel) {
     if (tracesInGroup.length === 0) return null;
 
     const firstTrace = JSON.parse(JSON.stringify(tracesInGroup[0]));
-    
-    // Fusion des labels
+
+    // Fusion des labels (noms uniques)
     const names = tracesInGroup
       .map(t => t.name)
-      .filter((v, i, a) => a.indexOf(v) === i); // unique
+      .filter((v, i, a) => a.indexOf(v) === i);
     firstTrace.name = names.join(' + ');
-    
-    // Fusion des données (y)
-    const merged_y = firstTrace.y.map((_, i) => {
-      return tracesInGroup.reduce((sum, trace) => {
-        const val = trace.y ? trace.y[i] : 0;
-        return sum + (val || 0);
-      }, 0);
-    });
-    firstTrace.y = merged_y;
 
-    // Met à jour le hover template
+    // Valeur représentative : max par point de temps (évite le double-comptage)
+    firstTrace.y = (firstTrace.y || []).map((_, i) => {
+      const vals = tracesInGroup
+        .map(t => (t.y && t.y[i] != null) ? t.y[i] : null)
+        .filter(v => v !== null);
+      return vals.length > 0 ? Math.max(...vals) : null;
+    });
+
+    // Supprimer stackgroup : la trace fusionnée ne doit pas s'empiler avec elle-même
+    delete firstTrace.stackgroup;
+    firstTrace.fill = 'tozeroy';
+
+    // Mettre à jour le hover template
     if (firstTrace.hovertemplate) {
       firstTrace.hovertemplate = firstTrace.hovertemplate.replace(
         tracesInGroup[0].name,
@@ -215,22 +249,22 @@ window.branchFusion = new BranchFusion(window.Plotly);
  */
 window.addEventListener('questionnaire-saved', async (e) => {
   const { institution, regimes } = e.detail;
-  
-  // Charge les réponses Q1
+
   const q1Data = window.questionnaire.data[institution]?.Q1 || {};
-  
-  // Construit le mapping branche → régimes
-  // ⚠️ À adapter selon comment les branches sont nommées dans CHARTS_INST
   const branchMapping = buildBranchMapping(institution, regimes);
-  
-  // Applique la fusion à tous les graphiques visibles
-  document.querySelectorAll('.plotly-graph-div').forEach(div => {
+
+  // Q1 concerne la population partagée : appliquer uniquement au graphique population,
+  // pas aux graphiques financiers (recettes, prestations).
+  const popContainer = document.getElementById('charts-institution-pop');
+  if (!popContainer) return;
+
+  popContainer.querySelectorAll('.plotly-graph-div').forEach(div => {
     if (div.id) {
       window.branchFusion.applyBranchFusion(div.id, q1Data, branchMapping);
     }
   });
-  
-  console.log('✓ Fusion de branches appliquée');
+
+  console.log('✓ Fusion de branches (population) appliquée');
 });
 
 /**

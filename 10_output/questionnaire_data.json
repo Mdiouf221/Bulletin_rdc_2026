@@ -1,11 +1,64 @@
 {
   "CNSS": {
-    "Q1": {},
-    "Q2": {},
+    "Q1": {
+      "CNSS_R1__CNSS_R2": "true",
+      "CNSS_R1__CNSS_R3": "true",
+      "CNSS_R1__CNSS_R4": "false",
+      "CNSS_R2__CNSS_R1": "true",
+      "CNSS_R2__CNSS_R3": "true",
+      "CNSS_R2__CNSS_R4": "false",
+      "CNSS_R3__CNSS_R1": "true",
+      "CNSS_R3__CNSS_R2": "true",
+      "CNSS_R3__CNSS_R4": "false",
+      "CNSS_R4__CNSS_R1": "false",
+      "CNSS_R4__CNSS_R2": "false",
+      "CNSS_R4__CNSS_R3": "false"
+    },
+    "Q1b": {
+      "CNSS_R1__CNSS_R2": "false",
+      "CNSS_R1__CNSS_R3": "false",
+      "CNSS_R1__CNSS_R4": "false",
+      "CNSS_R2__CNSS_R1": "false",
+      "CNSS_R2__CNSS_R3": "false",
+      "CNSS_R2__CNSS_R4": "false",
+      "CNSS_R3__CNSS_R1": "false",
+      "CNSS_R3__CNSS_R2": "false",
+      "CNSS_R3__CNSS_R4": "false",
+      "CNSS_R4__CNSS_R1": "false",
+      "CNSS_R4__CNSS_R2": "false",
+      "CNSS_R4__CNSS_R3": "false"
+    },
+    "Q2": {
+      "Q2_CNSS_R1_recettes": [
+        "CNSS_R2",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R1_depenses": [
+        "CNSS_R2",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R2_recettes": [
+        "CNSS_R1",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R2_depenses": [
+        "CNSS_R1",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R3_recettes": [
+        "CNSS_R1",
+        "CNSS_R2"
+      ],
+      "Q2_CNSS_R3_depenses": [
+        "CNSS_R1",
+        "CNSS_R2"
+      ]
+    },
     "Q4": {}
   },
   "CNSSAP": {
     "Q1": {},
+    "Q1b": {},
     "Q2": {},
     "Q4": {}
   }

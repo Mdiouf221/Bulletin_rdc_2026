@@ -5,24 +5,25 @@
  */
 
 class QuestionnaireModal {
-  constructor(dataFile = 'questionnaire_data.json') {
-    this.dataFile = dataFile;
+  // apiUrl : endpoint serveur pour lire/écrire questionnaire_data.json
+  constructor(apiUrl = '/api/questionnaire-data') {
+    this.apiUrl = apiUrl;
     this.data = {};
     this.currentInstitution = null;
     this.loadData();
   }
 
   /**
-   * Charge les données depuis le fichier JSON
+   * Charge les données depuis l'API serveur
    */
   async loadData() {
     try {
-      const response = await fetch(this.dataFile);
+      const response = await fetch(this.apiUrl);
       if (response.ok) {
         this.data = await response.json();
       }
     } catch (e) {
-      console.log('Pas de fichier questionnaire existant, création en cours...');
+      console.log('Questionnaire : impossible de charger les données', e);
       this.data = {};
     }
   }
@@ -44,7 +45,10 @@ class QuestionnaireModal {
    */
   openModal(institution, regimes) {
     this.currentInstitution = institution;
-    
+    // S'assurer que les données de cette institution existent en mémoire
+    if (!this.data[institution]) {
+      this.data[institution] = { Q1: {}, Q1b: {}, Q2: {}, Q4: {} };
+    }
     // Crée le backdrop
     const backdrop = document.createElement('div');
     backdrop.className = 'questionnaire-backdrop';
@@ -67,8 +71,11 @@ class QuestionnaireModal {
     const content = document.createElement('div');
     content.className = 'questionnaire-content';
     
-    // Q1 — Affiliation aux régimes
+    // Q1 — Affiliation aux régimes (cotisants)
     content.appendChild(this.buildQ1(institution, regimes));
+
+    // Q1b — Affiliation aux régimes (bénéficiaires)
+    content.appendChild(this.buildQ1b(institution, regimes));
     
     // Q2 — Agrégation des recettes/dépenses
     content.appendChild(this.buildQ2(institution, regimes));
@@ -136,18 +143,96 @@ class QuestionnaireModal {
         } else {
           const checkbox = document.createElement('input');
           checkbox.type = 'checkbox';
-          checkbox.name = `q1_${regime1}_${regime2}`;
-          checkbox.id = `q1_${regime1}_${regime2}`;
-          
-          // Charge l'état sauvegardé si disponible
-          const stored = this.getStoredValue(institution, 'Q1', `${regime1}__${regime2}`);
+        // Utiliser data-attributes pour stocker les régimes sans dépendre du parsing du name
+        checkbox.name = `q1_pair`;
+        checkbox.id = `q1_${regime1}__${regime2}`;
+        checkbox.dataset.regime1 = regime1;
+        checkbox.dataset.regime2 = regime2;
+
+        // Charge l'état sauvegardé si disponible
+        const stored = this.getStoredValue(institution, 'Q1', `${regime1}__${regime2}`);
+        if (stored) checkbox.checked = stored === 'true';
+
+        // Symétrie : cocher/décocher automatiquement la case miroir
+        checkbox.addEventListener('change', () => {
+          const mirror = document.getElementById(`q1_${regime2}__${regime1}`);
+          if (mirror) mirror.checked = checkbox.checked;
+        });
+
+        td.appendChild(checkbox);
+      }
+      row.appendChild(td);
+      });
+
+      tbody.appendChild(row);
+    });
+    table.appendChild(tbody);
+    section.appendChild(table);
+
+    return section;
+  }
+
+  /**
+   * Q1b — Affiliation aux régimes (bénéficiaires)
+   * Même matrice que Q1 mais pour les bénéficiaires.
+   * Persistée sous data[institution].Q1b
+   */
+  buildQ1b(institution, regimes) {
+    const section = document.createElement('fieldset');
+    section.className = 'questionnaire-section';
+    section.innerHTML = `<legend>Q1b — Partage des bénéficiaires entre régimes</legend>`;
+
+    const desc = document.createElement('p');
+    desc.textContent = 'Pour chaque régime, indiquer s\'il couvre les mêmes bénéficiaires que les autres régimes (ex. même enfant déclaré dans plusieurs branches)';
+    section.appendChild(desc);
+
+    const table = document.createElement('table');
+    table.className = 'questionnaire-matrix';
+
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    headerRow.innerHTML = '<th></th>';
+    regimes.forEach(r => {
+      const th = document.createElement('th');
+      th.textContent = window.NOM_COURT ? (window.NOM_COURT[r] || r) : r;
+      headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+    regimes.forEach((regime1, i) => {
+      const row = document.createElement('tr');
+      const rowHeader = document.createElement('th');
+      rowHeader.textContent = window.NOM_COURT ? (window.NOM_COURT[regime1] || regime1) : regime1;
+      row.appendChild(rowHeader);
+
+      regimes.forEach((regime2, j) => {
+        const td = document.createElement('td');
+        if (i === j) {
+          td.textContent = '—';
+          td.style.backgroundColor = '#f0f0f0';
+        } else {
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.name = 'q1b_pair';
+          checkbox.id = `q1b_${regime1}__${regime2}`;
+          checkbox.dataset.regime1 = regime1;
+          checkbox.dataset.regime2 = regime2;
+
+          const stored = this.getStoredValue(institution, 'Q1b', `${regime1}__${regime2}`);
           if (stored) checkbox.checked = stored === 'true';
-          
+
+          // Symétrie automatique
+          checkbox.addEventListener('change', () => {
+            const mirror = document.getElementById(`q1b_${regime2}__${regime1}`);
+            if (mirror) mirror.checked = checkbox.checked;
+          });
+
           td.appendChild(checkbox);
         }
         row.appendChild(td);
       });
-
       tbody.appendChild(row);
     });
     table.appendChild(tbody);
@@ -227,34 +312,21 @@ class QuestionnaireModal {
 
     // Filtre : ne montrer que les régimes avec "Enfants" ou "Famille" dans les FONCTIONS OIT (métadonnées ESS)
     const familyRegimes = regimes.filter((regime) => {
-      // Cherche dans les métadonnées du régime
-      if (!window.REGIME_META || !window.REGIME_META[regime]) {
-        return false;
-      }
-      
-      const meta = window.REGIME_META[regime];
-      if (!meta.versions || !meta.versions.length) {
-        return false;
-      }
-      
-      // Prendre la dernière version (la plus récente)
+      // REGIME_META est structuré par institution : REGIME_META[institution][regime]
+      if (!window.REGIME_META) return true; // pas de méta → montrer tous les régimes
+      // Trouver l'institution du régime (le code commence par "CNSS_" ou "CNSSAP_" etc.)
+      const instKey = Object.keys(window.REGIME_META).find(inst =>
+        window.REGIME_META[inst] && window.REGIME_META[inst][regime]
+      );
+      if (!instKey) return true; // régime non trouvé → inclure par défaut
+      const meta = window.REGIME_META[instKey][regime];
+      if (!meta || !meta.versions || !meta.versions.length) return true;
       const latestVersion = meta.versions[meta.versions.length - 1];
-      if (!latestVersion) {
-        return false;
-      }
-      
-      // Chercher dans les fonctions OIT
+      if (!latestVersion) return true;
       const fonctions = latestVersion.fonctions_oit || [];
-      if (!Array.isArray(fonctions)) {
-        return false;
-      }
-      
+      if (!Array.isArray(fonctions) || fonctions.length === 0) return true;
       // Vérifier si au moins une fonction contient "enfants", "famille", "maternité" ou "paternité"
-      return fonctions.some((fonction) => {
-        if (!fonction) return false;
-        const funcLower = String(fonction).toLowerCase();
-        return /enfants|famille|maternit|paternit/i.test(funcLower);
-      });
+      return fonctions.some((f) => /enfants|famille|maternit|paternit/i.test(String(f || '')));
     });
 
     familyRegimes.forEach((regime) => {
@@ -309,9 +381,9 @@ class QuestionnaireModal {
       checkbox.value = regime;
       checkbox.id = `${fieldName}_${regime}`;
 
-      // Charge l'état sauvegardé
-      const stored = this.getStoredValue(institution, fieldName.split('_')[0], `${currentRegime}__${regime}`);
-      if (stored && stored.includes(regime)) checkbox.checked = true;
+      // Charge l'état sauvegardé : Q2 stocke { "Q2_R1_recettes": ["R2", "R3"] }
+      const storedList = this.data[institution]?.Q2?.[fieldName] || [];
+      if (storedList.includes(regime)) checkbox.checked = true;
 
       label.appendChild(checkbox);
       label.appendChild(document.createTextNode(window.NOM_COURT ? (window.NOM_COURT[regime] || regime) : regime));
@@ -338,18 +410,30 @@ class QuestionnaireModal {
       this.data[institution] = {};
     }
 
-    // Q1 — Affiliation
+    // Q1 — Affiliation : utilise data-regime1 / data-regime2 pour éviter
+    // le parsing du name (les codes régimes contiennent des underscores)
     this.data[institution].Q1 = {};
-    document.querySelectorAll('input[name^="q1_"]').forEach((cb) => {
-      const parts = cb.name.replace('q1_', '').split('_');
-      const regime1 = parts.slice(0, -1).join('_');
-      const regime2 = parts[parts.length - 1];
-      this.data[institution].Q1[`${regime1}__${regime2}`] = cb.checked ? 'true' : 'false';
+    document.querySelectorAll('input[name="q1_pair"]').forEach((cb) => {
+      const regime1 = cb.dataset.regime1;
+      const regime2 = cb.dataset.regime2;
+      if (regime1 && regime2) {
+        this.data[institution].Q1[`${regime1}__${regime2}`] = cb.checked ? 'true' : 'false';
+      }
     });
 
-    // Q2 — Agrégation
+    // Q1b — Partage des bénéficiaires (même logique que Q1)
+    this.data[institution].Q1b = {};
+    document.querySelectorAll('input[name="q1b_pair"]').forEach((cb) => {
+      const regime1 = cb.dataset.regime1;
+      const regime2 = cb.dataset.regime2;
+      if (regime1 && regime2) {
+        this.data[institution].Q1b[`${regime1}__${regime2}`] = cb.checked ? 'true' : 'false';
+      }
+    });
+
+    // Q2 — Agrégation financière
     this.data[institution].Q2 = {};
-    document.querySelectorAll('input[name^="q2_"]').forEach((cb) => {
+    document.querySelectorAll('input[name^="Q2_"]').forEach((cb) => {
       const name = cb.name;
       if (cb.checked) {
         if (!this.data[institution].Q2[name]) {
@@ -369,6 +453,11 @@ class QuestionnaireModal {
     // Sauvegarde dans le fichier
     await this.persistData();
 
+    // Notifier le dashboard que les paramètres ont changé
+    window.dispatchEvent(new CustomEvent('questionnaire-saved', {
+      detail: { institution }
+    }));
+
     // Feedback
     this.showToast('✓ Questionnaire sauvegardé', 'success');
     this.closeModal();
@@ -379,17 +468,16 @@ class QuestionnaireModal {
    */
   async persistData() {
     try {
-      const response = await fetch(this.dataFile, {
-        method: 'PUT',
+      const response = await fetch(this.apiUrl, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(this.data, null, 2)
       });
-
       if (!response.ok) {
-        throw new Error('Erreur lors de la sauvegarde');
+        throw new Error(`Erreur serveur : ${response.status}`);
       }
     } catch (e) {
-      console.error('Erreur de persistance:', e);
+      console.error('Erreur de persistance questionnaire:', e);
       this.showToast('⚠ Erreur : données non sauvegardées', 'error');
     }
   }
@@ -422,6 +510,6 @@ class QuestionnaireModal {
 window.questionnaire = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
-  window.questionnaire = new QuestionnaireModal('questionnaire_data.json');
+  window.questionnaire = new QuestionnaireModal('/api/questionnaire-data');
   await window.questionnaire.loadData();
 });
