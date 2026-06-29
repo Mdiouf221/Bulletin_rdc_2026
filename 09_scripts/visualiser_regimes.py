@@ -911,6 +911,9 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
         horizontal_spacing=0.12,
     )
 
+    # Suivi de la première trace par stackgroup (pour fill=tozeroy vs tonexty)
+    _sg_first: dict = {}
+
     for key in regimes_keys:
         subset = [r for r in data if r["regime_code"] == key]
         subset.sort(key=lambda r: r["annee"])
@@ -919,7 +922,6 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
         label   = NOM_COURT.get(key, key)
 
         def trace(y_vals, row, col, fmt, unit, showleg=False):
-            import re as _re
             # Couleur de remplissage semi-transparente dérivée de la couleur de ligne
             hex_c = color.lstrip("#")
             if len(hex_c) == 6:
@@ -930,21 +932,29 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
             else:
                 fill_color = color
             # Colonne 1 (cotisants) : aires empilées, legend1
-            # Colonne 2 (bénéficiaires) : lignes simples, legend2
+            # Colonne 2 (bénéficiaires) : aires simples (tozeroy), legend2
             is_cotisants_col = (col == 1)
             sg = f"stack_r{row}_c{col}" if is_cotisants_col else None
             leg = "legend" if is_cotisants_col else "legend2"
+            # Première trace d'un stackgroup → tozeroy ; les suivantes → tonexty
+            # Les traces non-stackées (col 2) remplissent toujours vers zéro
+            if sg is not None:
+                fill_val = "tozeroy" if sg not in _sg_first else "tonexty"
+                _sg_first[sg] = True
+            else:
+                fill_val = "tozeroy"
             fig.add_trace(go.Scatter(
                 x=annees, y=y_vals,
                 name=label, legendgroup=key,
-                showlegend=True,  # toujours visible, dans sa propre légende
+                showlegend=True,
                 legend=leg,
-                mode="lines+markers",
+                # mode="lines" (sans marqueurs) → l'icône de légende affiche
+                # un rectangle coloré représentant la zone remplie, pas une ligne pointée
+                mode="lines",
                 stackgroup=sg,
-                fill="tozeroy" if (sg is None) else None,
+                fill=fill_val,
                 line=dict(color=color, width=2.5),
                 fillcolor=fill_color,
-                marker=dict(size=8, color=color, line=dict(width=2, color='white')),
                 hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:{fmt}}} {unit}<extra></extra>",
             ), row=row, col=col)
 
@@ -972,13 +982,13 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
             y=0.98,
             yanchor='top'
         ),
-        height=460,
-        # Légendes verticales sous chaque colonne (ne débordent pas horizontalement)
-        # Col 1 domain ≈ [0, 0.44], Col 2 domain ≈ [0.56, 1.0] avec horizontal_spacing=0.12
+        height=500,
+        # Légendes verticales sous chaque colonne — y=-0.25 place la légende
+        # clairement dans la marge inférieure (~55px sous les axes) sans empiéter
         legend=dict(
             orientation="v",
             x=0.02, xanchor="left",
-            y=-0.04, yanchor="top",
+            y=-0.25, yanchor="top",
             title=dict(text="Cotisants actifs", font=dict(size=11, color='#2c5282')),
             font=dict(
                 size=11,
@@ -992,7 +1002,7 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
         legend2=dict(
             orientation="v",
             x=0.57, xanchor="left",
-            y=-0.04, yanchor="top",
+            y=-0.25, yanchor="top",
             title=dict(text="Bénéficiaires", font=dict(size=11, color='#2c5282')),
             font=dict(
                 size=11,
@@ -1006,7 +1016,7 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
         hovermode="x unified",
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
-        margin=dict(t=80, b=160, l=70, r=40),
+        margin=dict(t=80, b=190, l=70, r=40),
         font=dict(
             family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             size=13,
@@ -1163,14 +1173,14 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
         # Inter-rangée : juste sous la rangée 1 (row1 bottom ≈ 0.64, gap jusqu'à 0.36)
         legend=dict(x=0.02, y=0.62, **_leg_style),    # sous (1,1) — Dépenses totales
         legend2=dict(x=0.57, y=0.62, **_leg_style),   # sous (1,2) — Dépense moy./bénéf.
-        # Bas de figure : sous la rangée 2
-        legend3=dict(x=0.02, y=-0.04, **_leg_style),  # sous (2,1) — Recettes totales
-        legend4=dict(x=0.57, y=-0.04, **_leg_style),  # sous (2,2) — Contribution moy.
+        # Légendes bas de figure : y=-0.22 pour sortir clairement de la zone des axes
+        legend3=dict(x=0.02, y=-0.22, **_leg_style),  # sous (2,1) — Recettes totales
+        legend4=dict(x=0.57, y=-0.22, **_leg_style),  # sous (2,2) — Contribution moy.
         hovermode="x unified",
         barmode="relative",
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
-        margin=dict(t=70, b=180, l=70, r=40),
+        margin=dict(t=70, b=230, l=70, r=40),
         font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=13, color='#4a5568'),
     )
     fig.update_annotations(font=dict(size=13, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282'))
@@ -1235,7 +1245,7 @@ def fig_prestation(rows: list[dict], institution: str, regime_code: str) -> str:
         ),
         height=500,
         legend=dict(
-            orientation="h", yanchor="bottom", y=-0.38,
+            orientation="h", yanchor="bottom", y=-0.28,
             xanchor="center", x=0.5, font=dict(size=10),
         ),
         hovermode="x unified",
@@ -1314,22 +1324,27 @@ def fig_prestations_by_institution(
     def stacked_areas(fig, field_key, fmt, unit, row, col, scale=1.0, showlegend=True):
         """Aires empilées par prestation (Scatter+stackgroup) — même style que l'onglet institution."""
         sg = f"stack_r{row}_c{col}"
+        _first_sg = True
         for i, prest in enumerate(prestations_list):
             color = palette[i % len(palette)]
             fill_color = _hex_to_fill(color)
             subset = {r["annee"]: r for r in prest_data if r["nom_fr"] == prest}
             raw = [subset.get(a, {}).get(field_key) for a in annees]
             y_vals = [(v / scale) if v is not None else None for v in raw]
+            # Première trace → tozeroy ; les suivantes → tonexty (stackage correct)
+            fill_val = "tozeroy" if _first_sg else "tonexty"
+            _first_sg = False
             fig.add_trace(go.Scatter(
                 x=annees, y=y_vals,
                 name=prest,
                 legendgroup=prest,
                 showlegend=(showlegend and row == 1 and col == 1),
-                mode="lines+markers",
+                # mode="lines" → l'icône de légende = rectangle rempli correspondant à la couleur de l'aire
+                mode="lines",
                 stackgroup=sg,
+                fill=fill_val,
                 line=dict(color=color, width=2.5),
                 fillcolor=fill_color,
-                marker=dict(size=7, color=color, line=dict(width=1.5, color='white')),
                 hovertemplate=f"<b>{prest}</b><br>%{{x}}<br>%{{y:{fmt}}} {unit}<extra></extra>",
             ), row=row, col=col)
 
@@ -1421,14 +1436,14 @@ def fig_prestations_by_institution(
         legend=dict(
             orientation="h",
             yanchor="bottom",
-            y=-0.10 if sex_mode == "all" else -0.30,
+            y=-0.22 if sex_mode == "all" else -0.32,
             xanchor="center", x=0.5,
             font=dict(size=11, color='#4a5568'),
             bgcolor='rgba(247,250,252,0.8)', bordercolor='#e2e8f0', borderwidth=1,
         ),
         showlegend=True,
         **COMMON_LAYOUT,
-        margin=dict(t=80, b=100, l=70, r=40),
+        margin=dict(t=80, b=160, l=70, r=40),
     )
     for ri in range(1, num_rows + 1):
         for ci in range(1, num_cols + 1):
@@ -1589,14 +1604,14 @@ def fig_prestations_by_institution(
             ),
             height=950,
             legend=dict(
-                orientation="h", yanchor="bottom", y=-0.08,
+                orientation="h", yanchor="bottom", y=-0.20,
                 xanchor="center", x=0.5,
                 font=dict(size=11, color='#4a5568'),
                 bgcolor='rgba(247,250,252,0.8)', bordercolor='#e2e8f0', borderwidth=1,
             ),
             showlegend=True,
             **COMMON_LAYOUT,
-            margin=dict(t=80, b=80, l=70, r=40),
+            margin=dict(t=80, b=140, l=70, r=40),
         )
         for row_i in range(1, 4):
             for col_j in range(1, 3):
@@ -1648,14 +1663,14 @@ def fig_prestations_by_institution(
             ),
             height=500,
             legend=dict(
-                orientation="h", yanchor="bottom", y=-0.35,
+                orientation="h", yanchor="bottom", y=-0.30,
                 xanchor="center", x=0.5,
                 font=dict(size=11, color='#4a5568'),
                 bgcolor='rgba(247,250,252,0.8)', bordercolor='#e2e8f0', borderwidth=1,
             ),
             showlegend=True,
             **COMMON_LAYOUT,
-            margin=dict(t=80, b=140, l=70, r=40),
+            margin=dict(t=80, b=160, l=70, r=40),
         )
         for col_j in range(1, 3):
             fig.update_xaxes(tickformat="d", dtick=1, row=1, col=col_j, **COMMON_AXIS)
@@ -6960,9 +6975,9 @@ function adjustInstitutionChartHeights() {{
   const finHost = document.getElementById('charts-institution-fin');
   if (!popHost || !finHost) return;
   const hasFin = finHost.style.display !== 'none' && finHost.innerHTML.trim() !== '';
-  // Resize Plotly to match the original Python figure heights (pop=460, fin=820)
+  // Resize Plotly to match the original Python figure heights (pop=500, fin=820)
   // relayoutHostPlot subtracts 8: pass height+8 to get exact target
-  relayoutHostPlot(popHost, 468);  // → h = max(320, 460) = 460
+  relayoutHostPlot(popHost, 508);  // → h = max(320, 500) = 500
   if (hasFin) {{
     relayoutHostPlot(finHost, 828);  // → h = max(320, 820) = 820
     finHost.style.display = '';
