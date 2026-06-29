@@ -3898,19 +3898,22 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       .institution-main {{ grid-template-columns: 1fr; }}
     }}
     .table-wrap {{ 
-      overflow-x: auto; 
+      overflow-x: auto;
+      width: 100%;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }}
     .filterable-table {{ 
-      width: 100%; 
+      min-width: 100%;
+      width: max-content;
       border-collapse: collapse; 
       font-size: 0.95rem; 
     }}
     .filterable-table th, .filterable-table td {{ 
       border: 1px solid #e2e8f0; 
       padding: 12px 14px; 
-      text-align: left; 
+      text-align: left;
+      white-space: nowrap;
     }}
     .filterable-table thead tr:first-child th {{ 
       background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%); 
@@ -3931,6 +3934,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     }}
     .filterable-table .col-filter {{
       width: 100%;
+      min-width: 80px;
       padding: 8px 12px;
       border: 1px solid #cbd5e0;
       border-radius: 6px;
