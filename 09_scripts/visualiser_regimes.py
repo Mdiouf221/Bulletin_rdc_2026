@@ -1053,6 +1053,7 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
     if not regimes_keys:
         return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
 
+    # vertical_spacing=0.20 pour laisser de la place aux légendes inter-rangées
     fig = make_subplots(
         rows=2, cols=2,
         subplot_titles=(
@@ -1061,8 +1062,22 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             "Recettes totales (Mds CDF)",
             "Contribution moyenne (k CDF / cotisant)",
         ),
-        vertical_spacing=0.12,
+        vertical_spacing=0.20,
         horizontal_spacing=0.10,
+    )
+
+    # Avec vertical_spacing=0.20 et 2 rangées :
+    #   rangée 1 : y ∈ [0.60, 1.00]  →  légendes 1 et 2 à y≈0.57 (yanchor="top")
+    #   rangée 2 : y ∈ [0.00, 0.40]  →  légendes 3 et 4 à y≈-0.07 (yanchor="top")
+    # Avec horizontal_spacing=0.10 et 2 colonnes :
+    #   col 1 : x ∈ [0.00, 0.45]  →  centre x=0.225
+    #   col 2 : x ∈ [0.55, 1.00]  →  centre x=0.775
+    _leg_style = dict(
+        orientation="h",
+        font=dict(size=11, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#4a5568'),
+        bgcolor='rgba(247, 250, 252, 0.8)',
+        bordercolor='#e2e8f0',
+        borderwidth=1,
     )
 
     for key in regimes_keys:
@@ -1091,34 +1106,38 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             for r in subset
         ]
 
+        # (1,1) Dépenses totales → legend
         fig.add_trace(go.Bar(
             x=annees, y=dep_tot,
-            name=label, legendgroup=key, showlegend=True,
+            name=label, legendgroup=key, legend="legend", showlegend=True,
             marker=dict(color=color, line=dict(width=0)),
             opacity=0.85,
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:.2f}} Mds CDF<extra></extra>",
         ), row=1, col=1)
 
+        # (1,2) Dépense moy. par bénéficiaire → legend2
         fig.add_trace(go.Scatter(
             x=annees, y=dep_moy,
-            name=label, legendgroup=key, showlegend=False,
+            name=label, legendgroup=key, legend="legend2", showlegend=True,
             mode="lines+markers",
             line=dict(color=color, width=3),
             marker=dict(size=8, line=dict(width=1.5, color='white')),
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:,.0f}} k CDF<extra></extra>",
         ), row=1, col=2)
 
+        # (2,1) Recettes totales → legend3
         fig.add_trace(go.Bar(
             x=annees, y=rec_tot,
-            name=label, legendgroup=key, showlegend=False,
+            name=label, legendgroup=key, legend="legend3", showlegend=True,
             marker=dict(color=color, line=dict(width=0)),
             opacity=0.85,
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:.2f}} Mds CDF<extra></extra>",
         ), row=2, col=1)
 
+        # (2,2) Contribution moy. → legend4
         fig.add_trace(go.Scatter(
             x=annees, y=contrib_moy,
-            name=label, legendgroup=key, showlegend=False,
+            name=label, legendgroup=key, legend="legend4", showlegend=True,
             mode="lines+markers",
             line=dict(color=color, width=3),
             marker=dict(size=8, line=dict(width=1.5, color='white')),
@@ -1131,17 +1150,20 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             font=dict(size=18, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282', weight=700),
             x=0.5, xanchor='center', y=0.98, yanchor='top'
         ),
-        height=650,
-        legend=dict(
-            orientation="h", yanchor="bottom", y=-0.16, xanchor="center", x=0.5,
-            font=dict(size=12, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#4a5568'),
-            bgcolor='rgba(247, 250, 252, 0.8)', bordercolor='#e2e8f0', borderwidth=1
-        ),
+        height=720,
+        # Légende sous (1,1) — Dépenses totales
+        legend=dict(xanchor="center", x=0.225, yanchor="top", y=0.57, **_leg_style),
+        # Légende sous (1,2) — Dépense moy./bénéficiaire
+        legend2=dict(xanchor="center", x=0.775, yanchor="top", y=0.57, **_leg_style),
+        # Légende sous (2,1) — Recettes totales
+        legend3=dict(xanchor="center", x=0.225, yanchor="top", y=-0.06, **_leg_style),
+        # Légende sous (2,2) — Contribution moy.
+        legend4=dict(xanchor="center", x=0.775, yanchor="top", y=-0.06, **_leg_style),
         hovermode="x unified",
         barmode="relative",
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
-        margin=dict(t=70, b=120, l=70, r=40),
+        margin=dict(t=70, b=130, l=70, r=40),
         font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=13, color='#4a5568'),
     )
     fig.update_annotations(font=dict(size=13, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282'))
@@ -6927,11 +6949,11 @@ function adjustInstitutionChartHeights() {{
   const finHost = document.getElementById('charts-institution-fin');
   if (!popHost || !finHost) return;
   const hasFin = finHost.style.display !== 'none' && finHost.innerHTML.trim() !== '';
-  // Resize Plotly to match the original Python figure heights (pop=460, fin=650)
+  // Resize Plotly to match the original Python figure heights (pop=460, fin=720)
   // relayoutHostPlot subtracts 8: pass height+8 to get exact target
   relayoutHostPlot(popHost, 468);  // → h = max(320, 460) = 460
   if (hasFin) {{
-    relayoutHostPlot(finHost, 658);  // → h = max(320, 650) = 650
+    relayoutHostPlot(finHost, 728);  // → h = max(320, 720) = 720
     finHost.style.display = '';
   }} else {{
     finHost.style.height = '0px';
