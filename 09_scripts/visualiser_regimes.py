@@ -910,13 +910,16 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
                 fill_color = f"rgba({r_int},{g_int},{b_int},0.18)"
             else:
                 fill_color = color
-            # Colonne 1 (cotisants) : aires empilées ; colonne 2 (bénéficiaires) : lignes simples
+            # Colonne 1 (cotisants) : aires empilées, legend1
+            # Colonne 2 (bénéficiaires) : lignes simples, legend2
             is_cotisants_col = (col == 1)
             sg = f"stack_r{row}_c{col}" if is_cotisants_col else None
+            leg = "legend" if is_cotisants_col else "legend2"
             fig.add_trace(go.Scatter(
                 x=annees, y=y_vals,
                 name=label, legendgroup=key,
-                showlegend=showleg,
+                showlegend=True,  # toujours visible, dans sa propre légende
+                legend=leg,
                 mode="lines+markers",
                 stackgroup=sg,
                 fill="tozeroy" if (sg is None) else None,
@@ -952,11 +955,28 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
         ),
         height=460,
         legend=dict(
-            orientation="h", 
-            yanchor="bottom", 
-            y=-0.18,
-            xanchor="center", 
-            x=0.5, 
+            orientation="h",
+            yanchor="bottom",
+            y=-0.22,
+            xanchor="center",
+            x=0.22,   # centré sous la colonne cotisants (col 1 occupe ~0..0.44)
+            title=dict(text="Cotisants actifs", font=dict(size=11, color='#2c5282')),
+            font=dict(
+                size=12,
+                family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                color='#4a5568'
+            ),
+            bgcolor='rgba(247, 250, 252, 0.8)',
+            bordercolor='#e2e8f0',
+            borderwidth=1
+        ),
+        legend2=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=-0.22,
+            xanchor="center",
+            x=0.78,   # centré sous la colonne bénéficiaires (col 2 occupe ~0.56..1.0)
+            title=dict(text="Bénéficiaires", font=dict(size=11, color='#2c5282')),
             font=dict(
                 size=12,
                 family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -969,7 +989,7 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
         hovermode="x unified",
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
-        margin=dict(t=80, b=72, l=70, r=40),
+        margin=dict(t=80, b=100, l=70, r=40),
         font=dict(
             family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             size=13,
