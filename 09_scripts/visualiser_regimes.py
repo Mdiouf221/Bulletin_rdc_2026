@@ -208,9 +208,24 @@ function applyQ2FinanceFusion(graphId, q2Data) {
     return;
   }
   let newTraces = JSON.parse(JSON.stringify(origTraces));
-  newTraces = applyToAxis(newTraces, depGroups, 'y');
-  newTraces = applyToAxis(newTraces, recGroups, 'y3');
+  // Appliquer la fusion sur les 4 sous-graphiques : y/y2 = dépenses, y3/y4 = recettes
+  newTraces = applyToAxis(newTraces, depGroups, 'y');    // Dépenses totales (barres)
+  newTraces = applyToAxis(newTraces, depGroups, 'y2');   // Dépense moy. par bénéficiaire (lignes)
+  newTraces = applyToAxis(newTraces, recGroups, 'y3');   // Recettes totales (barres)
+  newTraces = applyToAxis(newTraces, recGroups, 'y4');   // Contribution moy. (lignes)
   Plotly.react(graphId, newTraces, plotDiv.layout, { responsive: true });
+}
+
+// Applique la fusion Q2 au graphique financier courant de l'institution donnée.
+// À appeler après chaque injection de chart finances (avec délai pour laisser Plotly s'initialiser).
+function applyQ2ToFinChart(inst) {
+  if (!window.questionnaire) return;
+  const q2Data = (window.questionnaire.data[inst] && window.questionnaire.data[inst].Q2) || {};
+  const finContainer = document.getElementById('charts-institution-fin');
+  if (!finContainer) return;
+  finContainer.querySelectorAll('.plotly-graph-div').forEach(function(div) {
+    if (div.id) applyQ2FinanceFusion(div.id, q2Data);
+  });
 }
 
 // Hook pour quand l'utilisateur sauvegarde le questionnaire
@@ -237,14 +252,8 @@ window.addEventListener('questionnaire-saved', (e) => {
     renderInstitutionSexDistributions(institution, selectedRegimes);
   }
 
-  // Q2 — déduplication financière (recettes et dépenses totales)
-  const q2Data = window.questionnaire.data[institution]?.Q2 || {};
-  const finContainer = document.getElementById('charts-institution-fin');
-  if (finContainer) {
-    finContainer.querySelectorAll('.plotly-graph-div').forEach(div => {
-      if (div.id) applyQ2FinanceFusion(div.id, q2Data);
-    });
-  }
+  // Q2 — déduplication financière (tous les sous-graphiques)
+  applyQ2ToFinChart(institution);
 
   console.log('✓ Questionnaire appliqué aux graphiques (Q1 + Q1b + Q2)');
 });
@@ -6809,6 +6818,8 @@ function setChartSexMode(mode, instOverride) {{
     if (pack.finances) {{
       finHost.style.display = '';
       injectHtmlAndRunScripts('charts-institution-fin', pack.finances);
+      // Réappliquer la fusion Q2 après injection (Plotly initialise le div de façon synchrone)
+      setTimeout(() => applyQ2ToFinChart(inst), 100);
     }} else {{
       finHost.style.display = 'none';
       finHost.innerHTML = '';

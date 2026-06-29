@@ -57,8 +57,14 @@
     "Q4": {}
   },
   "CNSSAP": {
-    "Q1": {},
-    "Q1b": {},
+    "Q1": {
+      "CNSSAP_R1__CNSSAP_R2": "false",
+      "CNSSAP_R2__CNSSAP_R1": "false"
+    },
+    "Q1b": {
+      "CNSSAP_R1__CNSSAP_R2": "false",
+      "CNSSAP_R2__CNSSAP_R1": "false"
+    },
     "Q2": {},
     "Q4": {}
   }
