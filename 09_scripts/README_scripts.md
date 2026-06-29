@@ -7,6 +7,7 @@
 | `assembler_markdown.py` | Assemble les fichiers Markdown du bulletin en deux versions de sortie |
 | `convertir_pdf_en_texte.py` | Convertit tous les PDF des dossiers de références et de données en fichiers `.txt` lisibles par les agents |
 | `extraire_ess.py` | Charge les fichiers ESS dans `06_donnees/protection_sociale_rdc.db` |
+| `rafraichir_ess.py` | **Mise à jour complète** : purge les données ESS en base, réimporte le fichier modifié, régénère le dashboard — en une seule commande |
 | `serveur_preview.py` | Serveur de prévisualisation — surveille les fichiers, relance l'assembleur et rafraîchit le navigateur automatiquement |
 | `exporter.py` | Génère des versions exportables du bulletin (HTML, Word, PDF) pour relecture hors ligne |
 | `preview.css` | Feuille de style du rendu navigateur — modifier librement sans toucher aux `.md` |
@@ -143,6 +144,51 @@ python 09_scripts/extraire_ess.py --delete --institution CNSS --annee 2022 --dry
 python 09_scripts/extraire_ess.py --delete --source-id 42 --force
 python 09_scripts/validate_ess.py --annee 2022
 ```
+
+---
+
+## rafraichir_ess.py
+
+### Rôle
+
+Enchaîne en une seule commande les trois opérations nécessaires après modification d'un fichier ESS directement dans `06_sources/ESS/` :
+
+1. **Purge** des données existantes en base pour la cible (via `extraire_ess.py --delete --force`)
+2. **Réimport** du fichier mis à jour (via `extraire_ess.py`)
+3. **Régénération** du tableau de bord (via `visualiser_regimes.py`)
+
+> Le serveur de prévisualisation (`serveur_preview.py`) ne surveille pas les fichiers `.xlsx` ni la base SQLite. Ce script comble ce chaînon manquant.
+
+### Usage
+
+```bash
+# Cas standard — mettre à jour l'ESS CNSS 2022
+py 09_scripts/rafraichir_ess.py --institution CNSS --annee 2022
+
+# Simulation sans modification
+py 09_scripts/rafraichir_ess.py --institution CNSSAP --annee 2021 --dry-run
+
+# Sans régénération du dashboard (plus rapide)
+py 09_scripts/rafraichir_ess.py --institution CNSS --annee 2022 --no-dashboard
+
+# Ciblage par source_id (si institution/annee insuffisants)
+py 09_scripts/rafraichir_ess.py --source-id 5 --annee 2022
+```
+
+### Après exécution
+
+Si le serveur de prévisualisation est actif (`http://localhost:8765`), recharger manuellement le tableau de bord dans le navigateur (**F5**). Le dashboard HTML aura été régénéré.
+
+### Options
+
+| Option | Description |
+|---|---|
+| `--institution` | Institution cible (CNSS, CNSSAP, RDC…) |
+| `--annee` | Année ESS cible |
+| `--source-id` | Identifiant source_id précis |
+| `--dry-run` | Simule toutes les étapes sans modifier la base ni le dashboard |
+| `--no-dashboard` | Saute la régénération du tableau de bord |
+| `--verbose` | Détail ligne par ligne lors du réimport |
 
 ---
 

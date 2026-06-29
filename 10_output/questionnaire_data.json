@@ -65,7 +65,14 @@
       "CNSSAP_R1__CNSSAP_R2": "false",
       "CNSSAP_R2__CNSSAP_R1": "false"
     },
-    "Q2": {},
+    "Q2": {
+      "Q2_CNSSAP_R1_depenses": [
+        "CNSSAP_R2"
+      ],
+      "Q2_CNSSAP_R2_depenses": [
+        "CNSSAP_R1"
+      ]
+    },
     "Q4": {}
   }
 }

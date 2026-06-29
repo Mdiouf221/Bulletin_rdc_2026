@@ -193,11 +193,21 @@ function applyQ2FinanceFusion(graphId, q2Data) {
       processedRoots.add(root);
       const groupTraces = traces.filter(t2 => (t2.yaxis || 'y') === yaxisMatch && (groups[t2.legendgroup] || t2.legendgroup) === root);
       if (groupTraces.length <= 1) { result.push(JSON.parse(JSON.stringify(t))); return; }
-      const merged = JSON.parse(JSON.stringify(groupTraces[0]));
-      merged.y = (merged.y || []).map((_, i) => {
-        const vals = groupTraces.map(t2 => t2.y?.[i]).filter(v => v != null);
+      // Collecter toutes les années (x) de tous les groupTraces
+      const allX = [];
+      groupTraces.forEach(t2 => (t2.x || []).forEach(xv => { if (!allX.includes(xv)) allX.push(xv); }));
+      allX.sort();
+      // Fusion par année (alignement sur x), pas par index de tableau
+      const mergedY = allX.map(xv => {
+        const vals = groupTraces.map(t2 => {
+          const idx = (t2.x || []).indexOf(xv);
+          return idx !== -1 ? t2.y?.[idx] : null;
+        }).filter(v => v != null);
         return vals.length ? Math.max(...vals) : null;
       });
+      const merged = JSON.parse(JSON.stringify(groupTraces[0]));
+      merged.x = allX;
+      merged.y = mergedY;
       merged.name = groupTraces.map(t2 => t2.name).filter((v, i, a) => a.indexOf(v) === i).join(' + ');
       result.push(merged);
     });
