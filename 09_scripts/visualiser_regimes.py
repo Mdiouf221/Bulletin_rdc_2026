@@ -963,42 +963,40 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
             yanchor='top'
         ),
         height=460,
+        # Légendes verticales sous chaque colonne (ne débordent pas horizontalement)
+        # Col 1 domain ≈ [0, 0.44], Col 2 domain ≈ [0.56, 1.0] avec horizontal_spacing=0.12
         legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=-0.22,
-            xanchor="center",
-            x=0.22,   # centré sous la colonne cotisants (col 1 occupe ~0..0.44)
+            orientation="v",
+            x=0.02, xanchor="left",
+            y=-0.04, yanchor="top",
             title=dict(text="Cotisants actifs", font=dict(size=11, color='#2c5282')),
             font=dict(
-                size=12,
+                size=11,
                 family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                 color='#4a5568'
             ),
-            bgcolor='rgba(247, 250, 252, 0.8)',
+            bgcolor='rgba(247, 250, 252, 0.85)',
             bordercolor='#e2e8f0',
-            borderwidth=1
+            borderwidth=1,
         ),
         legend2=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=-0.22,
-            xanchor="center",
-            x=0.78,   # centré sous la colonne bénéficiaires (col 2 occupe ~0.56..1.0)
+            orientation="v",
+            x=0.57, xanchor="left",
+            y=-0.04, yanchor="top",
             title=dict(text="Bénéficiaires", font=dict(size=11, color='#2c5282')),
             font=dict(
-                size=12,
+                size=11,
                 family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                 color='#4a5568'
             ),
-            bgcolor='rgba(247, 250, 252, 0.8)',
+            bgcolor='rgba(247, 250, 252, 0.85)',
             bordercolor='#e2e8f0',
-            borderwidth=1
+            borderwidth=1,
         ),
         hovermode="x unified",
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
-        margin=dict(t=80, b=100, l=70, r=40),
+        margin=dict(t=80, b=160, l=70, r=40),
         font=dict(
             family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             size=13,
@@ -1053,7 +1051,9 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
     if not regimes_keys:
         return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
 
-    # vertical_spacing=0.20 pour laisser de la place aux légendes inter-rangées
+    # vertical_spacing=0.28 pour laisser de la place aux légendes verticales inter-rangées
+    # Avec vs=0.28 et 2 rangées : rangée 1 y∈[0.64,1.00], rangée 2 y∈[0.00,0.36], gap [0.36,0.64]
+    # Avec horizontal_spacing=0.10 et 2 colonnes : col1 x∈[0,0.45], col2 x∈[0.55,1.00]
     fig = make_subplots(
         rows=2, cols=2,
         subplot_titles=(
@@ -1062,20 +1062,18 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             "Recettes totales (Mds CDF)",
             "Contribution moyenne (k CDF / cotisant)",
         ),
-        vertical_spacing=0.20,
+        vertical_spacing=0.28,
         horizontal_spacing=0.10,
     )
 
-    # Avec vertical_spacing=0.20 et 2 rangées :
-    #   rangée 1 : y ∈ [0.60, 1.00]  →  légendes 1 et 2 à y≈0.57 (yanchor="top")
-    #   rangée 2 : y ∈ [0.00, 0.40]  →  légendes 3 et 4 à y≈-0.07 (yanchor="top")
-    # Avec horizontal_spacing=0.10 et 2 colonnes :
-    #   col 1 : x ∈ [0.00, 0.45]  →  centre x=0.225
-    #   col 2 : x ∈ [0.55, 1.00]  →  centre x=0.775
+    # Style partagé des légendes : orientation verticale → une colonne d'entrées,
+    # aucun risque de débordement horizontal quelle que soit la longueur des labels.
     _leg_style = dict(
-        orientation="h",
+        orientation="v",
+        xanchor="left",
+        yanchor="top",
         font=dict(size=11, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#4a5568'),
-        bgcolor='rgba(247, 250, 252, 0.8)',
+        bgcolor='rgba(247, 250, 252, 0.85)',
         bordercolor='#e2e8f0',
         borderwidth=1,
     )
@@ -1150,20 +1148,19 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             font=dict(size=18, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282', weight=700),
             x=0.5, xanchor='center', y=0.98, yanchor='top'
         ),
-        height=720,
-        # Légende sous (1,1) — Dépenses totales
-        legend=dict(xanchor="center", x=0.225, yanchor="top", y=0.57, **_leg_style),
-        # Légende sous (1,2) — Dépense moy./bénéficiaire
-        legend2=dict(xanchor="center", x=0.775, yanchor="top", y=0.57, **_leg_style),
-        # Légende sous (2,1) — Recettes totales
-        legend3=dict(xanchor="center", x=0.225, yanchor="top", y=-0.06, **_leg_style),
-        # Légende sous (2,2) — Contribution moy.
-        legend4=dict(xanchor="center", x=0.775, yanchor="top", y=-0.06, **_leg_style),
+        height=820,
+        # Légendes verticales positionnées en haut-gauche de chaque sous-graphique
+        # Inter-rangée : juste sous la rangée 1 (row1 bottom ≈ 0.64, gap jusqu'à 0.36)
+        legend=dict(x=0.02, y=0.62, **_leg_style),    # sous (1,1) — Dépenses totales
+        legend2=dict(x=0.57, y=0.62, **_leg_style),   # sous (1,2) — Dépense moy./bénéf.
+        # Bas de figure : sous la rangée 2
+        legend3=dict(x=0.02, y=-0.04, **_leg_style),  # sous (2,1) — Recettes totales
+        legend4=dict(x=0.57, y=-0.04, **_leg_style),  # sous (2,2) — Contribution moy.
         hovermode="x unified",
         barmode="relative",
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
-        margin=dict(t=70, b=130, l=70, r=40),
+        margin=dict(t=70, b=180, l=70, r=40),
         font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=13, color='#4a5568'),
     )
     fig.update_annotations(font=dict(size=13, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282'))
@@ -6949,11 +6946,11 @@ function adjustInstitutionChartHeights() {{
   const finHost = document.getElementById('charts-institution-fin');
   if (!popHost || !finHost) return;
   const hasFin = finHost.style.display !== 'none' && finHost.innerHTML.trim() !== '';
-  // Resize Plotly to match the original Python figure heights (pop=460, fin=720)
+  // Resize Plotly to match the original Python figure heights (pop=460, fin=820)
   // relayoutHostPlot subtracts 8: pass height+8 to get exact target
   relayoutHostPlot(popHost, 468);  // → h = max(320, 460) = 460
   if (hasFin) {{
-    relayoutHostPlot(finHost, 728);  // → h = max(320, 720) = 720
+    relayoutHostPlot(finHost, 828);  // → h = max(320, 820) = 820
     finHost.style.display = '';
   }} else {{
     finHost.style.height = '0px';
