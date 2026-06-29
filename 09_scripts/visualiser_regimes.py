@@ -208,8 +208,17 @@ function applyQ2FinanceFusion(graphId, q2Data) {
       const merged = JSON.parse(JSON.stringify(groupTraces[0]));
       merged.x = allX;
       merged.y = mergedY;
-      merged.name = groupTraces.map(t2 => t2.name).filter((v, i, a) => a.indexOf(v) === i).join(' + ');
+      // Conserver le nom du premier régime (pas de concaténation)
       result.push(merged);
+      // Ajouter une trace fantôme pour chaque régime supplémentaire :
+      // visible uniquement dans la légende, données vides → pas de doublon dans le graphique
+      groupTraces.slice(1).forEach(t2 => {
+        const phantom = JSON.parse(JSON.stringify(t2));
+        phantom.x = [];
+        phantom.y = [];
+        phantom.showlegend = true;
+        result.push(phantom);
+      });
     });
     return result;
   };
@@ -1124,7 +1133,7 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             for r in subset
         ]
 
-        # (1,1) Dépenses totales → legend
+        # (1,1) Dépenses totales → legend (colonne gauche)
         fig.add_trace(go.Bar(
             x=annees, y=dep_tot,
             name=label, legendgroup=key, legend="legend", showlegend=True,
@@ -1133,7 +1142,7 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:.2f}} Mds CDF<extra></extra>",
         ), row=1, col=1)
 
-        # (1,2) Dépense moy. par bénéficiaire → legend2
+        # (1,2) Dépense moy. par bénéficiaire → legend2 (colonne droite)
         fig.add_trace(go.Scatter(
             x=annees, y=dep_moy,
             name=label, legendgroup=key, legend="legend2", showlegend=True,
@@ -1143,19 +1152,19 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:,.0f}} k CDF<extra></extra>",
         ), row=1, col=2)
 
-        # (2,1) Recettes totales → legend3
+        # (2,1) Recettes totales → legend (pas de doublon colonne gauche)
         fig.add_trace(go.Bar(
             x=annees, y=rec_tot,
-            name=label, legendgroup=key, legend="legend3", showlegend=True,
+            name=label, legendgroup=key, legend="legend", showlegend=False,
             marker=dict(color=color, line=dict(width=0)),
             opacity=0.85,
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:.2f}} Mds CDF<extra></extra>",
         ), row=2, col=1)
 
-        # (2,2) Contribution moy. → legend4
+        # (2,2) Contribution moy. → legend2 (pas de doublon colonne droite)
         fig.add_trace(go.Scatter(
             x=annees, y=contrib_moy,
-            name=label, legendgroup=key, legend="legend4", showlegend=True,
+            name=label, legendgroup=key, legend="legend2", showlegend=False,
             mode="lines+markers",
             line=dict(color=color, width=3),
             marker=dict(size=8, line=dict(width=1.5, color='white')),
@@ -1169,18 +1178,31 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             x=0.5, xanchor='center', y=0.98, yanchor='top'
         ),
         height=820,
-        # Légendes verticales positionnées en haut-gauche de chaque sous-graphique
-        # Inter-rangée : juste sous la rangée 1 (row1 bottom ≈ 0.64, gap jusqu'à 0.36)
-        legend=dict(x=0.02, y=0.62, **_leg_style),    # sous (1,1) — Dépenses totales
-        legend2=dict(x=0.57, y=0.62, **_leg_style),   # sous (1,2) — Dépense moy./bénéf.
-        # Légendes bas de figure : y=-0.22 pour sortir clairement de la zone des axes
-        legend3=dict(x=0.02, y=-0.22, **_leg_style),  # sous (2,1) — Recettes totales
-        legend4=dict(x=0.57, y=-0.22, **_leg_style),  # sous (2,2) — Contribution moy.
+        legend=dict(
+            orientation="v",
+            x=0.02, xanchor="left",
+            y=-0.25, yanchor="top",
+            title=dict(text="Régimes", font=dict(size=11, color='#2c5282')),
+            font=dict(size=11, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#4a5568'),
+            bgcolor='rgba(247, 250, 252, 0.85)',
+            bordercolor='#e2e8f0',
+            borderwidth=1,
+        ),
+        legend2=dict(
+            orientation="v",
+            x=0.57, xanchor="left",
+            y=-0.25, yanchor="top",
+            title=dict(text="Régimes", font=dict(size=11, color='#2c5282')),
+            font=dict(size=11, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#4a5568'),
+            bgcolor='rgba(247, 250, 252, 0.85)',
+            bordercolor='#e2e8f0',
+            borderwidth=1,
+        ),
         hovermode="x unified",
         barmode="relative",
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
-        margin=dict(t=70, b=230, l=70, r=40),
+        margin=dict(t=70, b=190, l=70, r=40),
         font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=13, color='#4a5568'),
     )
     fig.update_annotations(font=dict(size=13, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282'))
@@ -1245,13 +1267,19 @@ def fig_prestation(rows: list[dict], institution: str, regime_code: str) -> str:
         ),
         height=500,
         legend=dict(
-            orientation="h", yanchor="bottom", y=-0.28,
-            xanchor="center", x=0.5, font=dict(size=10),
+            orientation="v",
+            x=0.02, xanchor="left",
+            y=-0.25, yanchor="top",
+            title=dict(text="Prestations", font=dict(size=11, color='#2c5282')),
+            font=dict(size=11, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#4a5568'),
+            bgcolor='rgba(247, 250, 252, 0.85)',
+            bordercolor='#e2e8f0',
+            borderwidth=1,
         ),
         hovermode="x unified",
         plot_bgcolor="#f8f9fa",
         paper_bgcolor="white",
-        margin=dict(t=60, b=160, l=55, r=30),
+        margin=dict(t=60, b=190, l=55, r=30),
     )
     for c in [1, 2]:
         fig.update_xaxes(tickformat="d", dtick=1, row=1, col=c)
@@ -1434,16 +1462,18 @@ def fig_prestations_by_institution(
         ),
         height=800 if sex_mode == "all" else 480,
         legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=-0.22 if sex_mode == "all" else -0.32,
-            xanchor="center", x=0.5,
-            font=dict(size=11, color='#4a5568'),
-            bgcolor='rgba(247,250,252,0.8)', bordercolor='#e2e8f0', borderwidth=1,
+            orientation="v",
+            x=0.02, xanchor="left",
+            y=-0.25, yanchor="top",
+            title=dict(text="Prestations", font=dict(size=11, color='#2c5282')),
+            font=dict(size=11, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#4a5568'),
+            bgcolor='rgba(247, 250, 252, 0.85)',
+            bordercolor='#e2e8f0',
+            borderwidth=1,
         ),
         showlegend=True,
         **COMMON_LAYOUT,
-        margin=dict(t=80, b=160, l=70, r=40),
+        margin=dict(t=80, b=190, l=70, r=40),
     )
     for ri in range(1, num_rows + 1):
         for ci in range(1, num_cols + 1):
@@ -1604,14 +1634,18 @@ def fig_prestations_by_institution(
             ),
             height=950,
             legend=dict(
-                orientation="h", yanchor="bottom", y=-0.20,
-                xanchor="center", x=0.5,
-                font=dict(size=11, color='#4a5568'),
-                bgcolor='rgba(247,250,252,0.8)', bordercolor='#e2e8f0', borderwidth=1,
+                orientation="v",
+                x=0.02, xanchor="left",
+                y=-0.25, yanchor="top",
+                title=dict(text="Prestations", font=dict(size=11, color='#2c5282')),
+                font=dict(size=11, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#4a5568'),
+                bgcolor='rgba(247, 250, 252, 0.85)',
+                bordercolor='#e2e8f0',
+                borderwidth=1,
             ),
             showlegend=True,
             **COMMON_LAYOUT,
-            margin=dict(t=80, b=140, l=70, r=40),
+            margin=dict(t=80, b=190, l=70, r=40),
         )
         for row_i in range(1, 4):
             for col_j in range(1, 3):
@@ -1663,14 +1697,18 @@ def fig_prestations_by_institution(
             ),
             height=500,
             legend=dict(
-                orientation="h", yanchor="bottom", y=-0.30,
-                xanchor="center", x=0.5,
-                font=dict(size=11, color='#4a5568'),
-                bgcolor='rgba(247,250,252,0.8)', bordercolor='#e2e8f0', borderwidth=1,
+                orientation="v",
+                x=0.02, xanchor="left",
+                y=-0.25, yanchor="top",
+                title=dict(text="Prestations", font=dict(size=11, color='#2c5282')),
+                font=dict(size=11, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#4a5568'),
+                bgcolor='rgba(247, 250, 252, 0.85)',
+                bordercolor='#e2e8f0',
+                borderwidth=1,
             ),
             showlegend=True,
             **COMMON_LAYOUT,
-            margin=dict(t=80, b=160, l=70, r=40),
+            margin=dict(t=80, b=190, l=70, r=40),
         )
         for col_j in range(1, 3):
             fig.update_xaxes(tickformat="d", dtick=1, row=1, col=col_j, **COMMON_AXIS)
