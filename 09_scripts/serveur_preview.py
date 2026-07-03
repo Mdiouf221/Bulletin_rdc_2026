@@ -977,7 +977,7 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             self.end_headers()
 
     def _serve_dashboard_settings(self):
-        payload = {"oddDecisions": {}}
+        payload = {"oddDecisions": {}, "denomSettings": {}}
         if DASHBOARD_SETTINGS_FILE.exists():
             try:
                 raw = DASHBOARD_SETTINGS_FILE.read_text(encoding="utf-8")
@@ -985,8 +985,10 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
                 if isinstance(parsed, dict):
                     odd = parsed.get("oddDecisions")
                     payload["oddDecisions"] = odd if isinstance(odd, dict) else {}
+                    denom = parsed.get("denomSettings")
+                    payload["denomSettings"] = denom if isinstance(denom, dict) else {}
             except (OSError, json.JSONDecodeError):
-                payload = {"oddDecisions": {}}
+                payload = {"oddDecisions": {}, "denomSettings": {}}
 
         body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
         self.send_response(200)
@@ -1133,18 +1135,38 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             except UnicodeDecodeError:
                 body_str = body.decode("latin-1")
             data = json.loads(body_str)
-            odd_decisions = data.get("oddDecisions", {})
-            if not isinstance(odd_decisions, dict):
+            if not isinstance(data, dict):
+                raise ValueError("corps JSON invalide")
+            odd_decisions = data.get("oddDecisions")
+            if odd_decisions is not None and not isinstance(odd_decisions, dict):
                 raise ValueError("oddDecisions doit être un objet")
+            denom_settings = data.get("denomSettings")
+            if denom_settings is not None and not isinstance(denom_settings, dict):
+                raise ValueError("denomSettings doit être un objet")
         except (json.JSONDecodeError, ValueError):
             self.send_response(400)
             self.send_header("Content-Type", "text/plain; charset=utf-8")
             self.end_headers()
-            self.wfile.write(b"Corps JSON invalide. Champ requis : oddDecisions (objet)")
+            self.wfile.write(b"Corps JSON invalide. Champs admis : oddDecisions (objet), denomSettings (objet)")
             return
 
         DASHBOARD_SETTINGS_FILE.parent.mkdir(parents=True, exist_ok=True)
-        payload = {"oddDecisions": odd_decisions}
+        existing = {"oddDecisions": {}, "denomSettings": {}}
+        if DASHBOARD_SETTINGS_FILE.exists():
+            try:
+                parsed = json.loads(DASHBOARD_SETTINGS_FILE.read_text(encoding="utf-8"))
+                if isinstance(parsed, dict):
+                    existing_odd = parsed.get("oddDecisions")
+                    existing_denom = parsed.get("denomSettings")
+                    existing["oddDecisions"] = existing_odd if isinstance(existing_odd, dict) else {}
+                    existing["denomSettings"] = existing_denom if isinstance(existing_denom, dict) else {}
+            except (OSError, json.JSONDecodeError):
+                existing = {"oddDecisions": {}, "denomSettings": {}}
+
+        payload = {
+            "oddDecisions": odd_decisions if odd_decisions is not None else existing["oddDecisions"],
+            "denomSettings": denom_settings if denom_settings is not None else existing["denomSettings"],
+        }
         try:
             DASHBOARD_SETTINGS_FILE.write_text(
                 json.dumps(payload, ensure_ascii=False, indent=2),
@@ -1394,6 +1416,7 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             "questionnaire_modal.js",
             "questionnaire_modal.css",
             "branch_fusion.js",
+            "unit_conversion.js",
             "dashboard_main.js",
         ]
         for _fname in _static_files:

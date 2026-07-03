@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Diagnostic Dashboard - Erreurs JS</title>
+  <style>
+    body { font-family: monospace; padding: 20px; background: #1e1e1e; color: #d4d4d4; }
+    .error { color: #f48771; margin: 10px 0; padding: 10px; background: #3c1f1e; border-left: 3px solid #f48771; }
+    .ok { color: #89d185; }
+    .warn { color: #e5c07b; }
+    h1 { color: #61afef; }
+    pre { background: #2d2d2d; padding: 10px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>🔍 Diagnostic Dashboard — Capture d'erreurs JS</h1>
+  <div id="results"></div>
+  <hr>
+  <h2>Test de chargement du dashboard</h2>
+  <iframe src="/dashboard" style="width:100%; height:600px; border:1px solid #555;"></iframe>
+  
+  <script>
+    const results = document.getElementById('results');
+    const errors = [];
+    
+    // Capturer toutes les erreurs JS
+    window.addEventListener('error', (e) => {
+      errors.push({
+        type: 'error',
+        message: e.message,
+        filename: e.filename,
+        lineno: e.lineno,
+        colno: e.colno,
+        stack: e.error?.stack
+      });
+      displayErrors();
+    });
+    
+    // Capturer les erreurs non gérées
+    window.addEventListener('unhandledrejection', (e) => {
+      errors.push({
+        type: 'promise',
+        message: e.reason?.message || e.reason,
+        stack: e.reason?.stack
+      });
+      displayErrors();
+    });
+    
+    function displayErrors() {
+      if (errors.length === 0) {
+        results.innerHTML = '<div class="ok">✅ Aucune erreur JS détectée pour l\'instant</div>';
+        return;
+      }
+      
+      results.innerHTML = '<div class="error"><strong>❌ ' + errors.length + ' erreur(s) détectée(s) :</strong></div>';
+      errors.forEach((err, i) => {
+        const div = document.createElement('div');
+        div.className = 'error';
+        div.innerHTML = `
+          <strong>Erreur #${i + 1} (${err.type})</strong><br>
+          <strong>Message :</strong> ${escapeHtml(err.message)}<br>
+          ${err.filename ? `<strong>Fichier :</strong> ${escapeHtml(err.filename)}:${err.lineno}:${err.colno}<br>` : ''}
+          ${err.stack ? `<pre>${escapeHtml(err.stack)}</pre>` : ''}
+        `;
+        results.appendChild(div);
+      });
+    }
+    
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = String(text);
+      return div.innerHTML;
+    }
+    
+    // Affichage initial
+    displayErrors();
+    
+    // Vérifier après 2 secondes
+    setTimeout(() => {
+      if (errors.length === 0) {
+        results.innerHTML += '<div class="ok">✅ Aucune erreur après 2 secondes de chargement</div>';
+      }
+    }, 2000);
+  </script>
+</body>
+</html>

@@ -70,6 +70,7 @@ questionnaire_html = """
 <!-- Questionnaire Modal Scripts -->
 <script src="questionnaire_modal.js"></script>
 <script src="branch_fusion.js"></script>
+<script src="unit_conversion.js"></script>
 
 <!-- Integration Hooks -->
 <script>
@@ -122,38 +123,6 @@ if (document.readyState === 'loading') {
 } else {
   initQuestionnaireButton();
 }
-
-// Hook de fusion de branches après rendu des graphiques
-const originalUpdateInstitution = window.updateInstitution || (() => {});
-
-window.updateInstitution = function() {
-  // Exécute la fonction originale
-  originalUpdateInstitution.apply(this, arguments);
-  
-  // Puis applique la fusion de branches (si questionnaire rempli)
-  setTimeout(() => {
-    if (!window.branchFusion || !window.questionnaire) return;
-    
-    const institution = document.getElementById('sel-institution').value;
-    const q1Data = window.questionnaire.data[institution]?.Q1 || {};
-    
-    if (Object.keys(q1Data).length === 0) return;
-    
-    const regimes = window.REGIMES_PAR_INST 
-      ? window.REGIMES_PAR_INST[institution] || []
-      : [];
-    
-    const branchMapping = buildBranchMapping(institution, regimes);
-    
-    // Q1 concerne la population partagée : cibler uniquement charts-institution-pop
-    const _pop1 = document.getElementById('charts-institution-pop');
-    if (_pop1) {
-      _pop1.querySelectorAll('.plotly-graph-div').forEach(div => {
-        if (div.id) window.branchFusion.applyBranchFusion(div.id, q1Data, branchMapping);
-      });
-    }
-  }, 500);
-};
 
 // Cache des traces originales des graphiques financiers
 window._finOriginalTraces = window._finOriginalTraces || {};
@@ -247,6 +216,58 @@ function applyQ2ToFinChart(inst) {
   });
 }
 
+// Hook de fusion de branches après rendu des graphiques
+const originalUpdateInstitution = window.updateInstitution || (() => {});
+
+window.updateInstitution = function() {
+  // Exécute la fonction originale
+  originalUpdateInstitution.apply(this, arguments);
+  
+  // Applique les corrections existantes après changement d'institution
+  if (!window.questionnaire || !window.questionnaire.data) return;
+  
+  const inst = document.getElementById('sel-institution')?.value;
+  if (!inst || !window.questionnaire.data[inst]) return;
+  
+  // Q1 — déduplication cotisants
+  if (window.branchFusion) {
+    const q1Data = window.questionnaire.data[inst]?.Q1 || {};
+    const regimes = window.REGIMES_PAR_INST ? window.REGIMES_PAR_INST[inst] || [] : [];
+    const branchMapping = buildBranchMapping(inst, regimes);
+    const _pop2 = document.getElementById('charts-institution-pop');
+    if (_pop2) {
+      _pop2.querySelectorAll('.plotly-graph-div').forEach(div => {
+        if (div.id) window.branchFusion.applyBranchFusion(div.id, q1Data, branchMapping);
+      });
+    }
+  }
+  
+  // Q1b — déduplication bénéficiaires
+  const selectedRegimes = typeof getSelectedInstitutionRegimes === 'function'
+    ? getSelectedInstitutionRegimes()
+    : null;
+  if (typeof renderInstitutionSexDistributions === 'function') {
+    renderInstitutionSexDistributions(inst, selectedRegimes);
+  }
+  
+  // Q2 — déduplication financière
+  applyQ2ToFinChart(inst);
+  
+  // Q4 — conversion unités
+  if (window.unitConverter) {
+    const q4Data = window.questionnaire.data[inst]?.Q4 || {};
+    const q4Coefficients = window.questionnaire.data[inst]?.Q4_coefficients || {};
+    if (Object.keys(q4Data).length > 0) {
+      const _pop3 = document.getElementById('charts-institution-pop');
+      if (_pop3) {
+        _pop3.querySelectorAll('.plotly-graph-div').forEach(div => {
+          if (div.id) window.unitConverter.applyConversion(div.id, q4Data, q4Coefficients);
+        });
+      }
+    }
+  }
+};
+
 // Hook pour quand l'utilisateur sauvegarde le questionnaire
 window.addEventListener('questionnaire-saved', (e) => {
   const { institution } = e.detail;
@@ -266,7 +287,9 @@ window.addEventListener('questionnaire-saved', (e) => {
   }
 
   // Q1b — déduplication bénéficiaires (graphiques camembert sexe)
-  const selectedRegimes = getSelectedInstitutionRegimes ? getSelectedInstitutionRegimes() : null;
+  const selectedRegimes = typeof getSelectedInstitutionRegimes === 'function'
+    ? getSelectedInstitutionRegimes()
+    : null;
   if (typeof renderInstitutionSexDistributions === 'function') {
     renderInstitutionSexDistributions(institution, selectedRegimes);
   }
@@ -274,7 +297,84 @@ window.addEventListener('questionnaire-saved', (e) => {
   // Q2 — déduplication financière (tous les sous-graphiques)
   applyQ2ToFinChart(institution);
 
-  console.log('✓ Questionnaire appliqué aux graphiques (Q1 + Q1b + Q2)');
+  // Q4 — conversion unités bénéficiaires (graphiques population)
+  if (window.unitConverter) {
+    const q4Data = window.questionnaire.data[institution]?.Q4 || {};
+    const q4Coefficients = window.questionnaire.data[institution]?.Q4_coefficients || {};
+    
+    // Appliquer uniquement si des conversions sont définies
+    if (Object.keys(q4Data).length > 0) {
+      const _pop3 = document.getElementById('charts-institution-pop');
+      if (_pop3) {
+        _pop3.querySelectorAll('.plotly-graph-div').forEach(div => {
+          if (div.id) window.unitConverter.applyConversion(div.id, q4Data, q4Coefficients);
+        });
+      }
+    }
+  }
+
+  console.log('✓ Questionnaire appliqué aux graphiques (Q1 + Q1b + Q2 + Q4)');
+});
+
+// Chargement automatique au démarrage si données existantes
+window.addEventListener('load', async () => {
+  if (!window.questionnaire) return;
+  
+  // Charge les données depuis l'API
+  try {
+    const response = await fetch('/api/questionnaire-data');
+    if (!response.ok) return;
+    const data = await response.json();
+    if (!data || Object.keys(data).length === 0) return;
+    
+    // Met à jour les données du questionnaire
+    window.questionnaire.data = data;
+    
+    // Applique pour chaque institution ayant des données
+    Object.keys(data).forEach(institution => {
+      // Q1 — déduplication cotisants
+      if (window.branchFusion) {
+        const q1Data = data[institution]?.Q1 || {};
+        const regimes = window.REGIMES_PAR_INST ? window.REGIMES_PAR_INST[institution] || [] : [];
+        const branchMapping = buildBranchMapping(institution, regimes);
+        const _pop2 = document.getElementById('charts-institution-pop');
+        if (_pop2) {
+          _pop2.querySelectorAll('.plotly-graph-div').forEach(div => {
+            if (div.id) window.branchFusion.applyBranchFusion(div.id, q1Data, branchMapping);
+          });
+        }
+      }
+      
+      // Q1b — déduplication bénéficiaires
+      const selectedRegimes = typeof getSelectedInstitutionRegimes === 'function'
+        ? getSelectedInstitutionRegimes()
+        : null;
+      if (typeof renderInstitutionSexDistributions === 'function') {
+        renderInstitutionSexDistributions(institution, selectedRegimes);
+      }
+      
+      // Q2 — déduplication financière
+      applyQ2ToFinChart(institution);
+      
+      // Q4 — conversion unités
+      if (window.unitConverter) {
+        const q4Data = data[institution]?.Q4 || {};
+        const q4Coefficients = data[institution]?.Q4_coefficients || {};
+        if (Object.keys(q4Data).length > 0) {
+          const _pop3 = document.getElementById('charts-institution-pop');
+          if (_pop3) {
+            _pop3.querySelectorAll('.plotly-graph-div').forEach(div => {
+              if (div.id) window.unitConverter.applyConversion(div.id, q4Data, q4Coefficients);
+            });
+          }
+        }
+      }
+    });
+    
+    console.log('✓ Questionnaire chargé et appliqué automatiquement au démarrage');
+  } catch (e) {
+    console.warn('Chargement automatique questionnaire échoué:', e);
+  }
 });
 </script>
 """
@@ -344,6 +444,27 @@ def _build_status_maps(supported: set[str], base_status: str, base_rationale: st
             propositions[indicator_key] = "exclu_hors_indicateur"
             rationales[indicator_key] = non_support_reason
     return propositions, rationales
+
+
+def _normalize_prestation_num(value) -> int | None:
+    if value is None:
+        return None
+    try:
+        parsed = int(float(value))
+    except (TypeError, ValueError):
+        return None
+    return parsed if parsed > 0 else None
+
+
+def _build_prestation_program_id(inst: str, rc: str, prestation_num, nom_prest: str) -> str:
+    num = _normalize_prestation_num(prestation_num)
+    if num is not None:
+        return f"prestation::{inst}::{rc}::num_{num}"
+    return f"prestation::{inst}::{rc}::{nom_prest}"
+
+
+def _build_prestation_legacy_id(inst: str, rc: str, nom_prest: str) -> str:
+    return f"prestation::{inst}::{rc}::{nom_prest}"
 
 
 def build_odd_programmes_payload(regimes: list[dict], prestations: list[dict], regime_meta: dict, prestation_meta: dict) -> list[dict]:
@@ -420,9 +541,10 @@ def build_odd_programmes_payload(regimes: list[dict], prestations: list[dict], r
         inst = row.get("institution")
         rc = row.get("regime_code")
         nom_prest = (row.get("nom_fr") or "").strip()
-        if not inst or not rc or not nom_prest:
+        prestation_num = _normalize_prestation_num(row.get("prestation_num"))
+        if not inst or not rc or (prestation_num is None and not nom_prest):
             continue
-        pkey = (inst, rc, nom_prest)
+        pkey = (inst, rc, prestation_num if prestation_num is not None else nom_prest)
         if pkey in prestation_seen:
             continue
         prestation_seen.add(pkey)
@@ -459,14 +581,20 @@ def build_odd_programmes_payload(regimes: list[dict], prestations: list[dict], r
             base_rationale=base_rationale,
             non_support_reason="Prestation non pertinente pour ce sous-indicateur.",
         )
+        display_name = nom_prest or (f"Prestation {prestation_num}" if prestation_num is not None else "Prestation")
+        stable_id = _build_prestation_program_id(inst, rc, prestation_num, nom_prest)
+        legacy_id = _build_prestation_legacy_id(inst, rc, nom_prest) if nom_prest else ""
+        legacy_ids = [legacy_id] if legacy_id and legacy_id != stable_id else []
 
         prestation_nodes.append({
-            "id": f"prestation::{inst}::{rc}::{nom_prest}",
+            "id": stable_id,
+            "legacy_ids": legacy_ids,
             "parent_id": f"regime::{inst}::{rc}",
             "type": "prestation_ess",
-            "programme": nom_prest,
+            "programme": display_name,
             "institution": inst,
             "regime_code": rc,
+            "prestation_num": prestation_num,
             "proposition": propositions.get("global_131", base_status),
             "rationale": rationales.get("global_131", base_rationale),
             "propositions": propositions,
@@ -1080,7 +1208,7 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
     if not regimes_keys:
         return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
 
-    # vertical_spacing=0.28 pour laisser de la place aux légendes verticales inter-rangées
+    # vertical_spacing=0.28 pour laisser de la place aux légendes verticales
     # Avec vs=0.28 et 2 rangées : rangée 1 y∈[0.64,1.00], rangée 2 y∈[0.00,0.36], gap [0.36,0.64]
     # Avec horizontal_spacing=0.10 et 2 colonnes : col1 x∈[0,0.45], col2 x∈[0.55,1.00]
     fig = make_subplots(
@@ -1133,7 +1261,7 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             for r in subset
         ]
 
-        # (1,1) Dépenses totales → legend (colonne gauche)
+        # (1,1) Dépenses totales → legend (sous-graphe 1)
         fig.add_trace(go.Bar(
             x=annees, y=dep_tot,
             name=label, legendgroup=key, legend="legend", showlegend=True,
@@ -1142,7 +1270,7 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:.2f}} Mds CDF<extra></extra>",
         ), row=1, col=1)
 
-        # (1,2) Dépense moy. par bénéficiaire → legend2 (colonne droite)
+        # (1,2) Dépense moy. par bénéficiaire → legend2 (sous-graphe 2)
         fig.add_trace(go.Scatter(
             x=annees, y=dep_moy,
             name=label, legendgroup=key, legend="legend2", showlegend=True,
@@ -1152,19 +1280,19 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:,.0f}} k CDF<extra></extra>",
         ), row=1, col=2)
 
-        # (2,1) Recettes totales → legend (pas de doublon colonne gauche)
+        # (2,1) Recettes totales → legend3 (sous-graphe 3)
         fig.add_trace(go.Bar(
             x=annees, y=rec_tot,
-            name=label, legendgroup=key, legend="legend", showlegend=False,
+            name=label, legendgroup=key, legend="legend3", showlegend=True,
             marker=dict(color=color, line=dict(width=0)),
             opacity=0.85,
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:.2f}} Mds CDF<extra></extra>",
         ), row=2, col=1)
 
-        # (2,2) Contribution moy. → legend2 (pas de doublon colonne droite)
+        # (2,2) Contribution moy. → legend4 (sous-graphe 4)
         fig.add_trace(go.Scatter(
             x=annees, y=contrib_moy,
-            name=label, legendgroup=key, legend="legend2", showlegend=False,
+            name=label, legendgroup=key, legend="legend4", showlegend=True,
             mode="lines+markers",
             line=dict(color=color, width=3),
             marker=dict(size=8, line=dict(width=1.5, color='white')),
@@ -1177,32 +1305,36 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             font=dict(size=18, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282', weight=700),
             x=0.5, xanchor='center', y=0.98, yanchor='top'
         ),
-        height=820,
+        height=900,
         legend=dict(
-            orientation="v",
-            x=0.02, xanchor="left",
-            y=-0.25, yanchor="top",
             title=dict(text="Régimes", font=dict(size=11, color='#2c5282')),
-            font=dict(size=11, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#4a5568'),
-            bgcolor='rgba(247, 250, 252, 0.85)',
-            bordercolor='#e2e8f0',
-            borderwidth=1,
+            x=0.02,
+            y=0.60,
+            **_leg_style,
         ),
         legend2=dict(
-            orientation="v",
-            x=0.57, xanchor="left",
-            y=-0.25, yanchor="top",
             title=dict(text="Régimes", font=dict(size=11, color='#2c5282')),
-            font=dict(size=11, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#4a5568'),
-            bgcolor='rgba(247, 250, 252, 0.85)',
-            bordercolor='#e2e8f0',
-            borderwidth=1,
+            x=0.57,
+            y=0.60,
+            **_leg_style,
+        ),
+        legend3=dict(
+            title=dict(text="Régimes", font=dict(size=11, color='#2c5282')),
+            x=0.02,
+            y=-0.08,
+            **_leg_style,
+        ),
+        legend4=dict(
+            title=dict(text="Régimes", font=dict(size=11, color='#2c5282')),
+            x=0.57,
+            y=-0.08,
+            **_leg_style,
         ),
         hovermode="x unified",
         barmode="relative",
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
-        margin=dict(t=70, b=190, l=70, r=40),
+        margin=dict(t=70, b=260, l=70, r=40),
         font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=13, color='#4a5568'),
     )
     fig.update_annotations(font=dict(size=13, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282'))
@@ -1961,22 +2093,35 @@ def build_indicateurs_payload(regime_rows: list[dict], prestation_rows: list[dic
         inst = p.get("institution")
         rc = p.get("regime_code")
         nom_prest = (p.get("nom_fr") or "").strip()
-        if year is None or not inst or not rc or not nom_prest:
+        prestation_num = _normalize_prestation_num(p.get("prestation_num"))
+        if year is None or not inst or not rc or (prestation_num is None and not nom_prest):
             continue
+        programme_id = _build_prestation_program_id(inst, rc, prestation_num, nom_prest)
+        legacy_programme_id = _build_prestation_legacy_id(inst, rc, nom_prest) if nom_prest else ""
         prestation_indicator_rows.append({
-            "programme_id": f"prestation::{inst}::{rc}::{nom_prest}",
+            "programme_id": programme_id,
+            "legacy_programme_id": legacy_programme_id if legacy_programme_id != programme_id else "",
             "parent_regime_id": f"regime::{inst}::{rc}",
             "institution": inst,
             "regime_code": rc,
-            "nom_prestation": nom_prest,
+            "prestation_num": prestation_num,
+            "nom_prestation": nom_prest or (f"Prestation {prestation_num}" if prestation_num is not None else ""),
             "annee": year,
             "beneficiaires": float(p.get("beneficiaires_total") or 0),
         })
 
-    years = sorted(by_year.keys())
-    if not years:
+    years_regime = sorted(by_year.keys())
+    years_prest = sorted({
+        int(r.get("annee"))
+        for r in prestation_indicator_rows
+        if r.get("annee") is not None
+    })
+    years_numerator = sorted(set(years_regime) | set(years_prest))
+
+    if not years_regime and not years_numerator:
         return {
             "years": [],
+            "years_numerator": [],
             "totaux": {
                 "cotisants": [],
                 "beneficiaires": [],
@@ -1985,45 +2130,47 @@ def build_indicateurs_payload(regime_rows: list[dict], prestation_rows: list[dic
             },
             "latest": None,
             "institutions_latest": [],
-            "rows_regimes": [],
-            "rows_prestations": [],
+            "rows_regimes": regime_indicator_rows,
+            "rows_prestations": prestation_indicator_rows,
         }
 
     totaux = {
-        "cotisants": [by_year[y]["cotisants"] for y in years],
-        "beneficiaires": [by_year[y]["beneficiaires"] for y in years],
-        "depenses_mds": [by_year[y]["depenses_cdf"] / 1e9 for y in years],
-        "recettes_mds": [by_year[y]["recettes_cdf"] / 1e9 for y in years],
+        "cotisants": [by_year[y]["cotisants"] for y in years_regime],
+        "beneficiaires": [by_year[y]["beneficiaires"] for y in years_regime],
+        "depenses_mds": [by_year[y]["depenses_cdf"] / 1e9 for y in years_regime],
+        "recettes_mds": [by_year[y]["recettes_cdf"] / 1e9 for y in years_regime],
     }
 
-    latest_year = years[-1]
-    latest = by_year[latest_year]
+    latest_year = years_regime[-1] if years_regime else None
+    latest = by_year[latest_year] if latest_year is not None else None
     ratio_benef_cotis = (
         latest["beneficiaires"] / latest["cotisants"]
-        if latest["cotisants"] > 0 else None
+        if latest and latest["cotisants"] > 0 else None
     )
     ratio_dep_rec = (
         latest["depenses_cdf"] / latest["recettes_cdf"]
-        if latest["recettes_cdf"] > 0 else None
+        if latest and latest["recettes_cdf"] > 0 else None
     )
 
     institutions_latest = []
-    for inst in sorted(by_inst_year.keys()):
-        if latest_year not in by_inst_year[inst]:
-            continue
-        vals = by_inst_year[inst][latest_year]
-        institutions_latest.append({
-            "institution": inst,
-            "cotisants": vals["cotisants"],
-            "beneficiaires": vals["beneficiaires"],
-            "depenses_mds": vals["depenses_cdf"] / 1e9,
-            "recettes_mds": vals["recettes_cdf"] / 1e9,
-        })
+    if latest_year is not None:
+        for inst in sorted(by_inst_year.keys()):
+            if latest_year not in by_inst_year[inst]:
+                continue
+            vals = by_inst_year[inst][latest_year]
+            institutions_latest.append({
+                "institution": inst,
+                "cotisants": vals["cotisants"],
+                "beneficiaires": vals["beneficiaires"],
+                "depenses_mds": vals["depenses_cdf"] / 1e9,
+                "recettes_mds": vals["recettes_cdf"] / 1e9,
+            })
 
     return {
-        "years": years,
+        "years": years_regime,
+        "years_numerator": years_numerator,
         "totaux": totaux,
-        "latest": {
+        "latest": ({
             "annee": latest_year,
             "cotisants": latest["cotisants"],
             "beneficiaires": latest["beneficiaires"],
@@ -2031,7 +2178,7 @@ def build_indicateurs_payload(regime_rows: list[dict], prestation_rows: list[dic
             "recettes_mds": latest["recettes_cdf"] / 1e9,
             "ratio_benef_cotis": ratio_benef_cotis,
             "ratio_dep_rec": ratio_dep_rec,
-        },
+        } if latest is not None else None),
         "institutions_latest": institutions_latest,
         "rows_regimes": regime_indicator_rows,
         "rows_prestations": prestation_indicator_rows,
@@ -2101,6 +2248,7 @@ def build_branches_ess_payload(prestations: list[dict]) -> dict:
         inst = r.get("institution")
         rc = r.get("regime_code")
         nom_prest = (r.get("nom_fr") or "").strip()
+        prestation_num = _normalize_prestation_num(r.get("prestation_num"))
         if year is None or not inst or not rc:
             continue
         fonction = (r.get("fonction_oit") or "").strip()
@@ -2110,10 +2258,11 @@ def build_branches_ess_payload(prestations: list[dict]) -> dict:
         share = 1.0 / len(branch_keys)
         benef = float(r.get("beneficiaires_total") or 0)
         cotis = 0.0
+        program_id = _build_prestation_program_id(inst, rc, prestation_num, nom_prest)
         for key in branch_keys:
             provenance.setdefault(key, set()).add(f"{inst}/{rc}/{nom_prest or '-'}")
             detailed_rows.append({
-                "program_id": f"prestation::{inst}::{rc}::{nom_prest}",
+                "program_id": program_id,
                 "institution": inst,
                 "regime_code": rc,
                 "prestation": nom_prest,
@@ -2234,7 +2383,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     branches_ess_json = js_safe_json(build_branches_ess_payload(prestations))
     odd_programmes_json = js_safe_json(build_odd_programmes_payload(regimes, prestations, regime_meta, prestation_meta))
     odd_indicators_json = js_safe_json(ODD_INDICATORS)
-    years_for_defaults = indicateurs_payload.get("years", [])
+    years_for_defaults = indicateurs_payload.get("years_numerator", indicateurs_payload.get("years", []))
     year_start_default = min(years_for_defaults) if years_for_defaults else 2020
     year_end_default = max(years_for_defaults) if years_for_defaults else 2024
     denominateurs_json = js_safe_json({
@@ -2778,7 +2927,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       padding: 6px 10px;
       font-size: 0.84rem;
     }}
-    #odd-decisions-reset {{
+    #odd-decisions-reset, #odd-decisions-copy-prev {{
       border: 1px solid #cbd5e0;
       border-radius: 8px;
       background: #fff;
@@ -2969,15 +3118,22 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     .odd-badge.exclu_nature, .odd-badge.exclu_non_statutaire, .odd-badge.exclu_hors_indicateur {{ background: #fff5f5; color: #9b2c2c; }}
     .odd-badge.indicateur_connexe {{ background: #ebf8ff; color: #2a4365; }}
     .odd-badge.en_discussion {{ background: #faf5ff; color: #553c9a; }}
-    .odd-badge.odd-badge-proposal {{
-      background: #f8fafc;
-      color: #4a5568;
-      border: 1px solid #d2dae3;
-    }}
     .odd-impact {{
       font-size: 0.78rem;
       color: #4a5568;
       font-style: italic;
+    }}
+    .odd-calc-tag {{
+      display: inline-block;
+      margin-left: 8px;
+      padding: 1px 8px;
+      border-radius: 999px;
+      border: 1px solid #bee3f8;
+      background: #ebf8ff;
+      color: #2a4365;
+      font-size: 0.72rem;
+      font-weight: 700;
+      vertical-align: middle;
     }}
     .odd-branches-panel {{
       margin-top: 16px;
@@ -4076,6 +4232,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
           <div class="odd-decision-content">
           <div class="odd-decision-toolbar">
             <span id="odd-decision-summary" class="odd-decision-summary">Chargement…</span>
+            <button type="button" id="odd-decisions-copy-prev" title="Copier les décisions de l'année précédente vers l'année en cours">Copier année N-1</button>
             <button type="button" id="odd-decisions-reset" style="margin-left:auto;">Réinitialiser</button>
           </div>
           <div id="odd-decision-table"></div>
@@ -4750,7 +4907,7 @@ function makeRegimeCard(inst, rc, activeIndex) {{
 
   const otherButtons = versions.map((v, i) =>
     '<button type="button" class="regime-version-btn' + (i === idx ? ' active' : '') + '" onclick="switchRegimeVersion(' +
-      JSON.stringify(inst) + ',' + JSON.stringify(rc) + ',' + i + ')">' + escapeHtml(asText(v.annee)) + '</button>'
+      escapeHtml(JSON.stringify(inst)) + ',' + escapeHtml(JSON.stringify(rc)) + ',' + i + ')">' + escapeHtml(asText(v.annee)) + '</button>'
   ).join('');
 
   const otherLine = versions.length > 1
@@ -4775,7 +4932,7 @@ function makeRegimeCard(inst, rc, activeIndex) {{
         field('Années disponibles', yearsDisplay, 'available_years') +
         field('Code régime', rc, 'regime_code') +
         field('Type de financement', meta.type_financement, 'type_financement') +
-        field('Type d\\'assurance', meta.type_assurance, 'type_assurance') +
+        field("Type d'assurance", meta.type_assurance, 'type_assurance') +
         field('Gestion', meta.gestion, 'gestion') +
         field('Caractère', meta.caractere, 'caractere') +
         field('Administrateur', meta.administrateur, 'administrateur') +
@@ -4975,12 +5132,12 @@ const ODD_DECISION_OPTIONS_BY_TYPE = {{
   institution_ess: [
     {{ value: 'entierement_inclus', label: 'Entièrement inclus' }},
     {{ value: 'entierement_exclus', label: 'Entièrement exclus' }},
-    {{ value: 'autres', label: 'Autres' }},
+    {{ value: 'autres', label: 'Autres (décision détaillée)' }},
   ],
   regime_ess: [
     {{ value: 'entierement_inclus', label: 'Entièrement inclus' }},
     {{ value: 'entierement_exclus', label: 'Entièrement exclus' }},
-    {{ value: 'autres', label: 'Autres' }},
+    {{ value: 'autres', label: 'Autres (décision détaillée)' }},
   ],
   prestation_ess: [
     {{ value: 'inclus', label: 'Inclus' }},
@@ -5001,6 +5158,7 @@ const ODD_DECISION_LABELS = {{
   en_discussion: 'En discussion',
 }};
 const ODD_DECISIONS_STORAGE_KEY = 'rdc_odd131_decisions_v1';
+const DENOM_SETTINGS_STORAGE_KEY = 'rdc_denom_settings_v1';
 const DASHBOARD_SETTINGS_API = '/api/dashboard-settings';
 let CURRENT_ODD_DECISIONS = {{}};
 let CURRENT_ODD_INDICATOR = 'global_131';
@@ -5008,6 +5166,7 @@ let CURRENT_ODD_YEAR = '';
 let ODD_DECISION_EDIT_MODE = false;
 let ODD_DECISIONS_DRAFT = {{}};
 let CURRENT_DENOM_ROWS = [];
+let CURRENT_DENOM_SETTINGS = {{}};
 let DENOM_EDIT_MODE = false;
 let DENOM_PENDING_CHANGES = false;
 const ODD_INDICATOR_LABELS = Object.fromEntries((ODD_INDICATORS || []).map(item => [item.key, item.label]));
@@ -5173,6 +5332,27 @@ function writeOddDecisionsToLocalStorage(decisions) {{
   }}
 }}
 
+function readDenomSettingsFromLocalStorage() {{
+  try {{
+    const raw = localStorage.getItem(DENOM_SETTINGS_STORAGE_KEY);
+    if (!raw) return {{}};
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object') return {{}};
+    return parsed;
+  }} catch (err) {{
+    console.warn('[DENOM] Lecture localStorage impossible:', err);
+    return {{}};
+  }}
+}}
+
+function writeDenomSettingsToLocalStorage(settings) {{
+  try {{
+    localStorage.setItem(DENOM_SETTINGS_STORAGE_KEY, JSON.stringify(settings || {{}}));
+  }} catch (err) {{
+    console.warn('[DENOM] Ecriture localStorage impossible:', err);
+  }}
+}}
+
 async function loadOddDecisions() {{
   const localDecisions = readOddDecisionsFromLocalStorage();
   try {{
@@ -5207,6 +5387,40 @@ async function saveOddDecisions() {{
   }}
 }}
 
+async function loadDenomSettings() {{
+  const localSettings = readDenomSettingsFromLocalStorage();
+  try {{
+    const res = await fetch(DASHBOARD_SETTINGS_API, {{ cache: 'no-store' }});
+    if (!res.ok) return localSettings;
+    const payload = await res.json();
+    const serverSettings = (payload && typeof payload === 'object' && payload.denomSettings && typeof payload.denomSettings === 'object')
+      ? payload.denomSettings
+      : {{}};
+    const finalSettings = Object.keys(serverSettings).length ? serverSettings : localSettings;
+    writeDenomSettingsToLocalStorage(finalSettings);
+    return finalSettings;
+  }} catch (_err) {{
+    return localSettings;
+  }}
+}}
+
+async function saveDenomSettings(settings) {{
+  const payloadSettings = (settings && typeof settings === 'object') ? settings : {{}};
+  writeDenomSettingsToLocalStorage(payloadSettings);
+  try {{
+    const res = await fetch(DASHBOARD_SETTINGS_API, {{
+      method: 'POST',
+      headers: {{ 'Content-Type': 'application/json' }},
+      body: JSON.stringify({{ denomSettings: payloadSettings }}),
+    }});
+    if (!res.ok) {{
+      console.warn('[DENOM] Sauvegarde serveur non confirmee (HTTP ' + res.status + ').');
+    }}
+  }} catch (_err) {{
+    // Dashboard ouvert hors serveur preview : persistance locale maintenue.
+  }}
+}}
+
 function getCurrentOddIndicator() {{
   const select = document.getElementById('odd-indicator-select');
   if (select && select.value) return select.value;
@@ -5214,7 +5428,8 @@ function getCurrentOddIndicator() {{
 }}
 
 function getOddAvailableYears() {{
-  const years = ((INDICATEURS_DATA && INDICATEURS_DATA.years) || [])
+  const payloadYears = ((INDICATEURS_DATA && INDICATEURS_DATA.years_numerator) || (INDICATEURS_DATA && INDICATEURS_DATA.years) || []);
+  const years = payloadYears
     .map(y => Number(y))
     .filter(y => Number.isFinite(y))
     .sort((a, b) => a - b);
@@ -5228,6 +5443,14 @@ function getCurrentOddYear() {{
   const years = getOddAvailableYears();
   if (!years.length) return '';
   return String(years[years.length - 1]);
+}}
+
+function getPreviousOddYear(yearKey) {{
+  const currentYear = Number(yearKey);
+  if (!Number.isFinite(currentYear)) return '';
+  const prevYear = currentYear - 1;
+  const years = getOddAvailableYears();
+  return years.includes(prevYear) ? String(prevYear) : '';
 }}
 
 function getOddDecisionStorageKey(programId, indicatorKey, yearKey) {{
@@ -5277,6 +5500,13 @@ function normalizeDecisionForNode(node, rawDecision) {{
   return decision || 'en_discussion';
 }}
 
+function getDefaultDecisionForNode(node) {{
+  const nodeType = (node && node.type) || '';
+  if (nodeType === 'institution_ess' || nodeType === 'regime_ess') return 'autres';
+  if (nodeType === 'prestation_ess') return 'exclus';
+  return 'en_discussion';
+}}
+
 function getDecisionForProgram(program, indicatorKey, yearKey) {{
   if (!program) return 'en_discussion';
   const key = indicatorKey || getCurrentOddIndicator();
@@ -5290,8 +5520,18 @@ function getDecisionForProgram(program, indicatorKey, yearKey) {{
   if (decisionMap && decisionMap[legacyKey]) {{
     return normalizeDecisionForNode(program, decisionMap[legacyKey]);
   }}
-  const proposals = program.propositions || {{}};
-  return normalizeDecisionForNode(program, proposals[key] || program.proposition || '');
+  const aliases = Array.isArray(program.legacy_ids) ? program.legacy_ids : [];
+  for (const aliasId of aliases) {{
+    const aliasScopedKey = getOddDecisionStorageKey(aliasId, key, year);
+    const aliasLegacyKey = String(aliasId || '') + '::' + key;
+    if (decisionMap && decisionMap[aliasScopedKey]) {{
+      return normalizeDecisionForNode(program, decisionMap[aliasScopedKey]);
+    }}
+    if (decisionMap && decisionMap[aliasLegacyKey]) {{
+      return normalizeDecisionForNode(program, decisionMap[aliasLegacyKey]);
+    }}
+  }}
+  return normalizeDecisionForNode(program, getDefaultDecisionForNode(program));
 }}
 
 function getRationaleForProgram(program, indicatorKey) {{
@@ -5358,6 +5598,21 @@ function getIncludedPrestationIds(indicatorKey, yearKey) {{
   return Object.keys(maps.nodeMap)
     .filter(id => maps.nodeMap[id] && maps.nodeMap[id].type === 'prestation_ess')
     .filter(id => isOddIncludedState(getEffectiveDecisionById(id, key, year, maps.nodeMap, memo)));
+}}
+
+function addParentRegimesOfIncludedPrestations(includedRegimeSet, includedPrestationSet) {{
+  const parentRegimeSet = new Set();
+  if (!includedRegimeSet || !includedPrestationSet || !includedPrestationSet.size) return parentRegimeSet;
+  const maps = buildOddNodeMaps();
+  const nodeMap = maps.nodeMap || {{}};
+  includedPrestationSet.forEach(prestationId => {{
+    const prestationNode = nodeMap[prestationId];
+    if (prestationNode && prestationNode.parent_id) {{
+      parentRegimeSet.add(prestationNode.parent_id);
+      includedRegimeSet.add(prestationNode.parent_id);
+    }}
+  }});
+  return parentRegimeSet;
 }}
 
 function aggregateIndicatorRows(regimeRows, prestationRows, includedRegimeSet, includedPrestationSet) {{
@@ -5439,12 +5694,10 @@ function buildNumeratorYearSummary(indicatorKey, yearValue, regimeRows, prestati
   const includeBeneficiaires = metricSpec.metricKey === 'beneficiaires_estimes' || metricSpec.metricKey === 'couverts_bruts_estimes';
   const includedRegimeSet = new Set(getIncludedRegimeIds(indicatorKey, yearKey));
   const includedPrestationSet = new Set(getIncludedPrestationIds(indicatorKey, yearKey));
-  // AT/MP: when prestations are included, also consider their parent regimes for contributor-based numerator.
-  if (indicatorKey === 'ind_25_atmp' && includeCotisants && includedPrestationSet.size) {{
-    (prestationRows || []).forEach(row => {{
-      if (!row || !includedPrestationSet.has(row.programme_id)) return;
-      if (row.parent_regime_id) includedRegimeSet.add(row.parent_regime_id);
-    }});
+  let cotisantsViaPrestationsSet = new Set();
+  // For contributor-based metrics, a regime contributes cotisants if at least one of its prestations is included.
+  if (includeCotisants && includedPrestationSet.size) {{
+    cotisantsViaPrestationsSet = addParentRegimesOfIncludedPrestations(includedRegimeSet, includedPrestationSet);
   }}
   const instMap = {{}};
 
@@ -5456,6 +5709,7 @@ function buildNumeratorYearSummary(indicatorKey, yearValue, regimeRows, prestati
         name: regimeName || regimeCode || '',
         cotisants: 0,
         beneficiaires: 0,
+        cotisantsViaPrestations: false,
         prestations: {{}},
       }};
     }}
@@ -5481,6 +5735,7 @@ function buildNumeratorYearSummary(indicatorKey, yearValue, regimeRows, prestati
       if (!Number.isFinite(value) || value <= 0) return;
       const instEntry = ensureInstitution(row.institution || '');
       const regime = ensureRegime(instEntry, row.regime_code, row.nom_regime || NOM_COURT[row.regime_code] || row.regime_code);
+      if (cotisantsViaPrestationsSet.has(row.programme_id)) regime.cotisantsViaPrestations = true;
       regime.cotisants += value;
     }});
   }}
@@ -5527,9 +5782,9 @@ function buildNumeratorYearSummary(indicatorKey, yearValue, regimeRows, prestati
   const total = institutions.reduce((acc, inst) => acc + Number(inst.total || 0), 0);
   let ruleText = 'Addition des bénéficiaires des prestations incluses.';
   if (metricSpec.metricKey === 'cotisants_estimes') {{
-    ruleText = 'Addition des cotisants des régimes inclus.';
+    ruleText = 'Addition des cotisants des régimes inclus (y compris les régimes portant au moins une prestation incluse).';
   }} else if (metricSpec.metricKey === 'couverts_bruts_estimes') {{
-    ruleText = 'Addition des cotisants (régimes inclus) + bénéficiaires (prestations incluses).';
+    ruleText = 'Addition des cotisants (régimes inclus, y compris ceux portant une prestation incluse) + bénéficiaires (prestations incluses).';
   }}
 
   return {{
@@ -5625,7 +5880,7 @@ function _patchOddDecisionTable(changedNodeId, indicatorKey, yearKey) {{
     if (sel.value !== decision) sel.value = decision;
   }});
 
-  // 2. Mettre à jour les badges "Appliqué" (data-badge-applied) et "Proposition" (data-badge-proposal)
+  // 2. Mettre à jour les badges "Appliqué"
   host.querySelectorAll('[data-badge-node]').forEach(function(badge) {{
     const nodeId = badge.getAttribute('data-badge-node');
     const btype = badge.getAttribute('data-badge-type');
@@ -5637,12 +5892,6 @@ function _patchOddDecisionTable(changedNodeId, indicatorKey, yearKey) {{
       newLabel = (typeof getDecisionLabel === 'function') ? getDecisionLabel(newVal, node.type) : newVal;
       badge.className = badge.className.replace(/\b(entierement_inclus|entierement_exclus|autres|inclus|exclus|inclus_avec_reserve|exclu_nature|exclu_non_statutaire|exclu_hors_indicateur|en_discussion)\b/g, '').trim() + ' odd-badge ' + newVal;
       badge.textContent = newLabel;
-    }} else if (btype === 'proposal') {{
-      const proposal = (node.propositions && node.propositions[indicatorKey]) || node.proposition || 'en_discussion';
-      newVal = proposal;
-      newLabel = (typeof getDecisionLabel === 'function') ? getDecisionLabel(newVal, node.type) : newVal;
-      badge.className = badge.className.replace(/\b(entierement_inclus|entierement_exclus|autres|inclus|exclus|inclus_avec_reserve|exclu_nature|exclu_non_statutaire|exclu_hors_indicateur|en_discussion)\b/g, '').trim() + ' odd-badge odd-badge-proposal ' + newVal;
-      badge.textContent = 'Proposition : ' + newLabel;
     }}
   }});
 
@@ -5670,6 +5919,7 @@ function renderOddDecisionPanel() {{
   const host = document.getElementById('odd-decision-table');
   const summaryEl = document.getElementById('odd-decision-summary');
   const resetBtn = document.getElementById('odd-decisions-reset');
+  const copyPrevBtn = document.getElementById('odd-decisions-copy-prev');
   const indicatorSelect = document.getElementById('odd-indicator-select');
   const yearSelect = document.getElementById('odd-year-select');
   const viewBtn = document.getElementById('odd-decision-view-toggle');
@@ -5816,6 +6066,10 @@ function renderOddDecisionPanel() {{
   if (resetBtn) {{
     resetBtn.disabled = !ODD_DECISION_EDIT_MODE;
   }}
+  if (copyPrevBtn) {{
+    const prevYear = getPreviousOddYear(getCurrentOddYear());
+    copyPrevBtn.disabled = !ODD_DECISION_EDIT_MODE || !prevYear;
+  }}
 
   // ── Construction de la hiérarchie ─────────────────────────────────────────
   const indicatorKey = getCurrentOddIndicator();
@@ -5855,7 +6109,6 @@ function renderOddDecisionPanel() {{
   function renderNode(nodeId, level) {{
     const node = nodeMap[nodeId];
     if (!node) return '';
-    const proposal = (node.propositions && node.propositions[indicatorKey]) || node.proposition || 'en_discussion';
     const rationale = getRationaleForProgram(node, indicatorKey);
     const effective = getEffectiveDecisionById(nodeId, indicatorKey, yearKey, nodeMap, memo);
     const parentEff = (node.parent_id && nodeMap[node.parent_id]) ? getEffectiveDecisionById(node.parent_id, indicatorKey, yearKey, nodeMap, memo) : '';
@@ -5891,7 +6144,6 @@ function renderOddDecisionPanel() {{
     const headerBadges = hasChildren
       ? ''
       : (
-        '<span class="odd-badge odd-badge-proposal ' + escapeHtml(proposal) + '" data-badge-node="' + escapeHtml(nodeId) + '" data-badge-type="proposal">Proposition : ' + escapeHtml(getDecisionLabel(proposal, node.type)) + '</span> ' +
         '<span class="odd-badge ' + escapeHtml(effective) + '" data-badge-node="' + escapeHtml(nodeId) + '" data-badge-type="applied">Appliqué : ' + escapeHtml(getDecisionLabel(effective, node.type)) + '</span>'
       );
 
@@ -5912,7 +6164,6 @@ function renderOddDecisionPanel() {{
         '<span class="odd-badge ' + escapeHtml(effective) + '" data-badge-node="' + escapeHtml(nodeId) + '" data-badge-type="applied">' + escapeHtml(getDecisionLabel(effective, node.type)) + '</span>' +
       '</div>' +
       '<div class="odd-summary-bottom">' +
-        '<span class="odd-badge odd-badge-proposal ' + escapeHtml(proposal) + '" data-badge-node="' + escapeHtml(nodeId) + '" data-badge-type="proposal">Proposition : ' + escapeHtml(getDecisionLabel(proposal, node.type)) + '</span>' +
         (rationale ? '<span class="odd-summary-rationale">' + escapeHtml(rationale) + '</span>' : '') +
       '</div>' +
     '</summary>';
@@ -5972,6 +6223,43 @@ function renderOddDecisionPanel() {{
       renderOddDecisionPanel();
     }});
     resetBtn.dataset.bound = '1';
+  }}
+  if (copyPrevBtn && !copyPrevBtn.dataset.bound) {{
+    copyPrevBtn.addEventListener('click', function() {{
+      if (!ODD_DECISION_EDIT_MODE) return;
+      const activeKey = getCurrentOddIndicator();
+      const activeYear = getCurrentOddYear();
+      const prevYear = getPreviousOddYear(activeYear);
+      if (!prevYear) {{
+        alert("Aucune année précédente disponible pour la copie.");
+        return;
+      }}
+      if (!confirm("Copier toutes les décisions de " + prevYear + " vers " + activeYear + " ? Les décisions déjà saisies pour " + activeYear + " seront remplacées.")) {{
+        return;
+      }}
+      const decisionMap = getActiveOddDecisionMap();
+      const targetSuffix = '::' + activeKey + '::' + activeYear;
+      const sourceSuffix = '::' + activeKey + '::' + prevYear;
+
+      Object.keys(decisionMap || {{}}).forEach(k => {{
+        if (k.endsWith(targetSuffix)) delete decisionMap[k];
+      }});
+
+      let copiedCount = 0;
+      Object.keys(decisionMap || {{}}).forEach(k => {{
+        if (!k.endsWith(sourceSuffix)) return;
+        const targetKey = k.slice(0, k.length - sourceSuffix.length) + targetSuffix;
+        decisionMap[targetKey] = decisionMap[k];
+        copiedCount += 1;
+      }});
+
+      ODD_DECISIONS_DRAFT = cloneDecisionMap(decisionMap);
+      renderIndicateurs();
+      renderOddBranchesVisual();
+      renderOddDecisionPanel();
+      alert(String(copiedCount) + " décision(s) copiée(s) depuis " + prevYear + ".");
+    }});
+    copyPrevBtn.dataset.bound = '1';
   }}
 }}
 
@@ -6075,6 +6363,9 @@ function renderOddBranchesVisual() {{
         const prestationList = (reg.prestations || []).map(p =>
           '<li>Prestation ' + escapeHtml(p.name) + ' = ' + escapeHtml(fmtInt(p.value)) + '</li>'
         ).join('');
+        const cotViaPrestTag = reg.cotisantsViaPrestations
+          ? '<span class="odd-calc-tag">Cotisants via prestations incluses</span>'
+          : '';
         const cotLine = summary.includeCotisants
           ? '<div class="odd-calc-line">Cotisants régime = ' + escapeHtml(fmtInt(reg.cotisants)) + '</div>'
           : '';
@@ -6082,7 +6373,7 @@ function renderOddBranchesVisual() {{
           ? '<div class="odd-calc-line">Bénéficiaires régime = ' + escapeHtml(fmtInt(reg.beneficiaires)) + '</div>'
           : '';
         return '<details>' +
-          '<summary>Régime ' + escapeHtml(reg.name || reg.code || 'N/D') + ' = ' + escapeHtml(fmtInt(reg.total)) + '</summary>' +
+          '<summary>Régime ' + escapeHtml(reg.name || reg.code || 'N/D') + ' = ' + escapeHtml(fmtInt(reg.total)) + cotViaPrestTag + '</summary>' +
           cotLine + benefLine +
           (prestationList ? '<ul>' + prestationList + '</ul>' : '') +
         '</details>';
@@ -6149,7 +6440,7 @@ function setDenomEditMode(isEdit) {{
     el.disabled = !DENOM_EDIT_MODE;
   }});
   document.querySelectorAll('.denom-pack input[type="radio"]').forEach(el => {{
-    el.disabled = false;
+    el.disabled = !DENOM_EDIT_MODE;
   }});
   if (!DENOM_EDIT_MODE) DENOM_PENDING_CHANGES = false;
 }}
@@ -6383,6 +6674,15 @@ async function sumWPPForAgeRange(year, ageMin, ageMax) {{
     .reduce((s, r) => s + r.value, 0) || null;
 }}
 
+async function sumWPPForAgeRangeBySex(year, ageMin, ageMax, sex) {{
+  const groups = await fetchWPPYear(year);
+  const wantedSex = String(sex || '').toUpperCase();
+  return groups
+    .filter(r => r.sex === wantedSex)
+    .filter(r => r.ageStart >= ageMin && r.ageEnd <= ageMax)
+    .reduce((s, r) => s + r.value, 0) || null;
+}}
+
 // ── ILOSTAT / OIT ────────────────────────────────────────────────────────
 // Retourne les actifs employés RDC : [{{year, value}}]
 async function fetchILOSTATEmployment() {{
@@ -6433,9 +6733,7 @@ function pickSeriesValue(series, year, useNearestPast) {{
   if (exact) return exact.value;
   if (!useNearestPast) return null;
   const candidates = series.filter(r => r.year <= year).sort((a, b) => b.year - a.year);
-  if (candidates.length) return candidates[0].value;
-  const sorted = [...series].sort((a, b) => b.year - a.year);
-  return sorted[0] ? sorted[0].value : null;
+  return candidates.length ? candidates[0].value : null;
 }}
 
 function getNumInput(id) {{
@@ -6450,6 +6748,51 @@ function getMetricCardParams(metricKey) {{
       yearStart: getNumInput('denom-total-year-start'),
       yearEnd: getNumInput('denom-total-year-end'),
     }};
+  }}
+
+  function collectDenomSettingsFromUI() {{
+    return {{
+      source_population_totale: getSelectedMetricSource('total'),
+      source_population_active: getSelectedMetricSource('active'),
+      source_population_retraite: getSelectedMetricSource('ret'),
+      source_maternite: getSelectedMetricSource('mat'),
+      year_start_total: getNumInput('denom-total-year-start'),
+      year_end_total: getNumInput('denom-total-year-end'),
+      year_start_active: getNumInput('denom-active-year-start'),
+      year_end_active: getNumInput('denom-active-year-end'),
+      year_start_retraite: getNumInput('denom-ret-year-start'),
+      year_end_retraite: getNumInput('denom-ret-year-end'),
+      year_start_maternite: getNumInput('denom-mat-year-start'),
+      year_end_maternite: getNumInput('denom-mat-year-end'),
+      working_age_min: getNumInput('denom-active-age-min'),
+      working_age_max: getNumInput('denom-active-age-max'),
+      retirement_age_h: getNumInput('denom-ret-age-h'),
+      retirement_age_f: getNumInput('denom-ret-age-f'),
+      maternity_age_min: getNumInput('denom-mat-age-min'),
+      maternity_age_max: getNumInput('denom-mat-age-max'),
+    }};
+  }}
+
+  function validateDenominatorParams(pTotal, pActive, pRet, pMat) {{
+    const rangeChecks = [
+      ['Population totale', pTotal],
+      ['Population active', pActive],
+      ['Population retraite', pRet],
+      ['Maternité', pMat],
+    ];
+    for (const item of rangeChecks) {{
+      const label = item[0];
+      const params = item[1] || {{}};
+      if (!params.yearStart || !params.yearEnd) return label + ' : années invalides.';
+      if (params.yearEnd < params.yearStart) return label + ' : année fin < année début.';
+    }}
+    if (!pActive.workMin || !pActive.workMax || pActive.workMax < pActive.workMin) {{
+      return "Population active : plage d'âge invalide.";
+    }}
+    if (!pRet.retirementH || !pRet.retirementF) {{
+      return 'Population retraite : âges de retraite invalides.';
+    }}
+    return '';
   }}
   if (metricKey === 'population_active') {{
     return {{
@@ -6578,9 +6921,12 @@ async function getMetricValue(sourceKey, metricKey, year, params, seriesCache) {
       return {{ value: v, meta: 'WPP (' + (params.workMin||15) + '-' + (params.workMax||64) + ', ' + year + ')' }};
     }}
     if (metricKey === 'population_retraite') {{
-      const retMin = Math.min(params.retirementH || 65, params.retirementF || 65);
-      const v = await sumWPPForAgeRange(year, retMin, 999);
-      return {{ value: v, meta: 'WPP (' + retMin + '+, ' + year + ')' }};
+      const hMin = params.retirementH || 65;
+      const fMin = params.retirementF || 65;
+      const h = await sumWPPForAgeRangeBySex(year, hMin, 999, 'M');
+      const f = await sumWPPForAgeRangeBySex(year, fMin, 999, 'F');
+      const v = (Number(h) || 0) + (Number(f) || 0);
+      return {{ value: v || null, meta: 'WPP (H ' + hMin + '+, F ' + fMin + '+, ' + year + ')' }};
     }}
     if (metricKey === 'naissances' || metricKey === 'femmes_accouche') {{
       // Proxy : on utilise taux brut BM × pop WPP totale
@@ -6615,6 +6961,12 @@ async function computeDenominators() {{
   const srcActive = getSelectedMetricSource('active');
   const srcRet = getSelectedMetricSource('ret');
   const srcMat = getSelectedMetricSource('mat');
+
+  const validationError = validateDenominatorParams(pTotal, pActive, pRet, pMat);
+  if (validationError) {{
+    setDenomStatus(validationError);
+    return;
+  }}
 
   const ranges = [pTotal, pActive, pRet, pMat]
     .filter(x => x && x.yearStart && x.yearEnd && x.yearEnd >= x.yearStart);
@@ -6672,8 +7024,15 @@ async function computeDenominators() {{
     return;
   }}
   CURRENT_DENOM_ROWS = outRows;
+  CURRENT_DENOM_SETTINGS = collectDenomSettingsFromUI();
+  await saveDenomSettings(CURRENT_DENOM_SETTINGS);
   renderActiveDenominatorViews();
-  setDenomStatus('Dénominateurs calculés pour ' + outRows.length + ' année(s).');
+  const missingCells = outRows.reduce((acc, row) => {{
+    const vals = [row.populationTotale, row.populationActive, row.populationRetraite, row.naissancesVivantes, row.femmesAyantAccouche];
+    return acc + vals.filter(v => !Number.isFinite(Number(v))).length;
+  }}, 0);
+  const suffix = missingCells ? ' (' + missingCells + ' valeur(s) indisponible(s))' : '';
+  setDenomStatus('Dénominateurs calculés pour ' + outRows.length + ' année(s).' + suffix);
 }}
 
 // Contraintes de paramètres selon la source choisie.
@@ -6717,6 +7076,13 @@ function applySourceConstraints(metricShortKey, metricKey, sourceKey) {{
   }});
 
   // Pré-remplir les valeurs contraintes
+  if (metricKey === 'naissances' || metricKey === 'femmes_accouche') {{
+    const mn = document.getElementById('denom-mat-age-min');
+    const mx = document.getElementById('denom-mat-age-max');
+    const note = "Proxy naissances (CBR × population) : tranche d'âge non paramétrable";
+    if (mn) {{ mn.readOnly = true; mn.classList.add('constrained'); mn.title = note; }}
+    if (mx) {{ mx.readOnly = true; mx.classList.add('constrained'); mx.title = note; }}
+  }}
   if (sourceKey === 'bm_api' && metricKey === 'population_active') {{
     const mn = document.getElementById('denom-active-age-min');
     const mx = document.getElementById('denom-active-age-max');
@@ -6748,6 +7114,8 @@ function initDenominatorPanel() {{
   const cfg = DENOMINATEURS_CONFIG || {{}};
   const sources = cfg.sources || {{}};
   const defaults = cfg.defaults || {{}};
+  const saved = (CURRENT_DENOM_SETTINGS && typeof CURRENT_DENOM_SETTINGS === 'object') ? CURRENT_DENOM_SETTINGS : {{}};
+  const merged = {{ ...defaults, ...saved }};
   if (!document.getElementById('denom-active-cards')) return;
 
   // ── Chargement immédiat des données pré-calculées ─────────────────────────
@@ -6758,26 +7126,26 @@ function initDenominatorPanel() {{
     setDenomStatus('Données pré-chargées (BM 2019–2022). Cliquez sur Actualiser pour rafraîchir.');
   }}
 
-  document.getElementById('denom-total-year-start').value = defaults.year_start_total || 2020;
-  document.getElementById('denom-total-year-end').value = defaults.year_end_total || 2024;
-  document.getElementById('denom-active-year-start').value = defaults.year_start_active || 2020;
-  document.getElementById('denom-active-year-end').value = defaults.year_end_active || 2024;
-  document.getElementById('denom-ret-year-start').value = defaults.year_start_retraite || 2020;
-  document.getElementById('denom-ret-year-end').value = defaults.year_end_retraite || 2024;
-  document.getElementById('denom-mat-year-start').value = defaults.year_start_maternite || 2020;
-  document.getElementById('denom-mat-year-end').value = defaults.year_end_maternite || 2024;
+  document.getElementById('denom-total-year-start').value = merged.year_start_total || 2020;
+  document.getElementById('denom-total-year-end').value = merged.year_end_total || 2024;
+  document.getElementById('denom-active-year-start').value = merged.year_start_active || 2020;
+  document.getElementById('denom-active-year-end').value = merged.year_end_active || 2024;
+  document.getElementById('denom-ret-year-start').value = merged.year_start_retraite || 2020;
+  document.getElementById('denom-ret-year-end').value = merged.year_end_retraite || 2024;
+  document.getElementById('denom-mat-year-start').value = merged.year_start_maternite || 2020;
+  document.getElementById('denom-mat-year-end').value = merged.year_end_maternite || 2024;
 
-  document.getElementById('denom-active-age-min').value = defaults.working_age_min || 15;
-  document.getElementById('denom-active-age-max').value = defaults.working_age_max || 64;
-  document.getElementById('denom-ret-age-h').value = defaults.retirement_age_h || 65;
-  document.getElementById('denom-ret-age-f').value = defaults.retirement_age_f || 65;
-  document.getElementById('denom-mat-age-min').value = defaults.maternity_age_min || 15;
-  document.getElementById('denom-mat-age-max').value = defaults.maternity_age_max || 49;
+  document.getElementById('denom-active-age-min').value = merged.working_age_min || 15;
+  document.getElementById('denom-active-age-max').value = merged.working_age_max || 64;
+  document.getElementById('denom-ret-age-h').value = merged.retirement_age_h || 65;
+  document.getElementById('denom-ret-age-f').value = merged.retirement_age_f || 65;
+  document.getElementById('denom-mat-age-min').value = merged.maternity_age_min || 15;
+  document.getElementById('denom-mat-age-max').value = merged.maternity_age_max || 49;
 
-  renderMetricSourceOptions('total', 'population_totale', defaults.source_population_totale, sources);
-  renderMetricSourceOptions('active', 'population_active', defaults.source_population_active, sources);
-  renderMetricSourceOptions('ret', 'population_retraite', defaults.source_population_retraite, sources);
-  renderMetricSourceOptions('mat', 'naissances', defaults.source_maternite, sources);
+  renderMetricSourceOptions('total', 'population_totale', merged.source_population_totale, sources);
+  renderMetricSourceOptions('active', 'population_active', merged.source_population_active, sources);
+  renderMetricSourceOptions('ret', 'population_retraite', merged.source_population_retraite, sources);
+  renderMetricSourceOptions('mat', 'naissances', merged.source_maternite, sources);
 
   // Appliquer les contraintes initiales selon les sources par défaut
   applyAllConstraints();
@@ -6905,7 +7273,9 @@ function setChartSexMode(mode, instOverride) {{
       finHost.style.display = '';
       injectHtmlAndRunScripts('charts-institution-fin', pack.finances);
       // Réappliquer la fusion Q2 après injection (Plotly initialise le div de façon synchrone)
-      setTimeout(() => applyQ2ToFinChart(inst), 100);
+      if (typeof applyQ2ToFinChart === 'function') {{
+        setTimeout(() => applyQ2ToFinChart(inst), 100);
+      }}
     }} else {{
       finHost.style.display = 'none';
       finHost.innerHTML = '';
@@ -7319,7 +7689,7 @@ function makePrestationCard(inst, rc, prest_name, activeIndex) {{
   
   const otherButtons = versions.map((v, i) =>
     '<button type="button" class="regime-version-btn' + (i === idx ? ' active' : '') + '" onclick="switchPrestationVersion(' +
-      JSON.stringify(inst) + ',' + JSON.stringify(rc) + ',' + JSON.stringify(prest_name) + ',' + i + ')">' + escapeHtml(asText(v.annee)) + '</button>'
+      escapeHtml(JSON.stringify(inst)) + ',' + escapeHtml(JSON.stringify(rc)) + ',' + escapeHtml(JSON.stringify(prest_name)) + ',' + i + ')">' + escapeHtml(asText(v.annee)) + '</button>'
   ).join('');
   
   const otherLine = versions.length > 1
@@ -7346,10 +7716,10 @@ function makePrestationCard(inst, rc, prest_name, activeIndex) {{
         field('Type de paiement', meta.type_paiement, 'type_paiement') +
         field('Périodicité', meta.periodicite, 'periodicite') +
         field('Groupe de population', meta.groupe_population, 'groupe_population') +
-        field('Groupe d\\'âge', meta.groupe_age, 'groupe_age') +
+        field("Groupe d'âge", meta.groupe_age, 'groupe_age') +
         field('Zone géographique', meta.zone_geo, 'zone_geo') +
         field('Type de financement', meta.type_financement, 'type_financement') +
-        field('Critère d\\'éligibilité', meta.critere_eligibilite, 'critere_eligibilite') +
+        field("Critère d'éligibilité", meta.critere_eligibilite, 'critere_eligibilite') +
         field('Âge légal hommes', meta.age_legal_h, 'age_legal_h') +
         field('Âge légal femmes', meta.age_legal_f, 'age_legal_f') +
         field('Durée service requise', meta.duree_service_requise, 'duree_service_requise') +

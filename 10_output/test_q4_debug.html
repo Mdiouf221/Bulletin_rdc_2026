@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Debug Q4 — Diagnostic</title>
+  <style>
+    body { font-family: monospace; padding: 20px; }
+    .step { margin: 10px 0; padding: 10px; border-left: 3px solid #ccc; }
+    .ok { border-color: green; background: #e8f5e9; }
+    .error { border-color: red; background: #ffebee; }
+    .warn { border-color: orange; background: #fff3e0; }
+  </style>
+</head>
+<body>
+  <h1>🔍 Diagnostic Q4 — Pourquoi la multiplication ne se fait pas ?</h1>
+  <div id="results"></div>
+
+  <script>
+    const results = document.getElementById('results');
+    
+    function addStep(status, title, details) {
+      const div = document.createElement('div');
+      div.className = `step ${status}`;
+      div.innerHTML = `<strong>${title}</strong><br>${details}`;
+      results.appendChild(div);
+    }
+
+    // Étape 1 : Charger questionnaire_data.json
+    fetch('/api/questionnaire-data')
+      .then(r => r.json())
+      .then(data => {
+        addStep('ok', 'Étape 1 : questionnaire_data.json chargé', 
+          `Institutions : ${Object.keys(data).join(', ')}`);
+        
+        // Étape 2 : Vérifier Q4 CNSS
+        const cnssQ4 = data.CNSS?.Q4;
+        const cnssCoefs = data.CNSS?.Q4_coefficients;
+        
+        if (!cnssQ4 || Object.keys(cnssQ4).length === 0) {
+          addStep('error', 'Étape 2 : Q4 CNSS vide', 
+            `Q4 = ${JSON.stringify(cnssQ4)}`);
+          return;
+        }
+        
+        addStep('ok', 'Étape 2 : Q4 CNSS trouvé', 
+          `Régimes : ${JSON.stringify(cnssQ4)}<br>Coefficients : ${JSON.stringify(cnssCoefs, null, 2)}`);
+        
+        // Étape 3 : Vérifier unit_conversion.js chargé
+        setTimeout(() => {
+          if (typeof UnitConverter === 'undefined') {
+            addStep('error', 'Étape 3 : unit_conversion.js non chargé', 
+              'UnitConverter n\'existe pas dans window');
+            return;
+          }
+          
+          addStep('ok', 'Étape 3 : UnitConverter disponible', 
+            `Type : ${typeof UnitConverter}`);
+          
+          // Étape 4 : Vérifier Plotly
+          if (typeof Plotly === 'undefined') {
+            addStep('error', 'Étape 4 : Plotly non chargé', 
+              'Plotly n\'existe pas dans window');
+            return;
+          }
+          
+          addStep('ok', 'Étape 4 : Plotly disponible', 
+            `Version : ${Plotly.version || 'inconnue'}`);
+          
+          // Étape 5 : Vérifier si des graphiques existent
+          const popContainer = document.getElementById('charts-institution-pop');
+          if (!popContainer) {
+            addStep('error', 'Étape 5 : Conteneur graphiques introuvable', 
+              'charts-institution-pop n\'existe pas dans le DOM');
+            return;
+          }
+          
+          const plotlyDivs = popContainer.querySelectorAll('.plotly-graph-div');
+          addStep('ok', 'Étape 5 : Conteneur trouvé', 
+            `${plotlyDivs.length} graphiques Plotly détectés`);
+          
+          // Étape 6 : Inspecter les traces
+          if (plotlyDivs.length === 0) {
+            addStep('warn', 'Étape 6 : Aucun graphique', 
+              'Aucun graphique à inspecter');
+            return;
+          }
+          
+          const firstDiv = plotlyDivs[0];
+          const traces = firstDiv.data || [];
+          
+          addStep('ok', 'Étape 6 : Traces du premier graphique', 
+            `${traces.length} traces détectées<br>` +
+            traces.map((t, i) => 
+              `Trace ${i}: name="${t.name}", legendgroup="${t.legendgroup}"`
+            ).join('<br>')
+          );
+          
+          // Étape 7 : Simuler extractRegimeFromTrace
+          const regimesDetected = traces.map(t => {
+            // Logique de extractRegimeFromTrace
+            if (t.legendgroup) return t.legendgroup;
+            if (t.name) {
+              const match = t.name.match(/^([A-Z_]+_R\d+)/);
+              return match ? match[1] : null;
+            }
+            return null;
+          });
+          
+          addStep('ok', 'Étape 7 : Régimes détectés dans les traces', 
+            regimesDetected.filter(r => r).join(', ') || 'Aucun régime détecté ❌');
+          
+          // Étape 8 : Vérifier correspondance Q4 ↔ traces
+          const q4Regimes = Object.keys(cnssQ4);
+          const matchingRegimes = regimesDetected.filter(r => q4Regimes.includes(r));
+          
+          if (matchingRegimes.length === 0) {
+            addStep('error', 'Étape 8 : PROBLÈME TROUVÉ !', 
+              `Les régimes Q4 (${q4Regimes.join(', ')}) ne correspondent pas aux régimes des traces (${regimesDetected.filter(r => r).join(', ')})`);
+          } else {
+            addStep('ok', 'Étape 8 : Correspondance trouvée', 
+              `Régimes matching : ${matchingRegimes.join(', ')}`);
+          }
+          
+        }, 1000);
+        
+      })
+      .catch(e => {
+        addStep('error', 'Erreur de chargement', e.message);
+      });
+  </script>
+  
+  <script src="unit_conversion.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</body>
+</html>

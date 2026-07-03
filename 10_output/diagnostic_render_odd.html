@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Diagnostic renderOddDecisionPanel</title>
+  <style>
+    body { font-family: monospace; padding: 20px; background: #1e1e1e; color: #dcdcdc; }
+    .log { padding: 5px; margin: 2px 0; border-left: 3px solid #555; }
+    .log.info { border-color: #4ec9b0; }
+    .log.warn { border-color: #dcdcaa; background: #3a3a20; }
+    .log.error { border-color: #f48771; background: #3a2020; }
+    .log.success { border-color: #4ec9b0; background: #203a20; }
+  </style>
+</head>
+<body>
+  <h1>🔍 Diagnostic renderOddDecisionPanel()</h1>
+  <div id="logs"></div>
+
+<script>
+const logsDiv = document.getElementById('logs');
+
+function log(msg, type = 'info') {
+  const div = document.createElement('div');
+  div.className = `log ${type}`;
+  div.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+  logsDiv.appendChild(div);
+  console.log(`[${type.toUpperCase()}] ${msg}`);
+}
+
+log('🚀 Chargement iframe dashboard...', 'info');
+
+const iframe = document.createElement('iframe');
+iframe.style.display = 'none';
+iframe.src = '/dashboard';
+
+iframe.onload = () => {
+  log('✅ Dashboard chargé', 'success');
+  
+  setTimeout(() => {
+    try {
+      const win = iframe.contentWindow;
+      const doc = iframe.contentDocument || win.document;
+      
+      // Test 1: ODD_INDICATORS existe ?
+      log('─ Test 1: Variable ODD_INDICATORS', 'info');
+      if (typeof win.ODD_INDICATORS !== 'undefined') {
+        log(`✅ ODD_INDICATORS existe: ${win.ODD_INDICATORS.length} indicateurs`, 'success');
+      } else {
+        log(`❌ ODD_INDICATORS undefined`, 'error');
+      }
+      
+      // Test 2: Dropdown existe ?
+      log('─ Test 2: Élément #odd-indicator-select', 'info');
+      const dropdown = doc.getElementById('odd-indicator-select');
+      if (dropdown) {
+        log(`✅ Dropdown trouvé: ${dropdown.options.length} options`, dropdown.options.length > 0 ? 'success' : 'warn');
+        log(`   dataset.ready = "${dropdown.dataset.ready || 'undefined'}"`, 'info');
+      } else {
+        log(`❌ Dropdown #odd-indicator-select introuvable`, 'error');
+      }
+      
+      // Test 3: Host du panel existe ?
+      log('─ Test 3: Élément #odd-decision-panel-host', 'info');
+      const host = doc.getElementById('odd-decision-panel-host');
+      if (host) {
+        log(`✅ Panel host trouvé`, 'success');
+      } else {
+        log(`❌ Panel host introuvable`, 'error');
+      }
+      
+      // Test 4: Fonction renderOddDecisionPanel existe ?
+      log('─ Test 4: Fonction renderOddDecisionPanel', 'info');
+      if (typeof win.renderOddDecisionPanel === 'function') {
+        log(`✅ Fonction existe`, 'success');
+        
+        // Appeler manuellement et voir ce qui se passe
+        log('─ Test 5: Appel manuel renderOddDecisionPanel()', 'info');
+        try {
+          win.renderOddDecisionPanel();
+          log(`✅ Fonction exécutée sans erreur`, 'success');
+          
+          // Revérifier le dropdown
+          setTimeout(() => {
+            const dropdown2 = doc.getElementById('odd-indicator-select');
+            if (dropdown2) {
+              log(`📊 Après appel manuel: ${dropdown2.options.length} options`, dropdown2.options.length > 0 ? 'success' : 'error');
+            }
+          }, 500);
+        } catch (err) {
+          log(`❌ Erreur lors de l'appel: ${err.message}`, 'error');
+        }
+      } else {
+        log(`❌ Fonction renderOddDecisionPanel introuvable`, 'error');
+      }
+      
+      // Test 6: Console errors ?
+      log('─ Test 6: Erreurs console', 'info');
+      log(`⚠️ Vérifiez la console navigateur pour d'autres erreurs`, 'warn');
+      
+    } catch (err) {
+      log(`❌ Erreur inspection iframe: ${err.message}`, 'error');
+    }
+  }, 2000);
+};
+
+iframe.onerror = () => {
+  log(`❌ Erreur chargement dashboard`, 'error');
+};
+
+document.body.appendChild(iframe);
+</script>
+</body>
+</html>

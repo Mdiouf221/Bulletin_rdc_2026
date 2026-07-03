@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Q4 Coefficients</title>
+  <link rel="stylesheet" href="questionnaire_modal.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .test-info {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .test-btn {
+      padding: 10px 20px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .test-btn:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="test-info">
+    <h1>Test P3.1 — Interface Q4 avec coefficients</h1>
+    <p><strong>Objectif :</strong> Vérifier que le tableau de coefficients s'affiche correctement et que la sauvegarde fonctionne.</p>
+    
+    <h3>Scénario de test :</h3>
+    <ol>
+      <li>Cliquer sur le bouton ci-dessous pour ouvrir le modal</li>
+      <li>Sélectionner une unité autre que "Enfant" (ex: "Ménage")</li>
+      <li>Vérifier que le tableau de coefficients apparaît</li>
+      <li>Remplir un coefficient (ex: 2.5) et une source (ex: "INS DRC 2021")</li>
+      <li>Cliquer sur "Sauvegarder"</li>
+      <li>Ouvrir la console (F12) et vérifier que les données sont sauvegardées</li>
+    </ol>
+    
+    <button class="test-btn" onclick="openTestModal()">🧪 Ouvrir Modal Q4</button>
+  </div>
+
+  <script>
+    // Mock data pour le test
+    window.REGIME_META = {
+      "CNSS": {
+        "CNSS_R1": {
+          "versions": [
+            {
+              "annee": 2021,
+              "nom_regime": "Prestations familiales",
+              "fonctions_oit": ["Enfants et famille"]
+            }
+          ],
+          "ess_years": [2021, 2022, 2023]
+        },
+        "CNSS_R4": {
+          "versions": [
+            {
+              "annee": 2021,
+              "nom_regime": "Allocations familiales",
+              "fonctions_oit": ["Enfants"]
+            }
+          ],
+          "ess_years": [2021, 2022]
+        }
+      }
+    };
+    
+    window.NOM_COURT = {
+      "CNSS_R1": "Prestations familiales",
+      "CNSS_R4": "Allocations familiales"
+    };
+    
+    window.REGIMES_PAR_INST = {
+      "CNSS": ["CNSS_R1", "CNSS_R4"]
+    };
+  </script>
+  
+  <script src="questionnaire_modal.js"></script>
+  
+  <script>
+    // Initialiser le questionnaire
+    window.questionnaire = new QuestionnaireModal('/api/questionnaire-data');
+    
+    function openTestModal() {
+      window.questionnaire.openModal('CNSS', ['CNSS_R1', 'CNSS_R4']);
+    }
+    
+    // Intercepter la sauvegarde pour tester
+    const originalPersistData = window.questionnaire.persistData.bind(window.questionnaire);
+    window.questionnaire.persistData = async function() {
+      console.log('📝 Données à sauvegarder :', JSON.stringify(this.data, null, 2));
+      
+      // Vérification
+      const cnssData = this.data['CNSS'];
+      if (cnssData && cnssData.Q4_coefficients) {
+        console.log('✅ Q4_coefficients détecté :', cnssData.Q4_coefficients);
+        
+        // Vérifier structure
+        for (const [regime, years] of Object.entries(cnssData.Q4_coefficients)) {
+          console.log(`   Régime ${regime}:`);
+          for (const [year, data] of Object.entries(years)) {
+            if (data.value && data.value > 0) {
+              console.log(`     ✓ ${year}: ${data.value} (source: "${data.source}")`);
+            }
+          }
+        }
+      } else {
+        console.warn('⚠️ Q4_coefficients manquant ou vide');
+      }
+      
+      // Simuler succès
+      return true;
+    };
+  </script>
+  
+</body>
+</html>

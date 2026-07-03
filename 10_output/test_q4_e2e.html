@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Test E2E — Q4 Complet</title>
+  <link rel="stylesheet" href="questionnaire_modal.css">
+  <script src="https://cdn.plot.ly/plotly-2.20.0.min.js"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .test-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .test-section {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .test-btn {
+      padding: 10px 20px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+    .test-btn:hover {
+      background: #45a049;
+    }
+    .test-btn.secondary {
+      background: #2196F3;
+    }
+    .test-btn.secondary:hover {
+      background: #0b7dda;
+    }
+    #test-chart {
+      width: 100%;
+      height: 400px;
+      margin-top: 20px;
+    }
+    .step {
+      padding: 10px;
+      margin: 10px 0;
+      background: #f9f9f9;
+      border-left: 4px solid #4CAF50;
+    }
+    .step.done {
+      background: #d4edda;
+      border-left-color: #28a745;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="test-container">
+    
+    <div class="test-section">
+      <h1>🧪 Test End-to-End — Q4 Complet</h1>
+      <p><strong>Scénario complet :</strong> Remplir Q4 + coefficients → Sauvegarder → Vérifier graphiques</p>
+    </div>
+
+    <div class="test-section">
+      <h2>Étapes du test</h2>
+      <div class="step" id="step1">1. Créer graphique Plotly avec données brutes</div>
+      <div class="step" id="step2">2. Ouvrir modal Q4 et remplir coefficients</div>
+      <div class="step" id="step3">3. Sauvegarder et vérifier application Q4</div>
+      <div class="step" id="step4">4. Vérifier que les valeurs ont été converties</div>
+    </div>
+
+    <div class="test-section">
+      <h2>Contrôles</h2>
+      <button class="test-btn" onclick="createChart()">1️⃣ Créer Graphique</button>
+      <button class="test-btn" onclick="openModal()">2️⃣ Ouvrir Q4</button>
+      <button class="test-btn secondary" onclick="showConsoleData()">📊 Données Console</button>
+    </div>
+
+    <div class="test-section">
+      <h2>Graphique de Test</h2>
+      <div id="test-chart"></div>
+    </div>
+
+  </div>
+
+  <script>
+    // Mock data
+    window.REGIME_META = {
+      "CNSS": {
+        "CNSS_R4": {
+          "versions": [{
+            "annee": 2021,
+            "nom_regime": "Allocations familiales",
+            "fonctions_oit": ["Enfants et famille"]
+          }],
+          "ess_years": [2021, 2022, 2023]
+        }
+      }
+    };
+    
+    window.NOM_COURT = {
+      "CNSS_R4": "Allocations familiales"
+    };
+    
+    window.REGIMES_PAR_INST = {
+      "CNSS": ["CNSS_R4"]
+    };
+  </script>
+  
+  <script src="questionnaire_modal.js"></script>
+  <script src="unit_conversion.js"></script>
+  
+  <script>
+    // Initialiser le questionnaire
+    window.questionnaire = new QuestionnaireModal('/api/questionnaire-data');
+    
+    // Intercepter la persistance
+    const originalPersistData = window.questionnaire.persistData.bind(window.questionnaire);
+    window.questionnaire.persistData = async function() {
+      console.log('💾 Données sauvegardées :', JSON.stringify(this.data, null, 2));
+      markStep('step3');
+      
+      // Déclencher l'event manuellement
+      setTimeout(() => {
+        window.dispatchEvent(new CustomEvent('questionnaire-saved', {
+          detail: { institution: 'CNSS', regimes: ['CNSS_R4'] }
+        }));
+      }, 100);
+      
+      return true;
+    };
+    
+    // Créer le graphique test
+    function createChart() {
+      const data = [{
+        x: [2021, 2022, 2023],
+        y: [100, 150, 200], // Valeurs en MÉNAGES
+        type: 'scatter',
+        mode: 'lines+markers',
+        name: 'Allocations familiales',
+        legendgroup: 'CNSS_R4',
+        line: { width: 2, color: '#4CAF50' },
+        marker: { size: 8 }
+      }];
+      
+      const layout = {
+        title: 'Bénéficiaires — CNSS R4 (unité: ménages)',
+        xaxis: { title: 'Année' },
+        yaxis: { title: 'Nombre de bénéficiaires' },
+        hovermode: 'closest'
+      };
+      
+      Plotly.newPlot('test-chart', data, layout, { responsive: true });
+      
+      console.log('✓ Graphique créé avec données brutes (ménages):', [100, 150, 200]);
+      markStep('step1');
+    }
+    
+    // Ouvrir le modal
+    function openModal() {
+      window.questionnaire.openModal('CNSS', ['CNSS_R4']);
+      markStep('step2');
+      
+      console.log('ℹ️ Instructions:');
+      console.log('  1. Sélectionner "Ménage" comme unité');
+      console.log('  2. Remplir coefficients:');
+      console.log('     - 2021: 2.5');
+      console.log('     - 2022: 2.5');
+      console.log('     - 2023: 2.6');
+      console.log('  3. Cliquer sur "Sauvegarder"');
+    }
+    
+    // Listener pour l'event
+    window.addEventListener('questionnaire-saved', (e) => {
+      console.log('📢 Event questionnaire-saved reçu:', e.detail);
+      
+      const { institution } = e.detail;
+      
+      // Appliquer Q4
+      if (window.unitConverter) {
+        const q4Data = window.questionnaire.data[institution]?.Q4 || {};
+        const q4Coefficients = window.questionnaire.data[institution]?.Q4_coefficients || {};
+        
+        console.log('Q4 Data:', q4Data);
+        console.log('Q4 Coefficients:', q4Coefficients);
+        
+        const chartDiv = document.getElementById('test-chart');
+        if (chartDiv) {
+          window.unitConverter.applyConversion('test-chart', q4Data, q4Coefficients);
+          
+          // Vérifier les nouvelles valeurs
+          setTimeout(() => {
+            const newData = chartDiv.data[0];
+            console.log('✓ Valeurs après conversion:', newData.y);
+            console.log('✓ Nom trace:', newData.name);
+            
+            // Valeurs attendues : [250, 375, 520]
+            const expected = [250, 375, 520];
+            let allMatch = true;
+            newData.y.forEach((val, i) => {
+              if (val !== expected[i]) {
+                console.error(`❌ Année ${newData.x[i]}: attendu ${expected[i]}, obtenu ${val}`);
+                allMatch = false;
+              }
+            });
+            
+            if (allMatch) {
+              console.log('✅ TOUTES LES CONVERSIONS CORRECTES !');
+              markStep('step4');
+            } else {
+              console.error('❌ Certaines conversions incorrectes');
+            }
+          }, 200);
+        }
+      }
+    });
+    
+    // Afficher données dans console
+    function showConsoleData() {
+      console.group('📊 État actuel');
+      console.log('Questionnaire data:', window.questionnaire.data);
+      
+      const chartDiv = document.getElementById('test-chart');
+      if (chartDiv && chartDiv.data) {
+        console.log('Données graphique:', chartDiv.data[0].y);
+      }
+      console.groupEnd();
+    }
+    
+    // Marquer étape comme terminée
+    function markStep(stepId) {
+      const step = document.getElementById(stepId);
+      if (step) step.classList.add('done');
+    }
+  </script>
+  
+</body>
+</html>

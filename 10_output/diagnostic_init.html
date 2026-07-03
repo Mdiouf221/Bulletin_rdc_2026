@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Diagnostic Initialisation Dashboard</title>
+  <style>
+    body { font-family: monospace; padding: 20px; background: #1e1e1e; color: #dcdcdc; }
+    .log { padding: 5px; margin: 2px 0; border-left: 3px solid #555; }
+    .log.info { border-color: #4ec9b0; }
+    .log.warn { border-color: #dcdcaa; background: #3a3a20; }
+    .log.error { border-color: #f48771; background: #3a2020; }
+    .log.success { border-color: #4ec9b0; background: #203a20; }
+    button { padding: 10px 20px; margin: 10px 5px; font-size: 14px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>🔍 Diagnostic Initialisation Dashboard</h1>
+  <button onclick="runDiagnostic()">▶️ Lancer le diagnostic</button>
+  <button onclick="clearLogs()">🗑️ Effacer</button>
+  <div id="logs"></div>
+
+<script>
+const logsDiv = document.getElementById('logs');
+
+function log(msg, type = 'info') {
+  const div = document.createElement('div');
+  div.className = `log ${type}`;
+  div.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+  logsDiv.appendChild(div);
+  console.log(`[${type.toUpperCase()}] ${msg}`);
+}
+
+function clearLogs() {
+  logsDiv.innerHTML = '';
+}
+
+async function runDiagnostic() {
+  clearLogs();
+  log('🚀 Début du diagnostic', 'info');
+  
+  // Test 1: API dashboard-settings
+  log('─ Test 1: Appel API /api/dashboard-settings', 'info');
+  try {
+    const start1 = Date.now();
+    const res1 = await fetch('/api/dashboard-settings', { cache: 'no-store' });
+    const elapsed1 = Date.now() - start1;
+    log(`✅ API répond en ${elapsed1}ms - Status: ${res1.status}`, 'success');
+    
+    const data1 = await res1.json();
+    log(`📦 Données reçues: oddDecisions=${Object.keys(data1.oddDecisions || {}).length} clés, denomSettings=${Object.keys(data1.denomSettings || {}).length} clés`, 'info');
+  } catch (err) {
+    log(`❌ Erreur API: ${err.message}`, 'error');
+  }
+
+  // Test 2: Simulation loadDenomSettings
+  log('─ Test 2: Simulation loadDenomSettings()', 'info');
+  try {
+    const start2 = Date.now();
+    const res2 = await fetch('/api/dashboard-settings', { cache: 'no-store' });
+    if (!res2.ok) {
+      log(`⚠️ API non-OK, status: ${res2.status}`, 'warn');
+    }
+    const payload = await res2.json();
+    const settings = payload?.denomSettings || {};
+    const elapsed2 = Date.now() - start2;
+    log(`✅ loadDenomSettings simulé OK en ${elapsed2}ms`, 'success');
+  } catch (err) {
+    log(`❌ Erreur dans loadDenomSettings: ${err.message}`, 'error');
+  }
+
+  // Test 3: Vérifier le localStorage
+  log('─ Test 3: Lecture localStorage', 'info');
+  try {
+    const stored = localStorage.getItem('dashboard-settings');
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      log(`✅ localStorage contient des données: ${Object.keys(parsed).length} clés`, 'success');
+    } else {
+      log(`⚠️ localStorage vide ou inexistant`, 'warn');
+    }
+  } catch (err) {
+    log(`❌ Erreur localStorage: ${err.message}`, 'error');
+  }
+
+  // Test 4: Timeout simulation
+  log('─ Test 4: Simulation avec timeout 5s', 'info');
+  try {
+    const timeoutPromise = new Promise((_, reject) => 
+      setTimeout(() => reject(new Error('Timeout 5s')), 5000)
+    );
+    const fetchPromise = fetch('/api/dashboard-settings', { cache: 'no-store' });
+    
+    const res4 = await Promise.race([fetchPromise, timeoutPromise]);
+    log(`✅ Fetch complété avant timeout`, 'success');
+  } catch (err) {
+    log(`❌ Timeout ou erreur: ${err.message}`, 'error');
+  }
+
+  // Test 5: Charger le vrai dashboard en iframe et observer
+  log('─ Test 5: Chargement du vrai dashboard', 'info');
+  const iframe = document.createElement('iframe');
+  iframe.style.display = 'none';
+  iframe.src = '/dashboard';
+  
+  iframe.onload = () => {
+    log('✅ Dashboard iframe chargé', 'success');
+    setTimeout(() => {
+      try {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+        const indicator = iframeDoc.getElementById('odd-indicator-select');
+        if (indicator) {
+          log(`📊 Dropdown indicateurs: ${indicator.options.length} options`, indicator.options.length > 0 ? 'success' : 'warn');
+        } else {
+          log(`❌ Dropdown #odd-indicator-select introuvable`, 'error');
+        }
+        
+        const loadingText = iframeDoc.querySelector('.loading-message');
+        if (loadingText && loadingText.style.display !== 'none') {
+          log(`⚠️ Message "Chargement..." toujours visible`, 'warn');
+        } else {
+          log(`✅ Message "Chargement..." masqué`, 'success');
+        }
+      } catch (err) {
+        log(`❌ Impossible d'inspecter iframe: ${err.message}`, 'error');
+      }
+    }, 3000);
+  };
+  
+  iframe.onerror = () => {
+    log(`❌ Erreur chargement iframe dashboard`, 'error');
+  };
+  
+  document.body.appendChild(iframe);
+  
+  log('✅ Diagnostic terminé', 'success');
+}
+</script>
+</body>
+</html>

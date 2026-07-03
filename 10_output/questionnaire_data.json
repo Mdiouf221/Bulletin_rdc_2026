@@ -54,7 +54,29 @@
         "CNSS_R2"
       ]
     },
-    "Q4": {}
+    "Q4": {
+      "CNSS_R1": "ménage"
+    },
+    "Q4_coefficients": {
+      "CNSS_R1": {
+        "2019": {
+          "value": 2.5,
+          "source": ""
+        },
+        "2020": {
+          "value": 2.5,
+          "source": ""
+        },
+        "2021": {
+          "value": 2.5,
+          "source": ""
+        },
+        "2022": {
+          "value": 2.5,
+          "source": ""
+        }
+      }
+    }
   },
   "CNSSAP": {
     "Q1": {
@@ -73,6 +95,7 @@
         "CNSSAP_R1"
       ]
     },
-    "Q4": {}
+    "Q4": {},
+    "Q4_coefficients": {}
   }
 }

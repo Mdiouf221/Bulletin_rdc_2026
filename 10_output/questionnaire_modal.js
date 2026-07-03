@@ -45,9 +45,10 @@ class QuestionnaireModal {
    */
   openModal(institution, regimes) {
     this.currentInstitution = institution;
+    this.currentRegimes = regimes;
     // S'assurer que les données de cette institution existent en mémoire
     if (!this.data[institution]) {
-      this.data[institution] = { Q1: {}, Q1b: {}, Q2: {}, Q4: {} };
+      this.data[institution] = { Q1: {}, Q1b: {}, Q2: {}, Q4: {}, Q4_coefficients: {} };
     }
     // Crée le backdrop
     const backdrop = document.createElement('div');
@@ -352,16 +353,148 @@ class QuestionnaireModal {
         const stored = this.getStoredValue(institution, 'Q4', regime);
         if (stored === opt.toLowerCase()) radio.checked = true;
         
+        // Événement pour afficher/cacher le tableau de coefficients
+        radio.addEventListener('change', () => {
+          const coefSection = document.getElementById(`q4_coef_${regime}`);
+          if (coefSection) {
+            coefSection.style.display = (radio.value !== 'enfant') ? 'block' : 'none';
+          }
+        });
+        
         radioLabel.appendChild(radio);
         radioLabel.appendChild(document.createTextNode(opt));
         group.appendChild(radioLabel);
       });
+
+      // Tableau de coefficients (conditionnel)
+      const coefSection = this.buildQ4Coefficients(institution, regime);
+      coefSection.id = `q4_coef_${regime}`;
+      const storedUnit = this.getStoredValue(institution, 'Q4', regime);
+      coefSection.style.display = (storedUnit && storedUnit !== 'enfant') ? 'block' : 'none';
+      group.appendChild(coefSection);
 
       container.appendChild(group);
     });
 
     section.appendChild(container);
     return section;
+  }
+
+  /**
+   * Q4 Coefficients — Tableau de conversion par année
+   */
+  buildQ4Coefficients(institution, regime) {
+    const section = document.createElement('div');
+    section.className = 'questionnaire-q4-coefficients';
+    
+    const helpText = document.createElement('p');
+    helpText.className = 'questionnaire-help-text';
+    helpText.textContent = 'Si l\'unité n\'est pas "Enfant", définir les coefficients de conversion (vers Enfant) pour chaque année :';
+    section.appendChild(helpText);
+    
+    // Récupérer les années ESS disponibles pour ce régime
+    const years = this.getRegimeYears(regime);
+    
+    // Tableau HTML
+    const table = document.createElement('table');
+    table.className = 'questionnaire-coef-table';
+    
+    // En-tête
+    const thead = document.createElement('thead');
+    thead.innerHTML = `
+      <tr>
+        <th>Année</th>
+        <th>Coefficient (→ Enfant)</th>
+        <th>Source / Commentaire</th>
+      </tr>
+    `;
+    table.appendChild(thead);
+    
+    // Corps
+    const tbody = document.createElement('tbody');
+    tbody.id = `q4_coef_tbody_${regime}`;
+    
+    if (years.length === 0) {
+      // Pas d'années → ligne par défaut
+      tbody.appendChild(this.buildCoefRow(institution, regime, 'default'));
+    } else {
+      // Lignes par année
+      years.forEach(year => {
+        tbody.appendChild(this.buildCoefRow(institution, regime, year));
+      });
+    }
+    
+    table.appendChild(tbody);
+    section.appendChild(table);
+    
+    return section;
+  }
+
+  /**
+   * Construit une ligne du tableau de coefficients
+   */
+  buildCoefRow(institution, regime, year) {
+    const row = document.createElement('tr');
+    
+    // Colonne année
+    const yearCell = document.createElement('td');
+    yearCell.textContent = year === 'default' ? 'Par défaut' : year;
+    yearCell.style.fontWeight = 'bold';
+    row.appendChild(yearCell);
+    
+    // Colonne coefficient
+    const coefCell = document.createElement('td');
+    const coefInput = document.createElement('input');
+    coefInput.type = 'number';
+    coefInput.step = '0.1';
+    coefInput.min = '0';
+    coefInput.name = `q4_coef_${regime}_${year}`;
+    coefInput.id = `q4_coef_${regime}_${year}`;
+    coefInput.placeholder = '2.5';
+    
+    // Charger valeur sauvegardée
+    const storedCoef = this.data[institution]?.Q4_coefficients?.[regime]?.[year];
+    if (storedCoef && storedCoef.value !== undefined) {
+      coefInput.value = storedCoef.value;
+    }
+    
+    coefCell.appendChild(coefInput);
+    row.appendChild(coefCell);
+    
+    // Colonne source
+    const sourceCell = document.createElement('td');
+    const sourceInput = document.createElement('input');
+    sourceInput.type = 'text';
+    sourceInput.name = `q4_source_${regime}_${year}`;
+    sourceInput.id = `q4_source_${regime}_${year}`;
+    sourceInput.placeholder = 'INS DRC 2021';
+    
+    // Charger source sauvegardée
+    if (storedCoef && storedCoef.source !== undefined) {
+      sourceInput.value = storedCoef.source;
+    }
+    
+    sourceCell.appendChild(sourceInput);
+    row.appendChild(sourceCell);
+    
+    return row;
+  }
+
+  /**
+   * Récupère les années ESS disponibles pour un régime
+   */
+  getRegimeYears(regime) {
+    if (!window.REGIME_META) return [];
+    
+    // Chercher le régime dans toutes les institutions
+    for (const inst in window.REGIME_META) {
+      if (window.REGIME_META[inst][regime]) {
+        const meta = window.REGIME_META[inst][regime];
+        return meta.ess_years || [];
+      }
+    }
+    
+    return [];
   }
 
   /**
@@ -450,12 +583,40 @@ class QuestionnaireModal {
       this.data[institution].Q4[regime] = radio.value;
     });
 
+    // Q4 Coefficients
+    this.data[institution].Q4_coefficients = {};
+    document.querySelectorAll('input[name^="q4_coef_"]').forEach((input) => {
+      const parts = input.name.replace('q4_coef_', '').split('_');
+      const year = parts.pop(); // Dernier élément = année
+      const regime = parts.join('_'); // Reste = code régime
+      
+      if (!this.data[institution].Q4_coefficients[regime]) {
+        this.data[institution].Q4_coefficients[regime] = {};
+      }
+      
+      const coefValue = parseFloat(input.value);
+      const sourceInput = document.getElementById(`q4_source_${regime}_${year}`);
+      const sourceValue = sourceInput ? sourceInput.value.trim() : '';
+      
+      if (!isNaN(coefValue) && coefValue > 0) {
+        this.data[institution].Q4_coefficients[regime][year] = {
+          value: coefValue,
+          source: sourceValue
+        };
+      }
+    });
+
     // Sauvegarde dans le fichier
-    await this.persistData();
+    const persistOk = await this.persistData();
+    
+    if (!persistOk) {
+      // Échec de persistance : arrêt du flux, pas d'event ni de fermeture
+      return;
+    }
 
     // Notifier le dashboard que les paramètres ont changé
     window.dispatchEvent(new CustomEvent('questionnaire-saved', {
-      detail: { institution }
+      detail: { institution, regimes: this.currentRegimes }
     }));
 
     // Feedback
@@ -465,6 +626,7 @@ class QuestionnaireModal {
 
   /**
    * Sauvegarde les données dans le fichier JSON
+   * @returns {boolean} true si sauvegarde OK, false sinon
    */
   async persistData() {
     try {
@@ -476,9 +638,11 @@ class QuestionnaireModal {
       if (!response.ok) {
         throw new Error(`Erreur serveur : ${response.status}`);
       }
+      return true;
     } catch (e) {
       console.error('Erreur de persistance questionnaire:', e);
       this.showToast('⚠ Erreur : données non sauvegardées', 'error');
+      return false;
     }
   }
 

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Unit Conversion Module</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .test-section {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .test-result {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    .test-success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .test-failure {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    .test-info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+    h2 { color: #333; border-bottom: 2px solid #4CAF50; padding-bottom: 10px; }
+    code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  
+  <div class="test-section">
+    <h1>🧪 Tests — Unit Conversion Module</h1>
+    <p>Tests unitaires pour valider la logique de conversion Q4.</p>
+  </div>
+
+  <div class="test-section">
+    <h2>Test 1 — Conversion simple (ménage → enfant)</h2>
+    <div id="test1-result"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>Test 2 — Conversion avec années multiples</h2>
+    <div id="test2-result"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>Test 3 — Pas de conversion (unité = enfant)</h2>
+    <div id="test3-result"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>Test 4 — Coefficients manquants (fallback)</h2>
+    <div id="test4-result"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>Test 5 — Extraction régime depuis trace</h2>
+    <div id="test5-result"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>Test 6 — Icônes unités</h2>
+    <div id="test6-result"></div>
+  </div>
+
+  <script src="unit_conversion.js"></script>
+  
+  <script>
+    // Helper pour afficher résultat
+    function displayResult(testId, success, message) {
+      const div = document.getElementById(`${testId}-result`);
+      const className = success ? 'test-success' : 'test-failure';
+      const icon = success ? '✅' : '❌';
+      div.innerHTML += `<div class="test-result ${className}">${icon} ${message}</div>`;
+    }
+
+    function displayInfo(testId, message) {
+      const div = document.getElementById(`${testId}-result`);
+      div.innerHTML += `<div class="test-result test-info">ℹ️ ${message}</div>`;
+    }
+
+    // Mock Plotly minimal
+    window.Plotly = {
+      react: function(id, data, layout, config) {
+        console.log(`Plotly.react called for ${id}`);
+      }
+    };
+
+    const converter = new UnitConverter();
+
+    // Test 1 — Conversion simple
+    function test1() {
+      const value = 100; // 100 ménages
+      const year = 2021;
+      const coefficients = {
+        "2021": { value: 2.5, source: "INS DRC 2021" }
+      };
+      
+      const result = converter.convertValue(value, year, coefficients);
+      const expected = 250; // 100 * 2.5 = 250 enfants
+      
+      if (result === expected) {
+        displayResult('test1', true, `100 ménages × 2.5 = ${result} enfants`);
+      } else {
+        displayResult('test1', false, `Attendu ${expected}, obtenu ${result}`);
+      }
+    }
+
+    // Test 2 — Conversion avec années multiples
+    function test2() {
+      const trace = {
+        x: [2021, 2022, 2023],
+        y: [100, 150, 200],
+        legendgroup: "CNSS_R4",
+        name: "Allocations familiales"
+      };
+      
+      const q4Data = { "CNSS_R4": "ménage" };
+      const q4Coefficients = {
+        "CNSS_R4": {
+          "2021": { value: 2.5, source: "INS" },
+          "2022": { value: 2.5, source: "" },
+          "2023": { value: 2.6, source: "Enquête" }
+        }
+      };
+      
+      const result = converter.convertTraces([trace], q4Data, q4Coefficients);
+      const expected = [250, 375, 520]; // 100*2.5, 150*2.5, 200*2.6
+      
+      displayInfo('test2', `Données originales : [100, 150, 200]`);
+      displayInfo('test2', `Coefficients : [2.5, 2.5, 2.6]`);
+      
+      let success = true;
+      result[0].y.forEach((val, i) => {
+        if (val !== expected[i]) {
+          success = false;
+          displayResult('test2', false, `Année ${trace.x[i]}: attendu ${expected[i]}, obtenu ${val}`);
+        }
+      });
+      
+      if (success) {
+        displayResult('test2', true, `Conversion correcte : ${JSON.stringify(result[0].y)}`);
+      }
+    }
+
+    // Test 3 — Pas de conversion (unité = enfant)
+    function test3() {
+      const trace = {
+        x: [2021],
+        y: [100],
+        legendgroup: "CNSS_R1",
+        name: "Prestations familiales"
+      };
+      
+      const q4Data = { "CNSS_R1": "enfant" };
+      const q4Coefficients = {};
+      
+      const result = converter.convertTraces([trace], q4Data, q4Coefficients);
+      
+      if (result[0].y[0] === 100) {
+        displayResult('test3', true, `Valeur inchangée (unité = enfant) : ${result[0].y[0]}`);
+      } else {
+        displayResult('test3', false, `Valeur modifiée alors qu'elle ne devrait pas : ${result[0].y[0]}`);
+      }
+    }
+
+    // Test 4 — Coefficients manquants
+    function test4() {
+      const trace = {
+        x: [2024], // Année non présente dans coefficients
+        y: [100],
+        legendgroup: "CNSS_R4",
+        name: "Allocations"
+      };
+      
+      const q4Data = { "CNSS_R4": "ménage" };
+      const q4Coefficients = {
+        "CNSS_R4": {
+          "2021": { value: 2.5, source: "" },
+          "default": { value: 2.0, source: "Fallback" }
+        }
+      };
+      
+      const result = converter.convertTraces([trace], q4Data, q4Coefficients);
+      
+      if (result[0].y[0] === 200) {
+        displayResult('test4', true, `Fallback utilisé : 100 × 2.0 = ${result[0].y[0]}`);
+      } else if (result[0].y[0] === 100) {
+        displayResult('test4', false, `Aucune conversion appliquée (fallback non utilisé)`);
+      } else {
+        displayResult('test4', false, `Résultat inattendu : ${result[0].y[0]}`);
+      }
+    }
+
+    // Test 5 — Extraction régime
+    function test5() {
+      const tests = [
+        { trace: { legendgroup: "CNSS_R4" }, expected: "CNSS_R4" },
+        { trace: { name: "CNSS_R1 — Prestations" }, expected: "CNSS_R1" },
+        { trace: { name: "Allocations familiales" }, expected: null }
+      ];
+      
+      tests.forEach((t, i) => {
+        const result = converter.extractRegimeFromTrace(t.trace);
+        if (result === t.expected) {
+          displayResult('test5', true, `Test ${i+1}: extrait "${result}" ✓`);
+        } else {
+          displayResult('test5', false, `Test ${i+1}: attendu "${t.expected}", obtenu "${result}"`);
+        }
+      });
+    }
+
+    // Test 6 — Icônes
+    function test6() {
+      const tests = [
+        { unit: "enfant", expected: "🧒" },
+        { unit: "ménage", expected: "🏠" },
+        { unit: "personne", expected: "👤" },
+        { unit: "autre", expected: "❓" }
+      ];
+      
+      tests.forEach(t => {
+        const result = converter.getUnitIcon(t.unit);
+        if (result === t.expected) {
+          displayResult('test6', true, `${t.unit} → ${result}`);
+        } else {
+          displayResult('test6', false, `${t.unit}: attendu ${t.expected}, obtenu ${result}`);
+        }
+      });
+    }
+
+    // Exécuter tous les tests
+    window.addEventListener('load', () => {
+      test1();
+      test2();
+      test3();
+      test4();
+      test5();
+      test6();
+      
+      console.log('✓ Tous les tests exécutés');
+    });
+  </script>
+  
+</body>
+</html>

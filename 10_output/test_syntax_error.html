@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test Syntaxe Ligne 6325</title>
+</head>
+<body>
+  <h1>Test de la syntaxe qui pose problème</h1>
+  <div id="output"></div>
+
+<script>
+// Copie EXACTE du code des lignes 6275-6334 du dashboard
+function escapeHtml(text) {
+  if (text === null || text === undefined) return '';
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function makeRegimeCard(inst, rc, activeIndex) {
+  const data = { selector_versions: [{ annee: 2022, type_assurance: "Test d'assurance" }] };
+  const versions = data.selector_versions || [];
+  if (!versions.length) {
+    return '<div>Empty</div>';
+  }
+
+  const idx = 0;
+  const meta = versions[idx];
+  const varied = new Set();
+  const asText = (val) => (val === null || val === undefined || String(val).trim() === '')
+    ? 'Non renseigné'
+    : String(val);
+  const fonctions = 'Non renseigné';
+  const essYears = [];
+  const yearsDisplay = 'Non renseigné';
+
+  const otherButtons = versions.map((v, i) =>
+    '<button type="button" class="regime-version-btn' + (i === idx ? ' active' : '') + '" onclick="switchRegimeVersion(' +
+      escapeHtml(JSON.stringify(inst)) + ',' + escapeHtml(JSON.stringify(rc)) + ',' + i + ')">' + escapeHtml(asText(v.annee)) + '</button>'
+  ).join('');
+
+  const otherLine = versions.length > 1
+    ? '<div class="regime-version-row"><span class="k">Années de référence</span>' + otherButtons + '</div>'
+    : '';
+
+  const field = (label, value, key) => (
+    '<div class="k">' + escapeHtml(label) + '</div>' +
+    '<div class="v' + (varied.has(key) ? ' varied' : '') + '">' + escapeHtml(asText(value)) + '</div>'
+  );
+
+  return (
+    '<div class="regime-card" data-inst="' + escapeHtml(inst) + '" data-rc="' + escapeHtml(rc) + '" data-active-index="' + idx + '">' +
+      '<p class="regime-card-title">' +
+        '<span>' + escapeHtml(meta.nom_regime || rc) + '</span>' +
+        '<span class="regime-year-chip">' + escapeHtml(asText(meta.annee)) + '</span>' +
+      '</p>' +
+      '<div class="regime-grid">' +
+        field('Institution', inst, 'institution') +
+        field('Code régime', rc, 'regime_code') +
+        field('Type de financement', meta.type_financement, 'type_financement') +
+        field('Type d'assurance', meta.type_assurance, 'type_assurance') +
+        field('Gestion', meta.gestion, 'gestion') +
+        field('Caractère', meta.caractere, 'caractere') +
+        field('Fonctions couvertes', fonctions, 'fonctions_oit') +
+      '</div>' +
+      otherLine +
+    '</div>'
+  );
+}
+
+// Test
+try {
+  const html = makeRegimeCard("CNSS", "R1", 0);
+  document.getElementById('output').innerHTML = html;
+  console.log("✅ Test réussi !");
+} catch (e) {
+  document.getElementById('output').innerHTML = '<pre style="color: red;">❌ Erreur: ' + e.message + '\n' + e.stack + '</pre>';
+  console.error("❌ Test échoué:", e);
+}
+</script>
+</body>
+</html>

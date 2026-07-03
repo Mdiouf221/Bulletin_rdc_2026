@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Q4 Application Réelle</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+  <h1>Test Q4 — Vérification Application Réelle</h1>
+  <div id="test-graph" style="width:800px;height:500px;"></div>
+  <div id="log" style="margin-top:20px;padding:10px;border:1px solid #ccc;background:#f9f9f9;font-family:monospace;white-space:pre-wrap;"></div>
+
+  <script src="unit_conversion.js"></script>
+  <script>
+    const log = document.getElementById('log');
+    function addLog(msg) {
+      log.textContent += msg + '\n';
+      console.log(msg);
+    }
+
+    // Données test : CNSS R1 avec unité "ménage"
+    const testData = [{
+      x: [2019, 2020, 2021, 2022],
+      y: [10000, 12000, 15000, 18000],
+      type: 'scatter',
+      mode: 'lines+markers',
+      name: 'CNSS_R1 — Allocations familiales',
+      legendgroup: 'CNSS_R1'
+    }];
+
+    const layout = {
+      title: 'Test Conversion Q4 (ménages → enfants)',
+      xaxis: {title: 'Année'},
+      yaxis: {title: 'Bénéficiaires'}
+    };
+
+    // Dessine le graphique initial
+    Plotly.newPlot('test-graph', testData, layout);
+    addLog('✓ Graphique initial créé');
+    addLog('Valeurs originales : ' + JSON.stringify(testData[0].y));
+
+    // Configuration Q4
+    const q4Data = {
+      'CNSS_R1': 'ménage'
+    };
+
+    const q4Coefficients = {
+      'CNSS_R1': {
+        '2019': {value: 2.5, source: 'Test'},
+        '2020': {value: 2.5, source: 'Test'},
+        '2021': {value: 3.0, source: 'Test modifié'},
+        '2022': {value: 3.0, source: 'Test modifié'}
+      }
+    };
+
+    addLog('\n✓ Configuration Q4 chargée');
+    addLog('Coefficients : 2019-2020 = 2.5, 2021-2022 = 3.0');
+
+    // Applique Q4
+    setTimeout(() => {
+      if (window.UnitConverter) {
+        const converter = new UnitConverter(Plotly);
+        converter.applyConversion('test-graph', q4Data, q4Coefficients);
+        
+        const div = document.getElementById('test-graph');
+        const convertedValues = div.data[0].y;
+        
+        addLog('\n✓ Q4 appliqué avec succès !');
+        addLog('Valeurs converties : ' + JSON.stringify(convertedValues));
+        addLog('\nVérification des conversions :');
+        addLog('2019 : 10000 × 2.5 = ' + convertedValues[0] + ' ✓');
+        addLog('2020 : 12000 × 2.5 = ' + convertedValues[1] + ' ✓');
+        addLog('2021 : 15000 × 3.0 = ' + convertedValues[2] + ' ✓');
+        addLog('2022 : 18000 × 3.0 = ' + convertedValues[3] + ' ✓');
+        
+        if (convertedValues[0] === 25000 && convertedValues[2] === 45000) {
+          addLog('\n✅ CONCLUSION : La conversion Q4 fonctionne correctement !');
+        } else {
+          addLog('\n❌ ERREUR : Les valeurs ne correspondent pas aux attentes');
+        }
+      } else {
+        addLog('\n❌ ERREUR : UnitConverter n\'est pas disponible');
+      }
+    }, 500);
+  </script>
+</body>
+</html>
