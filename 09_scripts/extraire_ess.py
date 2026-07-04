@@ -1116,17 +1116,30 @@ def _extract_fonctions_oit(row):
 def _detect_unite_monetaire(ws):
     """
     Détecte l'unité monétaire utilisée dans l'inventaire.
-    CNSSAP utilise 'Milliards CDF', CNSS utilise 'CDF'.
-    Lit la cellule à la position (ligne 5, col 33) dans la feuille inventaire.
+    Lit les cellules AG5:AI5 (colonnes 32-34 en index 0-based) pour détecter
+    l'unité déclarée : Milliards, Millions, Milliers, ou CDF.
+    
+    Retourne (nom_unite, facteur_conversion_vers_CDF).
     """
     try:
         rows = list(ws.iter_rows(min_row=5, max_row=5, values_only=True))
         if rows:
-            val = to_str(_get_cell(rows[0], 32))
-            if val and 'illiard' in val:
-                return 'Milliards_CDF', 1e9
+            # Vérifier les 3 colonnes financières : dépenses totales, dépenses admin, recettes
+            for col_idx in [32, 33, 34]:  # AG, AH, AI en index 0-based
+                val = to_str(_get_cell(rows[0], col_idx))
+                if not val:
+                    continue
+                val_lower = val.lower()
+                # Détecter l'unité dans l'ordre décroissant
+                if 'illiard' in val_lower:  # Milliards
+                    return 'Milliards_CDF', 1e9
+                if 'illion' in val_lower:   # Millions
+                    return 'Millions_CDF', 1e6
+                if 'illier' in val_lower:   # Milliers
+                    return 'Milliers_CDF', 1e3
     except Exception:
         pass
+    # Par défaut : CDF brut (facteur 1.0)
     return 'CDF', 1.0
 
 

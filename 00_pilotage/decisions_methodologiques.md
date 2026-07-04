@@ -183,6 +183,83 @@ Cette règle s'applique à tout paramètre exogène entrant dans le calcul des i
 **Impact :** tous les indicateurs, tous les tableaux, outils de calcul
 **Référence :** `matrice_couverture_regimes.md`, `indicateurs_odd_regles_calcul.md`
 
+### DM-014 — Indicateur 2.5 AT/MP : force de travail (labour force 15+) comme dénominateur
+
+**Principe :**
+Le sous-indicateur ODD 1.3.1 2.5 (protection contre les accidents du travail et maladies professionnelles) utilise la **force de travail (labour force 15+)** comme dénominateur. Cela correspond exactement à la définition ILOSTAT/SDG qui mesure la « *Labour force covered in the event of work injury* ».
+
+**Définition OIT confirmée :**
+Les données ILOSTAT SDG_0131_SEX_SOC_RT_A pour la RDC (2022) portent explicitement le libellé : « Function: Labour force covered in the event of work injury » → 1,8 %. La force de travail (labour force) = personnes en emploi + chômeurs (définition BIT).
+
+**Calcul du dénominateur :**
+- Force de travail = Population 15+ × Taux de participation à la force de travail
+- Taux de participation RDC = **63,44 %** (ILOSTAT, enquête MICS 2020, stable depuis 2016)
+- Population 15+ = Population totale − Population 0-14 ans (WPP)
+
+**Vérification croisée (2022) :**
+- Cotisants CNSS AT/MP : 613 761
+- Force de travail calculée : 35 005 912 (Pop 15+ 55,2M × 63,44 %)
+- Notre taux : 613 761 / 35 005 912 = **1,75 %**
+- Taux OIT publié : **1,8 %** (concordance à l'arrondi près, l'OIT utilise ~34M)
+
+**Sources de données :**
+- Population 15+ : BM/WPP (dérivée de pop totale − pop 0-14)
+- Taux de participation : ILOSTAT EAP_DWAP_SEX_AGE_RT_A (63,44 % MICS 2020)
+- Cotisants AT/MP (numérateur) : CNSS ESS Régime 2 + CNSSAP ESS Régime AT/MP (à partir 2023)
+
+**Statut :** actée (2026-07-04, révisée 2026-07-05)
+**Impact :** sous-indicateur ODD 2.5 AT/MP, tous les tableaux de couverture professionnelle, chapitre 3, chapitre 4
+**Référence :** `indicateurs_odd_regles_calcul.md` (section 5a), ILOSTAT SDG_0131_SEX_SOC_RT_A
+
+### DM-015 — Actualisation des données démographiques pré-chargées du Dashboard (juillet 2026)
+
+**Principe :**
+Les données démographiques pré-chargées dans le Dashboard (fichier `visualiser_regimes.py`, section `static_rows`) utilisaient une révision obsolète des données BM/WPP. Un audit réalisé le 2026-07-04 a mis en évidence des écarts significatifs avec les données actuelles des API officielles.
+
+**Écarts constatés (année 2022) :**
+
+| Champ | Ancienne valeur | Nouvelle valeur | Écart |
+|-------|----------------|-----------------|-------|
+| Population totale | 95 240 792 | 102 396 968 | +7,5 % |
+| Population active (15-64) | 54 832 901 | 52 040 020 | −5,1 % |
+| Population retraite (65+) | 2 067 543 | 3 139 539 | +51,8 % |
+| Population handicap (15%) | 14 286 119 | 15 359 545 | +7,5 % |
+| Naissances vivantes | 3 923 921 | 4 262 069 | +8,6 % |
+
+**Correction appliquée :**
+Les `static_rows` pour 2019-2022 ont été remplacées par les valeurs issues des API BM (SP.POP.TOTL, SP.POP.1564.TO, SP.POP.65UP.TO, SP.DYN.CBRT.IN) et WPP 2024 (PopulationPyramid.net), consultées le 2026-07-04.
+
+**Note sur la population enfants (0-14) :**
+Les valeurs WPP pour les 0-14 ans étaient déjà correctes et n'ont pas changé.
+
+**Note sur l'API OMS GHO :**
+L'API GHO de l'OMS ne contient aucun indicateur de prévalence du handicap par pays. La fonction `fetchWHO_DisabilityPrevalence()` dans le Dashboard est effectivement du code mort — elle tombe toujours en fallback 15 %. Le taux de 15 % est justifié par le Rapport mondial sur le handicap (OMS, 2011 : 15,6 % prévalence globale).
+
+**Statut :** actée (2026-07-04)
+**Impact :** tous les sous-indicateurs ODD 1.3.1, Dashboard onglet Indicateurs
+**Référence :** `visualiser_regimes.py` (section `static_rows`), API BM et WPP consultées le 2026-07-04
+
+### DM-016 — Indicateur 2.9 : dénominateur = population 15-64 (BM) et non force de travail (ILOSTAT)
+
+**Principe :**
+Le sous-indicateur ODD 1.3.1 2.9 (cotisants actifs aux régimes de retraite) utilise comme dénominateur la **population en âge de travailler (15-64 ans)** issue de la Banque mondiale (SP.POP.1564.TO), et non la **force de travail 15+** (labour force) d'ILOSTAT.
+
+**Justification :**
+- La définition OIT stricte utilise la force de travail (employed + unemployed), soit ~35 M pour la RDC.
+- La population 15-64 BM (~52 M en 2022) inclut aussi les personnes hors force de travail (étudiants, au foyer).
+- Le choix de la population 15-64 est **plus conservateur** : il produit un taux plus bas (1,56 % vs ~2,3 %).
+- Ce choix est documenté et transparent ; les deux valeurs peuvent être présentées en parallèle.
+
+**Impact sur les calculs (2022) :**
+- Cotisants CNSS R3 + CNSSAP R1 : 812 160
+- Pop 15-64 (BM) : 52 040 020 → **taux = 1,56 %**
+- Force de travail (ILOSTAT, estimation) : ~35 M → **taux ≈ 2,3 %**
+- Estimation OIT WSPR : ~6,4 % (méthode et périmètre différents)
+
+**Statut :** actée (2026-07-04)
+**Impact :** sous-indicateur ODD 2.9, chapitre 4
+**Référence :** `indicateurs_odd_regles_calcul.md`, `visualiser_regimes.py`
+
 ## Décisions en discussion
 
 _Aucune décision en discussion à ce stade._

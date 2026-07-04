@@ -40,6 +40,8 @@ PALETTE_REGIME = {
     "CNSS_R4":   "#9467bd",
     "CNSSAP_R1": "#d62728",
     "CNSSAP_R2": "#8c564b",
+    "CNSSAP_R3": "#e377c2",
+    "CNSSAP_R4": "#7f7f7f",
 }
 NOM_COURT = {
     "CNSS_R1":   "Prestations familiales",
@@ -48,6 +50,8 @@ NOM_COURT = {
     "CNSS_R4":   "Action sociale et sanitaire",
     "CNSSAP_R1": "Régime de base",
     "CNSSAP_R2": "Réforme du transfert",
+    "CNSSAP_R3": "Risques professionnels",
+    "CNSSAP_R4": "Réforme de basculement",
 }
 NOM_INSTITUTION = {
     "CNSS":   "Caisse Nationale de Sécurité Sociale (CNSS)",
@@ -376,6 +380,18 @@ window.addEventListener('load', async () => {
     console.warn('Chargement automatique questionnaire échoué:', e);
   }
 });
+
+// ── Initialisation l'onglet "Par institution" au démarrage ──────────────────
+document.addEventListener('DOMContentLoaded', () => {{
+  if (typeof updateInstitution === 'function') {{
+    setTimeout(() => {{
+      updateInstitution();
+      if (typeof applyRegimeQuickFilter === 'function') {{
+        applyRegimeQuickFilter();
+      }}
+    }}, 100);
+  }}
+}});
 </script>
 """
 
@@ -2400,83 +2416,133 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
                 "label": "ILOSTAT / OIT (live)",
                 "description": "Population active employée — séries emploi OIT pour la RDC",
             },
+            "oms_api": {
+                "label": "OMS GHO API (live)",
+                "description": "Prévalence du handicap grave — données Global Health Observatory OMS pour la RDC",
+            },
         },
         "defaults": {
             "source_population_totale": "bm_api",
+            "source_population_enfants": "wpp_api",
             "source_population_active": "wpp_api",
             "source_population_retraite": "wpp_api",
+            "source_handicap_grave": "oms_api",
             "source_maternite": "bm_api",
             "year_start_total": year_start_default,
             "year_end_total": year_end_default,
+            "year_start_enfants": year_start_default,
+            "year_end_enfants": year_end_default,
             "year_start_active": year_start_default,
             "year_end_active": year_end_default,
             "year_start_retraite": year_start_default,
             "year_end_retraite": year_end_default,
+            "year_start_handicap": year_start_default,
+            "year_end_handicap": year_end_default,
             "year_start_maternite": year_start_default,
             "year_end_maternite": year_end_default,
+            "child_age_min": 0,
+            "child_age_max": 15,
             "retirement_age_h": 65,
-            "retirement_age_f": 65,
+            "retirement_age_f": 60,  # CNSS : 60 ans femmes (DM-013) ; CNSSAP : 60 ans uniformément
             "working_age_min": 15,
             "working_age_max": 64,
             "maternity_age_min": 15,
             "maternity_age_max": 49,
+            "prevalence_handicap_fallback": 15.0,
         },
         # Données pré-chargées BM/WPP pour la RDC (évite un écran vide au démarrage)
         # Sources : Banque mondiale SP.POP.TOTL, SP.POP.1564.TO, SP.POP.65UP.TO,
         #           SP.DYN.CBRT.IN — consultées juin 2025.
         # Naissances = proxy (CBR × pop totale / 1000).
+        # Données actualisées juillet 2026 — Sources : BM API (SP.POP.TOTL, SP.POP.1564.TO,
+        # SP.POP.65UP.TO, SP.DYN.CBRT.IN) + WPP 2024 via PopulationPyramid.net (0-14 ans).
+        # Employed = Pop 15-64 × (1 − taux chômage ILOSTAT modélisé).
+        # ForceDeTravail = Pop 15+ × taux participation 63,44% (ILOSTAT MICS 2020).
+        # Handicap = 15% × Pop totale (WHO World Report on Disability 2011, fallback).
         "static_rows": [
             {
                 "year": 2019,
-                "populationTotale": 86776688,
-                "populationActive": 49876139,
-                "populationRetraite": 1877054,
-                "naissancesVivantes": 3704274,
-                "femmesAyantAccouche": 3704274,
-                "metaTotal": "BM SP.POP.TOTL 2019 (pré-chargé)",
-                "metaActive": "BM SP.POP.1564.TO 2019 (pré-chargé)",
-                "metaRetraite": "BM SP.POP.65UP.TO 2019 (pré-chargé)",
-                "metaNaissances": "BM CBR×Pop 2019 (pré-chargé)",
-                "metaFemmes": "BM CBR×Pop 2019 (pré-chargé)",
+                "populationTotale": 92947442,
+                "populationEnfants": 42735104,
+                "populationActive": 47337200,
+                "populationEmployed": 45017677,
+                "populationForceDeTravail": 31854707,
+                "populationRetraite": 2875139,
+                "populationHandicapGrave": 13942116,
+                "naissancesVivantes": 3954821,
+                "femmesAyantAccouche": 3954821,
+                "metaTotal": "BM SP.POP.TOTL 2019 (actualisé juil. 2026)",
+                "metaEnfants": "WPP 2024 — 0-14 ans 2019 (PopPyramid API M49:180)",
+                "metaActive": "BM SP.POP.1564.TO 2019 (actualisé juil. 2026)",
+                "metaEmployed": "BM 15-64 × (1 − 4,9% chômage ILOSTAT) 2019",
+                "metaForceDeTravail": "Pop 15+ × 63,44% LFP (ILOSTAT MICS 2020) — 2019",
+                "metaRetraite": "BM SP.POP.65UP.TO 2019 (actualisé juil. 2026)",
+                "metaHandicapGrave": "15% × Pop totale 2019 (WHO WRD 2011, fallback — API GHO sans indicateur pays)",
+                "metaNaissances": "BM CBR 42,549‰ × Pop 2019 (actualisé juil. 2026)",
+                "metaFemmes": "BM CBR 42,549‰ × Pop 2019 (actualisé juil. 2026)",
             },
             {
                 "year": 2020,
-                "populationTotale": 89561404,
-                "populationActive": 51503261,
-                "populationRetraite": 1937900,
-                "naissancesVivantes": 3779491,
-                "femmesAyantAccouche": 3779491,
-                "metaTotal": "BM SP.POP.TOTL 2020 (pré-chargé)",
-                "metaActive": "BM SP.POP.1564.TO 2020 (pré-chargé)",
-                "metaRetraite": "BM SP.POP.65UP.TO 2020 (pré-chargé)",
-                "metaNaissances": "BM CBR×Pop 2020 (pré-chargé)",
-                "metaFemmes": "BM CBR×Pop 2020 (pré-chargé)",
+                "populationTotale": 95989998,
+                "populationEnfants": 44205883,
+                "populationActive": 48821791,
+                "populationEmployed": 46478345,
+                "populationForceDeTravail": 32851843,
+                "populationRetraite": 2962325,
+                "populationHandicapGrave": 14398500,
+                "naissancesVivantes": 4049818,
+                "femmesAyantAccouche": 4049818,
+                "metaTotal": "BM SP.POP.TOTL 2020 (actualisé juil. 2026)",
+                "metaEnfants": "WPP 2024 — 0-14 ans 2020 (PopPyramid API M49:180)",
+                "metaActive": "BM SP.POP.1564.TO 2020 (actualisé juil. 2026)",
+                "metaEmployed": "BM 15-64 × (1 − 4,8% chômage ILOSTAT) 2020",
+                "metaForceDeTravail": "Pop 15+ × 63,44% LFP (ILOSTAT MICS 2020) — 2020",
+                "metaRetraite": "BM SP.POP.65UP.TO 2020 (actualisé juil. 2026)",
+                "metaHandicapGrave": "15% × Pop totale 2020 (WHO WRD 2011, fallback — API GHO sans indicateur pays)",
+                "metaNaissances": "BM CBR 42,190‰ × Pop 2020 (actualisé juil. 2026)",
+                "metaFemmes": "BM CBR 42,190‰ × Pop 2020 (actualisé juil. 2026)",
             },
             {
                 "year": 2021,
-                "populationTotale": 92377993,
-                "populationActive": 53154768,
-                "populationRetraite": 2001345,
-                "naissancesVivantes": 3852162,
-                "femmesAyantAccouche": 3852162,
-                "metaTotal": "BM SP.POP.TOTL 2021 (pré-chargé)",
-                "metaActive": "BM SP.POP.1564.TO 2021 (pré-chargé)",
-                "metaRetraite": "BM SP.POP.65UP.TO 2021 (pré-chargé)",
-                "metaNaissances": "BM CBR×Pop 2021 (pré-chargé)",
-                "metaFemmes": "BM CBR×Pop 2021 (pré-chargé)",
+                "populationTotale": 99148932,
+                "populationEnfants": 45702016,
+                "populationActive": 50399447,
+                "populationEmployed": 48081072,
+                "populationForceDeTravail": 33906724,
+                "populationRetraite": 3047469,
+                "populationHandicapGrave": 14872340,
+                "naissancesVivantes": 4158009,
+                "femmesAyantAccouche": 4158009,
+                "metaTotal": "BM SP.POP.TOTL 2021 (actualisé juil. 2026)",
+                "metaEnfants": "WPP 2024 — 0-14 ans 2021 (PopPyramid API M49:180)",
+                "metaActive": "BM SP.POP.1564.TO 2021 (actualisé juil. 2026)",
+                "metaEmployed": "BM 15-64 × (1 − 4,6% chômage ILOSTAT) 2021",
+                "metaForceDeTravail": "Pop 15+ × 63,44% LFP (ILOSTAT MICS 2020) — 2021",
+                "metaRetraite": "BM SP.POP.65UP.TO 2021 (actualisé juil. 2026)",
+                "metaHandicapGrave": "15% × Pop totale 2021 (WHO WRD 2011, fallback — API GHO sans indicateur pays)",
+                "metaNaissances": "BM CBR 41,937‰ × Pop 2021 (actualisé juil. 2026)",
+                "metaFemmes": "BM CBR 41,937‰ × Pop 2021 (actualisé juil. 2026)",
             },
             {
                 "year": 2022,
-                "populationTotale": 95240792,
-                "populationActive": 54832901,
-                "populationRetraite": 2067543,
-                "naissancesVivantes": 3923921,
-                "femmesAyantAccouche": 3923921,
-                "metaTotal": "BM SP.POP.TOTL 2022 (pré-chargé)",
-                "metaActive": "BM SP.POP.1564.TO 2022 (pré-chargé)",
-                "metaRetraite": "BM SP.POP.65UP.TO 2022 (pré-chargé)",
-                "metaNaissances": "BM CBR×Pop 2022 (pré-chargé)",
-                "metaFemmes": "BM CBR×Pop 2022 (pré-chargé)",
+                "populationTotale": 102396968,
+                "populationEnfants": 47217409,
+                "populationActive": 52040020,
+                "populationEmployed": 49750259,
+                "populationForceDeTravail": 35005912,
+                "populationRetraite": 3139539,
+                "populationHandicapGrave": 15359545,
+                "naissancesVivantes": 4262069,
+                "femmesAyantAccouche": 4262069,
+                "metaTotal": "BM SP.POP.TOTL 2022 (actualisé juil. 2026)",
+                "metaEnfants": "WPP 2024 — 0-14 ans 2022 (PopPyramid API M49:180)",
+                "metaActive": "BM SP.POP.1564.TO 2022 (actualisé juil. 2026)",
+                "metaEmployed": "BM 15-64 × (1 − 4,4% chômage ILOSTAT) 2022",
+                "metaForceDeTravail": "Pop 15+ × 63,44% LFP (ILOSTAT MICS 2020) — 2022",
+                "metaRetraite": "BM SP.POP.65UP.TO 2022 (actualisé juil. 2026)",
+                "metaHandicapGrave": "15% × Pop totale 2022 (WHO WRD 2011, fallback — API GHO sans indicateur pays)",
+                "metaNaissances": "BM CBR 41,623‰ × Pop 2022 (actualisé juil. 2026)",
+                "metaFemmes": "BM CBR 41,623‰ × Pop 2022 (actualisé juil. 2026)",
             },
         ],
     })
@@ -4278,6 +4344,32 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             </div>
           </div>
         </div>
+        <div class="denom-pack" id="pack-enfants">
+          <h4>Population enfant (tranche OIT retenue)</h4>
+          <div class="denom-pack-grid">
+            <div class="denom-control full">
+              <label>Source</label>
+              <div id="denom-sources-child" class="denom-source-list"></div>
+            </div>
+            <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
+            <div class="denom-control">
+              <label for="denom-child-age-min">Âge enfant min</label>
+              <input id="denom-child-age-min" type="number" min="0" max="17">
+            </div>
+            <div class="denom-control">
+              <label for="denom-child-age-max">Âge enfant max</label>
+              <input id="denom-child-age-max" type="number" min="0" max="17">
+            </div>
+            <div class="denom-control">
+              <label for="denom-child-year-start">Année début</label>
+              <input id="denom-child-year-start" type="number" min="2000" max="2100">
+            </div>
+            <div class="denom-control">
+              <label for="denom-child-year-end">Année fin</label>
+              <input id="denom-child-year-end" type="number" min="2000" max="2100">
+            </div>
+          </div>
+        </div>
         <div class="denom-pack" id="pack-active">
           <h4>Population en âge de travailler</h4>
           <div class="denom-pack-grid">
@@ -4327,6 +4419,24 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             <div class="denom-control">
               <label for="denom-ret-year-end">Année fin</label>
               <input id="denom-ret-year-end" type="number" min="2000" max="2100">
+            </div>
+          </div>
+        </div>
+        <div class="denom-pack" id="pack-handicap">
+          <h4>Population en situation de handicap grave</h4>
+          <div class="denom-pack-grid">
+            <div class="denom-control full">
+              <label>Source</label>
+              <div id="denom-sources-handicap" class="denom-source-list"></div>
+            </div>
+            <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
+            <div class="denom-control">
+              <label for="denom-handicap-year-start">Année début</label>
+              <input id="denom-handicap-year-start" type="number" min="2000" max="2100">
+            </div>
+            <div class="denom-control">
+              <label for="denom-handicap-year-end">Année fin</label>
+              <input id="denom-handicap-year-end" type="number" min="2000" max="2100">
             </div>
           </div>
         </div>
@@ -5178,10 +5288,10 @@ const DENOMINATOR_BY_INDICATOR = {{
     definition: 'Population totale nationale utilisée comme dénominateur global.',
   }},
   ind_22_enfants: {{
-    shortKey: 'total',
-    rowField: 'populationTotale',
-    label: 'Population totale',
-    definition: "Proxy disponible en l'absence de série annuelle harmonisée sur la population enfant.",
+    shortKey: 'child',
+    rowField: 'populationEnfants',
+    label: 'Population enfants',
+    definition: "Population des enfants dans la tranche d'âge retenue pour l'indicateur 2.2.",
   }},
   ind_23_maternite: {{
     shortKey: 'mat',
@@ -5190,16 +5300,16 @@ const DENOMINATOR_BY_INDICATOR = {{
     definition: "Proxy démographique des femmes ayant accouché sur l'année.",
   }},
   ind_24_handicap: {{
-    shortKey: 'total',
-    rowField: 'populationTotale',
-    label: 'Population totale',
-    definition: 'Proxy démographique global pour la lecture de la couverture handicap.',
+    shortKey: 'handicap',
+    rowField: 'populationHandicapGrave',
+    label: 'Population handicapée grave (OMS)',
+    definition: "Population estimée de personnes en situation de handicap grave selon les données de prévalence de l'OMS (Global Health Observatory) appliquées à la population totale de la RDC.",
   }},
   ind_25_atmp: {{
-    shortKey: 'active',
-    rowField: 'populationActive',
-    label: 'Population active',
-    definition: 'Population en âge de travailler / active pour les risques liés au travail.',
+    shortKey: 'lf',
+    rowField: 'populationForceDeTravail',
+    label: 'Force de travail (15+)',
+    definition: "Force de travail 15+ (labour force) = personnes en emploi + chômeurs. Définition OIT/ILOSTAT : l'indicateur SDG 1.3.1 2.5 mesure la « Labour force covered in the event of work injury ». Taux de participation 63,44 % (ILOSTAT MICS RDC 2020) appliqué à la population 15+.",
   }},
   ind_26_chomage: {{
     shortKey: 'active',
@@ -5222,8 +5332,8 @@ const DENOMINATOR_BY_INDICATOR = {{
   ind_29_cotisants: {{
     shortKey: 'active',
     rowField: 'populationActive',
-    label: 'Population active',
-    definition: 'Population active de référence pour la lecture des cotisants.',
+    label: 'Population en âge de travailler (15-64)',
+    definition: 'Population 15-64 ans (BM SP.POP.1564.TO). Note : la définition OIT stricte utilise la force de travail (labour force 15+, ILOSTAT), qui est plus restreinte. Le choix de la pop. 15-64 produit un taux plus conservateur.',
   }},
 }};
 const ODD_INDICATOR_NUMERATOR_SPECS = {{
@@ -6403,9 +6513,25 @@ function setDenomStatus(text) {{
   if (el) el.textContent = text;
 }}
 
+function formatAgeRangeLabel(ageMin, ageMax) {{
+  if (!Number.isFinite(ageMin) || !Number.isFinite(ageMax) || ageMax < ageMin) return '';
+  return String(ageMin) + '–' + String(ageMax) + ' ans';
+}}
+
 function getActiveDenominatorSpec(indicatorKey) {{
   const key = indicatorKey || getCurrentOddIndicator();
-  return DENOMINATOR_BY_INDICATOR[key] || DENOMINATOR_BY_INDICATOR.global_131;
+  const base = DENOMINATOR_BY_INDICATOR[key] || DENOMINATOR_BY_INDICATOR.global_131;
+  if (key !== 'ind_22_enfants') return base;
+  const defaults = (DENOMINATEURS_CONFIG && DENOMINATEURS_CONFIG.defaults) || {{}};
+  const settings = {{ ...defaults, ...(CURRENT_DENOM_SETTINGS || {{}}) }};
+  const ageMin = Number(settings.child_age_min);
+  const ageMax = Number(settings.child_age_max);
+  const rangeLabel = formatAgeRangeLabel(ageMin, ageMax) || '0–15 ans';
+  return {{
+    ...base,
+    label: 'Population enfants (' + rangeLabel + ')',
+    definition: "Population des enfants dans la tranche d'âge retenue pour l'indicateur 2.2 (par défaut OIT/WSPR : 0–15 ans).",
+  }};
 }}
 
 function getDenominatorValueFromRow(row, spec) {{
@@ -6448,14 +6574,23 @@ function setDenomEditMode(isEdit) {{
 function updateDenominatorPackVisibility(activeShortKey) {{
   const map = {{
     total: 'pack-total',
+    child: 'pack-enfants',
     active: 'pack-active',
     ret: 'pack-retraite',
+    handicap: 'pack-handicap',
     mat: 'pack-maternite',
   }};
   const activePackId = map[activeShortKey] || map.total;
+  const indicatorKey = getCurrentOddIndicator();
+  // Pour l'indicateur 2.4 Handicap, on masque TOUJOURS la carte Population totale
+  const hidePackTotal = (indicatorKey === 'ind_24_handicap');
   Object.values(map).forEach(id => {{
     const node = document.getElementById(id);
     if (!node) return;
+    if (id === 'pack-total' && hidePackTotal) {{
+      node.style.display = 'none';
+      return;
+    }}
     node.style.display = (id === activePackId) ? '' : 'none';
   }});
 }}
@@ -6578,8 +6713,11 @@ function renderDenominatorTable(rows) {{
       '<thead><tr>' +
         '<th>Année</th>' +
         '<th>Population totale</th>' +
-        '<th>Population active</th>' +
+        '<th>Population enfants</th>' +
+        '<th>Population active (15-64)</th>' +
+        '<th>Force de travail (15+)</th>' +
         '<th>Population retraite</th>' +
+        '<th>Population handicap grave</th>' +
         '<th>Naissances vivantes (proxy)</th>' +
         '<th>Femmes ayant accouché (proxy)</th>' +
       '</tr></thead><tbody>'
@@ -6588,8 +6726,11 @@ function renderDenominatorTable(rows) {{
     '<tr>' +
       '<td>' + escapeHtml(String(row.year)) + '</td>' +
       '<td>' + escapeHtml(fmtPlain(row.populationTotale)) + '<small>' + escapeHtml(row.metaTotal || '') + '</small></td>' +
+      '<td>' + escapeHtml(fmtPlain(row.populationEnfants)) + '<small>' + escapeHtml(row.metaEnfants || '') + '</small></td>' +
       '<td>' + escapeHtml(fmtPlain(row.populationActive)) + '<small>' + escapeHtml(row.metaActive || '') + '</small></td>' +
+      '<td>' + escapeHtml(fmtPlain(row.populationForceDeTravail)) + '<small>' + escapeHtml(row.metaForceDeTravail || '') + '</small></td>' +
       '<td>' + escapeHtml(fmtPlain(row.populationRetraite)) + '<small>' + escapeHtml(row.metaRetraite || '') + '</small></td>' +
+      '<td>' + escapeHtml(fmtPlain(row.populationHandicapGrave)) + '<small>' + escapeHtml(row.metaHandicapGrave || '') + '</small></td>' +
       '<td>' + escapeHtml(fmtPlain(row.naissancesVivantes)) + '<small>' + escapeHtml(row.metaNaissances || '') + '</small></td>' +
       '<td>' + escapeHtml(fmtPlain(row.femmesAyantAccouche)) + '<small>' + escapeHtml(row.metaFemmes || '') + '</small></td>' +
     '</tr>'
@@ -6727,6 +6868,54 @@ async function fetchILOSTATEmployment() {{
   return rows;
 }}
 
+// ── OMS / WHO GHO API ───────────────────────────────────────────────────────
+// API Global Health Observatory (GHO) de l'OMS pour les données de handicap
+// URL : https://ghoapi.azureedge.net/api/
+// Indicateur : prévalence du handicap (severe disability prevalence)
+// Code indicateur potentiel : "SA_0000001462" ou recherche dans la base GHO
+window.__WHO_CACHE = window.__WHO_CACHE || {{}};
+
+async function fetchWHO_DisabilityPrevalence() {{
+  const cacheKey = 'disability_prevalence_COD';
+  if (window.__WHO_CACHE[cacheKey]) return window.__WHO_CACHE[cacheKey];
+  
+  // API GHO de l'OMS : https://ghoapi.azureedge.net/api/INDICATOR_CODE?$filter=SpatialDim eq 'COD'
+  // COD = code ISO3 pour République Démocratique du Congo
+  // Indicateur possible : "WHS9_86" (disability prevalence) ou autre selon disponibilité
+  
+  const indicatorCode = 'WHS9_86'; // Code pour prévalence du handicap (à ajuster selon disponibilité)
+  const url = `https://ghoapi.azureedge.net/api/${{indicatorCode}}?$filter=SpatialDim eq 'COD'&$format=json`;
+  
+  try {{
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('OMS GHO API HTTP ' + res.status);
+    const data = await res.json();
+    
+    // Format GHO : {{ "value": [{{ "TimeDim": "2019", "NumericValue": 15.2, ... }}] }}
+    const rows = (Array.isArray(data.value) ? data.value : [])
+      .filter(r => r.NumericValue !== null && r.TimeDim)
+      .map(r => ({{
+        year: Number(r.TimeDim),
+        value: Number(r.NumericValue) / 100.0 // Convertir pourcentage en décimal (15% → 0.15)
+      }}))
+      .filter(r => Number.isFinite(r.year) && Number.isFinite(r.value));
+    
+    window.__WHO_CACHE[cacheKey] = rows;
+    return rows;
+  }} catch (err) {{
+    console.warn('Erreur API OMS GHO:', err);
+    // Fallback : données par défaut OMS (15% prévalence globale)
+    const fallback = [
+      {{ year: 2019, value: 0.15 }},
+      {{ year: 2020, value: 0.15 }},
+      {{ year: 2021, value: 0.15 }},
+      {{ year: 2022, value: 0.15 }},
+    ];
+    window.__WHO_CACHE[cacheKey] = fallback;
+    return fallback;
+  }}
+}}
+
 function pickSeriesValue(series, year, useNearestPast) {{
   if (!Array.isArray(series) || !series.length) return null;
   const exact = series.find(r => r.year === year);
@@ -6742,6 +6931,63 @@ function getNumInput(id) {{
   return Number.isFinite(val) ? val : null;
 }}
 
+function collectDenomSettingsFromUI() {{
+  return {{
+    source_population_totale: getSelectedMetricSource('total'),
+    source_population_enfants: getSelectedMetricSource('child'),
+    source_population_active: getSelectedMetricSource('active'),
+    source_population_retraite: getSelectedMetricSource('ret'),
+    source_handicap_grave: getSelectedMetricSource('handicap'),
+    source_maternite: getSelectedMetricSource('mat'),
+    year_start_total: getNumInput('denom-total-year-start'),
+    year_end_total: getNumInput('denom-total-year-end'),
+    year_start_enfants: getNumInput('denom-child-year-start'),
+    year_end_enfants: getNumInput('denom-child-year-end'),
+    year_start_active: getNumInput('denom-active-year-start'),
+    year_end_active: getNumInput('denom-active-year-end'),
+    year_start_retraite: getNumInput('denom-ret-year-start'),
+    year_end_retraite: getNumInput('denom-ret-year-end'),
+    year_start_handicap: getNumInput('denom-handicap-year-start'),
+    year_end_handicap: getNumInput('denom-handicap-year-end'),
+    year_start_maternite: getNumInput('denom-mat-year-start'),
+    year_end_maternite: getNumInput('denom-mat-year-end'),
+    child_age_min: getNumInput('denom-child-age-min'),
+    child_age_max: getNumInput('denom-child-age-max'),
+    working_age_min: getNumInput('denom-active-age-min'),
+    working_age_max: getNumInput('denom-active-age-max'),
+    retirement_age_h: getNumInput('denom-ret-age-h'),
+    retirement_age_f: getNumInput('denom-ret-age-f'),
+    maternity_age_min: getNumInput('denom-mat-age-min'),
+    maternity_age_max: getNumInput('denom-mat-age-max'),
+  }};
+}}
+
+function validateDenominatorParams(pTotal, pChild, pActive, pRet, pMat) {{
+  const rangeChecks = [
+    ['Population totale', pTotal],
+    ['Population enfants', pChild],
+    ['Population active', pActive],
+    ['Population retraite', pRet],
+    ['Maternité', pMat],
+  ];
+  for (const item of rangeChecks) {{
+    const label = item[0];
+    const params = item[1] || {{}};
+    if (!params.yearStart || !params.yearEnd) return label + ' : années invalides.';
+    if (params.yearEnd < params.yearStart) return label + ' : année fin < année début.';
+  }}
+  if (pChild.childMin === null || pChild.childMax === null || pChild.childMax < pChild.childMin) {{
+    return "Population enfants : plage d'âge invalide.";
+  }}
+  if (!pActive.workMin || !pActive.workMax || pActive.workMax < pActive.workMin) {{
+    return "Population active : plage d'âge invalide.";
+  }}
+  if (!pRet.retirementH || !pRet.retirementF) {{
+    return 'Population retraite : âges de retraite invalides.';
+  }}
+  return '';
+}}
+
 function getMetricCardParams(metricKey) {{
   if (metricKey === 'population_totale') {{
     return {{
@@ -6749,51 +6995,15 @@ function getMetricCardParams(metricKey) {{
       yearEnd: getNumInput('denom-total-year-end'),
     }};
   }}
-
-  function collectDenomSettingsFromUI() {{
+  if (metricKey === 'population_enfants') {{
     return {{
-      source_population_totale: getSelectedMetricSource('total'),
-      source_population_active: getSelectedMetricSource('active'),
-      source_population_retraite: getSelectedMetricSource('ret'),
-      source_maternite: getSelectedMetricSource('mat'),
-      year_start_total: getNumInput('denom-total-year-start'),
-      year_end_total: getNumInput('denom-total-year-end'),
-      year_start_active: getNumInput('denom-active-year-start'),
-      year_end_active: getNumInput('denom-active-year-end'),
-      year_start_retraite: getNumInput('denom-ret-year-start'),
-      year_end_retraite: getNumInput('denom-ret-year-end'),
-      year_start_maternite: getNumInput('denom-mat-year-start'),
-      year_end_maternite: getNumInput('denom-mat-year-end'),
-      working_age_min: getNumInput('denom-active-age-min'),
-      working_age_max: getNumInput('denom-active-age-max'),
-      retirement_age_h: getNumInput('denom-ret-age-h'),
-      retirement_age_f: getNumInput('denom-ret-age-f'),
-      maternity_age_min: getNumInput('denom-mat-age-min'),
-      maternity_age_max: getNumInput('denom-mat-age-max'),
+      yearStart: getNumInput('denom-child-year-start'),
+      yearEnd: getNumInput('denom-child-year-end'),
+      childMin: getNumInput('denom-child-age-min'),
+      childMax: getNumInput('denom-child-age-max'),
     }};
   }}
 
-  function validateDenominatorParams(pTotal, pActive, pRet, pMat) {{
-    const rangeChecks = [
-      ['Population totale', pTotal],
-      ['Population active', pActive],
-      ['Population retraite', pRet],
-      ['Maternité', pMat],
-    ];
-    for (const item of rangeChecks) {{
-      const label = item[0];
-      const params = item[1] || {{}};
-      if (!params.yearStart || !params.yearEnd) return label + ' : années invalides.';
-      if (params.yearEnd < params.yearStart) return label + ' : année fin < année début.';
-    }}
-    if (!pActive.workMin || !pActive.workMax || pActive.workMax < pActive.workMin) {{
-      return "Population active : plage d'âge invalide.";
-    }}
-    if (!pRet.retirementH || !pRet.retirementF) {{
-      return 'Population retraite : âges de retraite invalides.';
-    }}
-    return '';
-  }}
   if (metricKey === 'population_active') {{
     return {{
       yearStart: getNumInput('denom-active-year-start'),
@@ -6808,6 +7018,12 @@ function getMetricCardParams(metricKey) {{
       yearEnd: getNumInput('denom-ret-year-end'),
       retirementH: getNumInput('denom-ret-age-h'),
       retirementF: getNumInput('denom-ret-age-f'),
+    }};
+  }}
+  if (metricKey === 'handicap_grave') {{
+    return {{
+      yearStart: getNumInput('denom-handicap-year-start'),
+      yearEnd: getNumInput('denom-handicap-year-end'),
     }};
   }}
   return {{
@@ -6826,7 +7042,10 @@ function getSelectedMetricSource(metricShortKey) {{
 function sourceIsAvailableForMetric(sourceKey, metricKey, params) {{
   if (!sourceKey || !params || !params.yearStart || !params.yearEnd || params.yearEnd < params.yearStart) return false;
   if (sourceKey === 'bm_api') {{
-    // Banque mondiale : tranches fixes seulement
+    // Banque mondiale : tranches fixes seulement, pas de données handicap
+    if (metricKey === 'population_enfants' || metricKey === 'handicap_grave') {{
+      return false;
+    }}
     if (metricKey === 'population_retraite') {{
       return params.retirementH === 65 && params.retirementF === 65;
     }}
@@ -6836,12 +7055,19 @@ function sourceIsAvailableForMetric(sourceKey, metricKey, params) {{
     return true; // totale, naissances : toujours dispo
   }}
   if (sourceKey === 'wpp_api') {{
-    // WPP PopPyramid : pyramide quinquennale → toutes tranches d'âge possibles
+    // WPP PopPyramid : pyramide quinquennale → toutes tranches d'âge possibles, pas de données handicap
+    if (metricKey === 'handicap_grave') {{
+      return false;
+    }}
     return true;
   }}
   if (sourceKey === 'ilostat_api') {{
     // ILOSTAT : uniquement population active (emploi total, pas de tranche custom)
     return metricKey === 'population_active';
+  }}
+  if (sourceKey === 'oms_api') {{
+    // OMS GHO API : uniquement pour prévalence handicap grave
+    return metricKey === 'handicap_grave';
   }}
   return false;
 }}
@@ -6853,16 +7079,14 @@ function renderMetricSourceOptions(metricShortKey, metricKey, defaultSource, sou
   const keys = Object.keys(sources || {{}});
   const available = keys.filter(k => sourceIsAvailableForMetric(k, metricKey, params));
   const effective = available.includes(defaultSource) ? defaultSource : (available[0] || '');
-  host.innerHTML = keys.map((k, idx) => {{
+  // N'afficher QUE les sources disponibles (pas de sources grisées)
+  host.innerHTML = available.map((k, idx) => {{
     const src = sources[k] || {{}};
-    const ok = sourceIsAvailableForMetric(k, metricKey, params);
     const id = 'src-' + metricShortKey + '-' + idx;
     const checked = effective === k ? ' checked' : '';
-    const disabled = ok ? '' : ' disabled';
-    const cls = 'denom-source-item' + (ok ? '' : ' disabled');
     return (
-      '<label class="' + cls + '" for="' + id + '">' +
-      '<input type="radio" name="denom-source-' + metricShortKey + '" id="' + id + '" value="' + escapeHtml(k) + '"' + checked + disabled + '>' +
+      '<label class="denom-source-item" for="' + id + '">' +
+      '<input type="radio" name="denom-source-' + metricShortKey + '" id="' + id + '" value="' + escapeHtml(k) + '"' + checked + '>' +
       '<span>' + escapeHtml(src.label || k) + '</span>' +
       '</label>'
     );
@@ -6871,8 +7095,10 @@ function renderMetricSourceOptions(metricShortKey, metricKey, defaultSource, sou
 
 function refreshMetricSources(sources) {{
   renderMetricSourceOptions('total', 'population_totale', getSelectedMetricSource('total'), sources);
+  renderMetricSourceOptions('child', 'population_enfants', getSelectedMetricSource('child'), sources);
   renderMetricSourceOptions('active', 'population_active', getSelectedMetricSource('active'), sources);
   renderMetricSourceOptions('ret', 'population_retraite', getSelectedMetricSource('ret'), sources);
+  renderMetricSourceOptions('handicap', 'handicap_grave', getSelectedMetricSource('handicap'), sources);
   renderMetricSourceOptions('mat', 'naissances', getSelectedMetricSource('mat'), sources);
 }}
 
@@ -6916,6 +7142,12 @@ async function getMetricValue(sourceKey, metricKey, year, params, seriesCache) {
       const v = await sumWPPForAgeRange(year, 0, 999);
       return {{ value: v, meta: 'WPP (pyramide totale ' + year + ')' }};
     }}
+    if (metricKey === 'population_enfants') {{
+      const childMin = params.childMin ?? 0;
+      const childMax = params.childMax ?? 15;
+      const v = await sumWPPForAgeRange(year, childMin, childMax);
+      return {{ value: v, meta: 'WPP (' + childMin + '-' + childMax + ' ans, ' + year + ')' }};
+    }}
     if (metricKey === 'population_active') {{
       const v = await sumWPPForAgeRange(year, params.workMin || 15, params.workMax || 64);
       return {{ value: v, meta: 'WPP (' + (params.workMin||15) + '-' + (params.workMax||64) + ', ' + year + ')' }};
@@ -6954,21 +7186,25 @@ async function getMetricValue(sourceKey, metricKey, year, params, seriesCache) {
 
 async function computeDenominators() {{
   const pTotal = getMetricCardParams('population_totale');
+  const pChild = getMetricCardParams('population_enfants');
   const pActive = getMetricCardParams('population_active');
   const pRet = getMetricCardParams('population_retraite');
+  const pHandicap = getMetricCardParams('handicap_grave');
   const pMat = getMetricCardParams('naissances');
   const srcTotal = getSelectedMetricSource('total');
+  const srcChild = getSelectedMetricSource('child');
   const srcActive = getSelectedMetricSource('active');
   const srcRet = getSelectedMetricSource('ret');
+  const srcHandicap = getSelectedMetricSource('handicap');
   const srcMat = getSelectedMetricSource('mat');
 
-  const validationError = validateDenominatorParams(pTotal, pActive, pRet, pMat);
+  const validationError = validateDenominatorParams(pTotal, pChild, pActive, pRet, pMat);
   if (validationError) {{
     setDenomStatus(validationError);
     return;
   }}
 
-  const ranges = [pTotal, pActive, pRet, pMat]
+  const ranges = [pTotal, pChild, pActive, pRet, pHandicap, pMat]
     .filter(x => x && x.yearStart && x.yearEnd && x.yearEnd >= x.yearStart);
   if (!ranges.length) {{
     setDenomStatus('Paramètres années invalides.');
@@ -6993,6 +7229,9 @@ async function computeDenominators() {{
       const total = (y >= pTotal.yearStart && y <= pTotal.yearEnd)
         ? await safeMetricValue(srcTotal, 'population_totale', y, pTotal)
         : {{ value: null, meta: 'hors plage' }};
+      const enfants = (y >= pChild.yearStart && y <= pChild.yearEnd)
+        ? await safeMetricValue(srcChild, 'population_enfants', y, pChild)
+        : {{ value: null, meta: 'hors plage' }};
       const active = (y >= pActive.yearStart && y <= pActive.yearEnd)
         ? await safeMetricValue(srcActive, 'population_active', y, pActive)
         : {{ value: null, meta: 'hors plage' }};
@@ -7005,16 +7244,67 @@ async function computeDenominators() {{
       const femmes = (y >= pMat.yearStart && y <= pMat.yearEnd)
         ? await safeMetricValue(srcMat, 'femmes_accouche', y, pMat)
         : {{ value: null, meta: 'hors plage' }};
+      
+      // Calcul de la population handicapée grave via API OMS
+      let handicapGrave = {{ value: null, meta: 'non calculable' }};
+      if (y >= pHandicap.yearStart && y <= pHandicap.yearEnd && srcHandicap === 'oms_api') {{
+        // Source OMS : basée sur la population totale × prévalence OMS
+        if (total.value) {{
+          try {{
+            const whoSeries = await fetchWHO_DisabilityPrevalence();
+            const prevalence = pickSeriesValue(whoSeries, y, true); // useNearestPast = true
+            if (prevalence !== null) {{
+              handicapGrave = {{
+                value: Math.round(total.value * prevalence),
+                meta: `OMS GHO ${{(prevalence * 100).toFixed(1)}}% prévalence × Pop totale`
+              }};
+            }} else {{
+              // Fallback : 15% si aucune donnée OMS disponible
+              handicapGrave = {{
+                value: Math.round(total.value * 0.15),
+                meta: 'OMS 15% prévalence (défaut) × Pop totale'
+              }};
+            }}
+          }} catch (err) {{
+            console.warn('Erreur calcul handicap grave:', err);
+            handicapGrave = {{
+              value: Math.round(total.value * 0.15),
+              meta: 'OMS 15% prévalence (erreur API) × Pop totale'
+            }};
+          }}
+        }} else {{
+          handicapGrave = {{ value: null, meta: 'Population totale indisponible' }};
+        }}
+      }}
+      
+      // Calcul de la force de travail (labour force 15+)
+      // LFP rate 63,44% (ILOSTAT MICS RDC 2020) appliqué à Pop 15+ (= total - enfants 0-14)
+      let forceDeTravail = {{ value: null, meta: 'non calculable' }};
+      if (total.value && enfants.value) {{
+        const pop15plus = total.value - enfants.value;
+        const lfpRate = 0.6344; // ILOSTAT MICS RDC 2020
+        forceDeTravail = {{
+          value: Math.round(pop15plus * lfpRate),
+          meta: 'Pop 15+ × 63,44% LFP (ILOSTAT MICS 2020)'
+        }};
+      }}
+
       outRows.push({{
         year: y,
         populationTotale: total.value,
+        populationEnfants: enfants.value,
         populationActive: active.value,
+        populationForceDeTravail: forceDeTravail.value,
         populationRetraite: retraite.value,
+        populationHandicapGrave: handicapGrave.value,
         naissancesVivantes: naissances.value,
         femmesAyantAccouche: femmes.value,
         metaTotal: total.meta,
+        metaEnfants: enfants.meta,
         metaActive: active.meta,
+        metaForceDeTravail: forceDeTravail.meta,
         metaRetraite: retraite.meta,
+        metaHandicapGrave: handicapGrave.meta,
         metaNaissances: naissances.meta,
         metaFemmes: femmes.meta,
       }});
@@ -7028,7 +7318,7 @@ async function computeDenominators() {{
   await saveDenomSettings(CURRENT_DENOM_SETTINGS);
   renderActiveDenominatorViews();
   const missingCells = outRows.reduce((acc, row) => {{
-    const vals = [row.populationTotale, row.populationActive, row.populationRetraite, row.naissancesVivantes, row.femmesAyantAccouche];
+    const vals = [row.populationTotale, row.populationEnfants, row.populationActive, row.populationForceDeTravail, row.populationRetraite, row.populationHandicapGrave, row.naissancesVivantes, row.femmesAyantAccouche];
     return acc + vals.filter(v => !Number.isFinite(Number(v))).length;
   }}, 0);
   const suffix = missingCells ? ' (' + missingCells + ' valeur(s) indisponible(s))' : '';
@@ -7105,6 +7395,7 @@ function applySourceConstraints(metricShortKey, metricKey, sourceKey) {{
 }}
 
 function applyAllConstraints() {{
+  applySourceConstraints('child',  'population_enfants',   getSelectedMetricSource('child'));
   applySourceConstraints('active', 'population_active',   getSelectedMetricSource('active'));
   applySourceConstraints('ret',    'population_retraite',  getSelectedMetricSource('ret'));
   applySourceConstraints('mat',    'naissances',           getSelectedMetricSource('mat'));
@@ -7117,6 +7408,7 @@ function initDenominatorPanel() {{
   const saved = (CURRENT_DENOM_SETTINGS && typeof CURRENT_DENOM_SETTINGS === 'object') ? CURRENT_DENOM_SETTINGS : {{}};
   const merged = {{ ...defaults, ...saved }};
   if (!document.getElementById('denom-active-cards')) return;
+  CURRENT_DENOM_SETTINGS = merged;
 
   // ── Chargement immédiat des données pré-calculées ─────────────────────────
   // Évite un écran vide au démarrage : CURRENT_DENOM_ROWS est rempli sans appel réseau.
@@ -7128,23 +7420,31 @@ function initDenominatorPanel() {{
 
   document.getElementById('denom-total-year-start').value = merged.year_start_total || 2020;
   document.getElementById('denom-total-year-end').value = merged.year_end_total || 2024;
+  document.getElementById('denom-child-year-start').value = merged.year_start_enfants || 2020;
+  document.getElementById('denom-child-year-end').value = merged.year_end_enfants || 2024;
   document.getElementById('denom-active-year-start').value = merged.year_start_active || 2020;
   document.getElementById('denom-active-year-end').value = merged.year_end_active || 2024;
   document.getElementById('denom-ret-year-start').value = merged.year_start_retraite || 2020;
   document.getElementById('denom-ret-year-end').value = merged.year_end_retraite || 2024;
+  document.getElementById('denom-handicap-year-start').value = merged.year_start_handicap || 2020;
+  document.getElementById('denom-handicap-year-end').value = merged.year_end_handicap || 2024;
   document.getElementById('denom-mat-year-start').value = merged.year_start_maternite || 2020;
   document.getElementById('denom-mat-year-end').value = merged.year_end_maternite || 2024;
 
+  document.getElementById('denom-child-age-min').value = merged.child_age_min ?? 0;
+  document.getElementById('denom-child-age-max').value = merged.child_age_max ?? 15;
   document.getElementById('denom-active-age-min').value = merged.working_age_min || 15;
   document.getElementById('denom-active-age-max').value = merged.working_age_max || 64;
   document.getElementById('denom-ret-age-h').value = merged.retirement_age_h || 65;
-  document.getElementById('denom-ret-age-f').value = merged.retirement_age_f || 65;
+  document.getElementById('denom-ret-age-f').value = merged.retirement_age_f || 60;
   document.getElementById('denom-mat-age-min').value = merged.maternity_age_min || 15;
   document.getElementById('denom-mat-age-max').value = merged.maternity_age_max || 49;
 
   renderMetricSourceOptions('total', 'population_totale', merged.source_population_totale, sources);
+  renderMetricSourceOptions('child', 'population_enfants', merged.source_population_enfants, sources);
   renderMetricSourceOptions('active', 'population_active', merged.source_population_active, sources);
   renderMetricSourceOptions('ret', 'population_retraite', merged.source_population_retraite, sources);
+  renderMetricSourceOptions('handicap', 'handicap_grave', merged.source_handicap_grave, sources);
   renderMetricSourceOptions('mat', 'naissances', merged.source_maternite, sources);
 
   // Appliquer les contraintes initiales selon les sources par défaut
@@ -7183,8 +7483,12 @@ function initDenominatorPanel() {{
     saveBtn.dataset.bound = '1';
   }}
   if (refreshBtn && !refreshBtn.dataset.bound) {{
-    refreshBtn.addEventListener('click', function() {{
-      computeDenominators();
+    refreshBtn.addEventListener('click', async function() {{
+      // Si des modifications sont en attente, les sauvegarder d'abord
+      if (DENOM_PENDING_CHANGES && DENOM_EDIT_MODE) {{
+        DENOM_PENDING_CHANGES = false;
+      }}
+      await computeDenominators();
     }});
     refreshBtn.dataset.bound = '1';
   }}

@@ -64,11 +64,11 @@ Ces niveaux s'appliquent à **tous les régimes**, contributifs et non contribut
 
 ### CNSS — Branche des risques professionnels (AT/MP)
 
-**Dénominateur ODD 1.3.1 :** Force de travail totale
+**Dénominateur ODD 1.3.1 :** Population totale (voir section 5a dans `indicateurs_odd_regles_calcul.md` pour le calcul à partir de la population en emploi)
 
 | Niveau | Description | 2019 | 2020 | 2021 | 2022 | 2023 | Source | Fiabilité |
 |--------|-------------|------|------|------|------|------|--------|-----------|
-| N1 | Force de travail RDC | N/D | ~19,5M | ~20M | ~20,5M | ~21M | ILOSTAT | Estimée |
+| N1 | Population en emploi RDC (calculée : population active × (1 - taux de chômage)) | N/D | ~18,6M | ~18,9M | ~19,3M | ~19,7M | ILOSTAT | Calculée |
 | N2 | Travailleurs couverts légalement AT/MP (secteurs public + privé selon loi) | N/D | N/D | N/D | N/D | N/D | Loi CNSS | Juridique |
 | N3 | N/D | N/D | N/D | N/D | N/D | N/D | — | — |
 | N4 | Cotisants actifs AT/MP | N/D | N/D | N/D | N/D | N/D | ESS CNSS | À extraire |

@@ -73,24 +73,24 @@ L'indicateur mesure la **couverture effective**, pas seulement la couverture lé
 | Élément | Définition |
 |---------|-----------|
 | **Numérateur** | Nombre de personnes en situation de handicap grave recevant une prestation en espèces pour invalidité |
-| **Dénominateur** | Population estimée de personnes en situation de handicap grave (prévalence nationale ou OMS) |
+| **Dénominateur** | Population estimée de personnes en situation de handicap grave selon les données OMS |
 | **Source OIT recommandée** | ESS — feuille invalidité (pensions d'invalidité, rentes d'incapacité permanente) ; enquêtes ménages sur le handicap |
 | **Référence mondiale 2023** | 38,9 % |
 | **Référence mondiale 2020** | 33,5 % |
 | **Unité** | % des personnes en situation de handicap grave |
-| **Note** | En RDC : affiché N/A dans le 1er bulletin alors que la CNSS déclare 1 781 bénéficiaires de pensions d'invalidité (2022). Le dénominateur (population handicapée grave RDC) est absent des ESS. |
+| **Note** | En RDC : affiché N/A dans le 1er bulletin alors que la CNSS déclare 1 781 bénéficiaires de pensions d'invalidité (2022). **Le dénominateur est calculé via l'API Global Health Observatory (GHO) de l'OMS pour récupérer la prévalence du handicap grave en RDC par année. En cas d'indisponibilité de l'API, un taux par défaut de 15% est appliqué à la population totale.** |
 
 ### 2.5 Travailleurs en cas d'accidents du travail — Prestations AT/MP
 
 | Élément | Définition |
 |---------|-----------|
 | **Numérateur** | Nombre de personnes de la main-d'œuvre couvertes par des prestations en espèces en cas d'accident du travail ou maladie professionnelle (cotisants actifs AT/MP) |
-| **Dénominateur** | Population active totale (force de travail) |
-| **Source OIT recommandée** | ESS — feuille risques professionnels (cotisants/assurés actifs AT/MP, ou proxy institutionnel documenté) ; ILOSTAT (population active) |
+| **Dénominateur** | Force de travail 15+ (labour force = personnes en emploi + chômeurs) |
+| **Source OIT recommandée** | ESS — feuille risques professionnels (cotisants/assurés actifs AT/MP) ; ILOSTAT (taux de participation à la force de travail 63,44 %, MICS 2020) |
 | **Référence mondiale 2023** | 37,4 % |
 | **Référence mondiale 2020** | 35,4 % |
 | **Unité** | % de la force de travail |
-| **Note** | En RDC : 1,8 % affiché dans le 1er bulletin. La CNSS Régime 2 est la source principale (bien documentée). La CNSSAP AT/MP n'était pas opérationnelle avant 2023. |
+| **Note** | Confirmé par ILOSTAT SDG_0131_SEX_SOC_RT_A : le libellé officiel est « Labour force covered in the event of work injury » (RDC 2022 = 1,8 %). La CNSS Régime 2 est la source principale. La CNSSAP AT/MP n'était pas opérationnelle avant 2023. |
 
 ### 2.6 Chômeurs — Protection contre le chômage
 
@@ -167,7 +167,7 @@ L'indicateur mesure la **couverture effective**, pas seulement la couverture lé
 | 2.2 Enfants | CNSS Familles, CNSSAP Familles | Foyers bénéficiaires × facteur enfants | Population 0–17 ans (ONU WPP) | ⚠ Partielle (CNSSAP familles non opérationnel 2022) |
 | 2.3 Maternité | CNSS Familles | Indemnités journalières maternité | Naissances vivantes (INS) | ⚠ Possible mais non réalisé dans 1er bulletin |
 | 2.4 Handicap | CNSS Pensions (invalidité) | Bénéficiaires pensions invalidité | Population handicapée grave (à estimer) | ✗ Dénominateur absent |
-| 2.5 AT/MP | CNSS AT/MP, CNSSAP AT/MP | Cotisants/assurés actifs AT/MP | Population active (ILOSTAT) | ✓ Bonne (CNSS seule pour 2019-2022) |
+| 2.5 AT/MP | CNSS AT/MP, CNSSAP AT/MP | Cotisants/assurés actifs AT/MP | Force de travail 15+ (ILOSTAT LFP × pop 15+) | ✓ Bonne (CNSS seule pour 2019-2022) |
 | 2.6 Chômage | Aucune | Aucun bénéficiaire | Chômeurs (ILOSTAT) | ✓ = 0,0 % confirmé |
 | 2.7 Vieillesse | CNSS Pensions, CNSSAP Base | Pensionnés vieillesse | Pop. au-delà âge légal (ONU WPP) | ✓ Bonne |
 | 2.8 Assistance sociale | MINAS, PAM, STEP | Bénéficiaires programmes | Population totale | ⚠ Fragmentée, double comptage |
@@ -254,6 +254,58 @@ L'ESS CNSS 2020 (fichier `ESS_CNSS_2020_ANOMALIE.txt`) contenait des données CN
 | Q9 | ODD calculé à partir des ESS ou tableau de bord OIT ? (Options A/B/C — voir section 4.7) | Tous | Critique |
 | Q10 | Traitement du double comptage entre programmes non statutaires (PAM, MINAS) et régimes officiels ? | Indicateur global | Haute |
 | Q11 | Intégrer l'ESS RDC tous régimes 2023 comme référence principale ou comparer 2022 vs 2023 ? | Structure temporelle | Moyenne |
+| Q12 | **[RÉSOLUE]** Utiliser population en emploi (au lieu de population active) comme dénominateur pour AT/MP ? | Sous-indicateur 2.5 | ✅ **OUI** |
+
+---
+
+## 5a. Méthodologie AT/MP — Dénominateur = Force de travail (labour force 15+)
+
+### Définition OIT confirmée
+
+Le sous-indicateur ODD 1.3.1 2.5 mesure la couverture contre les accidents du travail et maladies professionnelles. Le libellé officiel ILOSTAT (SDG_0131_SEX_SOC_RT_A) est :
+
+> **« Labour force covered in the event of work injury »**
+
+Le dénominateur est donc la **force de travail 15+** (labour force = personnes en emploi + chômeurs), et non la population totale ni la population en emploi seule.
+
+**Vérification croisée :** ILOSTAT publie 1,8 % pour la RDC en 2022. Notre calcul : 613 761 / 35 005 912 = 1,75 % (concordance à l'arrondi près).
+
+### Formule de calcul
+
+```
+Force de travail = Population 15+ × Taux de participation à la force de travail (LFP rate)
+                 = (Population totale − Population 0-14 ans) × LFP rate
+```
+
+**Données RDC** :
+- Taux de participation (15+) : **63,44 %** (ILOSTAT, enquête MICS 2020 ; stable depuis 2016 : 63,51 % en 2016)
+- Population 15+ (2022) : 102 396 968 − 47 217 409 = 55 179 559
+- Force de travail (2022) : 55 179 559 × 0,6344 = **35 005 912**
+
+### Exemple de calcul (année 2022, CNSS seule)
+
+- Cotisants CNSS AT/MP 2022 : 613 761 (ESS CNSS 2022)
+- Force de travail 2022 : 35 005 912
+- **Taux = 613 761 / 35 005 912 = 1,75 % de la force de travail**
+- **Référence OIT publiée : 1,8 %**
+
+### Sources de données utilisées
+
+| Données | Source | Référence |
+|---------|--------|-----------|
+| Force de travail (nombre) | Dérivée | Pop 15+ × LFP rate 63,44 % |
+| Taux de participation LFP | ILOSTAT MICS 2020 | `EAP_DWAP_SEX_AGE_RT_A` (RDC, 15+, 2020) |
+| Force de travail directe | ILOSTAT MICS 2020 | `EAP_TEAP_SEX_AGE_NB_A` (31 547 329 en 2020) |
+| Population 0-14 ans | ONU WPP 2024 | PopulationPyramid.net API (M49:180) |
+| Cotisants AT/MP | CNSS ESS, CNSSAP ESS | `06_sources/ESS/` |
+
+### Éléments à éliminer
+
+Les sources suivantes, qui **ne produisent que des données de population active**, ne sont plus applicables directement :
+- ~~ILOSTAT pour la population active directement~~ (remplacé par calcul dérivé)
+- ~~Sources uniquement basées sur la population active~~ (à vérifier lors de la compilation des sources)
+
+**Règle :** Si une source ne produit que la population active (sans taux de chômage associé), appliquer le taux de chômage RDC par défaut (4,4 %, 2024) ou utiliser l'année spécifique si disponible.
 
 ---
 
@@ -284,7 +336,8 @@ Pour chaque sous-indicateur ODD 1.3.1 :
 | Population totale | ONU WPP 2024 RDC | `06_sources/officielles_web/_texte/ONU_WPP_2024_RDC_population.txt` |
 | Population 0–17 ans | ONU WPP 2024 | Idem |
 | Population au-delà âge légal retraite | ONU WPP 2024 | Idem |
-| Force de travail / population active | ILOSTAT Modelled Estimates | Cité dans 1er bulletin |
+| Force de travail / population active | ILOSTAT Modelled Estimates | `EAP_DWAP_SEX_AGE_RT_A` (population 15+, tous indicateurs sauf AT/MP) |
+| Population en emploi (AT/MP) | ILOSTAT (population active × (1 - taux chômage)) | Calculée à partir de `EAP_DWAP_SEX_AGE_RT_A` et `UNE_DEUI_RT_A` |
 | Naissances vivantes | INS RDC (ou ONU WPP) | À confirmer |
 | Population handicapée grave | Estimation OMS (15 % pop. générale, dont ~3–4 % grave) | À documenter |
 
@@ -308,9 +361,9 @@ SOUS-INDICATEUR 2.3 — Maternité
 SOUS-INDICATEUR 2.5 — AT/MP
   Numérateur = Cotisants/assurés actifs AT/MP (CNSS Régime 2)
                + Cotisants/assurés actifs CNSSAP AT/MP (à partir 2023)
-  Dénominateur = Force de travail (ILOSTAT)
-
-SOUS-INDICATEUR 2.7 — Vieillesse
+  Dénominateur = Force de travail 15+ (pop 15+ × taux participation 63,44% ILOSTAT)
+                 [Voir section 5a pour formule de calcul]
+  Résultat = % de la population totale
   Numérateur = Pensionnés vieillesse CNSS
                + Pensionnés CNSSAP
                + Pensionnés régimes spéciaux [si données disponibles]

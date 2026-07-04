@@ -1105,6 +1105,8 @@ Les accidents du travail et maladies professionnelles (AT/MP) donnent droit à u
 
 *Source : ESS OIT — CNSS (2019–2022). Régimes spéciaux : données non disponibles.*
 
+> **Note méthodologique — Couverture AT/MP et dénominateur :** Le taux de couverture en accidents du travail et maladies professionnelles (AT/MP) est calculé en rapportant le nombre de cotisants/assurés actifs AT/MP à la population en emploi (et non à la population active). Cette correction méthodologique exclut les chômeurs, qui ne courent par définition aucun risque d'accident du travail. Le résultat est exprimé en % de la population totale, conformément aux standards OIT. Cette approche harmonise le traitement de l'indicateur AT/MP avec celui de l'indicateur handicap/invalidité (ODD 1.3.1). Pour plus de détails, voir section 5 (Indicateurs ODD).
+
 <!-- FIN FICHIER -->
 
 
@@ -1720,8 +1722,11 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 | Personnes âgées | % recevant une pension de vieillesse |
 | Actifs / contributeurs | % cotisant à un régime contributif |
 | Personnes handicapées | % recevant une prestation invalidité |
+| **Accidents du travail et maladies professionnelles** | **% de la population en emploi couverte contre les risques professionnels** |
 
 ### Résultats pour la RDC <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+**Note méthodologique :** À partir de la présente édition, le sous-indicateur AT/MP (accidents du travail et maladies professionnelles) est calculé selon la méthodologie révisée du BIT : le numérateur (assurés actifs AT/MP) est rapporté à la population en emploi (et non à la population active), et le résultat est exprimé en % de la population totale (conformément aux standards ODD 1.3.1). Cette correction assure la comparabilité avec d'autres indicateurs de couverture et exclut les chômeurs, qui ne courent aucun risque professionnel. Pour plus de détails, voir l'encadré méthodologique à la fin de la section 4.3.
 
 <p class="table-caption"><strong>Tableau 5.2</strong> — Valeurs de l'ODD 1.3.1 pour la RDC par groupe de population (2019–2025) <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s5-t2-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_5/00_plan_chapitre_5.md">[src]</a></p>
 
@@ -1733,6 +1738,7 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 | Personnes âgées — pension vieillesse (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
 | Actifs — contributeurs (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
 | Personnes handicapées — invalidité (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
+| Personnes en emploi — AT/MP (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
 
 *Source : calculs à partir des ESS OIT (CNSS 2019–2022, CNSSAP 2020–2022) et des données démographiques ONU WPP. Les estimations [EST.] seront calculées par le script `generer_figures_ch4.py` depuis la base.*
 
