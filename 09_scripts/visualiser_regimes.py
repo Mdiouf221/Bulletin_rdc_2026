@@ -2420,6 +2420,10 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
                 "label": "OMS GHO API (live)",
                 "description": "Prévalence du handicap grave — données Global Health Observatory OMS pour la RDC",
             },
+            "manual": {
+                "label": "✏️ Saisie manuelle",
+                "description": "Entrer les valeurs manuellement pour chaque année avec un commentaire de source",
+            },
         },
         "defaults": {
             "source_population_totale": "bm_api",
@@ -3399,6 +3403,62 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       display: grid;
       gap: 5px;
     }}
+    .denom-manual-panel {{
+      margin-top: 8px;
+      border: 1px dashed #a0aec0;
+      border-radius: 8px;
+      padding: 8px;
+      background: #fffef5;
+    }}
+    .denom-manual-panel.hidden {{
+      display: none;
+    }}
+    .denom-manual-table {{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }}
+    .denom-manual-table th {{
+      text-align: left;
+      font-weight: 600;
+      color: #4a5568;
+      padding: 4px 6px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.78rem;
+    }}
+    .denom-manual-table td {{
+      padding: 3px 4px;
+    }}
+    .denom-manual-table td.manual-year {{
+      font-weight: 600;
+      color: #2d3748;
+      width: 60px;
+      font-size: 0.82rem;
+    }}
+    .denom-manual-table input.manual-value {{
+      width: 100%;
+      padding: 5px 7px;
+      border: 1px solid #cbd5e0;
+      border-radius: 6px;
+      background: #fff;
+      font-size: 0.82rem;
+      color: #2d3748;
+    }}
+    .denom-manual-table input.manual-comment {{
+      width: 100%;
+      padding: 5px 7px;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      background: #fff;
+      font-size: 0.78rem;
+      color: #718096;
+    }}
+    .denom-manual-table input.manual-value:focus,
+    .denom-manual-table input.manual-comment:focus {{
+      outline: none;
+      border-color: #4299e1;
+      box-shadow: 0 0 0 2px rgba(66,153,225,0.15);
+    }}
     /* Surcharge : les labels et inputs dans la source-list ne doivent PAS
        hériter des styles de .denom-control label / .denom-control input */
     .denom-source-list label.denom-source-item {{
@@ -4332,6 +4392,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             <div class="denom-control full">
               <label>Source</label>
               <div id="denom-sources-total" class="denom-source-list"></div>
+              <div id="denom-manual-total" class="denom-manual-panel hidden"></div>
             </div>
             <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
             <div class="denom-control">
@@ -4350,6 +4411,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             <div class="denom-control full">
               <label>Source</label>
               <div id="denom-sources-child" class="denom-source-list"></div>
+              <div id="denom-manual-child" class="denom-manual-panel hidden"></div>
             </div>
             <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
             <div class="denom-control">
@@ -4376,6 +4438,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             <div class="denom-control full">
               <label>Source</label>
               <div id="denom-sources-active" class="denom-source-list"></div>
+              <div id="denom-manual-active" class="denom-manual-panel hidden"></div>
             </div>
             <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
             <div class="denom-control">
@@ -4402,6 +4465,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             <div class="denom-control full">
               <label>Source</label>
               <div id="denom-sources-ret" class="denom-source-list"></div>
+              <div id="denom-manual-ret" class="denom-manual-panel hidden"></div>
             </div>
             <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
             <div class="denom-control">
@@ -4428,6 +4492,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             <div class="denom-control full">
               <label>Source</label>
               <div id="denom-sources-handicap" class="denom-source-list"></div>
+              <div id="denom-manual-handicap" class="denom-manual-panel hidden"></div>
             </div>
             <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
             <div class="denom-control">
@@ -4446,6 +4511,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             <div class="denom-control full">
               <label>Source</label>
               <div id="denom-sources-mat" class="denom-source-list"></div>
+              <div id="denom-manual-mat" class="denom-manual-panel hidden"></div>
             </div>
             <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
             <div class="denom-control">
@@ -4463,6 +4529,25 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             <div class="denom-control">
               <label for="denom-mat-year-end">Année fin</label>
               <input id="denom-mat-year-end" type="number" min="2000" max="2100">
+            </div>
+          </div>
+        </div>
+        <div class="denom-pack" id="pack-lf">
+          <h4>Force de travail (AT/MP — ind. 2.5)</h4>
+          <div class="denom-pack-grid">
+            <div class="denom-control full">
+              <label>Source</label>
+              <div id="denom-sources-lf" class="denom-source-list"></div>
+              <div id="denom-manual-lf" class="denom-manual-panel hidden"></div>
+            </div>
+            <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
+            <div class="denom-control">
+              <label for="denom-lf-year-start">Année début</label>
+              <input id="denom-lf-year-start" type="number" min="2000" max="2100">
+            </div>
+            <div class="denom-control">
+              <label for="denom-lf-year-end">Année fin</label>
+              <input id="denom-lf-year-end" type="number" min="2000" max="2100">
             </div>
           </div>
         </div>
@@ -6939,6 +7024,7 @@ function collectDenomSettingsFromUI() {{
     source_population_retraite: getSelectedMetricSource('ret'),
     source_handicap_grave: getSelectedMetricSource('handicap'),
     source_maternite: getSelectedMetricSource('mat'),
+    source_force_de_travail: getSelectedMetricSource('lf'),
     year_start_total: getNumInput('denom-total-year-start'),
     year_end_total: getNumInput('denom-total-year-end'),
     year_start_enfants: getNumInput('denom-child-year-start'),
@@ -6951,6 +7037,8 @@ function collectDenomSettingsFromUI() {{
     year_end_handicap: getNumInput('denom-handicap-year-end'),
     year_start_maternite: getNumInput('denom-mat-year-start'),
     year_end_maternite: getNumInput('denom-mat-year-end'),
+    year_start_lf: getNumInput('denom-lf-year-start'),
+    year_end_lf: getNumInput('denom-lf-year-end'),
     child_age_min: getNumInput('denom-child-age-min'),
     child_age_max: getNumInput('denom-child-age-max'),
     working_age_min: getNumInput('denom-active-age-min'),
@@ -6959,6 +7047,7 @@ function collectDenomSettingsFromUI() {{
     retirement_age_f: getNumInput('denom-ret-age-f'),
     maternity_age_min: getNumInput('denom-mat-age-min'),
     maternity_age_max: getNumInput('denom-mat-age-max'),
+    manual_data: collectAllManualValues(),
   }};
 }}
 
@@ -7041,6 +7130,7 @@ function getSelectedMetricSource(metricShortKey) {{
 
 function sourceIsAvailableForMetric(sourceKey, metricKey, params) {{
   if (!sourceKey || !params || !params.yearStart || !params.yearEnd || params.yearEnd < params.yearStart) return false;
+  if (sourceKey === 'manual') return true;
   if (sourceKey === 'bm_api') {{
     // Banque mondiale : tranches fixes seulement, pas de données handicap
     if (metricKey === 'population_enfants' || metricKey === 'handicap_grave') {{
@@ -7075,11 +7165,12 @@ function sourceIsAvailableForMetric(sourceKey, metricKey, params) {{
 function renderMetricSourceOptions(metricShortKey, metricKey, defaultSource, sources) {{
   const host = document.getElementById('denom-sources-' + metricShortKey);
   if (!host) return;
-  const params = getMetricCardParams(metricKey);
+  const params = (metricKey === 'force_de_travail')
+    ? {{ yearStart: getNumInput('denom-lf-year-start'), yearEnd: getNumInput('denom-lf-year-end') }}
+    : getMetricCardParams(metricKey);
   const keys = Object.keys(sources || {{}});
   const available = keys.filter(k => sourceIsAvailableForMetric(k, metricKey, params));
   const effective = available.includes(defaultSource) ? defaultSource : (available[0] || '');
-  // N'afficher QUE les sources disponibles (pas de sources grisées)
   host.innerHTML = available.map((k, idx) => {{
     const src = sources[k] || {{}};
     const id = 'src-' + metricShortKey + '-' + idx;
@@ -7091,6 +7182,14 @@ function renderMetricSourceOptions(metricShortKey, metricKey, defaultSource, sou
       '</label>'
     );
   }}).join('');
+  // Bind source change → show/hide manual panel
+  host.querySelectorAll('input[type="radio"]').forEach(el => {{
+    el.addEventListener('change', function() {{
+      showHideManualPanel(metricShortKey, this.value);
+    }});
+  }});
+  // Initial state
+  showHideManualPanel(metricShortKey, effective);
 }}
 
 function refreshMetricSources(sources) {{
@@ -7100,10 +7199,127 @@ function refreshMetricSources(sources) {{
   renderMetricSourceOptions('ret', 'population_retraite', getSelectedMetricSource('ret'), sources);
   renderMetricSourceOptions('handicap', 'handicap_grave', getSelectedMetricSource('handicap'), sources);
   renderMetricSourceOptions('mat', 'naissances', getSelectedMetricSource('mat'), sources);
+  renderMetricSourceOptions('lf', 'force_de_travail', getSelectedMetricSource('lf'), sources);
+}}
+
+// ── Données de saisie manuelle ────────────────────────────────────────────
+// Stockées par metricShortKey : {{ [year]: {{ value: number, comment: string }} }}
+window.__MANUAL_DENOM_DATA = window.__MANUAL_DENOM_DATA || {{}};
+
+function buildManualEntryTable(shortKey, yearStart, yearEnd) {{
+  const panel = document.getElementById('denom-manual-' + shortKey);
+  if (!panel) return;
+  if (!Number.isFinite(yearStart) || !Number.isFinite(yearEnd) || yearEnd < yearStart) {{
+    panel.innerHTML = '<p style="color:#888;font-size:0.8rem">Définissez la plage d\\'années ci-dessous.</p>';
+    return;
+  }}
+  const saved = window.__MANUAL_DENOM_DATA[shortKey] || {{}};
+  let html = '<table class="denom-manual-table"><thead><tr>';
+  html += '<th>Année</th><th>Valeur</th><th>Source / commentaire</th>';
+  html += '</tr></thead><tbody>';
+  for (let y = yearStart; y <= yearEnd; y++) {{
+    const sv = saved[String(y)] || {{}};
+    const val = (sv.value !== undefined && sv.value !== null) ? String(sv.value) : '';
+    const comment = sv.comment || '';
+    html += '<tr>';
+    html += '<td class="manual-year">' + y + '</td>';
+    html += '<td><input type="number" class="manual-value" data-manual-key="' + shortKey + '" data-manual-year="' + y + '" value="' + escapeHtml(val) + '" placeholder="ex: 92947442"></td>';
+    html += '<td><input type="text" class="manual-comment" data-manual-key="' + shortKey + '" data-manual-year="' + y + '" value="' + escapeHtml(comment) + '" placeholder="Source…"></td>';
+    html += '</tr>';
+  }}
+  html += '</tbody></table>';
+  panel.innerHTML = html;
+  // Sync inputs back to __MANUAL_DENOM_DATA on change
+  panel.querySelectorAll('input').forEach(el => {{
+    el.addEventListener('input', function() {{
+      syncManualInputToData(shortKey, this);
+      DENOM_PENDING_CHANGES = true;
+    }});
+  }});
+}}
+
+function syncManualInputToData(shortKey, inputEl) {{
+  const year = inputEl.dataset.manualYear;
+  if (!year) return;
+  if (!window.__MANUAL_DENOM_DATA[shortKey]) window.__MANUAL_DENOM_DATA[shortKey] = {{}};
+  if (!window.__MANUAL_DENOM_DATA[shortKey][year]) window.__MANUAL_DENOM_DATA[shortKey][year] = {{}};
+  if (inputEl.classList.contains('manual-value')) {{
+    const v = Number(inputEl.value);
+    window.__MANUAL_DENOM_DATA[shortKey][year].value = Number.isFinite(v) ? v : null;
+  }} else if (inputEl.classList.contains('manual-comment')) {{
+    window.__MANUAL_DENOM_DATA[shortKey][year].comment = inputEl.value || '';
+  }}
+}}
+
+function collectAllManualValues() {{
+  // Sync all visible manual inputs
+  document.querySelectorAll('.denom-manual-table input').forEach(el => {{
+    const key = el.dataset.manualKey;
+    if (key) syncManualInputToData(key, el);
+  }});
+  return JSON.parse(JSON.stringify(window.__MANUAL_DENOM_DATA || {{}}));
+}}
+
+function restoreManualValues(savedManual) {{
+  if (!savedManual || typeof savedManual !== 'object') return;
+  window.__MANUAL_DENOM_DATA = JSON.parse(JSON.stringify(savedManual));
+}}
+
+function showHideManualPanel(shortKey, sourceKey) {{
+  const panel = document.getElementById('denom-manual-' + shortKey);
+  if (!panel) return;
+  if (sourceKey === 'manual') {{
+    panel.classList.remove('hidden');
+    // Rebuild table with current year range
+    const yearStartId = 'denom-' + shortKey + '-year-start';
+    const yearEndId = 'denom-' + shortKey + '-year-end';
+    // Map shortKey to year input IDs
+    const yearMap = {{
+      total: ['denom-total-year-start', 'denom-total-year-end'],
+      child: ['denom-child-year-start', 'denom-child-year-end'],
+      active: ['denom-active-year-start', 'denom-active-year-end'],
+      ret: ['denom-ret-year-start', 'denom-ret-year-end'],
+      handicap: ['denom-handicap-year-start', 'denom-handicap-year-end'],
+      mat: ['denom-mat-year-start', 'denom-mat-year-end'],
+      lf: ['denom-lf-year-start', 'denom-lf-year-end'],
+    }};
+    const ids = yearMap[shortKey] || [yearStartId, yearEndId];
+    const ys = getNumInput(ids[0]);
+    const ye = getNumInput(ids[1]);
+    buildManualEntryTable(shortKey, ys || 2019, ye || 2022);
+  }} else {{
+    panel.classList.add('hidden');
+  }}
+}}
+
+function getManualValue(shortKey, year) {{
+  const data = (window.__MANUAL_DENOM_DATA || {{}})[shortKey] || {{}};
+  const entry = data[String(year)];
+  if (!entry || entry.value === null || entry.value === undefined) {{
+    return {{ value: null, meta: 'Saisie manuelle : valeur manquante pour ' + year }};
+  }}
+  const comment = entry.comment ? (' — ' + entry.comment) : '';
+  return {{ value: entry.value, meta: 'Saisie manuelle' + comment }};
 }}
 
 async function getMetricValue(sourceKey, metricKey, year, params, seriesCache) {{
   if (!sourceKey) return {{ value: null, meta: 'Source non définie' }};
+
+  // ── Saisie manuelle ──────────────────────────────────────────────────────
+  if (sourceKey === 'manual') {{
+    const shortKeyMap = {{
+      population_totale: 'total',
+      population_enfants: 'child',
+      population_active: 'active',
+      population_retraite: 'ret',
+      handicap_grave: 'handicap',
+      naissances: 'mat',
+      femmes_accouche: 'mat',
+      force_de_travail: 'lf',
+    }};
+    const shortKey = shortKeyMap[metricKey] || metricKey;
+    return getManualValue(shortKey, year);
+  }}
 
   // ── Banque mondiale ──────────────────────────────────────────────────────
   if (sourceKey === 'bm_api') {{
@@ -7197,6 +7413,11 @@ async function computeDenominators() {{
   const srcRet = getSelectedMetricSource('ret');
   const srcHandicap = getSelectedMetricSource('handicap');
   const srcMat = getSelectedMetricSource('mat');
+  const srcLf = getSelectedMetricSource('lf');
+  const pLf = {{
+    yearStart: getNumInput('denom-lf-year-start'),
+    yearEnd: getNumInput('denom-lf-year-end'),
+  }};
 
   const validationError = validateDenominatorParams(pTotal, pChild, pActive, pRet, pMat);
   if (validationError) {{
@@ -7204,7 +7425,7 @@ async function computeDenominators() {{
     return;
   }}
 
-  const ranges = [pTotal, pChild, pActive, pRet, pHandicap, pMat]
+  const ranges = [pTotal, pChild, pActive, pRet, pHandicap, pMat, pLf]
     .filter(x => x && x.yearStart && x.yearEnd && x.yearEnd >= x.yearStart);
   if (!ranges.length) {{
     setDenomStatus('Paramètres années invalides.');
@@ -7278,11 +7499,22 @@ async function computeDenominators() {{
       }}
       
       // Calcul de la force de travail (labour force 15+)
-      // LFP rate 63,44% (ILOSTAT MICS RDC 2020) appliqué à Pop 15+ (= total - enfants 0-14)
+      // Si source = manual, lire directement. Sinon, calculer : Pop 15+ × LFP rate 63,44%.
       let forceDeTravail = {{ value: null, meta: 'non calculable' }};
-      if (total.value && enfants.value) {{
+      if (pLf.yearStart && pLf.yearEnd && y >= pLf.yearStart && y <= pLf.yearEnd) {{
+        if (srcLf === 'manual') {{
+          forceDeTravail = getManualValue('lf', y);
+        }} else if (total.value && enfants.value) {{
+          const pop15plus = total.value - enfants.value;
+          const lfpRate = 0.6344; // ILOSTAT MICS RDC 2020
+          forceDeTravail = {{
+            value: Math.round(pop15plus * lfpRate),
+            meta: 'Pop 15+ × 63,44% LFP (ILOSTAT MICS 2020)'
+          }};
+        }}
+      }} else if (total.value && enfants.value) {{
         const pop15plus = total.value - enfants.value;
-        const lfpRate = 0.6344; // ILOSTAT MICS RDC 2020
+        const lfpRate = 0.6344;
         forceDeTravail = {{
           value: Math.round(pop15plus * lfpRate),
           meta: 'Pop 15+ × 63,44% LFP (ILOSTAT MICS 2020)'
@@ -7440,12 +7672,24 @@ function initDenominatorPanel() {{
   document.getElementById('denom-mat-age-min').value = merged.maternity_age_min || 15;
   document.getElementById('denom-mat-age-max').value = merged.maternity_age_max || 49;
 
+  // Force de travail (nouveau pack)
+  const lfYsEl = document.getElementById('denom-lf-year-start');
+  const lfYeEl = document.getElementById('denom-lf-year-end');
+  if (lfYsEl) lfYsEl.value = merged.year_start_lf || merged.year_start_total || 2020;
+  if (lfYeEl) lfYeEl.value = merged.year_end_lf || merged.year_end_total || 2024;
+
+  // Restaurer données de saisie manuelle
+  if (merged.manual_data) {{
+    restoreManualValues(merged.manual_data);
+  }}
+
   renderMetricSourceOptions('total', 'population_totale', merged.source_population_totale, sources);
   renderMetricSourceOptions('child', 'population_enfants', merged.source_population_enfants, sources);
   renderMetricSourceOptions('active', 'population_active', merged.source_population_active, sources);
   renderMetricSourceOptions('ret', 'population_retraite', merged.source_population_retraite, sources);
   renderMetricSourceOptions('handicap', 'handicap_grave', merged.source_handicap_grave, sources);
   renderMetricSourceOptions('mat', 'naissances', merged.source_maternite, sources);
+  renderMetricSourceOptions('lf', 'force_de_travail', merged.source_force_de_travail || 'wpp_api', sources);
 
   // Appliquer les contraintes initiales selon les sources par défaut
   applyAllConstraints();
@@ -7504,6 +7748,15 @@ function initDenominatorPanel() {{
           computeDenominators();
           return;
         }}
+      }}
+      // Reconstruire le tableau manuel si les années changent et la source est manuelle
+      if (el.type === 'number' && (el.id.endsWith('-year-start') || el.id.endsWith('-year-end'))) {{
+        const shortKeys = ['total', 'child', 'active', 'ret', 'handicap', 'mat', 'lf'];
+        shortKeys.forEach(sk => {{
+          if (getSelectedMetricSource(sk) === 'manual') {{
+            showHideManualPanel(sk, 'manual');
+          }}
+        }});
       }}
       if (!DENOM_EDIT_MODE) return;
       DENOM_PENDING_CHANGES = true;
