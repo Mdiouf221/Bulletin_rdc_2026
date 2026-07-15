@@ -277,7 +277,7 @@ def fig3(dpi):
 
 # ---------------------------------------------------------------------------
 # FIG_4 : Evolution taux de croissance annuel du PIB, RDC (2000-2024)
-# Source : Banque mondiale WDI (avril 2026)
+# Source : FMI WEO (2021-2024) + serie historique interne du bulletin
 # ---------------------------------------------------------------------------
 def fig4(dpi):
     print("FIG_4 : croissance PIB 2000-2024...")
@@ -357,8 +357,8 @@ def fig4(dpi):
     ax.xaxis.set_major_locator(mticker.MultipleLocator(2))
     style_axe(ax)
 
-    note_source(fig, "Source : Banque mondiale, World Development Indicators (WDI, avril 2026). "
-                "Valeurs 2021-2024 documentees dans les metadonnees sources du bulletin.")
+    note_source(fig, "Source : FMI, World Economic Outlook (WEO, consultation juillet 2026). "
+                "Serie historique 2000-2020 conservee dans les donnees archivees du bulletin.")
     fig.tight_layout(rect=[0, 0.04, 1, 1])
     save(fig, "FIG_4_croissance_PIB_2000_2024.png", dpi)
 
@@ -481,7 +481,7 @@ def fig5(dpi):
 
 # ---------------------------------------------------------------------------
 # FIG_6 : Structure de l'emploi par secteur, RDC
-# Source : Banque mondiale WDI / OIT ILOEST, 2024
+# Source : OIT ILOSTAT (ILOEST), 2024
 # ---------------------------------------------------------------------------
 def fig6(dpi):
     print("FIG_6 : structure emploi par secteur...")
@@ -528,7 +528,7 @@ def fig6(dpi):
     ax.legend(fontsize=9, loc="upper right", framealpha=0.9)
     style_axe(ax)
 
-    note_source(fig, "Source : Banque mondiale, WDI (indicateur ILOEST, 2024). "
+    note_source(fig, "Source : OIT, ILOSTAT (estimations modelisees ILOEST, 2024). "
                 "Emploi par secteur d'activite — RDC. "
                 "Industrie et services : parts residuelles estimees.")
     fig.tight_layout(rect=[0, 0.04, 1, 1])

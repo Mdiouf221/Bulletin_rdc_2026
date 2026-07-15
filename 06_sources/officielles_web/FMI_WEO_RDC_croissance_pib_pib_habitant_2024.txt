@@ -1,0 +1,33 @@
+SOURCE : Fonds monétaire international (FMI) — World Economic Outlook (WEO)
+TITRE   : Indicateurs macroéconomiques RDC — croissance du PIB réel et PIB par habitant
+URL     : https://www.imf.org/external/datamapper/
+API     : https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/COD
+API_2   : https://www.imf.org/external/datamapper/api/v1/NGDPDPC/COD
+CONSULTE: 2026-07-15
+NIVEAU  : 1 (organisation internationale — source primaire)
+NOTE    : Les endpoints API peuvent être soumis à des restrictions techniques selon l'environnement d'accès.
+
+---------------------------------------------------------------------
+DONNEES CLES — CROISSANCE DU PIB REEL (NGDP_RPCH)
+---------------------------------------------------------------------
+
+2021 : +6,4 %
+2022 : +9,3 %
+2023 : +8,5 %
+2024 : +6,1 %
+
+---------------------------------------------------------------------
+DONNEES CLES — PIB PAR HABITANT (NGDPDPC)
+---------------------------------------------------------------------
+
+Le WEO fournit une série annuelle de PIB par habitant en USD courants.
+Pour la section 1.2, l'usage retenu est qualitatif ("niveau faible") afin
+de préserver la comparabilité avec les séries nationales en cours de mise à jour.
+
+---------------------------------------------------------------------
+CITATION RECOMMANDEE
+---------------------------------------------------------------------
+
+FMI (2026), World Economic Outlook (WEO), indicateurs NGDP_RPCH et NGDPDPC,
+République Démocratique du Congo.
+

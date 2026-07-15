@@ -1,0 +1,60 @@
+{
+  "CNSS": {
+    "CNSS_R1": {
+      "dedup_cotisants": {
+        "allocation de maternité__allocations familiales": "true",
+        "allocation de maternité__allocations prénatales": "true",
+        "allocation de maternité__indemnité journalière de maternité": "true",
+        "allocations familiales__allocation de maternité": "true",
+        "allocations familiales__allocations prénatales": "true",
+        "allocations familiales__indemnité journalière de maternité": "true",
+        "allocations prénatales__allocation de maternité": "true",
+        "allocations prénatales__allocations familiales": "true",
+        "allocations prénatales__indemnité journalière de maternité": "true",
+        "indemnité journalière de maternité__allocation de maternité": "true",
+        "indemnité journalière de maternité__allocations familiales": "true",
+        "indemnité journalière de maternité__allocations prénatales": "true"
+      },
+      "dedup_beneficiaires": {
+        "allocation de maternité__allocations familiales": "false",
+        "allocation de maternité__allocations prénatales": "false",
+        "allocation de maternité__indemnité journalière de maternité": "false",
+        "allocations familiales__allocation de maternité": "false",
+        "allocations familiales__allocations prénatales": "false",
+        "allocations familiales__indemnité journalière de maternité": "false",
+        "allocations prénatales__allocation de maternité": "false",
+        "allocations prénatales__allocations familiales": "false",
+        "allocations prénatales__indemnité journalière de maternité": "false",
+        "indemnité journalière de maternité__allocation de maternité": "false",
+        "indemnité journalière de maternité__allocations familiales": "false",
+        "indemnité journalière de maternité__allocations prénatales": "false"
+      },
+      "finance_recettes": {
+        "allocation de maternité": [
+          "allocations familiales",
+          "allocations prénatales",
+          "indemnité journalière de maternité"
+        ],
+        "allocations familiales": [
+          "allocation de maternité",
+          "allocations prénatales",
+          "indemnité journalière de maternité"
+        ],
+        "allocations prénatales": [
+          "allocation de maternité",
+          "allocations familiales",
+          "indemnité journalière de maternité"
+        ],
+        "indemnité journalière de maternité": [
+          "allocation de maternité",
+          "allocations familiales",
+          "allocations prénatales"
+        ]
+      },
+      "finance_depenses": {},
+      "unit": {},
+      "coefficients": {},
+      "exclude": {}
+    }
+  }
+}

@@ -6,7 +6,7 @@
  * 
  * Flux:
  * 1. L'utilisateur sélectionne un régime via le dropdown
- * 2. Le questionnaire Q1 déclare si les branches sont empilables
+ * 2. Le questionnaire Q1 déclare si les branches portent sur les mêmes cotisants
  * 3. Ce module reprocess les données Plotly pour fusionner les branches identiques
  */
 
@@ -41,7 +41,13 @@ class BranchFusion {
     const fusionGroups = this.identifyFusionGroups(q1Data, branchMapping);
     
     if (Object.keys(fusionGroups).length === 0) {
-      // Pas de fusion nécessaire
+      // Restaurer les traces d'origine si une fusion précédemment active a été retirée.
+      this.Plotly.react(
+        graphId,
+        JSON.parse(JSON.stringify(this.traces[graphId])),
+        plotDiv.layout,
+        { responsive: true }
+      );
       return;
     }
 
@@ -119,9 +125,9 @@ class BranchFusion {
    * Fusionne les traces Plotly selon les groupes identifiés
    * 
    * Stratégie:
-   * - Les traces avec le même stackgroup et xaxis/yaxis sont **additionnées**
+   * - Les traces avec le même stackgroup et xaxis/yaxis sont fusionnées
    * - La légende devient "Branche1 + Branche2"
-   * - Les données (y) sont **sommées** année par année
+   * - La valeur représentative est le maximum pour chaque année
    */
   mergeTraces(originalTraces, fusionGroups) {
     const newTraces = [];
@@ -198,17 +204,24 @@ class BranchFusion {
       .filter((v, i, a) => a.indexOf(v) === i);
     firstTrace.name = names.join(' + ');
 
-    // Valeur représentative : max par point de temps (évite le double-comptage)
-    firstTrace.y = (firstTrace.y || []).map((_, i) => {
+    // Aligner les séries sur les années avant de prendre la valeur représentative.
+    const allYears = [];
+    tracesInGroup.forEach(trace => {
+      (trace.x || []).forEach(year => {
+        if (!allYears.includes(year)) allYears.push(year);
+      });
+    });
+    allYears.sort((a, b) => String(a).localeCompare(String(b), undefined, { numeric: true }));
+    firstTrace.x = allYears;
+    firstTrace.y = allYears.map(year => {
       const vals = tracesInGroup
-        .map(t => (t.y && t.y[i] != null) ? t.y[i] : null)
-        .filter(v => v !== null);
+        .map(trace => {
+          const index = (trace.x || []).indexOf(year);
+          return index >= 0 && trace.y && trace.y[index] != null ? trace.y[index] : null;
+        })
+        .filter(value => value !== null);
       return vals.length > 0 ? Math.max(...vals) : null;
     });
-
-    // Supprimer stackgroup : la trace fusionnée ne doit pas s'empiler avec elle-même
-    delete firstTrace.stackgroup;
-    firstTrace.fill = 'tozeroy';
 
     // Mettre à jour le hover template
     if (firstTrace.hovertemplate) {
@@ -226,7 +239,7 @@ class BranchFusion {
    */
   traceMatchesRegimes(trace, regimes) {
     const legendGroup = trace.legendgroup || '';
-    return regimes.some(regime => legendGroup.includes(regime));
+    return regimes.includes(legendGroup);
   }
 
   /**
@@ -242,30 +255,6 @@ class BranchFusion {
 
 // Instance globale
 window.branchFusion = new BranchFusion(window.Plotly);
-
-/**
- * Hook pour le questionnaire
- * À appeler après que l'utilisateur sauvegarde Q1
- */
-window.addEventListener('questionnaire-saved', async (e) => {
-  const { institution, regimes } = e.detail;
-
-  const q1Data = window.questionnaire.data[institution]?.Q1 || {};
-  const branchMapping = buildBranchMapping(institution, regimes);
-
-  // Q1 concerne la population partagée : appliquer uniquement au graphique population,
-  // pas aux graphiques financiers (recettes, prestations).
-  const popContainer = document.getElementById('charts-institution-pop');
-  if (!popContainer) return;
-
-  popContainer.querySelectorAll('.plotly-graph-div').forEach(div => {
-    if (div.id) {
-      window.branchFusion.applyBranchFusion(div.id, q1Data, branchMapping);
-    }
-  });
-
-  console.log('✓ Fusion de branches (population) appliquée');
-});
 
 /**
  * Construit le mapping branche → régimes à partir des données globales du dashboard

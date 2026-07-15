@@ -10,21 +10,35 @@ class QuestionnaireModal {
     this.apiUrl = apiUrl;
     this.data = {};
     this.currentInstitution = null;
-    this.loadData();
+    this.loadPromise = null;
+    this.isOpening = false;
   }
 
   /**
    * Charge les données depuis l'API serveur
    */
   async loadData() {
-    try {
-      const response = await fetch(this.apiUrl);
-      if (response.ok) {
-        this.data = await response.json();
+    if (this.loadPromise) return this.loadPromise;
+
+    this.loadPromise = (async () => {
+      const response = await fetch(this.apiUrl, { cache: 'no-store' });
+      if (!response.ok) {
+        throw new Error(`Erreur serveur : ${response.status}`);
       }
-    } catch (e) {
-      console.log('Questionnaire : impossible de charger les données', e);
-      this.data = {};
+
+      const data = await response.json();
+      if (!data || typeof data !== 'object' || Array.isArray(data)) {
+        throw new Error('Format de questionnaire invalide');
+      }
+
+      this.data = data;
+      return data;
+    })();
+
+    try {
+      return await this.loadPromise;
+    } finally {
+      this.loadPromise = null;
     }
   }
 
@@ -43,7 +57,22 @@ class QuestionnaireModal {
   /**
    * Ouvre le modal avec les 3 questionnaires
    */
-  openModal(institution, regimes) {
+  async openModal(institution, regimes) {
+    if (this.isOpening || document.querySelector('.questionnaire-backdrop')) return;
+
+    this.isOpening = true;
+    try {
+      await this.loadData();
+    } catch (e) {
+      console.error('Questionnaire : impossible de charger les données', e);
+      this.showToast('⚠ Impossible de charger les paramètres', 'error');
+      return;
+    } finally {
+      this.isOpening = false;
+    }
+
+    if (document.querySelector('.questionnaire-backdrop')) return;
+
     this.currentInstitution = institution;
     this.currentRegimes = regimes;
     // S'assurer que les données de cette institution existent en mémoire
@@ -670,10 +699,6 @@ class QuestionnaireModal {
   }
 }
 
-// Initialisation globale
-window.questionnaire = null;
-
-document.addEventListener('DOMContentLoaded', async () => {
-  window.questionnaire = new QuestionnaireModal('/api/questionnaire-data');
-  await window.questionnaire.loadData();
-});
+// Initialisation globale ; les données sont chargées au démarrage du tableau
+// de bord puis actualisées avant chaque ouverture du questionnaire.
+window.questionnaire = new QuestionnaireModal('/api/questionnaire-data');

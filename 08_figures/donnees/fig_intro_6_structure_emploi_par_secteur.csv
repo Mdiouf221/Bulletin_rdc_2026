@@ -1,9 +1,9 @@
 # figure: fig_intro_6 — Structure de l'emploi par grand secteur d'activité, RDC
-# source: Banque mondiale — World Development Indicators (WDI, indicateur ILOEST, 2024)
+# source: OIT — ILOSTAT (estimations modélisées ILOEST, 2024)
 # indicateur: SL.AGR.EMPL.ZS / SL.IND.EMPL.ZS / SL.SRV.EMPL.ZS — emploi par secteur (%)
 # date_reference: 2024
-# note: agriculture = données WDI directes ; industrie et services = parts résiduelles estimées
-#       désagrégation par sexe issue des indicateurs ILOEST via WDI
+# note: agriculture = données ILOSTAT directes ; industrie et services = parts résiduelles estimées
+#       désagrégation par sexe issue de la série ILOSTAT EMP_2EMP_SEX_ECO_NB
 # metadata: 08_figures/donnees/fig_intro_6_structure_emploi_par_secteur_metadata.txt
 # script: 09_scripts/generer_figures_intro.py → def fig6()
 secteur,ensemble_pct,femmes_pct,hommes_pct

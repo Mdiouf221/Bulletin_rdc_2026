@@ -1,6 +1,7 @@
 LIEN SOURCE : source non disponible publiquement — fiche metadata fait office de source
 SOURCE : Gouvernement de la République Démocratique du Congo
 TITRE   : Stratégie nationale de la protection sociale (SNPS) — RDC, 2016
+URL     : https://minas.gouv.cd/
 ÉDITEUR : Ministère des Affaires Sociales, Action Humanitaire et Solidarité Nationale
 NIVEAU  : 1 (document officiel national — source primaire institutionnelle)
 NOTE    : Document transmis par voie officielle / disponible auprès du Ministère

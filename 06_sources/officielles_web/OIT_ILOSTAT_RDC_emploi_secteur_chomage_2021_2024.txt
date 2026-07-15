@@ -1,0 +1,48 @@
+SOURCE : Organisation internationale du Travail (OIT) — ILOSTAT (estimations modélisées ILOEST)
+TITRE   : Emploi par secteur et chômage (définition BIT) — RDC
+URL     : https://ilostat.ilo.org/data/
+API_EMP : https://rplumber.ilo.org/data/indicator/?id=EMP_2EMP_SEX_ECO_NB&ref_area=COD&timefrom=2021&timeto=2024
+API_CHO : https://rplumber.ilo.org/data/indicator/?id=UNE_2EAP_SEX_AGE_RT_A&ref_area=COD&timefrom=2021&timeto=2024
+CONSULTE: 2026-07-15
+NIVEAU  : 1 (organisation internationale — source primaire)
+
+---------------------------------------------------------------------
+DONNEES CLES — EMPLOI AGRICOLE (part de l'emploi total)
+---------------------------------------------------------------------
+
+2021 : 61,4 %
+2022 : 60,4 %
+2023 : 59,5 %
+2024 : 58,9 %
+
+Desagregation 2024 :
+- Femmes : 67,8 %
+- Hommes : 50,3 %
+
+---------------------------------------------------------------------
+DONNEES CLES — TAUX DE CHOMAGE (definition BIT, 15+)
+---------------------------------------------------------------------
+
+2021 : 5,289 %
+2022 : 4,540 %
+2023 : 4,469 %
+2024 : 4,421 % (arrondi bulletin : 4,4 %)
+
+---------------------------------------------------------------------
+DONNEES COMPLEMENTAIRES — INFORMALITE (ILOSTAT, 2020)
+---------------------------------------------------------------------
+
+Valeurs retenues dans le bulletin (serie ILOSTAT 2020) :
+- Ensemble : 96,0 %
+- Femmes : 97,8 %
+- Hommes : 95,7 %
+
+Indicateur de reference : INF_2INF_NOC_RT_A (consultation ILOSTAT).
+
+---------------------------------------------------------------------
+CITATION RECOMMANDEE
+---------------------------------------------------------------------
+
+OIT (2026), ILOSTAT — estimations modélisées ILOEST, indicateurs
+EMP_2EMP_SEX_ECO_NB, UNE_2EAP_SEX_AGE_RT_A et INF_2INF_NOC_RT_A, RDC.
+

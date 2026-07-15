@@ -64,6 +64,7 @@ REGIME_VISUALIZER = SCRIPT_DIR / "visualiser_regimes.py"
 REGIME_DASHBOARD  = WORKSPACE_DIR / "10_output" / "dashboard_regimes.html"
 DASHBOARD_SETTINGS_FILE   = WORKSPACE_DIR / "10_output" / "dashboard_settings.json"
 QUESTIONNAIRE_DATA_FILE   = WORKSPACE_DIR / "10_output" / "questionnaire_data.json"
+PRESTATION_SETTINGS_FILE  = WORKSPACE_DIR / "10_output" / "prestation_settings.json"
 PORT          = 8765
 
 # ---------------------------------------------------------------------------
@@ -966,6 +967,8 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             self._serve_dashboard_settings()
         elif self.path == "/api/questionnaire-data":
             self._serve_questionnaire_data()
+        elif self.path == "/api/prestation-settings":
+            self._serve_prestation_settings()
         elif self.path.startswith("/api/denom/"):
             self._serve_denom_api()
         elif self.path.startswith("/files/"):
@@ -1004,8 +1007,21 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             try:
                 raw = QUESTIONNAIRE_DATA_FILE.read_text(encoding="utf-8")
                 data = json.loads(raw)
-            except (OSError, json.JSONDecodeError):
-                data = {}
+                if not isinstance(data, dict):
+                    raise ValueError("questionnaire_data.json doit contenir un objet")
+            except (OSError, json.JSONDecodeError, ValueError) as exc:
+                body = json.dumps(
+                    {"error": f"Lecture de questionnaire_data.json impossible : {exc}"},
+                    ensure_ascii=False,
+                ).encode("utf-8")
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Content-Length", str(len(body)))
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_header("Cache-Control", "no-store")
+                self.end_headers()
+                self.wfile.write(body)
+                return
         else:
             data = {}
         body = json.dumps(data, ensure_ascii=False).encode("utf-8")
@@ -1041,6 +1057,59 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             self.send_header("Content-Type", "text/plain; charset=utf-8")
             self.end_headers()
             self.wfile.write(b"Erreur d'ecriture questionnaire_data.json")
+            return
+        resp = json.dumps({"ok": True}, ensure_ascii=False).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(resp)))
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(resp)
+
+    def _serve_prestation_settings(self):
+        """GET /api/prestation-settings — retourne prestation_settings.json."""
+        if PRESTATION_SETTINGS_FILE.exists():
+            try:
+                raw = PRESTATION_SETTINGS_FILE.read_text(encoding="utf-8")
+                data = json.loads(raw)
+            except (OSError, json.JSONDecodeError):
+                data = {}
+        else:
+            data = {}
+        body = json.dumps(data, ensure_ascii=False).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _handle_prestation_settings(self):
+        """POST|PUT /api/prestation-settings — sauvegarde prestation_settings.json."""
+        length = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(length)
+        try:
+            data = json.loads(body.decode("utf-8"))
+            if not isinstance(data, dict):
+                raise ValueError("JSON doit être un objet")
+        except (json.JSONDecodeError, ValueError, UnicodeDecodeError):
+            self.send_response(400)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(b"Corps JSON invalide")
+            return
+        try:
+            PRESTATION_SETTINGS_FILE.parent.mkdir(parents=True, exist_ok=True)
+            PRESTATION_SETTINGS_FILE.write_text(
+                json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
+            )
+        except OSError:
+            self.send_response(500)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(b"Erreur d'ecriture prestation_settings.json")
             return
         resp = json.dumps({"ok": True}, ensure_ascii=False).encode("utf-8")
         self.send_response(200)
@@ -1115,6 +1184,8 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             self._handle_dashboard_settings()
         elif self.path == "/api/questionnaire-data":
             self._handle_questionnaire_data()
+        elif self.path == "/api/prestation-settings":
+            self._handle_prestation_settings()
         else:
             self.send_response(404)
             self.end_headers()
@@ -1122,6 +1193,8 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
     def do_PUT(self):
         if self.path == "/api/questionnaire-data":
             self._handle_questionnaire_data()
+        elif self.path == "/api/prestation-settings":
+            self._handle_prestation_settings()
         else:
             self.send_response(405)
             self.end_headers()
@@ -1417,13 +1490,23 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             "questionnaire_modal.css",
             "branch_fusion.js",
             "unit_conversion.js",
+            "prestation_settings.js",
             "dashboard_main.js",
         ]
         for _fname in _static_files:
-            html = html.replace(f'src="{_fname}"', f'src="/output/{_fname}"')
-            html = html.replace(f"src='{_fname}'", f"src='/output/{_fname}'")
-            html = html.replace(f'href="{_fname}"', f'href="/output/{_fname}"')
-            html = html.replace(f"href='{_fname}'", f"href='/output/{_fname}'")
+            # Cache-busting : suffixe ?v=<mtime> pour forcer le navigateur à
+            # re-télécharger le fichier dès qu'il change sur le disque. Évite
+            # qu'un onglet ouvert avant une régénération exécute un JS périmé.
+            _fpath = WORKSPACE_DIR / "10_output" / _fname
+            try:
+                _ver = int(_fpath.stat().st_mtime)
+            except OSError:
+                _ver = 0
+            _versioned = f"/output/{_fname}?v={_ver}"
+            html = html.replace(f'src="{_fname}"', f'src="{_versioned}"')
+            html = html.replace(f"src='{_fname}'", f"src='{_versioned}'")
+            html = html.replace(f'href="{_fname}"', f'href="{_versioned}"')
+            html = html.replace(f"href='{_fname}'", f"href='{_versioned}'")
         content = html.encode("utf-8")
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
@@ -1435,8 +1518,8 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
     def _serve_output_static(self):
         """Sert les fichiers statiques de 10_output/ via /output/<fichier>."""
         import mimetypes
-        from urllib.parse import unquote
-        rel = unquote(self.path[len("/output/"):])
+        from urllib.parse import unquote, urlparse
+        rel = unquote(urlparse(self.path).path[len("/output/"):])
         # Empêche les path traversal
         if ".." in rel or rel.startswith("/"):
             self.send_response(403)
@@ -1526,21 +1609,57 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         """Génère une page HTML pour afficher un fichier source .txt."""
         content = path.read_text(encoding="utf-8-sig")
 
-        # Extraire les métadonnées de l'en-tête
+        # Extraire les métadonnées de l'en-tête (tolérant aux variantes de clés)
         meta = {}
         for line in content.splitlines():
-            for key in ("SOURCE", "TITRE", "URL", "CONSULTÉ", "NIVEAU", "ÉDITEUR", "NOTE"):
-                if line.startswith(key + " :") or line.startswith(key + ":"):
-                    val = line.split(":", 1)[1].strip()
-                    if val:
-                        meta.setdefault(key, []).append(val)
+            m = re.match(r"^\s*([A-Za-zÀ-ÖØ-öø-ÿ0-9_ \-]+?)\s*:\s*(.+?)\s*$", line)
+            if not m:
+                continue
+            key = m.group(1).strip()
+            val = m.group(2).strip()
+            if val:
+                meta.setdefault(key, []).append(val)
 
-        # Plusieurs URLs possibles (une par ligne "URL :")
-        urls = meta.get("URL", [])
+        def _extend_http_urls(container, values):
+            for v in values:
+                if not isinstance(v, str):
+                    continue
+                for u in re.findall(r"https?://[^\s<>\"]+", v):
+                    if u not in container:
+                        container.append(u)
+
+        # Plusieurs URLs possibles (URL, URL_API, URL_VERIFICATION, LIEN SOURCE, etc.)
+        urls = []
+        canonical_url_keys = (
+            "URL",
+            "URL_2",
+            "URL_3",
+            "URL_API",
+            "URL_VERIFICATION",
+            "URL_SOURCE",
+            "URL_PDF_DIRECT",
+            "URL_COUNTRY_BRIEF",
+        )
+        for key in canonical_url_keys:
+            _extend_http_urls(urls, meta.get(key, []))
+
+        for key, vals in meta.items():
+            key_up = key.upper()
+            if key_up.startswith("LIEN SOURCE"):
+                _extend_http_urls(urls, vals)
+
+        # Fallback ultime : première(s) URL(s) trouvée(s) dans le contenu brut
+        if not urls:
+            _extend_http_urls(urls, [content])
+
         source = meta.get("SOURCE", ["—"])[0]
         titre  = meta.get("TITRE",  ["—"])[0]
         niveau = meta.get("NIVEAU", ["—"])[0]
-        consult = meta.get("CONSULTÉ", ["—"])[0]
+        consult = (
+            meta.get("CONSULTÉ", ["—"])[0]
+            if "CONSULTÉ" in meta else
+            meta.get("CONSULTE", ["—"])[0]
+        )
 
         # Construire les badges de lien
         web_links = ""

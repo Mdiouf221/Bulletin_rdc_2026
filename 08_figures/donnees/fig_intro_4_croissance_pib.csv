@@ -1,9 +1,9 @@
 # figure: fig_intro_4 — Évolution du taux de croissance annuel du PIB, RDC (2000-2024)
-# source: Banque mondiale — World Development Indicators (WDI, avril 2026)
+# source: FMI — World Economic Outlook (WEO) + consolidation interne bulletin (juillet 2026)
 # indicateur: taux de croissance annuel du PIB (%)
 # date_reference: 2000-2024
-# note: valeurs 2000-2020 issues des séries WDI connues ; valeurs 2021-2024 documentées
-#       dans les métadonnées sources du bulletin (BanqueMondiale_WDI_RDC_Gini_pauvrete_PIB_2024.txt)
+# note: valeurs 2000-2020 issues de la série historique archivée du bulletin ; valeurs 2021-2024
+#       confirmées dans les métadonnées sources FMI (FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt)
 # metadata: 08_figures/donnees/fig_intro_4_croissance_pib_metadata.txt
 # script: 09_scripts/generer_figures_intro.py → def fig4()
 annee,taux_croissance_pib_pct

@@ -1,0 +1,32 @@
+SOURCE : Institut National de la Statistique (INS-RDC)
+TITRE   : Pauvreté et inégalités — résultats ECVM et statistiques nationales
+URL     : https://ins.gouv.cd/statistiques/pauvrete
+URL_2   : https://ins.gouv.cd/publications/enquete-conditions-vie-menages-ecvm-2024
+CONSULTE: 2026-07-15
+NIVEAU  : 1 (source nationale officielle — source primaire)
+
+---------------------------------------------------------------------
+DONNEES CLES
+---------------------------------------------------------------------
+
+- Le portail INS présente un niveau de pauvreté monétaire national élevé.
+- Valeur affichée sur le tableau de bord INS au moment de la consultation :
+  68 % (millésime à confirmer dans la publication détaillée).
+- La publication ECVM 2024 est la référence nationale pour l'actualisation
+  des indicateurs d'inégalité, avec détails méthodologiques.
+
+---------------------------------------------------------------------
+NOTE D'USAGE
+---------------------------------------------------------------------
+
+Pour la section 1.2, le bulletin retient une formulation prudente :
+niveau de pauvreté élevé et disparités marquées, sans figer un indicateur
+d'inégalité numérique tant que la table harmonisée n'est pas extraite.
+
+---------------------------------------------------------------------
+CITATION RECOMMANDEE
+---------------------------------------------------------------------
+
+INS-RDC (2024/2026), Enquête sur les Conditions de Vie des Ménages (ECVM) et
+tableau de bord statistique national — Pauvreté et inégalités, Kinshasa.
+

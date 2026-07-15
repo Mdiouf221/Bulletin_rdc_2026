@@ -147,9 +147,7 @@
         "RNB par habitant 2024 : 670 USD (méthode Atlas)"
       ],
       "citation_recommandee": "Banque mondiale (2026), World Development Indicators, RDC — données 2024.",
-      "sections_citantes": [
-        "02_introduction_generale/0_2_contexte_economique_emploi.md"
-      ]
+      "sections_citantes": []
     },
     {
       "id": "BM-WDI-PIB",
@@ -173,9 +171,7 @@
         "Dépenses de santé courantes (% PIB, 2023) : 3,68 %"
       ],
       "citation_recommandee": "Banque mondiale (2024), World Development Indicators, RDC.",
-      "sections_citantes": [
-        "02_introduction_generale/0_2_contexte_economique_emploi.md"
-      ]
+      "sections_citantes": []
     },
     {
       "id": "BM-WDI-EMPLOI",
@@ -201,6 +197,78 @@
       ],
       "note": "Valeur FAO ~68% corrigée à 58,9% (WDI/ILOEST 2024). La valeur FAO correspondait à l'emploi agricole féminin.",
       "citation_recommandee": "Banque mondiale (2026), World Development Indicators — Emploi et informalité, RDC, données 2024.",
+      "sections_citantes": []
+    },
+    {
+      "id": "FMI-WEO-RDC-2024",
+      "titre": "World Economic Outlook — Croissance du PIB et PIB par habitant — RDC",
+      "organisation": "Fonds monétaire international (FMI)",
+      "annee": 2024,
+      "niveau_fiabilite": 1,
+      "url_source": "https://www.imf.org/external/datamapper/",
+      "url_api": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/COD",
+      "url_api_2": "https://www.imf.org/external/datamapper/api/v1/NGDPDPC/COD",
+      "fichier_pdf": null,
+      "fichier_metadata": "06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt",
+      "fichier_texte_extrait": null,
+      "statut_pdf": "non applicable — source base de données en ligne",
+      "statut_texte": "fiche metadata disponible dans fichier_metadata",
+      "statut_verification": "à valider",
+      "donnees_cles": [
+        "Croissance du PIB réel : 2021 +6,4 % ; 2022 +9,3 % ; 2023 +8,5 % ; 2024 +6,1 %",
+        "Série PIB par habitant disponible dans WEO (NGDPDPC), utilisée qualitativement dans la section 1.2"
+      ],
+      "citation_recommandee": "FMI (2026), World Economic Outlook (WEO), indicateurs NGDP_RPCH et NGDPDPC, RDC.",
+      "sections_citantes": [
+        "02_introduction_generale/0_2_contexte_economique_emploi.md"
+      ]
+    },
+    {
+      "id": "INS-ECVM-RDC-2024",
+      "titre": "INS-RDC — Pauvreté et inégalités (ECVM 2024 et tableau de bord statistique)",
+      "organisation": "Institut National de la Statistique (INS-RDC)",
+      "annee": 2024,
+      "niveau_fiabilite": 1,
+      "url_source": "https://ins.gouv.cd/statistiques/pauvrete",
+      "url_source_2": "https://ins.gouv.cd/publications/enquete-conditions-vie-menages-ecvm-2024",
+      "fichier_pdf": null,
+      "fichier_metadata": "06_sources/officielles_web/INS_RDC_ECVM_pauvrete_inegalites_2024.txt",
+      "fichier_texte_extrait": null,
+      "statut_pdf": "non disponible localement — source web officielle",
+      "statut_texte": "fiche metadata disponible dans fichier_metadata",
+      "statut_verification": "à valider",
+      "donnees_cles": [
+        "Pauvreté monétaire nationale : niveau élevé selon INS",
+        "Tableau de bord INS affiche 68 % à la date de consultation (millésime à confirmer)",
+        "Publication ECVM 2024 : référence nationale pour l'actualisation des inégalités"
+      ],
+      "citation_recommandee": "INS-RDC (2024/2026), ECVM et tableau de bord statistique national — pauvreté et inégalités, RDC.",
+      "sections_citantes": [
+        "02_introduction_generale/0_2_contexte_economique_emploi.md"
+      ]
+    },
+    {
+      "id": "OIT-ILOSTAT-RDC-EMP-2024",
+      "titre": "ILOSTAT — Emploi par secteur et chômage (définition BIT) — RDC",
+      "organisation": "Organisation internationale du Travail (OIT)",
+      "annee": 2024,
+      "niveau_fiabilite": 1,
+      "url_source": "https://ilostat.ilo.org/data/",
+      "url_api": "https://rplumber.ilo.org/data/indicator/?id=EMP_2EMP_SEX_ECO_NB&ref_area=COD&timefrom=2021&timeto=2024",
+      "url_api_2": "https://rplumber.ilo.org/data/indicator/?id=UNE_2EAP_SEX_AGE_RT_A&ref_area=COD&timefrom=2021&timeto=2024",
+      "fichier_pdf": null,
+      "fichier_metadata": "06_sources/officielles_web/OIT_ILOSTAT_RDC_emploi_secteur_chomage_2021_2024.txt",
+      "fichier_texte_extrait": null,
+      "statut_pdf": "non applicable — source base de données en ligne",
+      "statut_texte": "fiche metadata disponible dans fichier_metadata",
+      "statut_verification": "à valider",
+      "donnees_cles": [
+        "Emploi agricole total : 61,4 % (2021), 60,4 % (2022), 59,5 % (2023), 58,9 % (2024)",
+        "Emploi agricole 2024 : femmes 67,8 % ; hommes 50,3 %",
+        "Taux de chômage BIT (15+) : 5,289 % (2021), 4,540 % (2022), 4,469 % (2023), 4,421 % (2024)",
+        "Emploi informel (2020) retenu dans le bulletin : 96,0 % (femmes 97,8 % ; hommes 95,7 %)"
+      ],
+      "citation_recommandee": "OIT (2026), ILOSTAT — indicateurs EMP_2EMP_SEX_ECO_NB, UNE_2EAP_SEX_AGE_RT_A et INF_2INF_NOC_RT_A, RDC.",
       "sections_citantes": [
         "02_introduction_generale/0_2_contexte_economique_emploi.md"
       ]

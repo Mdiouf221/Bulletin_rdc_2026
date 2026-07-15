@@ -75,6 +75,7 @@ questionnaire_html = """
 <script src="questionnaire_modal.js"></script>
 <script src="branch_fusion.js"></script>
 <script src="unit_conversion.js"></script>
+<script src="prestation_settings.js"></script>
 
 <!-- Integration Hooks -->
 <script>
@@ -326,14 +327,9 @@ window.addEventListener('load', async () => {
   
   // Charge les données depuis l'API
   try {
-    const response = await fetch('/api/questionnaire-data');
-    if (!response.ok) return;
-    const data = await response.json();
+    const data = await window.questionnaire.loadData();
     if (!data || Object.keys(data).length === 0) return;
-    
-    // Met à jour les données du questionnaire
-    window.questionnaire.data = data;
-    
+
     // Applique pour chaque institution ayant des données
     Object.keys(data).forEach(institution => {
       // Q1 — déduplication cotisants
@@ -377,7 +373,8 @@ window.addEventListener('load', async () => {
     
     console.log('✓ Questionnaire chargé et appliqué automatiquement au démarrage');
   } catch (e) {
-    console.warn('Chargement automatique questionnaire échoué:', e);
+    console.error('Chargement automatique questionnaire échoué:', e);
+    window.questionnaire.showToast('⚠ Impossible de charger les paramètres institutionnels', 'error');
   }
 });
 
@@ -392,6 +389,299 @@ document.addEventListener('DOMContentLoaded', () => {{
     }}, 100);
   }}
 }});
+
+// ═══════════════════════════════════════════════════════════════════════════
+// Onglet "Par prestation" : bouton ⚙️ Paramètres + application des corrections
+// (A = déduplication bénéficiaires entre prestations, B = unité/conversion,
+//  C = inclusion/exclusion). Symétrique du bouton "Par institution".
+// ═══════════════════════════════════════════════════════════════════════════
+
+// Liste des prestations d'un couple institution/régime (depuis PRESTATION_META)
+function getPrestationsList(inst, regime) {
+  try {
+    const node = window.PRESTATION_META
+      && window.PRESTATION_META[inst]
+      && window.PRESTATION_META[inst][regime];
+    if (node) return Object.keys(node);
+  } catch (e) { /* ignore */ }
+  return [];
+}
+
+// Crée le bouton ⚙️ Paramètres à côté du sélecteur de régime (onglet prestation)
+function initPrestationSettingsButton() {
+  const regimeSelect = document.getElementById('sel-prest-regime');
+  if (!regimeSelect) return;
+  if (document.getElementById('prestation-settings-btn')) return;
+
+  const btn = document.createElement('button');
+  btn.id = 'prestation-settings-btn';
+  btn.className = 'questionnaire-btn';
+  btn.textContent = '⚙️ Paramètres';
+  btn.title = "Configurer les règles d'affichage pour les prestations de ce régime";
+
+  btn.addEventListener('click', () => {
+    const inst = document.getElementById('sel-prest-inst') ? document.getElementById('sel-prest-inst').value : null;
+    const regime = document.getElementById('sel-prest-regime') ? document.getElementById('sel-prest-regime').value : null;
+    if (!inst || !regime) { alert('Sélectionnez une institution et un régime'); return; }
+    const prestations = getPrestationsList(inst, regime);
+    if (prestations.length === 0) { alert('Aucune prestation trouvée pour ce régime'); return; }
+    if (window.prestationSettings) {
+      window.prestationSettings.openModal(inst, regime, prestations);
+    } else {
+      alert('Module prestation settings non chargé');
+    }
+  });
+
+  regimeSelect.parentNode.insertBefore(btn, regimeSelect.nextSibling);
+  console.log('✓ Bouton ⚙️ Paramètres (prestations) initié');
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPrestationSettingsButton);
+} else {
+  initPrestationSettingsButton();
+}
+
+// Cache des traces originales des graphiques prestation
+window._prestOriginalTraces = window._prestOriginalTraces || {};
+
+// Dans fig_prestations_by_institution : yaxis 'y' = cotisants (col 1),
+// 'y2' = bénéficiaires (col 2), 'y3' = dépenses, 'y4' = montant unitaire.
+function _prestIsCotisantsTrace(t) {
+  return (t.yaxis || 'y') === 'y';
+}
+function _prestIsBenefTrace(t) {
+  return (t.yaxis || 'y') === 'y2';
+}
+function _prestIsDepensesTrace(t) {
+  return (t.yaxis || 'y') === 'y3';
+}
+
+// Fusionne (déduplique) les traces d'un même axe selon une matrice dedup.
+// axisPred : prédicat identifiant les traces de l'axe concerné.
+// Retourne le nouveau tableau de traces (traces hors axe inchangées).
+function _prestMergeDedupOnAxis(traces, dedupMatrix, axisPred, excludeSet) {
+  const parent = {};
+  const find = (x) => { if (!(x in parent)) parent[x] = x; if (parent[x] !== x) parent[x] = find(parent[x]); return parent[x]; };
+  const union = (a, b) => { parent[find(a)] = find(b); };
+  Object.keys(dedupMatrix || {}).forEach(key => {
+    if (dedupMatrix[key] !== 'true') return;
+    const parts = key.split('__');
+    if (parts.length === 2 && !excludeSet.has(parts[0]) && !excludeSet.has(parts[1])) {
+      union(parts[0], parts[1]);
+    }
+  });
+  if (Object.keys(parent).length === 0) return traces;
+
+  const rootOf = (p) => (p in parent) ? find(p) : p;
+  const processedRoots = new Set();
+  const result = [];
+  traces.forEach(t => {
+    if (!axisPred(t)) { result.push(t); return; }
+    const root = rootOf(t.legendgroup);
+    if (processedRoots.has(root)) {
+      // trace fantôme : conserver la légende, vider les données
+      const phantom = JSON.parse(JSON.stringify(t));
+      phantom.x = [];
+      phantom.y = [];
+      result.push(phantom);
+      return;
+    }
+    const groupTraces = traces.filter(t2 => axisPred(t2) && rootOf(t2.legendgroup) === root);
+    if (groupTraces.length <= 1) { processedRoots.add(root); result.push(t); return; }
+    processedRoots.add(root);
+    const allX = [];
+    groupTraces.forEach(t2 => (t2.x || []).forEach(xv => { if (allX.indexOf(xv) === -1) allX.push(xv); }));
+    allX.sort();
+    const mergedY = allX.map(xv => {
+      const vals = groupTraces.map(t2 => {
+        const idx = (t2.x || []).indexOf(xv);
+        return idx !== -1 && t2.y ? t2.y[idx] : null;
+      }).filter(v => v != null);
+      return vals.length ? Math.max.apply(null, vals) : null;
+    });
+    const merged = JSON.parse(JSON.stringify(t));
+    merged.x = allX;
+    merged.y = mergedY;
+    result.push(merged);
+  });
+  return result;
+}
+
+// Convertit une adjacence { prest: [autres...] } (format question D, façon Q2)
+// en matrice symétrique { "a__b": "true" } exploitable par _prestMergeDedupOnAxis.
+function _prestAdjacencyToMatrix(adjacency) {
+  const matrix = {};
+  Object.keys(adjacency || {}).forEach(prest => {
+    (adjacency[prest] || []).forEach(other => {
+      if (!other || other === prest) return;
+      matrix[prest + '__' + other] = 'true';
+    });
+  });
+  return matrix;
+}
+
+// Applique dédup cotisants (A1) + dédup bénéficiaires (A2) + conversion (B)
+// + exclusion (C) à un graphique prestation.
+function applyPrestationSettingsToChart(graphId, node) {
+  const plotDiv = document.getElementById(graphId);
+  if (!plotDiv || !plotDiv.data || !window.Plotly) return;
+  if (!window._prestOriginalTraces[graphId]) {
+    window._prestOriginalTraces[graphId] = JSON.parse(JSON.stringify(plotDiv.data));
+  }
+  const orig = window._prestOriginalTraces[graphId];
+
+  // Sans réglages : restaurer l'original
+  if (!node) {
+    window.Plotly.react(graphId, JSON.parse(JSON.stringify(orig)), plotDiv.layout, { responsive: true });
+    return;
+  }
+
+  const dedupCot = node.dedup_cotisants || {};
+  const dedupBen = node.dedup_beneficiaires || {};
+  const financeRec = node.finance_recettes || {};
+  const financeDep = node.finance_depenses || {};
+  const unit = node.unit || {};
+  const coeffs = node.coefficients || {};
+  const exclude = node.exclude || {};
+
+  const _nbCot = Object.keys(dedupCot).filter(k => dedupCot[k] === 'true').length;
+  const _nbBen = Object.keys(dedupBen).filter(k => dedupBen[k] === 'true').length;
+  console.debug('[PrestSettings v2] apply ' + graphId + ' — dedup cotisants(y)=' + _nbCot + ' paires, dedup bénéficiaires(y2)=' + _nbBen + ' paires');
+
+  let traces = JSON.parse(JSON.stringify(orig));
+
+  // C — exclusion : retirer toutes les traces d'une prestation exclue
+  const excludeSet = new Set(Object.keys(exclude).filter(k => exclude[k]));
+  if (excludeSet.size) {
+    traces = traces.filter(t => !excludeSet.has(t.legendgroup));
+  }
+
+  // B — conversion d'unité (uniquement l'axe bénéficiaires 'y2')
+  traces = traces.map(t => {
+    if (!_prestIsBenefTrace(t)) return t;
+    const prest = t.legendgroup;
+    const u = unit[prest];
+    if (!u || u === 'enfant') return t;
+    const c = coeffs[prest];
+    if (!c || !Object.keys(c).length) return t;
+    if (Array.isArray(t.x) && Array.isArray(t.y)) {
+      t.y = t.y.map((yv, i) => {
+        if (yv === null || yv === undefined) return yv;
+        const cd = c[t.x[i]] || c['default'];
+        return (cd && cd.value) ? yv * cd.value : yv;
+      });
+      if (typeof t.name === 'string' && t.name.indexOf('↺') === -1) {
+        t.name = t.name + ' ↺';
+      }
+    }
+    return t;
+  });
+
+  // A1 — déduplication cotisants (axe 'y')
+  traces = _prestMergeDedupOnAxis(traces, dedupCot, _prestIsCotisantsTrace, excludeSet);
+  // A2 — déduplication bénéficiaires (axe 'y2')
+  traces = _prestMergeDedupOnAxis(traces, dedupBen, _prestIsBenefTrace, excludeSet);
+
+  // D — agrégation des dépenses (axe 'y3') : fusionne le même montant reporté
+  // sur plusieurs prestations pour éviter le double comptage (empilement N×).
+  const depMatrix = _prestAdjacencyToMatrix(financeDep);
+  const _nbDep = Object.keys(depMatrix).length;
+  if (_nbDep) {
+    traces = _prestMergeDedupOnAxis(traces, depMatrix, _prestIsDepensesTrace, excludeSet);
+  }
+  // D — recettes : stockées pour usage futur ; aucun graphique recettes par
+  // prestation n'existe actuellement, donc aucune fusion visuelle n'est appliquée.
+  const _nbRec = Object.keys(_prestAdjacencyToMatrix(financeRec)).length;
+  console.debug('[PrestSettings v2] finance — dépenses(y3)=' + _nbDep + ' arêtes, recettes(stockées)=' + _nbRec + ' arêtes');
+
+  window.Plotly.react(graphId, traces, plotDiv.layout, { responsive: true });
+}
+
+// Applique l'exclusion (C) aux lignes du tableau prestation.
+function applyPrestationExclusionToTable(node) {
+  const exclude = (node && node.exclude) || {};
+  const excludeSet = new Set(Object.keys(exclude).filter(k => exclude[k]));
+  const tableHost = document.getElementById('table-prestations');
+  if (!tableHost) return;
+  tableHost.querySelectorAll('tr[data-prest]').forEach(tr => {
+    tr.style.display = excludeSet.has(tr.getAttribute('data-prest')) ? 'none' : '';
+  });
+}
+
+// Point d'entrée : applique tous les réglages au couple courant.
+function applyPrestationSettings(inst, regime) {
+  if (!window.prestationSettings || !window.prestationSettings.data) return;
+  const iSel = document.getElementById('sel-prest-inst');
+  const rSel = document.getElementById('sel-prest-regime');
+  const iv = inst || (iSel ? iSel.value : null);
+  const rv = regime || (rSel ? rSel.value : null);
+  if (!iv || !rv) return;
+  const node = (window.prestationSettings.data[iv] && window.prestationSettings.data[iv][rv]) || null;
+  const chartHost = document.getElementById('charts-regime-prestations');
+  if (chartHost) {
+    chartHost.querySelectorAll('.plotly-graph-div').forEach(div => {
+      if (div.id) applyPrestationSettingsToChart(div.id, node);
+    });
+  }
+  applyPrestationExclusionToTable(node);
+}
+
+function reapplyPrestationSettingsSoon() {
+  setTimeout(() => {
+    const iSel = document.getElementById('sel-prest-inst');
+    const rSel = document.getElementById('sel-prest-regime');
+    applyPrestationSettings(iSel ? iSel.value : null, rSel ? rSel.value : null);
+  }, 150);
+}
+
+// Hook : réappliquer après changement de régime/institution
+const _origUpdatePrestationRegime = window.updatePrestationRegime;
+if (typeof _origUpdatePrestationRegime === 'function') {
+  window.updatePrestationRegime = function() {
+    _origUpdatePrestationRegime.apply(this, arguments);
+    reapplyPrestationSettingsSoon();
+  };
+}
+
+// Hook : réappliquer après changement de mode H/F (graphique et tableau)
+const _origSetChartRegimePrestSexMode = window.setChartRegimePrestSexMode;
+if (typeof _origSetChartRegimePrestSexMode === 'function') {
+  window.setChartRegimePrestSexMode = function() {
+    _origSetChartRegimePrestSexMode.apply(this, arguments);
+    reapplyPrestationSettingsSoon();
+  };
+}
+const _origSetTablePrestSexMode = window.setTablePrestSexMode;
+if (typeof _origSetTablePrestSexMode === 'function') {
+  window.setTablePrestSexMode = function() {
+    _origSetTablePrestSexMode.apply(this, arguments);
+    reapplyPrestationSettingsSoon();
+  };
+}
+
+// Hook : après sauvegarde depuis la modale
+window.addEventListener('prestation-settings-saved', (e) => {
+  const detail = e.detail || {};
+  applyPrestationSettings(detail.institution, detail.regime);
+  console.log('✓ Paramètres prestations appliqués (A1 + A2 + B + C)');
+});
+
+// Chargement automatique au démarrage
+window.addEventListener('load', async () => {
+  if (!window.prestationSettings) return;
+  try {
+    const response = await fetch('/api/prestation-settings');
+    if (!response.ok) return;
+    const data = await response.json();
+    if (!data || Object.keys(data).length === 0) return;
+    window.prestationSettings.data = data;
+    reapplyPrestationSettingsSoon();
+    console.log('✓ Paramètres prestations chargés au démarrage');
+  } catch (e) {
+    console.warn('Chargement automatique prestation settings échoué:', e);
+  }
+});
 </script>
 """
 
@@ -1953,8 +2243,10 @@ def fig_table_prestations(rows: list[dict], institution: str, regime_code: str, 
     thead_html += "</tr>"
     
     rows_html = "".join(
-        "<tr>" + "".join(f"<td>{cell}</td>" for cell in row) + "</tr>"
-        for row in body_rows
+        f'<tr data-prest="{html.escape(str(r["nom_fr"] or ""), quote=True)}">'
+        + "".join(f"<td>{cell}</td>" for cell in row)
+        + "</tr>"
+        for r, row in zip(data, body_rows)
     )
     
     return f"""
@@ -2673,6 +2965,15 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       border-color: #2b6cb0;
       box-shadow: 0 0 0 3px rgba(43,108,176,0.18), 0 4px 12px rgba(44,82,130,0.12);
     }}
+    .kpi-card-missing {{
+      border-style: dashed;
+      border-color: #a0aec0;
+      background: linear-gradient(135deg, #f7fafc 0%, #ffffff 100%);
+      box-shadow: 0 2px 6px rgba(113,128,150,0.1);
+    }}
+    .kpi-card-missing .kpi-value {{
+      color: #718096;
+    }}
     .kpi-label {{
       color: #4a5568;
       font-size: 0.9rem;
@@ -2885,6 +3186,47 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       gap: 12px;
       padding: 12px;
     }}
+    .odd-year-aligned-grid.odd-visual-permanent,
+    .odd-year-aligned-grid.odd-construction-scroll {{
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      scrollbar-gutter: stable;
+      scrollbar-color: #4a5568 #e2e8f0;
+      scrollbar-width: auto;
+      padding-bottom: 14px;
+    }}
+    .odd-year-aligned-grid.odd-visual-permanent > .odd-year-block {{
+      flex: 0 0 calc((100% - 48px) / 5);
+      min-width: 190px;
+      box-sizing: border-box;
+    }}
+    .odd-year-aligned-grid.odd-construction-scroll > .odd-year-block {{
+      flex: 0 0 calc((100% - 24px) / 3);
+      min-width: 300px;
+      box-sizing: border-box;
+    }}
+    .odd-year-aligned-grid.odd-visual-permanent::-webkit-scrollbar,
+    .odd-year-aligned-grid.odd-construction-scroll::-webkit-scrollbar {{
+      height: 14px;
+    }}
+    .odd-year-aligned-grid.odd-visual-permanent::-webkit-scrollbar-track,
+    .odd-year-aligned-grid.odd-construction-scroll::-webkit-scrollbar-track {{
+      background: #e2e8f0;
+      border-radius: 999px;
+    }}
+    .odd-year-aligned-grid.odd-visual-permanent::-webkit-scrollbar-thumb,
+    .odd-year-aligned-grid.odd-construction-scroll::-webkit-scrollbar-thumb {{
+      background: #4a5568;
+      border: 3px solid #e2e8f0;
+      border-radius: 999px;
+    }}
+    .odd-year-aligned-grid.odd-visual-permanent::-webkit-scrollbar-thumb:hover,
+    .odd-year-aligned-grid.odd-construction-scroll::-webkit-scrollbar-thumb:hover {{
+      background: #2d3748;
+    }}
     .odd-year-block {{
       border: 1px solid #e2e8f0;
       border-radius: 10px;
@@ -2896,6 +3238,18 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       margin: 0 0 8px 0;
       color: #1a365d;
       font-size: 0.92rem;
+    }}
+    .odd-year-banner {{
+      margin: -10px -10px 8px;
+      padding: 8px 10px;
+      border-bottom: 1px solid #bee3f8;
+      border-radius: 9px 9px 0 0;
+      background: #ebf8ff;
+      color: #1a365d;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-align: center;
     }}
     .odd-year-total {{
       margin-bottom: 8px;
@@ -3301,12 +3655,19 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     .odd-indicator-grid .chart-block {{
       min-height: 540px;
     }}
-    .denom-panel {{
+    .denom-panel,
+    .aggregate-indicator-panel {{
       margin-top: 18px;
       border: 1px solid #e2e8f0;
       border-radius: 12px;
       background: #ffffff;
       padding: 14px 16px;
+    }}
+    .aggregate-indicator-panel {{
+      margin-top: 12px;
+      border: 2px solid #2f855a;
+      background: linear-gradient(135deg, #f0fff4 0%, #ffffff 100%);
+      box-shadow: 0 4px 14px rgba(47, 133, 90, 0.12);
     }}
     .numerator-panel {{
       margin-top: 12px;
@@ -3315,7 +3676,8 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       background: #ffffff;
       padding: 14px 16px;
     }}
-    .denom-active-context {{
+    .denom-active-context,
+    .aggregate-indicator-context {{
       margin: 8px 0 10px 0;
       padding: 8px 10px;
       border-radius: 8px;
@@ -4319,23 +4681,22 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
 <!-- ═══ ONGLET 1 : INDICATEURS ═══ -->
 <div id="tab-indicateurs" class="tab-panel active">
   <div class="chart-block">
-    <h3>Indicateurs ESS agrégés</h3>
-    <p class="note-source">
-      Cette vue présente des indicateurs agrégés issus des séries ESS (effectifs et finances).
-      Elle ne constitue pas un taux de couverture effective au sens ODD 1.3.1, faute de dénominateurs démographiques intégrés à ce stade.
-    </p>
     <div class="odd-global-actions">
       <label for="odd-indicator-select">Indicateur actif :</label>
       <select id="odd-indicator-select"></select>
     </div>
+    <div class="aggregate-indicator-panel">
+      <h4 class="numerateurs-title">Indicateur agrégé</h4>
+      <div id="aggregate-indicator-context" class="aggregate-indicator-context">Chargement…</div>
+      <div id="aggregate-indicator-visual-grid" class="odd-year-aligned-grid odd-visual-permanent"></div>
+    </div>
     <div class="numerator-panel">
       <h4 class="numerateurs-title">Numérateur de l'indicateur</h4>
       <div id="odd-indicator-context" class="odd-indicator-context">Chargement…</div>
-      <div id="ind-numerateurs" class="indicator-kpis indicator-kpis-numerateurs"></div>
       <div id="odd-numerator-rule" class="odd-numerator-rule-text"></div>
       <div id="odd-numerator-visual-grid" class="odd-year-aligned-grid odd-visual-permanent"></div>
       <div id="odd-numerator-legend" class="odd-shared-legend"></div>
-      <details class="odd-breakdown-fold" open>
+      <details class="odd-breakdown-fold">
         <summary>
           <span>⚙ Construction des numérateurs</span>
           <span class="odd-edit-controls">
@@ -4345,7 +4706,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             <button type="button" id="odd-decision-edit-open" class="odd-view-btn" style="background:#2c5282;color:#fff;border-color:#2c5282;" title="Éditer les décisions pour cette année">Éditer</button>
           </span>
         </summary>
-        <div id="odd-numerator-breakdown-grid" class="odd-year-aligned-grid"></div>
+        <div id="odd-numerator-breakdown-grid" class="odd-year-aligned-grid odd-construction-scroll"></div>
         <div id="odd-decision-panel" class="odd-decision-panel">
           <div class="odd-decision-panel-header">
             <span>Décisions d'inclusion/exclusion</span>
@@ -4369,7 +4730,6 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     <div class="denom-panel">
       <h4 class="numerateurs-title">Dénominateur de l'indicateur</h4>
       <div id="denom-active-context" class="denom-active-context">Chargement…</div>
-      <div id="denom-active-cards" class="indicator-kpis indicator-kpis-numerateurs"></div>
       <div id="denom-active-visual-grid" class="odd-year-aligned-grid odd-visual-permanent"></div>
       <details class="odd-breakdown-fold">
         <summary>
@@ -4380,6 +4740,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             <button type="button" id="denom-save" class="odd-save-btn" title="Sauvegarder les paramètres du dénominateur">Sauvegarder</button>
           </span>
         </summary>
+        <div id="denom-breakdown-grid" class="odd-year-aligned-grid odd-construction-scroll"></div>
         <div class="denom-api-wrap">
       <div class="denom-actions">
         <button type="button" id="denom-refresh">Actualiser le dénominateur</button>
@@ -4715,6 +5076,7 @@ const DENOMINATEURS_CONFIG = {denominateurs_json};
 window.REGIMES_PAR_INST = REGIMES_PAR_INST;
 window.NOM_COURT = NOM_COURT;
 window.REGIME_META = REGIME_META;
+window.PRESTATION_META = PRESTATION_META;
 
 function escapeHtml(text) {{
   return String(text || '')
@@ -5365,6 +5727,67 @@ let CURRENT_DENOM_SETTINGS = {{}};
 let DENOM_EDIT_MODE = false;
 let DENOM_PENDING_CHANGES = false;
 const ODD_INDICATOR_LABELS = Object.fromEntries((ODD_INDICATORS || []).map(item => [item.key, item.label]));
+const ODD_METHODOLOGY_SPECS = {{
+  global_131: {{
+    definition: "Proportion de la population couverte par au moins une prestation en espèces de protection sociale ou cotisant activement à au moins un régime de sécurité sociale.",
+    numerator: "Nombre de personnes recevant au moins une prestation en espèces de protection sociale, hors soins de santé, ou cotisant activement à au moins un régime de sécurité sociale, sans double comptage.",
+    denominator: "Population totale.",
+    formula: "Population couverte par au moins une prestation ou cotisant activement ÷ population totale × 100.",
+  }},
+  ind_22_enfants: {{
+    definition: "Proportion d’enfants bénéficiant d’au moins une prestation en espèces de protection sociale destinée aux enfants ou aux familles.",
+    numerator: "Nombre d’enfants recevant au moins une prestation en espèces pour enfants ou famille.",
+    denominator: "Population totale des enfants dans la tranche d’âge retenue.",
+    formula: "Enfants bénéficiaires ÷ population totale des enfants × 100.",
+  }},
+  ind_23_maternite: {{
+    definition: "Proportion de femmes ayant accouché qui reçoivent une prestation en espèces de maternité.",
+    numerator: "Nombre de femmes ayant accouché et percevant une indemnité ou une allocation de maternité en espèces.",
+    denominator: "Nombre total de femmes ayant accouché au cours de la même année, estimé directement ou à partir des naissances vivantes corrigées des naissances multiples.",
+    formula: "Femmes bénéficiaires d’une prestation de maternité ÷ femmes ayant accouché × 100.",
+  }},
+  ind_24_handicap: {{
+    definition: "Proportion de personnes en situation de handicap grave qui reçoivent une prestation en espèces d’invalidité.",
+    numerator: "Nombre de personnes en situation de handicap grave percevant une prestation en espèces d’invalidité.",
+    denominator: "Population estimée de personnes en situation de handicap grave.",
+    formula: "Bénéficiaires de prestations d’invalidité ÷ population en situation de handicap grave × 100.",
+  }},
+  ind_25_atmp: {{
+    definition: "Proportion de la main-d’œuvre couverte par un régime assurant une protection en cas d’accident du travail ou de maladie professionnelle.",
+    numerator: "Nombre de personnes appartenant à la main-d’œuvre et couvertes en cas d’accident du travail ou de maladie professionnelle.",
+    denominator: "Main-d’œuvre totale, composée des personnes en emploi et des personnes au chômage.",
+    formula: "Main-d’œuvre couverte contre les accidents du travail et maladies professionnelles ÷ main-d’œuvre totale × 100.",
+  }},
+  ind_26_chomage: {{
+    definition: "Proportion de personnes au chômage qui reçoivent une prestation en espèces de chômage.",
+    numerator: "Nombre de personnes au chômage percevant effectivement une allocation de chômage en espèces.",
+    denominator: "Nombre total de personnes au chômage selon la définition du BIT.",
+    formula: "Chômeurs indemnisés ÷ nombre total de chômeurs × 100.",
+  }},
+  ind_27_vieillesse: {{
+    definition: "Proportion de personnes ayant atteint l’âge légal de la retraite qui reçoivent une prestation de vieillesse contributive ou non contributive.",
+    numerator: "Nombre de personnes ayant atteint l’âge légal de la retraite et percevant effectivement une pension ou une prestation de vieillesse.",
+    denominator: "Population totale ayant atteint l’âge légal de la retraite, lequel peut différer selon le sexe ou le régime.",
+    formula: "Bénéficiaires de prestations de vieillesse ÷ population ayant atteint l’âge légal de la retraite × 100.",
+  }},
+  ind_28_vulnerables: {{
+    definition: "Proportion de personnes vulnérables qui reçoivent une prestation d’assistance sociale en espèces.",
+    numerator: "Nombre de personnes vulnérables percevant une prestation d’assistance sociale en espèces.",
+    denominator: "Population vulnérable, obtenue en retranchant de la population totale les personnes en âge de travailler cotisant à une assurance sociale ou percevant une prestation contributive, ainsi que les personnes d’âge légal de la retraite percevant une prestation contributive.",
+    formula: "Personnes vulnérables bénéficiaires d’une prestation d’assistance sociale ÷ population vulnérable × 100.",
+  }},
+  ind_29_cotisants: {{
+    definition: "Proportion de la main-d’œuvre qui cotise activement à un régime de retraite contributif.",
+    numerator: "Nombre de personnes cotisant activement à un régime de retraite contributif.",
+    denominator: "Main-d’œuvre totale.",
+    formula: "Cotisants actifs à un régime de retraite ÷ main-d’œuvre totale × 100.",
+  }},
+}};
+
+function getOddMethodologySpec(indicatorKey) {{
+  return ODD_METHODOLOGY_SPECS[indicatorKey] || ODD_METHODOLOGY_SPECS.global_131;
+}}
+
 const DENOMINATOR_BY_INDICATOR = {{
   global_131: {{
     shortKey: 'total',
@@ -6000,56 +6423,15 @@ function getNumeratorYearSummaries(indicatorKey, regimeRows, prestationRows, met
 }}
 
 function renderIndicateurs() {{
-  const payload = INDICATEURS_DATA || {{}};
   const indicatorKey = getCurrentOddIndicator();
-  const yearKey = getCurrentOddYear();
-  const selectedYear = Number(yearKey);
   const indicatorLabel = ODD_INDICATOR_LABELS[indicatorKey] || indicatorKey;
-  const metricSpec = getOddIndicatorNumeratorSpec(indicatorKey);
-  const regimeRows = payload.rows_regimes || [];
-  const prestationRows = payload.rows_prestations || [];
+  const methodologySpec = getOddMethodologySpec(indicatorKey);
 
-  const numHost = document.getElementById('ind-numerateurs');
   const contextHost = document.getElementById('odd-indicator-context');
-  if (!numHost) return;
-
-  const summaries = getNumeratorYearSummaries(indicatorKey, regimeRows, prestationRows, metricSpec);
-  if (!summaries.length) {{
-    numHost.innerHTML = '<p class="empty">Aucune donnée disponible.</p>';
-    if (contextHost) contextHost.innerHTML = '<strong>Indicateur en cours :</strong> ' + escapeHtml(indicatorLabel);
-    return;
-  }}
-
-  const yearsAll = summaries.map(s => s.year);
-  const displayYear = yearsAll.includes(selectedYear) ? selectedYear : yearsAll[yearsAll.length - 1];
   if (contextHost) {{
     contextHost.innerHTML = '<strong>Indicateur en cours :</strong> ' + escapeHtml(indicatorLabel) +
-      ' &nbsp;|&nbsp; <strong>Numérateur :</strong> ' + escapeHtml(metricSpec.numeratorName || metricSpec.metricLabel) +
-      '<br><small>' + escapeHtml(metricSpec.numeratorDefinition || '') + '</small>';
+      '<br><strong>Numérateur — définition OIT :</strong> ' + escapeHtml(methodologySpec.numerator);
   }}
-  const numCards = summaries.map(summary => {{
-    const instCount = (summary.institutions || []).length;
-    const sublabelHtml =
-      escapeHtml(instCount + ' institution' + (instCount > 1 ? 's' : '') + ' incluse' + (instCount > 1 ? 's' : '')) + '<br>' +
-      escapeHtml(summary.includedRegimesCount + ' régime(s) inclus') + '<br>' +
-      escapeHtml(summary.includedPrestationsCount + ' prestation(s) incluses');
-    return {{
-      year: summary.year,
-      label: 'Année ' + summary.year,
-      sublabelHtml: sublabelHtml,
-      value: fmtInt(summary.total),
-      icon: '🎯',
-      selected: String(summary.year) === String(displayYear),
-    }};
-  }});
-  numHost.innerHTML = numCards.map(card =>
-    '<div class="kpi-card kpi-card-numerateur' + (card.selected ? ' kpi-card-selected-year' : '') + '">' +
-      '<div class="kpi-icon">' + card.icon + '</div>' +
-      '<div class="kpi-label">' + escapeHtml(card.label) + '</div>' +
-      '<div class="kpi-value">' + escapeHtml(card.value) + '</div>' +
-      '<div class="kpi-sublabel">' + card.sublabelHtml + '</div>' +
-    '</div>'
-  ).join('');
   renderActiveDenominatorViews();
 }}
 
@@ -6473,8 +6855,9 @@ function renderOddBranchesVisual() {{
     payload.rows_prestations || [],
     metricSpec
   );
+  const alignedYears = getAlignedIndicatorYears(summaries);
 
-  if (!summaries.length) {{
+  if (!alignedYears.length) {{
     visualGrid.innerHTML = '<p class="empty">Aucune donnée disponible.</p>';
     breakdownGrid.innerHTML = '<p class="empty">Aucune donnée disponible.</p>';
     return;
@@ -6500,11 +6883,22 @@ function renderOddBranchesVisual() {{
   instCodes.forEach((code, i) => {{ colorMap[code] = palette[i % palette.length]; }});
 
   // Construire les blocs-années : seulement le graphique (l'année est sur l'axe X)
-  visualGrid.innerHTML = summaries.map(s =>
-    '<div class="odd-year-block">' +
-      '<div id="odd-year-chart-' + escapeHtml(String(s.year)) + '" style="height:240px;"></div>' +
-    '</div>'
-  ).join('');
+  const summaryByYear = {{}};
+  summaries.forEach(summary => {{
+    summaryByYear[String(summary.year)] = summary;
+  }});
+  visualGrid.innerHTML = alignedYears.map(year => {{
+    const summary = summaryByYear[String(year)];
+    return summary
+      ? '<div class="odd-year-block">' +
+          '<div class="odd-year-banner">' + escapeHtml(String(year)) + '</div>' +
+          '<div id="odd-year-chart-' + escapeHtml(String(year)) + '" style="height:240px;"></div>' +
+        '</div>'
+      : '<div class="odd-year-block">' +
+          '<div class="odd-year-banner">' + escapeHtml(String(year)) + '</div>' +
+          '<p class="empty">Numérateur indisponible.</p>' +
+        '</div>';
+  }}).join('');
 
   // Calculer l'échelle Y commune sur toutes les années
   const yMaxNum = summaries.reduce((m, s) => Math.max(m, s.total || 0), 0) * 1.08;
@@ -6533,9 +6927,9 @@ function renderOddBranchesVisual() {{
     }});
     Plotly.newPlot(chartId, traces, {{
       barmode: 'stack',
-      margin: {{ t: 8, r: 8, b: 38, l: 50 }},
+      margin: {{ t: 8, r: 8, b: 18, l: 50 }},
       yaxis: {{ separatethousands: true, range: [0, yMaxNum] }},
-      xaxis: {{ type: 'category', automargin: true }},
+      xaxis: {{ type: 'category', showticklabels: false, ticks: '' }},
       showlegend: false,
       paper_bgcolor: '#ffffff',
       plot_bgcolor: '#ffffff',
@@ -6552,7 +6946,14 @@ function renderOddBranchesVisual() {{
     ).join('');
   }}
 
-  breakdownGrid.innerHTML = summaries.map(summary => {{
+  breakdownGrid.innerHTML = alignedYears.map(year => {{
+    const summary = summaryByYear[String(year)];
+    if (!summary) {{
+      return '<div class="odd-year-block">' +
+        '<h5>Année ' + escapeHtml(String(year)) + '</h5>' +
+        '<p class="empty">Construction indisponible.</p>' +
+      '</div>';
+    }}
     const institutionBlocks = (summary.institutions || []).map(inst => {{
       const regimeBlocks = (inst.regimes || []).map(reg => {{
         const prestationList = (reg.prestations || []).map(p =>
@@ -6586,6 +6987,7 @@ function renderOddBranchesVisual() {{
       '<div class="odd-calc-tree">' + (institutionBlocks || '<p class="empty">Aucune composante incluse.</p>') + '</div>' +
     '</div>';
   }}).join('');
+  syncIndicatorYearScrolls();
 }}
 
 function fmtPlain(value) {{
@@ -6623,6 +7025,22 @@ function getDenominatorValueFromRow(row, spec) {{
   if (!row || !spec) return null;
   const val = Number(row[spec.rowField]);
   return Number.isFinite(val) ? val : null;
+}}
+
+function getDenominatorMetaFromRow(row, spec) {{
+  if (!row || !spec) return '';
+  const metaFieldByValueField = {{
+    populationTotale: 'metaTotal',
+    populationEnfants: 'metaEnfants',
+    populationActive: 'metaActive',
+    populationForceDeTravail: 'metaForceDeTravail',
+    populationRetraite: 'metaRetraite',
+    populationHandicapGrave: 'metaHandicapGrave',
+    naissancesVivantes: 'metaNaissances',
+    femmesAyantAccouche: 'metaFemmes',
+  }};
+  const metaField = metaFieldByValueField[spec.rowField];
+  return metaField && row[metaField] ? String(row[metaField]) : '';
 }}
 
 function setDenomEditMode(isEdit) {{
@@ -6680,39 +7098,212 @@ function updateDenominatorPackVisibility(activeShortKey) {{
   }});
 }}
 
+function getAlignedIndicatorYears(numeratorSummaries) {{
+  const years = new Set();
+  (numeratorSummaries || []).forEach(summary => {{
+    const year = Number(summary && summary.year);
+    if (Number.isFinite(year)) years.add(year);
+  }});
+  (CURRENT_DENOM_ROWS || []).forEach(row => {{
+    const year = Number(row && row.year);
+    if (Number.isFinite(year)) years.add(year);
+  }});
+  return Array.from(years).sort((a, b) => a - b);
+}}
+
+let INDICATOR_SCROLL_SYNCING = false;
+
+function syncIndicatorYearScrolls() {{
+  const ids = [
+    'aggregate-indicator-visual-grid',
+    'odd-numerator-visual-grid',
+    'denom-active-visual-grid',
+    'odd-numerator-breakdown-grid',
+    'denom-breakdown-grid',
+  ];
+  const hosts = ids.map(id => document.getElementById(id)).filter(Boolean);
+  hosts.forEach(host => {{
+    if (host.dataset.scrollSyncBound === '1') return;
+    host.addEventListener('scroll', () => {{
+      if (INDICATOR_SCROLL_SYNCING) return;
+      INDICATOR_SCROLL_SYNCING = true;
+      hosts.forEach(other => {{
+        if (other !== host) other.scrollLeft = host.scrollLeft;
+      }});
+      window.requestAnimationFrame(() => {{
+        INDICATOR_SCROLL_SYNCING = false;
+      }});
+    }});
+    host.dataset.scrollSyncBound = '1';
+  }});
+}}
+
+function renderAggregateIndicatorViews() {{
+  const contextHost = document.getElementById('aggregate-indicator-context');
+  const visualHost = document.getElementById('aggregate-indicator-visual-grid');
+  if (!contextHost || !visualHost) return;
+
+  const indicatorKey = getCurrentOddIndicator();
+  const indicatorLabel = ODD_INDICATOR_LABELS[indicatorKey] || indicatorKey;
+  const metricSpec = getOddIndicatorNumeratorSpec(indicatorKey);
+  const denominatorSpec = getActiveDenominatorSpec(indicatorKey);
+  const methodologySpec = getOddMethodologySpec(indicatorKey);
+  const payload = INDICATEURS_DATA || {{}};
+  const summaries = getNumeratorYearSummaries(
+    indicatorKey,
+    payload.rows_regimes || [],
+    payload.rows_prestations || [],
+    metricSpec
+  );
+  const denominatorByYear = {{}};
+  (CURRENT_DENOM_ROWS || []).forEach(row => {{
+    denominatorByYear[String(row.year)] = row;
+  }});
+  const summaryByYear = {{}};
+  summaries.forEach(summary => {{
+    summaryByYear[String(summary.year)] = summary;
+  }});
+  const alignedYears = getAlignedIndicatorYears(summaries);
+
+  contextHost.innerHTML =
+    '<strong>Indicateur en cours :</strong> ' + escapeHtml(indicatorLabel) +
+    '<br><strong>Définition OIT :</strong> ' + escapeHtml(methodologySpec.definition) +
+    '<br><strong>Formule OIT :</strong> ' + escapeHtml(methodologySpec.formula);
+
+  if (!alignedYears.length) {{
+    visualHost.innerHTML = '<p class="empty">Aucune année disponible.</p>';
+    return;
+  }}
+
+  const results = alignedYears.map(year => {{
+    const summary = summaryByYear[String(year)];
+    const denominatorRow = denominatorByYear[String(year)];
+    const denominator = denominatorRow
+      ? getDenominatorValueFromRow(denominatorRow, denominatorSpec)
+      : null;
+    const numerator = summary ? Number(summary.total) : null;
+    const ratio = Number.isFinite(numerator) && denominator !== null && Number(denominator) > 0
+      ? numerator / Number(denominator)
+      : null;
+    return {{
+      year: year,
+      numerator: Number.isFinite(numerator) ? numerator : null,
+      denominator: denominator,
+      ratio: ratio,
+      percentage: ratio === null ? null : ratio * 100,
+    }};
+  }});
+
+  visualHost.innerHTML = results.map(result =>
+    '<div class="odd-year-block">' +
+      '<div class="odd-year-banner">' + escapeHtml(String(result.year)) + '</div>' +
+      '<div id="aggregate-year-chart-' + escapeHtml(String(result.year)) + '" style="height:220px;"></div>' +
+    '</div>'
+  ).join('');
+
+  results.forEach(result => {{
+    const chartId = 'aggregate-year-chart-' + String(result.year);
+    const host = document.getElementById(chartId);
+    if (!host) return;
+    if (result.ratio === null) {{
+      host.innerHTML = '<p class="empty">Calcul indisponible : numérateur ou dénominateur manquant.</p>';
+      return;
+    }}
+    Plotly.newPlot(chartId, [{{
+      type: 'indicator',
+      mode: 'gauge+number',
+      value: result.percentage,
+      number: {{
+        suffix: ' %',
+        valueformat: '.1f',
+        font: {{ color: '#22543d', size: 30 }},
+      }},
+      gauge: {{
+        axis: {{
+          range: [0, 100],
+          tickmode: 'array',
+          tickvals: [0, 25, 50, 75, 100],
+          ticktext: ['0 %', '25 %', '50 %', '75 %', '100 %'],
+        }},
+        bar: {{ color: '#2f855a', thickness: 0.72 }},
+        bgcolor: '#edf2f7',
+        borderwidth: 1,
+        bordercolor: '#cbd5e0',
+        steps: [
+          {{ range: [0, 100], color: '#e6fffa' }},
+        ],
+        threshold: {{
+          line: {{ color: '#22543d', width: 4 }},
+          thickness: 0.8,
+          value: 100,
+        }},
+      }},
+    }}], {{
+      margin: {{ t: 12, r: 12, b: 12, l: 12 }},
+      paper_bgcolor: '#ffffff',
+    }}, {{ responsive: true }});
+  }});
+  syncIndicatorYearScrolls();
+}}
+
 function renderActiveDenominatorViews() {{
   const contextHost = document.getElementById('denom-active-context');
-  const cardsHost = document.getElementById('denom-active-cards');
   const visualHost = document.getElementById('denom-active-visual-grid');
-  if (!contextHost || !cardsHost || !visualHost) return;
+  const breakdownHost = document.getElementById('denom-breakdown-grid');
+  if (!contextHost || !visualHost || !breakdownHost) return;
 
   const indicatorKey = getCurrentOddIndicator();
   const indicatorLabel = ODD_INDICATOR_LABELS[indicatorKey] || indicatorKey;
   const spec = getActiveDenominatorSpec(indicatorKey);
+  const methodologySpec = getOddMethodologySpec(indicatorKey);
   updateDenominatorPackVisibility(spec.shortKey);
   contextHost.innerHTML = '<strong>Indicateur en cours :</strong> ' + escapeHtml(indicatorLabel) +
-    ' &nbsp;|&nbsp; <strong>Dénominateur :</strong> ' + escapeHtml(spec.label || '') +
-    '<br><small>' + escapeHtml(spec.definition || '') + '</small>';
+    '<br><strong>Dénominateur — définition OIT :</strong> ' + escapeHtml(methodologySpec.denominator);
 
   const rows = (CURRENT_DENOM_ROWS || []).slice().sort((a, b) => Number(a.year) - Number(b.year));
-  if (!rows.length) {{
-    cardsHost.innerHTML = '<p class="empty">Aucun dénominateur calculé.</p>';
-    visualHost.innerHTML = '<p class="empty">Aucun dénominateur calculé.</p>';
+  const payload = INDICATEURS_DATA || {{}};
+  const numeratorSummaries = getNumeratorYearSummaries(
+    indicatorKey,
+    payload.rows_regimes || [],
+    payload.rows_prestations || [],
+    getOddIndicatorNumeratorSpec(indicatorKey)
+  );
+  const alignedYears = getAlignedIndicatorYears(numeratorSummaries);
+  if (!alignedYears.length) {{
+    visualHost.innerHTML = '<p class="empty">Aucune année disponible.</p>';
+    breakdownHost.innerHTML = '<p class="empty">Aucune construction disponible.</p>';
+    renderAggregateIndicatorViews();
     return;
   }}
 
-  cardsHost.innerHTML = rows.map(row => {{
-    const value = getDenominatorValueFromRow(row, spec);
-    return '<div class="kpi-card kpi-card-numerateur">' +
-      '<div class="kpi-label">Année ' + escapeHtml(String(row.year)) + '</div>' +
-      '<div class="kpi-value">' + escapeHtml(fmtPlain(value)) + '</div>' +
-      '<div class="kpi-sublabel">' + escapeHtml(spec.label || '') + '</div>' +
-    '</div>';
+  const rowByYear = {{}};
+  rows.forEach(row => {{
+    rowByYear[String(row.year)] = row;
+  }});
+  visualHost.innerHTML = alignedYears.map(year => {{
+    const row = rowByYear[String(year)];
+    const value = row ? getDenominatorValueFromRow(row, spec) : null;
+    return value !== null
+      ? '<div class="odd-year-block">' +
+          '<div class="odd-year-banner">' + escapeHtml(String(year)) + '</div>' +
+          '<div id="denom-year-chart-' + escapeHtml(String(year)) + '" style="height:240px;"></div>' +
+        '</div>'
+      : '<div class="odd-year-block">' +
+          '<div class="odd-year-banner">' + escapeHtml(String(year)) + '</div>' +
+          '<p class="empty">Dénominateur indisponible.</p>' +
+        '</div>';
   }}).join('');
-
-  visualHost.innerHTML = rows.map(row => {{
+  breakdownHost.innerHTML = alignedYears.map(year => {{
+    const row = rowByYear[String(year)];
+    const value = row ? getDenominatorValueFromRow(row, spec) : null;
+    const meta = row ? getDenominatorMetaFromRow(row, spec) : '';
     return '<div class="odd-year-block">' +
-      '<div id="denom-year-chart-' + escapeHtml(String(row.year)) + '" style="height:240px;"></div>' +
+      '<h5>Année ' + escapeHtml(String(year)) + '</h5>' +
+      '<div class="odd-year-total">Dénominateur = ' + escapeHtml(fmtPlain(value)) + '</div>' +
+      '<div class="odd-calc-rule">' + escapeHtml(spec.label || '') + '</div>' +
+      (meta
+        ? '<div class="odd-calc-details"><strong>Source et méthode :</strong><br>' + escapeHtml(meta) + '</div>'
+        : '<p class="empty">Source ou méthode indisponible.</p>') +
     '</div>';
   }}).join('');
 
@@ -6740,14 +7331,16 @@ function renderActiveDenominatorViews() {{
       textposition: 'inside',
       insidetextanchor: 'middle',
     }}], {{
-      margin: {{ t: 8, r: 8, b: 38, l: 50 }},
+      margin: {{ t: 8, r: 8, b: 18, l: 50 }},
       yaxis: {{ separatethousands: true, range: [0, yMaxDenom] }},
-      xaxis: {{ type: 'category', automargin: true }},
+      xaxis: {{ type: 'category', showticklabels: false, ticks: '' }},
       showlegend: false,
       paper_bgcolor: '#ffffff',
       plot_bgcolor: '#ffffff',
     }}, {{ responsive: true }});
   }});
+  renderAggregateIndicatorViews();
+  syncIndicatorYearScrolls();
 }}
 
 function canUseLocalDenomProxy() {{
@@ -7639,7 +8232,7 @@ function initDenominatorPanel() {{
   const defaults = cfg.defaults || {{}};
   const saved = (CURRENT_DENOM_SETTINGS && typeof CURRENT_DENOM_SETTINGS === 'object') ? CURRENT_DENOM_SETTINGS : {{}};
   const merged = {{ ...defaults, ...saved }};
-  if (!document.getElementById('denom-active-cards')) return;
+  if (!document.getElementById('denom-active-visual-grid')) return;
   CURRENT_DENOM_SETTINGS = merged;
 
   // ── Chargement immédiat des données pré-calculées ─────────────────────────
