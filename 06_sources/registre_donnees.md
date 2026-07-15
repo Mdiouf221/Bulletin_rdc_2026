@@ -86,6 +86,15 @@ Ces fichiers sont les tableaux ESS (format OIT) utilisés pour la production du 
 |---|---|---|---|---|---|---|---|
 | `ESS RDC tous régimes.xlsx` | `06_sources/ESS/ESS_RDC_tous_regimes/` | Compilation multi-régimes | Tableau ESS OIT consolidé | 15 régimes : CNSS (3), CNSSAP (3), FSS (5), MESP, MINAS, MEPST, STEP/IDA | 2023 | Oui (`_texte/`) | **Disponible** |
 
+### ESS_TRESOR/ — Estimations provisoires
+
+| Fichier | Chemin | Institution technique | Type | Description | Période | Métadonnées | Statut |
+|---|---|---|---|---|---|---|---|
+| `EST TRESOR 2019.xlsm` | `06_sources/ESS/ESS_TRESOR/` | TRESOR | Estimation au format ESS | Résiduel provisoire de l'emploi public hors dispositifs observés ; bénéficiaires N/D | 2019 | `EST_TRESOR_2019_metadata.txt` | **Estimation — à réviser** |
+| `EST TRESOR 2020.xlsm` | `06_sources/ESS/ESS_TRESOR/` | TRESOR | Estimation au format ESS | Résiduel provisoire de l'emploi public hors dispositifs observés ; bénéficiaires N/D | 2020 | `EST_TRESOR_2020_metadata.txt` | **Estimation — à réviser** |
+| `EST TRESOR 2021.xlsm` | `06_sources/ESS/ESS_TRESOR/` | TRESOR | Estimation au format ESS | Résiduel provisoire de l'emploi public hors dispositifs observés ; bénéficiaires N/D | 2021 | `EST_TRESOR_2021_metadata.txt` | **Estimation — à réviser** |
+| `EST TRESOR 2022.xlsm` | `06_sources/ESS/ESS_TRESOR/` | TRESOR | Estimation au format ESS | Résiduel provisoire de l'emploi public hors dispositifs observés ; bénéficiaires N/D | 2022 | `EST_TRESOR_2022_metadata.txt` | **Estimation — à réviser** |
+
 ---
 
 ## institutions/ — Documents transmis par les institutions
@@ -106,6 +115,7 @@ Ces fichiers sont les tableaux ESS (format OIT) utilisés pour la production du 
 | `FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt` | `06_sources/officielles_web/` | FMI | Base de données macroéconomique | Croissance du PIB réel (2021–2024) et série PIB/habitant WEO | https://www.imf.org/external/datamapper/ | 2021–2024 | Oui | **Disponible** |
 | `INS_RDC_ECVM_pauvrete_inegalites_2024.txt` | `06_sources/officielles_web/` | INS-RDC | Publication/statistiques nationales | Niveau de pauvreté et inégalités (ECVM 2024 et tableau de bord INS) | https://ins.gouv.cd/statistiques/pauvrete | 2024 | Oui | **Disponible** |
 | `OIT_ILOSTAT_RDC_emploi_secteur_chomage_2021_2024.txt` | `06_sources/officielles_web/` | OIT, ILOSTAT | Base de données travail | Emploi agricole (total et sexe) et chômage BIT (15+) pour la RDC | https://ilostat.ilo.org/data/ | 2021–2024 (informalité : 2020) | Oui | **Disponible** |
+| `OIT_ILOSTAT_RDC_salaries_secteur_public_2020.json` | `06_sources/officielles_web/` | OIT, ILOSTAT | Extraction API | Nombre de salariés du secteur public en RDC ; une seule observation disponible pour 2019–2025 | https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_STE_INS_NB&ref_area=COD&timefrom=2019&timeto=2025&sex=SEX_T&classif1=STE_AGGREGATE_EES&classif2=INS_SECTOR_PUB&format=json | 2020 | Oui (`_texte/` : métadonnées) | **Disponible** |
 | `FAO_RDC_agriculture_emploi.txt` | `06_sources/officielles_web/` | FAO | Base de données / profil pays | Part de l'agriculture dans l'emploi (~68 %), sécurité alimentaire RDC | https://www.fao.org/faostat/ | 2022–2023 | Oui | **Disponible** |
 | `BIT_World_Social_Protection_Report_2020-22.txt` | `06_sources/officielles_web/` | BIT / OIT | Rapport mondial | Définition de la protection sociale, indicateurs mondiaux de couverture, cadre ODD 1.3.1 | https://www.ilo.org/wcmsp5/groups/public/---dgreports/---dcomm/---publ/documents/publication/wcms_817572.pdf | 2021 (rapport 2020–22) | Oui | **Disponible** |
 | `RDC_SNPS_2016.txt` | `06_sources/officielles_web/` | Gouvernement RDC — PNPS | Document de politique nationale | Stratégie nationale de la protection sociale (SNPS) : vision 2030, 3 axes stratégiques, cadre juridique | Transmission institutionnelle / Archives PNPS | 2016 | Oui | **Disponible** |

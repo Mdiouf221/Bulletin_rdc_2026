@@ -1,0 +1,30 @@
+TITRE : Estimation provisoire de la fonction publique hors dispositifs observés — 2020
+SOURCE : Calcul de travail de l'équipe du bulletin
+PÉRIODE : 2020
+NIVEAU : Estimation provisoire — non déclarée par une institution
+FICHIER : 06_sources/ESS/ESS_TRESOR/EST TRESOR 2020.xlsm
+
+---
+
+CONTENU
+
+Fichier au format ESS utilisé pour représenter provisoirement le résiduel de l'emploi public hors CNSSAP et hors régimes spéciaux observés. Institution technique dans la base : TRESOR. Un régime est renseigné : TRESOR_R1.
+
+Donnée importée :
+- Population résiduelle enregistrée dans le champ « cotisants » : 1 450 668.
+- Bénéficiaires : N/D.
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Cette population n'est pas constituée de cotisants au sens strict. Le champ ESS « cotisants » est utilisé comme support technique pour l'affichage dans le dashboard.
+- La valeur est une estimation résiduelle et ne prouve pas une couverture budgétaire effective.
+- Population de référence disponible : 1 622 972 salariés du secteur public selon ILOSTAT en 2020. Les déductions CNSSAP et régimes spéciaux doivent rester traçables séparément.
+- Ne pas citer comme donnée institutionnelle et ne pas intégrer automatiquement à l'ODD 1.3.1.
+
+---
+
+CITATION RECOMMANDÉE
+
+Ne pas citer comme source officielle. Présenter comme « estimation provisoire de travail de l'équipe du bulletin, à partir d'ILOSTAT et des dispositifs observés ».

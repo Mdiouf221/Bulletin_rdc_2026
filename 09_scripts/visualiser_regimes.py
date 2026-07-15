@@ -43,6 +43,10 @@ PALETTE_REGIME = {
     "CNSSAP_R3": "#e377c2",
     "CNSSAP_R4": "#7f7f7f",
 }
+DEFAULT_REGIME_COLORS = [
+    "#1f77b4", "#ff7f0e", "#2ca02c", "#9467bd", "#d62728",
+    "#8c564b", "#e377c2", "#7f7f7f", "#17becf", "#bcbd22",
+]
 NOM_COURT = {
     "CNSS_R1":   "Prestations familiales",
     "CNSS_R2":   "Risques professionnels",
@@ -56,7 +60,27 @@ NOM_COURT = {
 NOM_INSTITUTION = {
     "CNSS":   "Caisse Nationale de Sécurité Sociale (CNSS)",
     "CNSSAP": "Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP)",
+    "TRESOR": "Protection statutaire budgétaire — estimation provisoire (Trésor)",
 }
+
+
+def population_labels(institution: str, sex_mode: str = "all") -> tuple[str, str, str]:
+    if institution == "TRESOR":
+        suffix = "" if sex_mode == "all" else " — " + ("hommes" if sex_mode == "hommes" else "femmes")
+        return (
+            "Personnes couvertes estimées" + suffix,
+            "Bénéficiaires — N/D",
+            "personnes couvertes estimées",
+        )
+    suffix = "" if sex_mode == "all" else " " + ("Hommes" if sex_mode == "hommes" else "Femmes")
+    return "Cotisants actifs" + suffix, "Bénéficiaires" + suffix, "cotisants"
+
+
+def color_for_regime(regime_code: str) -> str:
+    if regime_code in PALETTE_REGIME:
+        return PALETTE_REGIME[regime_code]
+    checksum = sum((index + 1) * ord(char) for index, char in enumerate(regime_code or ""))
+    return DEFAULT_REGIME_COLORS[checksum % len(DEFAULT_REGIME_COLORS)]
 
 CRITERIA_FIELDS = [
     {"key": "nom_regime", "label": "Nom du régime", "is_name_selector": True},
@@ -134,16 +158,17 @@ window._finOriginalTraces = window._finOriginalTraces || {};
 
 function applyQ2FinanceFusion(graphId, q2Data) {
   const plotDiv = document.getElementById(graphId);
-  if (!plotDiv || !plotDiv.data) return;
+  if (!plotDiv || !plotDiv.data) return [];
   if (!window._finOriginalTraces[graphId]) {
     window._finOriginalTraces[graphId] = JSON.parse(JSON.stringify(plotDiv.data));
   }
   const origTraces = window._finOriginalTraces[graphId];
-  const buildGroups = (type) => {
+  const buildGroups = (type, year) => {
     const edges = [];
+    const suffix = '_' + type + '_' + year;
     Object.entries(q2Data).forEach(([key, regimes]) => {
-      if (!Array.isArray(regimes) || !key.endsWith('_' + type)) return;
-      const regime = key.slice(3, -(type.length + 1));
+      if (!Array.isArray(regimes) || !key.startsWith('Q2_') || !key.endsWith(suffix)) return;
+      const regime = key.slice(3, -suffix.length);
       regimes.forEach(r => edges.push([regime, r]));
     });
     if (edges.length === 0) return {};
@@ -154,59 +179,77 @@ function applyQ2FinanceFusion(graphId, q2Data) {
     [...new Set(edges.flat())].forEach(r => { regimeToRoot[r] = find(r); });
     return regimeToRoot;
   };
-  const depGroups = buildGroups('depenses');
-  const recGroups = buildGroups('recettes');
-  const applyToAxis = (traces, groups, yaxisMatch) => {
-    const processedRoots = new Set();
-    const result = [];
-    traces.forEach(t => {
-      const tAxis = t.yaxis || 'y';
-      if (tAxis !== yaxisMatch) { result.push(t); return; }
-      const root = groups[t.legendgroup] || t.legendgroup;
-      if (processedRoots.has(root)) return;
-      processedRoots.add(root);
-      const groupTraces = traces.filter(t2 => (t2.yaxis || 'y') === yaxisMatch && (groups[t2.legendgroup] || t2.legendgroup) === root);
-      if (groupTraces.length <= 1) { result.push(JSON.parse(JSON.stringify(t))); return; }
-      // Collecter toutes les années (x) de tous les groupTraces
-      const allX = [];
-      groupTraces.forEach(t2 => (t2.x || []).forEach(xv => { if (!allX.includes(xv)) allX.push(xv); }));
-      allX.sort();
-      // Fusion par année (alignement sur x), pas par index de tableau
-      const mergedY = allX.map(xv => {
-        const vals = groupTraces.map(t2 => {
-          const idx = (t2.x || []).indexOf(xv);
-          return idx !== -1 ? t2.y?.[idx] : null;
-        }).filter(v => v != null);
-        return vals.length ? Math.max(...vals) : null;
-      });
-      const merged = JSON.parse(JSON.stringify(groupTraces[0]));
-      merged.x = allX;
-      merged.y = mergedY;
-      // Conserver le nom du premier régime (pas de concaténation)
-      result.push(merged);
-      // Ajouter une trace fantôme pour chaque régime supplémentaire :
-      // visible uniquement dans la légende, données vides → pas de doublon dans le graphique
-      groupTraces.slice(1).forEach(t2 => {
-        const phantom = JSON.parse(JSON.stringify(t2));
-        phantom.x = [];
-        phantom.y = [];
-        phantom.showlegend = true;
-        result.push(phantom);
+  const warnings = [];
+  const applyGroupsByYear = (traces, type, yaxisMatch) => {
+    const result = JSON.parse(JSON.stringify(traces));
+    const mergedByGroup = new Map();
+    const years = [...new Set(result
+      .filter(trace => (trace.yaxis || 'y') === yaxisMatch)
+      .flatMap(trace => (trace.x || []).map(String)))];
+    years.forEach(year => {
+      const groups = buildGroups(type, year);
+      const roots = [...new Set(Object.values(groups))];
+      roots.forEach(root => {
+        const members = result.filter(trace =>
+          (trace.yaxis || 'y') === yaxisMatch &&
+          (groups[trace.legendgroup] || trace.legendgroup) === root &&
+          groups[trace.legendgroup]
+        );
+        const points = members.map(trace => {
+          const index = (trace.x || []).findIndex(value => String(value) === year);
+          return { trace, index, value: index >= 0 ? trace.y?.[index] : null };
+        }).filter(point => point.index >= 0 && point.value != null);
+        if (points.length <= 1) return;
+        const numericValues = points.map(point => Number(point.value)).filter(Number.isFinite);
+        if (!numericValues.length) return;
+        const minValue = Math.min(...numericValues);
+        const maxValue = Math.max(...numericValues);
+        const memberCodes = points.map(point => point.trace.legendgroup).sort();
+        const groupKey = memberCodes.join('__');
+        const groupName = points.map(point => point.trace.name)
+          .filter((name, index, names) => names.indexOf(name) === index)
+          .join(' + ');
+        if (Math.abs(maxValue - minValue) > Math.max(1, Math.abs(maxValue) * 1e-9)) {
+          warnings.push(`${year} — ${type} : valeurs divergentes pour ${groupName}`);
+        }
+        if (!mergedByGroup.has(groupKey)) {
+          const merged = JSON.parse(JSON.stringify(points[0].trace));
+          merged.name = groupName;
+          merged.legendgroup = `Q2_${type}_${groupKey}`;
+          merged.x = [];
+          merged.y = [];
+          merged.showlegend = true;
+          if (merged.hovertemplate) {
+            merged.hovertemplate = merged.hovertemplate.replace(points[0].trace.name, groupName);
+          }
+          mergedByGroup.set(groupKey, merged);
+        }
+        const merged = mergedByGroup.get(groupKey);
+        merged.x.push(points[0].trace.x[points[0].index]);
+        merged.y.push(maxValue);
+        points.forEach(point => { point.trace.y[point.index] = null; });
       });
     });
-    return result;
+    const remaining = result.filter(trace => {
+      if ((trace.yaxis || 'y') !== yaxisMatch) return true;
+      const hasVisibleValue = (trace.y || []).some(value => value != null);
+      trace.showlegend = hasVisibleValue;
+      return hasVisibleValue;
+    });
+    return remaining.concat([...mergedByGroup.values()]);
   };
-  if (Object.keys(q2Data).length === 0) {
-    Plotly.react(graphId, origTraces, plotDiv.layout, { responsive: true });
-    return;
-  }
   let newTraces = JSON.parse(JSON.stringify(origTraces));
-  // Appliquer la fusion sur les 4 sous-graphiques : y/y2 = dépenses, y3/y4 = recettes
-  newTraces = applyToAxis(newTraces, depGroups, 'y');    // Dépenses totales (barres)
-  newTraces = applyToAxis(newTraces, depGroups, 'y2');   // Dépense moy. par bénéficiaire (lignes)
-  newTraces = applyToAxis(newTraces, recGroups, 'y3');   // Recettes totales (barres)
-  newTraces = applyToAxis(newTraces, recGroups, 'y4');   // Contribution moy. (lignes)
-  Plotly.react(graphId, newTraces, plotDiv.layout, { responsive: true });
+  newTraces = applyGroupsByYear(newTraces, 'depenses', 'y');
+  newTraces = applyGroupsByYear(newTraces, 'recettes', 'y3');
+  const layout = JSON.parse(JSON.stringify(plotDiv.layout || {}));
+  ['yaxis', 'yaxis2', 'yaxis3', 'yaxis4'].forEach(axis => {
+    if (!layout[axis]) layout[axis] = {};
+    delete layout[axis].range;
+    layout[axis].autorange = true;
+    layout[axis].rangemode = 'tozero';
+  });
+  Plotly.react(graphId, newTraces, layout, { responsive: true });
+  return warnings;
 }
 
 // Applique la fusion Q2 au graphique financier courant de l'institution donnée.
@@ -216,8 +259,40 @@ function applyQ2ToFinChart(inst) {
   const q2Data = (window.questionnaire.data[inst] && window.questionnaire.data[inst].Q2) || {};
   const finContainer = document.getElementById('charts-institution-fin');
   if (!finContainer) return;
+  const warnings = [];
   finContainer.querySelectorAll('.plotly-graph-div').forEach(function(div) {
-    if (div.id) applyQ2FinanceFusion(div.id, q2Data);
+    if (div.id) warnings.push(...applyQ2FinanceFusion(div.id, q2Data));
+  });
+  let warning = finContainer.querySelector('.q2-finance-warning');
+  if (warnings.length) {
+    if (!warning) {
+      warning = document.createElement('p');
+      warning.className = 'q2-finance-warning';
+      warning.style.cssText = 'margin:8px 0;padding:10px;border-left:4px solid #c53030;background:#fff5f5;color:#742a2a;';
+      finContainer.insertBefore(warning, finContainer.firstChild);
+    }
+    warning.textContent = 'Attention — paramètres Q2 incohérents avec les données ESS : ' + [...new Set(warnings)].join(' ; ');
+  } else if (warning) {
+    warning.remove();
+  }
+}
+
+function applyPopulationFusion(inst) {
+  if (!window.branchFusion || !window.questionnaire || !inst) return;
+  const settings = window.questionnaire.data[inst] || {};
+  const regimes = window.REGIMES_PAR_INST ? window.REGIMES_PAR_INST[inst] || [] : [];
+  const branchMapping = buildBranchMapping(inst, regimes);
+  const populationHost = document.getElementById('charts-institution-pop');
+  if (!populationHost) return;
+  populationHost.querySelectorAll('.plotly-graph-div').forEach(div => {
+    if (div.id) {
+      window.branchFusion.applyBranchFusion(
+        div.id,
+        settings.Q1 || {},
+        branchMapping,
+        settings.Q1b || {}
+      );
+    }
   });
 }
 
@@ -234,18 +309,8 @@ window.updateInstitution = function() {
   const inst = document.getElementById('sel-institution')?.value;
   if (!inst || !window.questionnaire.data[inst]) return;
   
-  // Q1 — déduplication cotisants
-  if (window.branchFusion) {
-    const q1Data = window.questionnaire.data[inst]?.Q1 || {};
-    const regimes = window.REGIMES_PAR_INST ? window.REGIMES_PAR_INST[inst] || [] : [];
-    const branchMapping = buildBranchMapping(inst, regimes);
-    const _pop2 = document.getElementById('charts-institution-pop');
-    if (_pop2) {
-      _pop2.querySelectorAll('.plotly-graph-div').forEach(div => {
-        if (div.id) window.branchFusion.applyBranchFusion(div.id, q1Data, branchMapping);
-      });
-    }
-  }
+  // Q1/Q1b — déduplication des cotisants et bénéficiaires
+  applyPopulationFusion(inst);
   
   // Q1b — déduplication bénéficiaires
   const selectedRegimes = typeof getSelectedInstitutionRegimes === 'function'
@@ -278,18 +343,9 @@ window.addEventListener('questionnaire-saved', (e) => {
   const { institution } = e.detail;
   if (!window.questionnaire) return;
 
-  // Q1 — déduplication cotisants (graphiques Plotly population)
-  if (window.branchFusion) {
-    const q1Data = window.questionnaire.data[institution]?.Q1 || {};
-    const regimes = window.REGIMES_PAR_INST ? window.REGIMES_PAR_INST[institution] || [] : [];
-    const branchMapping = buildBranchMapping(institution, regimes);
-    const _pop2 = document.getElementById('charts-institution-pop');
-    if (_pop2) {
-      _pop2.querySelectorAll('.plotly-graph-div').forEach(div => {
-        if (div.id) window.branchFusion.applyBranchFusion(div.id, q1Data, branchMapping);
-      });
-    }
-  }
+  // Q1/Q1b — déduplication des graphiques de population
+  applyPopulationFusion(institution);
+  applyQ2ToInstitutionTable(institution);
 
   // Q1b — déduplication bénéficiaires (graphiques camembert sexe)
   const selectedRegimes = typeof getSelectedInstitutionRegimes === 'function'
@@ -330,20 +386,11 @@ window.addEventListener('load', async () => {
     const data = await window.questionnaire.loadData();
     if (!data || Object.keys(data).length === 0) return;
 
-    // Applique pour chaque institution ayant des données
-    Object.keys(data).forEach(institution => {
-      // Q1 — déduplication cotisants
-      if (window.branchFusion) {
-        const q1Data = data[institution]?.Q1 || {};
-        const regimes = window.REGIMES_PAR_INST ? window.REGIMES_PAR_INST[institution] || [] : [];
-        const branchMapping = buildBranchMapping(institution, regimes);
-        const _pop2 = document.getElementById('charts-institution-pop');
-        if (_pop2) {
-          _pop2.querySelectorAll('.plotly-graph-div').forEach(div => {
-            if (div.id) window.branchFusion.applyBranchFusion(div.id, q1Data, branchMapping);
-          });
-        }
-      }
+    const institution = document.getElementById('sel-institution')?.value;
+    if (institution && data[institution]) {
+      // Q1/Q1b — déduplication cotisants et bénéficiaires
+      applyPopulationFusion(institution);
+      applyQ2ToInstitutionTable(institution);
       
       // Q1b — déduplication bénéficiaires
       const selectedRegimes = typeof getSelectedInstitutionRegimes === 'function'
@@ -369,7 +416,7 @@ window.addEventListener('load', async () => {
           }
         }
       }
-    });
+    }
     
     console.log('✓ Questionnaire chargé et appliqué automatiquement au démarrage');
   } catch (e) {
@@ -1183,17 +1230,18 @@ def fig_regime_single(rows: list[dict], institution: str, regime_code: str, sex_
         return "<p style='color:#888;padding:20px'>Aucune donnée de régime disponible.</p>"
     
     annees = [r["annee"] for r in data]
-    color = PALETTE_REGIME.get(regime_code, "#2c5282")
+    color = color_for_regime(regime_code)
     label = NOM_COURT.get(regime_code, regime_code)
     
     sex_mode = sex_mode if sex_mode in ("all", "hommes", "femmes") else "all"
+    cotisants_label, beneficiaires_label, cotisants_unit = population_labels(institution, sex_mode)
     
     if sex_mode == "all":
         fig = make_subplots(
             rows=3, cols=2,
             subplot_titles=(
-                "Cotisants actifs",
-                "Bénéficiaires",
+                cotisants_label,
+                beneficiaires_label,
                 "Dépenses totales (Mds CDF)",
                 "Dépense moyenne par bénéficiaire (k CDF)",
                 "Recettes totales (Mds CDF)",
@@ -1264,7 +1312,7 @@ def fig_regime_single(rows: list[dict], institution: str, regime_code: str, sex_
         else:
             cotisants_vals = [r["cotisants_f"] for r in data]
             benef_vals = [r["beneficiaires_f"] for r in data]
-        trace(cotisants_vals, 1, 1, ",.0f", "cotisants")
+        trace(cotisants_vals, 1, 1, ",.0f", cotisants_unit)
         trace(benef_vals, 1, 2, ",.0f", "bénéf.")
     
     title_text = NOM_INSTITUTION.get(institution, institution) + " — " + label
@@ -1354,50 +1402,24 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
         horizontal_spacing=0.12,
     )
 
-    # Suivi de la première trace par stackgroup (pour fill=tozeroy vs tonexty)
-    _sg_first: dict = {}
-
     for key in regimes_keys:
         subset = [r for r in data if r["regime_code"] == key]
         subset.sort(key=lambda r: r["annee"])
         annees  = [r["annee"] for r in subset]
-        color   = PALETTE_REGIME.get(key, "#666")
+        color   = color_for_regime(key)
         label   = NOM_COURT.get(key, key)
 
         def trace(y_vals, row, col, fmt, unit, showleg=False):
-            # Couleur de remplissage semi-transparente dérivée de la couleur de ligne
-            hex_c = color.lstrip("#")
-            if len(hex_c) == 6:
-                r_int = int(hex_c[0:2], 16)
-                g_int = int(hex_c[2:4], 16)
-                b_int = int(hex_c[4:6], 16)
-                fill_color = f"rgba({r_int},{g_int},{b_int},0.18)"
-            else:
-                fill_color = color
-            # Colonne 1 (cotisants) : aires empilées, legend1
-            # Colonne 2 (bénéficiaires) : aires simples (tozeroy), legend2
-            is_cotisants_col = (col == 1)
-            sg = f"stack_r{row}_c{col}" if is_cotisants_col else None
-            leg = "legend" if is_cotisants_col else "legend2"
-            # Première trace d'un stackgroup → tozeroy ; les suivantes → tonexty
-            # Les traces non-stackées (col 2) remplissent toujours vers zéro
-            if sg is not None:
-                fill_val = "tozeroy" if sg not in _sg_first else "tonexty"
-                _sg_first[sg] = True
-            else:
-                fill_val = "tozeroy"
+            leg = "legend" if col == 1 else "legend2"
             fig.add_trace(go.Scatter(
                 x=annees, y=y_vals,
                 name=label, legendgroup=key,
                 showlegend=True,
                 legend=leg,
-                # mode="lines" (sans marqueurs) → l'icône de légende affiche
-                # un rectangle coloré représentant la zone remplie, pas une ligne pointée
-                mode="lines",
-                stackgroup=sg,
-                fill=fill_val,
+                mode="lines+markers",
+                fill=None,
                 line=dict(color=color, width=2.5),
-                fillcolor=fill_color,
+                marker=dict(size=6, color=color),
                 hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:{fmt}}} {unit}<extra></extra>",
             ), row=row, col=col)
 
@@ -1412,7 +1434,7 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
     fig.update_layout(
         title=dict(
             text=NOM_INSTITUTION.get(institution, institution) + (
-                " — Effectifs agrégés" if sex_mode == "all" else " — Effectifs agrégés (" + ("Hommes" if sex_mode == "hommes" else "Femmes") + ")"
+                " — Effectifs par régime" if sex_mode == "all" else " — Effectifs par régime (" + ("Hommes" if sex_mode == "hommes" else "Femmes") + ")"
             ),
             font=dict(
                 size=18,
@@ -1545,7 +1567,7 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
         subset = [r for r in data if r["regime_code"] == key]
         subset.sort(key=lambda r: r["annee"])
         annees = [r["annee"] for r in subset]
-        color = PALETTE_REGIME.get(key, "#666")
+        color = color_for_regime(key)
         label = NOM_COURT.get(key, key)
 
         dep_tot = [
@@ -1637,7 +1659,7 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             **_leg_style,
         ),
         hovermode="x unified",
-        barmode="relative",
+        barmode="group",
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
         margin=dict(t=70, b=260, l=70, r=40),
@@ -1951,7 +1973,7 @@ def fig_prestations_by_institution(
 
     label_inst = NOM_INSTITUTION.get(institution, institution)
     label_regime = NOM_COURT.get(regime_code, regime_code)
-    color_regime = PALETTE_REGIME.get(regime_code, "#2c5282")
+    color_regime = color_for_regime(regime_code)
 
     # ── Mise en page selon le mode ──────────────────────────────────────────
     COMMON_AXIS = dict(
@@ -2322,7 +2344,10 @@ def fig_table_regime(rows: list[dict], institution: str, sex_mode: str = "all") 
             ]
 
         cells = "".join(f"<td>{html.escape(v)}</td>" for v in values)
-        body_rows.append(f"<tr>{cells}</tr>")
+        body_rows.append(
+            f'<tr data-regime="{html.escape(str(r["regime_code"]), quote=True)}" '
+            f'data-year="{html.escape(str(r["annee"]), quote=True)}">{cells}</tr>'
+        )
 
     headers_html = "".join(f"<th>{html.escape(h)}</th>" for h in headers)
     filters_html = "".join(
@@ -2863,11 +2888,21 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     import plotly.offline as plo
     plotlyjs = f'<script>{plo.get_plotlyjs()}</script>'
 
-    note_sources = """
+    source_periods = []
+    for inst in institutions:
+        years = sorted({
+            int(r["annee"]) for r in regimes
+            if r["institution"] == inst and r.get("annee") is not None
+        })
+        if not years:
+            period = "année non renseignée"
+        else:
+            period = str(years[0]) if len(years) == 1 else f"{years[0]}–{years[-1]}"
+        source_periods.append(f"{html.escape(str(inst))} {period}")
+    note_sources = f"""
     <p class="note-source">
       <strong>Source :</strong> Enquête sur la Sécurité Sociale (ESS) OIT/BIT —
-      CNSS 2019–2022, CNSSAP 2020–2022.<br>
-      Les montants CNSSAP sont convertis depuis les Milliards CDF de l'ESS.
+      {" ; ".join(source_periods)}.<br>
       Les bénéficiaires sans cotisants signifient que la variable n'était pas renseignée dans l'ESS.<br>
       La contribution moyenne est un indicateur dérivé (recettes / cotisants), car elle n'est pas renseignée directement dans l'ESS.
     </p>"""
@@ -4311,12 +4346,14 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     .institution-main .chart-block {{ 
       margin-bottom: 0;
       height: auto;
+      min-width: 0;
       display: flex;
       flex-direction: column;
     }}
     .institution-main #block-desc-institution,
     .institution-main #block-charts-institution {{
       height: auto;
+      min-width: 0;
       width: 100%;
     }}
     .institution-main .chart-block > h3 {{
@@ -4336,7 +4373,15 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     .institution-main #charts-institution-pop,
     .institution-main #charts-institution-fin {{
       flex: none;
-      overflow: visible;
+      min-width: 0;
+      max-width: 100%;
+      width: 100%;
+      overflow: hidden;
+    }}
+    .institution-main #charts-institution-pop .plotly-graph-div,
+    .institution-main #charts-institution-fin .plotly-graph-div {{
+      max-width: 100%;
+      width: 100% !important;
     }}
     .regime-description {{ 
       color: #4a5568; 
@@ -5665,8 +5710,14 @@ function initGraphSeriesFilters(plotContainerId, filtersContainerId, label, onSe
 function switchTab(name, btn) {{
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
+  const activePanel = document.getElementById('tab-' + name);
+  if (activePanel) activePanel.classList.add('active');
   if (btn) btn.classList.add('active');
+  if (name === 'institutions') {{
+    scheduleInstitutionTabResize();
+  }} else {{
+    window.dispatchEvent(new Event('resize'));
+  }}
 }}
 
 // ── Onglet indicateurs ───────────────────────────────────────────────────────
@@ -8372,8 +8423,7 @@ function updateInstitution() {{
   renderRegimeDescription(inst, defaultSelected);
   document.getElementById('title-institution').textContent =
     'Évolution par régime — ' + inst;
-  // Relancer plotly sur les divs injectés
-  window.dispatchEvent(new Event('resize'));
+  scheduleInstitutionTabResize();
 }}
 
 let CURRENT_TABLE_SEX_MODE = 'all';
@@ -8417,10 +8467,12 @@ function setChartSexMode(mode, instOverride) {{
   const inst = instOverride || document.getElementById('sel-institution').value;
   const pack = getChartPack(inst, modeValue);
   injectHtmlAndRunScripts('charts-institution-pop', pack.population);
+  applyPopulationFusion(inst);
   const finHost = document.getElementById('charts-institution-fin');
   if (finHost) {{
     if (pack.finances) {{
       finHost.style.display = '';
+      finHost.style.height = '';
       injectHtmlAndRunScripts('charts-institution-fin', pack.finances);
       // Réappliquer la fusion Q2 après injection (Plotly initialise le div de façon synchrone)
       if (typeof applyQ2ToFinChart === 'function') {{
@@ -8455,7 +8507,7 @@ function setChartSexMode(mode, instOverride) {{
       }} else {{
         adjustInstitutionChartHeights();
       }}
-      window.dispatchEvent(new Event('resize'));
+      scheduleInstitutionTabResize();
     }});
     pieDetails.dataset.bound = '1';
   }}
@@ -8463,9 +8515,7 @@ function setChartSexMode(mode, instOverride) {{
     window.addEventListener('resize', adjustInstitutionChartHeights);
     window.__instChartResizeBound = true;
   }}
-  setTimeout(adjustInstitutionChartHeights, 50);
-  setTimeout(adjustInstitutionChartHeights, 250);
-  window.dispatchEvent(new Event('resize'));
+  scheduleInstitutionTabResize();
 }}
 
 function setTableSexMode(mode, instOverride) {{
@@ -8474,7 +8524,61 @@ function setTableSexMode(mode, instOverride) {{
   const inst = instOverride || document.getElementById('sel-institution').value;
   injectHtmlAndRunScripts('table-institution', getTableHtml(inst, modeValue));
   initColumnFilters('table-institution');
+  applyQ2ToInstitutionTable(inst);
   syncTableModeButtons(modeValue);
+}}
+
+function applyQ2ToInstitutionTable(inst) {{
+  const host = document.getElementById('table-institution');
+  if (!host || CURRENT_TABLE_SEX_MODE !== 'all' || !window.questionnaire) return;
+  const rows = Array.from(host.querySelectorAll('tbody tr[data-regime][data-year]'));
+  rows.forEach(row => {{
+    [4, 5].forEach(index => {{
+      const cell = row.cells[index];
+      if (!cell) return;
+      if (cell.dataset.q2Original === undefined) cell.dataset.q2Original = cell.textContent;
+      cell.textContent = cell.dataset.q2Original;
+      cell.removeAttribute('title');
+    }});
+  }});
+  const q2Data = window.questionnaire.data[inst]?.Q2 || {{}};
+  ['depenses', 'recettes'].forEach(type => {{
+    const columnIndex = type === 'depenses' ? 4 : 5;
+    const years = [...new Set(rows.map(row => row.dataset.year))];
+    years.forEach(year => {{
+      const suffix = '_' + type + '_' + year;
+      const edges = [];
+      Object.entries(q2Data).forEach(([key, regimes]) => {{
+        if (!Array.isArray(regimes) || !key.startsWith('Q2_') || !key.endsWith(suffix)) return;
+        const regime = key.slice(3, -suffix.length);
+        regimes.forEach(other => edges.push([regime, other]));
+      }});
+      const parent = {{}};
+      const find = value => {{
+        if (!parent[value]) parent[value] = value;
+        if (parent[value] !== value) parent[value] = find(parent[value]);
+        return parent[value];
+      }};
+      edges.forEach(([left, right]) => {{ parent[find(left)] = find(right); }});
+      const components = {{}};
+      [...new Set(edges.flat())].forEach(regime => {{
+        const root = find(regime);
+        if (!components[root]) components[root] = [];
+        components[root].push(regime);
+      }});
+      Object.values(components).forEach(regimes => {{
+        const groupRows = rows.filter(row =>
+          row.dataset.year === year && regimes.includes(row.dataset.regime)
+        );
+        groupRows.slice(1).forEach(row => {{
+          const cell = row.cells[columnIndex];
+          if (!cell) return;
+          cell.textContent = '—';
+          cell.title = 'Total institutionnel identique, déjà compté sur la première ligne du groupe';
+        }});
+      }});
+    }});
+  }});
 }}
 
 function getSelectedInstitutionRegimes() {{
@@ -8522,25 +8626,52 @@ function relayoutHostPlot(host, targetHeight) {{
   if (!host || !window.Plotly) return;
   const plotDiv = host.querySelector('.plotly-graph-div');
   if (!plotDiv) return;
-  const h = Math.max(320, Math.floor(targetHeight) - 8);
-  const w = Math.max(420, Math.floor(host.clientWidth) - 8);
-  Plotly.relayout(plotDiv, {{ height: h, width: w, autosize: true }});
+  const width = Math.floor(host.clientWidth || 0);
+  if (width <= 0 || host.offsetParent === null) return;
+  const h = Math.max(320, Math.floor(targetHeight || 320));
+  Plotly.relayout(plotDiv, {{ height: h, autosize: true }});
   Plotly.Plots.resize(plotDiv);
 }}
 
+function scheduleInstitutionTabResize() {{
+  const panel = document.getElementById('tab-institutions');
+  if (!panel) return;
+  [0, 90, 260].forEach(delay => {{
+    setTimeout(() => {{
+      adjustInstitutionChartHeights();
+      if (!window.Plotly || !panel.classList.contains('active')) return;
+      panel.querySelectorAll('.plotly-graph-div').forEach(div => {{
+        if (div && div.offsetParent !== null) Plotly.Plots.resize(div);
+      }});
+    }}, delay);
+  }});
+}}
+
 function adjustInstitutionChartHeights() {{
+  const panel = document.getElementById('tab-institutions');
+  if (!panel || !panel.classList.contains('active')) return;
   const popHost = document.getElementById('charts-institution-pop');
   const finHost = document.getElementById('charts-institution-fin');
   if (!popHost || !finHost) return;
+  const width = Math.floor(popHost.clientWidth || 0);
+  if (width <= 0) return;
   const hasFin = finHost.style.display !== 'none' && finHost.innerHTML.trim() !== '';
-  // Resize Plotly to match the original Python figure heights (pop=500, fin=820)
-  // relayoutHostPlot subtracts 8: pass height+8 to get exact target
-  relayoutHostPlot(popHost, 508);  // → h = max(320, 500) = 500
+  let popHeight = 500;
+  let finHeight = 820;
+  if (width < 760) {{
+    popHeight = 640;
+    finHeight = 1100;
+  }} else if (width < 980) {{
+    popHeight = 580;
+    finHeight = 980;
+  }}
+  relayoutHostPlot(popHost, popHeight);
   if (hasFin) {{
-    relayoutHostPlot(finHost, 828);  // → h = max(320, 820) = 820
+    finHost.style.height = '';
+    relayoutHostPlot(finHost, finHeight);
     finHost.style.display = '';
   }} else {{
-    finHost.style.height = '0px';
+    finHost.style.height = '';
   }}
 }}
 
@@ -8594,25 +8725,9 @@ function renderInstitutionSexDistributions(inst, selectedRegimes) {{
   if (!cotDiv || !benDiv) return;
   const instData = REGIME_SEX_SERIES[inst] || {{}};
   const availableRegimes = Object.keys(instData);
-  const normalizeKey = (value) => String(value || '').trim().toLowerCase();
   const requested = Array.isArray(selectedRegimes) ? selectedRegimes : availableRegimes;
-  let selected = [];
-  if (requested.length) {{
-    const requestedNorm = requested.map(normalizeKey).filter(Boolean);
-    selected = availableRegimes.filter(rc => {{
-      const rcNorm = normalizeKey(rc);
-      return requestedNorm.some(k => rcNorm === k || rcNorm.startsWith(k) || k.startsWith(rcNorm));
-    }});
-    if (!selected.length && requestedNorm.length) {{
-      selected = availableRegimes.filter(rc => {{
-        const rcNorm = normalizeKey(rc);
-        return requestedNorm.some(k => rcNorm.includes(k) || k.includes(rcNorm));
-      }});
-    }}
-    if (!selected.length && requestedNorm.length) {{
-      selected = availableRegimes.slice();
-    }}
-  }}
+  const requestedSet = new Set(requested.map(value => String(value || '').trim()).filter(Boolean));
+  const selected = availableRegimes.filter(rc => requestedSet.has(rc));
   if (!selected.length) {{
     cotDiv.classList.add('is-empty');
     benDiv.classList.add('is-empty');
@@ -8671,20 +8786,34 @@ function renderInstitutionSexDistributions(inst, selectedRegimes) {{
       if (d.cot_h) {{ byYear[year].cot_h += d.cot_h; byYear[year].hasCot = true; }}
       if (d.cot_f) {{ byYear[year].cot_f += d.cot_f; byYear[year].hasCot = true; }}
     }});
-    // Bénéficiaires : max par groupe Q1b
+    // Bénéficiaires : conserver une ligne H/F/total cohérente par groupe Q1b.
     const processedRoots = new Set();
     Object.entries(rd).forEach(([rc, d]) => {{
       const root = _q1bFusionGroups[rc] || rc;
       if (processedRoots.has(root)) return;
       processedRoots.add(root);
       const group = Object.keys(rd).filter(r => (_q1bFusionGroups[r] || r) === root);
-      const maxTotal = Math.max(...group.map(r => rd[r].ben_total_known ? (rd[r].ben_total || 0) : -Infinity));
-      const maxH = Math.max(...group.map(r => rd[r].ben_h || 0));
-      const maxF = Math.max(...group.map(r => rd[r].ben_f || 0));
-      const anyKnown = group.some(r => rd[r].ben_total_known);
-      if (anyKnown && maxTotal > -Infinity) {{ byYear[year].ben_total += maxTotal; byYear[year].ben_total_known = true; byYear[year].hasBen = true; }}
-      if (maxH > 0) {{ byYear[year].ben_h += maxH; byYear[year].hasBen = true; }}
-      if (maxF > 0) {{ byYear[year].ben_f += maxF; byYear[year].hasBen = true; }}
+      const representative = group
+        .map(r => rd[r])
+        .reduce((best, candidate) => {{
+          const bestScore = best ? Math.max(best.ben_total_known ? best.ben_total : 0, best.ben_h + best.ben_f) : -1;
+          const candidateScore = Math.max(candidate.ben_total_known ? candidate.ben_total : 0, candidate.ben_h + candidate.ben_f);
+          return candidateScore > bestScore ? candidate : best;
+        }}, null);
+      if (!representative) return;
+      if (representative.ben_total_known) {{
+        byYear[year].ben_total += representative.ben_total;
+        byYear[year].ben_total_known = true;
+        byYear[year].hasBen = true;
+      }}
+      if (representative.ben_h > 0) {{
+        byYear[year].ben_h += representative.ben_h;
+        byYear[year].hasBen = true;
+      }}
+      if (representative.ben_f > 0) {{
+        byYear[year].ben_f += representative.ben_f;
+        byYear[year].hasBen = true;
+      }}
     }});
   }});
 
@@ -9308,6 +9437,20 @@ def main():
     print(f"  Lecture BDD : {DB_PATH.name}")
     regimes, prestations, regime_meta, prestation_meta = load_all(DB_PATH)
     print(f"  {len(regimes)} régimes × années | {len(prestations)} prestations × années")
+
+    # Enrichir les libellés depuis les métadonnées ESS ; les constantes ne servent
+    # que de compatibilité avec les imports historiques.
+    for institution, regime_map in regime_meta.items():
+        for regime_code, metadata in regime_map.items():
+            versions = metadata.get("versions") or []
+            if versions:
+                latest = versions[-1]
+                label = latest.get("nom_regime") or latest.get("nom_original")
+                administrator = latest.get("administrateur")
+                if label:
+                    NOM_COURT[regime_code] = str(label)
+                if administrator:
+                    NOM_INSTITUTION[institution] = str(administrator)
 
     print("  Génération des graphiques…")
     html = build_html(regimes, prestations, regime_meta, prestation_meta)

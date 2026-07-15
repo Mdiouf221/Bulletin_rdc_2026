@@ -32,6 +32,7 @@ Toute source utilisée pour un chiffre, une définition, une institution, un ind
 |---|---|---:|---|---|
 | Indicateurs ODD 1.3.1 | Nations Unies / OIT | À préciser | Cadre des indicateurs de couverture effective | à compléter |
 | Base SSI / World Social Protection Database | OIT | À préciser | Cadre statistique et comparabilité internationale | à compléter |
+| ILOSTAT — salariés du secteur public en RDC | OIT | 2020 | Population de référence contextuelle pour la section 4.3 et le tableau 4.3 | disponible |
 | Normes internationales du travail pertinentes | OIT | À préciser | Cadre normatif général | à compléter |
 
 ## Sources démographiques et économiques

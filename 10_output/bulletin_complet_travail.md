@@ -663,7 +663,7 @@ Statut : rédigé
 
 Sur la base des grilles définies au chapitre 2 — couverture légale et effective, caractère obligatoire ou volontaire, financement contributif ou non contributif, statut réglementaire, nature des prestations et conditions d'accès —, le présent chapitre cartographie les régimes, programmes et institutions de protection sociale identifiés en RDC à la date de rédaction.
 
-Cette cartographie distingue quatre grandes catégories : la sécurité sociale contributive obligatoire, qui couvre les travailleurs du secteur formel selon leurs catégories (Tableaux 2.1 et 2.2) ; la protection de la santé, organisée par segment de population (Tableau 2.3) ; les programmes d'assistance sociale et initiatives non contributives destinés aux populations non couvertes par les régimes formels (Tableau 2.4) ; enfin, un ensemble de politiques sectorielles à dimension protectrice — gratuités, programmes d'activation par l'emploi, accès subventionné aux services de base — dont la finalité sociale est établie mais qui ne relèvent pas à proprement parler de l'assistance sociale (Tableau 2.5, mention contextuelle).
+Cette cartographie distingue quatre grandes catégories : la sécurité sociale contributive obligatoire, qui couvre les travailleurs du secteur privé formel via la CNSS et les agents publics affiliés à la CNSSAP (Tableau 2.1) ; les dispositifs statutaires financés directement par le budget de l'État, qui regroupent les régimes spéciaux formellement constitués et, lorsqu'elle est effectivement documentée, la protection budgétaire d'autres agents publics hors CNSSAP (Tableau 2.2) ; la protection de la santé, organisée par segment de population (Tableau 2.3) ; les programmes d'assistance sociale et initiatives non contributives destinés aux populations non couvertes par les régimes formels (Tableau 2.4) ; enfin, un ensemble de politiques sectorielles à dimension protectrice — gratuités, programmes d'activation par l'emploi, accès subventionné aux services de base — dont la finalité sociale est établie mais qui ne relèvent pas à proprement parler de l'assistance sociale (Tableau 2.5, mention contextuelle).
 
 ---
 
@@ -696,20 +696,27 @@ Cette cartographie distingue quatre grandes catégories : la sécurité sociale 
 
 ---
 
-### Régimes spéciaux <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### Dispositifs statutaires financés directement par le budget de l'État <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-Les régimes spéciaux couvrent des catégories professionnelles spécifiques de l'État. À l'exception du régime des parlementaires, ces régimes sont en grande partie financés par allocation budgétaire du Trésor public et non par cotisations.
+Au-delà de la sécurité sociale contributive gérée par la CNSS et la CNSSAP, le paysage institutionnel de la protection sociale en RDC comprend un ensemble de **dispositifs statutaires dont les prestations sont financées directement par le budget de l'État**. Ces dispositifs se subdivisent en deux catégories distinctes, qu'il convient de ne pas confondre sur le plan institutionnel.
 
-<p class="table-caption"><strong>Tableau 2.2</strong> — Régimes spéciaux (financement par allocation budgétaire)</p>
+La première catégorie regroupe les **régimes spéciaux** au sens strict : dispositifs institués par un texte légal ou réglementaire propre, couvrant une catégorie professionnelle déterminée selon des règles spécifiques de prestations et de financement. En RDC, entrent dans cette catégorie les régimes applicables aux militaires et policiers (FARDC, PNC), aux magistrats civils du siège et du parquet, et aux membres des assemblées législatives nationales.
 
-| Régime | Population couverte | Mode de financement | Caractère | Branches C102 prévues |
-|---|---|:---:|:---:|:---:|
-| Régime des militaires (FAC, PNC) | Forces armées, Police nationale | Allocation budgétaire | Non contributif | Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span> |
-| Régime des magistrats civils | Magistrats du siège et du parquet | Allocation budgétaire | Non contributif | Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span> |
-| Régime des parlementaires | Membres de l'Assemblée nationale et du Sénat | Cotisations + dotation | Mixte | Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span> |
-| Autres régimes budgétaires | Autres catégories spécifiques | Allocation budgétaire | Non contributif | À préciser |
+La seconde catégorie recouvre les **agents publics hors CNSSAP dont la protection est effectivement assurée par un dispositif statutaire financé directement par le budget de l'État**, sans s'inscrire dans un régime spécial formellement constitué. La mécanisation — entendue comme l'intégration administrative et salariale dans le système de paie de l'État — facilite la retenue régulière des cotisations et le passage à une couverture contributive effective par la CNSSAP. Toutefois, l'absence de mécanisation ou d'affiliation à la CNSSAP ne suffit pas, à elle seule, à établir l'existence d'une couverture budgétaire effective. Celle-ci doit être attestée par des droits identifiables, une population dénombrable et une prise en charge budgétaire documentée. Qualifier cette population de « régime spécial » serait inexact : elle relève des dispositions générales applicables aux agents de l'État, et non d'un régime spécial distinct.
 
-<div class="table-sources"><small>Légende : <span class="cov-eff">✓</span> = branche couverte de façon effective.<br>Note : les branches couvertes par les régimes spéciaux sont identifiées sur base du premier bulletin (2023). La collecte des données effectives fera l'objet de démarches spécifiques dans le cadre du présent bulletin.<br>Source : <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) - cartographie institutionnelle des régimes spéciaux" class="source-ref source-ref-text nv" data-val-id="s31-t2-src1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Premier bulletin RDC (2023)</a></small></div>
+Les données disponibles relatives à ces deux catégories sont synthétisées dans le Tableau 2.2. Les informations sur les branches effectivement couvertes et les populations concernées sont partielles et doivent être interprétées au regard des limites de documentation actuelles.
+
+<p class="table-caption"><strong>Tableau 2.2</strong> — Dispositifs statutaires financés directement par le budget de l'État</p>
+
+| Catégorie | Dispositif | Population couverte | Mode de financement | Caractère | Branches C102 couvertes ou prévues |
+|---|---|---|:---:|:---:|:---:|
+| **Régime spécial** | Régime des militaires (FARDC, PNC) | Forces armées (FARDC), Police nationale congolaise (PNC) | Allocation budgétaire | Non contributif | Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span> |
+| **Régime spécial** | Régime des magistrats civils | Magistrats du siège et du parquet | Allocation budgétaire | Non contributif | Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span> |
+| **Régime spécial** | Régime des parlementaires | Membres de l'Assemblée nationale et du Sénat | Cotisations + dotation budgétaire | Mixte | Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span> |
+| **Régime spécial** | Autres régimes spéciaux | Autres catégories professionnelles spécifiques | Allocation budgétaire | Non contributif | [N/D] — à préciser |
+| **Protection budgétaire hors régime spécial** | Dispositif statutaire direct de l'État | Agents publics hors CNSSAP dont la prise en charge budgétaire est effectivement documentée | Allocation budgétaire (Trésor public) | Non contributif | [N/D] — droits et branches à documenter |
+
+<div class="table-sources"><small>Légende : <span class="cov-eff">✓</span> = branche couverte de façon effective selon le premier bulletin (2023) ; [N/D] = données non disponibles à la date de rédaction.<br>Note : les branches couvertes par les régimes spéciaux sont identifiées sur la base du premier bulletin (2023). La collecte des données effectives fera l'objet de démarches spécifiques dans le cadre du présent bulletin. La ligne « Protection budgétaire hors régime spécial » ne correspond pas automatiquement à l'ensemble des agents non mécanisés ou non affiliés à la CNSSAP ; seuls pourront y être dénombrés les agents dont les droits et la prise en charge budgétaire sont officiellement documentés.<br>Source : <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) - cartographie institutionnelle des régimes spéciaux" class="source-ref source-ref-text nv" data-val-id="s31-t2-src1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Premier bulletin RDC (2023)</a></small></div>
 
 ---
 
@@ -943,18 +950,25 @@ Statut : structure initiale
 
 ### Bénéficiaires de pensions de vieillesse <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-La branche vieillesse constitue la principale branche de long terme des régimes contributifs en RDC. Elle couvre les travailleurs du secteur privé via la CNSS et les agents publics via la CNSSAP. Le tableau suivant retrace l'évolution du nombre de pensionnés de vieillesse sur la période 2019–2025.
+La branche vieillesse constitue la principale branche de long terme de la protection sociale en RDC. La protection des personnes âgées s'organise selon deux modalités institutionnelles distinctes, qui coexistent sans se confondre.
 
-<p class="table-caption"><strong>Tableau 4.1</strong> — Bénéficiaires de pensions de vieillesse, CNSS et CNSSAP (2019–2025) <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s42-t1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">[src]</a></p>
+La première modalité est **contributive** : elle repose sur la constitution de droits à pension par le versement de cotisations pendant la vie active. Elle est assurée, d'une part, par la **CNSS** pour les travailleurs du secteur privé formel et leurs ayants droit, et, d'autre part, par la **CNSSAP** pour les agents publics de l'État affiliés et pour lesquels des cotisations sont effectivement versées. La *mécanisation* — c'est-à-dire l'intégration administrative et salariale dans le système de paie de l'État — facilite la retenue régulière de ces cotisations, sans être confondue avec l'immatriculation auprès de la CNSSAP.
+
+La seconde modalité recouvre la **protection vieillesse financée directement par le budget de l'État**, qui se décline elle-même en deux sous-catégories. D'un côté, les **régimes spéciaux** formellement constitués — régime des militaires et policiers (FARDC, PNC), des magistrats civils, des parlementaires — dont les pensions sont assurées par allocation budgétaire en vertu de textes propres à chaque catégorie. De l'autre, certains **agents publics hors CNSSAP** peuvent relever d'une prise en charge directe par le Trésor public, sous réserve que leurs droits et les prestations effectivement servies soient documentés. Cette seconde population ne constitue pas un « régime spécial » au sens strict. Elle ne peut pas davantage être déduite, par différence, du seul écart entre l'effectif estimé de l'emploi public et les affiliés ou cotisants de la CNSSAP.
+
+Le tableau suivant retrace l'évolution du nombre de bénéficiaires de pensions de vieillesse sur la période 2019–2025, pour les régimes disposant de données disponibles. Seuls les bénéficiaires effectifs — personnes percevant une pension à la date de référence — sont renseignés dans ce tableau. Les actifs (affiliés, cotisants) n'y figurent pas.
+
+<p class="table-caption"><strong>Tableau 4.1</strong> — Bénéficiaires de pensions de vieillesse, par modalité de protection (2019–2025) <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s42-t1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">[src]</a></p>
 
 | Institution | Prestation | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|---|
 | CNSS | Pension de retraite (bénéf.) | <span class="val" data-val-id="s42-t1-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">38 641</span> | <span class="val" data-val-id="s42-t1-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">39 465</span> | <span class="val" data-val-id="s42-t1-d3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">42 407</span> | <span class="val" data-val-id="s42-t1-d4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">44 094</span> | [N/D] | [N/D] | [N/D] |
 | CNSS | Pension de retraite anticipée (bénéf.) | 0 | 78 | <span class="val" data-val-id="s42-t1-d5" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">272</span> | <span class="val" data-val-id="s42-t1-d6" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 235</span> | [N/D] | [N/D] | [N/D] |
 | CNSSAP | Pension de vieillesse (bénéf.) | 0 | <span class="val" data-val-id="s42-t1-d7" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">814</span> | <span class="val" data-val-id="s42-t1-d8" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">780</span> | <span class="val" data-val-id="s42-t1-d9" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">4 982</span> | [N/D] | [N/D] | [N/D] |
-| Régimes spéciaux | Pension de vieillesse (bénéf.) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Régimes spéciaux (FARDC, PNC, magistrats, parlementaires) | Pension de vieillesse (bénéf.) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Pensions directement financées par le budget de l'État (hors régimes spéciaux) | Pension de vieillesse (bénéf.) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
-*Source : ESS OIT — CNSS (2019–2022) et CNSSAP (2020–2022). Régimes spéciaux (FARDC, magistrats, parlementaires) : données non disponibles — à instruire. Note : Les valeurs CNSSAP pour 2019 sont indisponibles car l'institution n'avait pas encore transmis d'ESS pour cet exercice. La forte progression entre 2020 (814 pensionnés) et 2022 (4 982) reflète les premières vagues de liquidation de droits à pension depuis la création de la CNSSAP en 2015.*
+*Source : ESS OIT — CNSS (2019–2022) et CNSSAP (2020–2022). Régimes spéciaux (FARDC, PNC, magistrats, parlementaires) : données non disponibles à la date de rédaction — à instruire auprès des institutions compétentes. Pensions directement financées par le budget de l'État (hors régimes spéciaux) : données non disponibles — bénéficiaires et prestations à documenter. Note : Les valeurs CNSSAP pour 2019 sont indisponibles car l'institution n'avait pas encore transmis d'ESS pour cet exercice. La forte progression entre 2020 (814 pensionnés) et 2022 (4 982) reflète les premières vagues de liquidation de droits à pension depuis la création de la CNSSAP en 2015. Ce tableau présente exclusivement des bénéficiaires effectifs (personnes percevant une pension à la date de référence) ; les actifs ne sont pas inclus.*
 
 ### Adéquation des pensions de vieillesse <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
@@ -1058,20 +1072,34 @@ Statut : structure initiale
 
 ## Texte rédigé
 
-### Couverture des travailleurs — cotisants actifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### Affiliés, cotisants actifs et personnes couvertes par un dispositif statutaire budgétaire <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-Les régimes contributifs couvrent les travailleurs du secteur formel. Le tableau présente l'évolution du nombre d'employeurs enregistrés et de cotisants actifs auprès de la CNSS et de la CNSSAP sur la période 2019–2025.
+Les régimes contributifs — la CNSS pour le secteur formel privé et la CNSSAP pour les agents publics relevant de son périmètre — couvrent des personnes enregistrées auprès de l'institution, dont une partie cotise activement. Le bulletin applique les définitions strictes suivantes, conformément au glossaire et aux décisions méthodologiques du bulletin :
 
-<p class="table-caption"><strong>Tableau 4.3</strong> — Employeurs enregistrés et cotisants actifs, CNSS et CNSSAP (2019–2025) <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s43-t1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">[src]</a></p>
+- **Affilié ou personne enregistrée (N3)** : toute personne immatriculée auprès d'un régime ou d'une institution, indépendamment de son statut de cotisation active ou de la perception d'une prestation.
+- **Cotisant actif (N4)** : personne affiliée pour laquelle une cotisation est effectivement versée ou enregistrée sur la période de référence. Cette donnée constitue le numérateur retenu pour le sous-indicateur ODD 1.3.1 relatif aux actifs dans les régimes contributifs.
+- **Personne couverte par un dispositif statutaire budgétaire** : agent public ou ayant droit dont la protection repose sur un cadre légal ou réglementaire définissant des droits et prestations financés directement par le budget de l'État, mais qui n'est pas enregistré auprès d'un régime contributif au sens strict.
 
-| Institution | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
-|---|---|---|---|---|---|---|---|---|
-| CNSS | Employeurs enregistrés | [ESS 2019] | [ESS 2020] | [ESS 2021] | [ESS 2022] | [N/D] | [N/D] | [N/D] |
-| CNSS | Cotisants actifs (total) | <span class="val" data-val-id="s43-t1-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">676 179</span> | <span class="val" data-val-id="s43-t1-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">508 708</span> | <span class="val" data-val-id="s43-t1-d3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">591 130</span> | <span class="val" data-val-id="s43-t1-d4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">613 761</span> | [N/D] | [N/D] | [N/D] |
-| CNSSAP | Cotisants actifs (total) | 0 | 0 | <span class="val" data-val-id="s43-t1-d5" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">190 545</span> | <span class="val" data-val-id="s43-t1-d6" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">198 399</span> | [N/D] | [N/D] | [N/D] |
-| Régimes spéciaux | Cotisants actifs (total) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+Pour la CNSSAP, la **mécanisation** — soit l'intégration administrative et salariale dans le système de paie de l'État — permet la retenue régulière des cotisations et constitue ainsi un déterminant important du passage à la cotisation active. Elle reste distincte de l'immatriculation, qui correspond à l'enregistrement de la personne auprès de la CNSSAP. Les agents publics hors CNSSAP ne sont pas considérés automatiquement comme effectivement couverts par le budget de l'État : cette couverture ne sera retenue que si les droits, la population concernée et la prise en charge budgétaire sont officiellement documentés.
 
-*Source : ESS OIT — CNSS (2019–2022) et CNSSAP (2020–2022). Régimes spéciaux (FARDC, magistrats, parlementaires) : données non disponibles — à instruire.*
+Pour les corps particuliers relevant de régimes spéciaux (militaires des FARDC, magistrats, membres du Parlement et autres corps à statut propre), la protection repose sur un dispositif statutaire budgétaire défini par des lois, décrets ou statuts particuliers. Ces personnes ne sont pas affiliées à la CNSSAP ni à la CNSS ; leur couverture est distincte et financée directement par le budget de l'État. Les données permettant de les dénombrer et de caractériser leurs droits effectifs ne sont pas disponibles dans les sources mobilisées pour le présent bulletin.
+
+Les estimations de l'emploi public fournissent un ordre de grandeur de la population susceptible de relever des dispositifs de protection sociale liés à l'emploi public. Elles ne mesurent toutefois ni l'affiliation à la CNSSAP, ni la cotisation active, ni la couverture budgétaire effective. Pour la période 2019–2025, ILOSTAT ne fournit qu'une observation : <a href="/files/06_sources/officielles_web/OIT_ILOSTAT_RDC_salaries_secteur_public_2020.json" title="Source : OIT (ILOSTAT) — salariés du secteur public en RDC, observation 2020, base consultée le 15 juillet 2026" class="source-ref" data-val-id="s43-p1-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">1 622 972 salariés du secteur public en 2020</a>. Cette estimation est présentée comme une population de référence contextuelle et ne doit pas être assimilée aux effectifs administratifs des régimes.
+
+<p class="table-caption"><strong>Tableau 4.3</strong> — Employeurs enregistrés, affiliés enregistrés et cotisants actifs, CNSS et CNSSAP ; personnes couvertes par un dispositif statutaire budgétaire (2019–2025) <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s43-t1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">[src]</a></p>
+
+| Institution / Dispositif | Catégorie | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|---|---|
+| ILOSTAT | Population de référence contextuelle | Salariés du secteur public — estimation | [N/D] | <a href="/files/06_sources/officielles_web/OIT_ILOSTAT_RDC_salaries_secteur_public_2020.json" title="Source : OIT (ILOSTAT) — EMP_TEMP_SEX_STE_INS_NB, salariés du secteur public, RDC, 2020" class="source-ref" data-val-id="s43-t1-d21" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">1 622 972</a> | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| CNSS | Régime contributif — secteur formel | Employeurs enregistrés | [ESS 2019] | [ESS 2020] | [ESS 2021] | [ESS 2022] | [N/D] | [N/D] | [N/D] |
+| CNSS | Régime contributif — secteur formel | Affiliés enregistrés (N3) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| CNSS | Régime contributif — secteur formel | Cotisants actifs (N4) | <span class="val" data-val-id="s43-t1-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">676 179</span> | <span class="val" data-val-id="s43-t1-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">508 708</span> | <span class="val" data-val-id="s43-t1-d3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">591 130</span> | <span class="val" data-val-id="s43-t1-d4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">613 761</span> | [N/D] | [N/D] | [N/D] |
+| CNSSAP | Régime contributif — agents publics | Affiliés enregistrés (N3) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| CNSSAP | Régime contributif — agents publics | Cotisants actifs (N4) | 0 | 0 | <span class="val" data-val-id="s43-t1-d5" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">190 545</span> | <span class="val" data-val-id="s43-t1-d6" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">198 399</span> | [N/D] | [N/D] | [N/D] |
+| Régimes spéciaux (FARDC, magistrats, parlementaires…) | Dispositif statutaire budgétaire | Personnes couvertes par dispositif statutaire budgétaire | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Protection budgétaire hors régime spécial | Dispositif statutaire direct de l'État | Agents publics effectivement couverts, hors CNSSAP | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+
+*Sources : OIT, ILOSTAT (emploi salarié du secteur public, observation 2020) ; ESS OIT — CNSS (2019–2022) et CNSSAP (2020–2022). ILOSTAT ne fournit pas d'observation pour 2019 et 2021–2025 dans la série retenue : ces années sont indiquées [N/D] et ne font l'objet d'aucune interpolation. Affiliés enregistrés (N3) CNSS et CNSSAP : données non disponibles dans les ESS mobilisées pour ce bulletin — à instruire. Régimes spéciaux et protection budgétaire hors régime spécial : données non disponibles — à instruire. L'écart entre l'emploi public estimé et les affiliés ou cotisants CNSSAP ne constitue pas, à lui seul, une mesure de la couverture budgétaire effective.*
 
 ### Protection maternité <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
@@ -1708,7 +1736,27 @@ Statut : rédigé
 
 ### Définition et méthodologie <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-L'indicateur ODD 1.3.1 mesure la proportion de la population effectivement couverte par au moins une prestation de protection sociale. Il est calculé selon la méthodologie de l'OIT, qui distingue la couverture légale (droit formel à une prestation) de la couverture effective (bénéfice réel d'une prestation). Seule la couverture effective est retenue ici.
+L'indicateur ODD 1.3.1 mesure la proportion de la population effectivement couverte par au moins une prestation de protection sociale. Il est calculé selon la méthodologie de l'OIT, qui distingue la couverture légale (droit formel à une prestation) de la couverture effective (bénéfice réel d'une prestation). Seule la couverture effective est retenue dans le présent bulletin.
+
+**Note méthodologique sur la composition de l'indicateur agrégé**
+
+Pour le sous-indicateur relatif aux actifs, le calcul national présenté dans ce bulletin rapproche deux types de couverture documentée, dès lors que les données satisfont aux critères d'inclusion définis ci-dessous :
+
+1. **La couverture contributive observée** : cotisants actifs auprès de la CNSS et de la CNSSAP, pour lesquels une cotisation est effectivement enregistrée sur la période de référence, selon les tableaux ESS OIT. Ces personnes sont affiliées à un régime contributif et cotisent activement.
+
+2. **La couverture statutaire non contributive effectivement documentée** : personnes dont la protection repose sur un cadre légal ou réglementaire définissant des droits et des prestations financés directement par le budget de l'État. Ces personnes ne versent pas de cotisations à un régime contributif ; elles ne sont pas désignées comme « contributeurs » dans le présent bulletin. Leur inclusion dans l'indicateur est conditionnée au respect des cinq critères d'inclusion ci-dessous.
+
+**Critères d'inclusion dans l'indicateur ODD 1.3.1**
+
+| Critère | Description |
+|---|---|
+| C1 — Base statutaire | L'accès à la prestation est fondé sur un texte légal, réglementaire ou statutaire en vigueur, définissant les droits et conditions d'éligibilité. |
+| C2 — Population identifiable | La population couverte est délimitée et dénombrable à partir de sources documentées (registres, listes officielles, données administratives). |
+| C3 — Droits et prestations identifiables | Les droits ou prestations auxquels ces personnes peuvent accéder sont explicitement définis et individualisables. |
+| C4 — Financement budgétaire documenté et exécuté | Le financement par le budget de l'État est documenté et effectivement exécuté, non seulement prévu ou inscrit en loi de finances. |
+| C5 — Absence de double comptage | Une même personne n'est comptée qu'une seule fois dans le numérateur considéré, notamment lorsqu'elle passe d'une prise en charge budgétaire directe à la CNSSAP. |
+
+Cette approche repose sur la **responsabilité permanente de l'État** et le **caractère durable** des dispositifs statutaires. Elle distingue explicitement le numérateur contributif correspondant aux cotisants actifs et la composante statutaire budgétaire ajoutée dans le calcul national. Elle ne présume pas que tous les agents publics hors CNSSAP sont effectivement couverts. Lorsque les données permettant de vérifier l'ensemble de ces critères sont absentes ou non officiellement validées, la composante concernée est renseignée [N/D] ; aucune estimation n'est avancée en substitution.
 
 L'indicateur est décomposé par groupe de population conformément aux catégories officielles de l'OIT :
 
@@ -1720,7 +1768,9 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 | Enfants (0–14 ans) | % couverts par une prestation enfance/famille |
 | Femmes ayant accouché | % couvertes par une prestation maternité |
 | Personnes âgées | % recevant une pension de vieillesse |
-| Actifs / contributeurs | % cotisant à un régime contributif |
+| Actifs — cotisants à un régime contributif | % d'actifs pour lesquels une cotisation est effectivement enregistrée auprès de la CNSS ou de la CNSSAP |
+| Actifs — couverture statutaire budgétaire | % d'actifs couverts par un dispositif statutaire budgétaire répondant aux cinq critères d'inclusion |
+| Actifs — couverture consolidée nationale | % d'actifs couverts par l'une des deux modalités précédentes, après dédoublonnage |
 | Personnes handicapées | % recevant une prestation invalidité |
 | **Accidents du travail et maladies professionnelles** | **% de la population en emploi couverte contre les risques professionnels** |
 
@@ -1736,9 +1786,13 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 | Enfants 0–14 ans (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
 | Femmes ayant accouché — maternité (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
 | Personnes âgées — pension vieillesse (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
-| Actifs — contributeurs (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
+| Actifs — cotisants à un régime contributif (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
+| Actifs — couverture statutaire budgétaire (%) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Actifs — couverture consolidée nationale (%) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Personnes handicapées — invalidité (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
 | Personnes en emploi — AT/MP (%) | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] | [EST.] |
+
+> **Note méthodologique — sous-indicateur « Actifs »** : Les trois lignes sont présentées séparément afin de rendre visible la composition du calcul national. La première retrace les cotisants actifs CNSS et CNSSAP. La deuxième retrace les personnes couvertes par un dispositif statutaire budgétaire répondant aux cinq critères d'inclusion. La troisième consolide les deux composantes après dédoublonnage. Les personnes relevant de la deuxième composante ne sont pas désignées comme « contributeurs » : leur couverture repose sur des droits légaux financés par le budget de l'État, et non sur des cotisations. Tant que leur effectif n'est pas officiellement documenté, la composante budgétaire et le total consolidé restent indiqués [N/D].
 
 *Source : calculs à partir des ESS OIT (CNSS 2019–2022, CNSSAP 2020–2022) et des données démographiques ONU WPP. Les estimations [EST.] seront calculées par le script `generer_figures_ch4.py` depuis la base.*
 

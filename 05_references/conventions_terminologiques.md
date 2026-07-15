@@ -22,6 +22,9 @@ Les agents doivent respecter ces conventions lorsqu’ils rédigent ou révisent
 | Régime | Institution | Une institution peut gérer plusieurs régimes. |
 | Programme | Régime | Un programme peut être moins structuré ou moins statutaire qu’un régime. |
 | Branche | Risque | Les deux notions sont liées, mais “branche” est préférable pour la classification statistique. |
+| Dispositif statutaire budgétaire | Régime spécial, couverture implicite | Un régime spécial n’en est qu’une forme. La couverture doit être documentée et ne peut pas être déduite du seul statut d’agent public. |
+| Agent public hors CNSSAP effectivement couvert par le budget de l’État | Agent non mécanisé couvert, cotisant implicite | Ne pas assimiler automatiquement absence de mécanisation, absence d’affiliation et couverture budgétaire effective. |
+| Mécanisation | Immatriculation, affiliation | La mécanisation concerne l’intégration dans la paie de l’État ; l’immatriculation et l’affiliation concernent l’enregistrement auprès d’un régime ou d’une institution. |
 
 ## Règles de numérotation
 

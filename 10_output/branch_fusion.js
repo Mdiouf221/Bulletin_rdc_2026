@@ -1,8 +1,8 @@
 /**
  * Branch Fusion Module
  * 
- * Fusionne les courbes Plotly de branches qui partagent la même population,
- * selon les réponses du questionnaire Q1.
+ * Fusionne les courbes Plotly de régimes qui portent sur les mêmes personnes,
+ * selon les réponses Q1 (cotisants) et Q1b (bénéficiaires).
  * 
  * Flux:
  * 1. L'utilisateur sélectionne un régime via le dropdown
@@ -22,10 +22,9 @@ class BranchFusion {
    * @param {string} graphId - ID du div Plotly (ex: "7d4cf561-e2cc-47f3-afab-9acfd952d0ad")
    * @param {object} q1Data - Réponses Q1 du questionnaire
    *   Format: { "regime1__regime2": "true/false", ... }
-   * @param {object} branchMapping - Mapping branche → liste de régimes
-   *   Ex: { "Prestations familiales": ["CNSS_R1", "CNSS_R4"], ... }
+   * @param {object} branchMapping - Mapping libellé → liste de codes régimes
    */
-  applyBranchFusion(graphId, q1Data, branchMapping) {
+  applyBranchFusion(graphId, q1Data, branchMapping, q1bData = {}) {
     const plotDiv = document.getElementById(graphId);
     if (!plotDiv || !plotDiv.data) {
       console.warn(`[BranchFusion] Graphique ${graphId} non trouvé ou non chargé`);
@@ -37,38 +36,40 @@ class BranchFusion {
       this.traces[graphId] = JSON.parse(JSON.stringify(plotDiv.data));
     }
 
-    // Identifie les branches à fusionner
-    const fusionGroups = this.identifyFusionGroups(q1Data, branchMapping);
+    const cotisantGroups = this.identifyFusionGroups(q1Data, branchMapping);
+    const beneficiaireGroups = this.identifyFusionGroups(q1bData, branchMapping);
+    let newData = JSON.parse(JSON.stringify(this.traces[graphId]));
+    newData.forEach(trace => {
+      const axis = trace.yaxis || 'y';
+      if (axis === 'y' || axis === 'y2') {
+        delete trace.stackgroup;
+        trace.fill = 'none';
+      }
+    });
+    newData = this.mergeTraces(newData, cotisantGroups, 'y');
+    newData = this.mergeTraces(newData, beneficiaireGroups, 'y2');
     
-    if (Object.keys(fusionGroups).length === 0) {
-      // Restaurer les traces d'origine si une fusion précédemment active a été retirée.
-      this.Plotly.react(
-        graphId,
-        JSON.parse(JSON.stringify(this.traces[graphId])),
-        plotDiv.layout,
-        { responsive: true }
-      );
-      return;
-    }
-
-    // Fusionne les traces selon les groupes identifiés
-    const newData = this.mergeTraces(this.traces[graphId], fusionGroups);
-    
-    // Redessine le graphique avec les données fusionnées
-    this.Plotly.react(graphId, newData, plotDiv.layout, { responsive: true });
+    // Recalculer les axes à partir des seules séries visibles.
+    const layout = JSON.parse(JSON.stringify(plotDiv.layout || {}));
+    ['yaxis', 'yaxis2'].forEach(axis => {
+      if (!layout[axis]) layout[axis] = {};
+      delete layout[axis].range;
+      layout[axis].autorange = true;
+      layout[axis].rangemode = 'tozero';
+    });
+    this.Plotly.react(graphId, newData, layout, { responsive: true });
   }
 
   /**
    * Identifie les groupes de régimes à fusionner à partir de Q1.
    *
-   * Les clés Q1 ont le format "CNSS_R1__CNSS_R2" : "true"|"false".
-   * On construit les composantes connexes (union-find) : si R1↔R2 et R1↔R3
-   * sont tous deux "true", alors {R1, R2, R3} forment un seul groupe.
+   * Les clés Q1 ont le format "<code1>__<code2>" : "true"|"false".
+   * Les composantes connexes sont construites sans hypothèse sur les codes.
    *
-   * @param {object} q1Data   - { "CNSS_R1__CNSS_R2": "true", ... }
-   * @param {object} branchMapping - { "Prestations familiales": ["CNSS_R1"], ... }
+   * @param {object} q1Data - Paires de codes régimes qualifiées
+   * @param {object} branchMapping - Libellés dynamiques des régimes
    *   (utilisé uniquement pour construire le libellé du groupe)
-   * @returns {object} { "label": ["CNSS_R1", "CNSS_R2", "CNSS_R3"], ... }
+   * @returns {object} { "label": ["code1", "code2"], ... }
    */
   identifyFusionGroups(q1Data, branchMapping) {
     // 1. Collecter toutes les paires cochées
@@ -129,15 +130,17 @@ class BranchFusion {
    * - La légende devient "Branche1 + Branche2"
    * - La valeur représentative est le maximum pour chaque année
    */
-  mergeTraces(originalTraces, fusionGroups) {
+  mergeTraces(originalTraces, fusionGroups, targetAxis) {
+    if (Object.keys(fusionGroups).length === 0) {
+      return JSON.parse(JSON.stringify(originalTraces));
+    }
+
     const newTraces = [];
     const processed = new Set();
 
-    originalTraces.forEach((trace, idx) => {
-      // Q1 ne s'applique qu'aux cotisants (col 1, yaxis par défaut).
-      // Les traces bénéficiaires (col 2, yaxis="y2") sont laissées intactes.
-      const isCotisantsAxis = !trace.yaxis || trace.yaxis === 'y';
-      if (!isCotisantsAxis) {
+    originalTraces.forEach((trace) => {
+      const traceAxis = trace.yaxis || 'y';
+      if (traceAxis !== targetAxis) {
         newTraces.push(JSON.parse(JSON.stringify(trace)));
         return;
       }
@@ -162,9 +165,9 @@ class BranchFusion {
         return;
       }
 
-      // Trouve toutes les traces du même groupe (cotisants uniquement)
+      // Trouve toutes les traces du même groupe sur le même sous-graphique.
       const tracesInGroup = originalTraces.filter(t => 
-        (!t.yaxis || t.yaxis === 'y') &&
+        (t.yaxis || 'y') === targetAxis &&
         this.traceMatchesRegimes(t, fusionGroups[traceGroup]) &&
         t.xaxis === trace.xaxis && 
         t.stackgroup === (trace.stackgroup || undefined)
@@ -186,9 +189,8 @@ class BranchFusion {
    * Fusionne plusieurs traces en une seule.
    *
    * Stratégie Q1 — population PARTAGÉE :
-   * Les branches cochées partagent les MÊMES personnes (ex. CNSS : 613 761 cotisants
-   * apparaissent dans 3 branches). On ne doit PAS additionner : on prend la valeur
-   * représentative (max sur chaque point, qui correspond au chiffre réel).
+   * Les régimes cochés partagent les MÊMES personnes. On ne doit PAS additionner :
+   * on prend la valeur représentative maximale pour chaque année.
    *
    * On désactive également stackgroup pour que la trace fusionnée ne s'empile pas
    * avec elle-même.
@@ -203,6 +205,8 @@ class BranchFusion {
       .map(t => t.name)
       .filter((v, i, a) => a.indexOf(v) === i);
     firstTrace.name = names.join(' + ');
+    delete firstTrace.stackgroup;
+    firstTrace.fill = 'none';
 
     // Aligner les séries sur les années avant de prendre la valeur représentative.
     const allYears = [];
@@ -264,35 +268,13 @@ window.branchFusion = new BranchFusion(window.Plotly);
  * - NOM_COURT : mapping régime code → nom court (depuis visualiser_regimes.py)
  */
 function buildBranchMapping(institution, regimes) {
-  // Fallback mappings (pour le cas où NOM_COURT n'est pas disponible)
-  const fallbackMappings = {
-    'CNSS': {
-      'Prestations familiales': ['CNSS_R1'],
-      'Risques professionnels': ['CNSS_R2'],
-      'Pension': ['CNSS_R3'],
-      'Action sociale et sanitaire': ['CNSS_R4']
-    },
-    'CNSSAP': {
-      'Régime de base': ['CNSSAP_R1'],
-      'Réforme du transfert': ['CNSSAP_R2']
+  const mapping = {};
+  regimes.forEach((regime) => {
+    const label = window.NOM_COURT?.[regime] || regime;
+    if (!mapping[label]) {
+      mapping[label] = [];
     }
-  };
-  
-  // Essaie d'utiliser NOM_COURT si disponible (depuis visualiser_regimes.py)
-  if (typeof window.NOM_COURT !== 'undefined') {
-    const mapping = {};
-    regimes.forEach((regime) => {
-      const nomCourt = window.NOM_COURT[regime] || regime;
-      if (!mapping[nomCourt]) {
-        mapping[nomCourt] = [];
-      }
-      mapping[nomCourt].push(regime);
-    });
-    
-    if (Object.keys(mapping).length > 0) {
-      return mapping;
-    }
-  }
-  
-  return fallbackMappings[institution] || {};
+    mapping[label].push(regime);
+  });
+  return mapping;
 }

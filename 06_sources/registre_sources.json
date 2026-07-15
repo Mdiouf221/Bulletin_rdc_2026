@@ -274,6 +274,29 @@
       ]
     },
     {
+      "id": "OIT-ILOSTAT-RDC-SECTEUR-PUBLIC-2020",
+      "titre": "ILOSTAT — Salariés du secteur public — RDC",
+      "organisation": "Organisation internationale du Travail (OIT)",
+      "annee": 2020,
+      "niveau_fiabilite": 1,
+      "url_source": "https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_STE_INS_NB&ref_area=COD&timefrom=2019&timeto=2025&sex=SEX_T&classif1=STE_AGGREGATE_EES&classif2=INS_SECTOR_PUB&format=json",
+      "fichier_source": "06_sources/officielles_web/OIT_ILOSTAT_RDC_salaries_secteur_public_2020.json",
+      "fichier_texte_extrait": null,
+      "fichier_metadata": "06_sources/officielles_web/_texte/OIT_ILOSTAT_RDC_salaries_secteur_public_2020_metadata.txt",
+      "statut_pdf": "non applicable — source API ILOSTAT",
+      "statut_texte": "métadonnées créées",
+      "statut_verification": "à valider",
+      "donnees_cles": [
+        "Salariés du secteur public en 2020 : 1 622 972 personnes",
+        "Aucune observation disponible dans cette série pour 2019 et 2021–2025",
+        "Population de référence contextuelle distincte des affiliés, cotisants actifs et personnes couvertes budgétairement"
+      ],
+      "citation_recommandee": "OIT (ILOSTAT), Emploi par sexe, statut dans l'emploi et secteur institutionnel — salariés du secteur public, RDC, observation 2020, base consultée le 15 juillet 2026.",
+      "sections_citantes": [
+        "03_chapitres/chapitre_4/4.3_age_actif.md"
+      ]
+    },
+    {
       "id": "BM-WDI-URBA",
       "titre": "World Development Indicators — Urbanisation et population rurale — RDC",
       "organisation": "Banque mondiale / WUP 2025 (ONU)",
@@ -629,6 +652,66 @@
       "sections_citantes": [],
       "fichier_metadata": "06_sources/ESS/ESS_CNSSAP/_texte/ESS_CNSSAP_2022_metadata.txt",
       "fichier_texte_extrait": "06_sources/ESS/ESS_CNSSAP/_texte/ESS_CNSSAP_2022.txt"
+    },
+    {
+      "id": "EST-TRESOR-2019",
+      "titre": "Estimation provisoire de la fonction publique hors dispositifs observés — 2019",
+      "organisation": "Équipe du bulletin — calcul provisoire",
+      "annee": 2019,
+      "niveau_fiabilite": 5,
+      "fichier_source": "06_sources/ESS/ESS_TRESOR/EST TRESOR 2019.xlsm",
+      "statut_texte": "métadonnées disponibles",
+      "statut_verification": "estimation à réviser",
+      "note": "Population résiduelle enregistrée dans le champ technique cotisants ; bénéficiaires N/D. Ne constitue pas une déclaration institutionnelle ESS.",
+      "citation_recommandee": "Ne pas citer comme source officielle ; présenter comme estimation provisoire de travail.",
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/ESS/ESS_TRESOR/_texte/EST_TRESOR_2019_metadata.txt",
+      "fichier_texte_extrait": null
+    },
+    {
+      "id": "EST-TRESOR-2020",
+      "titre": "Estimation provisoire de la fonction publique hors dispositifs observés — 2020",
+      "organisation": "Équipe du bulletin — calcul provisoire",
+      "annee": 2020,
+      "niveau_fiabilite": 5,
+      "fichier_source": "06_sources/ESS/ESS_TRESOR/EST TRESOR 2020.xlsm",
+      "statut_texte": "métadonnées disponibles",
+      "statut_verification": "estimation à réviser",
+      "note": "Population résiduelle enregistrée dans le champ technique cotisants ; bénéficiaires N/D. Ne constitue pas une déclaration institutionnelle ESS.",
+      "citation_recommandee": "Ne pas citer comme source officielle ; présenter comme estimation provisoire fondée notamment sur ILOSTAT 2020.",
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/ESS/ESS_TRESOR/_texte/EST_TRESOR_2020_metadata.txt",
+      "fichier_texte_extrait": null
+    },
+    {
+      "id": "EST-TRESOR-2021",
+      "titre": "Estimation provisoire de la fonction publique hors dispositifs observés — 2021",
+      "organisation": "Équipe du bulletin — calcul provisoire",
+      "annee": 2021,
+      "niveau_fiabilite": 5,
+      "fichier_source": "06_sources/ESS/ESS_TRESOR/EST TRESOR 2021.xlsm",
+      "statut_texte": "métadonnées disponibles",
+      "statut_verification": "estimation à réviser",
+      "note": "Population résiduelle enregistrée dans le champ technique cotisants ; bénéficiaires N/D. Ne constitue pas une déclaration institutionnelle ESS.",
+      "citation_recommandee": "Ne pas citer comme source officielle ; présenter comme estimation provisoire de travail.",
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/ESS/ESS_TRESOR/_texte/EST_TRESOR_2021_metadata.txt",
+      "fichier_texte_extrait": null
+    },
+    {
+      "id": "EST-TRESOR-2022",
+      "titre": "Estimation provisoire de la fonction publique hors dispositifs observés — 2022",
+      "organisation": "Équipe du bulletin — calcul provisoire",
+      "annee": 2022,
+      "niveau_fiabilite": 5,
+      "fichier_source": "06_sources/ESS/ESS_TRESOR/EST TRESOR 2022.xlsm",
+      "statut_texte": "métadonnées disponibles",
+      "statut_verification": "estimation à réviser",
+      "note": "Population résiduelle enregistrée dans le champ technique cotisants ; bénéficiaires N/D. Ne constitue pas une déclaration institutionnelle ESS.",
+      "citation_recommandee": "Ne pas citer comme source officielle ; présenter comme estimation provisoire de travail.",
+      "sections_citantes": [],
+      "fichier_metadata": "06_sources/ESS/ESS_TRESOR/_texte/EST_TRESOR_2022_metadata.txt",
+      "fichier_texte_extrait": null
     },
     {
       "id": "ESS-RDC-2023",

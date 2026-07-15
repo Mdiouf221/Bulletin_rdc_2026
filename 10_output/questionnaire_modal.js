@@ -135,10 +135,10 @@ class QuestionnaireModal {
   buildQ1(institution, regimes) {
     const section = document.createElement('fieldset');
     section.className = 'questionnaire-section';
-    section.innerHTML = `<legend>Q1 — Affiliation aux régimes</legend>`;
+    section.innerHTML = `<legend>Q1 — Cotisants identiques entre régimes</legend>`;
     
     const desc = document.createElement('p');
-    desc.textContent = 'Pour chaque régime, indiquer s\'il partage la même population de cotisants avec les autres régimes';
+    desc.textContent = 'Cocher uniquement lorsque deux régimes déclarent entièrement les mêmes cotisants pour les mêmes années. Ne pas cocher en cas de recoupement partiel ou incertain.';
     section.appendChild(desc);
 
     // Tableau
@@ -210,10 +210,10 @@ class QuestionnaireModal {
   buildQ1b(institution, regimes) {
     const section = document.createElement('fieldset');
     section.className = 'questionnaire-section';
-    section.innerHTML = `<legend>Q1b — Partage des bénéficiaires entre régimes</legend>`;
+    section.innerHTML = `<legend>Q1b — Bénéficiaires identiques entre régimes</legend>`;
 
     const desc = document.createElement('p');
-    desc.textContent = 'Pour chaque régime, indiquer s\'il couvre les mêmes bénéficiaires que les autres régimes (ex. même enfant déclaré dans plusieurs branches)';
+    desc.textContent = 'Cocher uniquement lorsque deux régimes déclarent entièrement les mêmes bénéficiaires pour les mêmes années. Ne pas cocher en cas de recoupement partiel ou incertain.';
     section.appendChild(desc);
 
     const table = document.createElement('table');
@@ -277,10 +277,10 @@ class QuestionnaireModal {
   buildQ2(institution, regimes) {
     const section = document.createElement('fieldset');
     section.className = 'questionnaire-section';
-    section.innerHTML = `<legend>Q2 — Agrégation des recettes/dépenses</legend>`;
+    section.innerHTML = `<legend>Q2 — Totaux financiers identiques entre régimes</legend>`;
     
     const desc = document.createElement('p');
-    desc.textContent = 'Pour chaque régime, indiquer si recettes et dépenses ont été combinées avec d\'autres régimes';
+    desc.textContent = 'Pour chaque année, cocher uniquement les régimes qui répètent exactement le même total institutionnel. Les indicateurs moyens ne sont pas fusionnés.';
     section.appendChild(desc);
 
     // Tableau
@@ -292,8 +292,9 @@ class QuestionnaireModal {
     thead.innerHTML = `
       <tr>
         <th>Régime</th>
-        <th>Recettes combinées avec</th>
-        <th>Dépenses combinées avec</th>
+        <th>Année</th>
+        <th>Recettes identiques à</th>
+        <th>Dépenses identiques à</th>
       </tr>
     `;
     table.appendChild(thead);
@@ -301,23 +302,37 @@ class QuestionnaireModal {
     // Lignes
     const tbody = document.createElement('tbody');
     regimes.forEach((regime) => {
-      const row = document.createElement('tr');
-      const regimeCell = document.createElement('td');
-      regimeCell.textContent = window.NOM_COURT ? (window.NOM_COURT[regime] || regime) : regime;
-      regimeCell.style.fontWeight = 'bold';
-      row.appendChild(regimeCell);
+      const years = this.getRegimeYears(institution, regime);
+      years.forEach((year, index) => {
+        const row = document.createElement('tr');
+        const regimeCell = document.createElement('td');
+        regimeCell.textContent = index === 0
+          ? (window.NOM_COURT ? (window.NOM_COURT[regime] || regime) : regime)
+          : '';
+        regimeCell.style.fontWeight = 'bold';
+        row.appendChild(regimeCell);
 
-      // Recettes
-      const receiptsCell = document.createElement('td');
-      receiptsCell.appendChild(this.buildMultiCheckbox(institution, `Q2_${regime}_recettes`, regime, regimes));
-      row.appendChild(receiptsCell);
+        const yearCell = document.createElement('td');
+        yearCell.textContent = year;
+        row.appendChild(yearCell);
 
-      // Dépenses
-      const expensesCell = document.createElement('td');
-      expensesCell.appendChild(this.buildMultiCheckbox(institution, `Q2_${regime}_depenses`, regime, regimes));
-      row.appendChild(expensesCell);
+        const comparableRegimes = regimes.filter(other =>
+          other !== regime && this.getRegimeYears(institution, other).map(String).includes(String(year))
+        );
+        const receiptsCell = document.createElement('td');
+        receiptsCell.appendChild(this.buildMultiCheckbox(
+          institution, `Q2_${regime}_recettes_${year}`, regime, comparableRegimes, 'recettes', year
+        ));
+        row.appendChild(receiptsCell);
 
-      tbody.appendChild(row);
+        const expensesCell = document.createElement('td');
+        expensesCell.appendChild(this.buildMultiCheckbox(
+          institution, `Q2_${regime}_depenses_${year}`, regime, comparableRegimes, 'depenses', year
+        ));
+        row.appendChild(expensesCell);
+
+        tbody.appendChild(row);
+      });
     });
     table.appendChild(tbody);
     section.appendChild(table);
@@ -344,12 +359,7 @@ class QuestionnaireModal {
     const familyRegimes = regimes.filter((regime) => {
       // REGIME_META est structuré par institution : REGIME_META[institution][regime]
       if (!window.REGIME_META) return true; // pas de méta → montrer tous les régimes
-      // Trouver l'institution du régime (le code commence par "CNSS_" ou "CNSSAP_" etc.)
-      const instKey = Object.keys(window.REGIME_META).find(inst =>
-        window.REGIME_META[inst] && window.REGIME_META[inst][regime]
-      );
-      if (!instKey) return true; // régime non trouvé → inclure par défaut
-      const meta = window.REGIME_META[instKey][regime];
+      const meta = window.REGIME_META[institution]?.[regime];
       if (!meta || !meta.versions || !meta.versions.length) return true;
       const latestVersion = meta.versions[meta.versions.length - 1];
       if (!latestVersion) return true;
@@ -422,7 +432,7 @@ class QuestionnaireModal {
     section.appendChild(helpText);
     
     // Récupérer les années ESS disponibles pour ce régime
-    const years = this.getRegimeYears(regime);
+    const years = this.getRegimeYears(institution, regime);
     
     // Tableau HTML
     const table = document.createElement('table');
@@ -512,24 +522,14 @@ class QuestionnaireModal {
   /**
    * Récupère les années ESS disponibles pour un régime
    */
-  getRegimeYears(regime) {
-    if (!window.REGIME_META) return [];
-    
-    // Chercher le régime dans toutes les institutions
-    for (const inst in window.REGIME_META) {
-      if (window.REGIME_META[inst][regime]) {
-        const meta = window.REGIME_META[inst][regime];
-        return meta.ess_years || [];
-      }
-    }
-    
-    return [];
+  getRegimeYears(institution, regime) {
+    return window.REGIME_META?.[institution]?.[regime]?.ess_years || [];
   }
 
   /**
    * Construit un groupe de checkboxes multi-sélection
    */
-  buildMultiCheckbox(institution, fieldName, currentRegime, allRegimes) {
+  buildMultiCheckbox(institution, fieldName, currentRegime, allRegimes, type, year) {
     const container = document.createElement('div');
     container.className = 'questionnaire-multi-checkbox';
 
@@ -543,9 +543,15 @@ class QuestionnaireModal {
       checkbox.value = regime;
       checkbox.id = `${fieldName}_${regime}`;
 
-      // Charge l'état sauvegardé : Q2 stocke { "Q2_R1_recettes": ["R2", "R3"] }
+      // Q2 stocke les relations par régime, type de total et année.
       const storedList = this.data[institution]?.Q2?.[fieldName] || [];
       if (storedList.includes(regime)) checkbox.checked = true;
+      checkbox.addEventListener('change', () => {
+        const mirrorName = `Q2_${regime}_${type}_${year}`;
+        const mirror = Array.from(document.querySelectorAll(`input[name="${mirrorName}"]`))
+          .find(input => input.value === currentRegime);
+        if (mirror) mirror.checked = checkbox.checked;
+      });
 
       label.appendChild(checkbox);
       label.appendChild(document.createTextNode(window.NOM_COURT ? (window.NOM_COURT[regime] || regime) : regime));

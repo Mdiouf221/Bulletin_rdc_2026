@@ -1,0 +1,53 @@
+TITRE : Emploi salarié dans le secteur public — République démocratique du Congo
+SOURCE / AUTEUR : Organisation internationale du Travail (OIT) — ILOSTAT
+PAYS / RÉGION : République démocratique du Congo
+ANNÉE DE LA DONNÉE : 2020
+DATE DE CONSULTATION : 15 juillet 2026
+TYPE : extraction d'une base de données internationale
+FICHIER SOURCE : 06_sources/officielles_web/OIT_ILOSTAT_RDC_salaries_secteur_public_2020.json
+NIVEAU DE FIABILITÉ : 1 — organisation internationale de référence
+
+URL SOURCE :
+https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_STE_INS_NB&ref_area=COD&timefrom=2019&timeto=2025&sex=SEX_T&classif1=STE_AGGREGATE_EES&classif2=INS_SECTOR_PUB&format=json
+
+---
+
+CONTENU RÉSUMÉ
+
+Extraction ILOSTAT portant sur le nombre de salariés du secteur public en RDC. La requête couvre théoriquement la période 2019–2025, mais la base ne renvoie qu'une observation pour 2020.
+
+---
+
+DONNÉE CLÉ
+
+- Salariés du secteur public en 2020 : 1 622,972 milliers, soit 1 622 972 personnes.
+
+Paramètres de la série :
+- Indicateur : EMP_TEMP_SEX_STE_INS_NB
+- Sexe : total (SEX_T)
+- Statut dans l'emploi : salariés (STE_AGGREGATE_EES)
+- Secteur institutionnel : secteur public (INS_SECTOR_PUB)
+- Source ILOSTAT : BB:7091
+- Note source : R1:3513
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Cette donnée est une estimation de l'emploi salarié public. Elle ne mesure ni les affiliés à la CNSSAP, ni les cotisants actifs, ni les personnes effectivement couvertes par une allocation budgétaire.
+- ILOSTAT ne fournit aucune observation pour 2019 et 2021–2025 dans cette série et pour cette requête. Ces années doivent être indiquées [N/D].
+- La valeur de 2020 ne doit pas être reportée, interpolée ou projetée sur les autres années.
+- Une autre série ILOSTAT plus large sur l'ensemble de l'emploi du secteur public donne 2 391,475 milliers en 2020. Elle n'est pas retenue ici, car le concept de salariés est plus proche de la population liée à une relation d'emploi public.
+
+---
+
+UTILISATION DANS LE BULLETIN
+
+- Section 4.3 — Protection des personnes en âge actif.
+- Tableau 4.3 — population de référence contextuelle, présentée séparément des affiliés, cotisants et personnes couvertes par un dispositif statutaire budgétaire.
+
+---
+
+CITATION RECOMMANDÉE
+
+OIT (ILOSTAT), Emploi par sexe, statut dans l'emploi et secteur institutionnel — salariés du secteur public, République démocratique du Congo, observation 2020, base consultée le 15 juillet 2026.

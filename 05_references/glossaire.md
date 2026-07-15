@@ -92,6 +92,14 @@ Régime ou programme dont l’accès aux droits ou aux prestations est lié, tot
 
 Régime ou programme financé principalement par l’impôt, le budget public, les partenaires ou d’autres ressources non directement liées à la cotisation individuelle des bénéficiaires.
 
+## Dispositif statutaire budgétaire
+
+Dispositif non contributif fondé sur un texte légal, réglementaire ou statutaire définissant des droits et des prestations pour une population identifiable, dont le financement et la prise en charge sont assurés directement par le budget de l’État. L’existence d’une base légale ou d’une allocation budgétaire ne suffit pas, à elle seule, à établir une couverture effective : celle-ci doit être documentée par des données sur les personnes couvertes, les droits opérationnels ou les prestations servies et l’exécution du financement.
+
+## Mécanisation d’un agent public
+
+Intégration administrative et salariale d’un agent dans le système de paie de l’État. La mécanisation facilite la retenue régulière des cotisations sociales, mais demeure distincte de l’immatriculation ou de l’affiliation auprès d’une institution de sécurité sociale.
+
 ## Programme statutaire
 
 Programme ou régime fondé sur un texte légal, réglementaire ou statutaire définissant les droits, obligations, conditions d’accès, prestations ou modalités de financement.

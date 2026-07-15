@@ -24,12 +24,12 @@ Les agents doivent mettre à jour ce registre lorsqu'un tableau est créé, reno
 | Numéro | Titre du tableau | Chapitre / section | Fichier source | Statut |
 |---|---|---|---|---|
 | Tableau 2.1 | Sécurité sociale contributive obligatoire : CNSS et CNSSAP | Chapitre 2 — Cartographie institutionnelle | `03_chapitres/chapitre_2/2_1_cartographie_tableaux.md` | à vérifier |
-| Tableau 2.2 | Régimes spéciaux (financement par allocation budgétaire) | Chapitre 2 — Cartographie institutionnelle | `03_chapitres/chapitre_2/2_1_cartographie_tableaux.md` | à vérifier |
+| Tableau 2.2 | Dispositifs statutaires financés directement par le budget de l'État | Chapitre 2 — Cartographie institutionnelle | `03_chapitres/chapitre_2/2_1_cartographie_tableaux.md` | à vérifier |
 | Tableau 2.3 | Protection de la santé par segment de population | Chapitre 2 — Cartographie institutionnelle | `03_chapitres/chapitre_2/2_1_cartographie_tableaux.md` | à vérifier |
 | Tableau 2.4 | Programmes d'assistance sociale et initiatives non contributives (actifs au 31.12.2025) | Chapitre 2 — Cartographie institutionnelle | `03_chapitres/chapitre_2/2_1_cartographie_tableaux.md` | à vérifier |
-| Tableau 4.1 | Bénéficiaires de pensions de vieillesse, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.2 Vieillesse | `03_chapitres/chapitre_4/4.2_vieillesse.md` | à vérifier |
+| Tableau 4.1 | Bénéficiaires de pensions de vieillesse, par modalité de protection (2019–2025) | Chapitre 4 — § 4.2 Vieillesse | `03_chapitres/chapitre_4/4.2_vieillesse.md` | à vérifier |
 | Tableau 4.2 | Adéquation des pensions de vieillesse, CNSS (2019–2025) | Chapitre 4 — § 4.2 Vieillesse | `03_chapitres/chapitre_4/4.2_vieillesse.md` | à vérifier |
-| Tableau 4.3 | Employeurs enregistrés et cotisants actifs, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.3 Âge actif | `03_chapitres/chapitre_4/4.3_age_actif.md` | à vérifier |
+| Tableau 4.3 | Employeurs, affiliés, cotisants actifs et personnes couvertes par un dispositif statutaire budgétaire (2019–2025) | Chapitre 4 — § 4.3 Âge actif | `03_chapitres/chapitre_4/4.3_age_actif.md` | à vérifier |
 | Tableau 4.4 | Bénéficiaires de prestations maternité, CNSS (2019–2025) | Chapitre 4 — § 4.3 Âge actif | `03_chapitres/chapitre_4/4.3_age_actif.md` | à vérifier |
 | Tableau 4.5 | Bénéficiaires de rentes d'accidents du travail et maladies professionnelles, CNSS (2019–2025) | Chapitre 4 — § 4.3 Âge actif | `03_chapitres/chapitre_4/4.3_age_actif.md` | à vérifier |
 | Tableau 4.6 | Enfants couverts par les allocations familiales, CNSS et CNSSAP (2019–2025) | Chapitre 4 — § 4.4 Enfants et familles | `03_chapitres/chapitre_4/4.4_enfants_familles.md` | à vérifier |

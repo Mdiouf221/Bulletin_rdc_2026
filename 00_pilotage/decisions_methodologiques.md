@@ -262,7 +262,16 @@ Le sous-indicateur ODD 1.3.1 2.9 (cotisants actifs aux régimes de retraite) uti
 
 ## Décisions en discussion
 
-_Aucune décision en discussion à ce stade._
+### DM-017 — Traitement de la protection statutaire budgétaire des agents publics
+
+Le bulletin distingue la couverture contributive observée par la CNSSAP de la protection statutaire non contributive directement financée par le budget de l’État. Cette seconde composante comprend les régimes spéciaux et, séparément, les agents publics hors CNSSAP dont la protection budgétaire effective peut être officiellement documentée.
+
+Son inclusion dans le calcul national du sous-indicateur relatif aux actifs est subordonnée à cinq conditions : une base statutaire en vigueur, une population identifiable, des droits ou prestations identifiables, un financement budgétaire documenté et exécuté, et l’absence de double comptage dans le numérateur considéré.
+
+L’écart entre l’effectif estimé de l’emploi public et les affiliés ou cotisants CNSSAP ne constitue pas une mesure suffisante de cette couverture. La mécanisation facilite la retenue des cotisations, mais ne doit pas être confondue avec l’immatriculation à la CNSSAP. Les composantes contributive et budgétaire sont présentées séparément avant toute consolidation.
+
+**Statut :** en discussion
+**Impact :** cartographie institutionnelle, sections 4.2, 4.3 et 5.1, tableaux 2.2, 4.1, 4.3, 5.1 et 5.2
 
 ## Décisions abandonnées
 

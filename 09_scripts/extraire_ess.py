@@ -178,7 +178,7 @@ SHEET_TO_REGIME = {
 
 _ESS_EXTENSION_RE = re.compile(r'\.(xlsx|xlsm|xls)$', re.IGNORECASE)
 _ESS_YEAR_RE = re.compile(r'(19|20)\d{2}')
-_ESS_INSTITUTION_RE = re.compile(r'\bESS[\s_-]*([A-Za-z0-9]{2,32})\b', re.IGNORECASE)
+_ESS_INSTITUTION_RE = re.compile(r'\b(?:ESS|EST)[\s_-]*([A-Za-z0-9]{2,32})\b', re.IGNORECASE)
 _REGIME_SHEET_RE = re.compile(r'^(?:regime|régime)\s*(\d+)\s*$', re.IGNORECASE)
 _GENERIC_TOKENS = {
     "RDC", "REPUBLIQUE", "DEMOCRATIQUE", "CONGO", "PAYS", "CONTACT", "PERIODE",
@@ -426,6 +426,11 @@ def _ess_destination_name(filepath, institution, annee):
     lowered = root.lower()
 
     inst = _sanitize_institution_code(institution) if institution else None
+    is_estimation = _is_estimated_ess_file(filepath)
+
+    if is_estimation and inst:
+        suffix = f" {annee}" if annee else ""
+        return f"EST {inst}{suffix}{ext}"
 
     if inst == 'RDC' and re.search(r'^(ess[\s_-]+)?(rdc|ess rdc tous regimes)', lowered):
         return base
@@ -442,6 +447,37 @@ def _ess_destination_name(filepath, institution, annee):
         return f"ESS {inst}{suffix}{ext}"
 
     return base
+
+
+def _is_estimated_ess_file(filepath):
+    """Identifie une feuille ESS utilisée comme estimation de travail."""
+    root = os.path.splitext(os.path.basename(filepath or ""))[0]
+    normalized = unicodedata.normalize("NFKD", root).encode("ascii", "ignore").decode("ascii")
+    return bool(re.match(r"^EST(?:[\s_-]|$)", normalized, re.IGNORECASE))
+
+
+def _ess_source_profile(filepath, institution, annee, note_anomalie=None):
+    """Définit la traçabilité de la source selon sa nature déclarée."""
+    if _is_estimated_ess_file(filepath):
+        note = (
+            "Estimation provisoire de travail. Ne constitue pas une déclaration "
+            "institutionnelle ESS et doit être remplacée ou ajustée lorsque des "
+            "données administratives plus précises deviennent disponibles."
+        )
+        if note_anomalie:
+            note = f"{note} {note_anomalie}"
+        return {
+            "type_source": "estimation",
+            "fiabilite": "estimee",
+            "description": f"Estimation provisoire au format ESS — {institution} {annee}",
+            "note_methodologique": note,
+        }
+    return {
+        "type_source": "ESS",
+        "fiabilite": "primaire",
+        "description": f"ESS OIT/BIT — {institution} {annee}",
+        "note_methodologique": note_anomalie,
+    }
 
 
 def _resolve_sheet_regime_suffix(sheet_name):
@@ -692,7 +728,7 @@ def _find_existing_ess_sources(institution, annee, nom_fichier):
         rows = conn.execute(
             """SELECT source_id, institution, annee_donnees, nom_fichier, chemin_fichier, date_ingestion
                FROM sources_ingestion
-               WHERE type_source = 'ESS'
+               WHERE type_source IN ('ESS', 'estimation')
                  AND UPPER(institution) = UPPER(?)
                  AND annee_donnees = ?
                  AND nom_fichier = ?
@@ -1222,7 +1258,7 @@ def purge_existing_ess_import(conn, institution, annee, nom_fichier):
     source_rows = conn.execute(
         """SELECT source_id
            FROM sources_ingestion
-           WHERE type_source = 'ESS'
+           WHERE type_source IN ('ESS', 'estimation')
              AND institution = ?
              AND annee_donnees = ?
              AND nom_fichier = ?""",
@@ -1243,7 +1279,7 @@ def purge_existing_ess_import(conn, institution, annee, nom_fichier):
 
 def find_ess_sources(conn, institution=None, annee=None, nom_fichier=None, source_id=None):
     """Retourne les sources ESS correspondant aux filtres."""
-    where = ["type_source = 'ESS'"]
+    where = ["type_source IN ('ESS', 'estimation')"]
     params = []
 
     if source_id is not None:
@@ -1398,6 +1434,13 @@ def process_ess_file(filepath, institution, annee, note_anomalie=None,
         print(f"  ✗ Institution ESS introuvable pour {nom_fichier}")
         return False
 
+    source_profile = _ess_source_profile(
+        nom_fichier,
+        institution,
+        annee,
+        note_anomalie=note_anomalie,
+    )
+
     print(f"\n{'─'*65}")
     print(f"  {institution} {annee}  —  {nom_fichier}")
     if note_anomalie:
@@ -1432,14 +1475,14 @@ def process_ess_file(filepath, institution, annee, note_anomalie=None,
             print(f"  ↺ Ancien import remplacé ({removed} source(s) supprimée(s))")
         source_id = register_source(
             conn,
-            type_source      = 'ESS',
+            type_source      = source_profile["type_source"],
             nom_fichier      = nom_fichier,
             chemin_fichier   = chemin_rel,
             institution      = institution,
             annee_donnees    = annee,
-            description      = f"ESS OIT/BIT — {institution} {annee}",
-            fiabilite        = 'primaire',
-            note_methodologique = note_anomalie
+            description      = source_profile["description"],
+            fiabilite        = source_profile["fiabilite"],
+            note_methodologique = source_profile["note_methodologique"]
         )
     else:
         source_id = 0  # dry_run
@@ -1448,6 +1491,7 @@ def process_ess_file(filepath, institution, annee, note_anomalie=None,
     INVENTAIRE_SHEET = 'Inventaire des régimes'
     if INVENTAIRE_SHEET not in wb.sheetnames:
         print(f"  ✗ Feuille '{INVENTAIRE_SHEET}' absente")
+        wb.close()
         return False
 
     ws_inv = wb[INVENTAIRE_SHEET]
@@ -1533,6 +1577,7 @@ def process_ess_file(filepath, institution, annee, note_anomalie=None,
     if not dry_run and conn:
         conn.commit()
 
+    wb.close()
     print(f"  ✓ Traitement terminé (source_id={source_id})")
     return True
 

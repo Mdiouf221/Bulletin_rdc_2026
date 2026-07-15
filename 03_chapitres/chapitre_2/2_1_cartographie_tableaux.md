@@ -37,7 +37,7 @@ Statut : rédigé
 
 Sur la base des grilles définies au chapitre 2 — couverture légale et effective, caractère obligatoire ou volontaire, financement contributif ou non contributif, statut réglementaire, nature des prestations et conditions d'accès —, le présent chapitre cartographie les régimes, programmes et institutions de protection sociale identifiés en RDC à la date de rédaction.
 
-Cette cartographie distingue quatre grandes catégories : la sécurité sociale contributive obligatoire, qui couvre les travailleurs du secteur formel selon leurs catégories (Tableaux 2.1 et 2.2) ; la protection de la santé, organisée par segment de population (Tableau 2.3) ; les programmes d'assistance sociale et initiatives non contributives destinés aux populations non couvertes par les régimes formels (Tableau 2.4) ; enfin, un ensemble de politiques sectorielles à dimension protectrice — gratuités, programmes d'activation par l'emploi, accès subventionné aux services de base — dont la finalité sociale est établie mais qui ne relèvent pas à proprement parler de l'assistance sociale (Tableau 2.5, mention contextuelle).
+Cette cartographie distingue quatre grandes catégories : la sécurité sociale contributive obligatoire, qui couvre les travailleurs du secteur privé formel via la CNSS et les agents publics affiliés à la CNSSAP (Tableau 2.1) ; les dispositifs statutaires financés directement par le budget de l'État, qui regroupent les régimes spéciaux formellement constitués et, lorsqu'elle est effectivement documentée, la protection budgétaire d'autres agents publics hors CNSSAP (Tableau 2.2) ; la protection de la santé, organisée par segment de population (Tableau 2.3) ; les programmes d'assistance sociale et initiatives non contributives destinés aux populations non couvertes par les régimes formels (Tableau 2.4) ; enfin, un ensemble de politiques sectorielles à dimension protectrice — gratuités, programmes d'activation par l'emploi, accès subventionné aux services de base — dont la finalité sociale est établie mais qui ne relèvent pas à proprement parler de l'assistance sociale (Tableau 2.5, mention contextuelle).
 
 ---
 
@@ -70,20 +70,27 @@ Cette cartographie distingue quatre grandes catégories : la sécurité sociale 
 
 ---
 
-### Régimes spéciaux <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### Dispositifs statutaires financés directement par le budget de l'État <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-Les régimes spéciaux couvrent des catégories professionnelles spécifiques de l'État. À l'exception du régime des parlementaires, ces régimes sont en grande partie financés par allocation budgétaire du Trésor public et non par cotisations.
+Au-delà de la sécurité sociale contributive gérée par la CNSS et la CNSSAP, le paysage institutionnel de la protection sociale en RDC comprend un ensemble de **dispositifs statutaires dont les prestations sont financées directement par le budget de l'État**. Ces dispositifs se subdivisent en deux catégories distinctes, qu'il convient de ne pas confondre sur le plan institutionnel.
 
-<p class="table-caption"><strong>Tableau 2.2</strong> — Régimes spéciaux (financement par allocation budgétaire)</p>
+La première catégorie regroupe les **régimes spéciaux** au sens strict : dispositifs institués par un texte légal ou réglementaire propre, couvrant une catégorie professionnelle déterminée selon des règles spécifiques de prestations et de financement. En RDC, entrent dans cette catégorie les régimes applicables aux militaires et policiers (FARDC, PNC), aux magistrats civils du siège et du parquet, et aux membres des assemblées législatives nationales.
 
-| Régime | Population couverte | Mode de financement | Caractère | Branches C102 prévues |
-|---|---|:---:|:---:|:---:|
-| Régime des militaires (FAC, PNC) | Forces armées, Police nationale | Allocation budgétaire | Non contributif | Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span> |
-| Régime des magistrats civils | Magistrats du siège et du parquet | Allocation budgétaire | Non contributif | Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span> |
-| Régime des parlementaires | Membres de l'Assemblée nationale et du Sénat | Cotisations + dotation | Mixte | Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span> |
-| Autres régimes budgétaires | Autres catégories spécifiques | Allocation budgétaire | Non contributif | À préciser |
+La seconde catégorie recouvre les **agents publics hors CNSSAP dont la protection est effectivement assurée par un dispositif statutaire financé directement par le budget de l'État**, sans s'inscrire dans un régime spécial formellement constitué. La mécanisation — entendue comme l'intégration administrative et salariale dans le système de paie de l'État — facilite la retenue régulière des cotisations et le passage à une couverture contributive effective par la CNSSAP. Toutefois, l'absence de mécanisation ou d'affiliation à la CNSSAP ne suffit pas, à elle seule, à établir l'existence d'une couverture budgétaire effective. Celle-ci doit être attestée par des droits identifiables, une population dénombrable et une prise en charge budgétaire documentée. Qualifier cette population de « régime spécial » serait inexact : elle relève des dispositions générales applicables aux agents de l'État, et non d'un régime spécial distinct.
 
-<div class="table-sources"><small>Légende : <span class="cov-eff">✓</span> = branche couverte de façon effective.<br>Note : les branches couvertes par les régimes spéciaux sont identifiées sur base du premier bulletin (2023). La collecte des données effectives fera l'objet de démarches spécifiques dans le cadre du présent bulletin.<br>Source : <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) - cartographie institutionnelle des régimes spéciaux" class="source-ref source-ref-text nv" data-val-id="s31-t2-src1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Premier bulletin RDC (2023)</a></small></div>
+Les données disponibles relatives à ces deux catégories sont synthétisées dans le Tableau 2.2. Les informations sur les branches effectivement couvertes et les populations concernées sont partielles et doivent être interprétées au regard des limites de documentation actuelles.
+
+<p class="table-caption"><strong>Tableau 2.2</strong> — Dispositifs statutaires financés directement par le budget de l'État</p>
+
+| Catégorie | Dispositif | Population couverte | Mode de financement | Caractère | Branches C102 couvertes ou prévues |
+|---|---|---|:---:|:---:|:---:|
+| **Régime spécial** | Régime des militaires (FARDC, PNC) | Forces armées (FARDC), Police nationale congolaise (PNC) | Allocation budgétaire | Non contributif | Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span> |
+| **Régime spécial** | Régime des magistrats civils | Magistrats du siège et du parquet | Allocation budgétaire | Non contributif | Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span> |
+| **Régime spécial** | Régime des parlementaires | Membres de l'Assemblée nationale et du Sénat | Cotisations + dotation budgétaire | Mixte | Vieillesse <span class="cov-eff">✓</span>, survivants <span class="cov-eff">✓</span> |
+| **Régime spécial** | Autres régimes spéciaux | Autres catégories professionnelles spécifiques | Allocation budgétaire | Non contributif | [N/D] — à préciser |
+| **Protection budgétaire hors régime spécial** | Dispositif statutaire direct de l'État | Agents publics hors CNSSAP dont la prise en charge budgétaire est effectivement documentée | Allocation budgétaire (Trésor public) | Non contributif | [N/D] — droits et branches à documenter |
+
+<div class="table-sources"><small>Légende : <span class="cov-eff">✓</span> = branche couverte de façon effective selon le premier bulletin (2023) ; [N/D] = données non disponibles à la date de rédaction.<br>Note : les branches couvertes par les régimes spéciaux sont identifiées sur la base du premier bulletin (2023). La collecte des données effectives fera l'objet de démarches spécifiques dans le cadre du présent bulletin. La ligne « Protection budgétaire hors régime spécial » ne correspond pas automatiquement à l'ensemble des agents non mécanisés ou non affiliés à la CNSSAP ; seuls pourront y être dénombrés les agents dont les droits et la prise en charge budgétaire sont officiellement documentés.<br>Source : <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) - cartographie institutionnelle des régimes spéciaux" class="source-ref source-ref-text nv" data-val-id="s31-t2-src1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Premier bulletin RDC (2023)</a></small></div>
 
 ---
 
