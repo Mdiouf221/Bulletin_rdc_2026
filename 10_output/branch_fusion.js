@@ -48,6 +48,11 @@ class BranchFusion {
     });
     newData = this.mergeTraces(newData, cotisantGroups, 'y');
     newData = this.mergeTraces(newData, beneficiaireGroups, 'y2');
+    if (typeof window.wrapInstitutionLegendLabel === 'function') {
+      newData.forEach(trace => {
+        trace.name = window.wrapInstitutionLegendLabel(trace.name);
+      });
+    }
     
     // Recalculer les axes à partir des seules séries visibles.
     const layout = JSON.parse(JSON.stringify(plotDiv.layout || {}));
@@ -202,9 +207,12 @@ class BranchFusion {
 
     // Fusion des labels (noms uniques)
     const names = tracesInGroup
-      .map(t => t.name)
+      .map(t => String(t.name || '').replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim())
       .filter((v, i, a) => a.indexOf(v) === i);
-    firstTrace.name = names.join(' + ');
+    const mergedName = names.join(' + ');
+    firstTrace.name = typeof window.wrapInstitutionLegendLabel === 'function'
+      ? window.wrapInstitutionLegendLabel(mergedName)
+      : mergedName;
     delete firstTrace.stackgroup;
     firstTrace.fill = 'none';
 
@@ -231,7 +239,7 @@ class BranchFusion {
     if (firstTrace.hovertemplate) {
       firstTrace.hovertemplate = firstTrace.hovertemplate.replace(
         tracesInGroup[0].name,
-        firstTrace.name
+        mergedName
       );
     }
 

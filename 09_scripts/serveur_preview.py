@@ -1134,6 +1134,27 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
                 self.wfile.write(b'{"error":"Parametre year invalide"}')
                 return
             target_url = f"https://www.populationpyramid.net/api/pp/180/{year}/"
+            attempts = 1
+        elif route == "/api/denom/wb":
+            indicator = qs.get("indicator", [""])[0]
+            allowed_indicators = {
+                "SP.POP.TOTL",
+                "SP.POP.0014.TO",
+                "SP.POP.1564.TO",
+                "SP.POP.65UP.TO",
+                "SP.DYN.CBRT.IN",
+            }
+            if indicator not in allowed_indicators:
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(b'{"error":"Indicateur Banque mondiale invalide"}')
+                return
+            target_url = (
+                "https://api.worldbank.org/v2/country/CD/indicator/"
+                f"{indicator}?format=json&per_page=200"
+            )
+            attempts = 3
         elif route == "/api/denom/ilo":
             target_url = (
                 "https://rplumber.ilo.org/data/indicator/"
@@ -1141,6 +1162,7 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
                 "&classif1=AGE_AGGREGATE_TOTAL&time_from=2000&time_to=2030"
                 "&type=label&decimals=0"
             )
+            attempts = 1
         else:
             self.send_response(404)
             self.end_headers()
@@ -1155,10 +1177,17 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             method="GET",
         )
         try:
-            with urlopen(req, timeout=25) as resp:
-                body = resp.read()
-                status = getattr(resp, "status", 200)
-                content_type = resp.headers.get("Content-Type", "application/json")
+            for attempt in range(attempts):
+                try:
+                    with urlopen(req, timeout=15) as resp:
+                        body = resp.read()
+                        status = getattr(resp, "status", 200)
+                        content_type = resp.headers.get("Content-Type", "application/json")
+                    break
+                except (HTTPError, URLError, TimeoutError):
+                    if attempt + 1 >= attempts:
+                        raise
+                    time.sleep(0.4 * (attempt + 1))
         except HTTPError as err:
             status = err.code if err.code else 502
             body = err.read() if hasattr(err, "read") else b""
@@ -1168,6 +1197,10 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         except URLError as err:
             status = 502
             body = json.dumps({"error": f"Upstream indisponible: {err.reason}"}).encode("utf-8")
+            content_type = "application/json"
+        except TimeoutError:
+            status = 504
+            body = json.dumps({"error": "Delai d'attente de la source depasse"}).encode("utf-8")
             content_type = "application/json"
 
         self.send_response(status)

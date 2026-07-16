@@ -777,38 +777,140 @@
     "prestation::SESOPA::SESOPA_R1::num_1::ind_29_cotisants::2024": "inclus",
     "prestation::SESOPA::SESOPA_R1::num_2::ind_29_cotisants::2024": "inclus",
     "regime::SESOPA::SESOPA_R1::ind_29_cotisants::2024": "entierement_inclus",
-    "regime::SESOPA::SESOPA_R4::ind_29_cotisants::2024": "entierement_exclus"
+    "regime::SESOPA::SESOPA_R4::ind_29_cotisants::2024": "entierement_exclus",
+    "institution::TRESOR::ind_24_handicap::2019": "entierement_exclus"
   },
   "denomSettings": {
-    "source_population_totale": "bm_api",
-    "source_population_enfants": "wpp_api",
-    "source_population_active": "wpp_api",
-    "source_population_retraite": "wpp_api",
-    "source_handicap_grave": "oms_api",
-    "source_maternite": "bm_api",
-    "source_force_de_travail": "wpp_api",
-    "year_start_total": 2019,
-    "year_end_total": 2026,
-    "year_start_enfants": 2019,
-    "year_end_enfants": 2026,
-    "year_start_active": 2019,
-    "year_end_active": 2026,
-    "year_start_retraite": 2019,
-    "year_end_retraite": 2026,
-    "year_start_handicap": 2019,
-    "year_end_handicap": 2026,
-    "year_start_maternite": 2019,
-    "year_end_maternite": 2026,
-    "year_start_lf": 2019,
-    "year_end_lf": 2026,
+    "source_population_totale": "manual",
+    "source_population_enfants": "",
+    "source_population_active": "",
+    "source_population_retraite": "",
+    "source_handicap_grave": "",
+    "source_maternite": "",
+    "year_start_total": null,
+    "year_end_total": null,
+    "year_start_enfants": null,
+    "year_end_enfants": null,
+    "year_start_active": null,
+    "year_end_active": null,
+    "year_start_retraite": null,
+    "year_end_retraite": null,
+    "year_start_handicap": null,
+    "year_end_handicap": null,
+    "year_start_maternite": null,
+    "year_end_maternite": null,
     "child_age_min": 0,
     "child_age_max": 15,
-    "working_age_min": 15,
-    "working_age_max": 64,
     "retirement_age_h": 65,
     "retirement_age_f": 60,
+    "working_age_min": 15,
+    "working_age_max": 64,
     "maternity_age_min": 15,
     "maternity_age_max": 49,
-    "manual_data": {}
+    "prevalence_handicap_fallback": 15,
+    "strict_exact_year_default": true,
+    "lfp_rate_atmp_pct": 63.44,
+    "source_force_de_travail": "",
+    "year_start_lf": null,
+    "year_end_lf": null,
+    "manual_data": {
+      "total": {
+        "2019": {
+          "value": 89906891,
+          "comment": "Saisie manuelle — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022)."
+        },
+        "2020": {
+          "value": 92853165,
+          "comment": "Saisie manuelle — Saisie manuelle — Saisie manuelle — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022). · validé"
+        },
+        "2021": {
+          "value": 95894119,
+          "comment": "Saisie manuelle — — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022)."
+        },
+        "2022": {
+          "value": 99010212,
+          "comment": "Saisie manuelle — Saisie manuelle — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022)."
+        },
+        "2026": {
+          "value": 0,
+          "comment": "Saisie manuelle : valeur manquante pour 2026"
+        }
+      }
+    },
+    "handicap_prevalence_percent": 15,
+    "activity_rate_percent": 63.44,
+    "denominatorConstructions": {
+      "global_131::2019": {
+        "indicatorKey": "global_131",
+        "year": 2019,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 89906891,
+        "status": "validated",
+        "meta": "Saisie manuelle — Saisie manuelle — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022).",
+        "sourceYears": [
+          2019
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:06:12.450Z",
+        "validatedAt": "2026-07-16T22:09:02.445Z"
+      },
+      "global_131::2026": {
+        "indicatorKey": "global_131",
+        "year": 2026,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 0,
+        "status": "draft",
+        "meta": "Saisie manuelle : valeur manquante pour 2026",
+        "sourceYears": [
+          2026
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:27:27.660Z"
+      },
+      "global_131::2020": {
+        "indicatorKey": "global_131",
+        "year": 2020,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 92853165,
+        "status": "draft",
+        "meta": "Saisie manuelle — Saisie manuelle — Saisie manuelle — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022). · validé",
+        "sourceYears": [
+          2020
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:36:25.312Z"
+      },
+      "global_131::2021": {
+        "indicatorKey": "global_131",
+        "year": 2021,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 95894119,
+        "status": "draft",
+        "meta": "Saisie manuelle — Saisie manuelle — — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022).",
+        "sourceYears": [
+          2021
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:40:04.783Z"
+      },
+      "global_131::2022": {
+        "indicatorKey": "global_131",
+        "year": 2022,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 99010212,
+        "status": "draft",
+        "meta": "Saisie manuelle — Saisie manuelle — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022).",
+        "sourceYears": [
+          2022
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:39:08.613Z"
+      }
+    }
   }
 }

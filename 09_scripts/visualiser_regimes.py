@@ -16,6 +16,7 @@ import html
 import json
 import sqlite3
 import sys
+import textwrap
 import unicodedata
 from pathlib import Path
 
@@ -47,6 +48,9 @@ DEFAULT_REGIME_COLORS = [
     "#1f77b4", "#ff7f0e", "#2ca02c", "#9467bd", "#d62728",
     "#8c564b", "#e377c2", "#7f7f7f", "#17becf", "#bcbd22",
 ]
+INSTITUTION_LEGEND_HEIGHT_PX = 105
+INSTITUTION_LEGEND_LINE_CHARS = 44
+INSTITUTION_LEGEND_SYMBOL_FACTOR = 0.5
 NOM_COURT = {
     "CNSS_R1":   "Prestations familiales",
     "CNSS_R2":   "Risques professionnels",
@@ -62,6 +66,34 @@ NOM_INSTITUTION = {
     "CNSSAP": "Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP)",
     "TRESOR": "Protection statutaire budgétaire — estimation provisoire (Trésor)",
 }
+
+
+def institution_legend_style() -> dict:
+    return {
+        "orientation": "h",
+        "xanchor": "left",
+        "yanchor": "top",
+        "maxheight": INSTITUTION_LEGEND_HEIGHT_PX,
+        "itemsizing": "constant",
+        "font": {
+            "size": 11,
+            "family": '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+            "color": "#4a5568",
+        },
+        "bgcolor": "rgba(247, 250, 252, 0.85)",
+        "bordercolor": "#e2e8f0",
+        "borderwidth": 1,
+    }
+
+
+def wrap_institution_legend_label(label: str) -> str:
+    """Ajoute des retours Plotly sans couper les mots des légendes longues."""
+    return "<br>".join(textwrap.wrap(
+        label,
+        width=INSTITUTION_LEGEND_LINE_CHARS,
+        break_long_words=False,
+        break_on_hyphens=False,
+    ))
 
 
 def population_labels(institution: str, sex_mode: str = "all") -> tuple[str, str, str]:
@@ -156,6 +188,28 @@ if (document.readyState === 'loading') {
 // Cache des traces originales des graphiques financiers
 window._finOriginalTraces = window._finOriginalTraces || {};
 
+function wrapInstitutionLegendLabel(label, maxWidthPx = 150) {
+  const normalized = String(label || '').replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim();
+  if (!normalized) return normalized;
+  const canvas = wrapInstitutionLegendLabel.canvas ||
+    (wrapInstitutionLegendLabel.canvas = document.createElement('canvas'));
+  const context = canvas.getContext('2d');
+  context.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+  const lines = [];
+  let line = '';
+  normalized.split(' ').forEach(word => {
+    const candidate = line ? `${line} ${word}` : word;
+    if (line && context.measureText(candidate).width > maxWidthPx) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = candidate;
+    }
+  });
+  if (line) lines.push(line);
+  return lines.join('<br>');
+}
+
 function applyQ2FinanceFusion(graphId, q2Data) {
   const plotDiv = document.getElementById(graphId);
   if (!plotDiv || !plotDiv.data) return [];
@@ -206,7 +260,7 @@ function applyQ2FinanceFusion(graphId, q2Data) {
         const maxValue = Math.max(...numericValues);
         const memberCodes = points.map(point => point.trace.legendgroup).sort();
         const groupKey = memberCodes.join('__');
-        const groupName = points.map(point => point.trace.name)
+        const groupName = points.map(point => String(point.trace.name || '').replace(/<br\s*\/?>/gi, ' '))
           .filter((name, index, names) => names.indexOf(name) === index)
           .join(' + ');
         if (Math.abs(maxValue - minValue) > Math.max(1, Math.abs(maxValue) * 1e-9)) {
@@ -214,7 +268,7 @@ function applyQ2FinanceFusion(graphId, q2Data) {
         }
         if (!mergedByGroup.has(groupKey)) {
           const merged = JSON.parse(JSON.stringify(points[0].trace));
-          merged.name = groupName;
+          merged.name = wrapInstitutionLegendLabel(groupName);
           merged.legendgroup = `Q2_${type}_${groupKey}`;
           merged.x = [];
           merged.y = [];
@@ -1408,12 +1462,13 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
         annees  = [r["annee"] for r in subset]
         color   = color_for_regime(key)
         label   = NOM_COURT.get(key, key)
+        legend_label = wrap_institution_legend_label(label)
 
         def trace(y_vals, row, col, fmt, unit, showleg=False):
             leg = "legend" if col == 1 else "legend2"
             fig.add_trace(go.Scatter(
                 x=annees, y=y_vals,
-                name=label, legendgroup=key,
+                name=legend_label, legendgroup=key,
                 showlegend=True,
                 legend=leg,
                 mode="lines+markers",
@@ -1448,13 +1503,24 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
             yanchor='top'
         ),
         height=500,
-        showlegend=False,
-        legend=dict(title=dict(text="Cotisants actifs")),
-        legend2=dict(title=dict(text="Bénéficiaires")),
+        # Légendes verticales sous chaque colonne — y=-0.25 place la légende
+        # clairement dans la marge inférieure (~55px sous les axes) sans empiéter
+        legend=dict(
+            x=0,
+            y=-0.25,
+            title=dict(text="Cotisants actifs", side="top", font=dict(size=11, color='#2c5282')),
+            **institution_legend_style(),
+        ),
+        legend2=dict(
+            x=0.56,
+            y=-0.25,
+            title=dict(text="Bénéficiaires", side="top", font=dict(size=11, color='#2c5282')),
+            **institution_legend_style(),
+        ),
         hovermode="x unified",
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
-        margin=dict(t=80, b=70, l=70, r=40),
+        margin=dict(t=80, b=190, l=70, r=40, autoexpand=False),
         font=dict(
             family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             size=13,
@@ -1509,6 +1575,9 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
     if not regimes_keys:
         return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
 
+    # vertical_spacing=0.28 pour laisser de la place aux légendes verticales
+    # Avec vs=0.28 et 2 rangées : rangée 1 y∈[0.64,1.00], rangée 2 y∈[0.00,0.36], gap [0.36,0.64]
+    # Avec horizontal_spacing=0.10 et 2 colonnes : col1 x∈[0,0.45], col2 x∈[0.55,1.00]
     fig = make_subplots(
         rows=2, cols=2,
         subplot_titles=(
@@ -1517,9 +1586,11 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             "Recettes totales (Mds CDF)",
             "Contribution moyenne (k CDF / cotisant)",
         ),
-        vertical_spacing=0.16,
+        vertical_spacing=0.28,
         horizontal_spacing=0.10,
     )
+
+    _leg_style = institution_legend_style()
 
     for key in regimes_keys:
         subset = [r for r in data if r["regime_code"] == key]
@@ -1527,6 +1598,7 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
         annees = [r["annee"] for r in subset]
         color = color_for_regime(key)
         label = NOM_COURT.get(key, key)
+        legend_label = wrap_institution_legend_label(label)
 
         dep_tot = [
             (r["depenses_prestations_cdf"] / 1e9) if r["depenses_prestations_cdf"] is not None else None
@@ -1550,7 +1622,7 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
         # (1,1) Dépenses totales → legend (sous-graphe 1)
         fig.add_trace(go.Bar(
             x=annees, y=dep_tot,
-            name=label, legendgroup=key, legend="legend", showlegend=True,
+            name=legend_label, legendgroup=key, legend="legend", showlegend=True,
             marker=dict(color=color, line=dict(width=0)),
             opacity=0.85,
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:.2f}} Mds CDF<extra></extra>",
@@ -1559,7 +1631,7 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
         # (1,2) Dépense moy. par bénéficiaire → legend2 (sous-graphe 2)
         fig.add_trace(go.Scatter(
             x=annees, y=dep_moy,
-            name=label, legendgroup=key, legend="legend2", showlegend=True,
+            name=legend_label, legendgroup=key, legend="legend2", showlegend=True,
             mode="lines+markers",
             line=dict(color=color, width=3),
             marker=dict(size=8, line=dict(width=1.5, color='white')),
@@ -1569,7 +1641,7 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
         # (2,1) Recettes totales → legend3 (sous-graphe 3)
         fig.add_trace(go.Bar(
             x=annees, y=rec_tot,
-            name=label, legendgroup=key, legend="legend3", showlegend=True,
+            name=legend_label, legendgroup=key, legend="legend3", showlegend=True,
             marker=dict(color=color, line=dict(width=0)),
             opacity=0.85,
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:.2f}} Mds CDF<extra></extra>",
@@ -1578,7 +1650,7 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
         # (2,2) Contribution moy. → legend4 (sous-graphe 4)
         fig.add_trace(go.Scatter(
             x=annees, y=contrib_moy,
-            name=label, legendgroup=key, legend="legend4", showlegend=True,
+            name=legend_label, legendgroup=key, legend="legend4", showlegend=True,
             mode="lines+markers",
             line=dict(color=color, width=3),
             marker=dict(size=8, line=dict(width=1.5, color='white')),
@@ -1592,16 +1664,35 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             x=0.5, xanchor='center', y=0.98, yanchor='top'
         ),
         height=900,
-        showlegend=False,
-        legend=dict(title=dict(text="Dépenses totales")),
-        legend2=dict(title=dict(text="Dépense moyenne par bénéficiaire")),
-        legend3=dict(title=dict(text="Recettes totales")),
-        legend4=dict(title=dict(text="Contribution moyenne")),
+        legend=dict(
+            title=dict(text="Régimes", side="top", font=dict(size=11, color='#2c5282')),
+            x=0,
+            y=0.60,
+            **_leg_style,
+        ),
+        legend2=dict(
+            title=dict(text="Régimes", side="top", font=dict(size=11, color='#2c5282')),
+            x=0.55,
+            y=0.60,
+            **_leg_style,
+        ),
+        legend3=dict(
+            title=dict(text="Régimes", side="top", font=dict(size=11, color='#2c5282')),
+            x=0,
+            y=-0.08,
+            **_leg_style,
+        ),
+        legend4=dict(
+            title=dict(text="Régimes", side="top", font=dict(size=11, color='#2c5282')),
+            x=0.55,
+            y=-0.08,
+            **_leg_style,
+        ),
         hovermode="x unified",
         barmode="group",
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
-        margin=dict(t=70, b=70, l=70, r=40),
+        margin=dict(t=70, b=260, l=70, r=40, autoexpand=False),
         font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=13, color='#4a5568'),
     )
     fig.update_annotations(font=dict(size=13, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282'))
@@ -2661,20 +2752,20 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     denominateurs_json = js_safe_json({
         "sources": {
             "bm_api": {
-                "label": "Banque mondiale (live)",
-                "description": "Population totale, 15-64, 65+, taux natalité — séries SP.POP.* depuis 1960",
+                "label": "Banque mondiale (proxy local)",
+                "description": "Population totale, 15-64, 65+, taux natalité — séries SP.POP.* (appel via /api/denom/bm)",
             },
         "wpp_api": {
-                "label": "ONU WPP via PopPyramid (live)",
-                "description": "Pyramide des âges quinquennale RDC — données ONU WPP 2024, toutes tranches d'âge personnalisables, 1950–2100",
+                "label": "ONU WPP via PopPyramid (proxy local)",
+                "description": "Pyramide des âges quinquennale RDC — ONU WPP 2024 (appel via /api/denom/wpp)",
             },
             "ilostat_api": {
-                "label": "ILOSTAT / OIT (live)",
-                "description": "Population active employée — séries emploi OIT pour la RDC",
+                "label": "ILOSTAT / OIT (proxy local)",
+                "description": "Séries emploi/chômage OIT pour la RDC (réponse vide => indisponible)",
             },
             "oms_api": {
-                "label": "OMS GHO API (live)",
-                "description": "Prévalence du handicap grave — données Global Health Observatory OMS pour la RDC",
+                "label": "OMS GHO (proxy local, disponibilité variable)",
+                "description": "Prévalence handicap (WHS9_86). Si vide, traiter comme indisponible ou fallback explicite.",
             },
             "manual": {
                 "label": "✏️ Saisie manuelle",
@@ -2701,7 +2792,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             "year_start_maternite": year_start_default,
             "year_end_maternite": year_end_default,
             "child_age_min": 0,
-            "child_age_max": 15,
+            "child_age_max": 14,
             "retirement_age_h": 65,
             "retirement_age_f": 60,  # CNSS : 60 ans femmes (DM-013) ; CNSSAP : 60 ans uniformément
             "working_age_min": 15,
@@ -2709,6 +2800,8 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             "maternity_age_min": 15,
             "maternity_age_max": 49,
             "prevalence_handicap_fallback": 15.0,
+            "strict_exact_year_default": True,
+            "lfp_rate_atmp_pct": 63.44,
         },
         # Données pré-chargées BM/WPP pour la RDC (évite un écran vide au démarrage)
         # Sources : Banque mondiale SP.POP.TOTL, SP.POP.1564.TO, SP.POP.65UP.TO,
@@ -2911,6 +3004,11 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     .tab-btn.active  {{ color: #2c5282; border-bottom-color: #2c5282; }}
     .tab-panel {{ display: none; padding: 32px 40px; max-width: 1800px; margin: 0 auto; }}
     .tab-panel.active {{ display: block; }}
+    #tab-institutions g[class^="legend"] .legendsymbols {{
+      transform: scale({INSTITUTION_LEGEND_SYMBOL_FACTOR});
+      transform-box: fill-box;
+      transform-origin: center;
+    }}
 
     .indicator-kpis {{
       display: grid;
@@ -3172,10 +3270,14 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       scrollbar-width: auto;
       padding-bottom: 14px;
     }}
-    .odd-year-aligned-grid.odd-visual-permanent > .odd-year-block,
-    .odd-year-aligned-grid.odd-construction-scroll > .odd-year-block {{
+    .odd-year-aligned-grid.odd-visual-permanent > .odd-year-block {{
       flex: 0 0 calc((100% - 48px) / 5);
       min-width: 190px;
+      box-sizing: border-box;
+    }}
+    .odd-year-aligned-grid.odd-construction-scroll > .odd-year-block {{
+      flex: 0 0 calc((100% - 24px) / 3);
+      min-width: 300px;
       box-sizing: border-box;
     }}
     .odd-year-aligned-grid.odd-visual-permanent::-webkit-scrollbar,
@@ -4715,6 +4817,8 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
         <summary>
           <span>⚙ Construction des dénominateurs</span>
           <span class="odd-edit-controls">
+            <label for="denom-year-select" style="color:#2d3748;font-size:0.82rem;font-weight:600;white-space:nowrap;">Année :</label>
+            <select id="denom-year-select" style="min-width:80px;border:1px solid #cbd5e0;border-radius:6px;background:#fff;padding:4px 8px;font-size:0.82rem;"></select>
             <button type="button" id="denom-btn-consulter" class="odd-view-btn" style="background:#2c5282;color:#fff;border-color:#2c5282;" title="Mode consultation (lecture seule)">Consulter</button>
             <button type="button" id="denom-btn-editer" class="odd-view-btn" title="Activer le mode édition des paramètres">Éditer</button>
             <button type="button" id="denom-save" class="odd-save-btn" title="Sauvegarder les paramètres du dénominateur">Sauvegarder</button>
@@ -4723,7 +4827,9 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
         <div id="denom-breakdown-grid" class="odd-year-aligned-grid odd-construction-scroll"></div>
         <div class="denom-api-wrap">
       <div class="denom-actions">
-        <button type="button" id="denom-refresh">Actualiser le dénominateur</button>
+        <span id="denom-active-key" class="denom-status">Indicateur × année active : —</span>
+        <button type="button" id="denom-refresh">Calculer / actualiser l'année active</button>
+        <button type="button" id="denom-validate">Valider l'année active</button>
         <span id="denom-status" class="denom-status">Prêt.</span>
       </div>
       <div class="denom-packs">
@@ -4734,15 +4840,6 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
               <label>Source</label>
               <div id="denom-sources-total" class="denom-source-list"></div>
               <div id="denom-manual-total" class="denom-manual-panel hidden"></div>
-            </div>
-            <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
-            <div class="denom-control">
-              <label for="denom-total-year-start">Année début</label>
-              <input id="denom-total-year-start" type="number" min="2000" max="2100">
-            </div>
-            <div class="denom-control">
-              <label for="denom-total-year-end">Année fin</label>
-              <input id="denom-total-year-end" type="number" min="2000" max="2100">
             </div>
           </div>
         </div>
@@ -4763,14 +4860,6 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
               <label for="denom-child-age-max">Âge enfant max</label>
               <input id="denom-child-age-max" type="number" min="0" max="17">
             </div>
-            <div class="denom-control">
-              <label for="denom-child-year-start">Année début</label>
-              <input id="denom-child-year-start" type="number" min="2000" max="2100">
-            </div>
-            <div class="denom-control">
-              <label for="denom-child-year-end">Année fin</label>
-              <input id="denom-child-year-end" type="number" min="2000" max="2100">
-            </div>
           </div>
         </div>
         <div class="denom-pack" id="pack-active">
@@ -4789,14 +4878,6 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             <div class="denom-control">
               <label for="denom-active-age-max">Âge actif max</label>
               <input id="denom-active-age-max" type="number" min="40" max="80">
-            </div>
-            <div class="denom-control">
-              <label for="denom-active-year-start">Année début</label>
-              <input id="denom-active-year-start" type="number" min="2000" max="2100">
-            </div>
-            <div class="denom-control">
-              <label for="denom-active-year-end">Année fin</label>
-              <input id="denom-active-year-end" type="number" min="2000" max="2100">
             </div>
           </div>
         </div>
@@ -4817,14 +4898,6 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
               <label for="denom-ret-age-f">Âge retraite femmes</label>
               <input id="denom-ret-age-f" type="number" min="40" max="80">
             </div>
-            <div class="denom-control">
-              <label for="denom-ret-year-start">Année début</label>
-              <input id="denom-ret-year-start" type="number" min="2000" max="2100">
-            </div>
-            <div class="denom-control">
-              <label for="denom-ret-year-end">Année fin</label>
-              <input id="denom-ret-year-end" type="number" min="2000" max="2100">
-            </div>
           </div>
         </div>
         <div class="denom-pack" id="pack-handicap">
@@ -4837,12 +4910,8 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             </div>
             <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
             <div class="denom-control">
-              <label for="denom-handicap-year-start">Année début</label>
-              <input id="denom-handicap-year-start" type="number" min="2000" max="2100">
-            </div>
-            <div class="denom-control">
-              <label for="denom-handicap-year-end">Année fin</label>
-              <input id="denom-handicap-year-end" type="number" min="2000" max="2100">
+              <label for="denom-handicap-prevalence">Prévalence retenue (%)</label>
+              <input id="denom-handicap-prevalence" type="number" min="0" max="100" step="0.1" value="15">
             </div>
           </div>
         </div>
@@ -4863,14 +4932,6 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
               <label for="denom-mat-age-max">Âge maternité max</label>
               <input id="denom-mat-age-max" type="number" min="30" max="55">
             </div>
-            <div class="denom-control">
-              <label for="denom-mat-year-start">Année début</label>
-              <input id="denom-mat-year-start" type="number" min="2000" max="2100">
-            </div>
-            <div class="denom-control">
-              <label for="denom-mat-year-end">Année fin</label>
-              <input id="denom-mat-year-end" type="number" min="2000" max="2100">
-            </div>
           </div>
         </div>
         <div class="denom-pack" id="pack-lf">
@@ -4883,12 +4944,8 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             </div>
             <div class="denom-control denom-params-separator full"><span>Paramètres</span></div>
             <div class="denom-control">
-              <label for="denom-lf-year-start">Année début</label>
-              <input id="denom-lf-year-start" type="number" min="2000" max="2100">
-            </div>
-            <div class="denom-control">
-              <label for="denom-lf-year-end">Année fin</label>
-              <input id="denom-lf-year-end" type="number" min="2000" max="2100">
+              <label for="denom-lf-rate">Taux d'activité retenu (%)</label>
+              <input id="denom-lf-rate" type="number" min="0" max="100" step="0.01" value="63.44">
             </div>
           </div>
         </div>
@@ -5706,6 +5763,7 @@ const DASHBOARD_SETTINGS_API = '/api/dashboard-settings';
 let CURRENT_ODD_DECISIONS = {{}};
 let CURRENT_ODD_INDICATOR = 'global_131';
 let CURRENT_ODD_YEAR = '';
+let CURRENT_DENOM_YEAR = '';
 let ODD_DECISION_EDIT_MODE = false;
 let ODD_DECISIONS_DRAFT = {{}};
 let CURRENT_DENOM_ROWS = [];
@@ -5808,8 +5866,8 @@ const DENOMINATOR_BY_INDICATOR = {{
   ind_26_chomage: {{
     shortKey: 'active',
     rowField: 'populationActive',
-    label: 'Population active',
-    definition: "Population active de référence pour l'indicateur chômage.",
+    label: 'Nombre de chômeurs (définition BIT)',
+    definition: "Nombre de chômeurs au sens du BIT. Une population active ou une population en âge de travailler ne constitue pas ce dénominateur.",
   }},
   ind_27_vieillesse: {{
     shortKey: 'ret',
@@ -6047,6 +6105,13 @@ function getCurrentOddYear() {{
   const years = getOddAvailableYears();
   if (!years.length) return '';
   return String(years[years.length - 1]);
+}}
+
+function getCurrentDenominatorYear() {{
+  const yearSelect = document.getElementById('denom-year-select');
+  if (yearSelect && yearSelect.value) return String(yearSelect.value);
+  if (CURRENT_DENOM_YEAR) return String(CURRENT_DENOM_YEAR);
+  return getCurrentOddYear();
 }}
 
 function getPreviousOddYear(yearKey) {{
@@ -6500,6 +6565,11 @@ function renderOddDecisionPanel() {{
     ).join('');
     indicatorSelect.value = CURRENT_ODD_INDICATOR;
     indicatorSelect.addEventListener('change', function() {{
+      if (DENOM_PENDING_CHANGES && DENOM_EDIT_MODE) {{
+        alert("Des paramètres de dénominateur sont en cours de modification. Calculez ou quittez l'édition avant de changer d'indicateur.");
+        this.value = CURRENT_ODD_INDICATOR;
+        return;
+      }}
       CURRENT_ODD_INDICATOR = this.value || 'global_131';
       // fermer le panneau + quitter édition si ouvert
       if (decisionPanel) decisionPanel.classList.remove('visible');
@@ -6508,6 +6578,7 @@ function renderOddDecisionPanel() {{
       renderIndicateurs();
       renderOddBranchesVisual();
       renderOddDecisionPanel();
+      activateAnnualDenominatorConstruction();
     }});
     indicatorSelect.dataset.ready = '1';
   }}
@@ -6526,6 +6597,11 @@ function renderOddDecisionPanel() {{
     CURRENT_ODD_YEAR = yearSelect.value || defaultYear;
     yearSelect.addEventListener('change', function() {{
       const newYear = this.value || '';
+      if (DENOM_PENDING_CHANGES && DENOM_EDIT_MODE) {{
+        alert("Des paramètres de dénominateur sont en cours de modification. Calculez ou quittez l'édition avant de changer d'année.");
+        this.value = CURRENT_ODD_YEAR;
+        return;
+      }}
       if (ODD_DECISION_EDIT_MODE) {{
         // bloquer le changement tant qu'on n'a pas sauvegardé ou annulé
         alert("Des modifications sont en cours. Veuillez sauvegarder ou annuler avant de changer d'annee.");
@@ -6540,6 +6616,7 @@ function renderOddDecisionPanel() {{
       renderIndicateurs();
       renderOddBranchesVisual();
       renderOddDecisionPanel();
+      activateAnnualDenominatorConstruction();
     }});
     yearSelect.dataset.ready = '1';
   }}
@@ -7068,6 +7145,7 @@ function updateDenominatorPackVisibility(activeShortKey) {{
     ret: 'pack-retraite',
     handicap: 'pack-handicap',
     mat: 'pack-maternite',
+    lf: 'pack-lf',
   }};
   const activePackId = map[activeShortKey] || map.total;
   const indicatorKey = getCurrentOddIndicator();
@@ -7407,9 +7485,8 @@ async function fetchWorldBankIndicator(indicatorCode) {{
   window.__WB_CACHE = window.__WB_CACHE || {{}};
   if (window.__WB_CACHE[indicatorCode]) return window.__WB_CACHE[indicatorCode];
   const url = 'https://api.worldbank.org/v2/country/CD/indicator/' + indicatorCode + '?format=json&per_page=200';
-  const res = await fetch(url);
-  if (!res.ok) throw new Error('Banque mondiale HTTP ' + res.status);
-  const data = await res.json();
+  const proxy = '/api/denom/wb?indicator=' + encodeURIComponent(indicatorCode);
+  const data = await fetchJsonWithFallback(proxy, url);
   const rows = Array.isArray(data) && Array.isArray(data[1]) ? data[1] : [];
   const parsed = rows
     .filter(r => r && r.value !== null && r.date)
@@ -7626,6 +7703,8 @@ function collectDenomSettingsFromUI() {{
     retirement_age_f: getNumInput('denom-ret-age-f'),
     maternity_age_min: getNumInput('denom-mat-age-min'),
     maternity_age_max: getNumInput('denom-mat-age-max'),
+    handicap_prevalence_percent: getNumInput('denom-handicap-prevalence'),
+    activity_rate_percent: getNumInput('denom-lf-rate'),
     manual_data: collectAllManualValues(),
   }};
 }}
@@ -7849,23 +7928,8 @@ function showHideManualPanel(shortKey, sourceKey) {{
   if (!panel) return;
   if (sourceKey === 'manual') {{
     panel.classList.remove('hidden');
-    // Rebuild table with current year range
-    const yearStartId = 'denom-' + shortKey + '-year-start';
-    const yearEndId = 'denom-' + shortKey + '-year-end';
-    // Map shortKey to year input IDs
-    const yearMap = {{
-      total: ['denom-total-year-start', 'denom-total-year-end'],
-      child: ['denom-child-year-start', 'denom-child-year-end'],
-      active: ['denom-active-year-start', 'denom-active-year-end'],
-      ret: ['denom-ret-year-start', 'denom-ret-year-end'],
-      handicap: ['denom-handicap-year-start', 'denom-handicap-year-end'],
-      mat: ['denom-mat-year-start', 'denom-mat-year-end'],
-      lf: ['denom-lf-year-start', 'denom-lf-year-end'],
-    }};
-    const ids = yearMap[shortKey] || [yearStartId, yearEndId];
-    const ys = getNumInput(ids[0]);
-    const ye = getNumInput(ids[1]);
-    buildManualEntryTable(shortKey, ys || 2019, ye || 2022);
+    const year = Number(getCurrentDenominatorYear());
+    buildManualEntryTable(shortKey, year, year);
   }} else {{
     panel.classList.add('hidden');
   }}
@@ -7979,7 +8043,7 @@ async function getMetricValue(sourceKey, metricKey, year, params, seriesCache) {
   return {{ value: null, meta: sourceKey + ' : source inconnue' }};
 }}
 
-async function computeDenominators() {{
+async function computeDenominatorsLegacy() {{
   const pTotal = getMetricCardParams('population_totale');
   const pChild = getMetricCardParams('population_enfants');
   const pActive = getMetricCardParams('population_active');
@@ -8136,6 +8200,360 @@ async function computeDenominators() {{
   setDenomStatus('Dénominateurs calculés pour ' + outRows.length + ' année(s).' + suffix);
 }}
 
+const ANNUAL_DENOMINATOR_SPECS = {{
+  global_131: {{ shortKey: 'total', sources: ['bm_api', 'wpp_api', 'manual'], defaultSource: 'bm_api' }},
+  ind_22_enfants: {{ shortKey: 'child', sources: ['wpp_api', 'manual'], defaultSource: 'wpp_api' }},
+  ind_23_maternite: {{ shortKey: 'mat', sources: ['bm_api', 'wpp_api', 'manual'], defaultSource: 'bm_api' }},
+  ind_24_handicap: {{ shortKey: 'handicap', sources: ['documented_proxy', 'manual'], defaultSource: 'documented_proxy' }},
+  ind_25_atmp: {{ shortKey: 'lf', sources: ['derived_dm014', 'manual'], defaultSource: 'derived_dm014' }},
+  ind_26_chomage: {{ shortKey: 'active', sources: ['manual'], defaultSource: 'manual' }},
+  ind_27_vieillesse: {{ shortKey: 'ret', sources: ['wpp_api', 'bm_api', 'manual'], defaultSource: 'wpp_api' }},
+  ind_28_vulnerables: {{ shortKey: 'total', sources: ['population_total_proxy', 'manual'], defaultSource: 'population_total_proxy' }},
+  ind_29_cotisants: {{ shortKey: 'active', sources: ['bm_api', 'wpp_api', 'manual'], defaultSource: 'bm_api' }},
+}};
+const ANNUAL_DENOMINATOR_SOURCE_LABELS = {{
+  bm_api: 'Banque mondiale — valeur de la même année',
+  wpp_api: 'World Population Prospects — valeur de la même année',
+  manual: 'Saisie manuelle pour cette année',
+  documented_proxy: 'Proxy documenté : population totale × prévalence paramétrée',
+  derived_dm014: "DM-014 : population 15+ × taux d'activité paramétré",
+  population_total_proxy: 'Population totale — proxy explicite',
+}};
+
+function getAnnualDenominatorSpec(indicatorKey) {{
+  return ANNUAL_DENOMINATOR_SPECS[indicatorKey] || ANNUAL_DENOMINATOR_SPECS.global_131;
+}}
+
+function getDenominatorConstructionKey(indicatorKey, year) {{
+  return String(indicatorKey) + '::' + String(year);
+}}
+
+function getDenominatorConstructions() {{
+  const stored = CURRENT_DENOM_SETTINGS && CURRENT_DENOM_SETTINGS.denominatorConstructions;
+  return stored && typeof stored === 'object' ? stored : {{}};
+}}
+
+function setAllDenominatorYearInputs(year) {{
+  document.querySelectorAll('.denom-pack input[id$="-year-start"], .denom-pack input[id$="-year-end"]').forEach(el => {{
+    el.value = String(year);
+    el.readOnly = true;
+    el.title = "L'année est pilotée par le sélecteur principal de l'onglet Indicateurs.";
+  }});
+}}
+
+function applyAnnualDenominatorParams(indicatorKey, savedParams) {{
+  const defaults = CURRENT_DENOM_SETTINGS || {{}};
+  const params = savedParams && typeof savedParams === 'object' ? savedParams : {{}};
+  const setValue = (id, value) => {{
+    const el = document.getElementById(id);
+    if (el && value !== null && value !== undefined) el.value = String(value);
+  }};
+  if (indicatorKey === 'ind_22_enfants') {{
+    setValue('denom-child-age-min', params.ageMin ?? defaults.child_age_min ?? 0);
+    setValue('denom-child-age-max', params.ageMax ?? defaults.child_age_max ?? 15);
+  }} else if (indicatorKey === 'ind_24_handicap') {{
+    setValue('denom-handicap-prevalence', params.prevalencePercent ?? defaults.handicap_prevalence_percent ?? 15);
+  }} else if (indicatorKey === 'ind_25_atmp') {{
+    setValue('denom-lf-rate', params.activityRatePercent ?? defaults.activity_rate_percent ?? 63.44);
+  }} else if (indicatorKey === 'ind_27_vieillesse') {{
+    setValue('denom-ret-age-h', params.retirementAgeH ?? defaults.retirement_age_h ?? 65);
+    setValue('denom-ret-age-f', params.retirementAgeF ?? defaults.retirement_age_f ?? 60);
+  }} else if (indicatorKey === 'ind_29_cotisants') {{
+    setValue('denom-active-age-min', params.ageMin ?? defaults.working_age_min ?? 15);
+    setValue('denom-active-age-max', params.ageMax ?? defaults.working_age_max ?? 64);
+  }}
+}}
+
+function prepareAnnualManualInput(spec, year, saved) {{
+  window.__MANUAL_DENOM_DATA = window.__MANUAL_DENOM_DATA || {{}};
+  window.__MANUAL_DENOM_DATA[spec.shortKey] = window.__MANUAL_DENOM_DATA[spec.shortKey] || {{}};
+  const yearKey = String(year);
+  if (saved && saved.sourceKey === 'manual' && Number.isFinite(Number(saved.value))) {{
+    window.__MANUAL_DENOM_DATA[spec.shortKey][yearKey] = {{
+      value: Number(saved.value),
+      comment: saved.meta || '',
+    }};
+  }} else {{
+    delete window.__MANUAL_DENOM_DATA[spec.shortKey][yearKey];
+  }}
+}}
+
+function renderAnnualDenominatorSourceOptions(spec, selectedSource) {{
+  const host = document.getElementById('denom-sources-' + spec.shortKey);
+  if (!host) return;
+  const selected = spec.sources.includes(selectedSource) ? selectedSource : spec.defaultSource;
+  host.innerHTML = spec.sources.map(sourceKey =>
+    '<label class="denom-source-option">' +
+      '<input type="radio" name="denom-source-' + escapeHtml(spec.shortKey) + '" value="' + escapeHtml(sourceKey) + '"' +
+      (sourceKey === selected ? ' checked' : '') + '>' +
+      '<span>' + escapeHtml(ANNUAL_DENOMINATOR_SOURCE_LABELS[sourceKey] || sourceKey) + '</span>' +
+    '</label>'
+  ).join('');
+  host.querySelectorAll('input[type="radio"]').forEach(input => {{
+    input.addEventListener('change', () => {{
+      showHideManualPanel(spec.shortKey, input.value);
+      DENOM_PENDING_CHANGES = true;
+      setDenomStatus("Source modifiée pour l'année active — lancez le calcul.");
+    }});
+  }});
+  showHideManualPanel(spec.shortKey, selected);
+}}
+
+function collectAnnualDenominatorParams(indicatorKey) {{
+  if (indicatorKey === 'ind_22_enfants') return {{
+    ageMin: getNumInput('denom-child-age-min'),
+    ageMax: getNumInput('denom-child-age-max'),
+  }};
+  if (indicatorKey === 'ind_24_handicap') return {{
+    prevalencePercent: getNumInput('denom-handicap-prevalence'),
+  }};
+  if (indicatorKey === 'ind_25_atmp') return {{
+    activityRatePercent: getNumInput('denom-lf-rate'),
+  }};
+  if (indicatorKey === 'ind_27_vieillesse') return {{
+    retirementAgeH: getNumInput('denom-ret-age-h'),
+    retirementAgeF: getNumInput('denom-ret-age-f'),
+  }};
+  if (indicatorKey === 'ind_29_cotisants') return {{
+    ageMin: getNumInput('denom-active-age-min'),
+    ageMax: getNumInput('denom-active-age-max'),
+  }};
+  return {{}};
+}}
+
+function exactSeriesObservation(series, year) {{
+  if (!Array.isArray(series)) return null;
+  const observation = series.find(item => Number(item.year) === Number(year));
+  return observation && Number.isFinite(Number(observation.value))
+    ? {{ value: Number(observation.value), year: Number(observation.year) }}
+    : null;
+}}
+
+async function getExactWorldBankValue(indicatorCode, year) {{
+  const observation = exactSeriesObservation(await fetchWorldBankIndicator(indicatorCode), year);
+  if (!observation) throw new Error('Banque mondiale : aucune observation pour ' + year + '. Aucune année voisine ne sera substituée.');
+  return observation;
+}}
+
+async function getExactWppValue(year, ageMin, ageMax, sex) {{
+  const value = sex
+    ? await sumWPPForAgeRangeBySex(year, ageMin, ageMax, sex)
+    : await sumWPPForAgeRange(year, ageMin, ageMax);
+  if (!Number.isFinite(Number(value)) || Number(value) <= 0) {{
+    throw new Error('WPP : aucune observation exploitable pour ' + year + '.');
+  }}
+  return Number(value);
+}}
+
+function getManualAnnualDenominator(shortKey, year) {{
+  const result = getManualValue(shortKey, Number(year));
+  if (!result || !Number.isFinite(Number(result.value))) {{
+    throw new Error('Saisissez une valeur manuelle pour ' + year + '.');
+  }}
+  return {{ value: Number(result.value), meta: result.meta || 'Saisie manuelle', sourceYears: [Number(year)], warnings: [] }};
+}}
+
+async function resolveAnnualDenominator(indicatorKey, year, sourceKey, params) {{
+  const spec = getAnnualDenominatorSpec(indicatorKey);
+  if (sourceKey === 'manual') return getManualAnnualDenominator(spec.shortKey, year);
+
+  if (indicatorKey === 'global_131') {{
+    if (sourceKey === 'bm_api') {{
+      const pop = await getExactWorldBankValue('SP.POP.TOTL', year);
+      return {{ value: pop.value, meta: 'Banque mondiale SP.POP.TOTL (' + year + ')', sourceYears: [pop.year], warnings: [] }};
+    }}
+    const value = await getExactWppValue(year, 0, 999);
+    return {{ value, meta: 'WPP, population totale (' + year + ')', sourceYears: [Number(year)], warnings: [] }};
+  }}
+
+  if (indicatorKey === 'ind_22_enfants') {{
+    if (params.ageMin === null || params.ageMax === null || params.ageMax < params.ageMin) throw new Error("Tranche d'âge invalide.");
+    const value = await getExactWppValue(year, params.ageMin, params.ageMax);
+    const actualMin = Math.ceil(params.ageMin / 5) * 5;
+    const actualMax = Math.floor((params.ageMax + 1) / 5) * 5 - 1;
+    const warnings = actualMin !== params.ageMin || actualMax !== params.ageMax
+      ? ['Les groupes WPP sont quinquennaux : la tranche effectivement additionnée est ' + actualMin + '–' + actualMax + ' ans.']
+      : [];
+    return {{ value, meta: 'WPP, groupes quinquennaux ' + actualMin + '–' + actualMax + ' ans (' + year + ')', sourceYears: [Number(year)], warnings }};
+  }}
+
+  if (indicatorKey === 'ind_23_maternite') {{
+    const cbr = await getExactWorldBankValue('SP.DYN.CBRT.IN', year);
+    const pop = sourceKey === 'wpp_api'
+      ? {{ value: await getExactWppValue(year, 0, 999), year: Number(year) }}
+      : await getExactWorldBankValue('SP.POP.TOTL', year);
+    return {{
+      value: Math.round(pop.value * cbr.value / 1000),
+      meta: 'Proxy : population ' + year + ' × taux brut de natalité BM ' + year + ' / 1 000',
+      sourceYears: [pop.year, cbr.year],
+      warnings: ["Les naissances vivantes sont un proxy des femmes ayant accouché, et non une mesure directe."],
+    }};
+  }}
+
+  if (indicatorKey === 'ind_24_handicap') {{
+    const prevalence = Number(params.prevalencePercent);
+    if (!Number.isFinite(prevalence) || prevalence < 0 || prevalence > 100) throw new Error('Prévalence invalide.');
+    const pop = await getExactWorldBankValue('SP.POP.TOTL', year);
+    return {{
+      value: Math.round(pop.value * prevalence / 100),
+      meta: 'Proxy paramétré : population BM ' + year + ' × ' + prevalence.toLocaleString('fr-FR') + ' %',
+      sourceYears: [pop.year],
+      warnings: ["La prévalence est un paramètre documenté, pas une observation OMS live."],
+    }};
+  }}
+
+  if (indicatorKey === 'ind_25_atmp') {{
+    const rate = Number(params.activityRatePercent);
+    if (!Number.isFinite(rate) || rate < 0 || rate > 100) throw new Error("Taux d'activité invalide.");
+    const total = await getExactWppValue(year, 0, 999);
+    const children = await getExactWppValue(year, 0, 14);
+    return {{
+      value: Math.round((total - children) * rate / 100),
+      meta: 'DM-014 : population WPP 15+ ' + year + " × taux d'activité " + rate.toLocaleString('fr-FR') + ' %',
+      sourceYears: [Number(year)],
+      warnings: ["Le taux d'activité est un paramètre ; sa période de référence doit être justifiée."],
+    }};
+  }}
+
+  if (indicatorKey === 'ind_27_vieillesse') {{
+    const hAge = Number(params.retirementAgeH);
+    const fAge = Number(params.retirementAgeF);
+    if (!Number.isFinite(hAge) || !Number.isFinite(fAge)) throw new Error('Âges de retraite invalides.');
+    if (sourceKey === 'bm_api') {{
+      if (hAge !== 65 || fAge !== 65) throw new Error('La Banque mondiale ne fournit ici que 65+ tous sexes. Utilisez WPP pour des seuils H/F distincts.');
+      const pop = await getExactWorldBankValue('SP.POP.65UP.TO', year);
+      return {{ value: pop.value, meta: 'Banque mondiale SP.POP.65UP.TO, tous sexes (' + year + ')', sourceYears: [pop.year], warnings: [] }};
+    }}
+    const men = await getExactWppValue(year, hAge, 999, 'M');
+    const women = await getExactWppValue(year, fAge, 999, 'F');
+    return {{ value: Math.round(men + women), meta: 'WPP : hommes ' + hAge + '+ et femmes ' + fAge + '+ (' + year + ')', sourceYears: [Number(year)], warnings: [] }};
+  }}
+
+  if (indicatorKey === 'ind_28_vulnerables') {{
+    const pop = await getExactWorldBankValue('SP.POP.TOTL', year);
+    return {{
+      value: pop.value,
+      meta: 'Population totale BM ' + year + ' utilisée comme proxy explicite',
+      sourceYears: [pop.year],
+      warnings: ["La population totale n'est pas la population vulnérable au sens strict."],
+    }};
+  }}
+
+  if (indicatorKey === 'ind_29_cotisants') {{
+    const ageMin = Number(params.ageMin);
+    const ageMax = Number(params.ageMax);
+    if (sourceKey === 'bm_api') {{
+      if (ageMin !== 15 || ageMax !== 64) throw new Error('La série Banque mondiale disponible impose la tranche 15–64 ans (DM-016).');
+      const pop = await getExactWorldBankValue('SP.POP.1564.TO', year);
+      return {{ value: pop.value, meta: 'Banque mondiale SP.POP.1564.TO (' + year + ') — DM-016', sourceYears: [pop.year], warnings: [] }};
+    }}
+    const value = await getExactWppValue(year, ageMin, ageMax);
+    return {{ value, meta: 'WPP ' + ageMin + '–' + ageMax + ' ans (' + year + ') — DM-016', sourceYears: [Number(year)], warnings: [] }};
+  }}
+
+  throw new Error("Aucune source automatique fiable n'est configurée pour cet indicateur. Utilisez la saisie manuelle.");
+}}
+
+function rebuildCurrentDenominatorRows() {{
+  const indicatorKey = getCurrentOddIndicator();
+  const spec = getActiveDenominatorSpec(indicatorKey);
+  const metaFields = {{
+    populationTotale: 'metaTotal', populationEnfants: 'metaEnfants', populationActive: 'metaActive',
+    populationForceDeTravail: 'metaForceDeTravail', populationRetraite: 'metaRetraite',
+    populationHandicapGrave: 'metaHandicapGrave', femmesAyantAccouche: 'metaFemmes',
+  }};
+  CURRENT_DENOM_ROWS = Object.values(getDenominatorConstructions())
+    .filter(item => item && item.indicatorKey === indicatorKey && Number.isFinite(Number(item.value)))
+    .map(item => {{
+      const row = {{ year: Number(item.year) }};
+      row[spec.rowField] = Number(item.value);
+      row[metaFields[spec.rowField]] = item.meta + (item.status === 'validated' ? ' · validé' : ' · à valider') +
+        ((item.warnings || []).length ? ' · Attention : ' + item.warnings.join(' ') : '');
+      return row;
+    }});
+}}
+
+function activateAnnualDenominatorConstruction() {{
+  const indicatorKey = getCurrentOddIndicator();
+  const year = Number(getCurrentDenominatorYear());
+  if (!Number.isFinite(year)) return;
+  const annualSpec = getAnnualDenominatorSpec(indicatorKey);
+  const key = getDenominatorConstructionKey(indicatorKey, year);
+  const saved = getDenominatorConstructions()[key] || {{}};
+  setAllDenominatorYearInputs(year);
+  applyAnnualDenominatorParams(indicatorKey, saved.params);
+  prepareAnnualManualInput(annualSpec, year, saved);
+  updateDenominatorPackVisibility(annualSpec.shortKey);
+  renderAnnualDenominatorSourceOptions(annualSpec, saved.sourceKey || annualSpec.defaultSource);
+  const keyHost = document.getElementById('denom-active-key');
+  if (keyHost) keyHost.textContent = 'Indicateur × année active : ' +
+    (ODD_INDICATOR_LABELS[indicatorKey] || indicatorKey) + ' × ' + year +
+    (saved.status === 'validated' ? ' — validé' : saved.value !== undefined ? ' — calculé, à valider' : ' — non construit');
+  rebuildCurrentDenominatorRows();
+  renderActiveDenominatorViews();
+  setDenomEditMode(DENOM_EDIT_MODE);
+}}
+
+async function computeDenominators() {{
+  const indicatorKey = getCurrentOddIndicator();
+  const year = Number(getCurrentDenominatorYear());
+  const annualSpec = getAnnualDenominatorSpec(indicatorKey);
+  const sourceKey = getSelectedMetricSource(annualSpec.shortKey) || annualSpec.defaultSource;
+  const params = collectAnnualDenominatorParams(indicatorKey);
+  if (!Number.isFinite(year)) {{
+    setDenomStatus('Année active invalide.');
+    return;
+  }}
+  setAllDenominatorYearInputs(year);
+  setDenomStatus('Calcul de ' + (ODD_INDICATOR_LABELS[indicatorKey] || indicatorKey) + ' pour ' + year + '…');
+  try {{
+    const result = await resolveAnnualDenominator(indicatorKey, year, sourceKey, params);
+    const construction = {{
+      indicatorKey, year, sourceKey, params,
+      value: Number(result.value),
+      status: 'draft',
+      meta: result.meta,
+      sourceYears: Array.from(new Set(result.sourceYears || [year])),
+      warnings: result.warnings || [],
+      calculatedAt: new Date().toISOString(),
+    }};
+    const previousSettings = CURRENT_DENOM_SETTINGS && typeof CURRENT_DENOM_SETTINGS === 'object' ? CURRENT_DENOM_SETTINGS : {{}};
+    const constructions = {{ ...getDenominatorConstructions(), [getDenominatorConstructionKey(indicatorKey, year)]: construction }};
+    CURRENT_DENOM_SETTINGS = {{
+      ...previousSettings,
+      ...collectDenomSettingsFromUI(),
+      denominatorConstructions: constructions,
+    }};
+    await saveDenomSettings(CURRENT_DENOM_SETTINGS);
+    DENOM_PENDING_CHANGES = false;
+    activateAnnualDenominatorConstruction();
+    setDenomStatus('Dénominateur ' + year + ' calculé : ' + fmtPlain(result.value) +
+      ((result.warnings || []).length ? ' — ' + result.warnings.join(' ') : '') +
+      ' Validez cette année si la méthode et la provenance sont acceptées.');
+  }} catch (err) {{
+    setDenomStatus('Calcul impossible pour ' + year + ' : ' + String(err && err.message ? err.message : err));
+  }}
+}}
+
+async function validateAnnualDenominator() {{
+  const indicatorKey = getCurrentOddIndicator();
+  const year = Number(getCurrentDenominatorYear());
+  const key = getDenominatorConstructionKey(indicatorKey, year);
+  const existing = getDenominatorConstructions()[key];
+  if (!existing || !Number.isFinite(Number(existing.value))) {{
+    setDenomStatus("Calculez d'abord le dénominateur de l'année active.");
+    return;
+  }}
+  const constructions = {{
+    ...getDenominatorConstructions(),
+    [key]: {{ ...existing, status: 'validated', validatedAt: new Date().toISOString() }},
+  }};
+  CURRENT_DENOM_SETTINGS = {{ ...(CURRENT_DENOM_SETTINGS || {{}}), denominatorConstructions: constructions }};
+  await saveDenomSettings(CURRENT_DENOM_SETTINGS);
+  activateAnnualDenominatorConstruction();
+  setDenomStatus('Dénominateur validé pour ' + year + '.');
+}}
+
 // Contraintes de paramètres selon la source choisie.
 // Quand BM est sélectionné : tranches d'âge fixes (15-64, 65+) → on verrouille les champs.
 // Quand WPP est sélectionné : tranches libres → on déverrouille.
@@ -8224,23 +8642,10 @@ function initDenominatorPanel() {{
   // ── Chargement immédiat des données pré-calculées ─────────────────────────
   // Évite un écran vide au démarrage : CURRENT_DENOM_ROWS est rempli sans appel réseau.
   // Le bouton "Actualiser" mettra à jour depuis les API live.
-  if (cfg.static_rows && cfg.static_rows.length) {{
+  if (!Object.keys(getDenominatorConstructions()).length && cfg.static_rows && cfg.static_rows.length) {{
     CURRENT_DENOM_ROWS = cfg.static_rows.slice();
-    setDenomStatus('Données pré-chargées (BM 2019–2022). Cliquez sur Actualiser pour rafraîchir.');
+    setDenomStatus("Données historiques pré-chargées. Construisez l'année active pour créer un enregistrement annuel.");
   }}
-
-  document.getElementById('denom-total-year-start').value = merged.year_start_total || 2020;
-  document.getElementById('denom-total-year-end').value = merged.year_end_total || 2024;
-  document.getElementById('denom-child-year-start').value = merged.year_start_enfants || 2020;
-  document.getElementById('denom-child-year-end').value = merged.year_end_enfants || 2024;
-  document.getElementById('denom-active-year-start').value = merged.year_start_active || 2020;
-  document.getElementById('denom-active-year-end').value = merged.year_end_active || 2024;
-  document.getElementById('denom-ret-year-start').value = merged.year_start_retraite || 2020;
-  document.getElementById('denom-ret-year-end').value = merged.year_end_retraite || 2024;
-  document.getElementById('denom-handicap-year-start').value = merged.year_start_handicap || 2020;
-  document.getElementById('denom-handicap-year-end').value = merged.year_end_handicap || 2024;
-  document.getElementById('denom-mat-year-start').value = merged.year_start_maternite || 2020;
-  document.getElementById('denom-mat-year-end').value = merged.year_end_maternite || 2024;
 
   document.getElementById('denom-child-age-min').value = merged.child_age_min ?? 0;
   document.getElementById('denom-child-age-max').value = merged.child_age_max ?? 15;
@@ -8250,12 +8655,10 @@ function initDenominatorPanel() {{
   document.getElementById('denom-ret-age-f').value = merged.retirement_age_f || 60;
   document.getElementById('denom-mat-age-min').value = merged.maternity_age_min || 15;
   document.getElementById('denom-mat-age-max').value = merged.maternity_age_max || 49;
+  document.getElementById('denom-handicap-prevalence').value = merged.handicap_prevalence_percent ?? 15;
 
-  // Force de travail (nouveau pack)
-  const lfYsEl = document.getElementById('denom-lf-year-start');
-  const lfYeEl = document.getElementById('denom-lf-year-end');
-  if (lfYsEl) lfYsEl.value = merged.year_start_lf || merged.year_start_total || 2020;
-  if (lfYeEl) lfYeEl.value = merged.year_end_lf || merged.year_end_total || 2024;
+  const lfRateEl = document.getElementById('denom-lf-rate');
+  if (lfRateEl) lfRateEl.value = merged.activity_rate_percent ?? 63.44;
 
   // Restaurer données de saisie manuelle
   if (merged.manual_data) {{
@@ -8276,7 +8679,33 @@ function initDenominatorPanel() {{
   const refreshBtn = document.getElementById('denom-refresh');
   const btnConsulter = document.getElementById('denom-btn-consulter');
   const btnEditer = document.getElementById('denom-btn-editer');
+  const denomYearSelect = document.getElementById('denom-year-select');
   const saveBtn = document.getElementById('denom-save');
+  const validateBtn = document.getElementById('denom-validate');
+  if (denomYearSelect && !denomYearSelect.dataset.bound) {{
+    const availableYears = getOddAvailableYears();
+    denomYearSelect.innerHTML = availableYears.map(year =>
+      '<option value="' + escapeHtml(String(year)) + '">' + escapeHtml(String(year)) + '</option>'
+    ).join('');
+    const defaultYear = CURRENT_DENOM_YEAR || getCurrentOddYear() ||
+      (availableYears.length ? String(availableYears[availableYears.length - 1]) : '');
+    denomYearSelect.value = defaultYear;
+    CURRENT_DENOM_YEAR = denomYearSelect.value || defaultYear;
+    denomYearSelect.addEventListener('click', function(evt) {{
+      evt.stopPropagation();
+    }});
+    denomYearSelect.addEventListener('change', function(evt) {{
+      evt.stopPropagation();
+      if (DENOM_PENDING_CHANGES && DENOM_EDIT_MODE) {{
+        alert("Des paramètres de dénominateur sont en cours de modification. Calculez ou quittez l'édition avant de changer d'année.");
+        this.value = CURRENT_DENOM_YEAR;
+        return;
+      }}
+      CURRENT_DENOM_YEAR = this.value || '';
+      activateAnnualDenominatorConstruction();
+    }});
+    denomYearSelect.dataset.bound = '1';
+  }}
   if (btnConsulter && !btnConsulter.dataset.bound) {{
     btnConsulter.addEventListener('click', function(evt) {{
       evt.preventDefault(); evt.stopPropagation();
@@ -8315,6 +8744,10 @@ function initDenominatorPanel() {{
     }});
     refreshBtn.dataset.bound = '1';
   }}
+  if (validateBtn && !validateBtn.dataset.bound) {{
+    validateBtn.addEventListener('click', validateAnnualDenominator);
+    validateBtn.dataset.bound = '1';
+  }}
 
   document.querySelectorAll('.denom-pack input').forEach(el => {{
     el.addEventListener('change', () => {{
@@ -8328,24 +8761,13 @@ function initDenominatorPanel() {{
           return;
         }}
       }}
-      // Reconstruire le tableau manuel si les années changent et la source est manuelle
-      if (el.type === 'number' && (el.id.endsWith('-year-start') || el.id.endsWith('-year-end'))) {{
-        const shortKeys = ['total', 'child', 'active', 'ret', 'handicap', 'mat', 'lf'];
-        shortKeys.forEach(sk => {{
-          if (getSelectedMetricSource(sk) === 'manual') {{
-            showHideManualPanel(sk, 'manual');
-          }}
-        }});
-      }}
       if (!DENOM_EDIT_MODE) return;
       DENOM_PENDING_CHANGES = true;
       setDenomStatus('Modifications en attente — cliquez sur Sauvegarder.');
     }});
   }});
 
-  // Afficher immédiatement les données statiques, puis ne pas lancer l'API au démarrage.
-  // L'utilisateur clique "Actualiser" quand il veut les données live.
-  renderActiveDenominatorViews();
+  activateAnnualDenominatorConstruction();
 }}
 
 // ── Onglet institutions ────────────────────────────────────────────────────
@@ -8402,6 +8824,7 @@ function setChartSexMode(mode, instOverride) {{
   const inst = instOverride || document.getElementById('sel-institution').value;
   const pack = getChartPack(inst, modeValue);
   injectHtmlAndRunScripts('charts-institution-pop', pack.population);
+  bindInstitutionLegendCompaction('charts-institution-pop');
   applyPopulationFusion(inst);
   const finHost = document.getElementById('charts-institution-fin');
   if (finHost) {{
@@ -8409,6 +8832,7 @@ function setChartSexMode(mode, instOverride) {{
       finHost.style.display = '';
       finHost.style.height = '';
       injectHtmlAndRunScripts('charts-institution-fin', pack.finances);
+      bindInstitutionLegendCompaction('charts-institution-fin');
       // Réappliquer la fusion Q2 après injection (Plotly initialise le div de façon synchrone)
       if (typeof applyQ2ToFinChart === 'function') {{
         setTimeout(() => applyQ2ToFinChart(inst), 100);
@@ -8568,6 +8992,100 @@ function relayoutHostPlot(host, targetHeight) {{
   Plotly.Plots.resize(plotDiv);
 }}
 
+function compactInstitutionLegends() {{
+  const panel = document.getElementById('tab-institutions');
+  if (!panel || !panel.classList.contains('active')) return;
+  panel.querySelectorAll('.plotly-graph-div').forEach(plotDiv => {{
+    const fullLayout = plotDiv._fullLayout;
+    const plotWidth = fullLayout && fullLayout._size ? fullLayout._size.w : 0;
+    if (!plotWidth) return;
+    const axisDomains = Object.keys(fullLayout)
+      .filter(key => /^xaxis\d*$/.test(key) && Array.isArray(fullLayout[key].domain))
+      .map(key => fullLayout[key].domain);
+    plotDiv.querySelectorAll(
+      '.infolayer > g.legend, .infolayer > g.legend2, ' +
+      '.infolayer > g.legend3, .infolayer > g.legend4'
+    ).forEach(legend => {{
+      const legendKey = (legend.getAttribute('class') || '').split(/\s+/)
+        .find(name => /^legend\d*$/.test(name)) || 'legend';
+      const legendLayout = fullLayout[legendKey] || {{}};
+      const legendX = Number(legendLayout.x || 0);
+      const domain = axisDomains.reduce((closest, candidate) => (
+        !closest || Math.abs(candidate[0] - legendX) < Math.abs(closest[0] - legendX)
+          ? candidate
+          : closest
+      ), null);
+      if (!domain) return;
+      const availableWidth = Math.max(120, (domain[1] - domain[0]) * plotWidth);
+      const background = legend.querySelector(':scope > rect.bg');
+      if (background) background.setAttribute('width', String(availableWidth));
+
+      const items = Array.from(legend.querySelectorAll('g.groups > g.traces'));
+      if (!items.length) return;
+      const metrics = items.map(item => {{
+      const match = (item.getAttribute('transform') || '').match(
+        /translate\(\s*([-\d.]+)[ ,]\s*([-\d.]+)\s*\)/
+      );
+      const originalX = Number(item.dataset.compactLegendX || (match ? match[1] : 0));
+      const originalY = Number(item.dataset.compactLegendY || (match ? match[2] : 0));
+      item.dataset.compactLegendX = String(originalX);
+      item.dataset.compactLegendY = String(originalY);
+      const text = item.querySelector('text.legendtext');
+      let height = 11;
+      if (text) {{
+        try {{ height = Math.max(height, text.getBBox().height); }} catch (_error) {{}}
+      }}
+        let width = 0;
+        try {{ width = item.getBBox().width; }} catch (_error) {{}}
+        return {{ item, originalX, originalY, height, width: Math.max(60, width) }};
+      }});
+      const startX = Math.min(...metrics.map(metric => metric.originalX));
+      const firstY = Math.min(...metrics.map(metric => metric.originalY));
+      const horizontalGap = 10;
+      const verticalGap = 4;
+      let cursorX = startX;
+      let cursorY = firstY;
+      let rowHeight = 0;
+      metrics.forEach(metric => {{
+        if (
+          cursorX > startX &&
+          cursorX + metric.width > startX + availableWidth - horizontalGap
+        ) {{
+          cursorX = startX;
+          cursorY += rowHeight + verticalGap;
+          rowHeight = 0;
+        }}
+        metric.item.setAttribute(
+          'transform',
+          `translate(${{cursorX}},${{cursorY}})`
+        );
+        cursorX += metric.width + horizontalGap;
+        rowHeight = Math.max(rowHeight, metric.height);
+      }});
+      if (background) {{
+        const contentHeight = cursorY - firstY + rowHeight + 28;
+        background.setAttribute(
+          'height',
+          String(Math.min({INSTITUTION_LEGEND_HEIGHT_PX}, Math.max(42, contentHeight)))
+        );
+      }}
+    }});
+  }});
+}}
+
+function bindInstitutionLegendCompaction(hostId) {{
+  const host = document.getElementById(hostId);
+  const plotDiv = host && host.querySelector('.plotly-graph-div');
+  if (!plotDiv || plotDiv.dataset.legendCompactionBound === '1') return;
+  plotDiv.dataset.legendCompactionBound = '1';
+  if (typeof plotDiv.on === 'function') {{
+    plotDiv.on('plotly_afterplot', () => {{
+      window.requestAnimationFrame(compactInstitutionLegends);
+    }});
+  }}
+  window.requestAnimationFrame(compactInstitutionLegends);
+}}
+
 function scheduleInstitutionTabResize() {{
   const panel = document.getElementById('tab-institutions');
   if (!panel) return;
@@ -8578,6 +9096,7 @@ function scheduleInstitutionTabResize() {{
       panel.querySelectorAll('.plotly-graph-div').forEach(div => {{
         if (div && div.offsetParent !== null) Plotly.Plots.resize(div);
       }});
+      setTimeout(compactInstitutionLegends, 0);
     }}, delay);
   }});
 }}
@@ -9345,6 +9864,7 @@ function updatePrestationRegime() {{
 // ── Initialisation ─────────────────────────────────────────────────────────
 (async function() {{
   CURRENT_ODD_DECISIONS = await loadOddDecisions();
+  CURRENT_DENOM_SETTINGS = await loadDenomSettings();
   initDenominatorPanel();
   renderOddDecisionPanel();
   renderOddBranchesVisual();

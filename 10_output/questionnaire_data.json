@@ -127,7 +127,7 @@
       ]
     },
     "Q4": {
-      "CNSS_R1": "ménage"
+      "CNSS_R1": "enfant"
     },
     "Q4_coefficients": {
       "CNSS_R1": {
@@ -168,14 +168,14 @@
     "Q1b": {
       "CNSSAP_R1__CNSSAP_R2": "false",
       "CNSSAP_R1__CNSSAP_R3": "false",
-      "CNSSAP_R1__CNSSAP_R4": "true",
+      "CNSSAP_R1__CNSSAP_R4": "false",
       "CNSSAP_R2__CNSSAP_R1": "false",
       "CNSSAP_R2__CNSSAP_R3": "false",
       "CNSSAP_R2__CNSSAP_R4": "false",
       "CNSSAP_R3__CNSSAP_R1": "false",
       "CNSSAP_R3__CNSSAP_R2": "false",
       "CNSSAP_R3__CNSSAP_R4": "false",
-      "CNSSAP_R4__CNSSAP_R1": "true",
+      "CNSSAP_R4__CNSSAP_R1": "false",
       "CNSSAP_R4__CNSSAP_R2": "false",
       "CNSSAP_R4__CNSSAP_R3": "false"
     },
