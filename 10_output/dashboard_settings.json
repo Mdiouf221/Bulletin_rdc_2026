@@ -782,10 +782,10 @@
   },
   "denomSettings": {
     "source_population_totale": "manual",
-    "source_population_enfants": "",
-    "source_population_active": "",
-    "source_population_retraite": "",
-    "source_handicap_grave": "",
+    "source_population_enfants": "wpp_api",
+    "source_population_active": "manual",
+    "source_population_retraite": "wpp_api",
+    "source_handicap_grave": "manual",
     "source_maternite": "",
     "year_start_total": null,
     "year_end_total": null,
@@ -801,7 +801,7 @@
     "year_end_maternite": null,
     "child_age_min": 0,
     "child_age_max": 15,
-    "retirement_age_h": 65,
+    "retirement_age_h": 60,
     "retirement_age_f": 60,
     "working_age_min": 15,
     "working_age_max": 64,
@@ -810,30 +810,57 @@
     "prevalence_handicap_fallback": 15,
     "strict_exact_year_default": true,
     "lfp_rate_atmp_pct": 63.44,
-    "source_force_de_travail": "",
+    "source_force_de_travail": "derived_dm014",
     "year_start_lf": null,
     "year_end_lf": null,
     "manual_data": {
       "total": {
         "2019": {
-          "value": 89906891,
-          "comment": "Saisie manuelle — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022)."
+          "value": 2787114,
+          "comment": "Saisie manuelle — Saisie manuelle — Bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies"
         },
         "2020": {
-          "value": 92853165,
-          "comment": "Saisie manuelle — Saisie manuelle — Saisie manuelle — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022). · validé"
+          "value": 2878448,
+          "comment": "Saisie manuelle — Saisie manuelle — Saisie manuelle — bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies"
         },
         "2021": {
-          "value": 95894119,
-          "comment": "Saisie manuelle — — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022)."
+          "value": 2972718,
+          "comment": "Saisie manuelle — Saisie manuelle — bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider"
         },
         "2022": {
-          "value": 99010212,
-          "comment": "Saisie manuelle — Saisie manuelle — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022)."
+          "value": 3069317,
+          "comment": "Saisie manuelle — Saisie manuelle — bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider"
         },
         "2026": {
           "value": 0,
           "comment": "Saisie manuelle : valeur manquante pour 2026"
+        }
+      },
+      "child": {},
+      "active": {
+        "2019": {
+          "value": 0,
+          "comment": ""
+        }
+      },
+      "lf": {},
+      "ret": {},
+      "handicap": {
+        "2019": {
+          "value": 2787114,
+          "comment": "Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies"
+        },
+        "2020": {
+          "value": 2878448,
+          "comment": "Saisie manuelle — Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider"
+        },
+        "2021": {
+          "value": 2972718,
+          "comment": "Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider"
+        },
+        "2022": {
+          "value": 3069317,
+          "comment": "Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider · à valider"
         }
       }
     },
@@ -910,6 +937,412 @@
         ],
         "warnings": [],
         "calculatedAt": "2026-07-16T22:39:08.613Z"
+      },
+      "ind_22_enfants::2021": {
+        "indicatorKey": "ind_22_enfants",
+        "year": 2021,
+        "sourceKey": "wpp_api",
+        "params": {
+          "ageMin": 0,
+          "ageMax": 15
+        },
+        "value": 45702016,
+        "status": "draft",
+        "meta": "WPP, groupes quinquennaux 0–14 ans (2021)",
+        "sourceYears": [
+          2021
+        ],
+        "warnings": [
+          "Les groupes WPP sont quinquennaux : la tranche effectivement additionnée est 0–14 ans."
+        ],
+        "calculatedAt": "2026-07-16T22:43:14.391Z"
+      },
+      "ind_22_enfants::2019": {
+        "indicatorKey": "ind_22_enfants",
+        "year": 2019,
+        "sourceKey": "wpp_api",
+        "params": {
+          "ageMin": 0,
+          "ageMax": 15
+        },
+        "value": 42735103.5,
+        "status": "draft",
+        "meta": "WPP, groupes quinquennaux 0–14 ans (2019)",
+        "sourceYears": [
+          2019
+        ],
+        "warnings": [
+          "Les groupes WPP sont quinquennaux : la tranche effectivement additionnée est 0–14 ans."
+        ],
+        "calculatedAt": "2026-07-16T22:42:43.871Z"
+      },
+      "ind_22_enfants::2020": {
+        "indicatorKey": "ind_22_enfants",
+        "year": 2020,
+        "sourceKey": "wpp_api",
+        "params": {
+          "ageMin": 0,
+          "ageMax": 15
+        },
+        "value": 44205882.5,
+        "status": "draft",
+        "meta": "WPP, groupes quinquennaux 0–14 ans (2020)",
+        "sourceYears": [
+          2020
+        ],
+        "warnings": [
+          "Les groupes WPP sont quinquennaux : la tranche effectivement additionnée est 0–14 ans."
+        ],
+        "calculatedAt": "2026-07-16T22:42:52.029Z"
+      },
+      "ind_22_enfants::2022": {
+        "indicatorKey": "ind_22_enfants",
+        "year": 2022,
+        "sourceKey": "wpp_api",
+        "params": {
+          "ageMin": 0,
+          "ageMax": 15
+        },
+        "value": 47217408.5,
+        "status": "draft",
+        "meta": "WPP, groupes quinquennaux 0–14 ans (2022)",
+        "sourceYears": [
+          2022
+        ],
+        "warnings": [
+          "Les groupes WPP sont quinquennaux : la tranche effectivement additionnée est 0–14 ans."
+        ],
+        "calculatedAt": "2026-07-16T22:43:25.072Z"
+      },
+      "ind_29_cotisants::2019": {
+        "indicatorKey": "ind_29_cotisants",
+        "year": 2019,
+        "sourceKey": "wpp_api",
+        "params": {
+          "ageMin": 15,
+          "ageMax": 64
+        },
+        "value": 47337200,
+        "status": "draft",
+        "meta": "WPP 15–64 ans (2019) — DM-016",
+        "sourceYears": [
+          2019
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:45:34.572Z"
+      },
+      "ind_29_cotisants::2020": {
+        "indicatorKey": "ind_29_cotisants",
+        "year": 2020,
+        "sourceKey": "bm_api",
+        "params": {
+          "ageMin": 15,
+          "ageMax": 64
+        },
+        "value": 48821791,
+        "status": "draft",
+        "meta": "Banque mondiale SP.POP.1564.TO (2020) — DM-016",
+        "sourceYears": [
+          2020
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:46:13.576Z"
+      },
+      "ind_29_cotisants::2021": {
+        "indicatorKey": "ind_29_cotisants",
+        "year": 2021,
+        "sourceKey": "bm_api",
+        "params": {
+          "ageMin": 15,
+          "ageMax": 64
+        },
+        "value": 50399447,
+        "status": "draft",
+        "meta": "Banque mondiale SP.POP.1564.TO (2021) — DM-016",
+        "sourceYears": [
+          2021
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:46:19.886Z"
+      },
+      "ind_29_cotisants::2022": {
+        "indicatorKey": "ind_29_cotisants",
+        "year": 2022,
+        "sourceKey": "bm_api",
+        "params": {
+          "ageMin": 15,
+          "ageMax": 64
+        },
+        "value": 52040020,
+        "status": "draft",
+        "meta": "Banque mondiale SP.POP.1564.TO (2022) — DM-016",
+        "sourceYears": [
+          2022
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:46:23.855Z"
+      },
+      "ind_25_atmp::2022": {
+        "indicatorKey": "ind_25_atmp",
+        "year": 2022,
+        "sourceKey": "derived_dm014",
+        "params": {
+          "activityRatePercent": 63.44
+        },
+        "value": 35005913,
+        "status": "draft",
+        "meta": "DM-014 : population WPP 15+ 2022 × taux d'activité 63,44 %",
+        "sourceYears": [
+          2022
+        ],
+        "warnings": [
+          "Le taux d'activité est un paramètre ; sa période de référence doit être justifiée."
+        ],
+        "calculatedAt": "2026-07-16T22:47:12.375Z"
+      },
+      "ind_25_atmp::2019": {
+        "indicatorKey": "ind_25_atmp",
+        "year": 2019,
+        "sourceKey": "derived_dm014",
+        "params": {
+          "activityRatePercent": 63.44
+        },
+        "value": 31854708,
+        "status": "draft",
+        "meta": "DM-014 : population WPP 15+ 2019 × taux d'activité 63,44 %",
+        "sourceYears": [
+          2019
+        ],
+        "warnings": [
+          "Le taux d'activité est un paramètre ; sa période de référence doit être justifiée."
+        ],
+        "calculatedAt": "2026-07-16T22:47:35.370Z"
+      },
+      "ind_25_atmp::2020": {
+        "indicatorKey": "ind_25_atmp",
+        "year": 2020,
+        "sourceKey": "derived_dm014",
+        "params": {
+          "activityRatePercent": 63.44
+        },
+        "value": 32851843,
+        "status": "draft",
+        "meta": "DM-014 : population WPP 15+ 2020 × taux d'activité 63,44 %",
+        "sourceYears": [
+          2020
+        ],
+        "warnings": [
+          "Le taux d'activité est un paramètre ; sa période de référence doit être justifiée."
+        ],
+        "calculatedAt": "2026-07-16T22:47:39.009Z"
+      },
+      "ind_25_atmp::2021": {
+        "indicatorKey": "ind_25_atmp",
+        "year": 2021,
+        "sourceKey": "derived_dm014",
+        "params": {
+          "activityRatePercent": 63.44
+        },
+        "value": 33906724,
+        "status": "draft",
+        "meta": "DM-014 : population WPP 15+ 2021 × taux d'activité 63,44 %",
+        "sourceYears": [
+          2021
+        ],
+        "warnings": [
+          "Le taux d'activité est un paramètre ; sa période de référence doit être justifiée."
+        ],
+        "calculatedAt": "2026-07-16T22:48:00.534Z"
+      },
+      "ind_27_vieillesse::2019": {
+        "indicatorKey": "ind_27_vieillesse",
+        "year": 2019,
+        "sourceKey": "wpp_api",
+        "params": {
+          "retirementAgeH": 60,
+          "retirementAgeF": 60
+        },
+        "value": 4485684,
+        "status": "validated",
+        "meta": "WPP : hommes 60+ et femmes 60+ (2019)",
+        "sourceYears": [
+          2019
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:50:04.350Z",
+        "validatedAt": "2026-07-16T22:50:05.779Z"
+      },
+      "ind_27_vieillesse::2020": {
+        "indicatorKey": "ind_27_vieillesse",
+        "year": 2020,
+        "sourceKey": "wpp_api",
+        "params": {
+          "retirementAgeH": 60,
+          "retirementAgeF": 60
+        },
+        "value": 4626780,
+        "status": "validated",
+        "meta": "WPP : hommes 60+ et femmes 60+ (2020)",
+        "sourceYears": [
+          2020
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:50:17.999Z",
+        "validatedAt": "2026-07-16T22:50:19.048Z"
+      },
+      "ind_27_vieillesse::2021": {
+        "indicatorKey": "ind_27_vieillesse",
+        "year": 2021,
+        "sourceKey": "wpp_api",
+        "params": {
+          "retirementAgeH": 60,
+          "retirementAgeF": 60
+        },
+        "value": 4766182,
+        "status": "draft",
+        "meta": "WPP : hommes 60+ et femmes 60+ (2021)",
+        "sourceYears": [
+          2021
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:50:33.465Z"
+      },
+      "ind_27_vieillesse::2022": {
+        "indicatorKey": "ind_27_vieillesse",
+        "year": 2022,
+        "sourceKey": "wpp_api",
+        "params": {
+          "retirementAgeH": 60,
+          "retirementAgeF": 60
+        },
+        "value": 4914315,
+        "status": "draft",
+        "meta": "WPP : hommes 60+ et femmes 60+ (2022)",
+        "sourceYears": [
+          2022
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:50:41.887Z"
+      },
+      "ind_28_vulnerables::2022": {
+        "indicatorKey": "ind_28_vulnerables",
+        "year": 2022,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 3069317,
+        "status": "draft",
+        "meta": "Saisie manuelle — Saisie manuelle — bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider",
+        "sourceYears": [
+          2022
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:54:34.546Z"
+      },
+      "ind_28_vulnerables::2019": {
+        "indicatorKey": "ind_28_vulnerables",
+        "year": 2019,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 2787114,
+        "status": "draft",
+        "meta": "Saisie manuelle — Saisie manuelle — Bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies",
+        "sourceYears": [
+          2019
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:52:33.394Z"
+      },
+      "ind_28_vulnerables::2020": {
+        "indicatorKey": "ind_28_vulnerables",
+        "year": 2020,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 2878448,
+        "status": "draft",
+        "meta": "Saisie manuelle — Saisie manuelle — Saisie manuelle — bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies",
+        "sourceYears": [
+          2020
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:53:34.010Z"
+      },
+      "ind_28_vulnerables::2021": {
+        "indicatorKey": "ind_28_vulnerables",
+        "year": 2021,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 2972718,
+        "status": "draft",
+        "meta": "Saisie manuelle — Saisie manuelle — bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider",
+        "sourceYears": [
+          2021
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:54:04.499Z"
+      },
+      "ind_24_handicap::2019": {
+        "indicatorKey": "ind_24_handicap",
+        "year": 2019,
+        "sourceKey": "manual",
+        "params": {
+          "prevalencePercent": 15
+        },
+        "value": 2787114,
+        "status": "draft",
+        "meta": "Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies",
+        "sourceYears": [
+          2019
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:56:44.113Z"
+      },
+      "ind_24_handicap::2020": {
+        "indicatorKey": "ind_24_handicap",
+        "year": 2020,
+        "sourceKey": "manual",
+        "params": {
+          "prevalencePercent": 15
+        },
+        "value": 2878448,
+        "status": "draft",
+        "meta": "Saisie manuelle — Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider",
+        "sourceYears": [
+          2020
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:57:52.148Z"
+      },
+      "ind_24_handicap::2021": {
+        "indicatorKey": "ind_24_handicap",
+        "year": 2021,
+        "sourceKey": "manual",
+        "params": {
+          "prevalencePercent": 15
+        },
+        "value": 2972718,
+        "status": "draft",
+        "meta": "Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider",
+        "sourceYears": [
+          2021
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T22:58:36.444Z"
+      },
+      "ind_24_handicap::2022": {
+        "indicatorKey": "ind_24_handicap",
+        "year": 2022,
+        "sourceKey": "manual",
+        "params": {
+          "prevalencePercent": 15
+        },
+        "value": 3069317,
+        "status": "draft",
+        "meta": "Saisie manuelle — Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider · à valider",
+        "sourceYears": [
+          2022
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-16T23:02:03.851Z"
       }
     }
   }
