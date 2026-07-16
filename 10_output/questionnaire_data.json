@@ -37,11 +37,59 @@
         "CNSS_R2",
         "CNSS_R3"
       ],
+      "Q2_CNSS_R1_recettes_2020": [
+        "CNSS_R2",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R1_depenses_2020": [
+        "CNSS_R2",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R1_recettes_2021": [
+        "CNSS_R2",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R1_depenses_2021": [
+        "CNSS_R2",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R1_recettes_2022": [
+        "CNSS_R2",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R1_depenses_2022": [
+        "CNSS_R2",
+        "CNSS_R3"
+      ],
       "Q2_CNSS_R2_recettes_2019": [
         "CNSS_R1",
         "CNSS_R3"
       ],
       "Q2_CNSS_R2_depenses_2019": [
+        "CNSS_R1",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R2_recettes_2020": [
+        "CNSS_R1",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R2_depenses_2020": [
+        "CNSS_R1",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R2_recettes_2021": [
+        "CNSS_R1",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R2_depenses_2021": [
+        "CNSS_R1",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R2_recettes_2022": [
+        "CNSS_R1",
+        "CNSS_R3"
+      ],
+      "Q2_CNSS_R2_depenses_2022": [
         "CNSS_R1",
         "CNSS_R3"
       ],
@@ -53,22 +101,6 @@
         "CNSS_R1",
         "CNSS_R2"
       ],
-      "Q2_CNSS_R1_recettes_2020": [
-        "CNSS_R2",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R1_depenses_2020": [
-        "CNSS_R2",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R2_recettes_2020": [
-        "CNSS_R1",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R2_depenses_2020": [
-        "CNSS_R1",
-        "CNSS_R3"
-      ],
       "Q2_CNSS_R3_recettes_2020": [
         "CNSS_R1",
         "CNSS_R2"
@@ -77,22 +109,6 @@
         "CNSS_R1",
         "CNSS_R2"
       ],
-      "Q2_CNSS_R1_recettes_2021": [
-        "CNSS_R2",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R1_depenses_2021": [
-        "CNSS_R2",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R2_recettes_2021": [
-        "CNSS_R1",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R2_depenses_2021": [
-        "CNSS_R1",
-        "CNSS_R3"
-      ],
       "Q2_CNSS_R3_recettes_2021": [
         "CNSS_R1",
         "CNSS_R2"
@@ -100,22 +116,6 @@
       "Q2_CNSS_R3_depenses_2021": [
         "CNSS_R1",
         "CNSS_R2"
-      ],
-      "Q2_CNSS_R1_recettes_2022": [
-        "CNSS_R2",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R1_depenses_2022": [
-        "CNSS_R2",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R2_recettes_2022": [
-        "CNSS_R1",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R2_depenses_2022": [
-        "CNSS_R1",
-        "CNSS_R3"
       ],
       "Q2_CNSS_R3_recettes_2022": [
         "CNSS_R1",
@@ -132,20 +132,20 @@
     "Q4_coefficients": {
       "CNSS_R1": {
         "2019": {
-          "value": 2.5,
-          "source": ""
+          "value": 3.17,
+          "source": "Estimation basée sur un nombre de 3.17 enfants de moins de 20 ans par foyer en 2013 (UN HH Size and Composition 2019)"
         },
         "2020": {
-          "value": 2.5,
-          "source": ""
+          "value": 3.17,
+          "source": "Estimation basée sur un nombre de 3.17 enfants de moins de 20 ans par foyer en 2013 (UN HH Size and Composition 2019)"
         },
         "2021": {
-          "value": 2.5,
-          "source": ""
+          "value": 3.17,
+          "source": "Estimation basée sur un nombre de 3.17 enfants de moins de 20 ans par foyer en 2013 (UN HH Size and Composition 2019)"
         },
         "2022": {
-          "value": 2.5,
-          "source": ""
+          "value": 3.17,
+          "source": "Estimation basée sur un nombre de 3.17 enfants de moins de 20 ans par foyer en 2013 (UN HH Size and Composition 2019)"
         }
       }
     }

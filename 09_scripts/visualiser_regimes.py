@@ -1448,40 +1448,13 @@ def fig_institution(rows: list[dict], institution: str, sex_mode: str = "all") -
             yanchor='top'
         ),
         height=500,
-        # Légendes verticales sous chaque colonne — y=-0.25 place la légende
-        # clairement dans la marge inférieure (~55px sous les axes) sans empiéter
-        legend=dict(
-            orientation="v",
-            x=0.02, xanchor="left",
-            y=-0.25, yanchor="top",
-            title=dict(text="Cotisants actifs", font=dict(size=11, color='#2c5282')),
-            font=dict(
-                size=11,
-                family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                color='#4a5568'
-            ),
-            bgcolor='rgba(247, 250, 252, 0.85)',
-            bordercolor='#e2e8f0',
-            borderwidth=1,
-        ),
-        legend2=dict(
-            orientation="v",
-            x=0.57, xanchor="left",
-            y=-0.25, yanchor="top",
-            title=dict(text="Bénéficiaires", font=dict(size=11, color='#2c5282')),
-            font=dict(
-                size=11,
-                family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                color='#4a5568'
-            ),
-            bgcolor='rgba(247, 250, 252, 0.85)',
-            bordercolor='#e2e8f0',
-            borderwidth=1,
-        ),
+        showlegend=False,
+        legend=dict(title=dict(text="Cotisants actifs")),
+        legend2=dict(title=dict(text="Bénéficiaires")),
         hovermode="x unified",
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
-        margin=dict(t=80, b=190, l=70, r=40),
+        margin=dict(t=80, b=70, l=70, r=40),
         font=dict(
             family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             size=13,
@@ -1536,9 +1509,6 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
     if not regimes_keys:
         return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
 
-    # vertical_spacing=0.28 pour laisser de la place aux légendes verticales
-    # Avec vs=0.28 et 2 rangées : rangée 1 y∈[0.64,1.00], rangée 2 y∈[0.00,0.36], gap [0.36,0.64]
-    # Avec horizontal_spacing=0.10 et 2 colonnes : col1 x∈[0,0.45], col2 x∈[0.55,1.00]
     fig = make_subplots(
         rows=2, cols=2,
         subplot_titles=(
@@ -1547,20 +1517,8 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             "Recettes totales (Mds CDF)",
             "Contribution moyenne (k CDF / cotisant)",
         ),
-        vertical_spacing=0.28,
+        vertical_spacing=0.16,
         horizontal_spacing=0.10,
-    )
-
-    # Style partagé des légendes : orientation verticale → une colonne d'entrées,
-    # aucun risque de débordement horizontal quelle que soit la longueur des labels.
-    _leg_style = dict(
-        orientation="v",
-        xanchor="left",
-        yanchor="top",
-        font=dict(size=11, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#4a5568'),
-        bgcolor='rgba(247, 250, 252, 0.85)',
-        bordercolor='#e2e8f0',
-        borderwidth=1,
     )
 
     for key in regimes_keys:
@@ -1634,35 +1592,16 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
             x=0.5, xanchor='center', y=0.98, yanchor='top'
         ),
         height=900,
-        legend=dict(
-            title=dict(text="Régimes", font=dict(size=11, color='#2c5282')),
-            x=0.02,
-            y=0.60,
-            **_leg_style,
-        ),
-        legend2=dict(
-            title=dict(text="Régimes", font=dict(size=11, color='#2c5282')),
-            x=0.57,
-            y=0.60,
-            **_leg_style,
-        ),
-        legend3=dict(
-            title=dict(text="Régimes", font=dict(size=11, color='#2c5282')),
-            x=0.02,
-            y=-0.08,
-            **_leg_style,
-        ),
-        legend4=dict(
-            title=dict(text="Régimes", font=dict(size=11, color='#2c5282')),
-            x=0.57,
-            y=-0.08,
-            **_leg_style,
-        ),
+        showlegend=False,
+        legend=dict(title=dict(text="Dépenses totales")),
+        legend2=dict(title=dict(text="Dépense moyenne par bénéficiaire")),
+        legend3=dict(title=dict(text="Recettes totales")),
+        legend4=dict(title=dict(text="Contribution moyenne")),
         hovermode="x unified",
         barmode="group",
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
-        margin=dict(t=70, b=260, l=70, r=40),
+        margin=dict(t=70, b=70, l=70, r=40),
         font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=13, color='#4a5568'),
     )
     fig.update_annotations(font=dict(size=13, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282'))
@@ -3233,14 +3172,10 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       scrollbar-width: auto;
       padding-bottom: 14px;
     }}
-    .odd-year-aligned-grid.odd-visual-permanent > .odd-year-block {{
+    .odd-year-aligned-grid.odd-visual-permanent > .odd-year-block,
+    .odd-year-aligned-grid.odd-construction-scroll > .odd-year-block {{
       flex: 0 0 calc((100% - 48px) / 5);
       min-width: 190px;
-      box-sizing: border-box;
-    }}
-    .odd-year-aligned-grid.odd-construction-scroll > .odd-year-block {{
-      flex: 0 0 calc((100% - 24px) / 3);
-      min-width: 300px;
       box-sizing: border-box;
     }}
     .odd-year-aligned-grid.odd-visual-permanent::-webkit-scrollbar,
