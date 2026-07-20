@@ -28,104 +28,7 @@
       "CNSS_R4__CNSS_R2": "false",
       "CNSS_R4__CNSS_R3": "false"
     },
-    "Q2": {
-      "Q2_CNSS_R1_recettes_2019": [
-        "CNSS_R2",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R1_depenses_2019": [
-        "CNSS_R2",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R1_recettes_2020": [
-        "CNSS_R2",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R1_depenses_2020": [
-        "CNSS_R2",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R1_recettes_2021": [
-        "CNSS_R2",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R1_depenses_2021": [
-        "CNSS_R2",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R1_recettes_2022": [
-        "CNSS_R2",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R1_depenses_2022": [
-        "CNSS_R2",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R2_recettes_2019": [
-        "CNSS_R1",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R2_depenses_2019": [
-        "CNSS_R1",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R2_recettes_2020": [
-        "CNSS_R1",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R2_depenses_2020": [
-        "CNSS_R1",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R2_recettes_2021": [
-        "CNSS_R1",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R2_depenses_2021": [
-        "CNSS_R1",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R2_recettes_2022": [
-        "CNSS_R1",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R2_depenses_2022": [
-        "CNSS_R1",
-        "CNSS_R3"
-      ],
-      "Q2_CNSS_R3_recettes_2019": [
-        "CNSS_R1",
-        "CNSS_R2"
-      ],
-      "Q2_CNSS_R3_depenses_2019": [
-        "CNSS_R1",
-        "CNSS_R2"
-      ],
-      "Q2_CNSS_R3_recettes_2020": [
-        "CNSS_R1",
-        "CNSS_R2"
-      ],
-      "Q2_CNSS_R3_depenses_2020": [
-        "CNSS_R1",
-        "CNSS_R2"
-      ],
-      "Q2_CNSS_R3_recettes_2021": [
-        "CNSS_R1",
-        "CNSS_R2"
-      ],
-      "Q2_CNSS_R3_depenses_2021": [
-        "CNSS_R1",
-        "CNSS_R2"
-      ],
-      "Q2_CNSS_R3_recettes_2022": [
-        "CNSS_R1",
-        "CNSS_R2"
-      ],
-      "Q2_CNSS_R3_depenses_2022": [
-        "CNSS_R1",
-        "CNSS_R2"
-      ]
-    },
+    "Q2": {},
     "Q4": {
       "CNSS_R1": "enfant"
     },
@@ -153,12 +56,12 @@
   "CNSSAP": {
     "Q1": {
       "CNSSAP_R1__CNSSAP_R2": "false",
-      "CNSSAP_R1__CNSSAP_R3": "true",
+      "CNSSAP_R1__CNSSAP_R3": "false",
       "CNSSAP_R1__CNSSAP_R4": "false",
       "CNSSAP_R2__CNSSAP_R1": "false",
       "CNSSAP_R2__CNSSAP_R3": "false",
       "CNSSAP_R2__CNSSAP_R4": "false",
-      "CNSSAP_R3__CNSSAP_R1": "true",
+      "CNSSAP_R3__CNSSAP_R1": "false",
       "CNSSAP_R3__CNSSAP_R2": "false",
       "CNSSAP_R3__CNSSAP_R4": "false",
       "CNSSAP_R4__CNSSAP_R1": "false",

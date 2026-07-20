@@ -210,7 +210,7 @@ function wrapInstitutionLegendLabel(label, maxWidthPx = 150) {
   return lines.join('<br>');
 }
 
-function applyQ2FinanceFusion(graphId, q2Data) {
+function applyQ2FinanceFusion(graphId, q2Data, metricType) {
   const plotDiv = document.getElementById(graphId);
   if (!plotDiv || !plotDiv.data) return [];
   if (!window._finOriginalTraces[graphId]) {
@@ -293,8 +293,7 @@ function applyQ2FinanceFusion(graphId, q2Data) {
     return remaining.concat([...mergedByGroup.values()]);
   };
   let newTraces = JSON.parse(JSON.stringify(origTraces));
-  newTraces = applyGroupsByYear(newTraces, 'depenses', 'y');
-  newTraces = applyGroupsByYear(newTraces, 'recettes', 'y3');
+  newTraces = applyGroupsByYear(newTraces, metricType, 'y');
   const layout = JSON.parse(JSON.stringify(plotDiv.layout || {}));
   ['yaxis', 'yaxis2', 'yaxis3', 'yaxis4'].forEach(axis => {
     if (!layout[axis]) layout[axis] = {};
@@ -311,24 +310,37 @@ function applyQ2FinanceFusion(graphId, q2Data) {
 function applyQ2ToFinChart(inst) {
   if (!window.questionnaire) return;
   const q2Data = (window.questionnaire.data[inst] && window.questionnaire.data[inst].Q2) || {};
-  const finContainer = document.getElementById('charts-institution-fin');
-  if (!finContainer) return;
-  const warnings = [];
-  finContainer.querySelectorAll('.plotly-graph-div').forEach(function(div) {
-    if (div.id) warnings.push(...applyQ2FinanceFusion(div.id, q2Data));
-  });
-  let warning = finContainer.querySelector('.q2-finance-warning');
-  if (warnings.length) {
-    if (!warning) {
-      warning = document.createElement('p');
-      warning.className = 'q2-finance-warning';
-      warning.style.cssText = 'margin:8px 0;padding:10px;border-left:4px solid #c53030;background:#fff5f5;color:#742a2a;';
-      finContainer.insertBefore(warning, finContainer.firstChild);
+  
+  // Appliquer la fusion Q2 à tous les conteneurs de graphiques financiers
+  const financeContainers = [
+    { id: 'chart-institution-depenses', metricType: 'depenses' },
+    { id: 'chart-institution-depense-par-beneficiaire', metricType: 'depenses' },
+    { id: 'chart-institution-recettes', metricType: 'recettes' },
+    { id: 'chart-institution-contribution', metricType: 'recettes' }
+  ];
+  
+  financeContainers.forEach(({ id: containerId, metricType }) => {
+    const finContainer = document.getElementById(containerId);
+    if (!finContainer) return;
+    
+    const warnings = [];
+    finContainer.querySelectorAll('.plotly-graph-div').forEach(function(div) {
+      if (div.id) warnings.push(...applyQ2FinanceFusion(div.id, q2Data, metricType));
+    });
+    
+    let warning = finContainer.querySelector('.q2-finance-warning');
+    if (warnings.length) {
+      if (!warning) {
+        warning = document.createElement('p');
+        warning.className = 'q2-finance-warning';
+        warning.style.cssText = 'margin:8px 0;padding:10px;border-left:4px solid #c53030;background:#fff5f5;color:#742a2a;';
+        finContainer.insertBefore(warning, finContainer.firstChild);
+      }
+      warning.textContent = 'Attention — paramètres Q2 incohérents avec les données ESS : ' + [...new Set(warnings)].join(' ; ');
+    } else if (warning) {
+      warning.remove();
     }
-    warning.textContent = 'Attention — paramètres Q2 incohérents avec les données ESS : ' + [...new Set(warnings)].join(' ; ');
-  } else if (warning) {
-    warning.remove();
-  }
+  });
 }
 
 function applyPopulationFusion(inst) {
@@ -336,17 +348,26 @@ function applyPopulationFusion(inst) {
   const settings = window.questionnaire.data[inst] || {};
   const regimes = window.REGIMES_PAR_INST ? window.REGIMES_PAR_INST[inst] || [] : [];
   const branchMapping = buildBranchMapping(inst, regimes);
-  const populationHost = document.getElementById('charts-institution-pop');
-  if (!populationHost) return;
-  populationHost.querySelectorAll('.plotly-graph-div').forEach(div => {
-    if (div.id) {
-      window.branchFusion.applyBranchFusion(
-        div.id,
-        settings.Q1 || {},
-        branchMapping,
-        settings.Q1b || {}
-      );
-    }
+  
+  // Appliquer la fusion de branches à tous les conteneurs de graphiques de population
+  const populationContainers = [
+    'chart-institution-cotisants',
+    'chart-institution-beneficiaires'
+  ];
+  
+  populationContainers.forEach(containerId => {
+    const host = document.getElementById(containerId);
+    if (!host) return;
+    host.querySelectorAll('.plotly-graph-div').forEach(div => {
+      if (div.id) {
+        window.branchFusion.applyBranchFusion(
+          div.id,
+          settings.Q1 || {},
+          branchMapping,
+          settings.Q1b || {}
+        );
+      }
+    });
   });
 }
 
@@ -382,12 +403,16 @@ window.updateInstitution = function() {
     const q4Data = window.questionnaire.data[inst]?.Q4 || {};
     const q4Coefficients = window.questionnaire.data[inst]?.Q4_coefficients || {};
     if (Object.keys(q4Data).length > 0) {
-      const _pop3 = document.getElementById('charts-institution-pop');
-      if (_pop3) {
-        _pop3.querySelectorAll('.plotly-graph-div').forEach(div => {
+      [
+        'chart-institution-cotisants',
+        'chart-institution-beneficiaires'
+      ].forEach(containerId => {
+        const host = document.getElementById(containerId);
+        if (!host) return;
+        host.querySelectorAll('.plotly-graph-div').forEach(div => {
           if (div.id) window.unitConverter.applyConversion(div.id, q4Data, q4Coefficients);
         });
-      }
+      });
     }
   }
 };
@@ -419,12 +444,16 @@ window.addEventListener('questionnaire-saved', (e) => {
     
     // Appliquer uniquement si des conversions sont définies
     if (Object.keys(q4Data).length > 0) {
-      const _pop3 = document.getElementById('charts-institution-pop');
-      if (_pop3) {
-        _pop3.querySelectorAll('.plotly-graph-div').forEach(div => {
+      [
+        'chart-institution-cotisants',
+        'chart-institution-beneficiaires'
+      ].forEach(containerId => {
+        const host = document.getElementById(containerId);
+        if (!host) return;
+        host.querySelectorAll('.plotly-graph-div').forEach(div => {
           if (div.id) window.unitConverter.applyConversion(div.id, q4Data, q4Coefficients);
         });
-      }
+      });
     }
   }
 
@@ -462,12 +491,16 @@ window.addEventListener('load', async () => {
         const q4Data = data[institution]?.Q4 || {};
         const q4Coefficients = data[institution]?.Q4_coefficients || {};
         if (Object.keys(q4Data).length > 0) {
-          const _pop3 = document.getElementById('charts-institution-pop');
-          if (_pop3) {
-            _pop3.querySelectorAll('.plotly-graph-div').forEach(div => {
+          [
+            'chart-institution-cotisants',
+            'chart-institution-beneficiaires'
+          ].forEach(containerId => {
+            const host = document.getElementById(containerId);
+            if (!host) return;
+            host.querySelectorAll('.plotly-graph-div').forEach(div => {
               if (div.id) window.unitConverter.applyConversion(div.id, q4Data, q4Coefficients);
             });
-          }
+          });
         }
       }
     }
@@ -1703,6 +1736,348 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
     return fig.to_html(full_html=False, include_plotlyjs=False)
 
 
+def fig_institution_cotisants(rows: list[dict], institution: str, sex_mode: str = "all") -> str:
+    """Graphique population — Cotisants actifs uniquement (graphique indépendant)."""
+    data = [r for r in rows if r["institution"] == institution]
+    regimes_keys = sorted(set(r["regime_code"] for r in data))
+    
+    sex_mode = sex_mode if sex_mode in ("all", "hommes", "femmes") else "all"
+    sexe_cap = "Hommes" if sex_mode == "hommes" else "Femmes"
+    
+    fig = go.Figure()
+    
+    for key in regimes_keys:
+        subset = [r for r in data if r["regime_code"] == key]
+        subset.sort(key=lambda r: r["annee"])
+        annees  = [r["annee"] for r in subset]
+        color   = color_for_regime(key)
+        label   = NOM_COURT.get(key, key)
+        
+        if sex_mode == "all":
+            y_vals = [r["cotisants_total"] for r in subset]
+        else:
+            sex_suffix = "h" if sex_mode == "hommes" else "f"
+            y_vals = [r["cotisants_" + sex_suffix] for r in subset]
+        
+        fig.add_trace(go.Scatter(
+            x=annees, y=y_vals,
+            name=label, legendgroup=key,
+            mode="lines+markers",
+            line=dict(color=color, width=2.5),
+            marker=dict(size=6, color=color),
+            hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:,.0f}} cotisants<extra></extra>",
+        ))
+    
+    title_text = (
+        f"{NOM_INSTITUTION.get(institution, institution)} — Cotisants actifs" 
+        if sex_mode == "all" 
+        else f"{NOM_INSTITUTION.get(institution, institution)} — Cotisants {sexe_cap}"
+    )
+    
+    fig.update_layout(
+        title=dict(
+            text=title_text,
+            font=dict(size=14, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282', weight=700),
+            x=0.5, xanchor='center'
+        ),
+        height=450,
+        hovermode="x unified",
+        plot_bgcolor="#ffffff",
+        paper_bgcolor="#ffffff",
+        margin=dict(t=60, b=190, l=70, r=40, autoexpand=False),
+        font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=12, color='#4a5568'),
+        legend=dict(
+            **institution_legend_style(),
+            x=0,
+            y=-0.25,
+        ),
+    )
+    fig.update_xaxes(tickformat="d", dtick=1, showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0')
+    fig.update_yaxes(showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0', separatethousands=True)
+    
+    return fig.to_html(full_html=False, include_plotlyjs=False)
+
+
+def fig_institution_beneficiaires(rows: list[dict], institution: str, sex_mode: str = "all") -> str:
+    """Graphique population — Bénéficiaires uniquement (graphique indépendant)."""
+    data = [r for r in rows if r["institution"] == institution]
+    regimes_keys = sorted(set(r["regime_code"] for r in data))
+    
+    sex_mode = sex_mode if sex_mode in ("all", "hommes", "femmes") else "all"
+    sexe_cap = "Hommes" if sex_mode == "hommes" else "Femmes"
+    
+    fig = go.Figure()
+    
+    for key in regimes_keys:
+        subset = [r for r in data if r["regime_code"] == key]
+        subset.sort(key=lambda r: r["annee"])
+        annees  = [r["annee"] for r in subset]
+        color   = color_for_regime(key)
+        label   = NOM_COURT.get(key, key)
+        
+        if sex_mode == "all":
+            y_vals = [r["beneficiaires_total"] for r in subset]
+        else:
+            sex_suffix = "h" if sex_mode == "hommes" else "f"
+            y_vals = [r["beneficiaires_" + sex_suffix] for r in subset]
+        
+        fig.add_trace(go.Scatter(
+            x=annees, y=y_vals,
+            name=label, legendgroup=key,
+            mode="lines+markers",
+            line=dict(color=color, width=2.5),
+            marker=dict(size=6, color=color),
+            hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:,.0f}} bénéf.<extra></extra>",
+        ))
+    
+    title_text = (
+        f"{NOM_INSTITUTION.get(institution, institution)} — Bénéficiaires"
+        if sex_mode == "all"
+        else f"{NOM_INSTITUTION.get(institution, institution)} — Bénéficiaires {sexe_cap}"
+    )
+    
+    fig.update_layout(
+        title=dict(
+            text=title_text,
+            font=dict(size=14, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282', weight=700),
+            x=0.5, xanchor='center'
+        ),
+        height=450,
+        hovermode="x unified",
+        plot_bgcolor="#ffffff",
+        paper_bgcolor="#ffffff",
+        margin=dict(t=60, b=190, l=70, r=40, autoexpand=False),
+        font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=12, color='#4a5568'),
+        legend=dict(
+            **institution_legend_style(),
+            x=0,
+            y=-0.25,
+        ),
+    )
+    fig.update_xaxes(tickformat="d", dtick=1, showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0')
+    fig.update_yaxes(showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0', separatethousands=True)
+    
+    return fig.to_html(full_html=False, include_plotlyjs=False)
+
+
+def fig_institution_depenses(rows: list[dict], institution: str) -> str:
+    """Graphique finances — Dépenses totales uniquement (graphique indépendant)."""
+    data = [r for r in rows if r["institution"] == institution]
+    regimes_keys = sorted(set(r["regime_code"] for r in data))
+    if not regimes_keys:
+        return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
+    
+    fig = go.Figure()
+    
+    for key in regimes_keys:
+        subset = [r for r in data if r["regime_code"] == key]
+        subset.sort(key=lambda r: r["annee"])
+        annees = [r["annee"] for r in subset]
+        color = color_for_regime(key)
+        label = NOM_COURT.get(key, key)
+        
+        dep_tot = [
+            (r["depenses_prestations_cdf"] / 1e9) if r["depenses_prestations_cdf"] is not None else None
+            for r in subset
+        ]
+        
+        fig.add_trace(go.Bar(
+            x=annees, y=dep_tot,
+            name=label,
+            marker=dict(color=color, line=dict(width=0)),
+            opacity=0.85,
+            hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:.2f}} Mds CDF<extra></extra>",
+        ))
+    
+    fig.update_layout(
+        title=dict(
+            text=f"{NOM_INSTITUTION.get(institution, institution)} — Dépenses totales (Mds CDF)",
+            font=dict(size=14, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282', weight=700),
+            x=0.5, xanchor='center'
+        ),
+        height=450,
+        hovermode="x unified",
+        barmode="group",
+        plot_bgcolor="#ffffff",
+        paper_bgcolor="#ffffff",
+        margin=dict(t=60, b=190, l=70, r=40, autoexpand=False),
+        font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=12, color='#4a5568'),
+        legend=dict(
+            **institution_legend_style(),
+            x=0,
+            y=-0.25,
+        ),
+    )
+    fig.update_xaxes(tickformat="d", dtick=1, showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0')
+    fig.update_yaxes(showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0', separatethousands=True)
+    
+    return fig.to_html(full_html=False, include_plotlyjs=False)
+
+
+def fig_institution_depense_par_beneficiaire(rows: list[dict], institution: str) -> str:
+    """Graphique finances — Dépense moyenne par bénéficiaire uniquement (graphique indépendant)."""
+    data = [r for r in rows if r["institution"] == institution]
+    regimes_keys = sorted(set(r["regime_code"] for r in data))
+    if not regimes_keys:
+        return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
+    
+    fig = go.Figure()
+    
+    for key in regimes_keys:
+        subset = [r for r in data if r["regime_code"] == key]
+        subset.sort(key=lambda r: r["annee"])
+        annees = [r["annee"] for r in subset]
+        color = color_for_regime(key)
+        label = NOM_COURT.get(key, key)
+        
+        dep_moy = [
+            (r["depense_moy_par_beneficiaire_cdf"] / 1e3) if r["depense_moy_par_beneficiaire_cdf"] is not None else None
+            for r in subset
+        ]
+        
+        fig.add_trace(go.Scatter(
+            x=annees, y=dep_moy,
+            name=label,
+            mode="lines+markers",
+            line=dict(color=color, width=3),
+            marker=dict(size=8, line=dict(width=1.5, color='white')),
+            hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:,.0f}} k CDF<extra></extra>",
+        ))
+    
+    fig.update_layout(
+        title=dict(
+            text=f"{NOM_INSTITUTION.get(institution, institution)} — Dépense moyenne par bénéficiaire (k CDF)",
+            font=dict(size=14, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282', weight=700),
+            x=0.5, xanchor='center'
+        ),
+        height=450,
+        hovermode="x unified",
+        plot_bgcolor="#ffffff",
+        paper_bgcolor="#ffffff",
+        margin=dict(t=60, b=190, l=70, r=40, autoexpand=False),
+        font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=12, color='#4a5568'),
+        legend=dict(
+            **institution_legend_style(),
+            x=0,
+            y=-0.25,
+        ),
+    )
+    fig.update_xaxes(tickformat="d", dtick=1, showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0')
+    fig.update_yaxes(showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0', separatethousands=True)
+    
+    return fig.to_html(full_html=False, include_plotlyjs=False)
+
+
+def fig_institution_recettes(rows: list[dict], institution: str) -> str:
+    """Graphique finances — Recettes totales uniquement (graphique indépendant)."""
+    data = [r for r in rows if r["institution"] == institution]
+    regimes_keys = sorted(set(r["regime_code"] for r in data))
+    if not regimes_keys:
+        return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
+    
+    fig = go.Figure()
+    
+    for key in regimes_keys:
+        subset = [r for r in data if r["regime_code"] == key]
+        subset.sort(key=lambda r: r["annee"])
+        annees = [r["annee"] for r in subset]
+        color = color_for_regime(key)
+        label = NOM_COURT.get(key, key)
+        
+        rec_tot = [
+            (r["recettes_cdf"] / 1e9) if r["recettes_cdf"] is not None else None
+            for r in subset
+        ]
+        
+        fig.add_trace(go.Bar(
+            x=annees, y=rec_tot,
+            name=label,
+            marker=dict(color=color, line=dict(width=0)),
+            opacity=0.85,
+            hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:.2f}} Mds CDF<extra></extra>",
+        ))
+    
+    fig.update_layout(
+        title=dict(
+            text=f"{NOM_INSTITUTION.get(institution, institution)} — Recettes totales (Mds CDF)",
+            font=dict(size=14, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282', weight=700),
+            x=0.5, xanchor='center'
+        ),
+        height=450,
+        hovermode="x unified",
+        barmode="group",
+        plot_bgcolor="#ffffff",
+        paper_bgcolor="#ffffff",
+        margin=dict(t=60, b=190, l=70, r=40, autoexpand=False),
+        font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=12, color='#4a5568'),
+        legend=dict(
+            **institution_legend_style(),
+            x=0,
+            y=-0.25,
+        ),
+    )
+    fig.update_xaxes(tickformat="d", dtick=1, showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0')
+    fig.update_yaxes(showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0', separatethousands=True)
+    
+    return fig.to_html(full_html=False, include_plotlyjs=False)
+
+
+def fig_institution_contribution(rows: list[dict], institution: str) -> str:
+    """Graphique finances — Contribution moyenne uniquement (graphique indépendant)."""
+    data = [r for r in rows if r["institution"] == institution]
+    regimes_keys = sorted(set(r["regime_code"] for r in data))
+    if not regimes_keys:
+        return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
+    
+    fig = go.Figure()
+    
+    for key in regimes_keys:
+        subset = [r for r in data if r["regime_code"] == key]
+        subset.sort(key=lambda r: r["annee"])
+        annees = [r["annee"] for r in subset]
+        color = color_for_regime(key)
+        label = NOM_COURT.get(key, key)
+        
+        contrib_moy = [
+            ((r["recettes_cdf"] / r["cotisants_total"]) / 1e3)
+            if (r["recettes_cdf"] is not None and r["cotisants_total"] not in (None, 0))
+            else None
+            for r in subset
+        ]
+        
+        fig.add_trace(go.Scatter(
+            x=annees, y=contrib_moy,
+            name=label,
+            mode="lines+markers",
+            line=dict(color=color, width=3),
+            marker=dict(size=8, line=dict(width=1.5, color='white')),
+            hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:,.0f}} k CDF<extra></extra>",
+        ))
+    
+    fig.update_layout(
+        title=dict(
+            text=f"{NOM_INSTITUTION.get(institution, institution)} — Contribution moyenne (k CDF / cotisant)",
+            font=dict(size=14, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282', weight=700),
+            x=0.5, xanchor='center'
+        ),
+        height=450,
+        hovermode="x unified",
+        plot_bgcolor="#ffffff",
+        paper_bgcolor="#ffffff",
+        margin=dict(t=60, b=190, l=70, r=40, autoexpand=False),
+        font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=12, color='#4a5568'),
+        legend=dict(
+            **institution_legend_style(),
+            x=0,
+            y=-0.25,
+        ),
+    )
+    fig.update_xaxes(tickformat="d", dtick=1, showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0')
+    fig.update_yaxes(showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0', separatethousands=True)
+    
+    return fig.to_html(full_html=False, include_plotlyjs=False)
+
+
 def fig_prestation(rows: list[dict], institution: str, regime_code: str) -> str:
     """Graphique bénéficiaires + montant unitaire pour toutes les prestations d'un régime."""
     data = [r for r in rows
@@ -2661,16 +3036,28 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     for inst in institutions:
         charts_institution[inst] = {
             "all": {
-                "population": fig_institution(regimes, inst, "all"),
-                "finances": fig_institution_finances(regimes, inst),
+                "cotisants": fig_institution_cotisants(regimes, inst, "all"),
+                "beneficiaires": fig_institution_beneficiaires(regimes, inst, "all"),
+                "depenses": fig_institution_depenses(regimes, inst),
+                "depense_par_beneficiaire": fig_institution_depense_par_beneficiaire(regimes, inst),
+                "recettes": fig_institution_recettes(regimes, inst),
+                "contribution": fig_institution_contribution(regimes, inst),
             },
             "hommes": {
-                "population": fig_institution(regimes, inst, "hommes"),
-                "finances": "",
+                "cotisants": fig_institution_cotisants(regimes, inst, "hommes"),
+                "beneficiaires": fig_institution_beneficiaires(regimes, inst, "hommes"),
+                "depenses": fig_institution_depenses(regimes, inst),
+                "depense_par_beneficiaire": fig_institution_depense_par_beneficiaire(regimes, inst),
+                "recettes": fig_institution_recettes(regimes, inst),
+                "contribution": fig_institution_contribution(regimes, inst),
             },
             "femmes": {
-                "population": fig_institution(regimes, inst, "femmes"),
-                "finances": "",
+                "cotisants": fig_institution_cotisants(regimes, inst, "femmes"),
+                "beneficiaires": fig_institution_beneficiaires(regimes, inst, "femmes"),
+                "depenses": fig_institution_depenses(regimes, inst),
+                "depense_par_beneficiaire": fig_institution_depense_par_beneficiaire(regimes, inst),
+                "recettes": fig_institution_recettes(regimes, inst),
+                "contribution": fig_institution_contribution(regimes, inst),
             },
         }
         tables_institution[inst] = {
@@ -2715,7 +3102,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     # au parseur HTML tout en étant correctement décodée par le moteur JS.
     def js_safe_json(data) -> str:
         return json.dumps(data).replace("</", "\\u003c/")
-
+    
     charts_inst_json  = js_safe_json(charts_institution)
     tables_inst_json  = js_safe_json(tables_institution)
     charts_prest_json = js_safe_json(charts_prestations)
@@ -4407,20 +4794,21 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       overflow-y: auto;
       padding-right: 6px;
     }}
-    .institution-main #charts-institution-pop,
-    .institution-main #charts-institution-fin {{
+    .institution-main #charts-institution-grid {{
+      width: 100%;
+    }}
+    .institution-main .chart-container {{
       flex: none;
       min-width: 0;
       max-width: 100%;
       width: 100%;
       overflow: hidden;
     }}
-    .institution-main #charts-institution-pop .plotly-graph-div,
-    .institution-main #charts-institution-fin .plotly-graph-div {{
+    .institution-main .chart-container .plotly-graph-div {{
       max-width: 100%;
       width: 100% !important;
     }}
-    .regime-description {{ 
+    .regime-description {{
       color: #4a5568; 
       font-size: 0.95rem; 
       line-height: 1.65;
@@ -4986,7 +5374,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
         </div>
       </div>
       <div id="block-charts-institution" class="chart-block">
-        <h3 id="title-institution">Évolution par régime</h3>
+        <h3 id="title-institution">Graphiques par régime</h3>
         <div class="selector-bar selector-stack" style="margin-bottom:10px;">
           <label>Affichage :</label>
           <div id="chart-mode-toggle" class="chart-mode-toggle">
@@ -4995,7 +5383,14 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             <button type="button" class="chart-mode-btn" data-sex-mode="femmes" onclick="setChartSexMode('femmes')">Femmes</button>
           </div>
         </div>
-        <div id="charts-institution-pop"></div>
+        <div id="charts-institution-grid" class="charts-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 20px;">
+          <div id="chart-institution-cotisants" class="chart-container"></div>
+          <div id="chart-institution-beneficiaires" class="chart-container"></div>
+          <div id="chart-institution-depenses" class="chart-container"></div>
+          <div id="chart-institution-depense-par-beneficiaire" class="chart-container"></div>
+          <div id="chart-institution-recettes" class="chart-container"></div>
+          <div id="chart-institution-contribution" class="chart-container"></div>
+        </div>
         <details id="institution-sex-distributions" class="sex-pie-details">
           <summary>Distribution H/F (cotisants & bénéficiaires) par année</summary>
           <div class="sex-pie-content">
@@ -5009,7 +5404,6 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             </div>
           </div>
         </details>
-        <div id="charts-institution-fin"></div>
       </div>
     </div>
   </div>
@@ -5615,6 +6009,19 @@ function initGraphSeriesFilters(plotContainerId, filtersContainerId, label, onSe
       const c = document.getElementById(plotContainerId);
       return c ? c.querySelector('.plotly-graph-div') : null;
     }};
+    const normalizeSeriesKey = (value) => String(value || '')
+      .replace(/<br\s*\/?>/gi, ' ')
+      .trim()
+      .toLowerCase();
+    const isSelectedSeries = (key, selectedKeys) => {{
+      const normalizedKey = normalizeSeriesKey(key);
+      return (selectedKeys || []).some(sel => {{
+        const normalizedSel = normalizeSeriesKey(sel);
+        return normalizedKey === normalizedSel ||
+          normalizedKey.startsWith(normalizedSel) ||
+          normalizedSel.startsWith(normalizedKey);
+      }});
+    }};
     const applySeriesFilter = () => {{
       const activePlotDiv = getActivePlotDiv();
       if (!activePlotDiv || !activePlotDiv.data) return;
@@ -5623,7 +6030,7 @@ function initGraphSeriesFilters(plotContainerId, filtersContainerId, label, onSe
         .map(cb => cb.value);
       const visible = activePlotDiv.data.map(trace => {{
         const key = trace.legendgroup || trace.name;
-        return selected.includes(key) ? true : 'legendonly';
+        return isSelectedSeries(key, selected) ? true : 'legendonly';
       }});
       Plotly.restyle(activePlotDiv, {{ visible: visible }});
       // Propager le filtre aux graphiques secondaires (ex. finances agrégées)
@@ -5634,8 +6041,12 @@ function initGraphSeriesFilters(plotContainerId, filtersContainerId, label, onSe
         if (!extraPlotDiv || !extraPlotDiv.data) return;
         const extraVisible = extraPlotDiv.data.map(trace => {{
           const key = trace.legendgroup || trace.name;
-          return selected.includes(key) ? true : 'legendonly';
+          return isSelectedSeries(key, selected) ? true : 'legendonly';
         }});
+        if (selected.length && !extraVisible.some(v => v === true)) {{
+          Plotly.restyle(extraPlotDiv, {{ visible: extraPlotDiv.data.map(() => true) }});
+          return;
+        }}
         Plotly.restyle(extraPlotDiv, {{ visible: extraVisible }});
       }});
       if (onSelectionChange) onSelectionChange(selected);
@@ -8779,7 +9190,7 @@ function updateInstitution() {{
   const defaultSelected = Object.keys(REGIME_META[inst] || {{}});
   renderRegimeDescription(inst, defaultSelected);
   document.getElementById('title-institution').textContent =
-    'Évolution par régime — ' + inst;
+    'Graphiques par régime — ' + inst;
   scheduleInstitutionTabResize();
 }}
 
@@ -8794,15 +9205,13 @@ function getTableHtml(inst, mode) {{
 function getChartPack(inst, mode) {{
   const data = CHARTS_INST[inst] || {{}};
   const pack = data[mode] || data.all || {{}};
-  if (typeof pack === 'string') {{
-    return {{
-      population: pack || '<p style="color:#888;padding:10px">Aucune donnée graphique disponible.</p>',
-      finances: ''
-    }};
-  }}
   return {{
-    population: pack.population || '<p style="color:#888;padding:10px">Aucune donnée graphique disponible.</p>',
-    finances: pack.finances || ''
+    cotisants: pack.cotisants || '<p style="color:#888;padding:10px">Aucune donnée graphique disponible.</p>',
+    beneficiaires: pack.beneficiaires || '<p style="color:#888;padding:10px">Aucune donnée graphique disponible.</p>',
+    depenses: pack.depenses || '<p style="color:#888;padding:10px">Aucune donnée financière disponible.</p>',
+    depense_par_beneficiaire: pack.depense_par_beneficiaire || '<p style="color:#888;padding:10px">Aucune donnée financière disponible.</p>',
+    recettes: pack.recettes || '<p style="color:#888;padding:10px">Aucune donnée financière disponible.</p>',
+    contribution: pack.contribution || '<p style="color:#888;padding:10px">Aucune donnée financière disponible.</p>'
   }};
 }}
 
@@ -8823,29 +9232,26 @@ function setChartSexMode(mode, instOverride) {{
   CURRENT_CHART_SEX_MODE = modeValue;
   const inst = instOverride || document.getElementById('sel-institution').value;
   const pack = getChartPack(inst, modeValue);
-  injectHtmlAndRunScripts('charts-institution-pop', pack.population);
-  bindInstitutionLegendCompaction('charts-institution-pop');
+  const chartTargets = [
+    ['chart-institution-cotisants', pack.cotisants],
+    ['chart-institution-beneficiaires', pack.beneficiaires],
+    ['chart-institution-depenses', pack.depenses],
+    ['chart-institution-depense-par-beneficiaire', pack.depense_par_beneficiaire],
+    ['chart-institution-recettes', pack.recettes],
+    ['chart-institution-contribution', pack.contribution],
+  ];
+  chartTargets.forEach(([containerId, content]) => {{
+    injectHtmlAndRunScripts(containerId, content);
+    bindInstitutionLegendCompaction(containerId);
+  }});
   applyPopulationFusion(inst);
-  const finHost = document.getElementById('charts-institution-fin');
-  if (finHost) {{
-    if (pack.finances) {{
-      finHost.style.display = '';
-      finHost.style.height = '';
-      injectHtmlAndRunScripts('charts-institution-fin', pack.finances);
-      bindInstitutionLegendCompaction('charts-institution-fin');
-      // Réappliquer la fusion Q2 après injection (Plotly initialise le div de façon synchrone)
-      if (typeof applyQ2ToFinChart === 'function') {{
-        setTimeout(() => applyQ2ToFinChart(inst), 100);
-      }}
-    }} else {{
-      finHost.style.display = 'none';
-      finHost.innerHTML = '';
-    }}
+  if (typeof applyQ2ToFinChart === 'function') {{
+    setTimeout(() => applyQ2ToFinChart(inst), 100);
   }}
   syncChartModeButtons(modeValue);
   // Reconstruire les filtres de séries sur le nouveau graphique injecté
   initGraphSeriesFilters(
-    'charts-institution-pop',
+    'chart-institution-cotisants',
     'filters-institution',
     'Régimes',
     selected => {{
@@ -8854,7 +9260,13 @@ function setChartSexMode(mode, instOverride) {{
       renderInstitutionSexDistributions(currentInst, selected);
     }},
     () => applyRegimeQuickFilter(),
-    ['charts-institution-fin']
+    [
+      'chart-institution-beneficiaires',
+      'chart-institution-depenses',
+      'chart-institution-depense-par-beneficiaire',
+      'chart-institution-recettes',
+      'chart-institution-contribution'
+    ]
   );
   const pieDetails = document.getElementById('institution-sex-distributions');
   if (pieDetails && pieDetails.dataset.bound !== '1') {{
@@ -9063,11 +9475,7 @@ function compactInstitutionLegends() {{
         rowHeight = Math.max(rowHeight, metric.height);
       }});
       if (background) {{
-        const contentHeight = cursorY - firstY + rowHeight + 28;
-        background.setAttribute(
-          'height',
-          String(Math.min({INSTITUTION_LEGEND_HEIGHT_PX}, Math.max(42, contentHeight)))
-        );
+        background.setAttribute('height', String({INSTITUTION_LEGEND_HEIGHT_PX}));
       }}
     }});
   }});
@@ -9104,29 +9512,10 @@ function scheduleInstitutionTabResize() {{
 function adjustInstitutionChartHeights() {{
   const panel = document.getElementById('tab-institutions');
   if (!panel || !panel.classList.contains('active')) return;
-  const popHost = document.getElementById('charts-institution-pop');
-  const finHost = document.getElementById('charts-institution-fin');
-  if (!popHost || !finHost) return;
-  const width = Math.floor(popHost.clientWidth || 0);
-  if (width <= 0) return;
-  const hasFin = finHost.style.display !== 'none' && finHost.innerHTML.trim() !== '';
-  let popHeight = 500;
-  let finHeight = 820;
-  if (width < 760) {{
-    popHeight = 640;
-    finHeight = 1100;
-  }} else if (width < 980) {{
-    popHeight = 580;
-    finHeight = 980;
-  }}
-  relayoutHostPlot(popHost, popHeight);
-  if (hasFin) {{
-    finHost.style.height = '';
-    relayoutHostPlot(finHost, finHeight);
-    finHost.style.display = '';
-  }} else {{
-    finHost.style.height = '';
-  }}
+  const grid = document.getElementById('charts-institution-grid');
+  if (!grid) return;
+  // La grille CSS gère automatiquement les hauteurs des conteneurs
+  // Aucun réglage supplémentaire nécessaire
 }}
 
 function renderSexPieCards(container, yearlyRows, colors) {{
