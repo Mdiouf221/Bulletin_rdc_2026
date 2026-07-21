@@ -1884,6 +1884,7 @@ def fig_institution_depenses(rows: list[dict], institution: str) -> str:
         fig.add_trace(go.Bar(
             x=annees, y=dep_tot,
             name=label,
+            legendgroup=key,
             marker=dict(color=color, line=dict(width=0)),
             opacity=0.85,
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:.2f}} Mds CDF<extra></extra>",
@@ -1992,6 +1993,7 @@ def fig_institution_recettes(rows: list[dict], institution: str) -> str:
         fig.add_trace(go.Bar(
             x=annees, y=rec_tot,
             name=label,
+            legendgroup=key,
             marker=dict(color=color, line=dict(width=0)),
             opacity=0.85,
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:.2f}} Mds CDF<extra></extra>",
@@ -3136,155 +3138,81 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     years_for_defaults = indicateurs_payload.get("years_numerator", indicateurs_payload.get("years", []))
     year_start_default = min(years_for_defaults) if years_for_defaults else 2020
     year_end_default = max(years_for_defaults) if years_for_defaults else 2024
+    # ── Dénominateurs depuis la base SQLite locale (Denominateurs 2026.xlsx) ──
+    # Mapping indicateur OIT → (var_code, class_sex, class_age) dans denominateurs_ref
+    # Conforme à la feuille 2.1_Denominators du calculateur OIT (CALC_v16)
+    _DENOM_QUERIES = [
+        # (clé JSON,           label court,                          var_code,        sex,     age)
+        ("populationTotale",   "Pop. totale (0+)",                  "var-c-popsx",  "sex-t", "age-0+"),
+        ("enfants0_14",        "Enfants 0-14 (B-CH-15)",            "var-c-popsx",  "sex-t", "age-0-14"),
+        ("enfants0_17",        "Enfants 0-17 (B-CH-18)",            "var-c-popsx",  "sex-t", "age-0-17"),
+        ("femmesAccouche",     "Femmes 15-49 (B-MA)",               "var-c-popma",  "sex-f", "age-15-49"),
+        ("forceDeTravail",     "Force de travail 15+ (C-WI/C-SI)",  "var-c-lf",     "sex-t", "age-15+"),
+        ("chomeurs",           "Chômeurs 15+ (B-UN)",               "var-c-un",     "sex-t", "age-15+"),
+        ("populationRetraite", "Pop. retraite 65+ (B-OA)",          "var-c-popsx",  "sex-t", "age-65+"),
+        ("wap15_64",           "Pop. active 15-64 (C-OA-WAP)",      "var-c-popsx",  "sex-t", "age-15-64"),
+        ("wap15plus",          "Pop. 15+ (C-OA-LF denom)",          "var-c-popsx",  "sex-t", "age-15+"),
+    ]
+    _denom_meta = {k: lbl for k, lbl, *_ in _DENOM_QUERIES}
+
+    # Requêter la base SQLite
+    _static_rows = []
+    try:
+        import sqlite3 as _sqlite3
+        from pathlib import Path as _Path
+        _db_path = _Path(__file__).parent.parent / "protection_sociale_rdc.db"
+        if _db_path.exists():
+            _con = _sqlite3.connect(str(_db_path))
+            _cur = _con.cursor()
+            # Collecter toutes les années disponibles pour les clés prioritaires
+            _cur.execute(
+                "SELECT DISTINCT year FROM denominateurs_ref "
+                "WHERE iso3='COD' AND var_code='var-c-popsx' AND class_sex='sex-t' AND class_age='age-0+' "
+                "AND val_n IS NOT NULL ORDER BY year"
+            )
+            _years = [r[0] for r in _cur.fetchall()]
+            for _yr in _years:
+                _row = {"year": _yr}
+                for _key, _lbl, _vc, _sx, _ag in _DENOM_QUERIES:
+                    _cur.execute(
+                        "SELECT val_n, source FROM denominateurs_ref "
+                        "WHERE iso3='COD' AND var_code=? AND class_sex=? AND class_age=? "
+                        "AND year=? AND val_n IS NOT NULL LIMIT 1",
+                        (_vc, _sx, _ag, _yr)
+                    )
+                    _res = _cur.fetchone()
+                    _row[_key] = round(_res[0]) if _res else None
+                    _row[_key + "_meta"] = _res[1] if _res else "N/D"
+                _static_rows.append(_row)
+            _con.close()
+    except Exception as _e:
+        print(f"[AVERT] Impossible de charger les dénominateurs depuis SQLite : {_e}")
+
     denominateurs_json = js_safe_json({
         "sources": {
-            "bm_api": {
-                "label": "Banque mondiale (proxy local)",
-                "description": "Population totale, 15-64, 65+, taux natalité — séries SP.POP.* (appel via /api/denom/bm)",
-            },
-        "wpp_api": {
-                "label": "ONU WPP via PopPyramid (proxy local)",
-                "description": "Pyramide des âges quinquennale RDC — ONU WPP 2024 (appel via /api/denom/wpp)",
-            },
-            "ilostat_api": {
-                "label": "ILOSTAT / OIT (proxy local)",
-                "description": "Séries emploi/chômage OIT pour la RDC (réponse vide => indisponible)",
-            },
-            "oms_api": {
-                "label": "OMS GHO (proxy local, disponibilité variable)",
-                "description": "Prévalence handicap (WHS9_86). Si vide, traiter comme indisponible ou fallback explicite.",
-            },
-            "manual": {
-                "label": "✏️ Saisie manuelle",
-                "description": "Entrer les valeurs manuellement pour chaque année avec un commentaire de source",
+            "local_db": {
+                "label": "Base locale (Denominateurs 2026.xlsx)",
+                "description": "Données ONU WPP 2024 et ILOSTAT pré-importées — disponibles 2015–2027, RDC",
             },
         },
         "defaults": {
-            "source_population_totale": "bm_api",
-            "source_population_enfants": "wpp_api",
-            "source_population_active": "wpp_api",
-            "source_population_retraite": "wpp_api",
-            "source_handicap_grave": "oms_api",
-            "source_maternite": "bm_api",
-            "year_start_total": year_start_default,
-            "year_end_total": year_end_default,
-            "year_start_enfants": year_start_default,
-            "year_end_enfants": year_end_default,
-            "year_start_active": year_start_default,
-            "year_end_active": year_end_default,
-            "year_start_retraite": year_start_default,
-            "year_end_retraite": year_end_default,
-            "year_start_handicap": year_start_default,
-            "year_end_handicap": year_end_default,
-            "year_start_maternite": year_start_default,
-            "year_end_maternite": year_end_default,
-            "child_age_min": 0,
-            "child_age_max": 14,
+            "source_population_totale":   "local_db",
+            "source_population_enfants":  "local_db",
+            "source_population_active":   "local_db",
+            "source_population_retraite": "local_db",
+            "source_handicap_grave":      "local_db",
+            "source_maternite":           "local_db",
             "retirement_age_h": 65,
-            "retirement_age_f": 60,  # CNSS : 60 ans femmes (DM-013) ; CNSSAP : 60 ans uniformément
+            "retirement_age_f": 60,
             "working_age_min": 15,
             "working_age_max": 64,
             "maternity_age_min": 15,
             "maternity_age_max": 49,
-            "prevalence_handicap_fallback": 15.0,
-            "strict_exact_year_default": True,
-            "lfp_rate_atmp_pct": 63.44,
         },
-        # Données pré-chargées BM/WPP pour la RDC (évite un écran vide au démarrage)
-        # Sources : Banque mondiale SP.POP.TOTL, SP.POP.1564.TO, SP.POP.65UP.TO,
-        #           SP.DYN.CBRT.IN — consultées juin 2025.
-        # Naissances = proxy (CBR × pop totale / 1000).
-        # Données actualisées juillet 2026 — Sources : BM API (SP.POP.TOTL, SP.POP.1564.TO,
-        # SP.POP.65UP.TO, SP.DYN.CBRT.IN) + WPP 2024 via PopulationPyramid.net (0-14 ans).
-        # Employed = Pop 15-64 × (1 − taux chômage ILOSTAT modélisé).
-        # ForceDeTravail = Pop 15+ × taux participation 63,44% (ILOSTAT MICS 2020).
-        # Handicap = 15% × Pop totale (WHO World Report on Disability 2011, fallback).
-        "static_rows": [
-            {
-                "year": 2019,
-                "populationTotale": 92947442,
-                "populationEnfants": 42735104,
-                "populationActive": 47337200,
-                "populationEmployed": 45017677,
-                "populationForceDeTravail": 31854707,
-                "populationRetraite": 2875139,
-                "populationHandicapGrave": 13942116,
-                "naissancesVivantes": 3954821,
-                "femmesAyantAccouche": 3954821,
-                "metaTotal": "BM SP.POP.TOTL 2019 (actualisé juil. 2026)",
-                "metaEnfants": "WPP 2024 — 0-14 ans 2019 (PopPyramid API M49:180)",
-                "metaActive": "BM SP.POP.1564.TO 2019 (actualisé juil. 2026)",
-                "metaEmployed": "BM 15-64 × (1 − 4,9% chômage ILOSTAT) 2019",
-                "metaForceDeTravail": "Pop 15+ × 63,44% LFP (ILOSTAT MICS 2020) — 2019",
-                "metaRetraite": "BM SP.POP.65UP.TO 2019 (actualisé juil. 2026)",
-                "metaHandicapGrave": "15% × Pop totale 2019 (WHO WRD 2011, fallback — API GHO sans indicateur pays)",
-                "metaNaissances": "BM CBR 42,549‰ × Pop 2019 (actualisé juil. 2026)",
-                "metaFemmes": "BM CBR 42,549‰ × Pop 2019 (actualisé juil. 2026)",
-            },
-            {
-                "year": 2020,
-                "populationTotale": 95989998,
-                "populationEnfants": 44205883,
-                "populationActive": 48821791,
-                "populationEmployed": 46478345,
-                "populationForceDeTravail": 32851843,
-                "populationRetraite": 2962325,
-                "populationHandicapGrave": 14398500,
-                "naissancesVivantes": 4049818,
-                "femmesAyantAccouche": 4049818,
-                "metaTotal": "BM SP.POP.TOTL 2020 (actualisé juil. 2026)",
-                "metaEnfants": "WPP 2024 — 0-14 ans 2020 (PopPyramid API M49:180)",
-                "metaActive": "BM SP.POP.1564.TO 2020 (actualisé juil. 2026)",
-                "metaEmployed": "BM 15-64 × (1 − 4,8% chômage ILOSTAT) 2020",
-                "metaForceDeTravail": "Pop 15+ × 63,44% LFP (ILOSTAT MICS 2020) — 2020",
-                "metaRetraite": "BM SP.POP.65UP.TO 2020 (actualisé juil. 2026)",
-                "metaHandicapGrave": "15% × Pop totale 2020 (WHO WRD 2011, fallback — API GHO sans indicateur pays)",
-                "metaNaissances": "BM CBR 42,190‰ × Pop 2020 (actualisé juil. 2026)",
-                "metaFemmes": "BM CBR 42,190‰ × Pop 2020 (actualisé juil. 2026)",
-            },
-            {
-                "year": 2021,
-                "populationTotale": 99148932,
-                "populationEnfants": 45702016,
-                "populationActive": 50399447,
-                "populationEmployed": 48081072,
-                "populationForceDeTravail": 33906724,
-                "populationRetraite": 3047469,
-                "populationHandicapGrave": 14872340,
-                "naissancesVivantes": 4158009,
-                "femmesAyantAccouche": 4158009,
-                "metaTotal": "BM SP.POP.TOTL 2021 (actualisé juil. 2026)",
-                "metaEnfants": "WPP 2024 — 0-14 ans 2021 (PopPyramid API M49:180)",
-                "metaActive": "BM SP.POP.1564.TO 2021 (actualisé juil. 2026)",
-                "metaEmployed": "BM 15-64 × (1 − 4,6% chômage ILOSTAT) 2021",
-                "metaForceDeTravail": "Pop 15+ × 63,44% LFP (ILOSTAT MICS 2020) — 2021",
-                "metaRetraite": "BM SP.POP.65UP.TO 2021 (actualisé juil. 2026)",
-                "metaHandicapGrave": "15% × Pop totale 2021 (WHO WRD 2011, fallback — API GHO sans indicateur pays)",
-                "metaNaissances": "BM CBR 41,937‰ × Pop 2021 (actualisé juil. 2026)",
-                "metaFemmes": "BM CBR 41,937‰ × Pop 2021 (actualisé juil. 2026)",
-            },
-            {
-                "year": 2022,
-                "populationTotale": 102396968,
-                "populationEnfants": 47217409,
-                "populationActive": 52040020,
-                "populationEmployed": 49750259,
-                "populationForceDeTravail": 35005912,
-                "populationRetraite": 3139539,
-                "populationHandicapGrave": 15359545,
-                "naissancesVivantes": 4262069,
-                "femmesAyantAccouche": 4262069,
-                "metaTotal": "BM SP.POP.TOTL 2022 (actualisé juil. 2026)",
-                "metaEnfants": "WPP 2024 — 0-14 ans 2022 (PopPyramid API M49:180)",
-                "metaActive": "BM SP.POP.1564.TO 2022 (actualisé juil. 2026)",
-                "metaEmployed": "BM 15-64 × (1 − 4,4% chômage ILOSTAT) 2022",
-                "metaForceDeTravail": "Pop 15+ × 63,44% LFP (ILOSTAT MICS 2020) — 2022",
-                "metaRetraite": "BM SP.POP.65UP.TO 2022 (actualisé juil. 2026)",
-                "metaHandicapGrave": "15% × Pop totale 2022 (WHO WRD 2011, fallback — API GHO sans indicateur pays)",
-                "metaNaissances": "BM CBR 41,623‰ × Pop 2022 (actualisé juil. 2026)",
-                "metaFemmes": "BM CBR 41,623‰ × Pop 2022 (actualisé juil. 2026)",
-            },
-        ],
+        "meta_labels": _denom_meta,
+        # Données pré-chargées depuis la base SQLite locale (Denominateurs 2026.xlsx)
+        # Toutes les années disponibles, tous les indicateurs.
+        "static_rows": _static_rows,
     })
 
     # Listes pour les sélecteurs
@@ -8612,19 +8540,18 @@ async function computeDenominatorsLegacy() {{
 }}
 
 const ANNUAL_DENOMINATOR_SPECS = {{
-  global_131: {{ shortKey: 'total', sources: ['bm_api', 'wpp_api', 'manual'], defaultSource: 'bm_api' }},
-  ind_22_enfants: {{ shortKey: 'child', sources: ['wpp_api', 'manual'], defaultSource: 'wpp_api' }},
-  ind_23_maternite: {{ shortKey: 'mat', sources: ['bm_api', 'wpp_api', 'manual'], defaultSource: 'bm_api' }},
-  ind_24_handicap: {{ shortKey: 'handicap', sources: ['documented_proxy', 'manual'], defaultSource: 'documented_proxy' }},
-  ind_25_atmp: {{ shortKey: 'lf', sources: ['derived_dm014', 'manual'], defaultSource: 'derived_dm014' }},
-  ind_26_chomage: {{ shortKey: 'active', sources: ['manual'], defaultSource: 'manual' }},
-  ind_27_vieillesse: {{ shortKey: 'ret', sources: ['wpp_api', 'bm_api', 'manual'], defaultSource: 'wpp_api' }},
-  ind_28_vulnerables: {{ shortKey: 'total', sources: ['population_total_proxy', 'manual'], defaultSource: 'population_total_proxy' }},
-  ind_29_cotisants: {{ shortKey: 'active', sources: ['bm_api', 'wpp_api', 'manual'], defaultSource: 'bm_api' }},
+  global_131:       {{ shortKey: 'total',   sources: ['local_db', 'manual'], defaultSource: 'local_db' }},
+  ind_22_enfants:   {{ shortKey: 'child',   sources: ['local_db', 'manual'], defaultSource: 'local_db' }},
+  ind_23_maternite: {{ shortKey: 'mat',     sources: ['local_db', 'manual'], defaultSource: 'local_db' }},
+  ind_24_handicap:  {{ shortKey: 'handicap',sources: ['local_db', 'documented_proxy', 'manual'], defaultSource: 'local_db' }},
+  ind_25_atmp:      {{ shortKey: 'lf',      sources: ['local_db', 'derived_dm014', 'manual'], defaultSource: 'local_db' }},
+  ind_26_chomage:   {{ shortKey: 'active',  sources: ['local_db', 'manual'], defaultSource: 'local_db' }},
+  ind_27_vieillesse:{{ shortKey: 'ret',     sources: ['local_db', 'manual'], defaultSource: 'local_db' }},
+  ind_28_vulnerables:{{ shortKey: 'total',  sources: ['local_db', 'population_total_proxy', 'manual'], defaultSource: 'local_db' }},
+  ind_29_cotisants: {{ shortKey: 'active',  sources: ['local_db', 'manual'], defaultSource: 'local_db' }},
 }};
 const ANNUAL_DENOMINATOR_SOURCE_LABELS = {{
-  bm_api: 'Banque mondiale — valeur de la même année',
-  wpp_api: 'World Population Prospects — valeur de la même année',
+  local_db: 'Base locale OIT — ONU WPP 2024 / ILOSTAT (Denominateurs 2026.xlsx)',
   manual: 'Saisie manuelle pour cette année',
   documented_proxy: 'Proxy documenté : population totale × prévalence paramétrée',
   derived_dm014: "DM-014 : population 15+ × taux d'activité paramétré",
@@ -8764,102 +8691,118 @@ function getManualAnnualDenominator(shortKey, year) {{
   return {{ value: Number(result.value), meta: result.meta || 'Saisie manuelle', sourceYears: [Number(year)], warnings: [] }};
 }}
 
+// ── Base locale OIT ─────────────────────────────────────────────────────────
+// Requête un dénominateur depuis la base SQLite locale via /api/denom/local
+async function fetchLocalDenomValue(var_code, sex, age, year) {{
+  const params = new URLSearchParams({{ var_code, sex, age, iso3: 'COD', year_start: year, year_end: year }});
+  const resp = await fetch('/api/denom/local?' + params.toString());
+  if (!resp.ok) throw new Error('Base locale — erreur HTTP ' + resp.status);
+  const data = await resp.json();
+  if (!data || !data.length || data[0].value === null) return null;
+  return {{ value: Number(data[0].value), source: data[0].source || 'base locale', year: Number(data[0].year) }};
+}}
+
 async function resolveAnnualDenominator(indicatorKey, year, sourceKey, params) {{
   const spec = getAnnualDenominatorSpec(indicatorKey);
   if (sourceKey === 'manual') return getManualAnnualDenominator(spec.shortKey, year);
 
-  if (indicatorKey === 'global_131') {{
-    if (sourceKey === 'bm_api') {{
-      const pop = await getExactWorldBankValue('SP.POP.TOTL', year);
-      return {{ value: pop.value, meta: 'Banque mondiale SP.POP.TOTL (' + year + ')', sourceYears: [pop.year], warnings: [] }};
+  // ── Source : base locale ────────────────────────────────────────────────
+  if (sourceKey === 'local_db') {{
+    let res = null;
+
+    if (indicatorKey === 'global_131' || indicatorKey === 'ind_28_vulnerables') {{
+      // P-SP / P-HE : population totale 0+
+      res = await fetchLocalDenomValue('var-c-popsx', 'sex-t', 'age-0+', year);
+      if (!res) throw new Error('Base locale : aucune donnée population totale pour ' + year + '.');
+      return {{ value: res.value, meta: 'Base locale ONU WPP 2024 — population 0+ (' + year + ')', sourceYears: [year], warnings: [] }};
     }}
-    const value = await getExactWppValue(year, 0, 999);
-    return {{ value, meta: 'WPP, population totale (' + year + ')', sourceYears: [Number(year)], warnings: [] }};
+
+    if (indicatorKey === 'ind_22_enfants') {{
+      // B-CH-15 ou B-CH-18 selon l'âge max demandé
+      const ageMax = Number(params && params.ageMax !== undefined ? params.ageMax : 14);
+      const ageGroup = ageMax <= 15 ? 'age-0-14' : 'age-0-17';
+      const label = ageMax <= 15 ? '0–14 ans (B-CH-15)' : '0–17 ans (B-CH-18)';
+      res = await fetchLocalDenomValue('var-c-popsx', 'sex-t', ageGroup, year);
+      if (!res) throw new Error('Base locale : aucune donnée enfants ' + label + ' pour ' + year + '.');
+      return {{ value: res.value, meta: 'Base locale ONU WPP 2024 — population ' + label + ' (' + year + ')', sourceYears: [year], warnings: [] }};
+    }}
+
+    if (indicatorKey === 'ind_23_maternite') {{
+      // B-MA : femmes 15–49 (var-c-popma)
+      res = await fetchLocalDenomValue('var-c-popma', 'sex-f', 'age-15-49', year);
+      if (!res) throw new Error('Base locale : aucune donnée femmes 15–49 pour ' + year + '.');
+      return {{ value: res.value, meta: 'Base locale ONU WPP 2024 — femmes 15–49 (B-MA) (' + year + ')', sourceYears: [year], warnings: [] }};
+    }}
+
+    if (indicatorKey === 'ind_24_handicap') {{
+      // Taux d'invalidité OMS (var-c-dirt) × population totale
+      const rateRes = await fetchLocalDenomValue('var-c-dirt', 'sex-t', 'age-0+', year);
+      const popRes  = await fetchLocalDenomValue('var-c-popsx', 'sex-t', 'age-0+', year);
+      if (rateRes && popRes) {{
+        const rate = rateRes.value;   // en %
+        return {{ value: Math.round(popRes.value * rate / 100), meta: 'Base locale — population × taux invalidité OMS ' + rate.toLocaleString('fr-FR') + ' % (' + year + ')', sourceYears: [year], warnings: ["Taux d'invalidité = estimation OMS ; seule la période 2010 est disponible."] }};
+      }}
+      // Fallback : proxy prévalence 15 %
+      if (popRes) {{
+        const prev = Number(params && params.prevalencePercent !== undefined ? params.prevalencePercent : 15);
+        return {{ value: Math.round(popRes.value * prev / 100), meta: 'Base locale — population × prévalence ' + prev + ' % (proxy)', sourceYears: [year], warnings: ["Taux d'invalidité non disponible en base pour " + year + " ; prévalence paramétrée utilisée."] }};
+      }}
+      throw new Error('Base locale : aucune donnée disponible pour ind_24 en ' + year + '.');
+    }}
+
+    if (indicatorKey === 'ind_25_atmp') {{
+      // C-WI/C-SI : force de travail réelle ILOSTAT (var-c-lf, age-15+)
+      res = await fetchLocalDenomValue('var-c-lf', 'sex-t', 'age-15+', year);
+      if (!res) throw new Error('Base locale ILOSTAT : aucune donnée force de travail pour ' + year + '.');
+      return {{ value: res.value, meta: 'Base locale ILOSTAT — force de travail 15+ (' + year + ')', sourceYears: [year], warnings: [] }};
+    }}
+
+    if (indicatorKey === 'ind_26_chomage') {{
+      // B-UN : chômeurs (var-c-un, age-15+)
+      res = await fetchLocalDenomValue('var-c-un', 'sex-t', 'age-15+', year);
+      if (!res) throw new Error('Base locale ILOSTAT : aucune donnée chômeurs pour ' + year + '.');
+      return {{ value: res.value, meta: 'Base locale ILOSTAT — chômeurs 15+ (' + year + ')', sourceYears: [year], warnings: [] }};
+    }}
+
+    if (indicatorKey === 'ind_27_vieillesse') {{
+      // B-OA : population 65+
+      res = await fetchLocalDenomValue('var-c-popsx', 'sex-t', 'age-65+', year);
+      if (!res) throw new Error('Base locale : aucune donnée population 65+ pour ' + year + '.');
+      return {{ value: res.value, meta: 'Base locale ONU WPP 2024 — population 65+ (B-OA) (' + year + ')', sourceYears: [year], warnings: [] }};
+    }}
+
+    if (indicatorKey === 'ind_29_cotisants') {{
+      // C-OA-WAP : population active 15–64
+      res = await fetchLocalDenomValue('var-c-popsx', 'sex-t', 'age-15-64', year);
+      if (!res) throw new Error('Base locale : aucune donnée population 15–64 pour ' + year + '.');
+      return {{ value: res.value, meta: 'Base locale ONU WPP 2024 — population 15–64 (C-OA-WAP) (' + year + ')', sourceYears: [year], warnings: [] }};
+    }}
+
+    throw new Error("Indicateur '" + indicatorKey + "' non mappé en base locale. Utilisez la saisie manuelle.");
   }}
 
-  if (indicatorKey === 'ind_22_enfants') {{
-    if (params.ageMin === null || params.ageMax === null || params.ageMax < params.ageMin) throw new Error("Tranche d'âge invalide.");
-    const value = await getExactWppValue(year, params.ageMin, params.ageMax);
-    const actualMin = Math.ceil(params.ageMin / 5) * 5;
-    const actualMax = Math.floor((params.ageMax + 1) / 5) * 5 - 1;
-    const warnings = actualMin !== params.ageMin || actualMax !== params.ageMax
-      ? ['Les groupes WPP sont quinquennaux : la tranche effectivement additionnée est ' + actualMin + '–' + actualMax + ' ans.']
-      : [];
-    return {{ value, meta: 'WPP, groupes quinquennaux ' + actualMin + '–' + actualMax + ' ans (' + year + ')', sourceYears: [Number(year)], warnings }};
-  }}
-
-  if (indicatorKey === 'ind_23_maternite') {{
-    const cbr = await getExactWorldBankValue('SP.DYN.CBRT.IN', year);
-    const pop = sourceKey === 'wpp_api'
-      ? {{ value: await getExactWppValue(year, 0, 999), year: Number(year) }}
-      : await getExactWorldBankValue('SP.POP.TOTL', year);
-    return {{
-      value: Math.round(pop.value * cbr.value / 1000),
-      meta: 'Proxy : population ' + year + ' × taux brut de natalité BM ' + year + ' / 1 000',
-      sourceYears: [pop.year, cbr.year],
-      warnings: ["Les naissances vivantes sont un proxy des femmes ayant accouché, et non une mesure directe."],
-    }};
-  }}
-
-  if (indicatorKey === 'ind_24_handicap') {{
+  // ── Sources de secours (proxy / DM-014) ─────────────────────────────────
+  if (indicatorKey === 'ind_24_handicap' && sourceKey === 'documented_proxy') {{
     const prevalence = Number(params.prevalencePercent);
     if (!Number.isFinite(prevalence) || prevalence < 0 || prevalence > 100) throw new Error('Prévalence invalide.');
-    const pop = await getExactWorldBankValue('SP.POP.TOTL', year);
-    return {{
-      value: Math.round(pop.value * prevalence / 100),
-      meta: 'Proxy paramétré : population BM ' + year + ' × ' + prevalence.toLocaleString('fr-FR') + ' %',
-      sourceYears: [pop.year],
-      warnings: ["La prévalence est un paramètre documenté, pas une observation OMS live."],
-    }};
+    const popRes = await fetchLocalDenomValue('var-c-popsx', 'sex-t', 'age-0+', year);
+    if (!popRes) throw new Error('Base locale : aucune donnée population pour le proxy handicap en ' + year + '.');
+    return {{ value: Math.round(popRes.value * prevalence / 100), meta: 'Proxy paramétré : population base locale ' + year + ' × ' + prevalence.toLocaleString('fr-FR') + ' %', sourceYears: [year], warnings: ['La prévalence est un paramètre documenté, pas une observation OMS live.'] }};
   }}
 
-  if (indicatorKey === 'ind_25_atmp') {{
+  if (indicatorKey === 'ind_25_atmp' && sourceKey === 'derived_dm014') {{
     const rate = Number(params.activityRatePercent);
     if (!Number.isFinite(rate) || rate < 0 || rate > 100) throw new Error("Taux d'activité invalide.");
-    const total = await getExactWppValue(year, 0, 999);
-    const children = await getExactWppValue(year, 0, 14);
-    return {{
-      value: Math.round((total - children) * rate / 100),
-      meta: 'DM-014 : population WPP 15+ ' + year + " × taux d'activité " + rate.toLocaleString('fr-FR') + ' %',
-      sourceYears: [Number(year)],
-      warnings: ["Le taux d'activité est un paramètre ; sa période de référence doit être justifiée."],
-    }};
+    const total = await fetchLocalDenomValue('var-c-popsx', 'sex-t', 'age-0+', year);
+    const children = await fetchLocalDenomValue('var-c-popsx', 'sex-t', 'age-0-14', year);
+    if (!total || !children) throw new Error('Base locale : données insuffisantes pour DM-014 en ' + year + '.');
+    return {{ value: Math.round((total.value - children.value) * rate / 100), meta: "DM-014 : population base locale 15+ " + year + " × taux d'activité " + rate.toLocaleString('fr-FR') + ' %', sourceYears: [year], warnings: ["Le taux d'activité est un paramètre ; sa période de référence doit être justifiée."] }};
   }}
 
-  if (indicatorKey === 'ind_27_vieillesse') {{
-    const hAge = Number(params.retirementAgeH);
-    const fAge = Number(params.retirementAgeF);
-    if (!Number.isFinite(hAge) || !Number.isFinite(fAge)) throw new Error('Âges de retraite invalides.');
-    if (sourceKey === 'bm_api') {{
-      if (hAge !== 65 || fAge !== 65) throw new Error('La Banque mondiale ne fournit ici que 65+ tous sexes. Utilisez WPP pour des seuils H/F distincts.');
-      const pop = await getExactWorldBankValue('SP.POP.65UP.TO', year);
-      return {{ value: pop.value, meta: 'Banque mondiale SP.POP.65UP.TO, tous sexes (' + year + ')', sourceYears: [pop.year], warnings: [] }};
-    }}
-    const men = await getExactWppValue(year, hAge, 999, 'M');
-    const women = await getExactWppValue(year, fAge, 999, 'F');
-    return {{ value: Math.round(men + women), meta: 'WPP : hommes ' + hAge + '+ et femmes ' + fAge + '+ (' + year + ')', sourceYears: [Number(year)], warnings: [] }};
-  }}
-
-  if (indicatorKey === 'ind_28_vulnerables') {{
-    const pop = await getExactWorldBankValue('SP.POP.TOTL', year);
-    return {{
-      value: pop.value,
-      meta: 'Population totale BM ' + year + ' utilisée comme proxy explicite',
-      sourceYears: [pop.year],
-      warnings: ["La population totale n'est pas la population vulnérable au sens strict."],
-    }};
-  }}
-
-  if (indicatorKey === 'ind_29_cotisants') {{
-    const ageMin = Number(params.ageMin);
-    const ageMax = Number(params.ageMax);
-    if (sourceKey === 'bm_api') {{
-      if (ageMin !== 15 || ageMax !== 64) throw new Error('La série Banque mondiale disponible impose la tranche 15–64 ans (DM-016).');
-      const pop = await getExactWorldBankValue('SP.POP.1564.TO', year);
-      return {{ value: pop.value, meta: 'Banque mondiale SP.POP.1564.TO (' + year + ') — DM-016', sourceYears: [pop.year], warnings: [] }};
-    }}
-    const value = await getExactWppValue(year, ageMin, ageMax);
-    return {{ value, meta: 'WPP ' + ageMin + '–' + ageMax + ' ans (' + year + ') — DM-016', sourceYears: [Number(year)], warnings: [] }};
+  if (indicatorKey === 'ind_28_vulnerables' && sourceKey === 'population_total_proxy') {{
+    const popRes = await fetchLocalDenomValue('var-c-popsx', 'sex-t', 'age-0+', year);
+    if (!popRes) throw new Error('Base locale : aucune donnée population totale pour ' + year + '.');
+    return {{ value: popRes.value, meta: 'Population totale base locale ' + year + ' — proxy explicite', sourceYears: [year], warnings: ["La population totale n'est pas la population vulnérable au sens strict."] }};
   }}
 
   throw new Error("Aucune source automatique fiable n'est configurée pour cet indicateur. Utilisez la saisie manuelle.");

@@ -781,12 +781,18 @@
     "institution::TRESOR::ind_24_handicap::2019": "entierement_exclus"
   },
   "denomSettings": {
-    "source_population_totale": "manual",
-    "source_population_enfants": "wpp_api",
-    "source_population_active": "manual",
-    "source_population_retraite": "wpp_api",
-    "source_handicap_grave": "manual",
-    "source_maternite": "",
+    "source_population_totale": "local_db",
+    "source_population_enfants": "local_db",
+    "source_population_active": "local_db",
+    "source_population_retraite": "local_db",
+    "source_handicap_grave": "local_db",
+    "source_maternite": "local_db",
+    "retirement_age_h": 60,
+    "retirement_age_f": 60,
+    "working_age_min": 15,
+    "working_age_max": 64,
+    "maternity_age_min": 15,
+    "maternity_age_max": 49,
     "year_start_total": null,
     "year_end_total": null,
     "year_start_enfants": null,
@@ -801,35 +807,17 @@
     "year_end_maternite": null,
     "child_age_min": 0,
     "child_age_max": 15,
-    "retirement_age_h": 60,
-    "retirement_age_f": 60,
-    "working_age_min": 15,
-    "working_age_max": 64,
-    "maternity_age_min": 15,
-    "maternity_age_max": 49,
     "prevalence_handicap_fallback": 15,
     "strict_exact_year_default": true,
     "lfp_rate_atmp_pct": 63.44,
-    "source_force_de_travail": "derived_dm014",
+    "source_force_de_travail": "local_db",
     "year_start_lf": null,
     "year_end_lf": null,
     "manual_data": {
       "total": {
-        "2019": {
-          "value": 2787114,
-          "comment": "Saisie manuelle — Saisie manuelle — Bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies"
-        },
-        "2020": {
-          "value": 2878448,
-          "comment": "Saisie manuelle — Saisie manuelle — Saisie manuelle — bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies"
-        },
-        "2021": {
-          "value": 2972718,
-          "comment": "Saisie manuelle — Saisie manuelle — bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider"
-        },
         "2022": {
           "value": 3069317,
-          "comment": "Saisie manuelle — Saisie manuelle — bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider"
+          "comment": "Saisie manuelle — Saisie manuelle — Saisie manuelle — Saisie manuelle — Saisie manuelle — bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider"
         },
         "2026": {
           "value": 0,
@@ -844,25 +832,19 @@
         }
       },
       "lf": {},
-      "ret": {},
+      "ret": {
+        "2023": {
+          "value": 0,
+          "comment": ""
+        }
+      },
       "handicap": {
-        "2019": {
-          "value": 2787114,
-          "comment": "Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies"
-        },
-        "2020": {
-          "value": 2878448,
-          "comment": "Saisie manuelle — Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider"
-        },
-        "2021": {
-          "value": 2972718,
-          "comment": "Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider"
-        },
         "2022": {
           "value": 3069317,
-          "comment": "Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider · à valider"
+          "comment": "Saisie manuelle — Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider · à valider"
         }
-      }
+      },
+      "mat": {}
     },
     "handicap_prevalence_percent": 15,
     "activity_rate_percent": 63.44,
@@ -870,17 +852,16 @@
       "global_131::2019": {
         "indicatorKey": "global_131",
         "year": 2019,
-        "sourceKey": "manual",
+        "sourceKey": "local_db",
         "params": {},
-        "value": 89906891,
-        "status": "validated",
-        "meta": "Saisie manuelle — Saisie manuelle — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022).",
+        "value": 92947442,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — population 0+ (2019)",
         "sourceYears": [
           2019
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:06:12.450Z",
-        "validatedAt": "2026-07-16T22:09:02.445Z"
+        "calculatedAt": "2026-07-21T00:32:07.457Z"
       },
       "global_131::2026": {
         "indicatorKey": "global_131",
@@ -899,260 +880,244 @@
       "global_131::2020": {
         "indicatorKey": "global_131",
         "year": 2020,
-        "sourceKey": "manual",
+        "sourceKey": "local_db",
         "params": {},
-        "value": 92853165,
+        "value": 95989998,
         "status": "draft",
-        "meta": "Saisie manuelle — Saisie manuelle — Saisie manuelle — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022). · validé",
+        "meta": "Base locale ONU WPP 2024 — population 0+ (2020)",
         "sourceYears": [
           2020
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:36:25.312Z"
+        "calculatedAt": "2026-07-21T00:32:15.398Z"
       },
       "global_131::2021": {
         "indicatorKey": "global_131",
         "year": 2021,
-        "sourceKey": "manual",
+        "sourceKey": "local_db",
         "params": {},
-        "value": 95894119,
+        "value": 99148932,
         "status": "draft",
-        "meta": "Saisie manuelle — Saisie manuelle — — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022).",
+        "meta": "Base locale ONU WPP 2024 — population 0+ (2021)",
         "sourceYears": [
           2021
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:40:04.783Z"
+        "calculatedAt": "2026-07-21T00:34:08.541Z"
       },
       "global_131::2022": {
         "indicatorKey": "global_131",
         "year": 2022,
-        "sourceKey": "manual",
+        "sourceKey": "local_db",
         "params": {},
-        "value": 99010212,
+        "value": 102396968,
         "status": "draft",
-        "meta": "Saisie manuelle — Saisie manuelle — Premier bulletin de la rdc ; Population totale :Source : Division de la population des Nations Unies, Perspectives de la population mondiale 2022 (Estimations juillet 2022).",
+        "meta": "Base locale ONU WPP 2024 — population 0+ (2022)",
         "sourceYears": [
           2022
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:39:08.613Z"
+        "calculatedAt": "2026-07-21T00:33:20.575Z"
       },
       "ind_22_enfants::2021": {
         "indicatorKey": "ind_22_enfants",
         "year": 2021,
-        "sourceKey": "wpp_api",
+        "sourceKey": "local_db",
         "params": {
           "ageMin": 0,
           "ageMax": 15
         },
-        "value": 45702016,
+        "value": 52054919,
         "status": "draft",
-        "meta": "WPP, groupes quinquennaux 0–14 ans (2021)",
+        "meta": "Base locale ONU WPP 2024 — population 0–17 ans (B-CH-18) (2021)",
         "sourceYears": [
           2021
         ],
-        "warnings": [
-          "Les groupes WPP sont quinquennaux : la tranche effectivement additionnée est 0–14 ans."
-        ],
-        "calculatedAt": "2026-07-16T22:43:14.391Z"
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:34:49.209Z"
       },
       "ind_22_enfants::2019": {
         "indicatorKey": "ind_22_enfants",
         "year": 2019,
-        "sourceKey": "wpp_api",
+        "sourceKey": "local_db",
         "params": {
           "ageMin": 0,
           "ageMax": 15
         },
-        "value": 42735103.5,
+        "value": 48714283.5,
         "status": "draft",
-        "meta": "WPP, groupes quinquennaux 0–14 ans (2019)",
+        "meta": "Base locale ONU WPP 2024 — population 0–17 ans (B-CH-18) (2019)",
         "sourceYears": [
           2019
         ],
-        "warnings": [
-          "Les groupes WPP sont quinquennaux : la tranche effectivement additionnée est 0–14 ans."
-        ],
-        "calculatedAt": "2026-07-16T22:42:43.871Z"
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:34:32.333Z"
       },
       "ind_22_enfants::2020": {
         "indicatorKey": "ind_22_enfants",
         "year": 2020,
-        "sourceKey": "wpp_api",
+        "sourceKey": "local_db",
         "params": {
           "ageMin": 0,
           "ageMax": 15
         },
-        "value": 44205882.5,
+        "value": 50354317,
         "status": "draft",
-        "meta": "WPP, groupes quinquennaux 0–14 ans (2020)",
+        "meta": "Base locale ONU WPP 2024 — population 0–17 ans (B-CH-18) (2020)",
         "sourceYears": [
           2020
         ],
-        "warnings": [
-          "Les groupes WPP sont quinquennaux : la tranche effectivement additionnée est 0–14 ans."
-        ],
-        "calculatedAt": "2026-07-16T22:42:52.029Z"
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:34:40.585Z"
       },
       "ind_22_enfants::2022": {
         "indicatorKey": "ind_22_enfants",
         "year": 2022,
-        "sourceKey": "wpp_api",
+        "sourceKey": "local_db",
         "params": {
           "ageMin": 0,
           "ageMax": 15
         },
-        "value": 47217408.5,
+        "value": 53808048.5,
         "status": "draft",
-        "meta": "WPP, groupes quinquennaux 0–14 ans (2022)",
+        "meta": "Base locale ONU WPP 2024 — population 0–17 ans (B-CH-18) (2022)",
         "sourceYears": [
           2022
         ],
-        "warnings": [
-          "Les groupes WPP sont quinquennaux : la tranche effectivement additionnée est 0–14 ans."
-        ],
-        "calculatedAt": "2026-07-16T22:43:25.072Z"
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:34:55.080Z"
       },
       "ind_29_cotisants::2019": {
         "indicatorKey": "ind_29_cotisants",
         "year": 2019,
-        "sourceKey": "wpp_api",
+        "sourceKey": "local_db",
         "params": {
           "ageMin": 15,
           "ageMax": 64
         },
         "value": 47337200,
         "status": "draft",
-        "meta": "WPP 15–64 ans (2019) — DM-016",
+        "meta": "Base locale ONU WPP 2024 — population 15–64 (C-OA-WAP) (2019)",
         "sourceYears": [
           2019
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:45:34.572Z"
+        "calculatedAt": "2026-07-21T00:43:30.811Z"
       },
       "ind_29_cotisants::2020": {
         "indicatorKey": "ind_29_cotisants",
         "year": 2020,
-        "sourceKey": "bm_api",
+        "sourceKey": "local_db",
         "params": {
           "ageMin": 15,
           "ageMax": 64
         },
         "value": 48821791,
         "status": "draft",
-        "meta": "Banque mondiale SP.POP.1564.TO (2020) — DM-016",
+        "meta": "Base locale ONU WPP 2024 — population 15–64 (C-OA-WAP) (2020)",
         "sourceYears": [
           2020
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:46:13.576Z"
+        "calculatedAt": "2026-07-21T00:43:39.500Z"
       },
       "ind_29_cotisants::2021": {
         "indicatorKey": "ind_29_cotisants",
         "year": 2021,
-        "sourceKey": "bm_api",
+        "sourceKey": "local_db",
         "params": {
           "ageMin": 15,
           "ageMax": 64
         },
-        "value": 50399447,
+        "value": 50399446.5,
         "status": "draft",
-        "meta": "Banque mondiale SP.POP.1564.TO (2021) — DM-016",
+        "meta": "Base locale ONU WPP 2024 — population 15–64 (C-OA-WAP) (2021)",
         "sourceYears": [
           2021
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:46:19.886Z"
+        "calculatedAt": "2026-07-21T00:43:45.911Z"
       },
       "ind_29_cotisants::2022": {
         "indicatorKey": "ind_29_cotisants",
         "year": 2022,
-        "sourceKey": "bm_api",
+        "sourceKey": "local_db",
         "params": {
           "ageMin": 15,
           "ageMax": 64
         },
-        "value": 52040020,
+        "value": 52040020.5,
         "status": "draft",
-        "meta": "Banque mondiale SP.POP.1564.TO (2022) — DM-016",
+        "meta": "Base locale ONU WPP 2024 — population 15–64 (C-OA-WAP) (2022)",
         "sourceYears": [
           2022
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:46:23.855Z"
+        "calculatedAt": "2026-07-21T00:43:48.230Z"
       },
       "ind_25_atmp::2022": {
         "indicatorKey": "ind_25_atmp",
         "year": 2022,
-        "sourceKey": "derived_dm014",
+        "sourceKey": "local_db",
         "params": {
           "activityRatePercent": 63.44
         },
-        "value": 35005913,
+        "value": 36183743,
         "status": "draft",
-        "meta": "DM-014 : population WPP 15+ 2022 × taux d'activité 63,44 %",
+        "meta": "Base locale ILOSTAT — force de travail 15+ (2022)",
         "sourceYears": [
           2022
         ],
-        "warnings": [
-          "Le taux d'activité est un paramètre ; sa période de référence doit être justifiée."
-        ],
-        "calculatedAt": "2026-07-16T22:47:12.375Z"
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:38:17.843Z"
       },
       "ind_25_atmp::2019": {
         "indicatorKey": "ind_25_atmp",
         "year": 2019,
-        "sourceKey": "derived_dm014",
+        "sourceKey": "local_db",
         "params": {
           "activityRatePercent": 63.44
         },
-        "value": 31854708,
+        "value": 33156337,
         "status": "draft",
-        "meta": "DM-014 : population WPP 15+ 2019 × taux d'activité 63,44 %",
+        "meta": "Base locale ILOSTAT — force de travail 15+ (2019)",
         "sourceYears": [
           2019
         ],
-        "warnings": [
-          "Le taux d'activité est un paramètre ; sa période de référence doit être justifiée."
-        ],
-        "calculatedAt": "2026-07-16T22:47:35.370Z"
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:39:03.088Z"
       },
       "ind_25_atmp::2020": {
         "indicatorKey": "ind_25_atmp",
         "year": 2020,
-        "sourceKey": "derived_dm014",
+        "sourceKey": "local_db",
         "params": {
           "activityRatePercent": 63.44
         },
         "value": 32851843,
         "status": "draft",
-        "meta": "DM-014 : population WPP 15+ 2020 × taux d'activité 63,44 %",
+        "meta": "Base locale ILOSTAT — force de travail 15+ (2020)",
         "sourceYears": [
           2020
         ],
-        "warnings": [
-          "Le taux d'activité est un paramètre ; sa période de référence doit être justifiée."
-        ],
-        "calculatedAt": "2026-07-16T22:47:39.009Z"
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:38:38.695Z"
       },
       "ind_25_atmp::2021": {
         "indicatorKey": "ind_25_atmp",
         "year": 2021,
-        "sourceKey": "derived_dm014",
+        "sourceKey": "local_db",
         "params": {
           "activityRatePercent": 63.44
         },
-        "value": 33906724,
+        "value": 35153913,
         "status": "draft",
-        "meta": "DM-014 : population WPP 15+ 2021 × taux d'activité 63,44 %",
+        "meta": "Base locale ILOSTAT — force de travail 15+ (2021)",
         "sourceYears": [
           2021
         ],
-        "warnings": [
-          "Le taux d'activité est un paramètre ; sa période de référence doit être justifiée."
-        ],
-        "calculatedAt": "2026-07-16T22:48:00.534Z"
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:38:27.137Z"
       },
       "ind_27_vieillesse::2019": {
         "indicatorKey": "ind_27_vieillesse",
@@ -1227,122 +1192,406 @@
       "ind_28_vulnerables::2022": {
         "indicatorKey": "ind_28_vulnerables",
         "year": 2022,
-        "sourceKey": "manual",
+        "sourceKey": "local_db",
         "params": {},
-        "value": 3069317,
+        "value": 102396968,
         "status": "draft",
-        "meta": "Saisie manuelle — Saisie manuelle — bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider",
+        "meta": "Base locale ONU WPP 2024 — population 0+ (2022)",
         "sourceYears": [
           2022
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:54:34.546Z"
+        "calculatedAt": "2026-07-21T00:42:20.956Z"
       },
       "ind_28_vulnerables::2019": {
         "indicatorKey": "ind_28_vulnerables",
         "year": 2019,
-        "sourceKey": "manual",
+        "sourceKey": "local_db",
         "params": {},
-        "value": 2787114,
+        "value": 92947442,
         "status": "draft",
-        "meta": "Saisie manuelle — Saisie manuelle — Bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies",
+        "meta": "Base locale ONU WPP 2024 — population 0+ (2019)",
         "sourceYears": [
           2019
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:52:33.394Z"
+        "calculatedAt": "2026-07-21T00:41:53.661Z"
       },
       "ind_28_vulnerables::2020": {
         "indicatorKey": "ind_28_vulnerables",
         "year": 2020,
-        "sourceKey": "manual",
+        "sourceKey": "local_db",
         "params": {},
-        "value": 2878448,
+        "value": 95989998,
         "status": "draft",
-        "meta": "Saisie manuelle — Saisie manuelle — Saisie manuelle — bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies",
+        "meta": "Base locale ONU WPP 2024 — population 0+ (2020)",
         "sourceYears": [
           2020
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:53:34.010Z"
+        "calculatedAt": "2026-07-21T00:42:02.885Z"
       },
       "ind_28_vulnerables::2021": {
         "indicatorKey": "ind_28_vulnerables",
         "year": 2021,
-        "sourceKey": "manual",
+        "sourceKey": "local_db",
         "params": {},
-        "value": 2972718,
+        "value": 99148932,
         "status": "draft",
-        "meta": "Saisie manuelle — Saisie manuelle — bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider",
+        "meta": "Base locale ONU WPP 2024 — population 0+ (2021)",
         "sourceYears": [
           2021
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:54:04.499Z"
+        "calculatedAt": "2026-07-21T00:42:09.598Z"
       },
       "ind_24_handicap::2019": {
         "indicatorKey": "ind_24_handicap",
         "year": 2019,
-        "sourceKey": "manual",
+        "sourceKey": "local_db",
         "params": {
           "prevalencePercent": 15
         },
-        "value": 2787114,
+        "value": 13942116,
         "status": "draft",
-        "meta": "Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies",
+        "meta": "Base locale — population × prévalence 15 % (proxy)",
         "sourceYears": [
           2019
         ],
-        "warnings": [],
-        "calculatedAt": "2026-07-16T22:56:44.113Z"
+        "warnings": [
+          "Taux d'invalidité non disponible en base pour 2019 ; prévalence paramétrée utilisée."
+        ],
+        "calculatedAt": "2026-07-21T00:36:47.405Z"
       },
       "ind_24_handicap::2020": {
         "indicatorKey": "ind_24_handicap",
         "year": 2020,
-        "sourceKey": "manual",
+        "sourceKey": "local_db",
         "params": {
           "prevalencePercent": 15
         },
-        "value": 2878448,
+        "value": 14398500,
         "status": "draft",
-        "meta": "Saisie manuelle — Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider",
+        "meta": "Base locale — population × prévalence 15 % (proxy)",
         "sourceYears": [
           2020
         ],
-        "warnings": [],
-        "calculatedAt": "2026-07-16T22:57:52.148Z"
+        "warnings": [
+          "Taux d'invalidité non disponible en base pour 2020 ; prévalence paramétrée utilisée."
+        ],
+        "calculatedAt": "2026-07-21T00:36:57.546Z"
       },
       "ind_24_handicap::2021": {
         "indicatorKey": "ind_24_handicap",
         "year": 2021,
-        "sourceKey": "manual",
+        "sourceKey": "local_db",
         "params": {
           "prevalencePercent": 15
         },
-        "value": 2972718,
+        "value": 14872340,
         "status": "draft",
-        "meta": "Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider",
+        "meta": "Base locale — population × prévalence 15 % (proxy)",
         "sourceYears": [
           2021
         ],
-        "warnings": [],
-        "calculatedAt": "2026-07-16T22:58:36.444Z"
+        "warnings": [
+          "Taux d'invalidité non disponible en base pour 2021 ; prévalence paramétrée utilisée."
+        ],
+        "calculatedAt": "2026-07-21T00:37:17.036Z"
       },
       "ind_24_handicap::2022": {
         "indicatorKey": "ind_24_handicap",
         "year": 2022,
-        "sourceKey": "manual",
+        "sourceKey": "local_db",
         "params": {
           "prevalencePercent": 15
         },
-        "value": 3069317,
+        "value": 15359545,
         "status": "draft",
-        "meta": "Saisie manuelle — Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider · à valider",
+        "meta": "Base locale — population × prévalence 15 % (proxy)",
+        "sourceYears": [
+          2022
+        ],
+        "warnings": [
+          "Taux d'invalidité non disponible en base pour 2022 ; prévalence paramétrée utilisée."
+        ],
+        "calculatedAt": "2026-07-21T00:37:23.949Z"
+      },
+      "global_131::2023": {
+        "indicatorKey": "global_131",
+        "year": 2023,
+        "sourceKey": "local_db",
+        "params": {},
+        "value": 105789731.5,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — population 0+ (2023)",
+        "sourceYears": [
+          2023
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:33:41.610Z"
+      },
+      "global_131::2024": {
+        "indicatorKey": "global_131",
+        "year": 2024,
+        "sourceKey": "local_db",
+        "params": {},
+        "value": 109276264.5,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — population 0+ (2024)",
+        "sourceYears": [
+          2024
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:33:51.969Z"
+      },
+      "ind_22_enfants::2023": {
+        "indicatorKey": "ind_22_enfants",
+        "year": 2023,
+        "sourceKey": "local_db",
+        "params": {
+          "ageMin": 0,
+          "ageMax": 15
+        },
+        "value": 55606593.5,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — population 0–17 ans (B-CH-18) (2023)",
+        "sourceYears": [
+          2023
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:34:58.125Z"
+      },
+      "ind_22_enfants::2024": {
+        "indicatorKey": "ind_22_enfants",
+        "year": 2024,
+        "sourceKey": "local_db",
+        "params": {
+          "ageMin": 0,
+          "ageMax": 15
+        },
+        "value": 57418303,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — population 0–17 ans (B-CH-18) (2024)",
+        "sourceYears": [
+          2024
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:35:00.793Z"
+      },
+      "ind_23_maternite::2019": {
+        "indicatorKey": "ind_23_maternite",
+        "year": 2019,
+        "sourceKey": "local_db",
+        "params": {},
+        "value": 3926761,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — femmes 15–49 (B-MA) (2019)",
+        "sourceYears": [
+          2019
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:35:51.591Z"
+      },
+      "ind_23_maternite::2020": {
+        "indicatorKey": "ind_23_maternite",
+        "year": 2020,
+        "sourceKey": "local_db",
+        "params": {},
+        "value": 4020723,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — femmes 15–49 (B-MA) (2020)",
+        "sourceYears": [
+          2020
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:35:53.909Z"
+      },
+      "ind_23_maternite::2022": {
+        "indicatorKey": "ind_23_maternite",
+        "year": 2022,
+        "sourceKey": "local_db",
+        "params": {},
+        "value": 4230812,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — femmes 15–49 (B-MA) (2022)",
         "sourceYears": [
           2022
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T23:02:03.851Z"
+        "calculatedAt": "2026-07-21T00:36:00.937Z"
+      },
+      "ind_23_maternite::2021": {
+        "indicatorKey": "ind_23_maternite",
+        "year": 2021,
+        "sourceKey": "local_db",
+        "params": {},
+        "value": 4127847,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — femmes 15–49 (B-MA) (2021)",
+        "sourceYears": [
+          2021
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:36:04.451Z"
+      },
+      "ind_23_maternite::2023": {
+        "indicatorKey": "ind_23_maternite",
+        "year": 2023,
+        "sourceKey": "local_db",
+        "params": {},
+        "value": 4337282.999999999,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — femmes 15–49 (B-MA) (2023)",
+        "sourceYears": [
+          2023
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:36:09.981Z"
+      },
+      "ind_23_maternite::2024": {
+        "indicatorKey": "ind_23_maternite",
+        "year": 2024,
+        "sourceKey": "local_db",
+        "params": {},
+        "value": 4435281.000000001,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — femmes 15–49 (B-MA) (2024)",
+        "sourceYears": [
+          2024
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:36:14.989Z"
+      },
+      "ind_24_handicap::2023": {
+        "indicatorKey": "ind_24_handicap",
+        "year": 2023,
+        "sourceKey": "local_db",
+        "params": {
+          "prevalencePercent": 15
+        },
+        "value": 15868460,
+        "status": "draft",
+        "meta": "Base locale — population × prévalence 15 % (proxy)",
+        "sourceYears": [
+          2023
+        ],
+        "warnings": [
+          "Taux d'invalidité non disponible en base pour 2023 ; prévalence paramétrée utilisée."
+        ],
+        "calculatedAt": "2026-07-21T00:37:32.829Z"
+      },
+      "ind_24_handicap::2024": {
+        "indicatorKey": "ind_24_handicap",
+        "year": 2024,
+        "sourceKey": "local_db",
+        "params": {
+          "prevalencePercent": 15
+        },
+        "value": 16391440,
+        "status": "draft",
+        "meta": "Base locale — population × prévalence 15 % (proxy)",
+        "sourceYears": [
+          2024
+        ],
+        "warnings": [
+          "Taux d'invalidité non disponible en base pour 2024 ; prévalence paramétrée utilisée."
+        ],
+        "calculatedAt": "2026-07-21T00:37:40.703Z"
+      },
+      "ind_25_atmp::2024": {
+        "indicatorKey": "ind_25_atmp",
+        "year": 2024,
+        "sourceKey": "local_db",
+        "params": {
+          "activityRatePercent": 63.44
+        },
+        "value": 38545893,
+        "status": "draft",
+        "meta": "Base locale ILOSTAT — force de travail 15+ (2024)",
+        "sourceYears": [
+          2024
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:38:04.064Z"
+      },
+      "ind_25_atmp::2023": {
+        "indicatorKey": "ind_25_atmp",
+        "year": 2023,
+        "sourceKey": "local_db",
+        "params": {
+          "activityRatePercent": 63.44
+        },
+        "value": 37296937,
+        "status": "draft",
+        "meta": "Base locale ILOSTAT — force de travail 15+ (2023)",
+        "sourceYears": [
+          2023
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:38:10.372Z"
+      },
+      "ind_28_vulnerables::2024": {
+        "indicatorKey": "ind_28_vulnerables",
+        "year": 2024,
+        "sourceKey": "local_db",
+        "params": {},
+        "value": 109276264.5,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — population 0+ (2024)",
+        "sourceYears": [
+          2024
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:40:06.687Z"
+      },
+      "ind_28_vulnerables::2023": {
+        "indicatorKey": "ind_28_vulnerables",
+        "year": 2023,
+        "sourceKey": "local_db",
+        "params": {},
+        "value": 105789731.5,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — population 0+ (2023)",
+        "sourceYears": [
+          2023
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:40:15.046Z"
+      },
+      "ind_29_cotisants::2023": {
+        "indicatorKey": "ind_29_cotisants",
+        "year": 2023,
+        "sourceKey": "local_db",
+        "params": {
+          "ageMin": 15,
+          "ageMax": 64
+        },
+        "value": 53787049,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — population 15–64 (C-OA-WAP) (2023)",
+        "sourceYears": [
+          2023
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:43:50.323Z"
+      },
+      "ind_29_cotisants::2024": {
+        "indicatorKey": "ind_29_cotisants",
+        "year": 2024,
+        "sourceKey": "local_db",
+        "params": {
+          "ageMin": 15,
+          "ageMax": 64
+        },
+        "value": 55612277,
+        "status": "draft",
+        "meta": "Base locale ONU WPP 2024 — population 15–64 (C-OA-WAP) (2024)",
+        "sourceYears": [
+          2024
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-07-21T00:43:55.236Z"
       }
     }
   }

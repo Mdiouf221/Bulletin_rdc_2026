@@ -27,7 +27,7 @@ Des remerciements sont également adressés au ministère de la Santé publique,
 
 Le Secrétariat général de la protection sociale exprime sa gratitude au Bureau de pays de l'Organisation internationale du Travail pour la République démocratique du Congo, dont l'appui technique a accompagné chaque étape de la production de ce bulletin, depuis l'élaboration du cadre méthodologique jusqu'à la finalisation du document.
 
-Ce bulletin a bénéficié d'un appui financier dans le cadre du projet *Bâtir des socles de protection sociale pour tous — Appui à la deuxième phase du programme phare mondial de l'OIT*, financé par les gouvernements du Royaume de Belgique et du Grand-Duché de Luxembourg. Le Secrétariat général de la protection sociale leur témoigne sa profonde reconnaissance pour leur soutien constant au renforcement du système de protection sociale en République démocratique du Congo.
+Ce bulletin a bénéficié d'un appui financier dans le cadre du projet *Bâtir des socles de protection sociale pour tous — Appui à la deuxième phase du programme phare mondial de l'OIT*, financé par les gouvernements du Royaume de Belgique et du Grand-Duché de Luxembourg. Le Secrétariat général de la protection sociale leur témoigne sa reconnaissance pour leur soutien constant au renforcement du système de protection sociale en République démocratique du Congo.
 
 La qualité des informations produites dans ce bulletin est le reflet de l'engagement collectif de ces institutions et partenaires. Le Secrétariat général de la protection sociale demeure convaincu que la consolidation progressive du système statistique national de protection sociale constitue un levier essentiel pour éclairer les décisions de politique publique et mieux rendre compte de la situation réelle des personnes couvertes en République démocratique du Congo.
 
@@ -124,13 +124,13 @@ La population congolaise est structurellement jeune : les personnes âgées de m
 
 ### Une urbanisation rapide sur fond de ruralité persistante <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
-Entre 1950 et 2024, la part de la population vivant en milieu urbain est passée de <a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">19 %</a> à un niveau nettement plus élevé, traduisant une urbanisation rapide. Cette dynamique transforme les besoins sociaux dans les grandes agglomérations, en premier lieu à Kinshasa qui compte environ <a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">17 millions d'habitants</a> *(ONU WPP 2024)*, troisième agglomération africaine et plus grande ville francophone du monde. Elle ne doit cependant pas masquer la persistance d'une population majoritairement rurale, avec une densité moyenne de <a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">51 habitants par km²</a> sur un territoire de plus de 2,3 millions de km², mais des disparités provinciales considérables.
+Entre 1950 et 2024, la part de la population vivant en milieu urbain est passée de <a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">19 %</a> à un niveau nettement plus élevé, traduisant une urbanisation rapide. Cette dynamique transforme les besoins sociaux dans les grandes agglomérations, en premier lieu à Kinshasa qui compte environ <a href="/files/06_sources/officielles_web/ONU_WPP_2024_RDC_population.txt" title="Source : Division de la population des Nations Unies (2024) — Perspectives mondiales de la population 2024" class="source-ref nv">17 millions d'habitants</a> *(ONU WPP 2024)*, troisième agglomération africaine et plus grande ville francophone du monde. Elle ne doit cependant pas masquer la persistance d'une population majoritairement rurale, avec et des disparités provinciales considérables.
 
 ---
 
 ### Premiers enseignements pour la protection sociale <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
-Ces caractéristiques démographiques — forte croissance, population jeune, dualisme urbain-rural — définissent l'ampleur du défi auquel fait face le système de protection sociale congolais. Le nombre de personnes potentiellement éligibles aux différentes branches de couverture est considérable, tandis que la dispersion géographique de la population complique l'accès aux prestations et l'enregistrement des bénéficiaires. Ces constats, combinés aux données économiques présentées dans la section suivante, permettront d'apprécier plus finement les conditions dans lesquelles l'extension de la couverture devra se réaliser.
+Ces caractéristiques démographiques — forte croissance, population jeune, dualisme urbain-rural — définissent l'ampleur du défi auquel fait face le système de protection sociale congolais. Le nombre de personnes potentiellement éligibles aux différentes branches de couverture est considérable, tandis que la dispersion géographique de la population complique l'accès aux prestations et l'enregistrement des bénéficiaires.
 
 <!-- FIN FICHIER -->
 
@@ -140,7 +140,7 @@ Ces caractéristiques démographiques — forte croissance, population jeune, du
 
 ### Une croissance soutenue sur fond de fragilité économique <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
-La République Démocratique du Congo a enregistré des taux de croissance économique élevés au cours des dernières années : <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+6,4 % en 2021</a>, <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+9,3 % en 2022</a>, <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+8,5 % en 2023</a> et <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+6,1 % en 2024</a> *(FMI, WEO)*. Cette dynamique est largement portée par le secteur minier, qui concentre d'importants gisements de cuivre, cobalt, or, diamants et coltan. Elle ne se traduit cependant pas par une amélioration sensible du niveau de vie moyen : le <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — WEO, indicateurs macroéconomiques RDC" class="source-ref nv">niveau du PIB par habitant demeure faible</a> à l'échelle du continent. Selon l'<a href="/files/06_sources/officielles_web/INS_RDC_ECVM_pauvrete_inegalites_2024.txt" title="Source : INS-RDC — statistiques de pauvreté et publication ECVM 2024" class="source-ref nv">INS (ECVM 2024)</a>, la pauvreté monétaire reste élevée et les disparités de niveau de vie demeurent marquées entre groupes sociaux et entre provinces. Ces éléments confirment la persistance d'une vulnérabilité économique structurelle.
+La République Démocratique du Congo a enregistré des taux de croissance économique élevés au cours des dernières années : <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+6,4 % en 2021</a>, <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+9,3 % en 2022</a>, <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+8,5 % en 2023</a> et <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+6,1 % en 2024</a> *(FMI, WEO)*. Cette dynamique est notamment portée par le secteur minier, qui concentre d'importants gisements de cuivre, cobalt, or, diamants et coltan. Elle ne se traduit cependant pas par une amélioration proportionnelle du niveau de vie moyen : le <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — WEO, indicateurs macroéconomiques RDC" class="source-ref nv">niveau du PIB par habitant demeure faible</a> à l'échelle du continent. Selon l'<a href="/files/06_sources/officielles_web/INS_RDC_ECVM_pauvrete_inegalites_2024.txt" title="Source : INS-RDC — statistiques de pauvreté et publication ECVM 2024" class="source-ref nv">INS (ECVM 2024)</a>, la pauvreté monétaire reste élevée et les disparités de niveau de vie demeurent marquées. Ces éléments confirment la persistance d'une vulnérabilité économique structurelle.
 
 <p class="fig-caption"><strong>Figure 4</strong> — Évolution du taux de croissance annuel du PIB en RDC (2000–2024)</p>
 
@@ -152,9 +152,9 @@ La République Démocratique du Congo a enregistré des taux de croissance écon
 
 ### Un marché du travail dominé par l'informalité <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
-La population active — c'est-à-dire les personnes de 15 ans et plus qui travaillent ou qui recherchent un emploi — représente environ <span class="val" data-val-id="s2-p3-d1" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">70,9 %</span> de la population en âge de travailler en RDC *(OIT, ILOSTAT, estimations modélisées, 2023)*. Ce taux d'activité masque cependant une forte disparité entre les sexes : il atteint <span class="val" data-val-id="s2-p3-d2" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">78,5 %</span> chez les hommes, contre <span class="val" data-val-id="s2-p3-d3" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">63,5 %</span> chez les femmes, ces dernières étant plus fréquemment maintenues hors du marché du travail visible du fait de responsabilités familiales et de barrières d'accès à l'emploi.
+La population active — c'est-à-dire les personnes de 15 ans et plus qui travaillent ou qui recherchent un emploi — représente environ <span class="val" data-val-id="s2-p3-d1" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">70,9 %</span> de la population en âge de travailler en RDC *(OIT, ILOSTAT, estimations modélisées, 2023)*. Ce taux d'activité masque cependant une forte disparité entre les sexes : il atteint <span class="val" data-val-id="s2-p3-d2" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">78,5 %</span> chez les hommes, contre <span class="val" data-val-id="s2-p3-d3" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">63,5 %</span> chez les femmes.
 
-Au sein de cette population active, la structure du marché du travail est marquée par la prédominance écrasante de l'emploi informel et de l'agriculture de subsistance. Selon les estimations modélisées de l'OIT (ILOSTAT), <a href="/files/06_sources/officielles_web/OIT_ILOSTAT_RDC_emploi_secteur_chomage_2021_2024.txt" title="Source : OIT, ILOSTAT — Emploi par secteur, RDC. Total : 58,9 %, femmes : 67,8 %, hommes : 50,3 % (2024)" class="source-ref nv">environ 59 % de la population active</a> travaille dans l'agriculture en 2024, avec une part nettement plus élevée chez les femmes (68 %) que chez les hommes (50 %). Malgré un taux de chômage officiel relativement faible — estimé à <a href="/files/06_sources/officielles_web/OIT_ILOSTAT_RDC_emploi_secteur_chomage_2021_2024.txt" title="Source : OIT, ILOSTAT — Taux de chômage BIT (15+), RDC : 4,4 % en 2024" class="source-ref nv">4,4 %</a> en 2024 *(OIT, définition BIT)* —, la grande majorité des actifs occupés exercent dans des conditions précaires : le taux d'emploi informel est estimé à <a href="/files/06_sources/officielles_web/OIT_ILOSTAT_RDC_emploi_secteur_chomage_2021_2024.txt" title="Source : OIT, ILOSTAT — Emploi informel, RDC (2020) : 96,0 % ; femmes : 97,8 % ; hommes : 95,7 %" class="source-ref nv">environ 96 %</a> selon les estimations modélisées de l'OIT *(ILOSTAT, données 2020)*, avec une légère prépondérance chez les femmes (<a href="/files/06_sources/officielles_web/OIT_ILOSTAT_RDC_emploi_secteur_chomage_2021_2024.txt" title="Source : OIT, ILOSTAT — Emploi informel femmes, RDC (2020) : 97,8 %" class="source-ref nv">97,8 %</a>) par rapport aux hommes (<a href="/files/06_sources/officielles_web/OIT_ILOSTAT_RDC_emploi_secteur_chomage_2021_2024.txt" title="Source : OIT, ILOSTAT — Emploi informel hommes, RDC (2020) : 95,7 %" class="source-ref nv">95,7 %</a>). Cette informalité concerne toutes les catégories de statut dans l'emploi : travailleurs indépendants, employés et employeurs. La combinaison d'un taux d'activité inférieur chez les femmes et d'une informalité légèrement plus élevée explique leur moindre représentation dans les régimes contributifs de protection sociale.
+Au sein de cette population active, la structure du marché du travail est marquée par la prédominance de l'emploi informel et de l'agriculture de subsistance. Selon les estimations modélisées de l'OIT (ILOSTAT), <a href="/files/06_sources/officielles_web/OIT_ILOSTAT_RDC_emploi_secteur_chomage_2021_2024.txt" title="Source : OIT, ILOSTAT — Emploi par secteur, RDC. Total : 58,9 %, femmes : 67,8 %, hommes : 50,3 % (2024)" class="source-ref nv">environ 59 % de la population active</a> travaille dans l'agriculture en 2024, avec une part nettement plus élevée chez les femmes (68 %) que chez les hommes (50 %). Malgré un taux de chômage relativement faible — estimé à <a href="/files/06_sources/officielles_web/OIT_ILOSTAT_RDC_emploi_secteur_chomage_2021_2024.txt" title="Source : OIT, ILOSTAT — Taux de chômage BIT (15+), RDC : 4,4 % en 2024" class="source-ref nv">4,4 %</a> en 2024 *(OIT, définition BIT)* —, la grande majorité des actifs occupés exercent dans des conditions précaires : le taux d'emploi informel est estimé à <a href="/files/06_sources/officielles_web/OIT_ILOSTAT_RDC_emploi_secteur_chomage_2021_2024.txt" title="Source : OIT, ILOSTAT — Emploi informel, RDC (2020) : 96,0 % ; femmes : 97,8 % ; hommes : 95,7 %" class="source-ref nv">environ 96 %</a> selon les estimations modélisées de l'OIT *(ILOSTAT, données 2020)*, avec une légère prépondérance chez les femmes (<a href="/files/06_sources/officielles_web/OIT_ILOSTAT_RDC_emploi_secteur_chomage_2021_2024.txt" title="Source : OIT, ILOSTAT — Emploi informel femmes, RDC (2020) : 97,8 %" class="source-ref nv">97,8 %</a>) par rapport aux hommes (<a href="/files/06_sources/officielles_web/OIT_ILOSTAT_RDC_emploi_secteur_chomage_2021_2024.txt" title="Source : OIT, ILOSTAT — Emploi informel hommes, RDC (2020) : 95,7 %" class="source-ref nv">95,7 %</a>). Cette informalité concerne toutes les catégories de statut dans l'emploi : travailleurs indépendants, employés et employeurs. La combinaison d'un taux d'activité inférieur chez les femmes et d'une informalité légèrement plus élevée explique leur moindre représentation dans les régimes contributifs de protection sociale.
 
 <p class="fig-caption"><strong>Figure 5</strong> — Marché du travail en RDC : taux d'activité et emploi informel par sexe</p>
 
@@ -166,7 +166,7 @@ Au sein de cette population active, la structure du marché du travail est marqu
 
 ### Des secteurs exposés à des risques professionnels spécifiques <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
-L'économie congolaise concentre des activités à forte exposition aux risques professionnels. Le secteur minier artisanal et industriel emploie plusieurs centaines de milliers de travailleurs dans des conditions souvent difficiles, avec des risques d'accidents du travail, de maladies professionnelles et d'exposition à des substances dangereuses. Le secteur agricole, qui mobilise la majorité de la main-d'œuvre active, est lui aussi exposé à des risques liés aux conditions de travail en milieu rural. Ces réalités renforcent l'importance d'un suivi statistique rigoureux des affiliés, des cotisants actifs et des victimes d'accidents du travail — données au cœur du présent bulletin.
+L'économie congolaise concentre des activités à forte exposition aux risques professionnels. Le secteur minier artisanal et industriel emploie plusieurs centaines de milliers de travailleurs dans des conditions souvent difficiles, avec des risques d'accidents du travail, de maladies professionnelles et d'exposition à des substances dangereuses. Le secteur agricole, qui mobilise la majorité de la main-d'œuvre active, est lui aussi exposé à des risques liés aux conditions de travail en milieu rural.
 
 <p class="fig-caption"><strong>Figure 6</strong> — Structure de l'emploi par grand secteur d'activité (agriculture, industrie, services), RDC</p>
 
@@ -178,7 +178,7 @@ L'économie congolaise concentre des activités à forte exposition aux risques 
 
 ### Les enjeux d'extension de la couverture contributive <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
-Dans ce contexte — forte informalité, bas revenus, vulnérabilité persistante —, l'extension de la protection sociale se heurte à des contraintes structurelles importantes. La majorité des travailleurs n'est pas enregistrée auprès des régimes contributifs formels, ce qui limite à la fois l'assiette de cotisation des institutions et l'accès effectif aux prestations pour les assurés potentiels. Ces constats, croisés avec les données démographiques de la section précédente, éclairent les orientations stratégiques que la RDC s'est données pour répondre à ces défis, présentées dans la section suivante.
+Dans ce contexte — forte informalité, bas revenus, vulnérabilité persistante —, l'extension de la protection sociale se heurte à des contraintes structurelles importantes. Ces constats, croisés avec les données démographiques de la section précédente, éclairent les orientations stratégiques que la RDC s'est données pour répondre à ces défis, présentées dans la section suivante.
 
 <!-- FIN FICHIER -->
 
@@ -206,7 +206,7 @@ La mise en uvre de ces orientations stratégiques se heurte à des contraintes
 
 ### Le bulletin comme instrument d'aide à la décision <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
-C'est dans ce contexte que s'inscrit le présent bulletin. La production régulière de statistiques de protection sociale constitue un outil essentiel pour orienter les choix de politique publique sur la base de données factuelles. Ce deuxième bulletin statistique vise à consolider les informations disponibles sur les régimes, institutions et programmes de protection sociale en RDC, à mesurer les niveaux de couverture effective  notamment au regard de l'indicateur ODD 1.3.1  et à identifier les lacunes qui devront être prises en compte dans l'élaboration et le suivi de la stratégie nationale. Il couvre la période jusqu'à décembre 2025 et s'appuie sur les données transmises par les institutions nationales, les publications des organisations internationales et les registres administratifs disponibles. Le chapitre 1 présente le cadre conceptuel et les choix méthodologiques qui fondent cette démarche.
+C'est dans ce contexte que s'inscrit le présent bulletin. La production régulière de statistiques de protection sociale constitue un outil essentiel pour orienter les choix de politique publique sur la base de données factuelles. Ce deuxième bulletin statistique vise à consolider les informations disponibles sur les régimes, institutions et programmes de protection sociale en RDC, à mesurer les niveaux de couverture effective  notamment au regard de l'indicateur ODD 1.3.1  et à identifier les lacunes qui devront être prises en compte dans l'élaboration et le suivi de la stratégie nationale. Il couvre la période 2019–2025 et s'appuie sur les données transmises par les institutions nationales, les publications des organisations internationales et les registres administratifs disponibles. Le chapitre 2 présente le cadre conceptuel et les choix méthodologiques qui fondent cette démarche.
 
 <!-- FIN FICHIER -->
 
@@ -272,7 +272,7 @@ Les dispositifs sont analysés selon quatre dimensions complémentaires : le car
 
 La lecture des indicateurs du bulletin suppose quelques distinctions que l'usage courant tend à confondre. Un affilié n'est pas nécessairement un cotisant actif : l'affiliation peut précéder la première cotisation ou persister après une interruption. Un bénéficiaire (ayant reçu une prestation) n'est pas une personne couverte (ayant droit à une prestation si le risque se réalise). Une même personne peut recevoir plusieurs prestations dans l'année : le dénombrement de prestations servies n'équivaut pas à un décompte de personnes distinctes. Lorsque les résultats sont exprimés en ménages bénéficiaires, la conversion en individus couverts repose sur des hypothèses de taille de ménage documentées dans le bulletin. La distinction entre couverture légale et couverture effective, centrale pour l'ensemble du bulletin, est rappelée à chaque indicateur concerné.
 
-Les limites générales du bulletin sont de trois ordres. La disponibilité des données administratives reste inégale selon les institutions et les périodes. La complétude des données transmises peut varier selon les exercices. La désagrégation — par sexe, âge, province ou secteur — n'est pas systématiquement disponible et est indiquée au cas par cas.
+Les limites générales du bulletin sont de trois ordres. La disponibilité des données administratives reste inégale selon les institutions et les périodes. La complétude des données transmises peut varier selon les exercices. La désagrégation — par sexe, âge — n'est pas systématiquement disponible et est indiquée au cas par cas.
 
 *→ Les définitions opérationnelles complètes figurent dans le [Glossaire](../../05_references/glossaire.md).*
 
@@ -292,11 +292,21 @@ Les limites générales du bulletin sont de trois ordres. La disponibilité des 
 
 Sur la base des grilles définies au chapitre 2 — couverture légale et effective, caractère obligatoire ou volontaire, financement contributif ou non contributif, statut réglementaire, nature des prestations et conditions d'accès —, le présent chapitre cartographie les régimes, programmes et institutions de protection sociale identifiés en RDC à la date de rédaction.
 
-Cette cartographie distingue quatre grandes catégories : la sécurité sociale contributive obligatoire, qui couvre les travailleurs du secteur privé formel via la CNSS et les agents publics affiliés à la CNSSAP (Tableau 2.1) ; les dispositifs statutaires financés directement par le budget de l'État, qui regroupent les régimes spéciaux formellement constitués et, lorsqu'elle est effectivement documentée, la protection budgétaire d'autres agents publics hors CNSSAP (Tableau 2.2) ; la protection de la santé, organisée par segment de population (Tableau 2.3) ; les programmes d'assistance sociale et initiatives non contributives destinés aux populations non couvertes par les régimes formels (Tableau 2.4) ; enfin, un ensemble de politiques sectorielles à dimension protectrice — gratuités, programmes d'activation par l'emploi, accès subventionné aux services de base — dont la finalité sociale est établie mais qui ne relèvent pas à proprement parler de l'assistance sociale (Tableau 2.5, mention contextuelle).
+Cette cartographie distingue cinq grandes catégories :
+
+1) la sécurité sociale contributive obligatoire, hors santé, qui couvre les travailleurs du secteur privé formel via la CNSS et les agents publics affiliés à la CNSSAP (Tableau 2.1) ;
+
+2) les dispositifs statutaires, hors santé, financés directement par le budget de l'État, qui regroupent les régimes spéciaux formellement constitués et la protection des agents publics qui ne sont pas encore transférés formellement à la CNSSAP (Tableau 2.2) ;
+
+3) la protection de la santé, organisée par segment de population (Tableau 2.3) ;
+
+4) les programmes d'assistance sociale et initiatives non contributives destinés aux populations non couvertes par les régimes formels (Tableau 2.4) ;
+
+5) enfin, un ensemble de politiques sectorielles à dimension protectrice — gratuités, programmes d'activation par l'emploi, accès subventionné aux services de base — dont la finalité sociale est établie mais qui ne relèvent pas à proprement parler de l'assistance sociale (Tableau 2.5, mention contextuelle).
 
 ---
 
-### Sécurité sociale contributive obligatoire <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### 1) Sécurité sociale contributive obligatoire hors santé <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 <a href="/files/06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="Source : OIT — Convention no 102 sur la sécurité sociale (normes minimales), 1952" class="source-ref source-ref-text nv" data-val-id="s31-t1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Les neuf branches de la Convention no 102 de l'OIT</a> servent de grille de lecture pour situer chaque institution dans le panorama de la protection sociale.
 
@@ -325,13 +335,19 @@ Cette cartographie distingue quatre grandes catégories : la sécurité sociale 
 
 ---
 
-### Dispositifs statutaires financés directement par le budget de l'État <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### 2) Dispositifs statutaires financés directement par le budget de l'État <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 Au-delà de la sécurité sociale contributive gérée par la CNSS et la CNSSAP, le paysage institutionnel de la protection sociale en RDC comprend un ensemble de **dispositifs statutaires dont les prestations sont financées directement par le budget de l'État**. Ces dispositifs se subdivisent en deux catégories distinctes, qu'il convient de ne pas confondre sur le plan institutionnel.
 
 La première catégorie regroupe les **régimes spéciaux** au sens strict : dispositifs institués par un texte légal ou réglementaire propre, couvrant une catégorie professionnelle déterminée selon des règles spécifiques de prestations et de financement. En RDC, entrent dans cette catégorie les régimes applicables aux militaires et policiers (FARDC, PNC), aux magistrats civils du siège et du parquet, et aux membres des assemblées législatives nationales.
 
-La seconde catégorie recouvre les **agents publics hors CNSSAP dont la protection est effectivement assurée par un dispositif statutaire financé directement par le budget de l'État**, sans s'inscrire dans un régime spécial formellement constitué. La mécanisation — entendue comme l'intégration administrative et salariale dans le système de paie de l'État — facilite la retenue régulière des cotisations et le passage à une couverture contributive effective par la CNSSAP. Toutefois, l'absence de mécanisation ou d'affiliation à la CNSSAP ne suffit pas, à elle seule, à établir l'existence d'une couverture budgétaire effective. Celle-ci doit être attestée par des droits identifiables, une population dénombrable et une prise en charge budgétaire documentée. Qualifier cette population de « régime spécial » serait inexact : elle relève des dispositions générales applicables aux agents de l'État, et non d'un régime spécial distinct.
+La seconde catégorie recouvre les **agents publics hors CNSSAP dont la protection est encore effectivement assurée par un dispositif statutaire financé directement par le budget de l'État**.
+
+Historiquement, la protection sociale des agents de l'État était assurée par un système de régimes dit « octroyés » : un ensemble de prestations (sous condition d'éligibilité) était garanti aux agents de l'État et directement financé par le budget national, sans recourir à un mécanisme assuranciel. Un programme de transfèrement de ces effectifs sous la responsabilité de la CNSSAP est en cours depuis 2022. Ce mécanisme est désigné comme la réforme de transfèrement.
+
+Cependant, la fourniture de protection sociale par un système non contributif et non assuranciel persiste sous deux formes : d'une part les régimes spéciaux (tel que les régimes des magistrats civils, régimes des parlementaires, etc.) et d'autre part par le personnel non encore effectivement transféré à la CNSSAP.
+
+La mécanisation est entendue comme l'intégration administrative et salariale dans le système de paie de l'État. Elle facilite la retenue régulière des cotisations et le passage à une couverture contributive effective par la CNSSAP. Toutefois, l'absence de mécanisation totale des agent publics de l'état implique qu'une partie des travailleurs ne sont ni couvert par le système contributif de la CNSSAP, ni par un régime spécial ou octroyé.
 
 Les données disponibles relatives à ces deux catégories sont synthétisées dans le Tableau 2.2. Les informations sur les branches effectivement couvertes et les populations concernées sont partielles et doivent être interprétées au regard des limites de documentation actuelles.
 
@@ -377,7 +393,7 @@ Les régimes décrits dans les tableaux précédents reposent sur un fondement c
 
 La <a href="/files/06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="OIT — Recommandation no 202 (2012) — §8 : les socles de protection sociale comprennent des garanties minimales pour les populations non couvertes par les régimes contributifs" class="source-ref source-ref-text nv" data-val-id="s31-t4-r202" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Recommandation no 202 de l'OIT (2012)</a> définit les **socles de protection sociale** comme des garanties élémentaires devant couvrir toute la population, y compris ceux qui ne participent à aucun régime contributif. En RDC, cette fonction est partiellement assurée par un ensemble de **programmes non contributifs et d'initiatives sectorielles**, portés soit par le gouvernement, soit par des partenaires techniques et financiers. <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) — ch. 2.3 : programmes non contributifs d'assistance sociale" class="source-ref source-ref-text nv" data-val-id="s31-t4-bul1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">[Premier bulletin 2023]</a>
 
-Ces programmes se distinguent des régimes précédents par trois caractéristiques structurelles : ils sont entièrement **financés par des ressources publiques ou des contributions extérieures**, sans cotisation des bénéficiaires ; ils ne confèrent généralement **aucun droit statutaire permanent** susceptible d'être invoqué par les intéressés ; et leur pérennité dépend des décisions budgétaires annuelles ou des cycles de financement des bailleurs. Cette fragilité institutionnelle est une limite importante à leur intégration dans les indicateurs de couverture ; ils sont néanmoins recensés ici car ils constituent, pour les populations concernées, la seule forme de protection sociale accessible.
+Ces programmes se distinguent des régimes précédents par trois caractéristiques structurelles : ils sont **financés par des ressources publiques ou des contributions extérieures**, sans cotisation des bénéficiaires ; ils ne confèrent généralement **aucun droit statutaire permanent** susceptible d'être invoqué par les intéressés ; et leur pérennité dépend des décisions budgétaires annuelles ou des cycles de financement des bailleurs. Cette fragilité institutionnelle est une limite importante à leur intégration dans les indicateurs de couverture ; Décision a été cependant prise d’intégrer le programme des cantines scolaires du PAM dans la protection sociale des enfants.
 
 <p class="table-caption"><strong>Tableau 2.4</strong> — Programmes d'assistance sociale et initiatives non contributives (actifs au 31.12.2025)</p>
 
@@ -431,13 +447,19 @@ Conformément au cadre méthodologique du présent bulletin (Annexe A.1, Niveau 
 
 ## Texte rédigé
 
-### Bénéficiaires de pensions de vieillesse <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+Cette section vise à quantifier la fourniture effective de protection sociale de 2019 à 2025, les prestations sont distinguées selon les branches usuelles de protection sociale.
 
-La branche vieillesse constitue la principale branche de long terme de la protection sociale en RDC. La protection des personnes âgées s'organise selon deux modalités institutionnelles distinctes, qui coexistent sans se confondre.
+### 4.1 — Protection dans la vieillesse
 
-La première modalité est **contributive** : elle repose sur la constitution de droits à pension par le versement de cotisations pendant la vie active. Elle est assurée, d'une part, par la **CNSS** pour les travailleurs du secteur privé formel et leurs ayants droit, et, d'autre part, par la **CNSSAP** pour les agents publics de l'État affiliés et pour lesquels des cotisations sont effectivement versées. La *mécanisation* — c'est-à-dire l'intégration administrative et salariale dans le système de paie de l'État — facilite la retenue régulière de ces cotisations, sans être confondue avec l'immatriculation auprès de la CNSSAP.
+#### Bénéficiaires de pensions de vieillesse <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-La seconde modalité recouvre la **protection vieillesse financée directement par le budget de l'État**, qui se décline elle-même en deux sous-catégories. D'un côté, les **régimes spéciaux** formellement constitués — régime des militaires et policiers (FARDC, PNC), des magistrats civils, des parlementaires — dont les pensions sont assurées par allocation budgétaire en vertu de textes propres à chaque catégorie. De l'autre, certains **agents publics hors CNSSAP** peuvent relever d'une prise en charge directe par le Trésor public, sous réserve que leurs droits et les prestations effectivement servies soient documentés. Cette seconde population ne constitue pas un « régime spécial » au sens strict. Elle ne peut pas davantage être déduite, par différence, du seul écart entre l'effectif estimé de l'emploi public et les affiliés ou cotisants de la CNSSAP.
+L'étendue de la protection contre le risque de vieillesse est estimée à partir du nombre de bénéficiaires de pensions de vieillesse. Les pensions de vieillesse sont délivrées par la CNSS, la CNSSAP, les régimes spéciaux et les régimes octroyés.
+
+La protection des personnes âgées s'organise selon deux modalités institutionnelles distinctes, qui coexistent sans se confondre : les régimes contributifs statutaires et les régimes dits « octroyés » de l'État.
+
+La première modalité repose sur la constitution de droits à pension par le versement de cotisations pendant la vie active. Elle est assurée, d'une part, par la **CNSS** pour les travailleurs du secteur privé formel et leurs ayants droit, et, d'autre part, par la **CNSSAP** pour les agents publics formels de l'État. Deux grandes politiques devraient à terme substantiellement augmenter le nombre de bénéficiaires de pension de vieillesse du volet contributif : la réforme de transfèrement (intégration des agents des régimes octroyés du secteur public vers le régime contributif de la CNSSAP) et la mécanisation (formalisation des travailleurs informels de l'État).
+
+La seconde modalité recouvre la **protection vieillesse financée directement par le budget de l'État**, qui se décline en deux sous-catégories : les régimes spéciaux formellement constitués (FARDC, PNC, magistrats civils, parlementaires) dont les pensions sont assurées par allocation budgétaire, et certains agents publics hors CNSSAP dont la prise en charge directe par le Trésor public est documentée.
 
 Le tableau suivant retrace l'évolution du nombre de bénéficiaires de pensions de vieillesse sur la période 2019–2025, pour les régimes disposant de données disponibles. Seuls les bénéficiaires effectifs — personnes percevant une pension à la date de référence — sont renseignés dans ce tableau. Les actifs (affiliés, cotisants) n'y figurent pas.
 
@@ -472,19 +494,15 @@ L'adéquation des pensions est appréciée par leur rapport au seuil de pauvret�
 
 ## Texte rédigé
 
-### Affiliés, cotisants actifs et personnes couvertes par un dispositif statutaire budgétaire <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### Actifs affiliés à un dispositif statutaire de retraite <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-Les régimes contributifs — la CNSS pour le secteur formel privé et la CNSSAP pour les agents publics relevant de son périmètre — couvrent des personnes enregistrées auprès de l'institution, dont une partie cotise activement. Le bulletin applique les définitions strictes suivantes, conformément au glossaire et aux décisions méthodologiques du bulletin :
+La protection sociale des personnes en âge actif se décompose en : nombre d'actifs affiliés à un dispositif statutaire de retraite, nombre de bénéficiaires de prestations de maternité en espèce, et nombre de personnes affiliées à un régime assurant les accidents du travail et maladies professionnelles. Les prestations sont statutairement délivrées par la CNSS, la CNSSAP, certains régimes spéciaux et octroyés. Par ailleurs, le MINAS offre un certain nombre de prestations non contributives aux personnes âgées en situation de vulnérabilité.
 
-- **Affilié ou personne enregistrée (N3)** : toute personne immatriculée auprès d'un régime ou d'une institution, indépendamment de son statut de cotisation active ou de la perception d'une prestation.
-- **Cotisant actif (N4)** : personne affiliée pour laquelle une cotisation est effectivement versée ou enregistrée sur la période de référence. Cette donnée constitue le numérateur retenu pour le sous-indicateur ODD 1.3.1 relatif aux actifs dans les régimes contributifs.
-- **Personne couverte par un dispositif statutaire budgétaire** : agent public ou ayant droit dont la protection repose sur un cadre légal ou réglementaire définissant des droits et prestations financés directement par le budget de l'État, mais qui n'est pas enregistré auprès d'un régime contributif au sens strict.
+Les régimes contributifs permettant de constituer un droit à la pension de retraite sont la CNSS pour le secteur formel privé et la CNSSAP pour les agents publics relevant de son périmètre.
 
-Pour la CNSSAP, la **mécanisation** — soit l'intégration administrative et salariale dans le système de paie de l'État — permet la retenue régulière des cotisations et constitue ainsi un déterminant important du passage à la cotisation active. Elle reste distincte de l'immatriculation, qui correspond à l'enregistrement de la personne auprès de la CNSSAP. Les agents publics hors CNSSAP ne sont pas considérés automatiquement comme effectivement couverts par le budget de l'État : cette couverture ne sera retenue que si les droits, la population concernée et la prise en charge budgétaire sont officiellement documentés.
+Pour les corps particuliers relevant de régimes spéciaux ou des régimes octroyés, la protection repose sur un dispositif statutaire budgétaire défini par des lois, décrets ou statuts particuliers. Ces personnes ne sont pas affiliées à la CNSSAP ni à la CNSS ; leur couverture est distincte et financée directement par le budget de l'État.
 
-Pour les corps particuliers relevant de régimes spéciaux (militaires des FARDC, magistrats, membres du Parlement et autres corps à statut propre), la protection repose sur un dispositif statutaire budgétaire défini par des lois, décrets ou statuts particuliers. Ces personnes ne sont pas affiliées à la CNSSAP ni à la CNSS ; leur couverture est distincte et financée directement par le budget de l'État. Les données permettant de les dénombrer et de caractériser leurs droits effectifs ne sont pas disponibles dans les sources mobilisées pour le présent bulletin.
-
-Les estimations de l'emploi public fournissent un ordre de grandeur de la population susceptible de relever des dispositifs de protection sociale liés à l'emploi public. Elles ne mesurent toutefois ni l'affiliation à la CNSSAP, ni la cotisation active, ni la couverture budgétaire effective. Pour la période 2019–2025, ILOSTAT ne fournit qu'une observation : <a href="/files/06_sources/officielles_web/OIT_ILOSTAT_RDC_salaries_secteur_public_2020.json" title="Source : OIT (ILOSTAT) — salariés du secteur public en RDC, observation 2020, base consultée le 15 juillet 2026" class="source-ref" data-val-id="s43-p1-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">1 622 972 salariés du secteur public en 2020</a>. Cette estimation est présentée comme une population de référence contextuelle et ne doit pas être assimilée aux effectifs administratifs des régimes.
+Les estimations de l'emploi public fournissent un ordre de grandeur de la population susceptible de relever des dispositifs de protection sociale liés à l'emploi public. Elles ne mesurent toutefois ni l'affiliation à la CNSSAP, ni la cotisation active, ni la couverture budgétaire effective. Pour la période 2019–2025, ILOSTAT fournit qu'une observation : <a href="/files/06_sources/officielles_web/OIT_ILOSTAT_RDC_salaries_secteur_public_2020.json" title="Source : OIT (ILOSTAT) — salariés du secteur public en RDC, observation 2020, base consultée le 15 juillet 2026" class="source-ref" data-val-id="s43-p1-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">1 622 972 salariés du secteur public en 2020</a>. Cette estimation est présentée comme une population de référence contextuelle et ne doit pas être assimilée aux effectifs administratifs des régimes.
 
 <p class="table-caption"><strong>Tableau 4.3</strong> — Employeurs enregistrés, affiliés enregistrés et cotisants actifs, CNSS et CNSSAP ; personnes couvertes par un dispositif statutaire budgétaire (2019–2025) <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s43-t1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">[src]</a></p>
 
@@ -501,7 +519,7 @@ Les estimations de l'emploi public fournissent un ordre de grandeur de la popula
 
 *Sources : OIT, ILOSTAT (emploi salarié du secteur public, observation 2020) ; ESS OIT — CNSS (2019–2022) et CNSSAP (2020–2022). ILOSTAT ne fournit pas d'observation pour 2019 et 2021–2025 dans la série retenue : ces années sont indiquées [N/D] et ne font l'objet d'aucune interpolation. Affiliés enregistrés (N3) CNSS et CNSSAP : données non disponibles dans les ESS mobilisées pour ce bulletin — à instruire. Régimes spéciaux et protection budgétaire hors régime spécial : données non disponibles — à instruire. L'écart entre l'emploi public estimé et les affiliés ou cotisants CNSSAP ne constitue pas, à lui seul, une mesure de la couverture budgétaire effective.*
 
-### Protection maternité <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### Bénéficiaires de prestations de maternité en espèce <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 La protection maternité de la CNSS comprend trois prestations distinctes : l'indemnité journalière (compensation du salaire pendant le congé), l'allocation de maternité (forfait à la naissance) et les allocations prénatales (versées avant l'accouchement).
 
@@ -516,9 +534,11 @@ La protection maternité de la CNSS comprend trois prestations distinctes : l'in
 
 *Source : ESS OIT — CNSS. Régimes spéciaux : données non disponibles.*
 
-> **Note méthodologique — faiblesse des chiffres de maternité CNSS :** Les effectifs de bénéficiaires de prestations maternité déclarés par la CNSS sont très faibles au regard du nombre de cotisantes actives (moins de 1 % des assurées sur la période). Cette anomalie reflète probablement une sous-déclaration des congés maternité auprès de l'institution, une méconnaissance des droits par les assurées, ou des délais de remboursement qui découragent les demandes. Elle ne doit pas être interprétée comme un faible recours aux soins obstétricaux. Un encadré méthodologique spécifique est prévu dans le bulletin pour documenter cette limite.
+> **Note méthodologique — faiblesse des chiffres de maternité CNSS :** Les effectifs de bénéficiaires de prestations maternité déclarés par la CNSS sont très faibles au regard du nombre de cotisantes actives (moins de 1 % des assurées sur la période). Cette anomalie reflète probablement une sous-déclaration des congés maternité auprès de l'institution, une méconnaissance des droits par les assurées, ou des délais de remboursement qui découragent les demandes.
 
-### Accidents du travail et maladies professionnelles <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### Adéquation des indemnités journalières de maternité <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+### Protection contre les accidents du travail et maladies professionnelles <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 Les accidents du travail et maladies professionnelles (AT/MP) donnent droit à une rente d'incapacité permanente pour le travailleur victime, ou à une rente de survie pour ses ayants droit en cas de décès. Le montant unitaire mensuel est identique pour toutes les rentes AT/MP d'une même année, fixé par arrêté.
 
@@ -533,13 +553,15 @@ Les accidents du travail et maladies professionnelles (AT/MP) donnent droit à u
 
 *Source : ESS OIT — CNSS (2019–2022). Régimes spéciaux : données non disponibles.*
 
-> **Note méthodologique — Couverture AT/MP et dénominateur :** Le taux de couverture en accidents du travail et maladies professionnelles (AT/MP) est calculé en rapportant le nombre de cotisants/assurés actifs AT/MP à la population en emploi (et non à la population active). Cette correction méthodologique exclut les chômeurs, qui ne courent par définition aucun risque d'accident du travail. Le résultat est exprimé en % de la population totale, conformément aux standards OIT. Cette approche harmonise le traitement de l'indicateur AT/MP avec celui de l'indicateur handicap/invalidité (ODD 1.3.1). Pour plus de détails, voir section 5 (Indicateurs ODD).
+> **Adéquation des indemnités — Rentes/allocations incapacité AT/MP**
 
 <!-- FIN FICHIER -->
 
 ## 4.4 — Protection des enfants et des familles
 
 ## Texte rédigé
+
+La protection sociale des enfants et des familles est représentée par le nombre d'enfants percevant des prestations en espèces ou en nature provenant de régimes ou de programmes pérennes à l'enfance ou aux familles.
 
 ### Allocations familiales — régimes contributifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
@@ -568,9 +590,9 @@ L'allocation familiale est versée mensuellement par enfant à charge. Le tablea
 
 *Source : ESS OIT — CNSS ; seuil de pauvreté : estimation à construire à partir des données INS.*
 
-### Programmes non contributifs ciblant enfants et familles <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### Enfants bénéficiaires de prestations non contributives <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-Le tableau recense les programmes d'assistance sociale non contributifs ciblant les enfants et les ménages, ainsi que les données de couverture disponibles pour la période considérée.
+Le tableau recense les programmes d'assistance sociale non contributifs ciblant les enfants et les ménages, considéré comme pérenne bien que non statutaire.
 
 <p class="table-caption"><strong>Tableau 4.8</strong> — Programmes non contributifs ciblant les enfants et les familles <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s44-t3-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.4_enfants_familles.md">[src]</a></p>
 
@@ -585,7 +607,9 @@ Le tableau recense les programmes d'assistance sociale non contributifs ciblant 
 
 ## Texte rédigé
 
-### Pensions d'invalidité — régimes contributifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+La protection sociale en cas d'invalidité ou de handicap est représentée par le nombre de bénéficiaires de pensions d'invalidité en espèce provenant de régimes ou de programmes pérennes. Elles sont délivrées par la CNSS, les régimes spéciaux et les programmes du MINAS.
+
+### Bénéficiaires de pensions d'invalidité — régimes contributifs <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 La branche invalidité couvre les assurés reconnus en incapacité permanente de travail, sous conditions de durée de cotisation préalable. Le tableau présente l'évolution du nombre de pensionnés et du montant unitaire de la pension d'invalidité.
 
@@ -602,9 +626,9 @@ La branche invalidité couvre les assurés reconnus en incapacité permanente de
 
 ### Adéquation de la pension d'invalidité <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-Dans les régimes de la CNSS, la pension d'invalidité et la pension de vieillesse sont fixées au même montant unitaire mensuel par arrêté. Le tableau présente ces montants et le seuil de pauvreté de référence pour la même période.
+Dans les régimes de la CNSS, la pension minimale d'invalidité et la pension de vieillesse sont fixées au même montant unitaire mensuel par arrêté. Le tableau présente ces montants et le seuil de pauvreté de référence pour la même période.
 
-<p class="table-caption"><strong>Tableau 4.10</strong> — Adéquation de la pension d'invalidité CNSS et seuil de pauvreté (2019–2025) <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s45-t2-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">[src]</a></p>
+<p class="table-caption"><strong>Tableau 4.10</strong> — Adéquation de la pension d'invalidité minimale de CNSS et de la CNSSAP et seuil de pauvreté (2019–2025) <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s45-t2-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">[src]</a></p>
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
@@ -614,7 +638,7 @@ Dans les régimes de la CNSS, la pension d'invalidité et la pension de vieilles
 
 *Source : ESS OIT — CNSS ; seuil de pauvreté : estimation à construire à partir des données INS.*
 
-### Programmes non contributifs pour les personnes handicapées <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### Bénéficiaires des programmes non contributifs pour les personnes handicapées <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 Le tableau recense les programmes d'assistance sociale destinés aux personnes handicapées et les données de couverture disponibles pour la période considérée.
 
@@ -630,7 +654,7 @@ Le tableau recense les programmes d'assistance sociale destinés aux personnes h
 
 ## Texte rédigé
 
-### Pensions de survie et prestations aux ayants droit <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### Bénéficiaires de pensions de survie et prestations aux ayants droit <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 Les prestations de survie sont versées aux ayants droit d'un assuré décédé — conjoint survivant et orphelins principalement. La CNSS distingue la pension de survie contributive, les rentes liées aux accidents du travail et une allocation pour frais funéraires.
 
@@ -671,7 +695,7 @@ La protection de la santé en RDC s'organise autour de trois types de dispositif
 
 ---
 
-### Le FSS — Fonds de Solidarité de Santé <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### Protection statutaire en matière de santé : Le FSS — Fonds de Solidarité de Santé <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 <a href="/files/06_sources/officielles_web/FSS_RDC_produits_regimes.txt" title="Source : FSS RDC — Site officiel fss.cd, consulté juin 2026 — Loi n°18/035 du 13 décembre 2018 ; Décret n°22/13 du 09 avril 2022" class="source-ref source-ref-text nv" data-val-id="s47-p1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">Institué par la loi n°18/035 du 13 décembre 2018 et organisé par le décret n°22/13 du 9 avril 2022, le FSS est la caisse nationale d'assurance maladie de la RDC.</a> Il est devenu opérationnel en 2022 et constitue l'un des instruments de mise en œuvre de la couverture sanitaire universelle. Il propose trois produits : Afia Bora (paquet de base obligatoire, régime contributif pour les travailleurs du secteur formel), Afia Bora Prime (paquet complémentaire contributif), et Kobota Ofele (programme d'assistance de l'État pour les mères et les nouveau-nés, financement non contributif).
 
@@ -689,9 +713,9 @@ La protection de la santé en RDC s'organise autour de trois types de dispositif
 
 ---
 
-### La MESP — Mutuelle des Enseignants de l'EPST <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### Protection statutaire en matière de santé : La MESP — Mutuelle des Enseignants de l'EPST <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-La Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique (MESP) est un régime de santé statutaire obligatoire antérieur au FSS. Elle couvre les enseignants relevant du ministère de l'EPST selon un mécanisme contributif. Les ESS disponibles portent sur les exercices 2019 à 2022.
+La Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique (MESP) est la seule mutuelle de santé statutaire et obligatoire. Elle est antérieure au FSS et couvre les enseignants relevant du ministère de l'EPST selon un mécanisme contributif. Les ESS disponibles portent sur les exercices 2019 à 2022.
 
 <p class="table-caption"><strong>Tableau 4.15</strong> — Indicateurs de couverture MESP (2019–2025)</p>
 
@@ -706,9 +730,9 @@ La Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique 
 
 ---
 
-### Mutuelles de santé volontaires <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### Protection volontaire en matière de santé : Les mutuelles de santé volontaires <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-Les mutuelles de santé à adhésion volontaire constituent un troisième niveau de protection. Elles incluent notamment les structures d'assurance médicale du secteur privé (type SESOPA pour les secteurs pétrolier et bancaire) ainsi que les mutuelles communautaires et associatives. Ces dispositifs sont mentionnés à titre contextuel : ils ne font pas l'objet d'une collecte statistique consolidée dans le cadre de la présente édition du bulletin et leurs données de couverture ne sont pas agrégées dans les indicateurs.
+Les mutuelles de santé à adhésion volontaire constituent un troisième niveau de protection. Elles incluent notamment les structures d'assurance médicale du secteur privé ainsi que les mutuelles communautaires et associatives sous l'égide du SESOPA.
 
 <!-- FIN FICHIER -->
 
@@ -718,7 +742,7 @@ Les mutuelles de santé à adhésion volontaire constituent un troisième niveau
 
 ### Recettes des régimes contributifs <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
-Les recettes des régimes contributifs proviennent principalement des cotisations salariales et patronales. Le financement des régimes non contributifs repose sur les transferts du budget de l'État et les contributions des partenaires au développement.
+Les recettes des régimes contributifs proviennent principalement des cotisations salariales et patronales comprenant l'État employeur. Le financement des régimes non contributifs repose sur les transferts du budget de l'État et les contributions des partenaires au développement.
 
 <p class="table-caption"><strong>Tableau 4.16</strong> — Recettes des régimes contributifs (2019–2025) <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s48-t1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">[src]</a></p>
 
@@ -733,7 +757,7 @@ Les recettes des régimes contributifs proviennent principalement des cotisation
 
 ### Dépenses de prestations <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
-Les dépenses de prestations correspondent aux transferts effectifs versés aux bénéficiaires  pensions, allocations, rentes, indemnités. Elles sont distinguées des dépenses administratives, conformément aux standards de l'OIT. Les valeurs sont exprimées en milliards de francs congolais courants.
+Les dépenses de prestations correspondent aux transferts effectifs versés aux bénéficiaires — pensions, allocations, rentes, indemnités. Elles sont distinguées des dépenses administratives. Les valeurs sont exprimées en milliards de francs congolais courants.
 
 <p class="table-caption"><strong>Tableau 4.17</strong> — Dépenses de prestations par institution (2019–2025) <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s48-t2-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">[src]</a></p>
 
@@ -758,6 +782,10 @@ Les dépenses de prestations correspondent aux transferts effectifs versés aux 
 | Régimes spéciaux  dépenses administratives | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
 *Source : ESS OIT  CNSS et CNSSAP. Le ratio est calculé comme : dépenses administratives / (dépenses de prestations + dépenses administratives). Régimes spéciaux : données non disponibles.*
+
+### Responsabilité de l'employeur et régime d'entreprise <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+[Section à rédiger : prestations assurées directement par les employeurs hors régimes institutionnels]
 
 ### Dépenses en proportion du PIB <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 

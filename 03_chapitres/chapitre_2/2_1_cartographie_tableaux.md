@@ -92,7 +92,7 @@ Historiquement, la protection sociale des agents de l'État était assurée par 
 
 Cependant, la fourniture de protection sociale par un système non contributif et non assuranciel persiste sous deux formes : d'une part les régimes spéciaux (tel que les régimes des magistrats civils, régimes des parlementaires, etc.) et d'autre part par le personnel non encore effectivement transféré à la CNSSAP.
 
-La mécanisation est entendue comme l'intégration administrative et salariale dans le système de paie de l'État. Elle facilite la retenue régulière des cotisations et le passage à une couverture contributive effective par la CNSSAP.
+La mécanisation est entendue comme l'intégration administrative et salariale dans le système de paie de l'État. Elle facilite la retenue régulière des cotisations et le passage à une couverture contributive effective par la CNSSAP. Toutefois, l'absence de mécanisation totale des agent publics de l'état implique qu'une partie des travailleurs ne sont ni couvert par le système contributif de la CNSSAP, ni par un régime spécial ou octroyé.
 
 Les données disponibles relatives à ces deux catégories sont synthétisées dans le Tableau 2.2. Les informations sur les branches effectivement couvertes et les populations concernées sont partielles et doivent être interprétées au regard des limites de documentation actuelles.
 

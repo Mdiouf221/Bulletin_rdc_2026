@@ -9,7 +9,7 @@ const PRESTATION_META = {"CNSS": {"CNSS_R1": {"allocation de maternit\u00e9": {"
 const NOM_COURT    = {"CNSS_R1": "Prestations familiales", "CNSS_R2": "Risques professionnels", "CNSS_R3": "Pension", "CNSS_R4": "Action sociale et sanitaire", "CNSSAP_R1": "R\u00e9gime de base", "CNSSAP_R2": "R\u00e9forme du transfert"};
 const CRITERIA_FIELDS = [{"key": "nom_regime", "label": "Nom du r\u00e9gime", "is_name_selector": true}, {"key": "code_regime", "label": "Code r\u00e9gime", "is_multi": false}, {"key": "type_financement", "label": "Type de financement", "is_multi": false}, {"key": "caractere", "label": "Caract\u00e8re", "is_multi": false}, {"key": "type_assurance", "label": "Type d'assurance", "is_multi": false}, {"key": "gestion", "label": "Gestion", "is_multi": false}, {"key": "administrateur", "label": "Administrateur", "is_multi": false}, {"key": "fonctions_oit", "label": "Fonctions couvertes", "is_multi": true, "is_list": true}];
 const INDICATEURS_DATA = {"years": [2019, 2020, 2021, 2022], "totaux": {"cotisants": [2028537.0, 1526124.0, 1963935.0, 2039682.0], "beneficiaires": [336018.0, 367368.0, 472020.0, 443262.0], "depenses_mds": [986.22444057201, 1322.22414934764, 1508.02353460573, 2068.03020330441], "recettes_mds": [1733.47930764447, 2217.57939842856, 2821.18357148723, 3265.57630222243]}, "latest": {"annee": 2022, "cotisants": 2039682.0, "beneficiaires": 443262.0, "depenses_mds": 2068.03020330441, "recettes_mds": 3265.57630222243, "ratio_benef_cotis": 0.21731917034125908, "ratio_dep_rec": 0.6332818504032459}, "institutions_latest": [{"institution": "CNSS", "cotisants": 1841283.0, "beneficiaires": 438280.0, "depenses_mds": 2033.6302033044099, "recettes_mds": 3203.3763022224302}, {"institution": "CNSSAP", "cotisants": 198399.0, "beneficiaires": 4982.0, "depenses_mds": 34.4, "recettes_mds": 62.2}]};
-const DENOMINATEURS_CONFIG = {"sources": {"bm_api": {"label": "Banque mondiale (live)", "description": "Population totale, 15-64, 65+, taux natalit\u00e9 \u2014 s\u00e9ries SP.POP.* depuis 1960"}, "wpp_api": {"label": "ONU WPP via PopPyramid (live)", "description": "Pyramide des \u00e2ges quinquennale RDC \u2014 donn\u00e9es ONU WPP 2024, toutes tranches d'\u00e2ge personnalisables, 1950\u20132100"}, "ilostat_api": {"label": "ILOSTAT / OIT (live)", "description": "Population active employ\u00e9e \u2014 s\u00e9ries emploi OIT pour la RDC"}, "manuel": {"label": "Saisie manuelle", "description": "Valeurs saisies manuellement pour chaque ann\u00e9e"}}, "defaults": {"source_population_totale": "bm_api", "source_population_active": "wpp_api", "source_population_retraite": "wpp_api", "source_maternite": "bm_api", "year_start_total": 2019, "year_end_total": 2022, "year_start_active": 2019, "year_end_active": 2022, "year_start_retraite": 2019, "year_end_retraite": 2022, "year_start_maternite": 2019, "year_end_maternite": 2022, "retirement_age_h": 65, "retirement_age_f": 65, "working_age_min": 15, "working_age_max": 64, "maternity_age_min": 15, "maternity_age_max": 49}};
+const DENOMINATEURS_CONFIG = {"sources": {"local_db": {"label": "Base locale (Excel OIT)", "description": "Données ONU WPP 2024 et ILOSTAT pré-importées depuis Denominateurs 2026.xlsx \u2014 disponibles 2015\u20132027 pour la RDC"}, "bm_api": {"label": "Banque mondiale (live)", "description": "Population totale, 15-64, 65+, taux natalit\u00e9 \u2014 s\u00e9ries SP.POP.* depuis 1960"}, "wpp_api": {"label": "ONU WPP via PopPyramid (live)", "description": "Pyramide des \u00e2ges quinquennale RDC \u2014 donn\u00e9es ONU WPP 2024, toutes tranches d'\u00e2ge personnalisables, 1950\u20132100"}, "ilostat_api": {"label": "ILOSTAT / OIT (live)", "description": "Population active employ\u00e9e \u2014 s\u00e9ries emploi OIT pour la RDC"}, "manuel": {"label": "Saisie manuelle", "description": "Valeurs saisies manuellement pour chaque ann\u00e9e"}}, "defaults": {"source_population_totale": "local_db", "source_population_active": "local_db", "source_population_retraite": "local_db", "source_maternite": "local_db", "year_start_total": 2019, "year_end_total": 2022, "year_start_active": 2019, "year_end_active": 2022, "year_start_retraite": 2019, "year_end_retraite": 2022, "year_start_maternite": 2019, "year_end_maternite": 2022, "retirement_age_h": 65, "retirement_age_f": 65, "working_age_min": 15, "working_age_max": 64, "maternity_age_min": 15, "maternity_age_max": 49}};
 
 function escapeHtml(text) {
   return String(text || '')
@@ -763,31 +763,97 @@ function renderDenominatorTable(rows) {
   const host = document.getElementById('denom-results');
   if (!host) return;
   if (!rows || !rows.length) {
-    host.innerHTML = '<p class="empty">Aucun dénominateur disponible.</p>';
+    host.innerHTML = '<p class="empty">Aucun dénominateur disponible. Vérifier la base locale.</p>';
     return;
   }
-  const header = (
+  const cols = [
+    { key: 'populationTotale',   label: 'Pop. totale 0+',        metaKey: 'populationTotale_meta',   title: 'P-SP / P-HE' },
+    { key: 'enfants0_14',        label: 'Enfants 0-14',          metaKey: 'enfants0_14_meta',         title: 'B-CH-15' },
+    { key: 'enfants0_17',        label: 'Enfants 0-17',          metaKey: 'enfants0_17_meta',         title: 'B-CH-18' },
+    { key: 'femmesAccouche',     label: 'Femmes 15-49',          metaKey: 'femmesAccouche_meta',      title: 'B-MA' },
+    { key: 'forceDeTravail',     label: 'Force de travail 15+',  metaKey: 'forceDeTravail_meta',      title: 'C-WI/C-SI/C-MA' },
+    { key: 'chomeurs',           label: 'Chômeurs 15+',          metaKey: 'chomeurs_meta',            title: 'B-UN' },
+    { key: 'populationRetraite', label: 'Pop. retraite 65+',     metaKey: 'populationRetraite_meta',  title: 'B-OA' },
+    { key: 'wap15_64',           label: 'Pop. active 15-64',     metaKey: 'wap15_64_meta',            title: 'C-OA-WAP' },
+    { key: 'wap15plus',          label: 'Pop. 15+ (LF denom)',   metaKey: 'wap15plus_meta',           title: 'C-OA-LF' },
+  ];
+  const header =
     '<table class="denom-table">' +
-      '<thead><tr>' +
-        '<th>Année</th>' +
-        '<th>Population totale</th>' +
-        '<th>Population active</th>' +
-        '<th>Population retraite</th>' +
-        '<th>Naissances vivantes (proxy)</th>' +
-        '<th>Femmes ayant accouché (proxy)</th>' +
-      '</tr></thead><tbody>'
-  );
-  const body = rows.map(row => (
-    '<tr>' +
-      '<td>' + escapeHtml(String(row.year)) + '</td>' +
-      '<td>' + escapeHtml(fmtPlain(row.populationTotale)) + '<small>' + escapeHtml(row.metaTotal || '') + '</small></td>' +
-      '<td>' + escapeHtml(fmtPlain(row.populationActive)) + '<small>' + escapeHtml(row.metaActive || '') + '</small></td>' +
-      '<td>' + escapeHtml(fmtPlain(row.populationRetraite)) + '<small>' + escapeHtml(row.metaRetraite || '') + '</small></td>' +
-      '<td>' + escapeHtml(fmtPlain(row.naissancesVivantes)) + '<small>' + escapeHtml(row.metaNaissances || '') + '</small></td>' +
-      '<td>' + escapeHtml(fmtPlain(row.femmesAyantAccouche)) + '<small>' + escapeHtml(row.metaFemmes || '') + '</small></td>' +
+    '<thead><tr><th>Année</th>' +
+    cols.map(c => '<th title="' + escapeHtml(c.title) + '">"' + escapeHtml(c.label) + '</th>').join('') +
+    '</tr></thead><tbody>';
+  const body = rows.map(row =>
+    '<tr><td><strong>' + escapeHtml(String(row.year)) + '</strong></td>' +
+    cols.map(c => {
+      const v = row[c.key];
+      const m = row[c.metaKey] || '';
+      return '<td>' + escapeHtml(fmtPlain(v)) + (m ? '<small>' + escapeHtml(m) + '</small>' : '') + '</td>';
+    }).join('') +
     '</tr>'
-  )).join('');
+  ).join('');
   host.innerHTML = header + body + '</tbody></table>';
+}
+
+
+// ── Base locale (Excel OIT) ─────────────────────────────────────────────────
+// Correspondance indicateur OIT vers (var_code BDD, sex, age) dans denominateurs_ref
+// Source : feuille 2.1_Denominators du calculateur OIT (CALC_v16)
+const LOCAL_DB_METRIC_MAP = {
+  // Couverture globale (P-SP)
+  population_totale:        { var_code: 'var-c-popsx', sex: 'sex-t', age: 'age-0+'    },
+  population_sante:         { var_code: 'var-c-popsx', sex: 'sex-t', age: 'age-0+'    },
+  // Vieillesse / retraite
+  population_retraite:      { var_code: 'var-c-popsx', sex: 'sex-t', age: 'age-65+'   },
+  population_retraite_f:    { var_code: 'var-c-popsx', sex: 'sex-f', age: 'age-65+'   },
+  population_retraite_m:    { var_code: 'var-c-popsx', sex: 'sex-m', age: 'age-65+'   },
+  wap_retraite:             { var_code: 'var-c-popsx', sex: 'sex-t', age: 'age-15+'   },
+  lf_retraite:              { var_code: 'var-c-lf',    sex: 'sex-t', age: 'age-15+'   },
+  // Emploi / force de travail (C-WI, C-SI, C-OA-LF)
+  population_active:        { var_code: 'var-c-lf',    sex: 'sex-t', age: 'age-15+'   },
+  population_active_f:      { var_code: 'var-c-lf',    sex: 'sex-f', age: 'age-15+'   },
+  population_active_m:      { var_code: 'var-c-lf',    sex: 'sex-m', age: 'age-15+'   },
+  wap_15_64:                { var_code: 'var-c-popsx', sex: 'sex-t', age: 'age-15-64' },
+  // Chomage (B-UN)
+  chomeurs:                 { var_code: 'var-c-un',    sex: 'sex-t', age: 'age-15+'   },
+  chomeurs_f:               { var_code: 'var-c-un',    sex: 'sex-f', age: 'age-15+'   },
+  chomeurs_m:               { var_code: 'var-c-un',    sex: 'sex-m', age: 'age-15+'   },
+  // Maternite (B-MA)
+  naissances:               { var_code: 'var-c-popma', sex: 'sex-f', age: 'age-15-49' },
+  femmes_accouche:          { var_code: 'var-c-popma', sex: 'sex-f', age: 'age-15-49' },
+  // Enfants (B-CH-15 / B-CH-18)
+  enfants_0_14:             { var_code: 'var-c-popsx', sex: 'sex-t', age: 'age-0-14'  },
+  enfants_0_14_f:           { var_code: 'var-c-popsx', sex: 'sex-f', age: 'age-0-14'  },
+  enfants_0_14_m:           { var_code: 'var-c-popsx', sex: 'sex-m', age: 'age-0-14'  },
+  enfants_0_17:             { var_code: 'var-c-popsx', sex: 'sex-t', age: 'age-0-17'  },
+  enfants_0_17_f:           { var_code: 'var-c-popsx', sex: 'sex-f', age: 'age-0-17'  },
+  enfants_0_17_m:           { var_code: 'var-c-popsx', sex: 'sex-m', age: 'age-0-17'  },
+  // Invalidite / handicap (B-DI) — var-c-dirt = taux %, 1 seul point (2010)
+  taux_invalidite:          { var_code: 'var-c-dirt',  sex: 'sex-t', age: 'age-0+'    },
+  // Pauvrete (B-PO) — var-c-nport = taux non-pauvres %, 1 seul point (2020)
+  taux_non_pauvrete:        { var_code: 'var-c-nport', sex: 'sex-t', age: 'age-0+'    },
+};
+
+window.__LOCAL_DB_CACHE = window.__LOCAL_DB_CACHE || {};
+
+async function fetchLocalDenominator(metricKey, yearStart, yearEnd) {
+  const mapping = LOCAL_DB_METRIC_MAP[metricKey];
+  if (!mapping) return [];
+  const cacheKey = [metricKey, yearStart, yearEnd].join('|');
+  if (window.__LOCAL_DB_CACHE[cacheKey]) return window.__LOCAL_DB_CACHE[cacheKey];
+  const params = new URLSearchParams({
+    var_code:   mapping.var_code,
+    sex:        mapping.sex,
+    age:        mapping.age,
+    year_start: yearStart,
+    year_end:   yearEnd,
+  });
+  const res = await fetch('/api/denom/local?' + params.toString());
+  if (!res.ok) throw new Error('Base locale HTTP ' + res.status + ' pour ' + metricKey);
+  const data = await res.json();
+  if (data.error) throw new Error('Base locale : ' + data.error);
+  const parsed = data.map(r => ({ year: r.year, value: r.value, source: r.source, source_note: r.source_note }));
+  window.__LOCAL_DB_CACHE[cacheKey] = parsed;
+  return parsed;
 }
 
 // ── Banque mondiale ────────────────────────────────────────────────────────
@@ -925,6 +991,7 @@ function getSelectedMetricSource(metricShortKey) {
 
 function sourceIsAvailableForMetric(sourceKey, metricKey, params) {
   if (!sourceKey || !params || !params.yearStart || !params.yearEnd || params.yearEnd < params.yearStart) return false;
+  if (sourceKey === 'local_db') return true; // Base locale disponible pour toutes les m\u00e9triques RDC
   if (sourceKey === 'bm_api') {
     // Banque mondiale : tranches fixes seulement
     if (metricKey === 'population_retraite') {
@@ -978,6 +1045,19 @@ function refreshMetricSources(sources) {
 
 async function getMetricValue(sourceKey, metricKey, year, params, seriesCache) {
   if (!sourceKey) return { value: null, meta: 'Source non définie' };
+
+  // ── Base locale (Excel OIT) ─────────────────────────────────────────────
+  if (sourceKey === 'local_db') {
+    const series = await fetchLocalDenominator(metricKey, params.yearStart || 2015, params.yearEnd || 2027);
+    const entry = series.find(r => r.year === year);
+    if (!entry) {
+      const past = series.filter(r => r.year <= year).sort((a, b) => b.year - a.year);
+      if (past.length) return { value: past[0].value, meta: 'DB locale (' + past[0].source + ', ' + past[0].year + ')' };
+      return { value: null, meta: 'DB locale : pas de donn\u00e9e pour ' + year };
+    }
+    return { value: entry.value, meta: 'DB locale (' + entry.source + ')' };
+  }
+
 
   // ── Banque mondiale ──────────────────────────────────────────────────────
   if (sourceKey === 'bm_api') {
@@ -1049,185 +1129,30 @@ async function getMetricValue(sourceKey, metricKey, year, params, seriesCache) {
   return { value: null, meta: sourceKey + ' : source inconnue' };
 }
 
-async function computeDenominators() {
-  const pTotal = getMetricCardParams('population_totale');
-  const pActive = getMetricCardParams('population_active');
-  const pRet = getMetricCardParams('population_retraite');
-  const pMat = getMetricCardParams('naissances');
-  const srcTotal = getSelectedMetricSource('total');
-  const srcActive = getSelectedMetricSource('active');
-  const srcRet = getSelectedMetricSource('ret');
-  const srcMat = getSelectedMetricSource('mat');
-
-  const ranges = [pTotal, pActive, pRet, pMat]
-    .filter(x => x && x.yearStart && x.yearEnd && x.yearEnd >= x.yearStart);
-  if (!ranges.length) {
-    setDenomStatus('Paramètres années invalides.');
+function computeDenominators() {
+  const cfg = DENOMINATEURS_CONFIG || {};
+  const rows = (cfg.static_rows || []).slice();
+  const host = document.getElementById('denom-results');
+  const statusEl = document.getElementById('denom-status');
+  if (statusEl) statusEl.textContent = '';
+  if (!rows.length) {
+    if (host) host.innerHTML = '<p class="empty">Aucune donnée locale disponible.</p>';
     return;
   }
-  const minYear = Math.min(...ranges.map(r => r.yearStart));
-  const maxYear = Math.max(...ranges.map(r => r.yearEnd));
-
-  setDenomStatus('Calcul multi-annuel en cours...');
-  const seriesCache = {};
-  const outRows = [];
-  try {
-    for (let y = minYear; y <= maxYear; y += 1) {
-      const total = (y >= pTotal.yearStart && y <= pTotal.yearEnd)
-        ? await getMetricValue(srcTotal, 'population_totale', y, pTotal, seriesCache)
-        : { value: null, meta: 'hors plage' };
-      const active = (y >= pActive.yearStart && y <= pActive.yearEnd)
-        ? await getMetricValue(srcActive, 'population_active', y, pActive, seriesCache)
-        : { value: null, meta: 'hors plage' };
-      const retraite = (y >= pRet.yearStart && y <= pRet.yearEnd)
-        ? await getMetricValue(srcRet, 'population_retraite', y, pRet, seriesCache)
-        : { value: null, meta: 'hors plage' };
-      const naissances = (y >= pMat.yearStart && y <= pMat.yearEnd)
-        ? await getMetricValue(srcMat, 'naissances', y, pMat, seriesCache)
-        : { value: null, meta: 'hors plage' };
-      const femmes = (y >= pMat.yearStart && y <= pMat.yearEnd)
-        ? await getMetricValue(srcMat, 'femmes_accouche', y, pMat, seriesCache)
-        : { value: null, meta: 'hors plage' };
-      outRows.push({
-        year: y,
-        populationTotale: total.value,
-        populationActive: active.value,
-        populationRetraite: retraite.value,
-        naissancesVivantes: naissances.value,
-        femmesAyantAccouche: femmes.value,
-        metaTotal: total.meta,
-        metaActive: active.meta,
-        metaRetraite: retraite.meta,
-        metaNaissances: naissances.meta,
-        metaFemmes: femmes.meta,
-      });
-    }
-  } catch (err) {
-    setDenomStatus('Erreur source: ' + String(err && err.message ? err.message : err));
-    return;
-  }
-  renderDenominatorTable(outRows);
-  setDenomStatus('Dénominateurs calculés pour ' + outRows.length + ' année(s).');
-}
-
-// Contraintes de paramètres selon la source choisie.
-// Quand BM est sélectionné : tranches d'âge fixes (15-64, 65+) → on verrouille les champs.
-// Quand WPP est sélectionné : tranches libres → on déverrouille.
-// Quand ILOSTAT : pas de tranche d'âge (emploi agrégé) → on masque/verrouille les champs d'âge.
-const SOURCE_CONSTRAINTS = {
-  bm_api: {
-    population_active:  { workMin: 15, workMax: 64,  lock: ['denom-active-age-min', 'denom-active-age-max'] },
-    population_retraite: { retH: 65,    retF: 65,     lock: ['denom-ret-age-h', 'denom-ret-age-f'] },
-  },
-  wpp_api: {
-    population_active:   { lock: [] },
-    population_retraite: { lock: [] },
-    naissances:          { lock: [] },
-  },
-  ilostat_api: {
-    population_active: { lock: ['denom-active-age-min', 'denom-active-age-max'], note: "ILOSTAT : emploi total, tranche d'âge non personnalisable" },
-  },
-};
-
-function applySourceConstraints(metricShortKey, metricKey, sourceKey) {
-  const constraints = (SOURCE_CONSTRAINTS[sourceKey] || {})[metricKey] || {};
-  const lockIds = constraints.lock || [];
-
-  // Déterminer tous les champs de paramètre de ce paquet
-  const allParamIds = {
-    population_active:   ['denom-active-age-min', 'denom-active-age-max'],
-    population_retraite: ['denom-ret-age-h', 'denom-ret-age-f'],
-    naissances:          ['denom-mat-age-min', 'denom-mat-age-max'],
-    femmes_accouche:     ['denom-mat-age-min', 'denom-mat-age-max'],
-  }[metricKey] || [];
-
-  // Déverrouiller tous, puis reverrouiller ceux qui doivent l'être
-  allParamIds.forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.readOnly = false;
-    el.classList.remove('constrained');
-    el.title = '';
-  });
-
-  // Pré-remplir les valeurs contraintes
-  if (sourceKey === 'bm_api' && metricKey === 'population_active') {
-    const mn = document.getElementById('denom-active-age-min');
-    const mx = document.getElementById('denom-active-age-max');
-    if (mn) { mn.value = 15; mn.readOnly = true; mn.classList.add('constrained'); mn.title = 'Banque mondiale : tranche 15-64 uniquement'; }
-    if (mx) { mx.value = 64; mx.readOnly = true; mx.classList.add('constrained'); mx.title = 'Banque mondiale : tranche 15-64 uniquement'; }
-  }
-  if (sourceKey === 'bm_api' && metricKey === 'population_retraite') {
-    const h = document.getElementById('denom-ret-age-h');
-    const f = document.getElementById('denom-ret-age-f');
-    if (h) { h.value = 65; h.readOnly = true; h.classList.add('constrained'); h.title = 'Banque mondiale : tranche 65+ uniquement'; }
-    if (f) { f.value = 65; f.readOnly = true; f.classList.add('constrained'); f.title = 'Banque mondiale : tranche 65+ uniquement'; }
-  }
-  if (sourceKey === 'ilostat_api' && metricKey === 'population_active') {
-    const mn = document.getElementById('denom-active-age-min');
-    const mx = document.getElementById('denom-active-age-max');
-    const note = "ILOSTAT : emploi total, tranche d'âge non applicable";
-    if (mn) { mn.readOnly = true; mn.classList.add('constrained'); mn.title = note; }
-    if (mx) { mx.readOnly = true; mx.classList.add('constrained'); mx.title = note; }
-  }
-}
-
-function applyAllConstraints() {
-  applySourceConstraints('active', 'population_active',   getSelectedMetricSource('active'));
-  applySourceConstraints('ret',    'population_retraite',  getSelectedMetricSource('ret'));
-  applySourceConstraints('mat',    'naissances',           getSelectedMetricSource('mat'));
+  renderDenominatorTable(rows);
+  if (statusEl) statusEl.textContent = rows.length + ' année(s) — source : base locale (Denominateurs 2026.xlsx / ONU WPP 2024 + ILOSTAT)';
 }
 
 function initDenominatorPanel() {
-  const cfg = DENOMINATEURS_CONFIG || {};
-  const sources = cfg.sources || {};
-  const defaults = cfg.defaults || {};
   if (!document.getElementById('denom-results')) return;
-
-  document.getElementById('denom-total-year-start').value = defaults.year_start_total || 2020;
-  document.getElementById('denom-total-year-end').value = defaults.year_end_total || 2024;
-  document.getElementById('denom-active-year-start').value = defaults.year_start_active || 2020;
-  document.getElementById('denom-active-year-end').value = defaults.year_end_active || 2024;
-  document.getElementById('denom-ret-year-start').value = defaults.year_start_retraite || 2020;
-  document.getElementById('denom-ret-year-end').value = defaults.year_end_retraite || 2024;
-  document.getElementById('denom-mat-year-start').value = defaults.year_start_maternite || 2020;
-  document.getElementById('denom-mat-year-end').value = defaults.year_end_maternite || 2024;
-
-  document.getElementById('denom-active-age-min').value = defaults.working_age_min || 15;
-  document.getElementById('denom-active-age-max').value = defaults.working_age_max || 64;
-  document.getElementById('denom-ret-age-h').value = defaults.retirement_age_h || 65;
-  document.getElementById('denom-ret-age-f').value = defaults.retirement_age_f || 65;
-  document.getElementById('denom-mat-age-min').value = defaults.maternity_age_min || 15;
-  document.getElementById('denom-mat-age-max').value = defaults.maternity_age_max || 49;
-
-  renderMetricSourceOptions('total', 'population_totale', defaults.source_population_totale, sources);
-  renderMetricSourceOptions('active', 'population_active', defaults.source_population_active, sources);
-  renderMetricSourceOptions('ret', 'population_retraite', defaults.source_population_retraite, sources);
-  renderMetricSourceOptions('mat', 'naissances', defaults.source_maternite, sources);
-
-  // Appliquer les contraintes initiales selon les sources par défaut
-  applyAllConstraints();
-
+  document.querySelectorAll('.denom-pack').forEach(el => { el.style.display = 'none'; });
+  const statusEl = document.getElementById('denom-status');
+  if (statusEl) statusEl.textContent = 'Source : base locale (Denominateurs 2026.xlsx)';
   const refreshBtn = document.getElementById('denom-refresh');
-  if (refreshBtn) {
-    refreshBtn.addEventListener('click', () => {
-      computeDenominators();
-    });
-  }
-
-  document.querySelectorAll('.denom-pack input').forEach(el => {
-    el.addEventListener('change', () => {
-      // Si c'est un radio de source : appliquer les contraintes puis rafraîchir
-      if (el.type === 'radio') {
-        applyAllConstraints();
-        refreshMetricSources(sources);
-      }
-      computeDenominators();
-    });
-  });
-
+  if (refreshBtn) refreshBtn.addEventListener('click', () => computeDenominators());
   computeDenominators();
 }
+
 
 // ── Onglet institutions ────────────────────────────────────────────────────
 function updateInstitution() {

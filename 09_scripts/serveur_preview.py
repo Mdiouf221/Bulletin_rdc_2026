@@ -30,6 +30,7 @@ import json
 import os
 import re
 import sys
+import sqlite3
 import webbrowser
 import time
 from urllib.parse import urlparse, parse_qs
@@ -65,6 +66,7 @@ REGIME_DASHBOARD  = WORKSPACE_DIR / "10_output" / "dashboard_regimes.html"
 DASHBOARD_SETTINGS_FILE   = WORKSPACE_DIR / "10_output" / "dashboard_settings.json"
 QUESTIONNAIRE_DATA_FILE   = WORKSPACE_DIR / "10_output" / "questionnaire_data.json"
 PRESTATION_SETTINGS_FILE  = WORKSPACE_DIR / "10_output" / "prestation_settings.json"
+DENOMINATEURS_DB_FILE     = WORKSPACE_DIR / "protection_sociale_rdc.db"
 PORT          = 8765
 
 # ---------------------------------------------------------------------------
@@ -1125,6 +1127,10 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         route = parsed.path
         qs = parse_qs(parsed.query)
 
+        if route == "/api/denom/local":
+            self._serve_denom_local(qs)
+            return
+
         if route == "/api/denom/wpp":
             year = qs.get("year", [""])[0]
             if not re.fullmatch(r"\d{4}", year):
@@ -1205,6 +1211,73 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
 
         self.send_response(status)
         self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _serve_denom_local(self, qs):
+        """GET /api/denom/local — interroge denominateurs_ref dans la base SQLite locale.
+
+        Paramètres (query string) :
+          var_code   : code variable (ex. var-c-popsx)   — requis
+          sex        : classe sexe   (ex. sex-t)          — requis
+          age        : classe âge    (ex. age-0+)         — requis
+          iso3       : code pays     (défaut : COD)
+          year_start : année début   (défaut : 2015)
+          year_end   : année fin     (défaut : 2027)
+
+        Réponse JSON : [{year, value, source, source_note}]
+        """
+        def _err(code, msg):
+            body = json.dumps({"error": msg}, ensure_ascii=False).encode("utf-8")
+            self.send_response(code)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+
+        var_code = (qs.get("var_code", [""])[0] or "").strip()
+        sex      = (qs.get("sex",      [""])[0] or "").strip()
+        age      = (qs.get("age",      [""])[0] or "").strip()
+        iso3     = (qs.get("iso3",     ["COD"])[0] or "COD").strip()
+
+        try:
+            year_start = int(qs.get("year_start", ["2015"])[0])
+            year_end   = int(qs.get("year_end",   ["2027"])[0])
+        except (ValueError, TypeError):
+            return _err(400, "Paramètres year_start / year_end invalides")
+
+        if not var_code or not sex or not age:
+            return _err(400, "Paramètres var_code, sex et age requis")
+
+        if not DENOMINATEURS_DB_FILE.exists():
+            return _err(503, "Base de données locale introuvable. Lancer : py 09_scripts/import_denominateurs_excel.py")
+
+        try:
+            con = sqlite3.connect(str(DENOMINATEURS_DB_FILE), timeout=10)
+            cur = con.cursor()
+            cur.execute(
+                """SELECT year, val_n, source, source_note
+                   FROM denominateurs_ref
+                   WHERE iso3 = ? AND var_code = ? AND class_sex = ? AND class_age = ?
+                     AND year >= ? AND year <= ?
+                     AND val_n IS NOT NULL
+                   ORDER BY year""",
+                (iso3, var_code, sex, age, year_start, year_end),
+            )
+            rows = cur.fetchall()
+            con.close()
+        except sqlite3.Error as err:
+            return _err(500, f"Erreur base de données : {err}")
+
+        result = [
+            {"year": r[0], "value": r[1], "source": r[2], "source_note": r[3]}
+            for r in rows
+        ]
+        body = json.dumps(result, ensure_ascii=False).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
