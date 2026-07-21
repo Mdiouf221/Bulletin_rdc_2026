@@ -332,18 +332,6 @@
     "institution::MESP::ind_28_vulnerables::2022": "entierement_exclus",
     "institution::SESOPA::ind_28_vulnerables::2022": "entierement_exclus",
     "institution::CNSSAP::global_131::2019": "entierement_inclus",
-    "institution::FSS::global_131::2020": "autres",
-    "institution::SESOPA::global_131::2020": "entierement_inclus",
-    "institution::CNSS::global_131::2020": "entierement_inclus",
-    "institution::CNSSAP::global_131::2020": "entierement_inclus",
-    "institution::FSS::global_131::2021": "autres",
-    "institution::SESOPA::global_131::2021": "entierement_inclus",
-    "institution::CNSS::global_131::2021": "entierement_inclus",
-    "institution::CNSSAP::global_131::2021": "entierement_inclus",
-    "institution::FSS::global_131::2022": "autres",
-    "institution::SESOPA::global_131::2022": "entierement_inclus",
-    "institution::CNSS::global_131::2022": "entierement_inclus",
-    "institution::CNSSAP::global_131::2022": "entierement_inclus",
     "prestation::TRESOR::TRESOR_R1::num_1::ind_27_vieillesse::2019": "inclus",
     "prestation::TRESOR::TRESOR_R1::num_1::ind_27_vieillesse::2020": "inclus",
     "institution::CNSS::ind_27_vieillesse::2021": "autres",
@@ -778,15 +766,41 @@
     "prestation::SESOPA::SESOPA_R1::num_2::ind_29_cotisants::2024": "inclus",
     "regime::SESOPA::SESOPA_R1::ind_29_cotisants::2024": "entierement_inclus",
     "regime::SESOPA::SESOPA_R4::ind_29_cotisants::2024": "entierement_exclus",
-    "institution::TRESOR::ind_24_handicap::2019": "entierement_exclus"
+    "institution::TRESOR::ind_24_handicap::2019": "entierement_exclus",
+    "prestation::TRESOR::TRESOR_R1::num_1::global_131::2019": "inclus",
+    "institution::FSS::global_131::2020": "autres",
+    "institution::SESOPA::global_131::2020": "entierement_inclus",
+    "institution::CNSS::global_131::2020": "entierement_inclus",
+    "institution::CNSSAP::global_131::2020": "entierement_inclus",
+    "prestation::TRESOR::TRESOR_R1::num_1::global_131::2020": "inclus",
+    "institution::FSS::global_131::2021": "autres",
+    "institution::SESOPA::global_131::2021": "entierement_inclus",
+    "institution::CNSS::global_131::2021": "entierement_inclus",
+    "institution::CNSSAP::global_131::2021": "entierement_inclus",
+    "prestation::TRESOR::TRESOR_R1::num_1::global_131::2021": "inclus",
+    "institution::FSS::global_131::2022": "autres",
+    "institution::SESOPA::global_131::2022": "entierement_inclus",
+    "institution::CNSS::global_131::2022": "entierement_inclus",
+    "institution::CNSSAP::global_131::2022": "entierement_inclus",
+    "prestation::TRESOR::TRESOR_R1::num_1::global_131::2022": "inclus",
+    "institution::FSS::global_131::2023": "autres",
+    "institution::SESOPA::global_131::2023": "entierement_inclus",
+    "institution::CNSS::global_131::2023": "entierement_inclus",
+    "institution::CNSSAP::global_131::2023": "entierement_inclus",
+    "prestation::TRESOR::TRESOR_R1::num_1::global_131::2023": "inclus",
+    "institution::FSS::global_131::2024": "autres",
+    "institution::SESOPA::global_131::2024": "entierement_inclus",
+    "institution::CNSS::global_131::2024": "entierement_inclus",
+    "institution::CNSSAP::global_131::2024": "entierement_inclus",
+    "prestation::TRESOR::TRESOR_R1::num_1::global_131::2024": "inclus"
   },
   "denomSettings": {
     "source_population_totale": "local_db",
-    "source_population_enfants": "local_db",
-    "source_population_active": "local_db",
-    "source_population_retraite": "local_db",
-    "source_handicap_grave": "local_db",
-    "source_maternite": "local_db",
+    "source_population_enfants": "",
+    "source_population_active": "",
+    "source_population_retraite": "",
+    "source_handicap_grave": "",
+    "source_maternite": "",
     "retirement_age_h": 60,
     "retirement_age_f": 60,
     "working_age_min": 15,
@@ -810,14 +824,14 @@
     "prevalence_handicap_fallback": 15,
     "strict_exact_year_default": true,
     "lfp_rate_atmp_pct": 63.44,
-    "source_force_de_travail": "local_db",
+    "source_force_de_travail": "",
     "year_start_lf": null,
     "year_end_lf": null,
     "manual_data": {
       "total": {
-        "2022": {
-          "value": 3069317,
-          "comment": "Saisie manuelle — Saisie manuelle — Saisie manuelle — Saisie manuelle — Saisie manuelle — bulletin précédent, Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider"
+        "2019": {
+          "value": 0,
+          "comment": ""
         },
         "2026": {
           "value": 0,
@@ -861,7 +875,7 @@
           2019
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:32:07.457Z"
+        "calculatedAt": "2026-07-21T03:45:25.230Z"
       },
       "global_131::2026": {
         "indicatorKey": "global_131",
@@ -903,7 +917,7 @@
           2021
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:34:08.541Z"
+        "calculatedAt": "2026-07-21T03:22:46.760Z"
       },
       "global_131::2022": {
         "indicatorKey": "global_131",
@@ -917,7 +931,7 @@
           2022
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:33:20.575Z"
+        "calculatedAt": "2026-07-21T03:23:32.815Z"
       },
       "ind_22_enfants::2021": {
         "indicatorKey": "ind_22_enfants",

@@ -1,4 +1,4 @@
-"""
+﻿"""
 visualiser_regimes.py
 Tableau de bord interactif — Protection sociale RDC
 Structure : 3 onglets
@@ -3182,7 +3182,25 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
                     )
                     _res = _cur.fetchone()
                     _row[_key] = round(_res[0]) if _res else None
-                    _row[_key + "_meta"] = _res[1] if _res else "N/D"
+                    _src_note = _res[1] if _res else "N/D"
+                    _row[_key + "_meta"] = (
+                        f"{_src_note} [{_vc} / {_sx} / {_ag}]" if _res else "N/D"
+                    )
+                # ── Normalisation : alias vers les noms de champs attendus par le JS ──
+                # rowField JS        ← clé SQLite
+                _row["populationEnfants"]      = _row.get("enfants0_14") or _row.get("enfants0_17")
+                _row["femmesAyantAccouche"]    = _row.get("femmesAccouche")
+                _row["populationForceDeTravail"] = _row.get("forceDeTravail")
+                # meta correspondants
+                _meta_enfants = _row.get("enfants0_14_meta") or _row.get("enfants0_17_meta") or "N/D"
+                _row["metaTotal"]            = _row.get("populationTotale_meta", "N/D")
+                _row["metaEnfants"]          = _meta_enfants
+                _row["metaActive"]           = _row.get("populationActive_meta", _row.get("wap15_64_meta", "N/D"))
+                _row["metaForceDeTravail"]   = _row.get("forceDeTravail_meta", "N/D")
+                _row["metaRetraite"]         = _row.get("populationRetraite_meta", "N/D")
+                _row["metaHandicapGrave"]    = "N/D"
+                _row["metaNaissances"]       = _row.get("femmesAccouche_meta", "N/D")
+                _row["metaFemmes"]           = _row.get("femmesAccouche_meta", "N/D")
                 _static_rows.append(_row)
             _con.close()
     except Exception as _e:
@@ -3451,6 +3469,14 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       cursor: pointer;
       white-space: nowrap;
     }}
+    .odd-view-btn:disabled {{
+      opacity: 0.6;
+      cursor: not-allowed;
+      pointer-events: none;
+      background: #b0b8c1 !important;
+      color: #fff !important;
+      border-color: #b0b8c1 !important;
+    }}
     .odd-decision-panel {{
       display: none;
       margin: 8px 12px 12px;
@@ -3591,8 +3617,8 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       box-sizing: border-box;
     }}
     .odd-year-aligned-grid.odd-construction-scroll > .odd-year-block {{
-      flex: 0 0 calc((100% - 24px) / 3);
-      min-width: 300px;
+      flex: 0 0 calc((100% - 48px) / 5);
+      min-width: 190px;
       box-sizing: border-box;
     }}
     .odd-year-aligned-grid.odd-visual-permanent::-webkit-scrollbar,
@@ -3620,6 +3646,11 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       background: #fff;
       padding: 10px;
       min-height: 220px;
+    }}
+    .odd-year-block--editing {{
+      border: 2px solid #3182ce !important;
+      background: #ebf8ff !important;
+      box-shadow: 0 0 0 3px rgba(49,130,206,0.18);
     }}
     .odd-year-block h5 {{
       margin: 0 0 8px 0;
@@ -4285,6 +4316,29 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       font-weight: 600;
       padding: 8px 14px;
       cursor: pointer;
+    }}
+    .denom-sources-fold {{
+      margin-top: 12px;
+      border: 1px solid #d1e3ff;
+      border-radius: 10px;
+      overflow: hidden;
+    }}
+    .denom-sources-fold > summary.denom-sources-summary {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      background: #ebf4ff;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }}
+    .denom-sources-fold > summary.denom-sources-summary::-webkit-details-marker {{ display: none; }}
+    .denom-sources-title {{
+      flex: 1;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #2c5282;
     }}
     .denom-status {{
       color: #4a5568;
@@ -5100,8 +5154,8 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
           <span class="odd-edit-controls">
             <label for="odd-year-select" style="color:#2d3748;font-size:0.82rem;font-weight:600;white-space:nowrap;">Année :</label>
             <select id="odd-year-select" style="min-width:80px;border:1px solid #cbd5e0;border-radius:6px;background:#fff;padding:4px 8px;font-size:0.82rem;"></select>
-            <button type="button" id="odd-decision-view-toggle" class="odd-view-btn" title="Consulter les décisions pour cette année">Consulter</button>
-            <button type="button" id="odd-decision-edit-open" class="odd-view-btn" style="background:#2c5282;color:#fff;border-color:#2c5282;" title="Éditer les décisions pour cette année">Éditer</button>
+
+            <button type="button" id="odd-decision-edit-open" class="odd-view-btn" disabled style="background:#2c5282;color:#fff;border-color:#2c5282;" title="Éditer les décisions pour cette année">Éditer</button>
           </span>
         </summary>
         <div id="odd-numerator-breakdown-grid" class="odd-year-aligned-grid odd-construction-scroll"></div>
@@ -5109,7 +5163,6 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
           <div class="odd-decision-panel-header">
             <span>Décisions d'inclusion/exclusion</span>
             <span class="odd-edit-controls">
-              <span id="odd-decision-mode-badge" class="odd-mode-badge">Consultation</span>
               <button type="button" id="odd-decisions-save" class="odd-save-btn" title="Sauvegarder les modifications">Sauvegarder</button>
               <button type="button" id="odd-decision-close" class="odd-view-btn" title="Fermer">✕ Fermer</button>
             </span>
@@ -5135,9 +5188,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
           <span class="odd-edit-controls">
             <label for="denom-year-select" style="color:#2d3748;font-size:0.82rem;font-weight:600;white-space:nowrap;">Année :</label>
             <select id="denom-year-select" style="min-width:80px;border:1px solid #cbd5e0;border-radius:6px;background:#fff;padding:4px 8px;font-size:0.82rem;"></select>
-            <button type="button" id="denom-btn-consulter" class="odd-view-btn" style="background:#2c5282;color:#fff;border-color:#2c5282;" title="Mode consultation (lecture seule)">Consulter</button>
-            <button type="button" id="denom-btn-editer" class="odd-view-btn" title="Activer le mode édition des paramètres">Éditer</button>
-            <button type="button" id="denom-save" class="odd-save-btn" title="Sauvegarder les paramètres du dénominateur">Sauvegarder</button>
+            <button type="button" id="denom-btn-editer" class="odd-view-btn" disabled title="Activer le mode édition des paramètres">Éditer</button>
           </span>
         </summary>
         <div id="denom-breakdown-grid" class="odd-year-aligned-grid odd-construction-scroll"></div>
@@ -5145,10 +5196,15 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
       <div class="denom-actions">
         <span id="denom-active-key" class="denom-status">Indicateur × année active : —</span>
         <button type="button" id="denom-refresh">Calculer / actualiser l'année active</button>
-        <button type="button" id="denom-validate">Valider l'année active</button>
         <span id="denom-status" class="denom-status">Prêt.</span>
       </div>
-      <div class="denom-packs">
+      <details id="denom-sources-details" class="denom-sources-fold">
+        <summary class="denom-sources-summary">
+          <button type="button" id="denom-save" class="odd-save-btn" title="Sauvegarder les paramètres du dénominateur" onclick="event.stopPropagation()">Sauvegarder</button>
+          <span class="denom-sources-title">⚙ Paramètres des sources</span>
+          <button type="button" id="denom-sources-close" class="odd-view-btn" title="Fermer" onclick="event.stopPropagation(); document.getElementById('denom-sources-details').open=false;">✕ Fermer</button>
+        </summary>
+        <div class="denom-packs">
         <div class="denom-pack" id="pack-total">
           <h4>Population totale</h4>
           <div class="denom-pack-grid">
@@ -5266,6 +5322,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
           </div>
         </div>
       </div>
+      </details>
         </div>
       </details>
     </div>
@@ -6447,11 +6504,11 @@ function getCurrentOddYear() {{
 }}
 
 function getCurrentDenominatorYear() {{
-  const yearSelect = document.getElementById('denom-year-select');
-  if (yearSelect && yearSelect.value) return String(yearSelect.value);
-  if (CURRENT_DENOM_YEAR) return String(CURRENT_DENOM_YEAR);
-  return getCurrentOddYear();
+  return CURRENT_DENOM_YEAR || '';
 }}
+
+
+
 
 function getPreviousOddYear(yearKey) {{
   const currentYear = Number(yearKey);
@@ -6889,7 +6946,7 @@ function renderOddDecisionPanel() {{
   const copyPrevBtn = document.getElementById('odd-decisions-copy-prev');
   const indicatorSelect = document.getElementById('odd-indicator-select');
   const yearSelect = document.getElementById('odd-year-select');
-  const viewBtn = document.getElementById('odd-decision-view-toggle');
+
   const editOpenBtn = document.getElementById('odd-decision-edit-open');
   const closeBtn = document.getElementById('odd-decision-close');
   const decisionPanel = document.getElementById('odd-decision-panel');
@@ -6928,12 +6985,17 @@ function renderOddDecisionPanel() {{
   // ── Sélecteur année ───────────────────────────────────────────────────────
   const availableYears = getOddAvailableYears();
   if (yearSelect && !yearSelect.dataset.ready) {{
-    yearSelect.innerHTML = availableYears.map(y =>
+    yearSelect.innerHTML = '<option value="">' + '— Année —' + '</option>' + availableYears.map(y =>
       '<option value="' + escapeHtml(String(y)) + '">' + escapeHtml(String(y)) + '</option>'
     ).join('');
-    const defaultYear = getCurrentOddYear() || (availableYears.length ? String(availableYears[availableYears.length - 1]) : '');
-    yearSelect.value = defaultYear;
-    CURRENT_ODD_YEAR = yearSelect.value || defaultYear;
+    // defaultYear removed — year defaults to empty
+    yearSelect.value = '';
+    // Désactiver les boutons Éditer tant qu'aucune année n'est choisie
+    const editBtnInit = document.getElementById('odd-decision-edit-open');
+    const denomBtnInit = document.getElementById('denom-btn-editer');
+    if (editBtnInit) editBtnInit.disabled = true;
+    if (denomBtnInit) denomBtnInit.disabled = true;
+    CURRENT_ODD_YEAR = '';
     yearSelect.addEventListener('change', function() {{
       const newYear = this.value || '';
       if (DENOM_PENDING_CHANGES && DENOM_EDIT_MODE) {{
@@ -6948,6 +7010,8 @@ function renderOddDecisionPanel() {{
         return;
       }}
       CURRENT_ODD_YEAR = newYear;
+      const editBtnEl = document.getElementById('odd-decision-edit-open');
+      if (editBtnEl) editBtnEl.disabled = !newYear;
       // fermer et rouvrir en vue si panneau ouvert
       if (decisionPanel && decisionPanel.classList.contains('visible')) {{
         decisionPanel.classList.remove('visible');
@@ -6963,23 +7027,23 @@ function renderOddDecisionPanel() {{
     CURRENT_ODD_YEAR = yearSelect.value;
   }}
 
-  // ── Bouton Consulter ──────────────────────────────────────────────────────
-  if (viewBtn && !viewBtn.dataset.bound) {{
-    viewBtn.addEventListener('click', function(evt) {{
-      evt.preventDefault(); evt.stopPropagation();
-      const details = viewBtn.closest('details');
-      if (details) details.open = true;
-      if (!decisionPanel) return;
-      if (ODD_DECISION_EDIT_MODE) {{
-        alert("Des modifications sont en cours. Veuillez sauvegarder ou fermer le panneau.");
-        return;
-      }}
-      ODD_DECISION_EDIT_MODE = false;
-      decisionPanel.classList.add('visible');
-      renderOddDecisionPanel();
-    }});
-    viewBtn.dataset.bound = '1';
-  }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // ── Bouton Éditer (ouvre directement en mode édition) ─────────────────────
   if (editOpenBtn && !editOpenBtn.dataset.bound) {{
@@ -6995,6 +7059,12 @@ function renderOddDecisionPanel() {{
       ODD_DECISION_EDIT_MODE = true;
       decisionPanel.classList.add('visible');
       renderOddDecisionPanel();
+      const yr4num = String(CURRENT_ODD_YEAR);
+      document.querySelectorAll('#odd-numerator-breakdown-grid .odd-year-block').forEach(function(b){{
+        const bn = b.querySelector('.odd-year-banner');
+        if (bn && bn.textContent.trim() === yr4num) b.classList.add('odd-year-block--editing');
+        else b.classList.remove('odd-year-block--editing');
+      }});
     }});
     editOpenBtn.dataset.bound = '1';
   }}
@@ -7014,13 +7084,7 @@ function renderOddDecisionPanel() {{
     closeBtn.dataset.bound = '1';
   }}
 
-  // ── Badge mode ────────────────────────────────────────────────────────────
   const panelVisible = decisionPanel && decisionPanel.classList.contains('visible');
-  if (modeBadge) {{
-    modeBadge.textContent = ODD_DECISION_EDIT_MODE ? 'Édition' : 'Consultation';
-    modeBadge.classList.toggle('edit', ODD_DECISION_EDIT_MODE);
-  }}
-
   // ── Bouton Sauvegarder ────────────────────────────────────────────────────
   if (saveBtn) {{
     saveBtn.style.display = (panelVisible && ODD_DECISION_EDIT_MODE) ? 'inline-flex' : 'none';
@@ -7036,6 +7100,9 @@ function renderOddDecisionPanel() {{
         renderIndicateurs();
         renderOddBranchesVisual();
         renderOddDecisionPanel();
+        document.querySelectorAll('#odd-numerator-breakdown-grid .odd-year-block').forEach(function(b){{ b.classList.remove('odd-year-block--editing'); }});
+        const editBtnAfterSave = document.getElementById('odd-decision-edit-open');
+        if (editBtnAfterSave) editBtnAfterSave.disabled = !getCurrentOddYear();
       }});
       saveBtn.dataset.bound = '1';
     }}
@@ -7352,7 +7419,7 @@ function renderOddBranchesVisual() {{
     const summary = summaryByYear[String(year)];
     if (!summary) {{
       return '<div class="odd-year-block">' +
-        '<h5>Année ' + escapeHtml(String(year)) + '</h5>' +
+        '<div class="odd-year-banner">' + escapeHtml(String(year)) + '</div>' +
         '<p class="empty">Construction indisponible.</p>' +
       '</div>';
     }}
@@ -7376,14 +7443,14 @@ function renderOddBranchesVisual() {{
           (prestationList ? '<ul>' + prestationList + '</ul>' : '') +
         '</details>';
       }}).join('');
-      return '<details open>' +
+      return '<details>' +
         '<summary>Institution ' + escapeHtml(inst.code || 'N/D') + ' = ' + escapeHtml(fmtInt(inst.total)) + '</summary>' +
         regimeBlocks +
       '</details>';
     }}).join('');
 
     return '<div class="odd-year-block">' +
-      '<h5>Année ' + escapeHtml(String(summary.year)) + '</h5>' +
+      '<div class="odd-year-banner">' + escapeHtml(String(summary.year)) + '</div>' +
       '<div class="odd-year-total">Numérateur = ' + escapeHtml(fmtInt(summary.total)) + '</div>' +
       '<div class="odd-calc-rule">' + escapeHtml(summary.ruleText) + '</div>' +
       '<div class="odd-calc-tree">' + (institutionBlocks || '<p class="empty">Aucune composante incluse.</p>') + '</div>' +
@@ -7447,16 +7514,16 @@ function getDenominatorMetaFromRow(row, spec) {{
 
 function setDenomEditMode(isEdit) {{
   DENOM_EDIT_MODE = !!isEdit;
-  const btnConsulter = document.getElementById('denom-btn-consulter');
+
   const btnEditer = document.getElementById('denom-btn-editer');
   const refreshBtn = document.getElementById('denom-refresh');
   const saveBtn = document.getElementById('denom-save');
-  // Consulter = bleu quand actif (mode consultation), Éditer = bleu quand actif (mode édition)
-  if (btnConsulter) {{
-    btnConsulter.style.background = DENOM_EDIT_MODE ? '' : '#2c5282';
-    btnConsulter.style.color = DENOM_EDIT_MODE ? '' : '#fff';
-    btnConsulter.style.borderColor = DENOM_EDIT_MODE ? '' : '#2c5282';
-  }}
+
+
+
+
+
+
   if (btnEditer) {{
     btnEditer.style.background = DENOM_EDIT_MODE ? '#2c5282' : '';
     btnEditer.style.color = DENOM_EDIT_MODE ? '#fff' : '';
@@ -7467,6 +7534,8 @@ function setDenomEditMode(isEdit) {{
     saveBtn.style.display = DENOM_EDIT_MODE ? 'inline-flex' : 'none';
     saveBtn.disabled = !DENOM_EDIT_MODE;
   }}
+  const sourcesDetails = document.getElementById('denom-sources-details');
+  if (sourcesDetails) sourcesDetails.open = DENOM_EDIT_MODE;
   document.querySelectorAll('.denom-pack input[type="number"]').forEach(el => {{
     el.disabled = !DENOM_EDIT_MODE;
   }});
@@ -7539,6 +7608,59 @@ function syncIndicatorYearScrolls() {{
     }});
     host.dataset.scrollSyncBound = '1';
   }});
+  initYearAlignmentSync();
+  window.requestAnimationFrame(syncYearBlockWidths);
+}}
+
+function syncYearBlockWidths() {{
+  var pairs = [
+    ['odd-numerator-visual-grid', 'odd-numerator-breakdown-grid'],
+    ['denom-active-visual-grid', 'denom-breakdown-grid'],
+  ];
+  pairs.forEach(function(pair) {{
+    var visualGrid = document.getElementById(pair[0]);
+    var breakdownGrid = document.getElementById(pair[1]);
+    if (!visualGrid || !breakdownGrid) return;
+    var firstBlock = visualGrid.querySelector(':scope > .odd-year-block');
+    if (!firstBlock) return;
+    var w = firstBlock.offsetWidth;
+    if (!w || w < 10) return;
+    Array.from(breakdownGrid.querySelectorAll(':scope > .odd-year-block')).forEach(function(block) {{
+      block.style.flex = '0 0 ' + w + 'px';
+      block.style.minWidth = w + 'px';
+      block.style.maxWidth = w + 'px';
+    }});
+  }});
+}}
+
+function initYearAlignmentSync() {{
+  document.querySelectorAll('.odd-breakdown-fold').forEach(function(details) {{
+    if (details.dataset.alignBound === '1') return;
+    details.addEventListener('toggle', function() {{
+      if (details.open) {{ window.requestAnimationFrame(syncYearBlockWidths); }}
+    }});
+    details.dataset.alignBound = '1';
+  }});
+  if (!window._yearAlignResizeBound) {{
+    window.addEventListener('resize', function() {{
+      window.requestAnimationFrame(syncYearBlockWidths);
+    }});
+    window._yearAlignResizeBound = true;
+  }}
+  // Cascade collapse
+  var indPanel = document.getElementById('tab-indicateurs');
+  if (indPanel && !indPanel.dataset.cascadeBound) {{
+    indPanel.addEventListener('toggle', function(evt) {{
+      var target = evt.target;
+      if (target.tagName !== 'DETAILS') return;
+      if (!target.open) {{
+        target.querySelectorAll('details').forEach(function(child) {{
+          child.open = false;
+        }});
+      }}
+    }}, true);
+    indPanel.dataset.cascadeBound = '1';
+  }}
 }}
 
 function renderAggregateIndicatorViews() {{
@@ -7701,7 +7823,7 @@ function renderActiveDenominatorViews() {{
     const value = row ? getDenominatorValueFromRow(row, spec) : null;
     const meta = row ? getDenominatorMetaFromRow(row, spec) : '';
     return '<div class="odd-year-block">' +
-      '<h5>Année ' + escapeHtml(String(year)) + '</h5>' +
+      '<div class="odd-year-banner">' + escapeHtml(String(year)) + '</div>' +
       '<div class="odd-year-total">Dénominateur = ' + escapeHtml(fmtPlain(value)) + '</div>' +
       '<div class="odd-calc-rule">' + escapeHtml(spec.label || '') + '</div>' +
       (meta
@@ -8714,7 +8836,7 @@ async function resolveAnnualDenominator(indicatorKey, year, sourceKey, params) {
       // P-SP / P-HE : population totale 0+
       res = await fetchLocalDenomValue('var-c-popsx', 'sex-t', 'age-0+', year);
       if (!res) throw new Error('Base locale : aucune donnée population totale pour ' + year + '.');
-      return {{ value: res.value, meta: 'Base locale ONU WPP 2024 — population 0+ (' + year + ')', sourceYears: [year], warnings: [] }};
+      return {{ value: res.value, meta: (res.source || 'Base locale') + ' [var-c-popsx / sex-t / age-0+] — population 0+ (' + year + ')', sourceYears: [year], warnings: [] }};
     }}
 
     if (indicatorKey === 'ind_22_enfants') {{
@@ -8724,14 +8846,14 @@ async function resolveAnnualDenominator(indicatorKey, year, sourceKey, params) {
       const label = ageMax <= 15 ? '0–14 ans (B-CH-15)' : '0–17 ans (B-CH-18)';
       res = await fetchLocalDenomValue('var-c-popsx', 'sex-t', ageGroup, year);
       if (!res) throw new Error('Base locale : aucune donnée enfants ' + label + ' pour ' + year + '.');
-      return {{ value: res.value, meta: 'Base locale ONU WPP 2024 — population ' + label + ' (' + year + ')', sourceYears: [year], warnings: [] }};
+      return {{ value: res.value, meta: (res.source || 'Base locale') + ' [var-c-popsx / sex-t / ' + ageGroup + '] — population ' + label + ' (' + year + ')', sourceYears: [year], warnings: [] }};
     }}
 
     if (indicatorKey === 'ind_23_maternite') {{
       // B-MA : femmes 15–49 (var-c-popma)
       res = await fetchLocalDenomValue('var-c-popma', 'sex-f', 'age-15-49', year);
       if (!res) throw new Error('Base locale : aucune donnée femmes 15–49 pour ' + year + '.');
-      return {{ value: res.value, meta: 'Base locale ONU WPP 2024 — femmes 15–49 (B-MA) (' + year + ')', sourceYears: [year], warnings: [] }};
+      return {{ value: res.value, meta: (res.source || 'Base locale') + ' [var-c-popma / sex-f / age-15-49] — femmes 15–49 (B-MA) (' + year + ')', sourceYears: [year], warnings: [] }};
     }}
 
     if (indicatorKey === 'ind_24_handicap') {{
@@ -8739,13 +8861,15 @@ async function resolveAnnualDenominator(indicatorKey, year, sourceKey, params) {
       const rateRes = await fetchLocalDenomValue('var-c-dirt', 'sex-t', 'age-0+', year);
       const popRes  = await fetchLocalDenomValue('var-c-popsx', 'sex-t', 'age-0+', year);
       if (rateRes && popRes) {{
-        const rate = rateRes.value;   // en %
-        return {{ value: Math.round(popRes.value * rate / 100), meta: 'Base locale — population × taux invalidité OMS ' + rate.toLocaleString('fr-FR') + ' % (' + year + ')', sourceYears: [year], warnings: ["Taux d'invalidité = estimation OMS ; seule la période 2010 est disponible."] }};
+        const rate = rateRes.value;
+        const _warnH1 = 'Taux invalidite OMS - estimation ; seule periode 2010 disponible.';
+        return {{ value: Math.round(popRes.value * rate / 100), meta: (rateRes.source || 'Base locale') + ' [var-c-dirt] x ' + (popRes.source || 'Base locale') + ' [var-c-popsx] — pop. x taux invalidite ' + rate.toLocaleString('fr-FR') + ' % (' + year + ')', sourceYears: [year], warnings: [_warnH1] }};
       }}
-      // Fallback : proxy prévalence 15 %
+      // Fallback : proxy prevalence 15 %
       if (popRes) {{
         const prev = Number(params && params.prevalencePercent !== undefined ? params.prevalencePercent : 15);
-        return {{ value: Math.round(popRes.value * prev / 100), meta: 'Base locale — population × prévalence ' + prev + ' % (proxy)', sourceYears: [year], warnings: ["Taux d'invalidité non disponible en base pour " + year + " ; prévalence paramétrée utilisée."] }};
+        const _warnH2 = 'Taux invalidite non disponible en base pour ' + year + ' ; prevalence parametree utilisee.';
+        return {{ value: Math.round(popRes.value * prev / 100), meta: (popRes.source || 'Base locale') + ' [var-c-popsx] — pop. x prevalence ' + prev + ' % (proxy) (' + year + ')', sourceYears: [year], warnings: [_warnH2] }};
       }}
       throw new Error('Base locale : aucune donnée disponible pour ind_24 en ' + year + '.');
     }}
@@ -8754,28 +8878,28 @@ async function resolveAnnualDenominator(indicatorKey, year, sourceKey, params) {
       // C-WI/C-SI : force de travail réelle ILOSTAT (var-c-lf, age-15+)
       res = await fetchLocalDenomValue('var-c-lf', 'sex-t', 'age-15+', year);
       if (!res) throw new Error('Base locale ILOSTAT : aucune donnée force de travail pour ' + year + '.');
-      return {{ value: res.value, meta: 'Base locale ILOSTAT — force de travail 15+ (' + year + ')', sourceYears: [year], warnings: [] }};
+      return {{ value: res.value, meta: (res.source || 'Base locale') + ' [var-c-lf / sex-t / age-15+] — force de travail 15+ (' + year + ')', sourceYears: [year], warnings: [] }};
     }}
 
     if (indicatorKey === 'ind_26_chomage') {{
       // B-UN : chômeurs (var-c-un, age-15+)
       res = await fetchLocalDenomValue('var-c-un', 'sex-t', 'age-15+', year);
       if (!res) throw new Error('Base locale ILOSTAT : aucune donnée chômeurs pour ' + year + '.');
-      return {{ value: res.value, meta: 'Base locale ILOSTAT — chômeurs 15+ (' + year + ')', sourceYears: [year], warnings: [] }};
+      return {{ value: res.value, meta: (res.source || 'Base locale') + ' [var-c-un / sex-t / age-15+] — chomeurs 15+ (' + year + ')', sourceYears: [year], warnings: [] }};
     }}
 
     if (indicatorKey === 'ind_27_vieillesse') {{
       // B-OA : population 65+
       res = await fetchLocalDenomValue('var-c-popsx', 'sex-t', 'age-65+', year);
       if (!res) throw new Error('Base locale : aucune donnée population 65+ pour ' + year + '.');
-      return {{ value: res.value, meta: 'Base locale ONU WPP 2024 — population 65+ (B-OA) (' + year + ')', sourceYears: [year], warnings: [] }};
+      return {{ value: res.value, meta: (res.source || 'Base locale') + ' [var-c-popsx / sex-t / age-65+] — population 65+ (B-OA) (' + year + ')', sourceYears: [year], warnings: [] }};
     }}
 
     if (indicatorKey === 'ind_29_cotisants') {{
       // C-OA-WAP : population active 15–64
       res = await fetchLocalDenomValue('var-c-popsx', 'sex-t', 'age-15-64', year);
       if (!res) throw new Error('Base locale : aucune donnée population 15–64 pour ' + year + '.');
-      return {{ value: res.value, meta: 'Base locale ONU WPP 2024 — population 15–64 (C-OA-WAP) (' + year + ')', sourceYears: [year], warnings: [] }};
+      return {{ value: res.value, meta: (res.source || 'Base locale') + ' [var-c-popsx / sex-t / age-15-64] — population 15–64 (C-OA-WAP) (' + year + ')', sourceYears: [year], warnings: [] }};
     }}
 
     throw new Error("Indicateur '" + indicatorKey + "' non mappé en base locale. Utilisez la saisie manuelle.");
@@ -9031,50 +9155,72 @@ function initDenominatorPanel() {{
   applyAllConstraints();
 
   const refreshBtn = document.getElementById('denom-refresh');
-  const btnConsulter = document.getElementById('denom-btn-consulter');
+
   const btnEditer = document.getElementById('denom-btn-editer');
-  const denomYearSelect = document.getElementById('denom-year-select');
+
   const saveBtn = document.getElementById('denom-save');
-  const validateBtn = document.getElementById('denom-validate');
-  if (denomYearSelect && !denomYearSelect.dataset.bound) {{
-    const availableYears = getOddAvailableYears();
-    denomYearSelect.innerHTML = availableYears.map(year =>
-      '<option value="' + escapeHtml(String(year)) + '">' + escapeHtml(String(year)) + '</option>'
-    ).join('');
-    const defaultYear = CURRENT_DENOM_YEAR || getCurrentOddYear() ||
-      (availableYears.length ? String(availableYears[availableYears.length - 1]) : '');
-    denomYearSelect.value = defaultYear;
-    CURRENT_DENOM_YEAR = denomYearSelect.value || defaultYear;
-    denomYearSelect.addEventListener('click', function(evt) {{
-      evt.stopPropagation();
+  // denom-validate supprimé — validation intégrée dans le workflow
+  CURRENT_DENOM_YEAR = '';
+  const denomYearSelect = document.getElementById('denom-year-select');
+  if (denomYearSelect && !denomYearSelect.dataset.ready) {{
+    const denomAvailYears = getOddAvailableYears();
+    denomYearSelect.innerHTML = '<option value="">— Année —</option>' +
+      denomAvailYears.map(y => '<option value="' + y + '">' + y + '</option>').join('');
+    denomYearSelect.value = '';
+    if (btnEditer) btnEditer.disabled = true;
+    denomYearSelect.addEventListener('change', function() {{
+      const yr = this.value || '';
+      CURRENT_DENOM_YEAR = yr;
+      if (btnEditer) btnEditer.disabled = !yr;
+      if (yr) activateAnnualDenominatorConstruction();
     }});
-    denomYearSelect.addEventListener('change', function(evt) {{
-      evt.stopPropagation();
-      if (DENOM_PENDING_CHANGES && DENOM_EDIT_MODE) {{
-        alert("Des paramètres de dénominateur sont en cours de modification. Calculez ou quittez l'édition avant de changer d'année.");
-        this.value = CURRENT_DENOM_YEAR;
-        return;
-      }}
-      CURRENT_DENOM_YEAR = this.value || '';
-      activateAnnualDenominatorConstruction();
-    }});
-    denomYearSelect.dataset.bound = '1';
+    denomYearSelect.dataset.ready = '1';
   }}
-  if (btnConsulter && !btnConsulter.dataset.bound) {{
-    btnConsulter.addEventListener('click', function(evt) {{
-      evt.preventDefault(); evt.stopPropagation();
-      const details = btnConsulter.closest('details');
-      if (details) details.open = true;
-      setDenomEditMode(false);
-    }});
-    btnConsulter.dataset.bound = '1';
-  }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   if (btnEditer && !btnEditer.dataset.bound) {{
     btnEditer.addEventListener('click', function(evt) {{
       evt.preventDefault(); evt.stopPropagation();
       const details = btnEditer.closest('details');
       if (details) details.open = true;
       setDenomEditMode(true);
+      const yr4denom = String(getCurrentOddYear());
+      document.querySelectorAll('#denom-breakdown-grid .odd-year-block').forEach(function(b){{
+        const bn = b.querySelector('.odd-year-banner');
+        if (bn && bn.textContent.trim() === yr4denom) b.classList.add('odd-year-block--editing');
+        else b.classList.remove('odd-year-block--editing');
+      }});
     }});
     btnEditer.dataset.bound = '1';
   }}
@@ -9085,6 +9231,11 @@ function initDenominatorPanel() {{
       if (!DENOM_EDIT_MODE) return;
       DENOM_PENDING_CHANGES = false;
       computeDenominators();
+      document.querySelectorAll('#denom-breakdown-grid .odd-year-block').forEach(function(b){{ b.classList.remove('odd-year-block--editing'); }});
+      const denEditBtnPost = document.getElementById('denom-btn-editer');
+      const numEditBtnPost = document.getElementById('odd-decision-edit-open');
+      if (denEditBtnPost) denEditBtnPost.disabled = !getCurrentOddYear();
+      if (numEditBtnPost) numEditBtnPost.disabled = !getCurrentOddYear();
     }});
     saveBtn.dataset.bound = '1';
   }}
@@ -9098,10 +9249,10 @@ function initDenominatorPanel() {{
     }});
     refreshBtn.dataset.bound = '1';
   }}
-  if (validateBtn && !validateBtn.dataset.bound) {{
-    validateBtn.addEventListener('click', validateAnnualDenominator);
-    validateBtn.dataset.bound = '1';
-  }}
+  // validateBtn supprimé
+  // validateBtn.addEventListener supprimé
+  // validateBtn.dataset.bound supprimé
+  // (validateBtn block removed)
 
   document.querySelectorAll('.denom-pack input').forEach(el => {{
     el.addEventListener('change', () => {{
