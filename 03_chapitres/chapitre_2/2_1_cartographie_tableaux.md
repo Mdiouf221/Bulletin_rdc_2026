@@ -1,4 +1,4 @@
-﻿## 3.1 Panorama des régimes et programmes de protection sociale en RDC
+## 3.1 Panorama des régimes et programmes de protection sociale en RDC
 
 <!-- NOTE_INTERNE
 Grand axe :
@@ -37,11 +37,21 @@ Statut : rédigé
 
 Sur la base des grilles définies au chapitre 2 — couverture légale et effective, caractère obligatoire ou volontaire, financement contributif ou non contributif, statut réglementaire, nature des prestations et conditions d'accès —, le présent chapitre cartographie les régimes, programmes et institutions de protection sociale identifiés en RDC à la date de rédaction.
 
-Cette cartographie distingue quatre grandes catégories : la sécurité sociale contributive obligatoire, qui couvre les travailleurs du secteur privé formel via la CNSS et les agents publics affiliés à la CNSSAP (Tableau 2.1) ; les dispositifs statutaires financés directement par le budget de l'État, qui regroupent les régimes spéciaux formellement constitués et, lorsqu'elle est effectivement documentée, la protection budgétaire d'autres agents publics hors CNSSAP (Tableau 2.2) ; la protection de la santé, organisée par segment de population (Tableau 2.3) ; les programmes d'assistance sociale et initiatives non contributives destinés aux populations non couvertes par les régimes formels (Tableau 2.4) ; enfin, un ensemble de politiques sectorielles à dimension protectrice — gratuités, programmes d'activation par l'emploi, accès subventionné aux services de base — dont la finalité sociale est établie mais qui ne relèvent pas à proprement parler de l'assistance sociale (Tableau 2.5, mention contextuelle).
+Cette cartographie distingue cinq grandes catégories :
+
+1) la sécurité sociale contributive obligatoire, hors santé, qui couvre les travailleurs du secteur privé formel via la CNSS et les agents publics affiliés à la CNSSAP (Tableau 2.1) ;
+
+2) les dispositifs statutaires, hors santé, financés directement par le budget de l'État, qui regroupent les régimes spéciaux formellement constitués et la protection des agents publics qui ne sont pas encore transférés formellement à la CNSSAP (Tableau 2.2) ;
+
+3) la protection de la santé, organisée par segment de population (Tableau 2.3) ;
+
+4) les programmes d'assistance sociale et initiatives non contributives destinés aux populations non couvertes par les régimes formels (Tableau 2.4) ;
+
+5) enfin, un ensemble de politiques sectorielles à dimension protectrice — gratuités, programmes d'activation par l'emploi, accès subventionné aux services de base — dont la finalité sociale est établie mais qui ne relèvent pas à proprement parler de l'assistance sociale (Tableau 2.5, mention contextuelle).
 
 ---
 
-### Sécurité sociale contributive obligatoire <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### 1) Sécurité sociale contributive obligatoire hors santé <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 <a href="/files/06_sources/normes_oit/_texte/C102 - Convention sur la securite sociale normes minimales (No. 102), 1952.txt" title="Source : OIT — Convention no 102 sur la sécurité sociale (normes minimales), 1952" class="source-ref source-ref-text nv" data-val-id="s31-t1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Les neuf branches de la Convention no 102 de l'OIT</a> servent de grille de lecture pour situer chaque institution dans le panorama de la protection sociale.
 
@@ -70,13 +80,19 @@ Cette cartographie distingue quatre grandes catégories : la sécurité sociale 
 
 ---
 
-### Dispositifs statutaires financés directement par le budget de l'État <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### 2) Dispositifs statutaires financés directement par le budget de l'État <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 Au-delà de la sécurité sociale contributive gérée par la CNSS et la CNSSAP, le paysage institutionnel de la protection sociale en RDC comprend un ensemble de **dispositifs statutaires dont les prestations sont financées directement par le budget de l'État**. Ces dispositifs se subdivisent en deux catégories distinctes, qu'il convient de ne pas confondre sur le plan institutionnel.
 
 La première catégorie regroupe les **régimes spéciaux** au sens strict : dispositifs institués par un texte légal ou réglementaire propre, couvrant une catégorie professionnelle déterminée selon des règles spécifiques de prestations et de financement. En RDC, entrent dans cette catégorie les régimes applicables aux militaires et policiers (FARDC, PNC), aux magistrats civils du siège et du parquet, et aux membres des assemblées législatives nationales.
 
-La seconde catégorie recouvre les **agents publics hors CNSSAP dont la protection est effectivement assurée par un dispositif statutaire financé directement par le budget de l'État**, sans s'inscrire dans un régime spécial formellement constitué. La mécanisation — entendue comme l'intégration administrative et salariale dans le système de paie de l'État — facilite la retenue régulière des cotisations et le passage à une couverture contributive effective par la CNSSAP. Toutefois, l'absence de mécanisation ou d'affiliation à la CNSSAP ne suffit pas, à elle seule, à établir l'existence d'une couverture budgétaire effective. Celle-ci doit être attestée par des droits identifiables, une population dénombrable et une prise en charge budgétaire documentée. Qualifier cette population de « régime spécial » serait inexact : elle relève des dispositions générales applicables aux agents de l'État, et non d'un régime spécial distinct.
+La seconde catégorie recouvre les **agents publics hors CNSSAP dont la protection est encore effectivement assurée par un dispositif statutaire financé directement par le budget de l'État**.
+
+Historiquement, la protection sociale des agents de l'État était assurée par un système de régimes dit « octroyés » : un ensemble de prestations (sous condition d'éligibilité) était garanti aux agents de l'État et directement financé par le budget national, sans recourir à un mécanisme assuranciel. Un programme de transfèrement de ces effectifs sous la responsabilité de la CNSSAP est en cours depuis 2022. Ce mécanisme est désigné comme la réforme de transfèrement.
+
+Cependant, la fourniture de protection sociale par un système non contributif et non assuranciel persiste sous deux formes : d'une part les régimes spéciaux (tel que les régimes des magistrats civils, régimes des parlementaires, etc.) et d'autre part par le personnel non encore effectivement transféré à la CNSSAP.
+
+La mécanisation est entendue comme l'intégration administrative et salariale dans le système de paie de l'État. Elle facilite la retenue régulière des cotisations et le passage à une couverture contributive effective par la CNSSAP.
 
 Les données disponibles relatives à ces deux catégories sont synthétisées dans le Tableau 2.2. Les informations sur les branches effectivement couvertes et les populations concernées sont partielles et doivent être interprétées au regard des limites de documentation actuelles.
 
@@ -122,7 +138,7 @@ Les régimes décrits dans les tableaux précédents reposent sur un fondement c
 
 La <a href="/files/06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="OIT — Recommandation no 202 (2012) — §8 : les socles de protection sociale comprennent des garanties minimales pour les populations non couvertes par les régimes contributifs" class="source-ref source-ref-text nv" data-val-id="s31-t4-r202" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Recommandation no 202 de l'OIT (2012)</a> définit les **socles de protection sociale** comme des garanties élémentaires devant couvrir toute la population, y compris ceux qui ne participent à aucun régime contributif. En RDC, cette fonction est partiellement assurée par un ensemble de **programmes non contributifs et d'initiatives sectorielles**, portés soit par le gouvernement, soit par des partenaires techniques et financiers. <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) — ch. 2.3 : programmes non contributifs d'assistance sociale" class="source-ref source-ref-text nv" data-val-id="s31-t4-bul1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">[Premier bulletin 2023]</a>
 
-Ces programmes se distinguent des régimes précédents par trois caractéristiques structurelles : ils sont entièrement **financés par des ressources publiques ou des contributions extérieures**, sans cotisation des bénéficiaires ; ils ne confèrent généralement **aucun droit statutaire permanent** susceptible d'être invoqué par les intéressés ; et leur pérennité dépend des décisions budgétaires annuelles ou des cycles de financement des bailleurs. Cette fragilité institutionnelle est une limite importante à leur intégration dans les indicateurs de couverture ; ils sont néanmoins recensés ici car ils constituent, pour les populations concernées, la seule forme de protection sociale accessible.
+Ces programmes se distinguent des régimes précédents par trois caractéristiques structurelles : ils sont **financés par des ressources publiques ou des contributions extérieures**, sans cotisation des bénéficiaires ; ils ne confèrent généralement **aucun droit statutaire permanent** susceptible d'être invoqué par les intéressés ; et leur pérennité dépend des décisions budgétaires annuelles ou des cycles de financement des bailleurs. Cette fragilité institutionnelle est une limite importante à leur intégration dans les indicateurs de couverture ; Décision a été cependant prise d’intégrer le programme des cantines scolaires du PAM dans la protection sociale des enfants.
 
 <p class="table-caption"><strong>Tableau 2.4</strong> — Programmes d'assistance sociale et initiatives non contributives (actifs au 31.12.2025)</p>
 

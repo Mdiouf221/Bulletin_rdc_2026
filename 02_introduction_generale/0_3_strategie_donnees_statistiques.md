@@ -1,4 +1,4 @@
-﻿## 1.3 Protection sociale, stratégie nationale et besoin de données statistiques
+## 1.3 Protection sociale, stratégie nationale et besoin de données statistiques
 
 <!-- NOTE_INTERNE
 Grand axe :
@@ -61,5 +61,5 @@ La mise en uvre de ces orientations stratégiques se heurte à des contraintes
 
 ### Le bulletin comme instrument d'aide à la décision <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
 
-C'est dans ce contexte que s'inscrit le présent bulletin. La production régulière de statistiques de protection sociale constitue un outil essentiel pour orienter les choix de politique publique sur la base de données factuelles. Ce deuxième bulletin statistique vise à consolider les informations disponibles sur les régimes, institutions et programmes de protection sociale en RDC, à mesurer les niveaux de couverture effective  notamment au regard de l'indicateur ODD 1.3.1  et à identifier les lacunes qui devront être prises en compte dans l'élaboration et le suivi de la stratégie nationale. Il couvre la période jusqu'à décembre 2025 et s'appuie sur les données transmises par les institutions nationales, les publications des organisations internationales et les registres administratifs disponibles. Le chapitre 1 présente le cadre conceptuel et les choix méthodologiques qui fondent cette démarche.
+C'est dans ce contexte que s'inscrit le présent bulletin. La production régulière de statistiques de protection sociale constitue un outil essentiel pour orienter les choix de politique publique sur la base de données factuelles. Ce deuxième bulletin statistique vise à consolider les informations disponibles sur les régimes, institutions et programmes de protection sociale en RDC, à mesurer les niveaux de couverture effective  notamment au regard de l'indicateur ODD 1.3.1  et à identifier les lacunes qui devront être prises en compte dans l'élaboration et le suivi de la stratégie nationale. Il couvre la période 2019–2025 et s'appuie sur les données transmises par les institutions nationales, les publications des organisations internationales et les registres administratifs disponibles. Le chapitre 2 présente le cadre conceptuel et les choix méthodologiques qui fondent cette démarche.
 
