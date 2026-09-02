@@ -55,6 +55,77 @@
       "unit": {},
       "coefficients": {},
       "exclude": {}
+    },
+    "CNSS_R2": {
+      "dedup_cotisants": {},
+      "dedup_beneficiaires": {},
+      "finance_recettes": {},
+      "finance_depenses": {},
+      "unit": {},
+      "coefficients": {},
+      "exclude": {}
+    }
+  },
+  "CNSSAP": {
+    "CNSSAP_R1": {
+      "dedup_cotisants": {
+        "Pension de retraite__Rente de survie au conjoint survivants": "true",
+        "Pension de retraite__Rente de survie pour l'orphelin": "true",
+        "Rente de survie au conjoint survivants__Pension de retraite": "true",
+        "Rente de survie au conjoint survivants__Rente de survie pour l'orphelin": "true",
+        "Rente de survie pour l'orphelin__Pension de retraite": "true",
+        "Rente de survie pour l'orphelin__Rente de survie au conjoint survivants": "true"
+      },
+      "dedup_beneficiaires": {
+        "Pension de retraite__Rente de survie au conjoint survivants": "false",
+        "Pension de retraite__Rente de survie pour l'orphelin": "false",
+        "Rente de survie au conjoint survivants__Pension de retraite": "false",
+        "Rente de survie au conjoint survivants__Rente de survie pour l'orphelin": "true",
+        "Rente de survie pour l'orphelin__Pension de retraite": "false",
+        "Rente de survie pour l'orphelin__Rente de survie au conjoint survivants": "true"
+      },
+      "finance_recettes": {
+        "Rente de survie au conjoint survivants": [
+          "Rente de survie pour l'orphelin"
+        ],
+        "Rente de survie pour l'orphelin": [
+          "Rente de survie au conjoint survivants"
+        ]
+      },
+      "finance_depenses": {},
+      "unit": {},
+      "coefficients": {},
+      "exclude": {}
+    },
+    "CNSSAP_R2": {
+      "dedup_cotisants": {
+        "Pension de retraite__Rente de survie au conjoint survivants": "false",
+        "Pension de retraite__Rente de survie pour l'orphelin": "false",
+        "Rente de survie au conjoint survivants__Pension de retraite": "false",
+        "Rente de survie au conjoint survivants__Rente de survie pour l'orphelin": "false",
+        "Rente de survie pour l'orphelin__Pension de retraite": "false",
+        "Rente de survie pour l'orphelin__Rente de survie au conjoint survivants": "false"
+      },
+      "dedup_beneficiaires": {
+        "Pension de retraite__Rente de survie au conjoint survivants": "false",
+        "Pension de retraite__Rente de survie pour l'orphelin": "false",
+        "Rente de survie au conjoint survivants__Pension de retraite": "false",
+        "Rente de survie au conjoint survivants__Rente de survie pour l'orphelin": "true",
+        "Rente de survie pour l'orphelin__Pension de retraite": "false",
+        "Rente de survie pour l'orphelin__Rente de survie au conjoint survivants": "true"
+      },
+      "finance_recettes": {
+        "Rente de survie au conjoint survivants": [
+          "Rente de survie pour l'orphelin"
+        ],
+        "Rente de survie pour l'orphelin": [
+          "Rente de survie au conjoint survivants"
+        ]
+      },
+      "finance_depenses": {},
+      "unit": {},
+      "coefficients": {},
+      "exclude": {}
     }
   }
 }

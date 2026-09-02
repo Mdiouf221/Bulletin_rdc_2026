@@ -1,14 +1,14 @@
 {
   "CNSS": {
     "Q1": {
-      "CNSS_R1__CNSS_R2": "false",
-      "CNSS_R1__CNSS_R3": "false",
+      "CNSS_R1__CNSS_R2": "true",
+      "CNSS_R1__CNSS_R3": "true",
       "CNSS_R1__CNSS_R4": "false",
-      "CNSS_R2__CNSS_R1": "false",
-      "CNSS_R2__CNSS_R3": "false",
+      "CNSS_R2__CNSS_R1": "true",
+      "CNSS_R2__CNSS_R3": "true",
       "CNSS_R2__CNSS_R4": "false",
-      "CNSS_R3__CNSS_R1": "false",
-      "CNSS_R3__CNSS_R2": "false",
+      "CNSS_R3__CNSS_R1": "true",
+      "CNSS_R3__CNSS_R2": "true",
       "CNSS_R3__CNSS_R4": "false",
       "CNSS_R4__CNSS_R1": "false",
       "CNSS_R4__CNSS_R2": "false",

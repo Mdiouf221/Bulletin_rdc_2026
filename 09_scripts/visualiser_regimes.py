@@ -1736,8 +1736,12 @@ def fig_institution_finances(rows: list[dict], institution: str) -> str:
     return fig.to_html(full_html=False, include_plotlyjs=False)
 
 
-def fig_institution_cotisants(rows: list[dict], institution: str, sex_mode: str = "all") -> str:
-    """Graphique population — Cotisants actifs uniquement (graphique indépendant)."""
+def build_fig_institution_cotisants(rows: list[dict], institution: str, sex_mode: str = "all"):
+    """Construit la figure Plotly — Cotisants actifs.
+
+    Source unique de vérité réutilisée par le dashboard interactif (export HTML)
+    et par le générateur de visuels statiques de l'annexe B (export image).
+    """
     data = [r for r in rows if r["institution"] == institution]
     regimes_keys = sorted(set(r["regime_code"] for r in data))
     
@@ -1795,11 +1799,17 @@ def fig_institution_cotisants(rows: list[dict], institution: str, sex_mode: str 
     fig.update_xaxes(tickformat="d", dtick=1, showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0')
     fig.update_yaxes(showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0', separatethousands=True)
     
+    return fig
+
+
+def fig_institution_cotisants(rows: list[dict], institution: str, sex_mode: str = "all") -> str:
+    """Graphique population — Cotisants actifs uniquement (graphique indépendant)."""
+    fig = build_fig_institution_cotisants(rows, institution, sex_mode)
     return fig.to_html(full_html=False, include_plotlyjs=False)
 
 
-def fig_institution_beneficiaires(rows: list[dict], institution: str, sex_mode: str = "all") -> str:
-    """Graphique population — Bénéficiaires uniquement (graphique indépendant)."""
+def build_fig_institution_beneficiaires(rows: list[dict], institution: str, sex_mode: str = "all"):
+    """Construit la figure Plotly — Bénéficiaires (source unique, dashboard + annexe B)."""
     data = [r for r in rows if r["institution"] == institution]
     regimes_keys = sorted(set(r["regime_code"] for r in data))
     
@@ -1857,15 +1867,24 @@ def fig_institution_beneficiaires(rows: list[dict], institution: str, sex_mode: 
     fig.update_xaxes(tickformat="d", dtick=1, showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0')
     fig.update_yaxes(showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0', separatethousands=True)
     
+    return fig
+
+
+def fig_institution_beneficiaires(rows: list[dict], institution: str, sex_mode: str = "all") -> str:
+    """Graphique population — Bénéficiaires uniquement (graphique indépendant)."""
+    fig = build_fig_institution_beneficiaires(rows, institution, sex_mode)
     return fig.to_html(full_html=False, include_plotlyjs=False)
 
 
-def fig_institution_depenses(rows: list[dict], institution: str) -> str:
-    """Graphique finances — Dépenses totales uniquement (graphique indépendant)."""
+def build_fig_institution_depenses(rows: list[dict], institution: str):
+    """Construit la figure Plotly — Dépenses totales (source unique, dashboard + annexe B).
+
+    Retourne None si aucune donnée financière n'est disponible pour l'institution.
+    """
     data = [r for r in rows if r["institution"] == institution]
     regimes_keys = sorted(set(r["regime_code"] for r in data))
     if not regimes_keys:
-        return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
+        return None
     
     fig = go.Figure()
     
@@ -1912,15 +1931,23 @@ def fig_institution_depenses(rows: list[dict], institution: str) -> str:
     fig.update_xaxes(tickformat="d", dtick=1, showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0')
     fig.update_yaxes(showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0', separatethousands=True)
     
+    return fig
+
+
+def fig_institution_depenses(rows: list[dict], institution: str) -> str:
+    """Graphique finances — Dépenses totales uniquement (graphique indépendant)."""
+    fig = build_fig_institution_depenses(rows, institution)
+    if fig is None:
+        return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
     return fig.to_html(full_html=False, include_plotlyjs=False)
 
 
-def fig_institution_depense_par_beneficiaire(rows: list[dict], institution: str) -> str:
-    """Graphique finances — Dépense moyenne par bénéficiaire uniquement (graphique indépendant)."""
+def build_fig_institution_depense_par_beneficiaire(rows: list[dict], institution: str):
+    """Construit la figure Plotly — Dépense moyenne par bénéficiaire (source unique, dashboard + annexe B)."""
     data = [r for r in rows if r["institution"] == institution]
     regimes_keys = sorted(set(r["regime_code"] for r in data))
     if not regimes_keys:
-        return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
+        return None
     
     fig = go.Figure()
     
@@ -1966,15 +1993,23 @@ def fig_institution_depense_par_beneficiaire(rows: list[dict], institution: str)
     fig.update_xaxes(tickformat="d", dtick=1, showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0')
     fig.update_yaxes(showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0', separatethousands=True)
     
+    return fig
+
+
+def fig_institution_depense_par_beneficiaire(rows: list[dict], institution: str) -> str:
+    """Graphique finances — Dépense moyenne par bénéficiaire uniquement (graphique indépendant)."""
+    fig = build_fig_institution_depense_par_beneficiaire(rows, institution)
+    if fig is None:
+        return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
     return fig.to_html(full_html=False, include_plotlyjs=False)
 
 
-def fig_institution_recettes(rows: list[dict], institution: str) -> str:
-    """Graphique finances — Recettes totales uniquement (graphique indépendant)."""
+def build_fig_institution_recettes(rows: list[dict], institution: str):
+    """Construit la figure Plotly — Recettes totales (source unique, dashboard + annexe B)."""
     data = [r for r in rows if r["institution"] == institution]
     regimes_keys = sorted(set(r["regime_code"] for r in data))
     if not regimes_keys:
-        return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
+        return None
     
     fig = go.Figure()
     
@@ -2021,15 +2056,23 @@ def fig_institution_recettes(rows: list[dict], institution: str) -> str:
     fig.update_xaxes(tickformat="d", dtick=1, showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0')
     fig.update_yaxes(showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0', separatethousands=True)
     
+    return fig
+
+
+def fig_institution_recettes(rows: list[dict], institution: str) -> str:
+    """Graphique finances — Recettes totales uniquement (graphique indépendant)."""
+    fig = build_fig_institution_recettes(rows, institution)
+    if fig is None:
+        return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
     return fig.to_html(full_html=False, include_plotlyjs=False)
 
 
-def fig_institution_contribution(rows: list[dict], institution: str) -> str:
-    """Graphique finances — Contribution moyenne uniquement (graphique indépendant)."""
+def build_fig_institution_contribution(rows: list[dict], institution: str):
+    """Construit la figure Plotly — Contribution moyenne (source unique, dashboard + annexe B)."""
     data = [r for r in rows if r["institution"] == institution]
     regimes_keys = sorted(set(r["regime_code"] for r in data))
     if not regimes_keys:
-        return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
+        return None
     
     fig = go.Figure()
     
@@ -2077,6 +2120,14 @@ def fig_institution_contribution(rows: list[dict], institution: str) -> str:
     fig.update_xaxes(tickformat="d", dtick=1, showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0')
     fig.update_yaxes(showgrid=True, gridcolor='#f0f0f0', showline=True, linewidth=1, linecolor='#e2e8f0', separatethousands=True)
     
+    return fig
+
+
+def fig_institution_contribution(rows: list[dict], institution: str) -> str:
+    """Graphique finances — Contribution moyenne uniquement (graphique indépendant)."""
+    fig = build_fig_institution_contribution(rows, institution)
+    if fig is None:
+        return "<p style='color:#888;padding:12px'>Aucune donnée financière disponible.</p>"
     return fig.to_html(full_html=False, include_plotlyjs=False)
 
 
@@ -2699,12 +2750,17 @@ def _fmt_num(val, digits: int = 0, scale: float = 1.0) -> str:
     return f"{num:,.{digits}f}"
 
 
-def fig_table_regime(rows: list[dict], institution: str, sex_mode: str = "all") -> str:
+def build_institution_detail_table(rows: list[dict], institution: str, sex_mode: str = "all"):
+    """Construit les données du tableau détaillé — source unique (dashboard + annexe B).
+
+    Retourne {"headers": [...], "rows": [{"regime_code", "annee", "values": [...]}]}
+    ou None si aucune donnée n'est disponible pour l'institution.
+    """
     data = [r for r in rows if r["institution"] == institution]
     sex_mode = sex_mode if sex_mode in ("all", "hommes", "femmes") else "all"
 
     if not data:
-        return "<p style='color:#888;padding:10px'>Aucune donnée détaillée disponible.</p>"
+        return None
 
     if sex_mode == "all":
         headers = [
@@ -2722,7 +2778,7 @@ def fig_table_regime(rows: list[dict], institution: str, sex_mode: str = "all") 
             f"Bénéficiaires {sexe_cap}",
         ]
 
-    body_rows = []
+    rows_out = []
     for r in data:
         if sex_mode == "all":
             rec_moy = None
@@ -2749,11 +2805,27 @@ def fig_table_regime(rows: list[dict], institution: str, sex_mode: str = "all") 
                 _fmt_num(r[f"cotisants_{sex_suffix}"]),
                 _fmt_num(r[f"beneficiaires_{sex_suffix}"]),
             ]
+        rows_out.append({
+            "regime_code": r["regime_code"],
+            "annee": r["annee"],
+            "values": values,
+        })
 
-        cells = "".join(f"<td>{html.escape(v)}</td>" for v in values)
+    return {"headers": headers, "rows": rows_out}
+
+
+def fig_table_regime(rows: list[dict], institution: str, sex_mode: str = "all") -> str:
+    table = build_institution_detail_table(rows, institution, sex_mode)
+    if table is None:
+        return "<p style='color:#888;padding:10px'>Aucune donnée détaillée disponible.</p>"
+
+    headers = table["headers"]
+    body_rows = []
+    for item in table["rows"]:
+        cells = "".join(f"<td>{html.escape(v)}</td>" for v in item["values"])
         body_rows.append(
-            f'<tr data-regime="{html.escape(str(r["regime_code"]), quote=True)}" '
-            f'data-year="{html.escape(str(r["annee"]), quote=True)}">{cells}</tr>'
+            f'<tr data-regime="{html.escape(str(item["regime_code"]), quote=True)}" '
+            f'data-year="{html.escape(str(item["annee"]), quote=True)}">{cells}</tr>'
         )
 
     headers_html = "".join(f"<th>{html.escape(h)}</th>" for h in headers)
@@ -3177,7 +3249,8 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
                     _cur.execute(
                         "SELECT val_n, source FROM denominateurs_ref "
                         "WHERE iso3='COD' AND var_code=? AND class_sex=? AND class_age=? "
-                        "AND year=? AND val_n IS NOT NULL LIMIT 1",
+                        "AND year=? AND val_n IS NOT NULL "
+                        "ORDER BY priority DESC, id ASC LIMIT 1",
                         (_vc, _sx, _ag, _yr)
                     )
                     _res = _cur.fetchone()
@@ -3337,6 +3410,60 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     .tab-btn.active  {{ color: #2c5282; border-bottom-color: #2c5282; }}
     .tab-panel {{ display: none; padding: 32px 40px; max-width: 1800px; margin: 0 auto; }}
     .tab-panel.active {{ display: block; }}
+    .tab-export-bar {{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 32px;
+      background: #edf2f7;
+      border-bottom: 1px solid #cbd5e0;
+      position: sticky;
+      top: 57px;
+      z-index: 90;
+    }}
+    .tab-export-btn {{
+      border: 1px solid #2c5282;
+      border-radius: 8px;
+      background: #2c5282;
+      color: #fff;
+      padding: 7px 14px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }}
+    .tab-export-btn:hover {{
+      background: #1f436e;
+      border-color: #1f436e;
+    }}
+    .tab-export-hint {{
+      color: #4a5568;
+      font-size: 0.83rem;
+      font-weight: 600;
+    }}
+    @media print {{
+      @page {{ size: A4 landscape; margin: 10mm; }}
+      body {{ background: #fff !important; font-size: 11pt; }}
+      header {{
+        background: #fff !important;
+        color: #1a202c !important;
+        box-shadow: none !important;
+        padding: 0 0 10px 0 !important;
+      }}
+      .tab-bar, .tab-export-bar {{ display: none !important; }}
+      .tab-panel {{
+        display: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: none !important;
+      }}
+      .tab-panel.active {{ display: block !important; }}
+      .chart-block, .table-wrap, .regime-description, .kpi-card {{
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+      }}
+      details > summary {{ list-style: none; }}
+    }}
     #tab-institutions g[class^="legend"] .legendsymbols {{
       transform: scale({INSTITUTION_LEGEND_SYMBOL_FACTOR});
       transform-box: fill-box;
@@ -5129,6 +5256,12 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
     📋 Par prestation
   </button>
 </div>
+<div class="tab-export-bar">
+  <button type="button" id="btn-export-pdf" class="tab-export-btn" onclick="exportActiveTabToPdf()">
+    🖨 Exporter la page active en PDF
+  </button>
+  <span id="pdf-export-hint" class="tab-export-hint">Page active : Indicateurs</span>
+</div>
 
 <!-- ═══ ONGLET 1 : INDICATEURS ═══ -->
 <div id="tab-indicateurs" class="tab-panel active">
@@ -6101,11 +6234,60 @@ function switchTab(name, btn) {{
   const activePanel = document.getElementById('tab-' + name);
   if (activePanel) activePanel.classList.add('active');
   if (btn) btn.classList.add('active');
+  updatePdfExportHint();
   if (name === 'institutions') {{
     scheduleInstitutionTabResize();
   }} else {{
     window.dispatchEvent(new Event('resize'));
   }}
+}}
+
+function getActiveTabInfo() {{
+  const panel = document.querySelector('.tab-panel.active');
+  const button = document.querySelector('.tab-btn.active');
+  const key = panel ? panel.id.replace('tab-', '') : 'tableau-de-bord';
+  const label = button ? button.textContent.replace(/\s+/g, ' ').trim() : key;
+  return {{ key, label }};
+}}
+
+function updatePdfExportHint() {{
+  const hint = document.getElementById('pdf-export-hint');
+  if (!hint) return;
+  const info = getActiveTabInfo();
+  hint.textContent = 'Page active : ' + info.label;
+}}
+
+function sanitizeFilename(value) {{
+  return String(value || 'page')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\w\-]+/g, '_')
+    .replace(/^_+|_+$/g, '')
+    .toLowerCase() || 'page';
+}}
+
+function exportActiveTabToPdf() {{
+  const activePanel = document.querySelector('.tab-panel.active');
+  if (!activePanel) {{
+    alert('Aucune page active à exporter.');
+    return;
+  }}
+  const info = getActiveTabInfo();
+  const previousTitle = document.title;
+  const hint = document.getElementById('pdf-export-hint');
+  if (hint) {{
+    hint.textContent = 'Ouverture de la boîte d\\'impression (choisir "Enregistrer en PDF").';
+  }}
+  document.title = 'tableau_de_bord_rdc_' + sanitizeFilename(info.label);
+  const cleanup = () => {{
+    document.title = previousTitle;
+    updatePdfExportHint();
+  }};
+  window.addEventListener('afterprint', cleanup, {{ once: true }});
+  setTimeout(() => {{
+    window.print();
+    setTimeout(cleanup, 1500);
+  }}, 120);
 }}
 
 // ── Onglet indicateurs ───────────────────────────────────────────────────────
@@ -10354,6 +10536,7 @@ function updatePrestationRegime() {{
   renderIndicateurs();
   updateInstitution();
   updatePrestationInstitution();
+  updatePdfExportHint();
 }})();
 </script>
 

@@ -53,6 +53,14 @@ Les agents doivent mettre à jour ce registre lorsqu'un tableau est créé, reno
 | Tableau 5.5 | Évolution de l'indice ODD 3.8.1 pour la RDC (2015–2023) | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chapitres/chapitre_5/00_plan_chapitre_5.md` | à vérifier |
 | Tableau 5.6 | Comparaison régionale et internationale de l'ODD 3.8.1 | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chapitres/chapitre_5/00_plan_chapitre_5.md` | à vérifier |
 | Tableau 5.7 | Trajectoire et objectifs de l'indicateur ODD 3.8.1 pour la RDC | Chapitre 5 — § 5.2 ODD 3.8.1 | `03_chapitres/chapitre_5/00_plan_chapitre_5.md` | à vérifier |
+| Tableau B.1.1–B.1.5 | Fiche institutionnelle CNSS (branches couvertes, cadre juridique, données de couverture, régimes gérés, données détaillées) | Annexe B — Fiches institutionnelles | `04_annexes/annexe_B_fiches_institutionnelles.md` | à vérifier |
+| Tableau B.2.1–B.2.5 | Fiche institutionnelle CNSSAP (branches couvertes, cadre juridique, données de couverture, régimes gérés, données détaillées) | Annexe B — Fiches institutionnelles | `04_annexes/annexe_B_fiches_institutionnelles.md` | à vérifier |
+| Tableau B.3.1–B.3.3 | Fiche institutionnelle FNPSS (branches couvertes, cadre juridique, données de couverture) | Annexe B — Fiches institutionnelles | `04_annexes/annexe_B_fiches_institutionnelles.md` | à prévoir |
+| Tableau B.4.1–B.4.5 | Fiche institutionnelle MESP (branches couvertes, cadre juridique, données de couverture, régimes gérés, données détaillées) | Annexe B — Fiches institutionnelles | `04_annexes/annexe_B_fiches_institutionnelles.md` | à vérifier |
+| Tableau B.5.1–B.5.5 | Fiche institutionnelle FSS (régimes prévus, cadre juridique, données de couverture, régimes gérés, données détaillées) | Annexe B — Fiches institutionnelles | `04_annexes/annexe_B_fiches_institutionnelles.md` | à vérifier |
+| Tableau B.6.1–B.6.5 | Fiche institutionnelle SESOPA (branches couvertes, cadre juridique, données de couverture, régimes gérés, données détaillées) | Annexe B — Fiches institutionnelles | `04_annexes/annexe_B_fiches_institutionnelles.md` | à vérifier |
+| Tableau B.7.1–B.7.2 | Régimes spéciaux non contributifs de la fonction publique — proxy Trésor (régimes gérés, données détaillées) | Annexe B — Fiches institutionnelles | `04_annexes/annexe_B_fiches_institutionnelles.md` | à vérifier |
+| Tableau C.1–C.9 (hors C.6, C.8 non calculés) | Détail par indicateur ODD 1.3.1/BIT : indicateur de couverture, numérateur et dénominateur (2019–2026) | Annexe C — Détail des indicateurs | `04_annexes/annexe_C_detail_indicateurs.md` | à vérifier |
 
 ## Notes de gestion
 
@@ -61,3 +69,4 @@ Les agents doivent mettre à jour ce registre lorsqu'un tableau est créé, reno
 - Chaque tableau finalisé doit avoir une source et, si nécessaire, une note méthodologique.
 - Les fichiers sources peuvent être en `.xlsx`, `.csv` ou `.md`.
 - Les fichiers exportés peuvent être en `.png`, `.docx`, `.xlsx` ou autre format selon le besoin.
+- Les tableaux des annexes B et C, générés automatiquement par `09_scripts/generer_annexe_b_visuels.py` et `09_scripts/generer_annexe_c_visuels.py`, portent une numérotation à deux (Tableau C.N) ou trois niveaux (Tableau B.N.k) : N = numéro de la fiche/du sous-indicateur, k = rang du tableau dans cette fiche. La légende `<p class="table-caption">` est injectée automatiquement par les scripts et ne doit pas être modifiée à la main dans les blocs `AUTO_GENERE`.

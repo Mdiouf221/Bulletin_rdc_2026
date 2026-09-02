@@ -4,8 +4,11 @@ rafraichir_ess.py — Mise à jour complète d'un fichier ESS en base + dashboar
 Chaîne complète en une commande :
   1. Purge les données existantes en base pour la cible (institution / année)
   2. Réimporte le fichier ESS mis à jour depuis 06_sources/ESS/
-  3. Régénère le tableau de bord (visualiser_regimes.py)
-  4. Notifie l'utilisateur du résultat
+  3. Met à jour les marqueurs [ESS YYYY] du chapitre 4 (remplir_ch4.py)
+  4. Régénère le tableau de bord (visualiser_regimes.py)
+  5. Intègre les indicateurs ODD 1.3.1 dans le chapitre 5 (integrer_dashboard_bulletin.py)
+  6. Régénère les visuels statistiques de l'annexe B (generer_annexe_b_visuels.py)
+  7. Régénère les visuels statistiques de l'annexe C (generer_annexe_c_visuels.py)
 
 Usage :
     py 09_scripts/rafraichir_ess.py --institution CNSS --annee 2022
@@ -23,7 +26,6 @@ Arguments :
 """
 
 import argparse
-import subprocess
 import os
 import subprocess
 import sys
@@ -46,6 +48,10 @@ SCRIPT_DIR   = Path(__file__).resolve().parent
 WORKSPACE    = SCRIPT_DIR.parent
 EXTRAIRE_ESS = SCRIPT_DIR / "extraire_ess.py"
 VISUALISER   = SCRIPT_DIR / "visualiser_regimes.py"
+INTEGRATEUR = SCRIPT_DIR / "integrer_dashboard_bulletin.py"
+REMPLIR_CH4 = SCRIPT_DIR / "remplir_ch4.py"
+GEN_ANNEXE_B = SCRIPT_DIR / "generer_annexe_b_visuels.py"
+GEN_ANNEXE_C = SCRIPT_DIR / "generer_annexe_c_visuels.py"
 
 
 # ---------------------------------------------------------------------------
@@ -123,6 +129,21 @@ def etape_reimport(institution: str | None, annee: int | None,
     return ok
 
 
+def etape_chapitre4(dry_run: bool) -> bool:
+    """Met à jour les marqueurs [ESS YYYY] dans les tableaux du chapitre 4."""
+    if dry_run:
+        print("  [DRY-RUN] Remplissage chapitre 4 simulé — aucune action.")
+        return True
+    if not REMPLIR_CH4.exists():
+        print(f"  ✗ Script introuvable : {REMPLIR_CH4}")
+        return False
+    ok, output = _run([sys.executable, str(REMPLIR_CH4)], "CHAPITRE4")
+    if ok:
+        for line in output.strip().splitlines():
+            print(f"  {line}")
+    return ok
+
+
 def etape_dashboard(dry_run: bool) -> bool:
     """Régénère le tableau de bord des régimes."""
     if dry_run:
@@ -135,6 +156,51 @@ def etape_dashboard(dry_run: bool) -> bool:
     ok, output = _run([sys.executable, str(VISUALISER)], "DASHBOARD")
     if ok:
         print("  ✓ Dashboard régénéré.")
+    return ok
+
+
+def etape_integration_bulletin(dry_run: bool) -> bool:
+    """Injecte les indicateurs du dashboard dans le chapitre 5 du bulletin."""
+    if dry_run:
+        print("  [DRY-RUN] Intégration dashboard → bulletin simulée — aucune action.")
+        return True
+    if not INTEGRATEUR.exists():
+        print(f"  ✗ Script introuvable : {INTEGRATEUR}")
+        return False
+    ok, output = _run([sys.executable, str(INTEGRATEUR)], "INTEGRATION")
+    if ok:
+        for line in output.strip().splitlines():
+            print(f"  {line}")
+    return ok
+
+
+def etape_annexe_b_visuels(dry_run: bool) -> bool:
+    """Régénère les visuels statistiques (graphiques + tableaux) de l'annexe B."""
+    if dry_run:
+        print("  [DRY-RUN] Régénération des visuels annexe B simulée — aucune action.")
+        return True
+    if not GEN_ANNEXE_B.exists():
+        print(f"  ✗ Script introuvable : {GEN_ANNEXE_B}")
+        return False
+    ok, output = _run([sys.executable, str(GEN_ANNEXE_B)], "ANNEXE_B")
+    if ok:
+        for line in output.strip().splitlines():
+            print(f"  {line}")
+    return ok
+
+
+def etape_annexe_c_visuels(dry_run: bool) -> bool:
+    """Régénère les visuels statistiques (graphiques + tableaux) de l'annexe C."""
+    if dry_run:
+        print("  [DRY-RUN] Régénération des visuels annexe C simulée — aucune action.")
+        return True
+    if not GEN_ANNEXE_C.exists():
+        print(f"  ✗ Script introuvable : {GEN_ANNEXE_C}")
+        return False
+    ok, output = _run([sys.executable, str(GEN_ANNEXE_C)], "ANNEXE_C")
+    if ok:
+        for line in output.strip().splitlines():
+            print(f"  {line}")
     return ok
 
 
@@ -168,7 +234,7 @@ def main():
             "Exemple : py 09_scripts/rafraichir_ess.py --institution CNSS --annee 2022"
         )
 
-    n_steps = 2 if args.no_dashboard else 3
+    n_steps = 3 if args.no_dashboard else 7
 
     print("=" * 60)
     print("  Rafraîchissement ESS — Protection sociale RDC")
@@ -198,12 +264,33 @@ def main():
         print("\n  ✗ Réimport échoué — vérifier le fichier source dans 06_sources/ESS/")
         sys.exit(1)
 
-    # --- Étape 3 : Dashboard ---
+    # --- Étape 3 : Chapitre 4 ---
+    _print_step(3, n_steps, "Mise à jour des tableaux du chapitre 4")
+    ok_ch4 = etape_chapitre4(args.dry_run)
+    if not ok_ch4:
+        print("  ⚠  Mise à jour chapitre 4 non appliquée.")
+
+    # --- Étape 4 : Dashboard ---
     if not args.no_dashboard:
-        _print_step(3, n_steps, "Régénération du tableau de bord")
+        _print_step(4, n_steps, "Régénération du tableau de bord")
         ok_dash = etape_dashboard(args.dry_run)
         if not ok_dash:
             print("  ⚠  Dashboard non régénéré — les données en base sont à jour.")
+        else:
+            _print_step(5, n_steps, "Intégration des indicateurs dashboard dans le bulletin")
+            ok_integration = etape_integration_bulletin(args.dry_run)
+            if not ok_integration:
+                print("  ⚠  Intégration dashboard → bulletin non appliquée.")
+
+            _print_step(6, n_steps, "Régénération des visuels statistiques de l'annexe B")
+            ok_annexe_b = etape_annexe_b_visuels(args.dry_run)
+            if not ok_annexe_b:
+                print("  ⚠  Visuels annexe B non régénérés.")
+
+            _print_step(7, n_steps, "Régénération des visuels statistiques de l'annexe C")
+            ok_annexe_c = etape_annexe_c_visuels(args.dry_run)
+            if not ok_annexe_c:
+                print("  ⚠  Visuels annexe C non régénérés.")
 
     elapsed = time.perf_counter() - t0
     print(f"\n{'=' * 60}")

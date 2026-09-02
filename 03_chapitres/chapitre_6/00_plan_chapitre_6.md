@@ -8,7 +8,7 @@ Structure provisoire :
 6.1 Bilan de la disponibilité des données
     — Données disponibles par institution et par branche
     — Données manquantes ou partielles
-    — Données reçues mais hors périmètre OIT (renvoi à l'Annexe C)
+    — Données reçues mais hors périmètre OIT (renvoi à l'Annexe D)
 6.2 Qualité et comparabilité des données
     — Cohérence des définitions entre institutions
     — Problèmes de double comptage identifiés

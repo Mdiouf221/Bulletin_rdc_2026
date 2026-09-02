@@ -2,11 +2,13 @@
 
 <!-- NOTE_INTERNE
 Objet :
-Présente les éléments méthodologiques détaillés déplacés depuis le chapitre 2 pour alléger le corps du texte. Comprend :
+Présente les éléments méthodologiques détaillés déplacés depuis le chapitre 2, le chapitre 4 et le chapitre 5 pour alléger le corps du texte. Comprend :
 - A.1 : Champ de la protection sociale et critères d'inclusion statistique (ex-section 2.3)
 - A.2 : Classification des régimes, programmes et prestations — grilles complètes (ex-section 2.4)
+- A.3 : Note méthodologique unique sur la conversion du seuil de pauvreté et la lecture des montants nominaux, consolidée à partir de notes de bas de page identiques répétées dans les sections 4.2, 4.4, 4.5 et 4.6
+- A.4 : Tableau des cinq critères d'inclusion (C1-C5) de la composante statutaire budgétaire dans l'indicateur ODD 1.3.1, déplacé depuis la section 5.1 où il était présenté deux fois (avant et après le tableau de résultats)
 
-Ces annexes sont destinées au lecteur qui souhaite comprendre les fondements opérationnels des choix statistiques du bulletin. Le chapitre 2 en présente les principes essentiels ; ces annexes en fournissent le détail.
+Ces annexes sont destinées au lecteur qui souhaite comprendre les fondements opérationnels des choix statistiques du bulletin. Les chapitres 2, 4 et 5 en présentent les principes essentiels ou les résultats ; ces annexes en fournissent le détail.
 
 Statut : rédigé
 -->
@@ -84,3 +86,43 @@ Les conditions d'accès varient selon la nature du dispositif et structurent la 
 - **Accès universel ou quasi universel** : accès non conditionné, ouvert à l'ensemble de la population ou d'un groupe très large, sans critère d'éligibilité restrictif.
 
 Ces conditions d'accès ont une incidence directe sur les indicateurs de couverture : deux régimes couvrant formellement le même risque peuvent produire des taux de couverture très différents selon les conditions qu'ils imposent et la capacité institutionnelle à les faire respecter.
+
+---
+
+## A.3 — Seuil de pauvreté : méthode de conversion et lecture des montants en termes réels
+
+### Conversion du seuil de pauvreté national en équivalent mensuel
+
+Plusieurs tableaux du chapitre 4 comparent le montant de prestations en espèces (pensions, allocations, rentes) au seuil de pauvreté national, afin d'en apprécier l'adéquation. Cette section documente, une seule fois pour l'ensemble du bulletin, la méthode de conversion retenue.
+
+La réponse transmise par l'Institut national de la statistique (INS/RDC) indique un seuil de pauvreté de 2 414 CDF (2019-2023) puis 5 680 CDF (2024), sous l'intitulé « CDF/personne/mois » ; le commentaire méthodologique associé précise toutefois qu'il s'agit d'un montant **par jour**. Ces deux formulations sont incompatibles avec un seuil mensuel usuel (le montant indiqué correspondrait alors à moins d'un dollar américain par mois). Les valeurs présentées dans le bulletin sont donc exprimées en équivalent mensuel, obtenues par une conversion conventionnelle × 30 jours (2 414 × 30 ≈ 72 420 CDF ; 5 680 × 30 ≈ 170 400 CDF), afin de permettre la comparaison directe avec les montants des prestations. Cette conversion est indicative et devra être confirmée auprès de l'INS avant la validation finale du bulletin.
+
+*Source : <a href="/files/06_sources/officielles_web/INS_RDC_ECVM_pauvrete_inegalites_2024.txt" title="Source : INS-RDC — Enquête 1-2-3 (2019-2023) et ECVM 2024 ; canevas de collecte 2026" class="source-ref nv">INS/RDC, Enquête 1-2-3 (2019-2023) et ECVM 2024</a>.*
+
+---
+
+### Lecture des montants nominaux en contexte d'inflation
+
+Les montants de prestations présentés dans le bulletin sont exprimés en francs congolais courants (valeur nominale de l'année). Selon l'indice national des prix à la consommation (INS), l'inflation annuelle en RDC s'est établie à 15,8 % (2020), 5,3 % (2021), 13,1 % (2022), 23,8 % (2023) et 11,7 % (2024) (donnée 2019 non transmise). Cette inflation cumulée réduit sensiblement la valeur réelle d'une prestation dont le montant nominal reste inchangé d'une année sur l'autre — situation observée pour plusieurs prestations de la CNSS entre 2022 et les années suivantes, faute de données 2023-2025. Ce constat doit être gardé à l'esprit chaque fois que des montants nominaux sont comparés dans le temps au fil du chapitre 4.
+
+---
+
+## A.4 — Critères d'inclusion de la composante budgétaire de l'indicateur ODD 1.3.1
+
+Pour le sous-indicateur relatif aux actifs de l'ODD 1.3.1 (section 5.1), le calcul national présenté dans ce bulletin rapproche deux types de couverture documentée, dès lors que les données satisfont aux critères d'inclusion définis ci-dessous :
+
+1. **La couverture contributive observée** : cotisants actifs auprès de la CNSS et de la CNSSAP, pour lesquels une cotisation est effectivement enregistrée sur la période de référence, selon les tableaux ESS OIT. Ces personnes sont affiliées à un régime contributif et cotisent activement.
+
+2. **La couverture statutaire non contributive effectivement documentée** : personnes dont la protection repose sur un cadre légal ou réglementaire définissant des droits et des prestations financés directement par le budget de l'État. Ces personnes ne versent pas de cotisations à un régime contributif ; elles ne sont pas désignées comme « contributeurs » dans le présent bulletin. Leur inclusion dans l'indicateur est conditionnée au respect des cinq critères ci-dessous.
+
+**Critères d'inclusion de la composante statutaire budgétaire**
+
+| Critère | Description |
+|---|---|
+| C1 — Base statutaire | L'accès à la prestation est fondé sur un texte légal, réglementaire ou statutaire en vigueur, définissant les droits et conditions d'éligibilité. |
+| C2 — Population identifiable | La population couverte est délimitée et dénombrable à partir de sources documentées (registres, listes officielles, données administratives). |
+| C3 — Droits et prestations identifiables | Les droits ou prestations auxquels ces personnes peuvent accéder sont explicitement définis et individualisables. |
+| C4 — Financement budgétaire documenté et exécuté | Le financement par le budget de l'État est documenté et effectivement exécuté, non seulement prévu ou inscrit en loi de finances. |
+| C5 — Absence de double comptage | Une même personne n'est comptée qu'une seule fois dans le numérateur considéré, notamment lorsqu'elle passe d'une prise en charge budgétaire directe à la CNSSAP. |
+
+Cette approche repose sur la **responsabilité permanente de l'État** et le **caractère durable** des dispositifs statutaires. Elle distingue explicitement le numérateur contributif correspondant aux cotisants actifs et la composante statutaire budgétaire ajoutée dans le calcul national. Elle ne présume pas que tous les agents publics hors CNSSAP sont effectivement couverts. Lorsque les données permettant de vérifier l'ensemble de ces critères sont absentes ou non officiellement validées, la composante concernée est renseignée [N/D] ; aucune estimation n'est avancée en substitution.

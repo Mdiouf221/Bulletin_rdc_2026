@@ -830,26 +830,136 @@
     "manual_data": {
       "total": {
         "2019": {
-          "value": 0,
-          "comment": ""
+          "value": 92947442,
+          "comment": "INS/RDC, canevas de collecte 2026"
         },
         "2026": {
           "value": 0,
           "comment": "Saisie manuelle : valeur manquante pour 2026"
+        },
+        "2020": {
+          "value": 95989998,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2021": {
+          "value": 99148932,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2022": {
+          "value": 102396968,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2023": {
+          "value": 105789731,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2024": {
+          "value": 109276265,
+          "comment": "INS/RDC, canevas de collecte 2026"
         }
       },
-      "child": {},
+      "child": {
+        "2019": {
+          "value": 42737234,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2020": {
+          "value": 44203394,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2021": {
+          "value": 45697743,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2022": {
+          "value": 47215242,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2023": {
+          "value": 48758487,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2024": {
+          "value": 50299865,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        }
+      },
       "active": {
         "2019": {
-          "value": 0,
-          "comment": ""
+          "value": 47589090,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2020": {
+          "value": 48858909,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2021": {
+          "value": 50169360,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2022": {
+          "value": 51505675,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2023": {
+          "value": 52894866,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2024": {
+          "value": 54310304,
+          "comment": "INS/RDC, canevas de collecte 2026"
         }
       },
-      "lf": {},
+      "lf": {
+        "2019": {
+          "value": 50191619,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2020": {
+          "value": 51642619,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2021": {
+          "value": 53143828,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2022": {
+          "value": 54679981,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2023": {
+          "value": 56280137,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2024": {
+          "value": 57916420,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        }
+      },
       "ret": {
         "2023": {
-          "value": 0,
-          "comment": ""
+          "value": 4972117,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2019": {
+          "value": 3996740,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2020": {
+          "value": 4223560,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2021": {
+          "value": 4461702,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2022": {
+          "value": 4710261,
+          "comment": "INS/RDC, canevas de collecte 2026"
+        },
+        "2024": {
+          "value": 5245261,
+          "comment": "INS/RDC, canevas de collecte 2026"
         }
       },
       "handicap": {
@@ -858,7 +968,12 @@
           "comment": "Saisie manuelle — Saisie manuelle — Saisie manuelle — Premier bulletin ; Source : Estimations du BIT sur la base de données de l’OMS et de la Division de la population des Nations Unies · à valider · à valider · à valider"
         }
       },
-      "mat": {}
+      "mat": {
+        "2020": {
+          "value": 719335,
+          "comment": "INS/RDC, canevas de collecte 2026 : naissances vivantes 2020 (proxy femmes ayant accouche, non corrige des naissances multiples)"
+        }
+      }
     },
     "handicap_prevalence_percent": 15,
     "activity_rate_percent": 63.44,
@@ -866,16 +981,16 @@
       "global_131::2019": {
         "indicatorKey": "global_131",
         "year": 2019,
-        "sourceKey": "local_db",
+        "sourceKey": "manual",
         "params": {},
         "value": 92947442,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0+ (2019)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2019)",
         "sourceYears": [
           2019
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T03:45:25.230Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "global_131::2026": {
         "indicatorKey": "global_131",
@@ -894,370 +1009,332 @@
       "global_131::2020": {
         "indicatorKey": "global_131",
         "year": 2020,
-        "sourceKey": "local_db",
+        "sourceKey": "manual",
         "params": {},
         "value": 95989998,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0+ (2020)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2020)",
         "sourceYears": [
           2020
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:32:15.398Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "global_131::2021": {
         "indicatorKey": "global_131",
         "year": 2021,
-        "sourceKey": "local_db",
+        "sourceKey": "manual",
         "params": {},
         "value": 99148932,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0+ (2021)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2021)",
         "sourceYears": [
           2021
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T03:22:46.760Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "global_131::2022": {
         "indicatorKey": "global_131",
         "year": 2022,
-        "sourceKey": "local_db",
+        "sourceKey": "manual",
         "params": {},
         "value": 102396968,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0+ (2022)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2022)",
         "sourceYears": [
           2022
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T03:23:32.815Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_22_enfants::2021": {
         "indicatorKey": "ind_22_enfants",
         "year": 2021,
-        "sourceKey": "local_db",
-        "params": {
-          "ageMin": 0,
-          "ageMax": 15
-        },
-        "value": 52054919,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 45697743,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0–17 ans (B-CH-18) (2021)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–14 ans, calculee = % INS x population totale INS (2021)",
         "sourceYears": [
           2021
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:34:49.209Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_22_enfants::2019": {
         "indicatorKey": "ind_22_enfants",
         "year": 2019,
-        "sourceKey": "local_db",
-        "params": {
-          "ageMin": 0,
-          "ageMax": 15
-        },
-        "value": 48714283.5,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 42737234,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0–17 ans (B-CH-18) (2019)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–14 ans, calculee = % INS x population totale INS (2019)",
         "sourceYears": [
           2019
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:34:32.333Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_22_enfants::2020": {
         "indicatorKey": "ind_22_enfants",
         "year": 2020,
-        "sourceKey": "local_db",
-        "params": {
-          "ageMin": 0,
-          "ageMax": 15
-        },
-        "value": 50354317,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 44203394,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0–17 ans (B-CH-18) (2020)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–14 ans, calculee = % INS x population totale INS (2020)",
         "sourceYears": [
           2020
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:34:40.585Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_22_enfants::2022": {
         "indicatorKey": "ind_22_enfants",
         "year": 2022,
-        "sourceKey": "local_db",
-        "params": {
-          "ageMin": 0,
-          "ageMax": 15
-        },
-        "value": 53808048.5,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 47215242,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0–17 ans (B-CH-18) (2022)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–14 ans, calculee = % INS x population totale INS (2022)",
         "sourceYears": [
           2022
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:34:55.080Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_29_cotisants::2019": {
         "indicatorKey": "ind_29_cotisants",
         "year": 2019,
-        "sourceKey": "local_db",
-        "params": {
-          "ageMin": 15,
-          "ageMax": 64
-        },
-        "value": 47337200,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 47589090,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 15–64 (C-OA-WAP) (2019)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : approximation calculee a partir des donnees INS : population active 15 ans et plus moins population 65 ans et plus (2019)",
         "sourceYears": [
           2019
         ],
-        "warnings": [],
-        "calculatedAt": "2026-07-21T00:43:30.811Z"
+        "warnings": [
+          "Approximation : l'INS ne fournit pas de tranche 15-64 ans directe ; valeur = population active 15+ moins population 65+ (donnees INS, canevas de collecte 2026)."
+        ],
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_29_cotisants::2020": {
         "indicatorKey": "ind_29_cotisants",
         "year": 2020,
-        "sourceKey": "local_db",
-        "params": {
-          "ageMin": 15,
-          "ageMax": 64
-        },
-        "value": 48821791,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 48858909,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 15–64 (C-OA-WAP) (2020)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : approximation calculee a partir des donnees INS : population active 15 ans et plus moins population 65 ans et plus (2020)",
         "sourceYears": [
           2020
         ],
-        "warnings": [],
-        "calculatedAt": "2026-07-21T00:43:39.500Z"
+        "warnings": [
+          "Approximation : l'INS ne fournit pas de tranche 15-64 ans directe ; valeur = population active 15+ moins population 65+ (donnees INS, canevas de collecte 2026)."
+        ],
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_29_cotisants::2021": {
         "indicatorKey": "ind_29_cotisants",
         "year": 2021,
-        "sourceKey": "local_db",
-        "params": {
-          "ageMin": 15,
-          "ageMax": 64
-        },
-        "value": 50399446.5,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 50169360,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 15–64 (C-OA-WAP) (2021)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : approximation calculee a partir des donnees INS : population active 15 ans et plus moins population 65 ans et plus (2021)",
         "sourceYears": [
           2021
         ],
-        "warnings": [],
-        "calculatedAt": "2026-07-21T00:43:45.911Z"
+        "warnings": [
+          "Approximation : l'INS ne fournit pas de tranche 15-64 ans directe ; valeur = population active 15+ moins population 65+ (donnees INS, canevas de collecte 2026)."
+        ],
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_29_cotisants::2022": {
         "indicatorKey": "ind_29_cotisants",
         "year": 2022,
-        "sourceKey": "local_db",
-        "params": {
-          "ageMin": 15,
-          "ageMax": 64
-        },
-        "value": 52040020.5,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 51505675,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 15–64 (C-OA-WAP) (2022)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : approximation calculee a partir des donnees INS : population active 15 ans et plus moins population 65 ans et plus (2022)",
         "sourceYears": [
           2022
         ],
-        "warnings": [],
-        "calculatedAt": "2026-07-21T00:43:48.230Z"
+        "warnings": [
+          "Approximation : l'INS ne fournit pas de tranche 15-64 ans directe ; valeur = population active 15+ moins population 65+ (donnees INS, canevas de collecte 2026)."
+        ],
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_25_atmp::2022": {
         "indicatorKey": "ind_25_atmp",
         "year": 2022,
-        "sourceKey": "local_db",
-        "params": {
-          "activityRatePercent": 63.44
-        },
-        "value": 36183743,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 54679981,
         "status": "draft",
-        "meta": "Base locale ILOSTAT — force de travail 15+ (2022)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population active 15 ans et plus, calculee = % INS x population totale INS (2022)",
         "sourceYears": [
           2022
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:38:17.843Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_25_atmp::2019": {
         "indicatorKey": "ind_25_atmp",
         "year": 2019,
-        "sourceKey": "local_db",
-        "params": {
-          "activityRatePercent": 63.44
-        },
-        "value": 33156337,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 50191619,
         "status": "draft",
-        "meta": "Base locale ILOSTAT — force de travail 15+ (2019)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population active 15 ans et plus, calculee = % INS x population totale INS (2019)",
         "sourceYears": [
           2019
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:39:03.088Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_25_atmp::2020": {
         "indicatorKey": "ind_25_atmp",
         "year": 2020,
-        "sourceKey": "local_db",
-        "params": {
-          "activityRatePercent": 63.44
-        },
-        "value": 32851843,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 51642619,
         "status": "draft",
-        "meta": "Base locale ILOSTAT — force de travail 15+ (2020)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population active 15 ans et plus, calculee = % INS x population totale INS (2020)",
         "sourceYears": [
           2020
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:38:38.695Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_25_atmp::2021": {
         "indicatorKey": "ind_25_atmp",
         "year": 2021,
-        "sourceKey": "local_db",
-        "params": {
-          "activityRatePercent": 63.44
-        },
-        "value": 35153913,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 53143828,
         "status": "draft",
-        "meta": "Base locale ILOSTAT — force de travail 15+ (2021)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population active 15 ans et plus, calculee = % INS x population totale INS (2021)",
         "sourceYears": [
           2021
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:38:27.137Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_27_vieillesse::2019": {
         "indicatorKey": "ind_27_vieillesse",
         "year": 2019,
-        "sourceKey": "wpp_api",
-        "params": {
-          "retirementAgeH": 60,
-          "retirementAgeF": 60
-        },
-        "value": 4485684,
-        "status": "validated",
-        "meta": "WPP : hommes 60+ et femmes 60+ (2019)",
+        "sourceKey": "manual",
+        "params": {},
+        "value": 3996740,
+        "status": "draft",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus (age legal CNSSAP), calculee = % INS x population totale INS (2019)",
         "sourceYears": [
           2019
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:50:04.350Z",
-        "validatedAt": "2026-07-16T22:50:05.779Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_27_vieillesse::2020": {
         "indicatorKey": "ind_27_vieillesse",
         "year": 2020,
-        "sourceKey": "wpp_api",
-        "params": {
-          "retirementAgeH": 60,
-          "retirementAgeF": 60
-        },
-        "value": 4626780,
-        "status": "validated",
-        "meta": "WPP : hommes 60+ et femmes 60+ (2020)",
+        "sourceKey": "manual",
+        "params": {},
+        "value": 4223560,
+        "status": "draft",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus (age legal CNSSAP), calculee = % INS x population totale INS (2020)",
         "sourceYears": [
           2020
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:50:17.999Z",
-        "validatedAt": "2026-07-16T22:50:19.048Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_27_vieillesse::2021": {
         "indicatorKey": "ind_27_vieillesse",
         "year": 2021,
-        "sourceKey": "wpp_api",
-        "params": {
-          "retirementAgeH": 60,
-          "retirementAgeF": 60
-        },
-        "value": 4766182,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 4461702,
         "status": "draft",
-        "meta": "WPP : hommes 60+ et femmes 60+ (2021)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus (age legal CNSSAP), calculee = % INS x population totale INS (2021)",
         "sourceYears": [
           2021
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:50:33.465Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_27_vieillesse::2022": {
         "indicatorKey": "ind_27_vieillesse",
         "year": 2022,
-        "sourceKey": "wpp_api",
-        "params": {
-          "retirementAgeH": 60,
-          "retirementAgeF": 60
-        },
-        "value": 4914315,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 4710261,
         "status": "draft",
-        "meta": "WPP : hommes 60+ et femmes 60+ (2022)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus (age legal CNSSAP), calculee = % INS x population totale INS (2022)",
         "sourceYears": [
           2022
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-16T22:50:41.887Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_28_vulnerables::2022": {
         "indicatorKey": "ind_28_vulnerables",
         "year": 2022,
-        "sourceKey": "local_db",
+        "sourceKey": "manual",
         "params": {},
         "value": 102396968,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0+ (2022)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2022), proxy explicite",
         "sourceYears": [
           2022
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:42:20.956Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_28_vulnerables::2019": {
         "indicatorKey": "ind_28_vulnerables",
         "year": 2019,
-        "sourceKey": "local_db",
+        "sourceKey": "manual",
         "params": {},
         "value": 92947442,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0+ (2019)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2019), proxy explicite",
         "sourceYears": [
           2019
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:41:53.661Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_28_vulnerables::2020": {
         "indicatorKey": "ind_28_vulnerables",
         "year": 2020,
-        "sourceKey": "local_db",
+        "sourceKey": "manual",
         "params": {},
         "value": 95989998,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0+ (2020)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2020), proxy explicite",
         "sourceYears": [
           2020
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:42:02.885Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_28_vulnerables::2021": {
         "indicatorKey": "ind_28_vulnerables",
         "year": 2021,
-        "sourceKey": "local_db",
+        "sourceKey": "manual",
         "params": {},
         "value": 99148932,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0+ (2021)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2021), proxy explicite",
         "sourceYears": [
           2021
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:42:09.598Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_24_handicap::2019": {
         "indicatorKey": "ind_24_handicap",
@@ -1334,64 +1411,58 @@
       "global_131::2023": {
         "indicatorKey": "global_131",
         "year": 2023,
-        "sourceKey": "local_db",
+        "sourceKey": "manual",
         "params": {},
-        "value": 105789731.5,
+        "value": 105789731,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0+ (2023)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2023)",
         "sourceYears": [
           2023
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:33:41.610Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "global_131::2024": {
         "indicatorKey": "global_131",
         "year": 2024,
-        "sourceKey": "local_db",
+        "sourceKey": "manual",
         "params": {},
-        "value": 109276264.5,
+        "value": 109276265,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0+ (2024)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2024)",
         "sourceYears": [
           2024
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:33:51.969Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_22_enfants::2023": {
         "indicatorKey": "ind_22_enfants",
         "year": 2023,
-        "sourceKey": "local_db",
-        "params": {
-          "ageMin": 0,
-          "ageMax": 15
-        },
-        "value": 55606593.5,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 48758487,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0–17 ans (B-CH-18) (2023)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–14 ans, calculee = % INS x population totale INS (2023)",
         "sourceYears": [
           2023
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:34:58.125Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_22_enfants::2024": {
         "indicatorKey": "ind_22_enfants",
         "year": 2024,
-        "sourceKey": "local_db",
-        "params": {
-          "ageMin": 0,
-          "ageMax": 15
-        },
-        "value": 57418303,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 50299865,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0–17 ans (B-CH-18) (2024)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–14 ans, calculee = % INS x population totale INS (2024)",
         "sourceYears": [
           2024
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:35:00.793Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_23_maternite::2019": {
         "indicatorKey": "ind_23_maternite",
@@ -1410,16 +1481,18 @@
       "ind_23_maternite::2020": {
         "indicatorKey": "ind_23_maternite",
         "year": 2020,
-        "sourceKey": "local_db",
+        "sourceKey": "manual",
         "params": {},
-        "value": 4020723,
+        "value": 719335,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — femmes 15–49 (B-MA) (2020)",
+        "meta": "Saisie manuelle - INS/RDC, canevas de collecte 2026 : nombre de naissances vivantes (2020), utilise comme approximation du nombre de femmes ayant accouche",
         "sourceYears": [
           2020
         ],
-        "warnings": [],
-        "calculatedAt": "2026-07-21T00:35:53.909Z"
+        "warnings": [
+          "Approximation : valeur brute des naissances vivantes (INS, Annuaire statistique RDC 2020), non corrigee de la part de naissances multiples (jumeaux/triplets) faute de taux specifique documente et source pour la RDC. Le denominateur precedent (population feminine 15-49 ans, ONU WPP) etait methodologiquement errone : il ne correspond pas a la definition ODD 1.3.1 du denominateur maternite (nombre de femmes ayant accouche), et surestimait tres largement le denominateur."
+        ],
+        "calculatedAt": "2026-09-02T06:46:41.000Z"
       },
       "ind_23_maternite::2022": {
         "indicatorKey": "ind_23_maternite",
@@ -1516,96 +1589,118 @@
       "ind_25_atmp::2024": {
         "indicatorKey": "ind_25_atmp",
         "year": 2024,
-        "sourceKey": "local_db",
-        "params": {
-          "activityRatePercent": 63.44
-        },
-        "value": 38545893,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 57916420,
         "status": "draft",
-        "meta": "Base locale ILOSTAT — force de travail 15+ (2024)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population active 15 ans et plus, calculee = % INS x population totale INS (2024)",
         "sourceYears": [
           2024
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:38:04.064Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_25_atmp::2023": {
         "indicatorKey": "ind_25_atmp",
         "year": 2023,
-        "sourceKey": "local_db",
-        "params": {
-          "activityRatePercent": 63.44
-        },
-        "value": 37296937,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 56280137,
         "status": "draft",
-        "meta": "Base locale ILOSTAT — force de travail 15+ (2023)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population active 15 ans et plus, calculee = % INS x population totale INS (2023)",
         "sourceYears": [
           2023
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:38:10.372Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_28_vulnerables::2024": {
         "indicatorKey": "ind_28_vulnerables",
         "year": 2024,
-        "sourceKey": "local_db",
+        "sourceKey": "manual",
         "params": {},
-        "value": 109276264.5,
+        "value": 109276265,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0+ (2024)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2024), proxy explicite",
         "sourceYears": [
           2024
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:40:06.687Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_28_vulnerables::2023": {
         "indicatorKey": "ind_28_vulnerables",
         "year": 2023,
-        "sourceKey": "local_db",
+        "sourceKey": "manual",
         "params": {},
-        "value": 105789731.5,
+        "value": 105789731,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 0+ (2023)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2023), proxy explicite",
         "sourceYears": [
           2023
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:40:15.046Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_29_cotisants::2023": {
         "indicatorKey": "ind_29_cotisants",
         "year": 2023,
-        "sourceKey": "local_db",
-        "params": {
-          "ageMin": 15,
-          "ageMax": 64
-        },
-        "value": 53787049,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 52894866,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 15–64 (C-OA-WAP) (2023)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : approximation calculee a partir des donnees INS : population active 15 ans et plus moins population 65 ans et plus (2023)",
         "sourceYears": [
           2023
         ],
-        "warnings": [],
-        "calculatedAt": "2026-07-21T00:43:50.323Z"
+        "warnings": [
+          "Approximation : l'INS ne fournit pas de tranche 15-64 ans directe ; valeur = population active 15+ moins population 65+ (donnees INS, canevas de collecte 2026)."
+        ],
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
       "ind_29_cotisants::2024": {
         "indicatorKey": "ind_29_cotisants",
         "year": 2024,
-        "sourceKey": "local_db",
-        "params": {
-          "ageMin": 15,
-          "ageMax": 64
-        },
-        "value": 55612277,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 54310304,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — population 15–64 (C-OA-WAP) (2024)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : approximation calculee a partir des donnees INS : population active 15 ans et plus moins population 65 ans et plus (2024)",
+        "sourceYears": [
+          2024
+        ],
+        "warnings": [
+          "Approximation : l'INS ne fournit pas de tranche 15-64 ans directe ; valeur = population active 15+ moins population 65+ (donnees INS, canevas de collecte 2026)."
+        ],
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
+      },
+      "ind_27_vieillesse::2023": {
+        "indicatorKey": "ind_27_vieillesse",
+        "year": 2023,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 4972117,
+        "status": "draft",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus (age legal CNSSAP), calculee = % INS x population totale INS (2023)",
+        "sourceYears": [
+          2023
+        ],
+        "warnings": [],
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
+      },
+      "ind_27_vieillesse::2024": {
+        "indicatorKey": "ind_27_vieillesse",
+        "year": 2024,
+        "sourceKey": "manual",
+        "params": {},
+        "value": 5245261,
+        "status": "draft",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus (age legal CNSSAP), calculee = % INS x population totale INS (2024)",
         "sourceYears": [
           2024
         ],
         "warnings": [],
-        "calculatedAt": "2026-07-21T00:43:55.236Z"
+        "calculatedAt": "2026-09-02T01:30:34.000Z"
       }
     }
   }

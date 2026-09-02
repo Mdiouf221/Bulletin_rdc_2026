@@ -83,7 +83,8 @@ sections:
     files:
       - "04_annexes/annexe_A_notes_methodologiques.md"
       - "04_annexes/annexe_B_fiches_institutionnelles.md"
-      - "04_annexes/annexe_C_programmes_hors_perimetre.md"
-      - "04_annexes/annexe_D_definitions_indicateurs.md"
-      - "04_annexes/annexe_E_tableaux_statistiques.md"
-      - "04_annexes/annexe_F_outil_collecte.md"
+      - "04_annexes/annexe_C_detail_indicateurs.md"
+      - "04_annexes/annexe_D_programmes_hors_perimetre.md"
+      - "04_annexes/annexe_E_definitions_indicateurs.md"
+      - "04_annexes/annexe_F_tableaux_statistiques.md"
+      - "04_annexes/annexe_G_outil_collecte.md"

@@ -618,6 +618,22 @@ a.source-ref.ec:hover { background: rgba(224,120,32,0.10);  }
 a.source-ref.v:hover  { background: rgba(26,110,60,0.10);   }
 a.source-ref.r:hover  { background: rgba(156,28,28,0.10);   }
 
+/*
+ * Note de bas de page auto-générée (annexe C — construction du dénominateur).
+ * Convention du projet : <span class="footnote">texte</span> est converti en
+ * vraie note de bas de page Word à l'export (voir 09_scripts/footnotes.lua).
+ * Dans la prévisualisation HTML (pas de mécanisme de note réel), affichée en
+ * exposant, petite et discrète, pour rester hors du flux de lecture principal.
+ */
+span.footnote {
+    display               : inline;
+    font-size              : 0.7em;
+    font-style             : italic;
+    color                  : #718096;
+    vertical-align         : super;
+    margin-left            : 3px;
+}
+
 /* ===== Couverture légale / effective dans les tableaux ============== */
 /*
  * .cov-eff  — branche couverte de façon effective (données disponibles)

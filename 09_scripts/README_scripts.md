@@ -8,6 +8,9 @@
 | `convertir_pdf_en_texte.py` | Convertit tous les PDF des dossiers de références et de données en fichiers `.txt` lisibles par les agents |
 | `extraire_ess.py` | Charge les fichiers ESS dans `06_donnees/protection_sociale_rdc.db` |
 | `rafraichir_ess.py` | **Mise à jour complète** : purge les données ESS en base, réimporte le fichier modifié, régénère le dashboard — en une seule commande |
+| `integrer_dashboard_bulletin.py` | Met à jour automatiquement le tableau 5.2 du chapitre 5 à partir des données et réglages du dashboard |
+| `generer_annexe_b_visuels.py` | Génère les graphiques et tableaux statistiques de l'annexe B par institution, sans navigateur (kaleido) |
+| `generer_annexe_c_visuels.py` | Génère les tableaux, graphiques et détail des numérateurs de l'annexe C par indicateur ODD 1.3.1, sans navigateur (kaleido) |
 | `serveur_preview.py` | Serveur de prévisualisation — surveille les fichiers, relance l'assembleur et rafraîchit le navigateur automatiquement |
 | `exporter.py` | Génère des versions exportables du bulletin (HTML, Word, PDF) pour relecture hors ligne |
 | `preview.css` | Feuille de style du rendu navigateur — modifier librement sans toucher aux `.md` |
@@ -151,11 +154,14 @@ python 09_scripts/validate_ess.py --annee 2022
 
 ### Rôle
 
-Enchaîne en une seule commande les trois opérations nécessaires après modification d'un fichier ESS directement dans `06_sources/ESS/` :
+Enchaîne en une seule commande les opérations nécessaires après modification d'un fichier ESS directement dans `06_sources/ESS/` :
 
 1. **Purge** des données existantes en base pour la cible (via `extraire_ess.py --delete --force`)
 2. **Réimport** du fichier mis à jour (via `extraire_ess.py`)
-3. **Régénération** du tableau de bord (via `visualiser_regimes.py`)
+3. **Mise à jour chapitre 4** : remplissage automatique des marqueurs `[ESS YYYY]` dans les tableaux de `03_chapitres/chapitre_4/` (via `remplir_ch4.py`)
+4. **Régénération** du tableau de bord (via `visualiser_regimes.py`)
+5. **Intégration bulletin** : injection des valeurs ODD 1.3.1 dans `03_chapitres/chapitre_5/00_plan_chapitre_5.md` (via `integrer_dashboard_bulletin.py`)
+6. **Visuels annexe B** : régénération des graphiques et tableaux statistiques par institution dans `04_annexes/annexe_B_fiches_institutionnelles.md` (via `generer_annexe_b_visuels.py`)
 
 > Le serveur de prévisualisation (`serveur_preview.py`) ne surveille pas les fichiers `.xlsx` ni la base SQLite. Ce script comble ce chaînon manquant.
 
@@ -189,6 +195,136 @@ Si le serveur de prévisualisation est actif (`http://localhost:8765`), recharge
 | `--dry-run` | Simule toutes les étapes sans modifier la base ni le dashboard |
 | `--no-dashboard` | Saute la régénération du tableau de bord |
 | `--verbose` | Détail ligne par ligne lors du réimport |
+
+---
+
+## integrer_dashboard_bulletin.py
+
+### Rôle
+
+Met à jour automatiquement les valeurs du **Tableau 5.2** (chapitre 5) en s'appuyant sur :
+
+- les données ESS présentes en base ;
+- les décisions d'inclusion/exclusion enregistrées dans `10_output/dashboard_settings.json` ;
+- les dénominateurs calculés/validés dans ce même fichier.
+
+### Usage
+
+```bash
+py 09_scripts/integrer_dashboard_bulletin.py
+```
+
+### Résultat
+
+- Met à jour les lignes chiffrées de l'ODD 1.3.1 dans `03_chapitres/chapitre_5/00_plan_chapitre_5.md`.
+- Conserve `[N/D]` lorsque le numérateur ou le dénominateur est indisponible.
+
+---
+
+## generer_annexe_b_visuels.py
+
+### Rôle
+
+Génère les visuels statistiques statiques de l'**annexe B** (fiches institutionnelles) directement à partir des données ESS en base — **sans navigateur, sans simulation de clics**.
+
+Pour chaque institution présente en base, régénère automatiquement, **dans cet ordre**, une sous-section « ### Régimes gérés » → « ### Aperçu graphique » → « ### Répartition par sexe » → « ### Données détaillées » de la section « ## Données de couverture » :
+
+1. Un tableau Markdown natif **« Régimes gérés »** (description structurée par régime : type de financement, caractère, gestion, administrateur, fonctions couvertes, années ESS disponibles).
+2. **6 graphiques** (cotisants, bénéficiaires, dépenses, dépense moyenne par bénéficiaire, recettes, contribution moyenne) exportés en PNG via **les mêmes fonctions Plotly** que le tableau de bord interactif (`build_fig_institution_*` dans `visualiser_regimes.py`). Aucune logique visuelle n'est dupliquée : un changement de style/type de graphique dans le dashboard se répercute automatiquement dans l'annexe.
+3. Des **camemberts « Répartition par sexe »** (cotisants et bénéficiaires cumulés, tous régimes) — un **unique visuel compact en grille** par institution (3 années par ligne, 2 camemberts par année), exporté en un seul PNG via Plotly/kaleido. Les catégories à valeur nulle (ex. sexe non renseigné dans l'ESS) sont exclues du graphique pour éviter des étiquettes « 0 % » parasites. La légende des couleurs et la convention gauche/droite (cotisants/bénéficiaires) sont affichées une seule fois, en HTML, au-dessus de l'image — pas de titre ni de légende répétés par année, pour limiter l'espace vertical.
+4. Un tableau Markdown natif **« Données détaillées »** (une ligne par régime et par année : cotisants, bénéficiaires, dépenses, recettes, dépense moyenne/bénéficiaire, recette moyenne/cotisant) — réutilise `build_institution_detail_table`, la même source de données que le tableau « Données détaillées » du dashboard interactif.
+
+Par défaut, **tous les régimes** de chaque institution sont inclus (pas de filtre/sélection).
+
+Les tableaux (description, données détaillées) sont volontairement du Markdown natif — et non des images — pour rester nets et exploitables lors des exports Word/PDF (texte sélectionnable, pas de flou à l'impression). Les graphiques de séries temporelles et les camemberts de répartition par sexe sont exportés en image.
+
+### Couverture 2019-2025 et placeholders [N/D]
+
+Le bulletin couvre les années **2019 à 2025**. Toute année de cette plage sans donnée ESS doit rester visible — jamais silencieusement omise, et jamais confondue avec une valeur nulle réelle (`0`). Le script applique cette règle à chaque élément auto-généré :
+
+- **Données détaillées** : pour chaque régime connu (`regime_meta`), une ligne est générée pour chaque année 2019-2025 ; les combinaisons régime × année sans donnée ESS affichent `[N/D]` sur toutes les colonnes numériques. Les noms de régime sont alignés sur ceux du tableau « Régimes gérés » (source `regime_meta`), y compris pour les lignes réelles, afin d'éviter d'afficher un code brut (ex. `MESP_R1`) à un endroit et un nom lisible à un autre. Pour rester compact, les années **consécutives** sans aucune donnée sont fusionnées en une seule ligne « AAAA–AAAA » (ex. trois lignes 100 % `[N/D]` pour 2023, 2024 et 2025 deviennent une seule ligne « 2023–2025 ») plutôt que répétées une par une ; aucune information n'est perdue, seul le nombre de lignes entièrement vides est réduit — les années avec données réelles conservent chacune leur propre ligne.
+- **Aperçu graphique** : l'axe des années est fixé sur toute la période 2019-2025 (étendue si des données réelles existent au-delà), afin qu'une période sans donnée apparaisse comme un espace vide sur la courbe plutôt que d'être masquée par le zoom automatique de Plotly. Si un graphique ne peut pas du tout être généré (donnée insuffisante), l'emplacement reste visible dans la grille avec un repère `[N/D]` au lieu de disparaître.
+- **Répartition par sexe** : la grille de camemberts couvre systématiquement 2019-2025 (étendue aux années réelles hors plage) ; une année sans donnée de répartition par sexe affiche un camembert gris uniforme « Non disponible » plutôt que d'être omise.
+
+### Emplacement dans la fiche institutionnelle
+
+Chaque fiche institutionnelle standard (B.1, B.2, B.4, B.5, B.6) suit l'ordre : **Mission et branches couvertes → Cadre juridique et institutionnel → Données de couverture → Évolutions et réformes en cours**. Le contenu auto-généré (`### Régimes gérés`, `### Aperçu graphique`, `### Répartition par sexe`, `### Données détaillées`) constitue les sous-sections de « ## Données de couverture », après le tableau d'indicateurs rédigé à la main. B.3 (FNPSS, pas de données ESS) suit le même ordre de titres sans contenu auto-généré. B.7 (régimes spéciaux non contributifs) a une structure différente (Régimes identifiés / Données disponibles / Perspective de collecte) et n'est pas concerné par cet ordre.
+
+### Mécanisme d'injection
+
+Le contenu généré est inséré dans `04_annexes/annexe_B_fiches_institutionnelles.md` entre des marqueurs dédiés par institution :
+
+```html
+<!-- AUTO_GENERE:CNSS:DEBUT -->
+...
+<!-- AUTO_GENERE:CNSS:FIN -->
+```
+
+Seul le contenu entre ces marqueurs est remplacé à chaque exécution. Le texte rédigé manuellement autour (cadre juridique, évolutions/réformes, etc.) n'est jamais modifié.
+
+### Prérequis
+
+```bash
+pip install kaleido
+```
+
+### Usage
+
+```bash
+py 09_scripts/generer_annexe_b_visuels.py
+```
+
+### Résultat
+
+- Images PNG écrites dans `04_annexes/illustrations/annexe_B_<INSTITUTION>_<graphique>.png` (graphiques temporels) et `annexe_B_<INSTITUTION>_sexe.png` (grille compacte répartition par sexe, toutes années).
+- Tableaux Markdown regénérés dans `04_annexes/annexe_B_fiches_institutionnelles.md`.
+- Les institutions sans marqueur `AUTO_GENERE` correspondant (ex. `MEPST`, absent de l'annexe B en tant que fiche dédiée) sont ignorées et signalées en fin d'exécution.
+
+---
+
+## generer_annexe_c_visuels.py
+
+### Rôle
+
+Génère les visuels et tableaux statistiques statiques de l'**annexe C** (détail des indicateurs de couverture) directement à partir des données ESS en base et des décisions/dénominateurs du tableau de bord — **sans navigateur**. Reprend la structure de l'onglet « Indicateurs » du tableau de bord interactif, pour chacun des 9 indicateurs ODD 1.3.1/BIT (même liste que le sélecteur `ODD_INDICATORS`) :
+
+1. Un **encadré méthodologique** (définition, numérateur, dénominateur, formule) — copie fidèle des textes `ODD_METHODOLOGY_SPECS` du tableau de bord (`visualiser_regimes.py`), pour ne jamais faire diverger les deux supports.
+2. Un **tableau de synthèse unique 2019-2025** (inspiré du Tableau 14 du premier bulletin RDC), à colonnes années partagées :
+   - la ligne **Indicateur de couverture (%)** ;
+   - la ligne **Numérateur (nombre de personnes)**, immédiatement suivie de ses lignes de détail en italique, groupées par régime pour rester compactes et lisibles (`_build_breakdown_rows`) : un en-tête **« Dont [régime] (SIGLE, cotisants) »** par régime contributeur — l'institution étant désignée par son sigle brut (ex. `CNSS`, `CNSSAP`, `Trésor` pour `TRESOR` — cf. `ACRONYME_OVERRIDES`) plutôt que par sa dénomination complète, celle-ci restant disponible dans la Liste des sigles et acronymes — suivi de ses prestations en sous-lignes indentées **« ↳ [prestation] (bénéf.) »** qui ne répètent ni l'institution ni le régime déjà portés par la ligne d'en-tête juste au-dessus. Réutilise la logique d'inclusion/exclusion de `integrer_dashboard_bulletin.py` (`compute_numerator`, `get_denominator_value`) et sa nouvelle fonction `compute_numerator_breakdown` (détail ligne par ligne au lieu d'un simple total) ;
+   - la ligne **Dénominateur (population de référence)**, dont le détail de construction par année (source retenue, cf. panneau « Construction des dénominateurs » du tableau de bord) est renvoyé en **note de bas de page** (`<span class="footnote">…</span>`, la même convention que celle utilisée pour les sources du bulletin — voir `09_scripts/footnotes.lua`) plutôt qu'affiché en clair dans le corps du tableau. Cette note est **factorisée par plage d'années consécutives partageant la même source** (`build_denominator_footnote`) — ex. « 2019–2024 : Base locale ONU WPP 2024 — population 0+ ; 2026 : Saisie manuelle » — plutôt que répétée une fois par année. Dans la prévisualisation HTML, ce marqueur s'affiche en petit texte italique discret (voir règle `.footnote` dans `preview.css`) ; à l'export Word, il devient une vraie note de bas de page.
+3. **Deux graphiques PNG** (indicateur en %, numérateur en nombre de personnes) exportés via Plotly/kaleido, dans le même style que le tableau de bord et l'annexe B. **Aucun graphique pour le dénominateur** (non demandé).
+
+Les sous-indicateurs 2.6 (chômage) et 2.8 (vulnérables) ne disposent d'aucune règle de calcul opérationnelle dans la base actuelle : seul l'encadré méthodologique est généré pour eux, avec une note explicite d'indisponibilité — jamais de valeur inventée.
+
+### Mécanisme d'injection
+
+Le contenu généré est inséré dans `04_annexes/annexe_C_detail_indicateurs.md` entre des marqueurs dédiés par indicateur :
+
+```html
+<!-- AUTO_GENERE:global_131:DEBUT -->
+...
+<!-- AUTO_GENERE:global_131:FIN -->
+```
+
+Seul le contenu entre ces marqueurs est remplacé à chaque exécution. Le texte d'introduction et la NOTE_INTERNE ne sont jamais modifiés.
+
+### Prérequis
+
+```bash
+pip install kaleido
+```
+
+### Usage
+
+```bash
+py 09_scripts/generer_annexe_c_visuels.py
+```
+
+### Résultat
+
+- Images PNG écrites dans `04_annexes/illustrations/annexe_C_<indicateur>_indicateur.png` et `annexe_C_<indicateur>_numerateur.png`.
+- Tableaux et encadrés Markdown regénérés dans `04_annexes/annexe_C_detail_indicateurs.md`.
 
 ---
 

@@ -79,11 +79,12 @@ Voir 03_chapitres/chapitre_6/00_plan_chapitre_6.md
 
 ## Annexes prévues
 
-- Annexe A  Fiches institutionnelles détaillées (CNSS, CNSSAP, FNPSS, etc.)
+- Annexe A  Notes méthodologiques (champ statistique, classification des régimes/programmes/prestations)
+- Annexe B  Fiches institutionnelles détaillées (CNSS, CNSSAP, etc.)
   - Annexe A1  Liste des institutions contributrices
   - Annexe A2  Tableau de correspondance institutions / indicateurs
-- Annexe B  Programmes et dispositifs hors périmètre OIT
-- Annexe C  Définitions détaillées des indicateurs
-- Annexe D  Notes méthodologiques spécifiques
-- Annexe E  Tableaux statistiques détaillés
-- Annexe F  Outil ou questionnaire de collecte
+- Annexe C  Détail des indicateurs de couverture (indicateur, numérateur, dénominateur — onglet « Indicateurs » du tableau de bord)
+- Annexe D  Programmes et dispositifs hors périmètre OIT
+- Annexe E  Définitions détaillées des indicateurs
+- Annexe F  Tableaux statistiques détaillés
+- Annexe G  Outil ou questionnaire de collecte

@@ -28,7 +28,10 @@ Statut :
 | CNSSAP | Caisse Nationale de Sécurité Sociale des Agents Publics de l'État |
 | CSU | Couverture Santé Universelle |
 | FNPSS | Fonds National de Promotion et de Service Social |
+| FSS | Fonds de Solidarité de Santé |
 | INS | Institut National de la Statistique |
+| MEPST | Ministère de l'Enseignement Primaire, Secondaire et Technique |
+| MESP | Mutuelle de Santé des Enseignants de l'Enseignement Primaire, Secondaire et Professionnel |
 | ODD | Objectif de développement durable |
 | OIT | Organisation internationale du Travail |
 | OMS | Organisation mondiale de la Santé |
@@ -37,4 +40,5 @@ Statut :
 | RDC | République démocratique du Congo |
 | SESOPA | Service de Sécurité Sociale des Parlementaires |
 | SNPS | Stratégie nationale de protection sociale |
+| Trésor | Désigne ici, dans les annexes B et C, le mécanisme de paiement direct des pensions de la fonction publique par le budget de l'État (estimation provisoire, hors caisse dédiée) |
 | USD | Dollar des États-Unis |
