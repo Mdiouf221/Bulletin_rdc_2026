@@ -63,6 +63,7 @@ SCRIPT_DIR    = pathlib.Path(__file__).resolve().parent
 WORKSPACE_DIR = SCRIPT_DIR.parent
 OUTPUT_DIR    = WORKSPACE_DIR / "10_output"
 ASSEMBLER     = SCRIPT_DIR / "assembler_markdown.py"
+ANNEXE_B_VISUELS = SCRIPT_DIR / "generer_annexe_b_visuels.py"
 EXPORT_CSS    = SCRIPT_DIR / "export_relecture.css"
 PREVIEW_CSS   = SCRIPT_DIR / "preview.css"
 
@@ -432,6 +433,19 @@ def build_export_html(md_file: pathlib.Path, include_notes: bool = False) -> str
 
 def run_assembler() -> bool:
     """Relance l'assembleur pour s'assurer que les fichiers .md sont à jour."""
+    if ANNEXE_B_VISUELS.exists():
+        print("[EXPORT] Rafraîchissement Annexe B (visuels + XLSX)…")
+        visuals = subprocess.run(
+            [sys.executable, str(ANNEXE_B_VISUELS)],
+            capture_output=True,
+            cwd=str(WORKSPACE_DIR),
+            encoding="utf-8",
+            errors="replace",
+        )
+        if visuals.returncode != 0:
+            err = (visuals.stderr or visuals.stdout or "").strip()
+            print(f"[AVERTISSEMENT] Génération Annexe B incomplète : {err[:400]}")
+
     print("[EXPORT] Assemblage du Markdown…")
     result = subprocess.run(
         [sys.executable, str(ASSEMBLER)],
@@ -514,7 +528,9 @@ def export_word(include_notes: bool = False, open_after: bool = False) -> "pathl
     output = OUTPUT_DIR / f"bulletin_{label}_{stamp}.docx"
     if result.returncode != 0 or not output.exists():
         err = (result.stderr or result.stdout or "Erreur inconnue").strip()
-        print(f"[ERREUR WORD] {err[:600]}")
+        console_encoding = getattr(sys.stdout, "encoding", None) or "utf-8"
+        printable_err = err[:600].encode(console_encoding, errors="replace").decode(console_encoding)
+        print(f"[ERREUR WORD] {printable_err}")
         return None
 
     size_kb = output.stat().st_size // 1024

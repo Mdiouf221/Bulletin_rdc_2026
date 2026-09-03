@@ -1,8 +1,18 @@
 /**
  * Questionnaire Modal — Qualification des régimes
- * Gère les 3 questions (Q1, Q2, Q4) pour chaque institution/régime
+ * Gère les questions Q1, Q1b, Q2, Q4 + les métadonnées de graphiques par institution
  * Persistance via questionnaire_data.json
  */
+
+const CHART_METADATA_FIELDS = [
+  { key: 'cotisants', label: 'Cotisants actifs', defaultUnit: 'personnes', defaultType: 'courbe' },
+  { key: 'beneficiaires', label: 'Bénéficiaires', defaultUnit: 'personnes', defaultType: 'courbe' },
+  { key: 'depenses', label: 'Dépenses totales', defaultUnit: 'Mds CDF', defaultType: 'barres' },
+  { key: 'depense_par_beneficiaire', label: 'Dépense moyenne par bénéficiaire', defaultUnit: 'k CDF / bénéficiaire', defaultType: 'courbe' },
+  { key: 'recettes', label: 'Recettes totales', defaultUnit: 'Mds CDF', defaultType: 'barres' },
+  { key: 'contribution', label: 'Contribution moyenne', defaultUnit: 'k CDF / cotisant', defaultType: 'courbe' },
+  { key: 'sexe', label: 'Répartition par sexe', defaultUnit: 'personnes', defaultType: 'colonnes empilées (100%)' }
+];
 
 class QuestionnaireModal {
   // apiUrl : endpoint serveur pour lire/écrire questionnaire_data.json
@@ -77,7 +87,9 @@ class QuestionnaireModal {
     this.currentRegimes = regimes;
     // S'assurer que les données de cette institution existent en mémoire
     if (!this.data[institution]) {
-      this.data[institution] = { Q1: {}, Q1b: {}, Q2: {}, Q4: {}, Q4_coefficients: {} };
+      this.data[institution] = { Q1: {}, Q1b: {}, Q2: {}, Q4: {}, Q4_coefficients: {}, graph_metadata: {} };
+    } else if (!this.data[institution].graph_metadata) {
+      this.data[institution].graph_metadata = {};
     }
     // Crée le backdrop
     const backdrop = document.createElement('div');
@@ -112,6 +124,9 @@ class QuestionnaireModal {
     
     // Q4 — Unité des bénéficiaires
     content.appendChild(this.buildQ4(institution, regimes));
+
+    // Métadonnées des graphiques (titre, unité, source, période, notes, type)
+    content.appendChild(this.buildGraphMetadata(institution));
 
     // Pied de page
     const footer = document.createElement('div');
@@ -520,6 +535,89 @@ class QuestionnaireModal {
   }
 
   /**
+   * Métadonnées des graphiques exportés (annexe B par institution)
+   */
+  buildGraphMetadata(institution) {
+    const section = document.createElement('fieldset');
+    section.className = 'questionnaire-section';
+    section.innerHTML = '<legend>Métadonnées des graphiques (export annexe B)</legend>';
+
+    const desc = document.createElement('p');
+    desc.textContent = 'Optionnel : préciser les métadonnées exploitables dans le classeur XLSX et l’export Word (titre, unité, source, période, type, note).';
+    section.appendChild(desc);
+
+    const table = document.createElement('table');
+    table.className = 'questionnaire-table';
+    table.innerHTML = `
+      <thead>
+        <tr>
+          <th>Graphique</th>
+          <th>Titre</th>
+          <th>Unité</th>
+          <th>Source</th>
+          <th>Période</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+    `;
+
+    const tbody = document.createElement('tbody');
+    CHART_METADATA_FIELDS.forEach((item) => {
+      tbody.appendChild(this.buildGraphMetadataRow(institution, item));
+    });
+    table.appendChild(tbody);
+    section.appendChild(table);
+    return section;
+  }
+
+  buildGraphMetadataRow(institution, item) {
+    const row = document.createElement('tr');
+    const stored = this.data[institution]?.graph_metadata?.[item.key] || {};
+
+    const mkInput = (field, placeholder, value = '') => {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.name = `graph_meta_${item.key}_${field}`;
+      input.id = `graph_meta_${item.key}_${field}`;
+      input.placeholder = placeholder;
+      input.value = value || '';
+      return input;
+    };
+
+    const labelCell = document.createElement('td');
+    labelCell.textContent = item.label;
+    labelCell.style.fontWeight = 'bold';
+    row.appendChild(labelCell);
+
+    const titleCell = document.createElement('td');
+    titleCell.appendChild(mkInput('titre', 'Titre du graphique', stored.titre || stored.title));
+    row.appendChild(titleCell);
+
+    const unitCell = document.createElement('td');
+    unitCell.appendChild(mkInput('unite', item.defaultUnit, stored.unite || stored.unit));
+    row.appendChild(unitCell);
+
+    const sourceCell = document.createElement('td');
+    sourceCell.appendChild(mkInput('source', 'Base consolidée des ESS OIT/BIT.', stored.source));
+    row.appendChild(sourceCell);
+
+    const periodCell = document.createElement('td');
+    periodCell.appendChild(mkInput('periode', '2019–2025', stored.periode || stored.period));
+    row.appendChild(periodCell);
+
+    const typeCell = document.createElement('td');
+    typeCell.appendChild(mkInput('type', item.defaultType, stored.type));
+    row.appendChild(typeCell);
+
+    const notesCell = document.createElement('td');
+    notesCell.appendChild(mkInput('notes', 'Notes méthodologiques', stored.notes));
+    row.appendChild(notesCell);
+
+    return row;
+  }
+
+  /**
    * Récupère les années ESS disponibles pour un régime
    */
   getRegimeYears(institution, regime) {
@@ -638,6 +736,26 @@ class QuestionnaireModal {
           value: coefValue,
           source: sourceValue
         };
+      }
+    });
+
+    // Métadonnées graphiques (optionnelles)
+    this.data[institution].graph_metadata = {};
+    CHART_METADATA_FIELDS.forEach((item) => {
+      const readField = (field) => {
+        const input = document.getElementById(`graph_meta_${item.key}_${field}`);
+        return input ? input.value.trim() : '';
+      };
+      const meta = {
+        titre: readField('titre'),
+        unite: readField('unite'),
+        source: readField('source'),
+        periode: readField('periode'),
+        type: readField('type'),
+        notes: readField('notes')
+      };
+      if (Object.values(meta).some(Boolean)) {
+        this.data[institution].graph_metadata[item.key] = meta;
       }
     });
 

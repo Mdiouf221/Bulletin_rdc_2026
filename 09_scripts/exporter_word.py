@@ -21,6 +21,8 @@ Ajustements appliqués avant conversion (corrections HTML) :
     [STY-002] Conversion blockquote.fig-block / p.fig-caption / p.fig-source
               / p.table-caption / p.table-source en custom-style Pandoc
     [STY-003] Style Body Text par défaut sur tous les paragraphes ordinaires
+    [ANNEXE-B-LINK] Remplacement des PNG de l'annexe B par des graphiques Excel liés
+              après la conversion Pandoc, via l'automatisation COM de Word et Excel
 """
 
 import subprocess
@@ -28,6 +30,7 @@ import re
 import os
 import sys
 import glob
+import json
 
 # ---------------------------------------------------------------------------
 # Configuration
@@ -44,6 +47,9 @@ REF_DOCX = os.path.join(SCRIPTS_DIR, "template_bulletin.docx")
 LUA_FILTER      = os.path.join(SCRIPTS_DIR, "table_borders.lua")
 LUA_FOOTNOTES   = os.path.join(SCRIPTS_DIR, "footnotes.lua")
 LUA_STYLES      = os.path.join(SCRIPTS_DIR, "style_mapping.lua")
+ANNEXE_B_WORD_DATA = os.path.join(ROOT, "10_output", "annexe_B_graphiques_word.json")
+ANNEXE_B_VISUALS_SCRIPT = os.path.join(SCRIPTS_DIR, "generer_annexe_b_visuels.py")
+ANNEXE_B_LINK_SCRIPT = os.path.join(SCRIPTS_DIR, "lier_graphiques_annexe_b.ps1")
 
 # Localiser pandoc (PATH ou emplacement connu sur Windows)
 def _find_pandoc():
@@ -61,6 +67,7 @@ def _find_pandoc():
     sys.exit("Pandoc introuvable. Installer depuis https://pandoc.org ou l'ajouter au PATH.")
 
 PANDOC = _find_pandoc()
+_ANNEXE_B_LINK_STATS = {"markers": 0}
 
 
 def find_latest_html():
@@ -72,6 +79,99 @@ def find_latest_html():
     return max(files, key=os.path.getmtime)
 
 
+def _load_annexe_b_word_data():
+    if not os.path.exists(ANNEXE_B_WORD_DATA):
+        return {}
+    try:
+        with open(ANNEXE_B_WORD_DATA, "r", encoding="utf-8") as f:
+            payload = json.load(f)
+        charts = payload.get("charts") if isinstance(payload, dict) else {}
+        if not isinstance(charts, dict):
+            return {}
+        payload.setdefault("xlsx", "10_output/annexe_B_graphiques_par_institution.xlsx")
+        return payload
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def _ensure_annexe_b_word_data():
+    if os.path.exists(ANNEXE_B_WORD_DATA):
+        return
+    if not os.path.exists(ANNEXE_B_VISUALS_SCRIPT):
+        return
+    try:
+        subprocess.run(
+            [sys.executable, ANNEXE_B_VISUALS_SCRIPT],
+            check=False,
+            capture_output=True,
+            text=True,
+            cwd=ROOT,
+        )
+    except OSError:
+        pass
+
+
+def _inject_annexe_b_link_markers(html: str, word_data: dict) -> str:
+    charts = word_data.get("charts") if isinstance(word_data, dict) else {}
+    if not isinstance(charts, dict) or not charts:
+        return html
+    inserted = 0
+
+    def _replace(match):
+        nonlocal inserted
+        full = match.group(0)
+        src = match.group(1)
+        filename = os.path.basename(src.replace("\\", "/"))
+        chart_meta = charts.get(filename)
+        if not chart_meta:
+            return full
+        sheet_name = str(chart_meta.get("sheet_name") or "").strip()
+        if not sheet_name:
+            return full
+        inserted += 1
+        return f"[[ANNEXE_B_CHART:{sheet_name}]]"
+
+    updated = re.sub(
+        r'<img[^>]*src="([^"]*annexe_B_[^"]+\.png)"[^>]*>',
+        _replace,
+        html,
+        flags=re.IGNORECASE,
+    )
+    _ANNEXE_B_LINK_STATS["markers"] = inserted
+    return updated
+
+
+def _insert_linked_annexe_b_charts(docx_path: str, word_data: dict):
+    marker_count = _ANNEXE_B_LINK_STATS.get("markers", 0)
+    if marker_count == 0:
+        return
+    workbook_rel = word_data.get("xlsx") if isinstance(word_data, dict) else None
+    if not workbook_rel:
+        raise RuntimeError("Le manifeste de l'annexe B ne référence aucun classeur XLSX.")
+    workbook_path = os.path.abspath(os.path.join(ROOT, workbook_rel.replace("/", os.sep)))
+    if not os.path.isfile(workbook_path):
+        raise FileNotFoundError(f"Classeur de l'annexe B introuvable : {workbook_path}")
+    if not os.path.isfile(ANNEXE_B_LINK_SCRIPT):
+        raise FileNotFoundError(f"Script de liaison Word/Excel introuvable : {ANNEXE_B_LINK_SCRIPT}")
+
+    command = [
+        "powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy", "Bypass",
+        "-File", ANNEXE_B_LINK_SCRIPT,
+        "-DocxPath", os.path.abspath(docx_path),
+        "-WorkbookPath", workbook_path,
+        "-ManifestPath", os.path.abspath(ANNEXE_B_WORD_DATA),
+    ]
+    result = subprocess.run(command, capture_output=True, text=True, cwd=ROOT)
+    if result.returncode != 0:
+        details = (result.stderr or result.stdout or "Erreur COM non détaillée.").strip()
+        raise RuntimeError(f"Échec de la liaison des graphiques Excel dans Word :\n{details}")
+    output = result.stdout.strip()
+    if output:
+        print(output)
+
+
 # ---------------------------------------------------------------------------
 # Corrections HTML appliquées avant conversion
 # ---------------------------------------------------------------------------
@@ -81,6 +181,7 @@ def apply_corrections(html: str) -> str:
     Applique toutes les corrections HTML avant l'export Word.
     Ajouter ici les nouveaux correctifs au fil des retours.
     """
+    _ANNEXE_B_LINK_STATS["markers"] = 0
 
     # [HR-001] Suppression des barres horizontales inter-chapitres
     html = re.sub(r'<hr\s*/?>', '', html)
@@ -131,6 +232,12 @@ def apply_corrections(html: str) -> str:
         abs_path = abs_path.replace("\\", "/")
         return m.group(0).replace(m.group(1), abs_path)
     html = re.sub(r'src="(/files/[^"]+)"', fix_img, html)
+
+    # [ANNEXE-B-LINK] Remplacer les PNG par des marqueurs que l'étape COM convertira
+    # en graphiques Excel liés une fois le DOCX créé par Pandoc.
+    _ensure_annexe_b_word_data()
+    annexe_b_data = _load_annexe_b_word_data()
+    html = _inject_annexe_b_link_markers(html, annexe_b_data)
 
     # [LNK-001] Conversion des annotations source-ref en notes de bas de page
     # Structure HTML : <a href="#" data-offline="true" title="Source : ..." ...>texte</a>
@@ -544,7 +651,6 @@ def export(html_path: str, out_suffix: str = ""):
 
     size = os.path.getsize(docx_out) // 1024
     print("Succès : {} ({} KB)".format(os.path.basename(docx_out), size))
-
     # Post-traitement : sauts de page avant les sections préliminaires
     insert_page_breaks(docx_out)
 
@@ -553,6 +659,9 @@ def export(html_path: str, out_suffix: str = ""):
 
     # Post-traitement : ajustement automatique des tableaux à la largeur de la page
     set_tables_autofit(docx_out)
+
+    # Post-traitement final : insertion des graphiques Excel liés à la place des marqueurs.
+    _insert_linked_annexe_b_charts(docx_out, _load_annexe_b_word_data())
 
 # ---------------------------------------------------------------------------
 

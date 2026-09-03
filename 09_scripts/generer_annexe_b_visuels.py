@@ -41,7 +41,9 @@ import os
 import re
 import sys
 import time
+from datetime import datetime
 from pathlib import Path
+from typing import Any
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
@@ -52,6 +54,12 @@ try:
     from plotly.subplots import make_subplots
 except ImportError:
     sys.exit("Plotly requis : py -m pip install plotly")
+
+try:
+    from openpyxl import Workbook
+    from openpyxl.chart import BarChart, LineChart, Reference
+except ImportError:
+    sys.exit("openpyxl requis : py -m pip install openpyxl")
 
 try:
     import kaleido
@@ -73,6 +81,8 @@ WORKSPACE = SCRIPT_DIR.parent
 ILLUSTRATIONS_DIR = WORKSPACE / "04_annexes" / "illustrations"
 ANNEXE_B_MD = WORKSPACE / "04_annexes" / "annexe_B_fiches_institutionnelles.md"
 QUESTIONNAIRE_DATA_FILE = WORKSPACE / "10_output" / "questionnaire_data.json"
+ANNEXE_B_XLSX_FILE = WORKSPACE / "10_output" / "annexe_B_graphiques_par_institution.xlsx"
+ANNEXE_B_WORD_DATA_FILE = WORKSPACE / "10_output" / "annexe_B_graphiques_word.json"
 
 CHART_WIDTH = 1000
 CHART_HEIGHT = 520
@@ -106,6 +116,37 @@ CHART_SPECS = [
     ("recettes", "Recettes totales", build_fig_institution_recettes),
     ("contribution", "Contribution moyenne", build_fig_institution_contribution),
 ]
+
+CHART_DEFAULTS = {
+    "cotisants": {
+        "unite": "personnes",
+        "type": "courbe",
+    },
+    "beneficiaires": {
+        "unite": "personnes",
+        "type": "courbe",
+    },
+    "depenses": {
+        "unite": "Mds CDF",
+        "type": "barres",
+    },
+    "depense_par_beneficiaire": {
+        "unite": "k CDF / bénéficiaire",
+        "type": "courbe",
+    },
+    "recettes": {
+        "unite": "Mds CDF",
+        "type": "barres",
+    },
+    "contribution": {
+        "unite": "k CDF / cotisant",
+        "type": "courbe",
+    },
+    "sexe": {
+        "unite": "personnes",
+        "type": "colonnes empilées (100%)",
+    },
+}
 
 # Fonctions qui acceptent un paramètre sex_mode (les autres n'en ont pas besoin)
 _SEX_MODE_BUILDERS = {build_fig_institution_cotisants, build_fig_institution_beneficiaires}
@@ -328,11 +369,218 @@ def _write_image_with_retry(fig, out_path: Path, *, width: int, height: int, sca
     return False
 
 
+def _safe_text(value: Any) -> str:
+    if value is None:
+        return ""
+    return str(value).strip()
+
+
+def _parse_year(value: Any) -> int | None:
+    if value is None:
+        return None
+    text = str(value).strip()
+    if not text:
+        return None
+    try:
+        return int(float(text))
+    except (TypeError, ValueError):
+        return None
+
+
+def _has_true(values: dict | None) -> bool:
+    if not isinstance(values, dict):
+        return False
+    return any(str(v).lower() == "true" for v in values.values())
+
+
+def _has_q2_for_metric(q2_data: dict | None, metric: str) -> bool:
+    if not isinstance(q2_data, dict):
+        return False
+    marker = f"_{metric}_"
+    return any(
+        key.startswith("Q2_") and marker in key and isinstance(val, list) and len(val) > 0
+        for key, val in q2_data.items()
+    )
+
+
+def _q4_sources(settings: dict) -> list[str]:
+    sources = []
+    seen = set()
+    q4_coef = settings.get("Q4_coefficients") if isinstance(settings, dict) else {}
+    if not isinstance(q4_coef, dict):
+        return sources
+    for per_regime in q4_coef.values():
+        if not isinstance(per_regime, dict):
+            continue
+        for item in per_regime.values():
+            if not isinstance(item, dict):
+                continue
+            src = _safe_text(item.get("source"))
+            if src and src not in seen:
+                seen.add(src)
+                sources.append(src)
+    return sources
+
+
+def _questionnaire_rules_for_chart(settings: dict, chart_key: str) -> list[str]:
+    rules = []
+    if chart_key == "cotisants" and _has_true(settings.get("Q1")):
+        rules.append("Q1")
+    elif chart_key == "beneficiaires":
+        if _has_true(settings.get("Q1b")):
+            rules.append("Q1b")
+        q4_units = settings.get("Q4") if isinstance(settings, dict) else {}
+        if isinstance(q4_units, dict) and any(str(unit).lower() != "enfant" for unit in q4_units.values()):
+            rules.append("Q4")
+    elif chart_key in {"depenses", "depense_par_beneficiaire"} and _has_q2_for_metric(settings.get("Q2"), "depenses"):
+        rules.append("Q2")
+    elif chart_key in {"recettes", "contribution"} and _has_q2_for_metric(settings.get("Q2"), "recettes"):
+        rules.append("Q2")
+    elif chart_key == "sexe" and _has_true(settings.get("Q1b")):
+        rules.append("Q1b")
+    return rules
+
+
+def _questionnaire_chart_meta(settings: dict, chart_key: str) -> dict:
+    if not isinstance(settings, dict):
+        return {}
+    candidates = [
+        settings.get("graph_metadata"),
+        settings.get("graphMeta"),
+        settings.get("Q5"),
+    ]
+    for block in candidates:
+        if isinstance(block, dict):
+            item = block.get(chart_key)
+            if isinstance(item, dict):
+                return item
+    return {}
+
+
+def _resolve_chart_metadata(
+    *,
+    institution: str,
+    chart_key: str,
+    default_title: str,
+    settings: dict,
+    years: list[int],
+) -> dict:
+    q_meta = _questionnaire_chart_meta(settings, chart_key)
+    defaults = CHART_DEFAULTS.get(chart_key, {})
+    title = _safe_text(q_meta.get("titre")) or _safe_text(q_meta.get("title")) or default_title
+    unite = _safe_text(q_meta.get("unite")) or _safe_text(q_meta.get("unit")) or _safe_text(defaults.get("unite"))
+    source = _safe_text(q_meta.get("source")) or "Base consolidée des ESS OIT/BIT."
+    periode = _safe_text(q_meta.get("periode")) or _safe_text(q_meta.get("period"))
+    if not periode:
+        if years:
+            periode = f"{min(years)}–{max(years)}"
+        else:
+            periode = "2019–2025"
+    chart_type = _safe_text(q_meta.get("type")) or _safe_text(defaults.get("type"))
+    notes_parts = []
+    base_note = _safe_text(q_meta.get("notes"))
+    if base_note:
+        notes_parts.append(base_note)
+    rules = _questionnaire_rules_for_chart(settings, chart_key)
+    if rules:
+        notes_parts.append("Règles appliquées : " + ", ".join(rules))
+    if chart_key == "beneficiaires":
+        q4_sources = _q4_sources(settings)
+        if q4_sources:
+            notes_parts.append("Sources des coefficients Q4 : " + " | ".join(q4_sources))
+    notes = " ".join(notes_parts)
+    return {
+        "institution": institution,
+        "chart_key": chart_key,
+        "titre": title,
+        "unite": unite,
+        "source": source,
+        "periode": periode,
+        "type": chart_type,
+        "notes": notes,
+        "regles": rules,
+    }
+
+
+def _figure_to_tabular_data(fig, fallback_years: list[int]) -> tuple[list[str], list[list[Any]], list[int]]:
+    traces = list(fig.data) if fig is not None else []
+    years_set = set(fallback_years or [])
+    for trace in traces:
+        for x in getattr(trace, "x", []) or []:
+            parsed = _parse_year(x)
+            if parsed is not None:
+                years_set.add(parsed)
+    years = sorted(years_set)
+    if not years:
+        years = list(BULLETIN_YEARS)
+
+    columns = ["Année"]
+    series_values: list[tuple[str, dict[int, Any]]] = []
+    for idx, trace in enumerate(traces, start=1):
+        name = _safe_text(getattr(trace, "name", None)) or f"Série {idx}"
+        columns.append(name)
+        mapping: dict[int, Any] = {}
+        x_vals = list(getattr(trace, "x", []) or [])
+        y_vals = list(getattr(trace, "y", []) or [])
+        for x, y in zip(x_vals, y_vals):
+            year = _parse_year(x)
+            if year is None:
+                continue
+            mapping[year] = y
+        series_values.append((name, mapping))
+
+    rows: list[list[Any]] = []
+    for year in years:
+        row = [year]
+        for _name, mapping in series_values:
+            row.append(mapping.get(year))
+        rows.append(row)
+    return columns, rows, years
+
+
+def _build_chart_payload(
+    *,
+    institution: str,
+    chart_key: str,
+    chart_label: str,
+    fig,
+    settings: dict,
+    fallback_years: list[int],
+    image_filename: str | None,
+) -> dict:
+    if fig is not None:
+        columns, rows, years = _figure_to_tabular_data(fig, fallback_years)
+        layout_title = getattr(getattr(fig, "layout", None), "title", None)
+        title = _safe_text(getattr(layout_title, "text", None))
+    else:
+        years = sorted(set(fallback_years) or set(BULLETIN_YEARS))
+        columns = ["Année"]
+        rows = [[year] for year in years]
+        title = f"{NOM_INSTITUTION.get(institution, institution)} — {chart_label}"
+
+    metadata = _resolve_chart_metadata(
+        institution=institution,
+        chart_key=chart_key,
+        default_title=title,
+        settings=settings,
+        years=years,
+    )
+    metadata.update(
+        {
+            "label": chart_label,
+            "image_filename": image_filename,
+            "columns": columns,
+            "rows": rows,
+        }
+    )
+    return metadata
+
+
 def generate_charts(
     regimes: list[dict],
     institution: str,
     settings: dict,
-) -> list[tuple[str, str, str | None]]:
+) -> tuple[list[tuple[str, str, str | None]], list[dict]]:
     """Génère les graphiques PNG d'une institution.
 
     Retourne toujours une entrée par graphique défini dans CHART_SPECS, dans l'ordre
@@ -346,7 +594,10 @@ def generate_charts(
     x_max = max([*BULLETIN_YEARS, *inst_years]) if inst_years else BULLETIN_YEARS[-1]
 
     results: list[tuple[str, str, str | None]] = []
+    payloads: list[dict] = []
+    fallback_years = sorted(set(BULLETIN_YEARS) | {int(year) for year in inst_years if year is not None})
     for key, label, builder in CHART_SPECS:
+        fig = None
         try:
             if builder in _SEX_MODE_BUILDERS:
                 fig = builder(regimes, institution, "all")
@@ -358,10 +609,32 @@ def generate_charts(
         except Exception as exc:
             print(f"    [AVERT] Graphique '{label}' ({institution}) : {exc}")
             results.append((key, label, None))
+            payloads.append(
+                _build_chart_payload(
+                    institution=institution,
+                    chart_key=key,
+                    chart_label=label,
+                    fig=None,
+                    settings=settings,
+                    fallback_years=fallback_years,
+                    image_filename=None,
+                )
+            )
             continue
 
         if fig is None or not getattr(fig, "data", None):
             results.append((key, label, None))
+            payloads.append(
+                _build_chart_payload(
+                    institution=institution,
+                    chart_key=key,
+                    chart_label=label,
+                    fig=None,
+                    settings=settings,
+                    fallback_years=fallback_years,
+                    image_filename=None,
+                )
+            )
             continue
 
         if institution == "TRESOR" and key == "cotisants":
@@ -386,9 +659,32 @@ def generate_charts(
         except Exception as exc:
             print(f"    [AVERT] Export image '{label}' ({institution}) échoué : {exc}")
             results.append((key, label, None))
+            payloads.append(
+                _build_chart_payload(
+                    institution=institution,
+                    chart_key=key,
+                    chart_label=label,
+                    fig=fig,
+                    settings=settings,
+                    fallback_years=fallback_years,
+                    image_filename=None,
+                )
+            )
             continue
-        results.append((key, label, filename if ok else None))
-    return results
+        image_filename = filename if ok else None
+        results.append((key, label, image_filename))
+        payloads.append(
+            _build_chart_payload(
+                institution=institution,
+                chart_key=key,
+                chart_label=label,
+                fig=fig,
+                settings=settings,
+                fallback_years=fallback_years,
+                image_filename=image_filename,
+            )
+        )
+    return results, payloads
 
 
 def build_charts_markdown(
@@ -656,15 +952,73 @@ def _aggregate_sex_data(regimes: list[dict], institution: str, settings: dict) -
     return by_year
 
 
+def _build_sex_payload(
+    *,
+    institution: str,
+    settings: dict,
+    by_year: dict[int, dict],
+    image_filename: str | None,
+) -> dict:
+    years = sorted(by_year.keys()) if by_year else list(BULLETIN_YEARS)
+    columns = [
+        "Année",
+        "Cotisants - Hommes",
+        "Cotisants - Femmes",
+        "Cotisants - Non identifié",
+        "Bénéficiaires - Hommes",
+        "Bénéficiaires - Femmes",
+        "Bénéficiaires - Non identifié",
+    ]
+    rows = []
+    for year in years:
+        row = by_year.get(year, {})
+        cot_total = float(row.get("cotisants_total") or 0.0)
+        cot_h = float(row.get("cotisants_h") or 0.0)
+        cot_f = float(row.get("cotisants_f") or 0.0)
+        cot_ni = max(cot_total - cot_h - cot_f, 0.0)
+        ben_total = float(row.get("beneficiaires_total") or 0.0)
+        ben_h = float(row.get("beneficiaires_h") or 0.0)
+        ben_f = float(row.get("beneficiaires_f") or 0.0)
+        ben_ni = max(ben_total - ben_h - ben_f, 0.0)
+        rows.append([year, cot_h, cot_f, cot_ni, ben_h, ben_f, ben_ni])
+
+    default_title = (
+        f"{NOM_INSTITUTION.get(institution, institution)} — Répartition par sexe"
+        f" ({'personnes potentiellement couvertes estimées' if institution == 'TRESOR' else 'cotisants'} et bénéficiaires)"
+    )
+    metadata = _resolve_chart_metadata(
+        institution=institution,
+        chart_key="sexe",
+        default_title=default_title,
+        settings=settings,
+        years=years,
+    )
+    metadata.update(
+        {
+            "label": "Répartition par sexe",
+            "image_filename": image_filename,
+            "columns": columns,
+            "rows": rows,
+        }
+    )
+    return metadata
+
+
 def generate_sex_pie_charts(
     regimes: list[dict],
     institution: str,
     settings: dict,
-) -> list[str]:
+) -> tuple[list[str], dict]:
     """Génère un unique visuel en grille (cotisants/bénéficiaires par année, plusieurs
     années par ligne) pour l'institution. Retourne les fichiers produits (0 ou 1)."""
+    empty_payload = _build_sex_payload(
+        institution=institution,
+        settings=settings,
+        by_year={year: {} for year in BULLETIN_YEARS},
+        image_filename=None,
+    )
     if not any(r["institution"] == institution for r in regimes):
-        return []
+        return [], empty_payload
 
     by_year = _aggregate_sex_data(regimes, institution, settings)
 
@@ -687,18 +1041,38 @@ def generate_sex_pie_charts(
         )
     except Exception as exc:
         print(f"    [AVERT] Grille camemberts sexe ({institution}) : {exc}")
-        return []
+        return [], _build_sex_payload(
+            institution=institution,
+            settings=settings,
+            by_year=by_year,
+            image_filename=None,
+        )
 
     if fig is None:
-        return []
+        return [], _build_sex_payload(
+            institution=institution,
+            settings=settings,
+            by_year=by_year,
+            image_filename=None,
+        )
 
     filename = f"annexe_B_{institution}_sexe.png"
     out_path = ILLUSTRATIONS_DIR / filename
     width = fig.layout.width
     height = fig.layout.height
     if not _write_image_with_retry(fig, out_path, width=width, height=height, scale=SEX_PIE_SCALE):
-        return []
-    return [filename]
+        return [], _build_sex_payload(
+            institution=institution,
+            settings=settings,
+            by_year=by_year,
+            image_filename=None,
+        )
+    return [filename], _build_sex_payload(
+        institution=institution,
+        settings=settings,
+        by_year=by_year,
+        image_filename=filename,
+    )
 
 
 def build_sex_charts_markdown(chart_files: list[str], institution: str) -> str:
@@ -722,6 +1096,209 @@ def build_sex_charts_markdown(chart_files: list[str], institution: str) -> str:
         for name in chart_files
     )
     return legend_html + image_html + "\n"
+
+
+def _sanitize_excel_sheet_name(name: str) -> str:
+    clean = re.sub(r'[\[\]\*\?/:\\]', "_", name or "")
+    clean = re.sub(r"\s+", "_", clean).strip("_")
+    return clean[:31] or "Feuille"
+
+
+def _unique_sheet_name(base: str, used: set[str]) -> str:
+    candidate = _sanitize_excel_sheet_name(base)
+    if candidate not in used:
+        used.add(candidate)
+        return candidate
+    idx = 2
+    while True:
+        suffix = f"_{idx}"
+        truncated = _sanitize_excel_sheet_name(candidate[: 31 - len(suffix)] + suffix)
+        if truncated not in used:
+            used.add(truncated)
+            return truncated
+        idx += 1
+
+
+def _append_chart_sheet(ws, payload: dict):
+    ws["A1"] = "Institution"
+    ws["B1"] = payload.get("institution", "")
+    ws["A2"] = "Graphique"
+    ws["B2"] = payload.get("chart_key", "")
+    ws["A3"] = "Titre"
+    ws["B3"] = payload.get("titre", "")
+    ws["A4"] = "Unité"
+    ws["B4"] = payload.get("unite", "")
+    ws["A5"] = "Source"
+    ws["B5"] = payload.get("source", "")
+    ws["A6"] = "Période"
+    ws["B6"] = payload.get("periode", "")
+    ws["A7"] = "Type"
+    ws["B7"] = payload.get("type", "")
+    ws["A8"] = "Notes"
+    ws["B8"] = payload.get("notes", "")
+    ws["A9"] = "Règles questionnaire"
+    ws["B9"] = ", ".join(payload.get("regles", []))
+
+    columns = payload.get("columns") or ["Année"]
+    rows = payload.get("rows") or []
+    data_start = 11
+
+    for col_idx, col_name in enumerate(columns, start=1):
+        cell = ws.cell(row=data_start, column=col_idx, value=col_name)
+        bold_font = copy.copy(cell.font)
+        bold_font.bold = True
+        cell.font = bold_font
+
+    for row_idx, row_values in enumerate(rows, start=data_start + 1):
+        for col_idx, value in enumerate(row_values, start=1):
+            ws.cell(row=row_idx, column=col_idx, value=value)
+
+    ws.column_dimensions["A"].width = 14
+    ws.column_dimensions["B"].width = 28
+    if len(columns) >= 2:
+        for col_idx in range(2, len(columns) + 1):
+            col_letter = ws.cell(row=1, column=col_idx).column_letter
+            ws.column_dimensions[col_letter].width = 18
+
+    if len(columns) <= 1 or not rows:
+        return
+
+    data_end_row = data_start + len(rows)
+    categories = Reference(ws, min_col=1, min_row=data_start + 1, max_row=data_end_row)
+    chart_key = payload.get("chart_key")
+
+    if chart_key == "sexe" and len(columns) >= 7:
+        cot_chart = BarChart()
+        cot_chart.type = "col"
+        cot_chart.grouping = "percentStacked"
+        cot_chart.overlap = 100
+        cot_chart.title = "Répartition par sexe — cotisants"
+        cot_chart.y_axis.title = "%"
+        cot_data = Reference(ws, min_col=2, max_col=4, min_row=data_start, max_row=data_end_row)
+        cot_chart.add_data(cot_data, titles_from_data=True)
+        cot_chart.set_categories(categories)
+        cot_chart.height = 7
+        cot_chart.width = 11
+        ws.add_chart(cot_chart, "A14")
+
+        ben_chart = BarChart()
+        ben_chart.type = "col"
+        ben_chart.grouping = "percentStacked"
+        ben_chart.overlap = 100
+        ben_chart.title = "Répartition par sexe — bénéficiaires"
+        ben_chart.y_axis.title = "%"
+        ben_data = Reference(ws, min_col=5, max_col=7, min_row=data_start, max_row=data_end_row)
+        ben_chart.add_data(ben_data, titles_from_data=True)
+        ben_chart.set_categories(categories)
+        ben_chart.height = 7
+        ben_chart.width = 11
+        ws.add_chart(ben_chart, "M14")
+        return
+
+    if chart_key in {"depenses", "recettes"}:
+        chart = BarChart()
+        chart.type = "col"
+        chart.grouping = "clustered"
+    else:
+        chart = LineChart()
+        chart.grouping = "standard"
+
+    chart.title = payload.get("titre", payload.get("label", "Graphique"))
+    chart.y_axis.title = payload.get("unite", "")
+    chart.x_axis.title = "Année"
+    chart.height = 8
+    chart.width = 24
+    data_ref = Reference(ws, min_col=2, max_col=len(columns), min_row=data_start, max_row=data_end_row)
+    chart.add_data(data_ref, titles_from_data=True)
+    chart.set_categories(categories)
+    chart.style = 2
+    ws.add_chart(chart, "A14")
+
+
+def export_annexe_b_workbook(chart_payloads: list[dict]) -> tuple[dict, str]:
+    ANNEXE_B_XLSX_FILE.parent.mkdir(parents=True, exist_ok=True)
+    wb = Workbook()
+    wb.remove(wb.active)
+    index_ws = wb.create_sheet("index")
+    index_headers = [
+        "institution",
+        "chart_key",
+        "sheet_name",
+        "png",
+        "titre",
+        "unite",
+        "source",
+        "periode",
+        "type",
+        "notes",
+        "regles",
+    ]
+    for col_idx, header in enumerate(index_headers, start=1):
+        cell = index_ws.cell(row=1, column=col_idx, value=header)
+        bold_font = copy.copy(cell.font)
+        bold_font.bold = True
+        cell.font = bold_font
+
+    used_names = {"index"}
+    word_payload: dict[str, dict] = {}
+    for row_idx, payload in enumerate(chart_payloads, start=2):
+        base_sheet = f"{payload.get('institution', 'INST')}_{payload.get('chart_key', 'graph')}"
+        sheet_name = _unique_sheet_name(base_sheet, used_names)
+        payload["sheet_name"] = sheet_name
+        ws = wb.create_sheet(sheet_name)
+        _append_chart_sheet(ws, payload)
+
+        index_ws.cell(row=row_idx, column=1, value=payload.get("institution"))
+        index_ws.cell(row=row_idx, column=2, value=payload.get("chart_key"))
+        index_ws.cell(row=row_idx, column=3, value=sheet_name)
+        index_ws.cell(row=row_idx, column=4, value=payload.get("image_filename"))
+        index_ws.cell(row=row_idx, column=5, value=payload.get("titre"))
+        index_ws.cell(row=row_idx, column=6, value=payload.get("unite"))
+        index_ws.cell(row=row_idx, column=7, value=payload.get("source"))
+        index_ws.cell(row=row_idx, column=8, value=payload.get("periode"))
+        index_ws.cell(row=row_idx, column=9, value=payload.get("type"))
+        index_ws.cell(row=row_idx, column=10, value=payload.get("notes"))
+        index_ws.cell(row=row_idx, column=11, value=", ".join(payload.get("regles", [])))
+
+        image_filename = payload.get("image_filename")
+        if image_filename:
+            word_payload[image_filename] = {
+                "institution": payload.get("institution"),
+                "chart_key": payload.get("chart_key"),
+                "sheet_name": sheet_name,
+                "titre": payload.get("titre"),
+                "unite": payload.get("unite"),
+                "source": payload.get("source"),
+                "periode": payload.get("periode"),
+                "type": payload.get("type"),
+                "notes": payload.get("notes"),
+                "regles": payload.get("regles", []),
+                "columns": payload.get("columns", []),
+                "rows": payload.get("rows", []),
+            }
+
+    for col in ("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"):
+        index_ws.column_dimensions[col].width = 22
+
+    wb.save(ANNEXE_B_XLSX_FILE)
+    workbook_rel = str(ANNEXE_B_XLSX_FILE.relative_to(WORKSPACE)).replace("\\", "/")
+    return word_payload, workbook_rel
+
+
+def export_annexe_b_word_data(chart_payloads: list[dict]):
+    charts, workbook_rel = export_annexe_b_workbook(chart_payloads)
+    payload = {
+        "generated_at": datetime.now().isoformat(timespec="seconds"),
+        "xlsx": workbook_rel,
+        "charts": charts,
+    }
+    ANNEXE_B_WORD_DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
+    ANNEXE_B_WORD_DATA_FILE.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    print(f"  XLSX annexe B généré : {ANNEXE_B_XLSX_FILE.relative_to(WORKSPACE)}")
+    print(f"  Métadonnées Word annexe B : {ANNEXE_B_WORD_DATA_FILE.relative_to(WORKSPACE)}")
 
 
 def build_detailed_data_markdown(regimes: list[dict], regime_meta: dict, institution: str) -> str:
@@ -857,6 +1434,7 @@ def build_section_content(
     institution: str,
     md_text: str,
     settings: dict,
+    chart_payloads: list[dict] | None = None,
 ) -> str:
     label = _institution_caption_label(institution)
     section_no, table_no, figure_no = _locate_section_no_and_counters(md_text, institution)
@@ -870,10 +1448,14 @@ def build_section_content(
         if institution == "CNSS" else ""
     )
 
-    chart_entries = generate_charts(regimes, institution, settings)
+    chart_entries, chart_payload_entries = generate_charts(regimes, institution, settings)
+    if chart_payloads is not None:
+        chart_payloads.extend(chart_payload_entries)
     charts_md = build_charts_markdown(chart_entries, institution)
     regimes_md = build_regime_table_markdown(regime_meta.get(institution, {}))
-    sex_chart_files = generate_sex_pie_charts(regimes, institution, settings)
+    sex_chart_files, sex_payload = generate_sex_pie_charts(regimes, institution, settings)
+    if chart_payloads is not None:
+        chart_payloads.append(sex_payload)
     sex_md = build_sex_charts_markdown(sex_chart_files, institution)
     detail_md = build_detailed_data_markdown(regimes, regime_meta, institution)
     tresor_detail_footnote = (
@@ -958,6 +1540,13 @@ def inject_into_markdown(md_text: str, institution: str, content: str) -> tuple[
     return pattern.sub(lambda _m: replacement, md_text, count=1), True
 
 
+def has_auto_generated_block(md_text: str, institution: str) -> bool:
+    """Indique si l'institution possède un bloc graphique dans l'annexe B."""
+    start_marker = f"<!-- AUTO_GENERE:{institution}:DEBUT -->"
+    end_marker = f"<!-- AUTO_GENERE:{institution}:FIN -->"
+    return start_marker in md_text and end_marker in md_text
+
+
 def main() -> int:
     if not DB_PATH.exists():
         print(f"  Base introuvable : {DB_PATH}")
@@ -992,15 +1581,20 @@ def main() -> int:
     md_text = ANNEXE_B_MD.read_text(encoding="utf-8-sig")
     total_updated = 0
     total_skipped = []
+    all_chart_payloads: list[dict] = []
 
     for inst in institutions:
         print(f"  -> {inst}")
+        if not has_auto_generated_block(md_text, inst):
+            total_skipped.append(inst)
+            continue
         content = build_section_content(
             regimes,
             regime_meta,
             inst,
             md_text,
             questionnaire_data.get(inst) or {},
+            all_chart_payloads,
         )
         md_text, updated = inject_into_markdown(md_text, inst, content)
         if updated:
@@ -1009,6 +1603,7 @@ def main() -> int:
             total_skipped.append(inst)
 
     ANNEXE_B_MD.write_text(md_text, encoding="utf-8-sig")
+    export_annexe_b_word_data(all_chart_payloads)
 
     if server_started:
         try:

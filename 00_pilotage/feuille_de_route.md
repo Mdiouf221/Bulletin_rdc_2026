@@ -80,6 +80,7 @@ Ce fichier peut être mis à jour régulièrement par l’utilisateur ou par un 
 - [ ] Identifier les figures nécessaires par chapitre
 - [x] Préparer les annexes statistiques
 - [x] Rafraîchir les tableaux et données depuis les bases SQL et le tableau de bord (2026-09-03)
+- [x] Générer un classeur XLSX stable pour les graphiques de l’annexe B (données + métadonnées questionnaire + graphiques Excel) (2026-09-03)
 - [ ] Réviser les textes d'accompagnement et contextuels à partir des séries actualisées
 
 ## Phase 6 — Assemblage et export
@@ -91,4 +92,5 @@ Ce fichier peut être mis à jour régulièrement par l’utilisateur ou par un 
 - [ ] Créer le script de nettoyage des notes internes
 - [x] Créer une version de travail assemblée
 - [x] Créer une version publication sans notes internes
-- [ ] Exporter une première version Word
+- [x] Exporter une première version Word
+- [x] Insérer dans Word les 42 graphiques de l’annexe B sous forme d’objets Excel liés, sans PNG ni tableaux de données ajoutés (2026-09-03)
