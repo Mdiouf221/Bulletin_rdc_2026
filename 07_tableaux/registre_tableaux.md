@@ -59,7 +59,7 @@ Les agents doivent mettre à jour ce registre lorsqu'un tableau est créé, reno
 | Tableau B.4.1–B.4.5 | Fiche institutionnelle MESP (branches couvertes, cadre juridique, données de couverture, régimes gérés, données détaillées) | Annexe B — Fiches institutionnelles | `04_annexes/annexe_B_fiches_institutionnelles.md` | à vérifier |
 | Tableau B.5.1–B.5.5 | Fiche institutionnelle FSS (régimes prévus, cadre juridique, données de couverture, régimes gérés, données détaillées) | Annexe B — Fiches institutionnelles | `04_annexes/annexe_B_fiches_institutionnelles.md` | à vérifier |
 | Tableau B.6.1–B.6.5 | Fiche institutionnelle SESOPA (branches couvertes, cadre juridique, données de couverture, régimes gérés, données détaillées) | Annexe B — Fiches institutionnelles | `04_annexes/annexe_B_fiches_institutionnelles.md` | à vérifier |
-| Tableau B.7.1–B.7.2 | Régimes spéciaux non contributifs de la fonction publique — proxy Trésor (régimes gérés, données détaillées) | Annexe B — Fiches institutionnelles | `04_annexes/annexe_B_fiches_institutionnelles.md` | à vérifier |
+| Tableau B.7.1–B.7.2 | Protection budgétaire non contributive des agents publics hors CNSSAP — proxy technique TRESOR (dispositif et données détaillées) | Annexe B — Fiches institutionnelles | `04_annexes/annexe_B_fiches_institutionnelles.md` | à vérifier |
 | Tableau C.1–C.9 (hors C.6, C.8 non calculés) | Détail par indicateur ODD 1.3.1/BIT : indicateur de couverture, numérateur et dénominateur (2019–2026) | Annexe C — Détail des indicateurs | `04_annexes/annexe_C_detail_indicateurs.md` | à vérifier |
 
 ## Notes de gestion

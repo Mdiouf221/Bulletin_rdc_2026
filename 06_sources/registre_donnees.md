@@ -71,6 +71,8 @@ Ces fichiers sont les tableaux ESS (format OIT) utilisés pour la production du 
 | `ESS CNSS 2020_ANOMALIE.xlsm` | `06_sources/ESS/ESS_CNSS/` | ? | Tableau ESS OIT | **⚠️ ANOMALIE** : nommé CNSS 2020 mais contenu CNSSAP (feuille "CNSAP Régime de base") — conservé à titre de traçabilité | 2020 (?) | Oui (`_texte/ESS_CNSS_2020_ANOMALIE.txt`) | **Archivé — ne pas citer** |
 | `ESS CNSS 2021.xlsm` | `06_sources/ESS/ESS_CNSS/` | CNSS | Tableau ESS OIT | Données statistiques standardisées CNSS | 2021 | Oui (`_texte/`) | **Disponible** |
 | `ESS CNSS 2022.xlsm` | `06_sources/ESS/ESS_CNSS/` | CNSS | Tableau ESS OIT | Données statistiques standardisées CNSS | 2022 | Oui (`_texte/`) | **Disponible** |
+| `ESS CNSS 2023.xlsm` | `06_sources/ESS/ESS_CNSS/` | CNSS | Tableau ESS OIT | Données statistiques standardisées CNSS — intégré via PROC-008 (mode `--inbox`) le 2026-09-02 | 2023 | Oui (`_texte/`) | **Disponible** |
+| `ESS CNSS 2024.xlsm` | `06_sources/ESS/ESS_CNSS/` | CNSS | Tableau ESS OIT | Données statistiques standardisées CNSS — intégré via PROC-008 (mode `--inbox`) le 2026-09-02 | 2024 | Oui (`_texte/`) | **Disponible** |
 
 ### ESS_CNSSAP/
 
@@ -94,6 +96,37 @@ Ces fichiers sont les tableaux ESS (format OIT) utilisés pour la production du 
 | `EST TRESOR 2020.xlsm` | `06_sources/ESS/ESS_TRESOR/` | TRESOR | Estimation au format ESS | Résiduel provisoire de l'emploi public hors dispositifs observés ; bénéficiaires N/D | 2020 | `EST_TRESOR_2020_metadata.txt` | **Estimation — à réviser** |
 | `EST TRESOR 2021.xlsm` | `06_sources/ESS/ESS_TRESOR/` | TRESOR | Estimation au format ESS | Résiduel provisoire de l'emploi public hors dispositifs observés ; bénéficiaires N/D | 2021 | `EST_TRESOR_2021_metadata.txt` | **Estimation — à réviser** |
 | `EST TRESOR 2022.xlsm` | `06_sources/ESS/ESS_TRESOR/` | TRESOR | Estimation au format ESS | Résiduel provisoire de l'emploi public hors dispositifs observés ; bénéficiaires N/D | 2022 | `EST_TRESOR_2022_metadata.txt` | **Estimation — à réviser** |
+| `EST TRESOR 2023.xlsm` | `06_sources/ESS/ESS_TRESOR/` | TRESOR | Estimation au format ESS | Résiduel provisoire de l'emploi public hors dispositifs observés ; bénéficiaires N/D | 2023 | `EST_TRESOR_2023_metadata.txt` | **Estimation — à réviser** |
+| `EST TRESOR 2024.xlsm` | `06_sources/ESS/ESS_TRESOR/` | TRESOR | Estimation au format ESS | Résiduel provisoire de l'emploi public hors dispositifs observés ; bénéficiaires N/D | 2024 | `EST_TRESOR_2024_metadata.txt` | **Estimation — à réviser** |
+
+### ESS_MESP/
+
+| Fichier | Chemin | Institution | Type | Description | Période | Converti | Statut |
+|---|---|---|---|---|---|---|---|
+| `ESS_MESP_2019.xlsm` | `06_sources/ESS/ESS_MESP/` | MESP | Tableau ESS OIT | Données statistiques standardisées MESP (Mutuelle des Enseignants) — 1 régime, 1 prestation | 2019 | Non (métadonnées non créées à ce stade) | **Disponible — non converti** |
+| `ESS_MESP_2020.xlsm` | `06_sources/ESS/ESS_MESP/` | MESP | Tableau ESS OIT | Données statistiques standardisées MESP — 1 régime, 1 prestation | 2020 | Non (métadonnées non créées à ce stade) | **Disponible — non converti** |
+| `ESS_MESP_2021.xlsm` | `06_sources/ESS/ESS_MESP/` | MESP | Tableau ESS OIT | Données statistiques standardisées MESP — 1 régime, 1 prestation | 2021 | Non (métadonnées non créées à ce stade) | **Disponible — non converti** |
+| `ESS_MESP_2022.xlsm` | `06_sources/ESS/ESS_MESP/` | MESP | Tableau ESS OIT | Données statistiques standardisées MESP — 1 régime, 1 prestation | 2022 | Non (métadonnées non créées à ce stade) | **Disponible — non converti** |
+| `ESS_MESP_2023.xlsm` | `06_sources/ESS/ESS_MESP/` | MESP | Tableau ESS OIT | Données statistiques standardisées MESP — intégré via PROC-008 (mode `--inbox`) le 2026-09-02 | 2023 | Oui (`_texte/`) | **Disponible** |
+| `ESS_MESP_2024.xlsm` | `06_sources/ESS/ESS_MESP/` | MESP | Tableau ESS OIT | Données statistiques standardisées MESP — intégré via PROC-008 (mode `--inbox`) le 2026-09-02 | 2024 | Oui (`_texte/`) | **Disponible** |
+| `ESS_MESP_2025.xlsm` | `06_sources/ESS/ESS_MESP/` | MESP | Tableau ESS OIT | Données statistiques standardisées MESP — intégré via PROC-008 (mode `--inbox`) le 2026-09-02 | 2025 | Oui (`_texte/`) | **Disponible** |
+
+> Note : les fichiers 2019-2022 étaient déjà présents en base avant le dépôt du 2026-09-02. Des versions de taille légèrement différente pour ces mêmes années ont été déposées le 2026-09-02 dans `06_sources/_entrants/MESP/` ; sur décision de l'utilisateur, elles n'ont pas remplacé les versions existantes et ont été supprimées sans être conservées. Les fiches de métadonnées 2019-2022 restent à créer.
+
+### ESS_SESOPA/
+
+| Fichier | Chemin | Institution | Type | Description | Période | Converti | Statut |
+|---|---|---|---|---|---|---|---|
+| `ESS_SESOPA_2019.xlsm` | `06_sources/ESS/ESS_SESOPA/` | SESOPA | Tableau ESS OIT | Données statistiques standardisées SESOPA (parlementaires) — 5 régimes — intégré via PROC-008 (mode `--inbox`) le 2026-09-02 | 2019 | Oui (`_texte/`) | **Disponible** |
+| `ESS_SESOPA_2020.xlsm` | `06_sources/ESS/ESS_SESOPA/` | SESOPA | Tableau ESS OIT | Données statistiques standardisées SESOPA — 5 régimes — intégré via PROC-008 (mode `--inbox`) le 2026-09-02 | 2020 | Oui (`_texte/`) | **Disponible** |
+| `ESS_SESOPA_2021.xlsm` | `06_sources/ESS/ESS_SESOPA/` | SESOPA | Tableau ESS OIT | Données statistiques standardisées SESOPA — 5 régimes — intégré via PROC-008 (mode `--inbox`) le 2026-09-02 | 2021 | Oui (`_texte/`) | **Disponible** |
+| `ESS_SESOPA_2022.xlsm` | `06_sources/ESS/ESS_SESOPA/` | SESOPA | Tableau ESS OIT | Données statistiques standardisées SESOPA — 5 régimes — intégré via PROC-008 (mode `--inbox`) le 2026-09-02 | 2022 | Oui (`_texte/`) | **Disponible** |
+| `ESS_SESOPA_2023.xlsm` | `06_sources/ESS/ESS_SESOPA/` | SESOPA | Tableau ESS OIT | Données statistiques standardisées SESOPA — 5 régimes — intégré via PROC-008 (mode `--inbox`) le 2026-09-02 | 2023 | Oui (`_texte/`) | **Disponible** |
+| `ESS_SESOPA_2024.xlsm` | `06_sources/ESS/ESS_SESOPA/` | SESOPA | Tableau ESS OIT | Données statistiques standardisées SESOPA — 5 régimes — intégré via PROC-008 (mode `--inbox`) le 2026-09-02 | 2024 | Oui (`_texte/`) | **Disponible** |
+| `ESS_SESOPA_2025.xlsm` | `06_sources/ESS/ESS_SESOPA/` | SESOPA | Tableau ESS OIT | Données statistiques standardisées SESOPA — 5 régimes — intégré via PROC-008 (mode `--inbox`) le 2026-09-02 | 2025 | Oui (`_texte/`) | **Disponible** |
+| `ESS_SESOPA_2026.xlsm` | `06_sources/ESS/ESS_SESOPA/` | SESOPA | Tableau ESS OIT | Données statistiques standardisées SESOPA — déjà en base avant le dépôt du 2026-09-02 | 2026 | Non (métadonnées non créées à ce stade) | **Disponible — non converti** |
+
+> Note : le sigle SESOPA désignait de façon incohérente trois définitions différentes ailleurs dans le bulletin (Annexe B, liste d'ouverture : « Service de Santé de la Police Nationale » ; titre de la fiche B.6 : « Service Autonome de Sécurité Sociale des Parlementaires » ; Liste des sigles : « Service de Sécurité Sociale des Parlementaires »). Corrigé le 2026-09-02 après recherche documentaire (presse congolaise Congoprofond.net + plateforme de suivi parlementaire Talatala.cd, citant une proposition de loi du 12/08/2022 modifiant « la loi portant régime spécial de sécurité sociale des parlementaires ») : la définition retenue et harmonisée dans tout le bulletin est **SESOPA = Service de Sécurité Sociale des Parlementaires** (sans « Autonome »), cohérente avec le contenu des fichiers ESS (régimes de pension, maladie, décès, risques et maternité des parlementaires). Aucune preuve trouvée d'un lien réel avec la Police nationale. Référence légale exacte (n° de loi, date JO) non retrouvée à ce stade.
 
 ---
 

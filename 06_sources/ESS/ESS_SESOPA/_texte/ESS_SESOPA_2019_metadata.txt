@@ -1,0 +1,50 @@
+TITRE : ESS SESOPA 2019 — Enquête sur les Sources Statistiques de la protection sociale (format OIT)
+SOURCE / AUTEUR : Service de Sécurité Sociale des Parlementaires (SESOPA), Assemblée nationale, République Démocratique du Congo
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 2019
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : ESS_SESOPA_2019.txt / ESS_SESOPA_2019.xlsm (source)
+NIVEAU FIABILITE : 1 — données institutionnelles primaires (transmission directe de l'institution)
+LIEN SOURCE — Fichier source Excel (present) : 06_sources/ESS/ESS_SESOPA/ESS_SESOPA_2019.xlsm
+
+---
+
+CONTENU RÉSUMÉ
+
+Enquête sur les Sources Statistiques (ESS) de la SESOPA pour l'année 2019 — première année de la série historique SESOPA déposée par l'institution (2019-2025). Un fichier ESS SESOPA 2026 était déjà disponible en base avant ce dépôt ; les années 2019-2025 comblent la série antérieure. Feuilles actives : Inventaire des régimes (5 régimes recensés), feuilles de prestations des Régimes 1 à 5, Info Pauvreté, ADDITIONAL statistics for SDGs, CALCULATIONS. Administrateur déclaré : « SESOPA Assemblée nationale ».
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+RÉGIME 1 — Branche des pensions de retraite et de réversion (SESOPA, 2019) :
+- Financement mixte, caractère obligatoire — 3 prestations
+
+RÉGIME 2 — Assurance maladie des parlementaires (SESOPA, 2019) :
+- Financement non-contributif — 8 prestations
+
+RÉGIME 3 — Assurance décès — rente spéciale de survie (SESOPA, 2019) :
+- Financement non-contributif — 7 prestations
+
+RÉGIME 4 — Branche des risques liés à l'exercice du mandat parlementaire (SESOPA, 2019) :
+- Financement non-contributif — 9 prestations
+
+RÉGIME 5 — Assurance maternité des parlementaires (SESOPA, 2019) :
+- Financement non-contributif — 5 prestations
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Population couverte : parlementaires nationaux (Assemblée nationale) et, pour le Régime 1, anciens parlementaires non cotisants pris en charge par le Trésor public (cf. Annexe C, tableau des indicateurs vieillesse/cotisants).
+- Signification du sigle confirmée par recherche documentaire le 2026-09-02 (presse congolaise — Congoprofond.net, et plateforme de suivi parlementaire Talatala.cd citant des débats à l'Assemblée nationale, dont une proposition de loi du 12/08/2022 modifiant « la loi portant régime spécial de sécurité sociale des parlementaires ») : SESOPA = **Service de Sécurité Sociale des Parlementaires** (sans « Autonome »). Une mention antérieure et incorrecte (« Service de Santé de la Police Nationale ») présente en intro de l'Annexe B a été corrigée sur cette base. Référence légale exacte (numéro de loi, date de publication au Journal Officiel) non retrouvée à ce stade — à confirmer si besoin auprès de l'Assemblée nationale ou du Journal Officiel de la RDC.
+- Les données quantitatives (effectifs, montants) se trouvent dans les feuilles individuelles des régimes.
+- Monnaie : Franc congolais (CDF).
+- Fichier intégré en base via le mode d'import progressif (`py 09_scripts/extraire_ess.py --inbox`), déposé par l'institution dans 06_sources/_entrants/Sesopa/ le 2026-09-02.
+
+---
+
+CITATION RECOMMANDÉE
+
+SESOPA (2019), Enquête sur les Sources Statistiques (ESS) — format OIT, Service de Sécurité Sociale des Parlementaires, Assemblée nationale, Kinshasa, République Démocratique du Congo.

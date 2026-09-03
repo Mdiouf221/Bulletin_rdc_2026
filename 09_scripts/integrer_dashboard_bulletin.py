@@ -1,9 +1,9 @@
 """
 integrer_dashboard_bulletin.py
 ------------------------------
-Injecte automatiquement les valeurs ODD 1.3.1 du dashboard dans le tableau 5.2
-du bulletin (chapitre 5), en réutilisant les décisions et dénominateurs
-persistés dans 10_output/dashboard_settings.json.
+Injecte automatiquement les valeurs ODD 1.3.1 du dashboard dans les tableaux
+des chapitres 4 et 5, en réutilisant les décisions et dénominateurs persistés
+dans 10_output/dashboard_settings.json.
 
 Usage :
     py 09_scripts/integrer_dashboard_bulletin.py
@@ -27,21 +27,36 @@ from visualiser_regimes import (  # type: ignore
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SETTINGS_PATH = BASE_DIR / "10_output" / "dashboard_settings.json"
-CHAPTER5_PATH = BASE_DIR / "03_chapitres" / "chapitre_5" / "00_plan_chapitre_5.md"
+TARGETS = (
+    (
+        BASE_DIR / "03_chapitres" / "chapitre_4" / "4.9_odd_131.md",
+        {
+            "Population totale (%)": "global_131",
+            "Enfants 0–14 ans (%)": "ind_22_enfants",
+            "Femmes ayant accouché — maternité (%)": "ind_23_maternite",
+            "Personnes âgées — pension vieillesse (%)": "ind_27_vieillesse",
+            "Actifs — cotisants à un régime contributif (%)": "ind_29_cotisants",
+            "Personnes handicapées — invalidité (%)": "ind_24_handicap",
+            "Force de travail — AT/MP (%)": "ind_25_atmp",
+        },
+    ),
+    (
+        BASE_DIR / "03_chapitres" / "chapitre_5" / "00_plan_chapitre_5.md",
+        {
+            "Population totale (%)": "global_131",
+            "Enfants 0–14 ans (%)": "ind_22_enfants",
+            "Femmes ayant accouché — maternité (%)": "ind_23_maternite",
+            "Personnes âgées — pension vieillesse (%)": "ind_27_vieillesse",
+            "Actifs — cotisants à un régime contributif (%)": "ind_29_cotisants",
+            "Personnes handicapées — invalidité (%)": "ind_24_handicap",
+            "Force de travail — AT/MP (%)": "ind_25_atmp",
+        },
+    ),
+)
 DENOM_DB_PATH = BASE_DIR / "protection_sociale_rdc.db"
 
 INCLUDED_STATES = {"entierement_inclus", "inclus", "inclus_avec_reserve"}
 EXCLUDED_STATES = {"entierement_exclus", "exclus", "exclu_nature", "exclu_non_statutaire", "exclu_hors_indicateur"}
-
-ROW_TO_INDICATOR = {
-    "Population totale (%)": "global_131",
-    "Enfants 0–14 ans (%)": "ind_22_enfants",
-    "Femmes ayant accouché — maternité (%)": "ind_23_maternite",
-    "Personnes âgées — pension vieillesse (%)": "ind_27_vieillesse",
-    "Actifs — cotisants à un régime contributif (%)": "ind_29_cotisants",
-    "Personnes handicapées — invalidité (%)": "ind_24_handicap",
-    "Personnes en emploi — AT/MP (%)": "ind_25_atmp",
-}
 
 METRIC_BY_INDICATOR = {
     "global_131": "couverts_bruts_estimes",
@@ -147,7 +162,7 @@ def compute_numerator(
     prestation_rows: list[dict],
     odd_nodes: list[dict],
     decisions: dict[str, str],
-) -> float:
+) -> float | None:
     metric_key = METRIC_BY_INDICATOR[indicator_key]
     include_cotisants = metric_key in {"cotisants_estimes", "couverts_bruts_estimes"}
     include_beneficiaires = metric_key in {"beneficiaires_estimes", "couverts_bruts_estimes"}
@@ -175,12 +190,14 @@ def compute_numerator(
                 included_regimes.add(parent)
 
     total = 0.0
+    found_any = False
     if include_cotisants:
         for row in regime_rows:
             if int(row.get("annee") or -1) != year:
                 continue
             if str(row.get("programme_id") or "") not in included_regimes:
                 continue
+            found_any = True
             value = float(row.get("cotisants") or 0)
             if value > 0:
                 total += value
@@ -190,9 +207,14 @@ def compute_numerator(
                 continue
             if str(row.get("programme_id") or "") not in included_prestations:
                 continue
+            found_any = True
             value = float(row.get("beneficiaires") or 0)
             if value > 0:
                 total += value
+    if not found_any:
+        # Aucune ligne ESS incluse pour cette année/cet indicateur : donnée absente,
+        # à distinguer d'une couverture réellement nulle (voir constat de révision 2026-09-02).
+        return None
     return total
 
 
@@ -346,12 +368,12 @@ def format_pct(value: float | None) -> str:
     return f"{value:.1f}".replace(".", ",")
 
 
-def replace_table_row(markdown_text: str, row_label: str, values: list[str]) -> str:
+def replace_table_row(markdown_text: str, row_label: str, values: list[str], target_path: Path) -> str:
     escaped = re.escape(row_label)
     row_pattern = re.compile(rf"^\| {escaped} \|.*$", re.MULTILINE)
     replacement = f"| {row_label} | " + " | ".join(values) + " |"
     if not row_pattern.search(markdown_text):
-        raise ValueError(f"Ligne introuvable dans le tableau 5.2 : {row_label}")
+        raise ValueError(f"Ligne introuvable dans {target_path} : {row_label}")
     return row_pattern.sub(replacement, markdown_text, count=1)
 
 
@@ -376,9 +398,10 @@ def main() -> int:
     if not SETTINGS_PATH.exists():
         print(f"[ERREUR] Fichier introuvable : {SETTINGS_PATH}")
         return 1
-    if not CHAPTER5_PATH.exists():
-        print(f"[ERREUR] Fichier introuvable : {CHAPTER5_PATH}")
-        return 1
+    for target_path, _row_map in TARGETS:
+        if not target_path.exists():
+            print(f"[ERREUR] Fichier introuvable : {target_path}")
+            return 1
 
     regimes, prestations, regime_meta, prestation_meta = load_all(DB_PATH)
     indicateurs = build_indicateurs_payload(regimes, prestations)
@@ -398,9 +421,6 @@ def main() -> int:
     denom_settings = settings.get("denomSettings") or {}
     denom_constructions = denom_settings.get("denominatorConstructions") or {}
 
-    chapter_text = CHAPTER5_PATH.read_text(encoding="utf-8-sig")
-    table_years = parse_table_years(chapter_text)
-
     denom_conn = sqlite3.connect(DENOM_DB_PATH) if DENOM_DB_PATH.exists() else None
     cursor = None
     if denom_conn is not None:
@@ -416,41 +436,51 @@ def main() -> int:
         except sqlite3.Error:
             cursor = None
     try:
-        for row_label, indicator_key in ROW_TO_INDICATOR.items():
-            values = []
-            for year in table_years:
-                if year not in years_available:
-                    values.append("[N/D]")
-                    continue
-                numerator = compute_numerator(
-                    indicator_key=indicator_key,
-                    year=year,
-                    regime_rows=regime_rows,
-                    prestation_rows=prestation_rows,
-                    odd_nodes=odd_nodes,
-                    decisions=decisions,
-                )
-                denominator = get_denominator_value(
-                    indicator_key=indicator_key,
-                    year=year,
-                    denom_constructions=denom_constructions,
-                    denom_settings=denom_settings,
-                    cursor=cursor,
-                )
-                ratio = (numerator / denominator * 100.0) if (denominator and denominator > 0) else None
-                values.append(format_pct(ratio))
-            chapter_text = replace_table_row(chapter_text, row_label, values)
+        updated_targets = []
+        for target_path, row_map in TARGETS:
+            chapter_text = target_path.read_text(encoding="utf-8-sig")
+            table_years = parse_table_years(chapter_text)
+            for row_label, indicator_key in row_map.items():
+                values = []
+                for year in table_years:
+                    if year not in years_available:
+                        values.append("[N/D]")
+                        continue
+                    numerator = compute_numerator(
+                        indicator_key=indicator_key,
+                        year=year,
+                        regime_rows=regime_rows,
+                        prestation_rows=prestation_rows,
+                        odd_nodes=odd_nodes,
+                        decisions=decisions,
+                    )
+                    denominator = get_denominator_value(
+                        indicator_key=indicator_key,
+                        year=year,
+                        denom_constructions=denom_constructions,
+                        denom_settings=denom_settings,
+                        cursor=cursor,
+                    )
+                    ratio = (
+                        (numerator / denominator * 100.0)
+                        if (numerator is not None and denominator and denominator > 0)
+                        else None
+                    )
+                    values.append(format_pct(ratio))
+                chapter_text = replace_table_row(chapter_text, row_label, values, target_path)
+
+            chapter_text = chapter_text.replace(
+                "Les estimations [EST.] seront calculées par le script `generer_figures_ch4.py` depuis la base.",
+                "Les valeurs du tableau sont générées automatiquement depuis le dashboard via le script `integrer_dashboard_bulletin.py`.",
+            )
+            target_path.write_text(chapter_text, encoding="utf-8-sig")
+            updated_targets.append(target_path)
     finally:
         if denom_conn is not None:
             denom_conn.close()
 
-    chapter_text = chapter_text.replace(
-        "Les estimations [EST.] seront calculées par le script `generer_figures_ch4.py` depuis la base.",
-        "Les valeurs du tableau sont générées automatiquement depuis le dashboard via le script `integrer_dashboard_bulletin.py`.",
-    )
-
-    CHAPTER5_PATH.write_text(chapter_text, encoding="utf-8-sig")
-    print(f"[OK] Tableau 5.2 mis à jour : {CHAPTER5_PATH}")
+    for target_path in updated_targets:
+        print(f"[OK] Tableau ODD 1.3.1 mis à jour : {target_path}")
     return 0
 
 

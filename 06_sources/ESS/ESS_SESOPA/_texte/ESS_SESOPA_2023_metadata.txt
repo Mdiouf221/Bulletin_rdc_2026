@@ -1,0 +1,40 @@
+TITRE : ESS SESOPA 2023 — Enquête sur les Sources Statistiques de la protection sociale (format OIT)
+SOURCE / AUTEUR : Service de Sécurité Sociale des Parlementaires (SESOPA), Assemblée nationale, République Démocratique du Congo
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 2023
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : ESS_SESOPA_2023.txt / ESS_SESOPA_2023.xlsm (source)
+NIVEAU FIABILITE : 1 — données institutionnelles primaires (transmission directe de l'institution)
+LIEN SOURCE — Fichier source Excel (present) : 06_sources/ESS/ESS_SESOPA/ESS_SESOPA_2023.xlsm
+
+---
+
+CONTENU RÉSUMÉ
+
+Enquête sur les Sources Statistiques (ESS) de la SESOPA pour l'année 2023, cinquième année de la série historique SESOPA (2019-2025) déposée par l'institution. Structure identique à 2019-2022. Feuilles actives : Inventaire des régimes (5 régimes recensés), feuilles de prestations des Régimes 1 à 5, Info Pauvreté, ADDITIONAL statistics for SDGs, CALCULATIONS.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+RÉGIME 1 — Branche des pensions de retraite et de réversion (SESOPA, 2023) : financement mixte, obligatoire — 3 prestations
+RÉGIME 2 — Assurance maladie des parlementaires (SESOPA, 2023) : non-contributif — 8 prestations
+RÉGIME 3 — Assurance décès — rente spéciale de survie (SESOPA, 2023) : non-contributif — 7 prestations
+RÉGIME 4 — Branche des risques liés à l'exercice du mandat parlementaire (SESOPA, 2023) : non-contributif — 9 prestations
+RÉGIME 5 — Assurance maternité des parlementaires (SESOPA, 2023) : non-contributif — 5 prestations
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Structure et prestations identiques à 2019-2022 (voir ESS_SESOPA_2019_metadata.txt pour la confirmation documentaire du sigle SESOPA).
+- Les données quantitatives (effectifs, montants) se trouvent dans les feuilles individuelles des régimes.
+- Monnaie : Franc congolais (CDF).
+- Fichier intégré en base via le mode d'import progressif (`py 09_scripts/extraire_ess.py --inbox`), déposé par l'institution dans 06_sources/_entrants/Sesopa/ le 2026-09-02.
+
+---
+
+CITATION RECOMMANDÉE
+
+SESOPA (2023), Enquête sur les Sources Statistiques (ESS) — format OIT, Service de Sécurité Sociale des Parlementaires, Assemblée nationale, Kinshasa, République Démocratique du Congo.

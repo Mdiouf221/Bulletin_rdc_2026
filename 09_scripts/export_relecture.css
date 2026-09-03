@@ -406,6 +406,14 @@ p.a-rediger {
     margin        : 0.8em 0;
 }
 
+/* ===== Note technique interne (non publiée) ===========================
+ * Visible uniquement dans le serveur de prévisualisation (09_scripts/preview.css).
+ * Masquée ici (export HTML/PDF de relecture) et supprimée du HTML avant
+ * conversion Word (voir 09_scripts/exporter_word.py, apply_corrections). */
+p.dev-note {
+    display : none;
+}
+
 /* ===== Source ref statique =========================================== */
 a.source-ref {
     color                    : inherit;

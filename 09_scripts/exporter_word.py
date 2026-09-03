@@ -108,15 +108,29 @@ def apply_corrections(html: str) -> str:
                     break
                 pos = next_close + 6
 
+    # [INT-001] Aucun commentaire HTML ni bloc interne ne doit être transmis
+    # au document Word, même si l'export part d'une version de travail.
+    html = re.sub(r'<!--.*?-->', '', html, flags=re.DOTALL)
+    html = re.sub(
+        r'<(?P<tag>p|div|span)\b[^>]*class="[^"]*\b(?:dev-note|a-rediger)\b[^"]*"[^>]*>'
+        r'.*?</(?P=tag)>',
+        '',
+        html,
+        flags=re.DOTALL | re.IGNORECASE,
+    )
+
     # Supprimer les badges de validation (span.valid-badge) du texte des titres
     html = re.sub(r'<span[^>]*class="valid-badge[^"]*"[^>]*>.*?</span>', '', html, flags=re.DOTALL)
 
-    # [IMG-001] Correction des chemins d'images /files/08_figures/... → chemin absolu
+    # [IMG-001] Résoudre toutes les images servies par la route /files/.
     def fix_img(m):
-        filename = os.path.basename(m.group(1))
-        abs_path = os.path.join(FIG_DIR, filename).replace("\\", "/")
+        relative_path = m.group(1)[len("/files/"):].replace("/", os.sep)
+        abs_path = os.path.abspath(os.path.join(ROOT, relative_path))
+        if os.path.commonpath((ROOT, abs_path)) != ROOT:
+            return m.group(0)
+        abs_path = abs_path.replace("\\", "/")
         return m.group(0).replace(m.group(1), abs_path)
-    html = re.sub(r'src="(/files/08_figures/exports/[^"]+)"', fix_img, html)
+    html = re.sub(r'src="(/files/[^"]+)"', fix_img, html)
 
     # [LNK-001] Conversion des annotations source-ref en notes de bas de page
     # Structure HTML : <a href="#" data-offline="true" title="Source : ..." ...>texte</a>
@@ -218,6 +232,14 @@ def apply_corrections(html: str) -> str:
     # Bloc "à rédiger" → supprimé à l'export
     html = re.sub(
         r'<p class="a-rediger">.*?</p>',
+        '',
+        html, flags=re.DOTALL
+    )
+
+    # [DEV-001] Notes techniques internes (mentions de génération automatique,
+    # scripts, base ESS…) → utiles en prévisualisation, supprimées à l'export Word.
+    html = re.sub(
+        r'<p class="dev-note">.*?</p>',
         '',
         html, flags=re.DOTALL
     )
@@ -531,10 +553,6 @@ def export(html_path: str, out_suffix: str = ""):
 
     # Post-traitement : ajustement automatique des tableaux à la largeur de la page
     set_tables_autofit(docx_out)
-
-    # Ouvrir le fichier
-    os.startfile(docx_out)
-
 
 # ---------------------------------------------------------------------------
 

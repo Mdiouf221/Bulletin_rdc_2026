@@ -1,0 +1,38 @@
+TITRE : ESS MESP 2023 — Enquête sur les Sources Statistiques de la protection sociale (format OIT)
+SOURCE / AUTEUR : Mutuelle de Santé des Enseignants de l'Enseignement Primaire, Secondaire et Professionnel (MESP), République Démocratique du Congo
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 2023
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : ESS_MESP_2023.txt / ESS_MESP_2023.xlsm (source)
+NIVEAU FIABILITE : 1 — données institutionnelles primaires (transmission directe de l'institution)
+LIEN SOURCE — Fichier source Excel (present) : 06_sources/ESS/ESS_MESP/ESS_MESP_2023.xlsm
+
+---
+
+CONTENU RÉSUMÉ
+
+Enquête sur les Sources Statistiques (ESS) de la MESP pour l'année 2023 — poursuit la série individuelle MESP déjà disponible pour 2019-2022. Structure identique. Feuilles actives : Inventaire des régimes (1 régime recensé), feuille de prestations du Régime 1, Info Pauvreté, ADDITIONAL statistics for SDGs, CALCULATIONS.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+RÉGIME 1 — Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique (MESP, 2023) :
+- Financement contributif, caractère obligatoire
+- 1 prestation recensée dans l'inventaire des régimes
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Continuité de la série MESP 2019-2022, déjà présente en base ; structure inchangée (1 régime, 1 prestation).
+- Les données quantitatives (effectifs, montants) se trouvent dans la feuille de prestation du régime.
+- Monnaie : Franc congolais (CDF).
+- Fichier intégré en base via le mode d'import progressif (`py 09_scripts/extraire_ess.py --inbox`), déposé par l'institution dans 06_sources/_entrants/MESP/ le 2026-09-02. Les fichiers ESS_MESP_2019-2022.xlsm également déposés à cette occasion n'ont pas été réimportés — sur décision de l'utilisateur, les versions déjà en base pour ces années ont été conservées telles quelles (les nouveaux fichiers déposés présentaient une taille légèrement différente, sans qu'une vérification de contenu ait été demandée).
+
+---
+
+CITATION RECOMMANDÉE
+
+MESP (2023), Enquête sur les Sources Statistiques (ESS) — format OIT, Mutuelle de Santé des Enseignants de l'Enseignement Primaire, Secondaire et Professionnel, Kinshasa, République Démocratique du Congo.

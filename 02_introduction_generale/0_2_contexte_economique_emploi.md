@@ -46,7 +46,7 @@ révisé (données partiellement renseignées  données pauvreté/Gini à actual
 
 ## Texte rédigé
 
-### Une croissance soutenue sur fond de fragilité économique <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
+### Une croissance soutenue sur fond de fragilité économique <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 La République Démocratique du Congo a enregistré des taux de croissance économique élevés au cours des dernières années : <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+6,4 % en 2021</a>, <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+9,3 % en 2022</a>, <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+8,5 % en 2023</a> et <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+6,1 % en 2024</a> *(FMI, WEO)*. Cette dynamique est notamment portée par le secteur minier, qui concentre d'importants gisements de cuivre, cobalt, or, diamants et coltan. Elle ne se traduit cependant pas par une amélioration proportionnelle du niveau de vie moyen : le <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — WEO, indicateurs macroéconomiques RDC" class="source-ref nv">niveau du PIB par habitant demeure faible</a> à l'échelle du continent. Selon l'<a href="/files/06_sources/officielles_web/INS_RDC_ECVM_pauvrete_inegalites_2024.txt" title="Source : INS-RDC — Enquête sur les conditions de vie des ménages (ECVM) 2024" class="source-ref nv">Institut national de la statistique (INS-RDC, ECVM 2024)</a>, la pauvreté monétaire reste élevée : <span class="val" data-val-id="s2-p1-d1" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">67,9 %</span> de la population vit sous le seuil national de pauvreté, soit près de sept personnes sur dix. Les inégalités de niveau de vie demeurent également marquées, avec un indice de Gini estimé à <span class="val" data-val-id="s2-p1-d2" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">0,381</span> en 2024 *(INS-RDC, ECVM 2024)*<sup>1</sup>. Ces éléments confirment la persistance d'une vulnérabilité économique structurelle.
 
@@ -60,7 +60,7 @@ La République Démocratique du Congo a enregistré des taux de croissance écon
 
 ---
 
-### Un marché du travail dominé par l'informalité <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
+### Un marché du travail dominé par l'informalité <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 La population active — c'est-à-dire les personnes de 15 ans et plus qui travaillent ou qui recherchent un emploi — représente environ <span class="val" data-val-id="s2-p3-d1" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">70,9 %</span> de la population en âge de travailler en RDC *(OIT, ILOSTAT, estimations modélisées, 2023)*. Ce taux d'activité masque cependant une forte disparité entre les sexes : il atteint <span class="val" data-val-id="s2-p3-d2" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">78,5 %</span> chez les hommes, contre <span class="val" data-val-id="s2-p3-d3" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">63,5 %</span> chez les femmes.
 
@@ -74,7 +74,7 @@ Au sein de cette population active, la structure du marché du travail est marqu
 
 ---
 
-### Des secteurs exposés à des risques professionnels spécifiques <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
+### Des secteurs exposés à des risques professionnels spécifiques <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 L'économie congolaise concentre des activités à forte exposition aux risques professionnels. Le secteur minier artisanal et industriel emploie plusieurs centaines de milliers de travailleurs dans des conditions souvent difficiles, avec des risques d'accidents du travail, de maladies professionnelles et d'exposition à des substances dangereuses. Le secteur agricole, qui mobilise la majorité de la main-d'œuvre active, est lui aussi exposé à des risques liés aux conditions de travail en milieu rural.
 
@@ -86,6 +86,6 @@ L'économie congolaise concentre des activités à forte exposition aux risques 
 
 ---
 
-### Les enjeux d'extension de la couverture contributive <span class="valid-badge nv" title="Non validé  processus de validation non déclenché">non validé</span>
+### Les enjeux d'extension de la couverture contributive <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 Dans ce contexte — forte informalité, bas revenus, vulnérabilité persistante —, l'extension de la protection sociale se heurte à des contraintes structurelles importantes. Ces constats, croisés avec les données démographiques de la section précédente, éclairent les orientations stratégiques que la RDC s'est données pour répondre à ces défis, présentées dans la section suivante.

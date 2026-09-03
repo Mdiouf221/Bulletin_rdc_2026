@@ -21,7 +21,7 @@ Institutions à couvrir (liste provisoire) :
 - CNSS — Caisse Nationale de Sécurité Sociale (secteur privé)
 - CNSSAP — Caisse Nationale de Sécurité Sociale des Agents Publics
 - FNPSS — Fonds National de Promotion et de Service Social
-- SESOPA — Service de Santé de la Police Nationale
+- SESOPA — Service de Sécurité Sociale des Parlementaires
 - Autres régimes spéciaux identifiés lors de la collecte
 
 Documents de référence :
@@ -60,7 +60,7 @@ Règle rédactionnelle pour la section "Perspective de l'institution" :
 
 ## Vue synthétique du tableau de bord (onglet « Par institution »)
 
-Chaque fiche institutionnelle inclut, pour l'ensemble des régimes de l'institution : des graphiques d'évolution (cotisants, bénéficiaires, finances), un tableau descriptif des régimes gérés et un tableau de répartition par sexe. Ces éléments sont générés automatiquement à partir de la base ESS via `py 09_scripts/generer_annexe_b_visuels.py` — sans navigateur, sans capture d'écran — et se régénèrent à chaque rafraîchissement des données (`rafraichir_ess.py`).
+Chaque fiche institutionnelle présente, pour l'ensemble des régimes documentés, des graphiques d'évolution des cotisants, des bénéficiaires et des agrégats financiers, ainsi qu'un tableau descriptif des régimes gérés et une répartition par sexe lorsque cette information est disponible.
 
 Dans le tableau « Données détaillées », les institutions et régimes sont désignés par leur nom court ou leur sigle (voir la [Liste des sigles et acronymes](../01_pages_preliminaires/sigles_acronymes.md)) ; les années consécutives sans aucune donnée ESS sont regroupées en une seule ligne « AAAA–AAAA » plutôt que répétées une par une, afin de rester lisible sans perdre l'information d'absence de donnée.
 
@@ -74,14 +74,14 @@ La CNSS a pour mission de coordonner et d'administrer les prestations de sécuri
 
 <p class="table-caption"><strong>Tableau B.1.1</strong> — Branches de sécurité sociale couvertes, CNSS</p>
 
-| Branche | Couverte ? | Note |
-|---|---|---|
-| Vieillesse, invalidité, décès |  | Pension de vieillesse normale, proportionnelle, anticipée, de survivant ; allocation de décès |
-| Accidents du travail / maladies professionnelles (AT/MP) |  | Rentes d'incapacité, rentes de survivant |
-| Prestations familiales |  | Allocations familiales |
-| Maternité |  | Indemnités de maternité |
-| Soins de santé |  | Non gérée directement par la CNSS |
-| Chômage |  | Non couverte |
+| Branche | Note |
+|---|---|
+| Vieillesse, invalidité, décès | Pension de vieillesse normale, proportionnelle, anticipée, de survivant ; allocation de décès |
+| Accidents du travail / maladies professionnelles (AT/MP) | Rentes d'incapacité, rentes de survivant |
+| Prestations familiales | Allocations familiales |
+| Maternité | Indemnités de maternité |
+
+*Branches non couvertes par la CNSS : soins de santé (non gérée directement par l'institution) et chômage.*
 
 **Population assujettie :** travailleurs salariés du secteur privé (formel), congolais et étrangers, exerçant sur le territoire national.
 
@@ -117,12 +117,12 @@ La CNSS a pour mission de coordonner et d'administrer les prestations de sécuri
 
 <p class="table-caption"><strong>Tableau B.1.4</strong> — Régimes gérés, CNSS</p>
 
-| Régime | Type de financement | Caractère | Gestion | Administrateur | Fonctions couvertes | Années ESS disponibles |
-|---|---|---|---|---|---|---|
-| Branche des Prestations aux familles | Contributif | Obligatoire | Publique | CNSS | Maternité / Paternité; Enfants | 2019, 2020, 2021, 2022 |
-| Branche des Risques Professionnels | Contributif | Obligatoire | Publique | CNSS | Accident du travail | 2019, 2020, 2021, 2022 |
-| Branche des Pensions | Contributif | Obligatoire | Publique | CNSS | Vieillesse; Invalidité / Handicap; Survivances | 2019, 2020, 2021, 2022 |
-| Action sociale et sanitaire | — | — | — | CNSS | Autre soutien et assistance n.c.a. | 2019, 2020, 2021, 2022 |
+| Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
+|---|---|---|---|---|
+| Branche des Prestations aux familles | Contributif | Obligatoire | Publique | Maternité / Paternité; Enfants |
+| Branche des Risques Professionnels | Contributif | Obligatoire | Publique | Accident du travail |
+| Branche des Pensions | Contributif | Obligatoire | Publique | Vieillesse; Invalidité / Handicap; Survivances |
+| Action sociale et sanitaire | Non-contributif | — | Publique | Autre soutien et assistance n.c.a. |
 
 ### Aperçu graphique (tous régimes, toutes années)
 
@@ -138,37 +138,52 @@ La CNSS a pour mission de coordonner et d'administrer les prestations de sécuri
 
 <p class="fig-caption"><strong>Figure B.1.2</strong> — Répartition par sexe des cotisants et bénéficiaires cumulés, CNSS (2019–2025)</p>
 
-<p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><em>Gauche : cotisants &middot; droite : bénéficiaires</em> &nbsp;&nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
+<p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
 <p align="center"><img src="/files/04_annexes/illustrations/annexe_B_CNSS_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
 
 ### Données détaillées (par régime et année)
 
-<p class="table-caption"><strong>Tableau B.1.5</strong> — Données détaillées par régime et année, CNSS (2019–2025)</p>
+<p class="table-caption"><strong>Tableau B.1.5</strong> — Données détaillées par régime et année, CNSS (2019–2025)<span class="footnote">Pour les allocations familiales de la CNSS, le nombre d'enfants bénéficiaires est estimé en multipliant par 3,17 le nombre de titulaires de prestations familiales communiqué par la CNSS. Ce facteur correspond au nombre moyen d'enfants de moins de 20 ans par foyer en RDC en 2013, d'après UN HH Size and Composition 2019. Il s'agit donc d'une estimation et non d'un décompte administratif direct d'enfants.</span></p>
 
 | Régime | Année | Cotisants totaux | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./cotisant (k CDF) |
 |---|---|---|---|---|---|---|---|
-| Branche des Prestations aux familles | 2019 | 676,179 | 267,445 | 328.47 | 577.83 | 1,228 | 855 |
-| Branche des Prestations aux familles | 2020 | 508,708 | 294,618 | 436.46 | 725.69 | 1,481 | 1,427 |
-| Branche des Prestations aux familles | 2021 | 591,130 | 396,752 | 493.19 | 926.53 | 1,243 | 1,567 |
-| Branche des Prestations aux familles | 2022 | 613,761 | 357,386 | 677.79 | 1,067.79 | 1,897 | 1,740 |
-| Branche des Prestations aux familles | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Branche des Risques Professionnels | 2019 | 676,179 | 2,558 | 328.47 | 577.83 | 128,407 | 855 |
-| Branche des Risques Professionnels | 2020 | 508,708 | 2,628 | 436.46 | 725.69 | 166,081 | 1,427 |
-| Branche des Risques Professionnels | 2021 | 591,130 | 2,081 | 493.19 | 926.53 | 236,998 | 1,567 |
-| Branche des Risques Professionnels | 2022 | 613,761 | 2,834 | 677.79 | 1,067.79 | 239,163 | 1,740 |
-| Branche des Risques Professionnels | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Branche des Pensions | 2019 | 676,179 | 64,249 | 328.47 | 577.83 | 5,112 | 855 |
-| Branche des Pensions | 2020 | 508,708 | 68,459 | 436.46 | 725.69 | 6,376 | 1,427 |
-| Branche des Pensions | 2021 | 591,130 | 71,558 | 493.19 | 926.53 | 6,892 | 1,567 |
-| Branche des Pensions | 2022 | 613,761 | 77,581 | 677.79 | 1,067.79 | 8,737 | 1,740 |
-| Branche des Pensions | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Branche des Prestations aux familles | 2019 | 676,179 | 847,801 | 328.47 | 577.83 | — | — |
+| Branche des Prestations aux familles | 2020 | 508,708 | 933,349 | 436.46 | 725.69 | — | — |
+| Branche des Prestations aux familles | 2021 | 591,130 | 1,256,938 | 493.19 | 926.53 | — | — |
+| Branche des Prestations aux familles | 2022 | 613,761 | 1,130,824 | 677.79 | 1,067.79 | — | — |
+| Branche des Prestations aux familles | 2023 | 578,272 | 1,257,285 | — | 633.61 | — | 1,096 |
+| Branche des Prestations aux familles | 2024 | 800,486 | 911,951 | — | 681.31 | — | 851 |
+| Branche des Prestations aux familles | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Branche des Risques Professionnels | 2019 | 676,179 | 2,558 | 328.47 | 577.83 | — | — |
+| Branche des Risques Professionnels | 2020 | 508,708 | 2,628 | 436.46 | 725.69 | — | — |
+| Branche des Risques Professionnels | 2021 | 591,130 | 2,081 | 493.19 | 926.53 | — | — |
+| Branche des Risques Professionnels | 2022 | 613,761 | 2,834 | 677.79 | 1,067.79 | — | — |
+| Branche des Risques Professionnels | 2023 | 578,272 | 2,785 | — | 146.22 | — | 253 |
+| Branche des Risques Professionnels | 2024 | 800,486 | 2,853 | — | 157.22 | — | 196 |
+| Branche des Risques Professionnels | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Branche des Pensions | 2019 | 676,179 | 64,249 | 328.47 | 577.83 | — | — |
+| Branche des Pensions | 2020 | 508,708 | 68,459 | 436.46 | 725.69 | — | — |
+| Branche des Pensions | 2021 | 591,130 | 71,558 | 493.19 | 926.53 | — | — |
+| Branche des Pensions | 2022 | 613,761 | 77,581 | 677.79 | 1,067.79 | — | — |
+| Branche des Pensions | 2023 | 578,272 | 75,507 | — | 974.79 | — | 1,686 |
+| Branche des Pensions | 2024 | 800,486 | 79,822 | — | 1,048.16 | — | 1,309 |
+| Branche des Pensions | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Action sociale et sanitaire | 2019 | — | 1,766 | 0.83 | — | 469 | — |
 | Action sociale et sanitaire | 2020 | — | 849 | 5.64 | — | 6,642 | — |
 | Action sociale et sanitaire | 2021 | — | 849 | 19.95 | — | 23,492 | — |
 | Action sociale et sanitaire | 2022 | — | 479 | 0.27 | — | 554 | — |
-| Action sociale et sanitaire | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Action sociale et sanitaire | 2023 | — | 849 | — | — | — | — |
+| Action sociale et sanitaire | 2024 | — | — | — | — | — | — |
+| Action sociale et sanitaire | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| ENSEMBLE | 2019 | 676,179 | 914,608 | 328.47 | 577.83 | 359 | 855 |
+| ENSEMBLE | 2020 | 508,708 | 1,004,436 | 436.46 | 725.69 | 435 | 1,427 |
+| ENSEMBLE | 2021 | 591,130 | 1,330,577 | 493.19 | 926.53 | 371 | 1,567 |
+| ENSEMBLE | 2022 | 613,761 | 1,211,239 | 677.79 | 1,067.79 | 560 | 1,740 |
+| ENSEMBLE | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
-*Source : base ESS OIT/BIT (protection_sociale_rdc.db). Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.*
+*Source : base consolidée des ESS OIT/BIT.*
+<p class="dev-note">Les règles enregistrées dans le formulaire institutionnel (Q1, Q1b, Q2 et Q4) sont appliquées aux visuels. Les données détaillées restent présentées par régime, sans déduplication.</p>
+<p class="dev-note">Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.</p>
 
 <!-- AUTO_GENERE:CNSS:FIN -->
 
@@ -186,14 +201,13 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 
 <p class="table-caption"><strong>Tableau B.2.1</strong> — Branches de sécurité sociale couvertes, CNSSAP</p>
 
-| Branche | Couverte ? | Note |
-|---|---|---|
-| Vieillesse, invalidité, décès |  | En cours de déploiement |
-| Accidents du travail / maladies professionnelles (AT/MP) |  | Branche officiellement lancée en mai 2023 |
-| Prestations familiales |  |  |
-| Maternité |  |  |
-| Soins de santé |  | Non gérée directement |
-| Chômage |  | Non couverte |
+| Branche | Note |
+|---|---|
+| Vieillesse, invalidité, décès | Branche des pensions ; en cours de déploiement |
+| Accidents du travail / maladies professionnelles (AT/MP) | Branche des risques professionnels, officiellement lancée en mai 2023 |
+| Prestations familiales | Allocations familiales, prénatales et de maternité ; branche prévue par les textes fondateurs, non encore individualisée dans les déclarations ESS |
+
+*Branches non couvertes par la CNSSAP : soins de santé (couverte partiellement par l'action sociale et sanitaire, non documentée comme branche formelle) et chômage.*
 
 **Population assujettie :** agents de carrière des services publics de l'État, fonctionnaires contractuels, stagiaires et apprentis sous contrat. Les militaires et policiers relèvent de régimes spéciaux distincts.
 
@@ -228,12 +242,12 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 
 <p class="table-caption"><strong>Tableau B.2.4</strong> — Régimes gérés, CNSSAP</p>
 
-| Régime | Type de financement | Caractère | Gestion | Administrateur | Fonctions couvertes | Années ESS disponibles |
-|---|---|---|---|---|---|---|
-| Régime de base | Contributif | Obligatoire | Publique | CNSSAP | Vieillesse; Survivances | 2020, 2021, 2022, 2023, 2024 |
-| Reforme du transfert des assurés du sytème octroyé à la CNSSAP | Non-contributif | — | Publique | CNSSAP | Vieillesse; Survivances | 2022, 2023, 2024 |
-| Risques professionnels | Non-contributif | — | Publique | CNSSAP | Maladie (en espèces); Accident du travail | 2023, 2024 |
-| Régime Complémentaire | Contributif | Obligatoire | Publique | CNSSAP | — | 2023, 2024 |
+| Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
+|---|---|---|---|---|
+| Régime de base | Contributif | Obligatoire | Publique | Vieillesse; Survivances |
+| Reforme du transfert des assurés du sytème octroyé à la CNSSAP | Non-contributif | — | Publique | Vieillesse; Survivances |
+| Risques professionnels | Non-contributif | — | Publique | Maladie (en espèces); Accident du travail |
+| Régime Complémentaire | Contributif | Obligatoire | Publique | — |
 
 ### Aperçu graphique (tous régimes, toutes années)
 
@@ -249,7 +263,7 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 
 <p class="fig-caption"><strong>Figure B.2.2</strong> — Répartition par sexe des cotisants et bénéficiaires cumulés, CNSSAP (2019–2025)</p>
 
-<p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><em>Gauche : cotisants &middot; droite : bénéficiaires</em> &nbsp;&nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
+<p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
 <p align="center"><img src="/files/04_annexes/illustrations/annexe_B_CNSSAP_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
 
 ### Données détaillées (par régime et année)
@@ -261,12 +275,12 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 | Régime de base | 2019 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Régime de base | 2020 | 172,304 | 814 | 7.20 | 40.50 | 8,845 | 235 |
 | Régime de base | 2021 | 190,545 | 780 | 8.50 | 41.60 | 10,897 | 218 |
-| Régime de base | 2022 | 198,399 | 1,329 | 34.40 | 52.40 | 25,884 | 264 |
+| Régime de base | 2022 | 198,399 | 1,329 | 34.40 | 52.40 | — | 264 |
 | Régime de base | 2023 | 1,004,106 | 6,238 | 24.26 | 281.56 | 3,890 | 280 |
 | Régime de base | 2024 | 1,013,104 | 10,485 | 29.74 | 460.33 | 2,836 | 454 |
 | Régime de base | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Reforme du transfert des assurés du sytème octroyé à la CNSSAP | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Reforme du transfert des assurés du sytème octroyé à la CNSSAP | 2022 | — | 3,653 | 34.40 | 9.80 | 9,417 | — |
+| Reforme du transfert des assurés du sytème octroyé à la CNSSAP | 2022 | — | 3,653 | 34.40 | 9.80 | — | — |
 | Reforme du transfert des assurés du sytème octroyé à la CNSSAP | 2023 | — | 4,522 | 8.56 | 19.62 | 1,892 | — |
 | Reforme du transfert des assurés du sytème octroyé à la CNSSAP | 2024 | — | 2,510 | 19.62 | 19.62 | 7,817 | — |
 | Reforme du transfert des assurés du sytème octroyé à la CNSSAP | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
@@ -278,8 +292,13 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 | Régime Complémentaire | 2023 | 218,899 | 0 | 0.00 | 22.35 | — | 102 |
 | Régime Complémentaire | 2024 | 219,327 | 0 | 0.00 | 55.35 | — | 252 |
 | Régime Complémentaire | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| ENSEMBLE | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| ENSEMBLE | 2022 | — | 4,982 | 34.40 | — | 6,905 | — |
+| ENSEMBLE | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
-*Source : base ESS OIT/BIT (protection_sociale_rdc.db). Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.*
+*Source : base consolidée des ESS OIT/BIT.*
+<p class="dev-note">Les règles enregistrées dans le formulaire institutionnel (Q1, Q1b, Q2 et Q4) sont appliquées aux visuels. Les données détaillées restent présentées par régime, sans déduplication.</p>
+<p class="dev-note">Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.</p>
 
 <!-- AUTO_GENERE:CNSSAP:FIN -->
 
@@ -303,13 +322,13 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 
 <p class="table-caption"><strong>Tableau B.3.1</strong> — Branches de sécurité sociale couvertes, FNPSS</p>
 
-| Branche | Couverte ? | Note |
-|---|---|---|
-| Vieillesse, invalidité, décès | *À confirmer* |  |
-| AT/MP | *À confirmer* |  |
-| Prestations familiales | *À confirmer* |  |
-| Maternité | *À confirmer* |  |
-| Soins de santé | *À confirmer* |  |
+| Branche | Note |
+|---|---|
+| Vieillesse, invalidité, décès | *À confirmer* |
+| AT/MP | *À confirmer* |
+| Prestations familiales | *À confirmer* |
+| Maternité | *À confirmer* |
+| Soins de santé | *À confirmer* |
 
 **Population assujettie :** *À préciser.*
 
@@ -346,13 +365,12 @@ La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une soc
 
 <p class="table-caption"><strong>Tableau B.4.1</strong> — Branches de sécurité sociale couvertes, MESP</p>
 
-| Branche | Couverte ? | Note |
-|---|---|---|
-| Soins de santé (assurance maladie) |  | Paquet étendu : soins ambulatoires, spécialisés, hospitaliers, médicaments, examens |
-| Maternité |  | Incluse dans le paquet de soins |
-| Vieillesse / pensions |  | Non couverte |
-| AT/MP |  | Non couverte |
-| Prestations familiales |  | Non couverte |
+| Branche | Note |
+|---|---|
+| Soins de santé (assurance maladie) | Paquet étendu : soins ambulatoires, spécialisés, hospitaliers, médicaments, examens |
+| Maternité | Incluse dans le paquet de soins |
+
+*Branches non couvertes par la MESP : vieillesse / pensions, AT/MP, prestations familiales.*
 
 **Population assujettie :** enseignants du secteur public de l'enseignement primaire, secondaire et technique, ainsi que leur conjoint et un maximum de 3 enfants de moins de 18 ans (ou encore étudiants ; 5 enfants si les deux conjoints sont enseignants). L'affiliation est conditionnée à la détention d'une carte MESP.
 
@@ -385,9 +403,9 @@ La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une soc
 
 <p class="table-caption"><strong>Tableau B.4.4</strong> — Régimes gérés, MESP</p>
 
-| Régime | Type de financement | Caractère | Gestion | Administrateur | Fonctions couvertes | Années ESS disponibles |
-|---|---|---|---|---|---|---|
-| MESP-Couverture Santé des enseignants du secteur public de la République Démocratique du Congo | Contributif | Obligatoire | Privée | MESP | Soins de santé | 2019, 2020, 2021, 2022 |
+| Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
+|---|---|---|---|---|
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | Contributif | Obligatoire | Privée | Soins de santé |
 
 ### Aperçu graphique (tous régimes, toutes années)
 
@@ -403,7 +421,7 @@ La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une soc
 
 <p class="fig-caption"><strong>Figure B.4.2</strong> — Répartition par sexe des cotisants et bénéficiaires cumulés, MESP (2019–2025)</p>
 
-<p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><em>Gauche : cotisants &middot; droite : bénéficiaires</em> &nbsp;&nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
+<p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
 <p align="center"><img src="/files/04_annexes/illustrations/annexe_B_MESP_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
 
 ### Données détaillées (par régime et année)
@@ -412,21 +430,27 @@ La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une soc
 
 | Régime | Année | Cotisants totaux | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./cotisant (k CDF) |
 |---|---|---|---|---|---|---|---|
-| MESP-Couverture Santé des enseignants du secteur public de la République Démocratique du Congo | 2019 | 50,256 | 122,547 | — | — | — | — |
-| MESP-Couverture Santé des enseignants du secteur public de la République Démocratique du Congo | 2020 | 54,383 | 130,961 | — | — | — | — |
-| MESP-Couverture Santé des enseignants du secteur public de la République Démocratique du Congo | 2021 | 60,745 | 141,826 | — | — | — | — |
-| MESP-Couverture Santé des enseignants du secteur public de la République Démocratique du Congo | 2022 | 80,041 | 164,877 | — | — | — | — |
-| MESP-Couverture Santé des enseignants du secteur public de la République Démocratique du Congo | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2019 | 50,256 | 122,547 | — | — | — | — |
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2020 | 54,383 | 130,961 | — | — | — | — |
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2021 | 60,745 | 141,826 | — | — | — | — |
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2022 | 80,041 | 164,877 | — | — | — | — |
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2023 | 87,019 | 176,471 | — | — | — | — |
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2024 | 96,538 | 196,574 | — | — | — | — |
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2025 | 112,608 | 217,171 | — | — | — | — |
 
-*Source : base ESS OIT/BIT (protection_sociale_rdc.db). Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.*
+*Source : base consolidée des ESS OIT/BIT.*
+<p class="dev-note">Aucun paramètre institutionnel enregistré : les visuels présentent les données ESS sans correction issue du formulaire.</p>
+<p class="dev-note">Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.</p>
 
 <!-- AUTO_GENERE:MESP:FIN -->
 
 ## Évolutions et réformes en cours
 
-Entre 2019 et 2022, le nombre de contributeurs à la MESP a progressé de **59,3 %**, passant de 50 256 à 80 041. Le nombre de personnes à charge a également augmenté, atteignant 84 836 en 2022, pour un total couvert de 164 877 personnes.
+Entre 2019 et 2024, le nombre de contributeurs à la MESP a progressé de **92 %**, passant de 50 256 à 96 538. Le nombre de bénéficiaires (contributeurs et personnes à charge) a suivi une progression comparable, passant de 122 547 à 196 574 sur la même période.<sup>1</sup>
 
-Cette dynamique reste cependant très en deçà du potentiel : si chaque enseignant détenait une carte MESP, la mutuelle compterait plus de 700 000 titulaires et potentiellement 2 800 000 bénéficiaires au total. À fin 2022, la MESP n'était opérationnelle que dans 7 des 26 provinces (Kinshasa, Haut-Katanga, Équateur, Kasaï-Oriental, Kasaï, Tshopo et Nord-Kivu), laissant 19 provinces sans couverture effective.
+Cette dynamique reste cependant très en deçà du potentiel : si chaque enseignant détenait une carte MESP, la mutuelle compterait plus de 700 000 titulaires et potentiellement 2 800 000 bénéficiaires au total. À fin 2022, la MESP n'était opérationnelle que dans 7 des 26 provinces (Kinshasa, Haut-Katanga, Équateur, Kasaï-Oriental, Kasaï, Tshopo et Nord-Kivu), laissant 19 provinces sans couverture effective. Cette évaluation de la couverture provinciale n'a pas été actualisée depuis ; sa situation pour 2023-2025 reste à confirmer auprès de la MESP.
+
+<sup>1</sup> *Les effectifs 2025 transmis par la MESP reprennent à l'identique ceux de 2024 (96 538 cotisants, 196 574 bénéficiaires) : cette stabilité n'est pas confirmée comme une observation distincte et reste à vérifier auprès de l'institution.*
 
 L'extension géographique progressive constitue le principal enjeu stratégique de la MESP pour les années à venir.
 
@@ -480,13 +504,13 @@ Le FSS a vocation à regrouper, à terme, plusieurs régimes :
 
 <p class="table-caption"><strong>Tableau B.5.4</strong> — Régimes gérés, FSS</p>
 
-| Régime | Type de financement | Caractère | Gestion | Administrateur | Fonctions couvertes | Années ESS disponibles |
-|---|---|---|---|---|---|---|
-| FSS-Assurance maladie du secteur informel | Contributif | Obligatoire | Publique | FSS - Fond de Solidarité Santé | Soins de santé | 2022 |
-| FSS-Assurance maladie obligatoire pour les agents de carrière des Services publics de l'Etat, actifs et retraités | Contributif | Obligatoire | Publique | FSS - Fond de Solidarité Santé | Soins de santé | 2022 |
-| FSS-Assurance maladie obligatoire des travailleurs régis par le Code du travail, retraités et actifs | Contributif | Obligatoire | Publique | FSS - Fond de Solidarité Santé | Soins de santé | 2022 |
-| FSS-Assurance maladie obligatoire pour élèves et étudiants | Contributif | Obligatoire | Publique | FSS - Fond de Solidarité Santé | Soins de santé | 2022 |
-| FSS-Assurance médicale de l’Etat aux personnes vulnérables | Non-contributif | — | Publique | FSS - Fond de Solidarité Santé | Soins de santé | 2022 |
+| Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
+|---|---|---|---|---|
+| FSS-Assurance maladie du secteur informel | Contributif | Obligatoire | Publique | Soins de santé |
+| FSS-Assurance maladie obligatoire pour les agents de carrière des Services publics de l'Etat, actifs et retraités | Contributif | Obligatoire | Publique | Soins de santé |
+| FSS-Assurance maladie obligatoire des travailleurs régis par le Code du travail, retraités et actifs | Contributif | Obligatoire | Publique | Soins de santé |
+| FSS-Assurance maladie obligatoire pour élèves et étudiants | Contributif | Obligatoire | Publique | Soins de santé |
+| FSS-Assurance médicale de l’Etat aux personnes vulnérables | Non-contributif | — | Publique | Soins de santé |
 
 ### Aperçu graphique (tous régimes, toutes années)
 
@@ -502,7 +526,7 @@ Le FSS a vocation à regrouper, à terme, plusieurs régimes :
 
 <p class="fig-caption"><strong>Figure B.5.2</strong> — Répartition par sexe des cotisants et bénéficiaires cumulés, FSS (2019–2025)</p>
 
-<p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><em>Gauche : cotisants &middot; droite : bénéficiaires</em> &nbsp;&nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
+<p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
 <p align="center"><img src="/files/04_annexes/illustrations/annexe_B_FSS_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
 
 ### Données détaillées (par régime et année)
@@ -527,7 +551,9 @@ Le FSS a vocation à regrouper, à terme, plusieurs régimes :
 | FSS-Assurance médicale de l’Etat aux personnes vulnérables | 2022 | — | — | — | — | — | — |
 | FSS-Assurance médicale de l’Etat aux personnes vulnérables | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
-*Source : base ESS OIT/BIT (protection_sociale_rdc.db). Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.*
+*Source : base consolidée des ESS OIT/BIT.*
+<p class="dev-note">Aucun paramètre institutionnel enregistré : les visuels présentent les données ESS sans correction issue du formulaire.</p>
+<p class="dev-note">Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.</p>
 
 <!-- AUTO_GENERE:FSS:FIN -->
 
@@ -537,7 +563,7 @@ Le FSS représente l'architecture institutionnelle centrale de la CSU en RDC, ma
 
 L'extension est prévue vers le Sud-Kivu, le Kasaï-Oriental et le Kongo-Central, avant une généralisation progressive à l'ensemble du territoire national. La vocation du FSS est à terme de remplacer tous les régimes particuliers de financement des soins médicaux existants pour assurer une couverture universelle.
 
-# B.6 Service Autonome de Sécurité Sociale des Parlementaires (SESOPA)
+# B.6 Service de Sécurité Sociale des Parlementaires (SESOPA)
 
 ## Mission et branches couvertes
 
@@ -545,13 +571,16 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 
 <p class="table-caption"><strong>Tableau B.6.1</strong> — Branches de sécurité sociale couvertes, SESOPA</p>
 
-| Branche | Couverte ? | Note |
-|---|---|---|
-| Vieillesse |  | Pension de retraite |
-| Décès |  | Allocation aux ayants droit |
-| Invalidité |  | Non mentionnée explicitement |
-| Soins de santé |  | Non couverte par ce régime |
-| AT/MP |  | Non couverte |
+| Branche | Note |
+|---|---|
+| Vieillesse | Pension de retraite (branche des pensions de retraite et de réversion) ; couverte légalement et effectivement |
+| Décès / survivants | Allocation aux ayants droit (branche des pensions ; assurance décès-rente spéciale de survie) ; couverte légalement et effectivement pour la branche des pensions, sans donnée effective déclarée pour la rente spéciale de survie |
+| Invalidité / handicap | Couverte légalement (branche des risques liés à l'exercice du mandat parlementaire, données ESS) ; aucune donnée effective (cotisants, bénéficiaires, dépenses) déclarée à ce jour |
+| Accidents du travail / maladies professionnelles (AT/MP) | Couverte légalement (branche des risques liés à l'exercice du mandat parlementaire, données ESS) ; aucune donnée effective déclarée à ce jour |
+| Soins de santé | Couverte légalement (assurance maladie des parlementaires ; volet santé de la branche des risques liés au mandat, données ESS) ; aucune donnée effective déclarée à ce jour |
+| Maternité / paternité | Couverte légalement (assurance maternité des parlementaires, données ESS) ; aucune donnée effective déclarée à ce jour |
+
+*Le détail par régime figure au Tableau B.6.5 « Régimes gérés ». Les branches sans donnée effective déclarée sont néanmoins retenues comme couvertes légalement, ces régimes figurant explicitement dans les déclarations ESS de la SESOPA.*
 
 **Population assujettie :** parlementaires nationaux (Assemblée Nationale) et leurs ayants droit.
 
@@ -572,24 +601,24 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
-| Parlementaires affiliés | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Bénéficiaires de pensions | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Parlementaires affiliés (branche pensions) | 2 315 | 2 315 | 2 315 | 2 315 | 2 315 | 2 315 | 2 315 |
+| Bénéficiaires de pensions (vieillesse + réversion) | 1 959 | 1 959 | 1 959 | 1 959 | 1 959 | 1 959 | 1 959 |
 
-*Données non disponibles au moment du premier bulletin. À transmettre par la SESOPA.*
+*Source : ESS OIT — SESOPA (2019–2025). Le détail par régime figure au Tableau B.6.5. Les effectifs déclarés sont strictement identiques d'une année sur l'autre sur l'ensemble de la période transmise (voir DM-020, `00_pilotage/decisions_methodologiques.md`) : cette stabilité n'est pas confirmée comme une observation annuelle réelle et reste à vérifier auprès du SESOPA.*
 
 <!-- AUTO_GENERE:SESOPA:DEBUT -->
 
 ### Régimes gérés
 
-<p class="table-caption"><strong>Tableau B.6.4</strong> — Régimes gérés, SESOPA</p>
+<p class="table-caption"><strong>Tableau B.6.6</strong> — Régimes gérés, SESOPA</p>
 
-| Régime | Type de financement | Caractère | Gestion | Administrateur | Fonctions couvertes | Années ESS disponibles |
-|---|---|---|---|---|---|---|
-| Branche des pensions  de retraite et de réversion | Mixte | Obligatoire | Publique | SESOPA Assemblée nationale | Vieillesse; Survivances | 2026 |
-| Assurance maladie des parlementaires | Non-contributif | — | Publique | SESOPA Assemblée nationale | Soins de santé | 2026 |
-| Assurance décès -rente spéciale de survie | Non-contributif | — | Publique | SESOPA Assemblée nationale | Survivances | 2026 |
-| Branche des risques liés à l'exercice du mandat parlementaire | Non-contributif | — | Publique | SESOPA Assemblée nationale | Invalidité / Handicap; Survivances; Accident du travail; Soins de santé | 2026 |
-| Assurance maternité des parlementaires | Non-contributif | — | Publique | SESOPA Assemblée nationale | Maternité / Paternité; Soins de santé | 2026 |
+| Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
+|---|---|---|---|---|
+| Branche des pensions  de retraite et de réversion | Mixte | Obligatoire | Publique | Vieillesse; Survivances |
+| Assurance maladie des parlementaires | Non-contributif | — | Publique | Soins de santé |
+| Assurance décès -rente spéciale de survie | Non-contributif | — | Publique | Survivances |
+| Branche des risques liés à l'exercice du mandat parlementaire | Non-contributif | — | Publique | Invalidité / Handicap; Survivances; Accident du travail; Soins de santé |
+| Assurance maternité des parlementaires | Non-contributif | — | Publique | Maternité / Paternité; Soins de santé |
 
 ### Aperçu graphique (tous régimes, toutes années)
 
@@ -605,27 +634,59 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 
 <p class="fig-caption"><strong>Figure B.6.2</strong> — Répartition par sexe des cotisants et bénéficiaires cumulés, SESOPA (2019–2025)</p>
 
-<p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><em>Gauche : cotisants &middot; droite : bénéficiaires</em> &nbsp;&nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
+<p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
 <p align="center"><img src="/files/04_annexes/illustrations/annexe_B_SESOPA_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
 
 ### Données détaillées (par régime et année)
 
-<p class="table-caption"><strong>Tableau B.6.5</strong> — Données détaillées par régime et année, SESOPA (2019–2025)</p>
+<p class="table-caption"><strong>Tableau B.6.7</strong> — Données détaillées par régime et année, SESOPA (2019–2025)</p>
 
 | Régime | Année | Cotisants totaux | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./cotisant (k CDF) |
 |---|---|---|---|---|---|---|---|
-| Branche des pensions  de retraite et de réversion | 2019–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Branche des pensions  de retraite et de réversion | 2019 | 2,315 | 1,959 | — | — | — | — |
+| Branche des pensions  de retraite et de réversion | 2020 | 2,315 | 1,959 | — | — | — | — |
+| Branche des pensions  de retraite et de réversion | 2021 | 2,315 | 1,959 | — | — | — | — |
+| Branche des pensions  de retraite et de réversion | 2022 | 2,315 | 1,959 | — | — | — | — |
+| Branche des pensions  de retraite et de réversion | 2023 | 2,315 | 1,959 | — | — | — | — |
+| Branche des pensions  de retraite et de réversion | 2024 | 2,315 | 1,959 | — | — | — | — |
+| Branche des pensions  de retraite et de réversion | 2025 | 2,315 | 1,959 | — | — | — | — |
 | Branche des pensions  de retraite et de réversion | 2026 | 2,315 | 1,959 | — | — | — | — |
-| Assurance maladie des parlementaires | 2019–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Assurance maladie des parlementaires | 2019 | — | — | — | — | — | — |
+| Assurance maladie des parlementaires | 2020 | — | — | — | — | — | — |
+| Assurance maladie des parlementaires | 2021 | — | — | — | — | — | — |
+| Assurance maladie des parlementaires | 2022 | — | — | — | — | — | — |
+| Assurance maladie des parlementaires | 2023 | — | — | — | — | — | — |
+| Assurance maladie des parlementaires | 2024 | — | — | — | — | — | — |
+| Assurance maladie des parlementaires | 2025 | — | — | — | — | — | — |
 | Assurance maladie des parlementaires | 2026 | — | — | — | — | — | — |
-| Assurance décès -rente spéciale de survie | 2019–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Assurance décès -rente spéciale de survie | 2019 | — | — | — | — | — | — |
+| Assurance décès -rente spéciale de survie | 2020 | — | — | — | — | — | — |
+| Assurance décès -rente spéciale de survie | 2021 | — | — | — | — | — | — |
+| Assurance décès -rente spéciale de survie | 2022 | — | — | — | — | — | — |
+| Assurance décès -rente spéciale de survie | 2023 | — | — | — | — | — | — |
+| Assurance décès -rente spéciale de survie | 2024 | — | — | — | — | — | — |
+| Assurance décès -rente spéciale de survie | 2025 | — | — | — | — | — | — |
 | Assurance décès -rente spéciale de survie | 2026 | — | — | — | — | — | — |
-| Branche des risques liés à l'exercice du mandat parlementaire | 2019–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Branche des risques liés à l'exercice du mandat parlementaire | 2019 | — | — | — | — | — | — |
+| Branche des risques liés à l'exercice du mandat parlementaire | 2020 | — | — | — | — | — | — |
+| Branche des risques liés à l'exercice du mandat parlementaire | 2021 | — | — | — | — | — | — |
+| Branche des risques liés à l'exercice du mandat parlementaire | 2022 | — | — | — | — | — | — |
+| Branche des risques liés à l'exercice du mandat parlementaire | 2023 | — | — | — | — | — | — |
+| Branche des risques liés à l'exercice du mandat parlementaire | 2024 | — | — | — | — | — | — |
+| Branche des risques liés à l'exercice du mandat parlementaire | 2025 | — | — | — | — | — | — |
 | Branche des risques liés à l'exercice du mandat parlementaire | 2026 | — | — | — | — | — | — |
-| Assurance maternité des parlementaires | 2019–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Assurance maternité des parlementaires | 2019 | — | — | — | — | — | — |
+| Assurance maternité des parlementaires | 2020 | — | — | — | — | — | — |
+| Assurance maternité des parlementaires | 2021 | — | — | — | — | — | — |
+| Assurance maternité des parlementaires | 2022 | — | — | — | — | — | — |
+| Assurance maternité des parlementaires | 2023 | — | — | — | — | — | — |
+| Assurance maternité des parlementaires | 2024 | — | — | — | — | — | — |
+| Assurance maternité des parlementaires | 2025 | — | — | — | — | — | — |
 | Assurance maternité des parlementaires | 2026 | — | — | — | — | — | — |
 
-*Source : base ESS OIT/BIT (protection_sociale_rdc.db). Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.*
+*Source : base consolidée des ESS OIT/BIT.*
+<p class="dev-note">Aucun paramètre institutionnel enregistré : les visuels présentent les données ESS sans correction issue du formulaire.</p>
+<p class="dev-note">Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.</p>
 
 <!-- AUTO_GENERE:SESOPA:FIN -->
 
@@ -635,19 +696,21 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 
 # B.7 Régimes spéciaux non contributifs de la fonction publique
 
+**Note méthodologique importante.** « TRESOR » est un code technique de la base et non le nom d'une institution. Il désigne ici la part estimée du secteur public non couverte par la CNSSAP. Le bulletin pose l'hypothèse que cette population relève d'un dispositif non contributif financé directement par allocation budgétaire. Les effectifs présentés sont donc des estimations de personnes potentiellement couvertes et non des cotisants.
+
 <!-- AUTO_GENERE:TRESOR:DEBUT -->
 
-### Régimes gérés
+### Dispositif représenté
 
-<p class="table-caption"><strong>Tableau B.7.1</strong> — Régimes gérés, TRESOR</p>
+<p class="table-caption"><strong>Tableau B.7.1</strong> — Régimes gérés, dispositif budgétaire hors CNSSAP (proxy technique « TRESOR »)</p>
 
-| Régime | Type de financement | Caractère | Gestion | Administrateur | Fonctions couvertes | Années ESS disponibles |
-|---|---|---|---|---|---|---|
-| Pensions de retraite octroyé de la fonction publique | Non-contributif | Obligatoire | Publique | Trésor public | Vieillesse; Survivances | 2019, 2020, 2021, 2022 |
+| Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
+|---|---|---|---|---|
+| Pensions de retraite octroyé de la fonction publique | Non-contributif | Obligatoire | Publique | Vieillesse; Survivances |
 
 ### Aperçu graphique (tous régimes, toutes années)
 
-<p class="fig-caption"><strong>Figure B.7.1</strong> — Évolution des cotisants, bénéficiaires, dépenses et recettes (tous régimes), TRESOR (2019–2025)</p>
+<p class="fig-caption"><strong>Figure B.7.1</strong> — Évolution des personnes potentiellement couvertes estimées, bénéficiaires, dépenses et recettes (tous régimes), dispositif budgétaire hors CNSSAP (proxy technique « TRESOR ») (2019–2025)</p>
 
 <table style="width:100%; border-collapse:collapse;">
 <tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_TRESOR_cotisants.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_TRESOR_beneficiaires.png" style="width:100%; height:auto;"></td></tr>
@@ -655,30 +718,36 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 <tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_TRESOR_recettes.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_TRESOR_contribution.png" style="width:100%; height:auto;"></td></tr>
 </table>
 
-### Répartition par sexe (cotisants et bénéficiaires cumulés)
+### Répartition par sexe (personnes potentiellement couvertes estimées et bénéficiaires cumulés)
 
-<p class="fig-caption"><strong>Figure B.7.2</strong> — Répartition par sexe des cotisants et bénéficiaires cumulés, TRESOR (2019–2025)</p>
+<p class="fig-caption"><strong>Figure B.7.2</strong> — Répartition par sexe des personnes potentiellement couvertes estimées et bénéficiaires cumulés, dispositif budgétaire hors CNSSAP (proxy technique « TRESOR ») (2019–2025)</p>
 
-<p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><em>Gauche : cotisants &middot; droite : bénéficiaires</em> &nbsp;&nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
+<p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
 <p align="center"><img src="/files/04_annexes/illustrations/annexe_B_TRESOR_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
 
 ### Données détaillées (par régime et année)
 
-<p class="table-caption"><strong>Tableau B.7.2</strong> — Données détaillées par régime et année, TRESOR (2019–2025)</p>
+<p class="table-caption"><strong>Tableau B.7.2</strong> — Données détaillées par régime et année, dispositif budgétaire hors CNSSAP (proxy technique « TRESOR ») (2019–2025)</p>
 
-| Régime | Année | Cotisants totaux | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./cotisant (k CDF) |
+| Régime | Année | Personnes potentiellement couvertes (estimation) | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./personne couverte estimée (k CDF) |
 |---|---|---|---|---|---|---|---|
 | Pensions de retraite octroyé de la fonction publique | 2019 | 1,450,668 | — | — | — | — | — |
 | Pensions de retraite octroyé de la fonction publique | 2020 | 1,450,668 | — | — | — | — | — |
 | Pensions de retraite octroyé de la fonction publique | 2021 | 1,432,427 | — | — | — | — | — |
 | Pensions de retraite octroyé de la fonction publique | 2022 | 1,424,573 | — | — | — | — | — |
-| Pensions de retraite octroyé de la fonction publique | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Pensions de retraite octroyé de la fonction publique | 2023 | 420,894 | — | — | — | — | — |
+| Pensions de retraite octroyé de la fonction publique | 2024 | 713,896 | — | — | — | — | — |
+| Pensions de retraite octroyé de la fonction publique | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
-*Source : base ESS OIT/BIT (protection_sociale_rdc.db). Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.*
+<span class="footnote">Les valeurs de la colonne « Personnes potentiellement couvertes (estimation) » ne sont pas des cotisants. Elles correspondent à la part estimée du secteur public hors CNSSAP, calculée par différence à partir des estimations globales de la Fonction publique : <span class="val" data-val-id="sB7-p1-d1" data-val-status="à valider" data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 622 972</span> pour chacune des années 2019 à 2022, <span class="val" data-val-id="sB7-p1-d2" data-val-status="à valider" data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 425 000</span> en 2023 et <span class="val" data-val-id="sB7-p1-d3" data-val-status="à valider" data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 727 000</span> en 2024. Source : estimations de la Fonction publique ; niveau de fiabilité : estimation provisoire, à confirmer par des données administratives détaillées.</span>
+
+*Source : base consolidée des ESS OIT/BIT.*
+<p class="dev-note">Aucun paramètre institutionnel enregistré : les visuels présentent les données ESS sans correction issue du formulaire.</p>
+<p class="dev-note">Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.</p>
 
 <!-- AUTO_GENERE:TRESOR:FIN -->
 
-*Note : la vue « TRESOR » est utilisée ici comme proxy opérationnel des régimes spéciaux non contributifs financés par le Trésor public.*
+*Note : la vue technique « TRESOR » est utilisée ici comme proxy opérationnel de la protection budgétaire non contributive des agents publics hors CNSSAP ; elle ne représente pas une institution.*
 
 *Ces régimes sont financés par le Trésor public et destinés à des catégories spécifiques d'agents de l'État. Leur identification exhaustive est difficile : le premier bulletin note explicitement qu'il a été impossible d'en obtenir une liste complète et des données détaillées.*
 

@@ -14,7 +14,9 @@ Pour chaque institution présente en base, régénère automatiquement :
      jeu de 2 camemberts par année, exportés en PNG via Plotly/kaleido.
   4. Un tableau Markdown natif « Données détaillées » (par régime et année).
 
-Par défaut, tous les régimes de l'institution sont inclus (pas de sélection/filtre).
+Tous les régimes de l'institution sont inclus. Les corrections enregistrées dans
+10_output/questionnaire_data.json (Q1, Q1b, Q2 et Q4) sont appliquées aux graphiques.
+Les institutions sans formulaire enregistré conservent leurs données ESS brutes.
 
 Couverture 2019-2025 : le bulletin couvre les années 2019 à 2025. Toute année de
 cette plage sans donnée ESS apparaît explicitement comme un repère [N/D] (tableaux)
@@ -33,6 +35,8 @@ Usage :
     py 09_scripts/generer_annexe_b_visuels.py
 """
 
+import copy
+import json
 import os
 import re
 import sys
@@ -68,6 +72,7 @@ from visualiser_regimes import (  # noqa: E402
 WORKSPACE = SCRIPT_DIR.parent
 ILLUSTRATIONS_DIR = WORKSPACE / "04_annexes" / "illustrations"
 ANNEXE_B_MD = WORKSPACE / "04_annexes" / "annexe_B_fiches_institutionnelles.md"
+QUESTIONNAIRE_DATA_FILE = WORKSPACE / "10_output" / "questionnaire_data.json"
 
 CHART_WIDTH = 1000
 CHART_HEIGHT = 520
@@ -89,7 +94,7 @@ SEX_PIE_YEARS_PER_ROW = 3
 SEX_PIE_CELL_WIDTH = 150   # largeur par pie (px, avant scale)
 SEX_PIE_ROW_HEIGHT = 175   # hauteur par ligne d'années (px, avant scale)
 SEX_PIE_TOP_MARGIN = 36
-SEX_PIE_BOTTOM_MARGIN = 6
+SEX_PIE_BOTTOM_MARGIN = 24
 SEX_PIE_SCALE = 2
 
 # (clé fichier, libellé, fonction builder — même source que le dashboard interactif)
@@ -104,6 +109,206 @@ CHART_SPECS = [
 
 # Fonctions qui acceptent un paramètre sex_mode (les autres n'en ont pas besoin)
 _SEX_MODE_BUILDERS = {build_fig_institution_cotisants, build_fig_institution_beneficiaires}
+
+
+def load_questionnaire_data(path: Path = QUESTIONNAIRE_DATA_FILE) -> dict:
+    """Charge les paramètres institutionnels utilisés par le tableau de bord."""
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Paramètres institutionnels introuvables : {path}. "
+            "Enregistrer d'abord le formulaire du tableau de bord."
+        )
+    try:
+        data = json.loads(path.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"Lecture des paramètres institutionnels impossible : {exc}") from exc
+    if not isinstance(data, dict):
+        raise ValueError("questionnaire_data.json doit contenir un objet par institution.")
+    return data
+
+
+def _fusion_components(answers: dict) -> list[list[str]]:
+    """Construit les composantes connexes des paires de régimes cochées."""
+    edges = []
+    for key, value in answers.items():
+        if value != "true":
+            continue
+        parts = key.split("__")
+        if len(parts) == 2:
+            edges.append((parts[0], parts[1]))
+    if not edges:
+        return []
+
+    parent: dict[str, str] = {}
+
+    def find(item: str) -> str:
+        parent.setdefault(item, item)
+        if parent[item] != item:
+            parent[item] = find(parent[item])
+        return parent[item]
+
+    for left, right in edges:
+        parent[find(left)] = find(right)
+
+    components: dict[str, list[str]] = {}
+    for regime in {item for edge in edges for item in edge}:
+        components.setdefault(find(regime), []).append(regime)
+    return [sorted(regimes) for regimes in components.values() if len(regimes) > 1]
+
+
+def _merge_population_traces(traces: list[dict], answers: dict) -> list[dict]:
+    """Déduplique les populations partagées en retenant le maximum annuel."""
+    components = _fusion_components(answers)
+    if not components:
+        return copy.deepcopy(traces)
+
+    result = []
+    processed: set[str] = set()
+    for trace in traces:
+        regime = trace.get("legendgroup")
+        component = next((group for group in components if regime in group), None)
+        if component is None:
+            result.append(copy.deepcopy(trace))
+            continue
+
+        group_key = "__".join(component)
+        if group_key in processed:
+            continue
+        processed.add(group_key)
+        members = [item for item in traces if item.get("legendgroup") in component]
+        if not members:
+            continue
+
+        merged = copy.deepcopy(members[0])
+        years = sorted(
+            {year for member in members for year in member.get("x", [])},
+            key=lambda value: str(value),
+        )
+        merged["x"] = years
+        merged["y"] = []
+        for year in years:
+            values = []
+            for member in members:
+                member_years = member.get("x", [])
+                if year not in member_years:
+                    continue
+                value = member.get("y", [])[member_years.index(year)]
+                if value is not None:
+                    values.append(value)
+            merged["y"].append(max(values) if values else None)
+        merged["name"] = " + ".join(NOM_COURT.get(code, code) for code in component)
+        merged["legendgroup"] = group_key
+        merged.pop("stackgroup", None)
+        merged["fill"] = "none"
+        result.append(merged)
+    return result
+
+
+def _apply_q4_conversion(traces: list[dict], settings: dict) -> list[dict]:
+    """Convertit les bénéficiaires selon les unités et coefficients Q4."""
+    units = settings.get("Q4") or {}
+    coefficients_by_regime = settings.get("Q4_coefficients") or {}
+    converted = copy.deepcopy(traces)
+    for trace in converted:
+        regime = trace.get("legendgroup")
+        unit = units.get(regime)
+        if not unit or unit == "enfant":
+            continue
+        coefficients = coefficients_by_regime.get(regime) or {}
+        for index, year in enumerate(trace.get("x", [])):
+            values = trace.get("y", [])
+            if index >= len(values) or values[index] is None:
+                continue
+            coefficient_data = coefficients.get(str(year)) or coefficients.get(year) or coefficients.get("default")
+            coefficient = coefficient_data.get("value") if isinstance(coefficient_data, dict) else None
+            if coefficient not in (None, 0):
+                values[index] *= coefficient
+    return converted
+
+
+def _q2_components(q2_data: dict, metric_type: str, year) -> list[list[str]]:
+    suffix = f"_{metric_type}_{year}"
+    answers = {}
+    for key, regimes in q2_data.items():
+        if not key.startswith("Q2_") or not key.endswith(suffix) or not isinstance(regimes, list):
+            continue
+        regime = key[3:-len(suffix)]
+        for other in regimes:
+            answers[f"{regime}__{other}"] = "true"
+    return _fusion_components(answers)
+
+
+def _merge_finance_traces(
+    traces: list[dict],
+    q2_data: dict,
+    metric_type: str,
+) -> tuple[list[dict], list[str]]:
+    """Déduplique les montants partagés de Q2, année par année."""
+    result = copy.deepcopy(traces)
+    merged_by_group: dict[str, dict] = {}
+    warnings = []
+    years = sorted({str(year) for trace in result for year in trace.get("x", [])})
+    for year in years:
+        for component in _q2_components(q2_data, metric_type, year):
+            points = []
+            for trace in result:
+                if trace.get("legendgroup") not in component:
+                    continue
+                index = next(
+                    (i for i, value in enumerate(trace.get("x", [])) if str(value) == year),
+                    None,
+                )
+                if index is None:
+                    continue
+                value = trace.get("y", [])[index]
+                if value is not None:
+                    points.append((trace, index, value))
+            if len(points) <= 1:
+                continue
+
+            values = [float(value) for _, _, value in points]
+            names = list(dict.fromkeys(str(trace.get("name") or "") for trace, _, _ in points))
+            if max(values) - min(values) > max(1, abs(max(values)) * 1e-9):
+                warnings.append(f"{year} — {metric_type} : valeurs divergentes pour {' + '.join(names)}")
+
+            group_key = "__".join(sorted(trace.get("legendgroup") for trace, _, _ in points))
+            if group_key not in merged_by_group:
+                merged = copy.deepcopy(points[0][0])
+                merged["name"] = " + ".join(names)
+                merged["legendgroup"] = f"Q2_{metric_type}_{group_key}"
+                merged["x"] = []
+                merged["y"] = []
+                merged_by_group[group_key] = merged
+            merged_by_group[group_key]["x"].append(points[0][0]["x"][points[0][1]])
+            merged_by_group[group_key]["y"].append(max(values))
+            for trace, index, _ in points:
+                trace["y"][index] = None
+
+    remaining = [
+        trace for trace in result
+        if any(value is not None for value in trace.get("y", []))
+    ]
+    return remaining + list(merged_by_group.values()), warnings
+
+
+def apply_questionnaire_to_figure(fig, chart_key: str, settings: dict):
+    """Applique à une figure statique les mêmes règles que le formulaire interactif."""
+    if fig is None or not settings:
+        return fig, []
+
+    figure = fig.to_dict()
+    traces = figure.get("data", [])
+    warnings = []
+    if chart_key == "cotisants":
+        traces = _merge_population_traces(traces, settings.get("Q1") or {})
+    elif chart_key == "beneficiaires":
+        traces = _apply_q4_conversion(traces, settings)
+        traces = _merge_population_traces(traces, settings.get("Q1b") or {})
+    elif chart_key in {"depenses", "depense_par_beneficiaire"}:
+        traces, warnings = _merge_finance_traces(traces, settings.get("Q2") or {}, "depenses")
+    elif chart_key in {"recettes", "contribution"}:
+        traces, warnings = _merge_finance_traces(traces, settings.get("Q2") or {}, "recettes")
+    return go.Figure(data=traces, layout=figure.get("layout", {})), warnings
 
 
 def _write_image_with_retry(fig, out_path: Path, *, width: int, height: int, scale: int,
@@ -123,7 +328,11 @@ def _write_image_with_retry(fig, out_path: Path, *, width: int, height: int, sca
     return False
 
 
-def generate_charts(regimes: list[dict], institution: str) -> list[tuple[str, str, str | None]]:
+def generate_charts(
+    regimes: list[dict],
+    institution: str,
+    settings: dict,
+) -> list[tuple[str, str, str | None]]:
     """Génère les graphiques PNG d'une institution.
 
     Retourne toujours une entrée par graphique défini dans CHART_SPECS, dans l'ordre
@@ -143,6 +352,9 @@ def generate_charts(regimes: list[dict], institution: str) -> list[tuple[str, st
                 fig = builder(regimes, institution, "all")
             else:
                 fig = builder(regimes, institution)
+            fig, warnings = apply_questionnaire_to_figure(fig, key, settings)
+            for warning in warnings:
+                print(f"    [AVERT] Paramètres Q2 ({institution}) : {warning}")
         except Exception as exc:
             print(f"    [AVERT] Graphique '{label}' ({institution}) : {exc}")
             results.append((key, label, None))
@@ -151,6 +363,9 @@ def generate_charts(regimes: list[dict], institution: str) -> list[tuple[str, st
         if fig is None or not getattr(fig, "data", None):
             results.append((key, label, None))
             continue
+
+        if institution == "TRESOR" and key == "cotisants":
+            fig.update_layout(title_text="Personnes potentiellement couvertes (estimation)")
 
         # Fixe la plage de l'axe des années sur toute la période du bulletin (2019-2025,
         # étendue si des données réelles existent au-delà) : les années sans donnée ESS
@@ -161,7 +376,13 @@ def generate_charts(regimes: list[dict], institution: str) -> list[tuple[str, st
         filename = f"annexe_B_{institution}_{key}.png"
         out_path = ILLUSTRATIONS_DIR / filename
         try:
-            ok = _write_image_with_retry(fig, out_path, width=CHART_WIDTH, height=CHART_HEIGHT, scale=CHART_SCALE)
+            ok = _write_image_with_retry(
+                fig,
+                out_path,
+                width=CHART_WIDTH,
+                height=CHART_HEIGHT,
+                scale=CHART_SCALE,
+            )
         except Exception as exc:
             print(f"    [AVERT] Export image '{label}' ({institution}) échoué : {exc}")
             results.append((key, label, None))
@@ -170,7 +391,10 @@ def generate_charts(regimes: list[dict], institution: str) -> list[tuple[str, st
     return results
 
 
-def build_charts_markdown(chart_entries: list[tuple[str, str, str | None]]) -> str:
+def build_charts_markdown(
+    chart_entries: list[tuple[str, str, str | None]],
+    institution: str,
+) -> str:
     """Dispose les graphiques en grille 2 colonnes (même logique que le dashboard).
 
     Un emplacement sans graphique disponible affiche un repère [N/D] plutôt que
@@ -216,9 +440,8 @@ def build_regime_table_markdown(regime_meta_inst: dict) -> str:
         return "*Aucun régime documenté pour cette institution.*\n"
 
     lines = [
-        "| Régime | Type de financement | Caractère | Gestion | Administrateur | "
-        "Fonctions couvertes | Années ESS disponibles |",
-        "|---|---|---|---|---|---|---|",
+        "| Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |",
+        "|---|---|---|---|---|",
     ]
     for rc in regime_codes:
         meta = regime_meta_inst[rc]
@@ -229,12 +452,10 @@ def build_regime_table_markdown(regime_meta_inst: dict) -> str:
         nom = latest.get("nom_regime") or NOM_COURT.get(rc, rc)
         fonctions = latest.get("fonctions_oit") or []
         fonctions_txt = "; ".join(fonctions) if fonctions else "—"
-        ess_years = meta.get("ess_years") or []
-        annees_txt = ", ".join(str(y) for y in ess_years) if ess_years else "—"
         lines.append(
             f"| {nom} | {latest.get('type_financement') or '—'} | "
             f"{latest.get('caractere') or '—'} | {latest.get('gestion') or '—'} | "
-            f"{latest.get('administrateur') or '—'} | {fonctions_txt} | {annees_txt} |"
+            f"{fonctions_txt} |"
         )
     return "\n".join(lines) + "\n"
 
@@ -261,21 +482,28 @@ def _sex_pie_slice(h: float, f: float, ni: float, total: float):
     return list(labels), list(values), list(colors)
 
 
-def build_sex_pie_grid_figure(year_data: dict[int, dict]):
+def build_sex_pie_grid_figure(
+    year_data: dict[int, dict],
+    *,
+    large_format: bool = False,
+    contributors_label: str = "Cotisants",
+):
     """Construit une grille compacte de camemberts H/F/non identifié — plusieurs années
     par ligne (SEX_PIE_YEARS_PER_ROW), un seul visuel pour toutes les années de
     l'institution (au lieu d'une image pleine largeur par année).
 
-    Chaque année occupe 2 colonnes (cotisants, bénéficiaires). Un unique sous-titre
-    global indique la convention gauche/droite ; seule l'année est rappelée au-dessus
-    de chaque paire — pas de titre ni de légende répétés par année.
+    Chaque année occupe 2 colonnes (cotisants, bénéficiaires), identifiées directement
+    sous leur camembert. Seule l'année est rappelée au-dessus de chaque paire.
     """
     years = sorted(year_data.keys())
     n_years = len(years)
     if n_years == 0:
         return None
 
-    cols_per_row = min(n_years, SEX_PIE_YEARS_PER_ROW)
+    years_per_row = 2 if large_format else SEX_PIE_YEARS_PER_ROW
+    cell_width = 220 if large_format else SEX_PIE_CELL_WIDTH
+    row_height = 240 if large_format else SEX_PIE_ROW_HEIGHT
+    cols_per_row = min(n_years, years_per_row)
     n_cols = cols_per_row * 2
     n_rows = -(-n_years // cols_per_row)  # ceil division
 
@@ -296,13 +524,19 @@ def build_sex_pie_grid_figure(year_data: dict[int, dict]):
         vertical_spacing=0.22 if n_rows > 1 else 0.05,
     )
 
-    label_font = dict(size=11, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282')
+    label_font = dict(size=24 if large_format else 11, family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', color='#2c5282')
     # Décalage de l'étiquette "année" en pixels fixes (converti en fraction du domaine).
     # Un décalage exprimé directement en fraction (ex. +0.05) grandirait en pixels avec
     # le nombre de lignes (le domaine s'agrandit), au risque de faire déborder
     # l'étiquette de la marge haute — d'où ce calcul dépendant de n_rows.
-    domain_height_px = n_rows * SEX_PIE_ROW_HEIGHT
+    domain_height_px = n_rows * row_height
     year_label_offset = 18.0 / domain_height_px
+    category_label_offset = 8.0 / domain_height_px
+    category_font = dict(
+        size=22 if large_format else 10,
+        family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        color='#4a5568',
+    )
 
     for r in range(n_rows):
         for c in range(cols_per_row):
@@ -326,14 +560,14 @@ def build_sex_pie_grid_figure(year_data: dict[int, dict]):
             fig.add_trace(go.Pie(
                 labels=cot_labels, values=cot_values, hole=0.5,
                 marker=dict(colors=cot_colors, line=dict(color="#ffffff", width=1)),
-                textinfo="percent", textfont=dict(size=9), showlegend=False,
+                textinfo="percent", textfont=dict(size=22 if large_format else 9), showlegend=False,
                 hovertemplate="%{label} : %{value:,.0f} (%{percent})<extra></extra>",
             ), row=row_idx, col=col_cot)
 
             fig.add_trace(go.Pie(
                 labels=ben_labels, values=ben_values, hole=0.5,
                 marker=dict(colors=ben_colors, line=dict(color="#ffffff", width=1)),
-                textinfo="percent", textfont=dict(size=9), showlegend=False,
+                textinfo="percent", textfont=dict(size=22 if large_format else 9), showlegend=False,
                 hovertemplate="%{label} : %{value:,.0f} (%{percent})<extra></extra>",
             ), row=row_idx, col=col_ben)
 
@@ -345,46 +579,94 @@ def build_sex_pie_grid_figure(year_data: dict[int, dict]):
                 text=f"<b>{year}</b>", showarrow=False, font=label_font,
                 xanchor="center", yanchor="bottom",
             )
+            for domain, text in ((dom_cot, contributors_label), (dom_ben, "Bénéficiaires")):
+                fig.add_annotation(
+                    x=(domain.x[0] + domain.x[1]) / 2,
+                    y=domain.y[0] - category_label_offset,
+                    xref="paper",
+                    yref="paper",
+                    text=text,
+                    showarrow=False,
+                    font=category_font,
+                    xanchor="center",
+                    yanchor="top",
+                )
 
     fig.update_layout(
-        height=SEX_PIE_TOP_MARGIN + SEX_PIE_BOTTOM_MARGIN + n_rows * SEX_PIE_ROW_HEIGHT,
-        width=max(500, n_cols * SEX_PIE_CELL_WIDTH + 40),
+        height=SEX_PIE_TOP_MARGIN + SEX_PIE_BOTTOM_MARGIN + n_rows * row_height,
+        width=max(500, n_cols * cell_width + 40),
         showlegend=False,
         plot_bgcolor="#ffffff",
         paper_bgcolor="#ffffff",
         margin=dict(t=SEX_PIE_TOP_MARGIN, b=SEX_PIE_BOTTOM_MARGIN, l=10, r=10),
-        font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=12, color='#4a5568'),
+        font=dict(family='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size=22 if large_format else 12, color='#4a5568'),
     )
     return fig
 
 
-def generate_sex_pie_charts(regimes: list[dict], institution: str) -> list[str]:
-    """Génère un unique visuel en grille (cotisants/bénéficiaires par année, plusieurs
-    années par ligne) pour l'institution. Retourne les fichiers produits (0 ou 1)."""
-    data = [r for r in regimes if r["institution"] == institution]
-    if not data:
-        return []
-
-    by_year: dict[int, dict] = {}
+def _aggregate_sex_data(regimes: list[dict], institution: str, settings: dict) -> dict[int, dict]:
+    """Agrège les données sexuées comme l'aperçu interactif, Q1b compris."""
     fields = (
         "cotisants_total", "cotisants_h", "cotisants_f",
         "beneficiaires_total", "beneficiaires_h", "beneficiaires_f",
     )
-    # Pré-remplir toutes les années du bulletin (2019-2025) : une année sans donnée ESS
-    # doit rester visible dans la grille (camembert « Non disponible »), plutôt que
-    # d'être silencieusement omise. Les années réelles au-delà de cette plage (ex.
-    # une source ESS datée 2026) restent également affichées.
-    for year in BULLETIN_YEARS:
-        by_year.setdefault(year, {f: 0.0 for f in fields})
-    for r in data:
-        year = r.get("annee")
-        if year is None:
+    by_year_regime: dict[int, dict[str, dict]] = {}
+    for row in regimes:
+        if row["institution"] != institution or row.get("annee") is None:
             continue
-        acc = by_year.setdefault(year, {f: 0.0 for f in fields})
+        year = row["annee"]
+        regime = row["regime_code"]
+        acc = by_year_regime.setdefault(year, {}).setdefault(
+            regime, {field: 0.0 for field in fields},
+        )
         for field in fields:
-            val = r.get(field)
-            if val is not None:
-                acc[field] += float(val)
+            value = row.get(field)
+            if value is not None:
+                acc[field] += float(value)
+
+    regime_to_group = {}
+    for component in _fusion_components(settings.get("Q1b") or {}):
+        group_key = "__".join(component)
+        for regime in component:
+            regime_to_group[regime] = group_key
+
+    by_year: dict[int, dict] = {
+        year: {field: 0.0 for field in fields}
+        for year in BULLETIN_YEARS
+    }
+    for year, regime_rows in by_year_regime.items():
+        acc = by_year.setdefault(year, {field: 0.0 for field in fields})
+        for row in regime_rows.values():
+            for field in ("cotisants_total", "cotisants_h", "cotisants_f"):
+                acc[field] += row[field]
+
+        grouped: dict[str, list[dict]] = {}
+        for regime, row in regime_rows.items():
+            grouped.setdefault(regime_to_group.get(regime, regime), []).append(row)
+        for rows in grouped.values():
+            representative = max(
+                rows,
+                key=lambda row: max(
+                    row["beneficiaires_total"],
+                    row["beneficiaires_h"] + row["beneficiaires_f"],
+                ),
+            )
+            for field in ("beneficiaires_total", "beneficiaires_h", "beneficiaires_f"):
+                acc[field] += representative[field]
+    return by_year
+
+
+def generate_sex_pie_charts(
+    regimes: list[dict],
+    institution: str,
+    settings: dict,
+) -> list[str]:
+    """Génère un unique visuel en grille (cotisants/bénéficiaires par année, plusieurs
+    années par ligne) pour l'institution. Retourne les fichiers produits (0 ou 1)."""
+    if not any(r["institution"] == institution for r in regimes):
+        return []
+
+    by_year = _aggregate_sex_data(regimes, institution, settings)
 
     ILLUSTRATIONS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -396,7 +678,13 @@ def generate_sex_pie_charts(regimes: list[dict], institution: str) -> list[str]:
             pass
 
     try:
-        fig = build_sex_pie_grid_figure(by_year)
+        fig = build_sex_pie_grid_figure(
+            by_year,
+            large_format=False,
+            contributors_label=(
+                "Personnes couvertes estimées" if institution == "TRESOR" else "Cotisants"
+            ),
+        )
     except Exception as exc:
         print(f"    [AVERT] Grille camemberts sexe ({institution}) : {exc}")
         return []
@@ -413,7 +701,7 @@ def generate_sex_pie_charts(regimes: list[dict], institution: str) -> list[str]:
     return [filename]
 
 
-def build_sex_charts_markdown(chart_files: list[str]) -> str:
+def build_sex_charts_markdown(chart_files: list[str], institution: str) -> str:
     """Légende partagée (une seule fois) + image en grille compacte."""
     if not chart_files:
         return "*Aucune donnée de répartition par sexe disponible.*\n"
@@ -424,8 +712,8 @@ def build_sex_charts_markdown(chart_files: list[str]) -> str:
         for label, color in SEX_PIE_COLORS.items()
     )
     legend_html = (
-        '<p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;">'
-        "<em>Gauche : cotisants &middot; droite : bénéficiaires</em> &nbsp;&nbsp;&nbsp; "
+        '<p align="center" style="font-size:0.85em; '
+        'color:#4a5568; margin-bottom:4px;">'
         f"{legend_items}</p>\n"
     )
     image_html = "\n".join(
@@ -462,6 +750,13 @@ def build_detailed_data_markdown(regimes: list[dict], regime_meta: dict, institu
         "Dépenses totales (Mds CDF)", "Recettes totales (Mds CDF)",
         "Dép. moy./bénéf. (k CDF)", "Rec. moy./cotisant (k CDF)",
     ]
+    if institution == "TRESOR":
+        headers = [
+            "Personnes potentiellement couvertes (estimation)"
+            if header == "Cotisants totaux"
+            else header.replace("cotisant", "personne couverte estimée")
+            for header in headers
+        ]
     n_value_cols = len(headers) - 2  # hors « Régime » et « Année »
 
     # Ordre des régimes : ordre de première apparition dans les données réelles,
@@ -529,6 +824,8 @@ def build_detailed_data_markdown(regimes: list[dict], regime_meta: dict, institu
 def _institution_caption_label(institution: str) -> str:
     """Sigle court utilisé dans les légendes (ex. « CNSS », « CNSSAP »), distinct du
     libellé long NOM_INSTITUTION utilisé dans les titres des graphiques Plotly."""
+    if institution == "TRESOR":
+        return 'dispositif budgétaire hors CNSSAP (proxy technique « TRESOR »)'
     return institution
 
 
@@ -554,46 +851,98 @@ def _locate_section_no_and_counters(md_text: str, institution: str) -> tuple[int
     return section_no, n_tables + 1, n_figures + 1
 
 
-def build_section_content(regimes: list[dict], regime_meta: dict, institution: str, md_text: str) -> str:
+def build_section_content(
+    regimes: list[dict],
+    regime_meta: dict,
+    institution: str,
+    md_text: str,
+    settings: dict,
+) -> str:
     label = _institution_caption_label(institution)
     section_no, table_no, figure_no = _locate_section_no_and_counters(md_text, institution)
+    family_beneficiaries_footnote = (
+        '<span class="footnote">Pour les allocations familiales de la CNSS, le nombre '
+        "d'enfants bénéficiaires est estimé en multipliant par 3,17 le nombre de titulaires "
+        "de prestations familiales communiqué par la CNSS. Ce facteur correspond au nombre "
+        "moyen d'enfants de moins de 20 ans par foyer en RDC en 2013, d'après UN HH Size and "
+        "Composition 2019. Il s'agit donc d'une estimation et non d'un décompte administratif "
+        "direct d'enfants.</span>"
+        if institution == "CNSS" else ""
+    )
 
-    chart_entries = generate_charts(regimes, institution)
-    charts_md = build_charts_markdown(chart_entries)
+    chart_entries = generate_charts(regimes, institution, settings)
+    charts_md = build_charts_markdown(chart_entries, institution)
     regimes_md = build_regime_table_markdown(regime_meta.get(institution, {}))
-    sex_chart_files = generate_sex_pie_charts(regimes, institution)
-    sex_md = build_sex_charts_markdown(sex_chart_files)
+    sex_chart_files = generate_sex_pie_charts(regimes, institution, settings)
+    sex_md = build_sex_charts_markdown(sex_chart_files, institution)
     detail_md = build_detailed_data_markdown(regimes, regime_meta, institution)
+    tresor_detail_footnote = (
+        '\n<span class="footnote">Les valeurs de la colonne « Personnes potentiellement '
+        'couvertes (estimation) » ne sont pas des cotisants. Elles correspondent à la part '
+        'estimée du secteur public hors CNSSAP, calculée par différence à partir des estimations '
+        'globales de la Fonction publique : '
+        '<span class="val" data-val-id="sB7-p1-d1" data-val-status="à valider" '
+        'data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 622 972</span> '
+        'pour chacune des années 2019 à 2022, '
+        '<span class="val" data-val-id="sB7-p1-d2" data-val-status="à valider" '
+        'data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 425 000</span> '
+        'en 2023 et '
+        '<span class="val" data-val-id="sB7-p1-d3" data-val-status="à valider" '
+        'data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 727 000</span> '
+        'en 2024. Source : estimations de la Fonction publique ; niveau de fiabilité : '
+        'estimation provisoire, à confirmer par des données administratives détaillées.</span>\n'
+        if institution == "TRESOR" else ""
+    )
+    contributors_term = (
+        "personnes potentiellement couvertes estimées"
+        if institution == "TRESOR" else "cotisants"
+    )
+    regimes_heading = "Dispositif représenté" if institution == "TRESOR" else "Régimes gérés"
+    sex_heading = (
+        "Répartition par sexe (personnes potentiellement couvertes estimées et bénéficiaires cumulés)"
+        if institution == "TRESOR"
+        else "Répartition par sexe (cotisants et bénéficiaires cumulés)"
+    )
+    settings_note = (
+        '<p class="dev-note">Les règles enregistrées dans le formulaire institutionnel '
+        "(Q1, Q1b, Q2 et Q4) sont appliquées aux visuels. Les données détaillées restent "
+        "présentées par régime, sans déduplication.</p>\n"
+        if settings else
+        '<p class="dev-note">Aucun paramètre institutionnel enregistré : les visuels '
+        "présentent les données ESS sans correction issue du formulaire.</p>\n"
+    )
 
     if section_no:
         regimes_caption = f'<p class="table-caption"><strong>Tableau B.{section_no}.{table_no}</strong> — Régimes gérés, {label}</p>\n\n'
         table_no += 1
         charts_caption = (
             f'<p class="fig-caption"><strong>Figure B.{section_no}.{figure_no}</strong> — '
-            f"Évolution des cotisants, bénéficiaires, dépenses et recettes (tous régimes), {label} "
+            f"Évolution des {contributors_term}, bénéficiaires, dépenses et recettes (tous régimes), {label} "
             f"(2019–2025)</p>\n\n"
         )
         figure_no += 1
         sex_caption = (
             f'<p class="fig-caption"><strong>Figure B.{section_no}.{figure_no}</strong> — '
-            f"Répartition par sexe des cotisants et bénéficiaires cumulés, {label} (2019–2025)</p>\n\n"
+            f"Répartition par sexe des {contributors_term} et bénéficiaires cumulés, {label} (2019–2025)</p>\n\n"
         )
         figure_no += 1
-        detail_caption = f'<p class="table-caption"><strong>Tableau B.{section_no}.{table_no}</strong> — Données détaillées par régime et année, {label} (2019–2025)</p>\n\n'
+        detail_caption = f'<p class="table-caption"><strong>Tableau B.{section_no}.{table_no}</strong> — Données détaillées par régime et année, {label} (2019–2025){family_beneficiaries_footnote}</p>\n\n'
     else:
         regimes_caption = charts_caption = sex_caption = detail_caption = ""
 
     return (
-        "\n### Régimes gérés\n\n"
+        f"\n### {regimes_heading}\n\n"
         f"{regimes_caption}{regimes_md}\n"
         "### Aperçu graphique (tous régimes, toutes années)\n\n"
         f"{charts_caption}{charts_md}\n"
-        "### Répartition par sexe (cotisants et bénéficiaires cumulés)\n\n"
+        f"### {sex_heading}\n\n"
         f"{sex_caption}{sex_md}\n"
         "### Données détaillées (par régime et année)\n\n"
-        f"{detail_caption}{detail_md}\n"
-        "*Source : base ESS OIT/BIT (protection_sociale_rdc.db). Visuels et tableaux générés "
-        "automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.*\n"
+        f"{detail_caption}{detail_md}{tresor_detail_footnote}\n"
+        "*Source : base consolidée des ESS OIT/BIT.*\n"
+        f"{settings_note}"
+        '<p class="dev-note">Visuels et tableaux générés automatiquement, sans navigateur, '
+        "via `py 09_scripts/generer_annexe_b_visuels.py`.</p>\n"
     )
 
 
@@ -632,6 +981,11 @@ def main() -> int:
 
     print("  Lecture BDD…")
     regimes, _prestations, regime_meta, _prestation_meta = load_all(DB_PATH)
+    try:
+        questionnaire_data = load_questionnaire_data()
+    except (FileNotFoundError, ValueError) as exc:
+        print(f"  Paramètres du formulaire invalides : {exc}")
+        return 1
     institutions = sorted(set(r["institution"] for r in regimes))
     print(f"  {len(institutions)} institution(s) détectée(s) : {', '.join(institutions)}")
 
@@ -641,7 +995,13 @@ def main() -> int:
 
     for inst in institutions:
         print(f"  -> {inst}")
-        content = build_section_content(regimes, regime_meta, inst, md_text)
+        content = build_section_content(
+            regimes,
+            regime_meta,
+            inst,
+            md_text,
+            questionnaire_data.get(inst) or {},
+        )
         md_text, updated = inject_into_markdown(md_text, inst, content)
         if updated:
             total_updated += 1

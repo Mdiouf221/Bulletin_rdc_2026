@@ -40,5 +40,5 @@ Statut :
 | RDC | République démocratique du Congo |
 | SESOPA | Service de Sécurité Sociale des Parlementaires |
 | SNPS | Stratégie nationale de protection sociale |
-| Trésor | Désigne ici, dans les annexes B et C, le mécanisme de paiement direct des pensions de la fonction publique par le budget de l'État (estimation provisoire, hors caisse dédiée) |
+| TRESOR | Code technique utilisé dans la base et les annexes B et C pour désigner la protection budgétaire estimée des agents publics hors CNSSAP ; il ne s'agit pas d'une institution |
 | USD | Dollar des États-Unis |

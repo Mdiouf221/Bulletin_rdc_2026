@@ -560,6 +560,30 @@ p.a-rediger {
     margin        : 0.8em 0;
 }
 
+/* ===== Note technique interne (non publiée, non exportée vers Word) ===
+ * Utilisée pour les mentions de génération automatique (scripts, base ESS…)
+ * utiles en prévisualisation / pour les agents, mais à masquer du lecteur
+ * final. Supprimée systématiquement par 09_scripts/exporter_word.py
+ * (voir apply_corrections). */
+p.dev-note {
+    color         : #6b7280;
+    font-family   : var(--police-ui);
+    font-size     : 12px;
+    font-style    : italic;
+    border        : 1px dashed #c7cbd1;
+    background    : #f4f5f7;
+    border-radius : 4px;
+    padding       : 5px 12px;
+    margin        : 0.4em 0 0.8em 0;
+    opacity       : 0.85;
+}
+p.dev-note::before {
+    content       : "⚙ note technique (non publiée) — ";
+    font-style    : normal;
+    font-weight   : 600;
+    color         : #9aa0a8;
+}
+
 /* ===== Badges de validation par paragraphe ============================ */
 /*
  * Sur chaque titre ### du texte rédigé :

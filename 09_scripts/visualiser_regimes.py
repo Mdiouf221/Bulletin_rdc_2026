@@ -614,10 +614,12 @@ function _prestMergeDedupOnAxis(traces, dedupMatrix, axisPred, excludeSet) {
     if (!axisPred(t)) { result.push(t); return; }
     const root = rootOf(t.legendgroup);
     if (processedRoots.has(root)) {
-      // trace fantôme : conserver la légende, vider les données
+      // trace fantôme : masquée de la légende (le libellé combiné porté par la
+      // trace survivante suffit), données vidées pour ne plus être empilée.
       const phantom = JSON.parse(JSON.stringify(t));
       phantom.x = [];
       phantom.y = [];
+      phantom.showlegend = false;
       result.push(phantom);
       return;
     }
@@ -637,6 +639,26 @@ function _prestMergeDedupOnAxis(traces, dedupMatrix, axisPred, excludeSet) {
     const merged = JSON.parse(JSON.stringify(t));
     merged.x = allX;
     merged.y = mergedY;
+    // Libellé de légende reflétant la fusion : "Prestation A + Prestation B".
+    const cleanName = (n) => String(n || '')
+      .replace(/<br\s*\/?>/gi, ' ')
+      .replace(/\s*↺\s*/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    const memberNames = groupTraces
+      .map(t2 => cleanName(t2.name))
+      .filter((n, i, arr) => n && arr.indexOf(n) === i);
+    const combinedRaw = memberNames.join(' + ');
+    if (combinedRaw && memberNames.length > 1) {
+      const origName = merged.name;
+      const wrapped = (typeof wrapInstitutionLegendLabel === 'function')
+        ? wrapInstitutionLegendLabel(combinedRaw, 220)
+        : combinedRaw;
+      merged.name = wrapped;
+      if (typeof merged.hovertemplate === 'string' && origName) {
+        merged.hovertemplate = merged.hovertemplate.split(origName).join(combinedRaw);
+      }
+    }
     result.push(merged);
   });
   return result;
@@ -1942,36 +1964,125 @@ def fig_institution_depenses(rows: list[dict], institution: str) -> str:
     return fig.to_html(full_html=False, include_plotlyjs=False)
 
 
+def _institution_ratio_series(data: list[dict], numer_key: str, denom_key: str):
+    """Calcule un ratio (numer/denom) par régime et par année, en isolant les cas où
+    l'ESS ne ventile pas la donnée financière par branche mais recopie le total
+    institutionnel à l'identique sur plusieurs régimes de la même institution/année.
+
+    Dans ce cas, le ratio n'a pas de sens au niveau du régime (le numérateur n'est
+    pas propre à ce régime) : il est retiré des séries par régime et reporté
+    uniquement dans une série agrégée « Ensemble (institution) », avec un
+    dénominateur recalculé (somme des valeurs réellement distinctes par régime, ou
+    valeur unique si le dénominateur est lui aussi un total institutionnel recopié
+    — ex. les cotisants CNSS, uniques car une seule cotisation finance plusieurs
+    branches).
+
+    Une valeur nulle (0) partagée par plusieurs régimes n'est PAS considérée comme
+    une duplication d'un total institutionnel (elle signifie le plus souvent
+    « donnée non renseignée / négligeable ») : le ratio par régime est conservé.
+
+    Retourne (ratio_par_regime, ratio_ensemble, detail_ensemble) :
+      - ratio_par_regime[(regime_code, annee)] = ratio brut (non mis à l'échelle) ou None
+      - ratio_ensemble[annee] = ratio agrégé (uniquement les années où une
+        duplication a été détectée)
+      - detail_ensemble[annee] = (numerateur_total, denominateur_agrege) pour les
+        années où une duplication a été détectée
+    """
+    by_annee: dict = {}
+    for r in data:
+        by_annee.setdefault(r["annee"], []).append(r)
+
+    ratio_par_regime: dict = {}
+    ratio_ensemble: dict = {}
+    detail_ensemble: dict = {}
+
+    for annee, regime_rows in by_annee.items():
+        clusters: dict = {}
+        for r in regime_rows:
+            val = r.get(numer_key)
+            if val is None:
+                continue
+            clusters.setdefault(val, []).append(r)
+
+        for val, members in clusters.items():
+            if len(members) >= 2 and val != 0:
+                # Total institutionnel recopié : pas de détail réel par branche.
+                for m in members:
+                    ratio_par_regime[(m["regime_code"], annee)] = None
+                denom_values = [m.get(denom_key) for m in members if m.get(denom_key) not in (None,)]
+                if not denom_values:
+                    continue
+                if len(set(denom_values)) == 1 and len(denom_values) == len(members):
+                    denom_agg = denom_values[0]
+                else:
+                    denom_agg = sum(denom_values)
+                detail_ensemble[annee] = (val, denom_agg)
+                ratio_ensemble[annee] = (val / denom_agg) if denom_agg else None
+            else:
+                for m in members:
+                    denom_val = m.get(denom_key)
+                    ratio_par_regime[(m["regime_code"], annee)] = (
+                        (val / denom_val) if denom_val not in (None, 0) else None
+                    )
+
+    return ratio_par_regime, ratio_ensemble, detail_ensemble
+
+
+def _add_institution_ensemble_trace(fig, ratio_ensemble: dict, scale: float, unit: str):
+    """Ajoute, si pertinent, la série agrégée « Ensemble (institution) » utilisée
+    quand la donnée financière ESS n'est pas ventilée par branche."""
+    if not any(v is not None for v in ratio_ensemble.values()):
+        return
+    annees = sorted(ratio_ensemble.keys())
+    y_vals = [(ratio_ensemble[a] / scale) if ratio_ensemble[a] is not None else None for a in annees]
+    fig.add_trace(go.Scatter(
+        x=annees, y=y_vals,
+        name="Ensemble (institution, hors détail par branche)",
+        mode="lines+markers",
+        line=dict(color="#111111", width=2, dash="dash"),
+        marker=dict(size=8, symbol="diamond", line=dict(width=1.5, color='white')),
+        hovertemplate=f"<b>Ensemble (institution)</b><br>%{{x}}<br>%{{y:,.0f}} {unit}<extra></extra>",
+    ))
+
+
 def build_fig_institution_depense_par_beneficiaire(rows: list[dict], institution: str):
     """Construit la figure Plotly — Dépense moyenne par bénéficiaire (source unique, dashboard + annexe B)."""
     data = [r for r in rows if r["institution"] == institution]
     regimes_keys = sorted(set(r["regime_code"] for r in data))
     if not regimes_keys:
         return None
-    
+
+    ratio_par_regime, ratio_ensemble, _ = _institution_ratio_series(
+        data, "depenses_prestations_cdf", "beneficiaires_total"
+    )
+
     fig = go.Figure()
-    
+
     for key in regimes_keys:
         subset = [r for r in data if r["regime_code"] == key]
         subset.sort(key=lambda r: r["annee"])
         annees = [r["annee"] for r in subset]
         color = color_for_regime(key)
         label = NOM_COURT.get(key, key)
-        
+
         dep_moy = [
-            (r["depense_moy_par_beneficiaire_cdf"] / 1e3) if r["depense_moy_par_beneficiaire_cdf"] is not None else None
+            (ratio_par_regime.get((key, r["annee"])) / 1e3)
+            if ratio_par_regime.get((key, r["annee"])) is not None else None
             for r in subset
         ]
-        
+
         fig.add_trace(go.Scatter(
             x=annees, y=dep_moy,
             name=label,
+            legendgroup=key,
             mode="lines+markers",
             line=dict(color=color, width=3),
             marker=dict(size=8, line=dict(width=1.5, color='white')),
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:,.0f}} k CDF<extra></extra>",
         ))
-    
+
+    _add_institution_ensemble_trace(fig, ratio_ensemble, 1e3, "k CDF")
+
     fig.update_layout(
         title=dict(
             text=f"{NOM_INSTITUTION.get(institution, institution)} — Dépense moyenne par bénéficiaire (k CDF)",
@@ -2073,32 +2184,38 @@ def build_fig_institution_contribution(rows: list[dict], institution: str):
     regimes_keys = sorted(set(r["regime_code"] for r in data))
     if not regimes_keys:
         return None
-    
+
+    ratio_par_regime, ratio_ensemble, _ = _institution_ratio_series(
+        data, "recettes_cdf", "cotisants_total"
+    )
+
     fig = go.Figure()
-    
+
     for key in regimes_keys:
         subset = [r for r in data if r["regime_code"] == key]
         subset.sort(key=lambda r: r["annee"])
         annees = [r["annee"] for r in subset]
         color = color_for_regime(key)
         label = NOM_COURT.get(key, key)
-        
+
         contrib_moy = [
-            ((r["recettes_cdf"] / r["cotisants_total"]) / 1e3)
-            if (r["recettes_cdf"] is not None and r["cotisants_total"] not in (None, 0))
-            else None
+            (ratio_par_regime.get((key, r["annee"])) / 1e3)
+            if ratio_par_regime.get((key, r["annee"])) is not None else None
             for r in subset
         ]
-        
+
         fig.add_trace(go.Scatter(
             x=annees, y=contrib_moy,
             name=label,
+            legendgroup=key,
             mode="lines+markers",
             line=dict(color=color, width=3),
             marker=dict(size=8, line=dict(width=1.5, color='white')),
             hovertemplate=f"<b>{label}</b><br>%{{x}}<br>%{{y:,.0f}} k CDF<extra></extra>",
         ))
-    
+
+    _add_institution_ensemble_trace(fig, ratio_ensemble, 1e3, "k CDF")
+
     fig.update_layout(
         title=dict(
             text=f"{NOM_INSTITUTION.get(institution, institution)} — Contribution moyenne (k CDF / cotisant)",
@@ -2779,14 +2896,20 @@ def build_institution_detail_table(rows: list[dict], institution: str, sex_mode:
         ]
 
     rows_out = []
+    ratio_dep = ensemble_dep = detail_dep = {}
+    ratio_rec = ensemble_rec = detail_rec = {}
+    if sex_mode == "all":
+        ratio_dep, ensemble_dep, detail_dep = _institution_ratio_series(
+            data, "depenses_prestations_cdf", "beneficiaires_total"
+        )
+        ratio_rec, ensemble_rec, detail_rec = _institution_ratio_series(
+            data, "recettes_cdf", "cotisants_total"
+        )
+
     for r in data:
         if sex_mode == "all":
-            rec_moy = None
-            if r["recettes_cdf"] is not None and r["cotisants_total"] not in (None, 0):
-                try:
-                    rec_moy = float(r["recettes_cdf"]) / float(r["cotisants_total"])
-                except (TypeError, ValueError, ZeroDivisionError):
-                    rec_moy = None
+            dep_moy = ratio_dep.get((r["regime_code"], r["annee"]))
+            rec_moy = ratio_rec.get((r["regime_code"], r["annee"]))
             values = [
                 NOM_COURT.get(r["regime_code"], r["regime_code"]),
                 str(r["annee"]),
@@ -2794,7 +2917,7 @@ def build_institution_detail_table(rows: list[dict], institution: str, sex_mode:
                 _fmt_num(r["beneficiaires_total"]),
                 _fmt_num(r["depenses_prestations_cdf"], 2, 1e9),
                 _fmt_num(r["recettes_cdf"], 2, 1e9),
-                _fmt_num(r["depense_moy_par_beneficiaire_cdf"], 0, 1e3),
+                _fmt_num(dep_moy, 0, 1e3),
                 _fmt_num(rec_moy, 0, 1e3),
             ]
         else:
@@ -2810,6 +2933,31 @@ def build_institution_detail_table(rows: list[dict], institution: str, sex_mode:
             "annee": r["annee"],
             "values": values,
         })
+
+    if sex_mode == "all":
+        # Lignes agrégées « Ensemble (institution) » pour les années où la donnée
+        # financière ESS n'est pas ventilée par branche (total institutionnel
+        # recopié sur plusieurs régimes) : le détail par régime des moyennes n'est
+        # alors pas fiable et n'est reporté qu'au niveau de l'institution.
+        annees_ensemble = sorted(set(ensemble_dep) | set(ensemble_rec))
+        for annee in annees_ensemble:
+            dep_total, dep_denom = detail_dep.get(annee, (None, None))
+            rec_total, rec_denom = detail_rec.get(annee, (None, None))
+            values = [
+                "Ensemble (institution, hors détail par branche)",
+                str(annee),
+                _fmt_num(rec_denom),
+                _fmt_num(dep_denom),
+                _fmt_num(dep_total, 2, 1e9),
+                _fmt_num(rec_total, 2, 1e9),
+                _fmt_num(ensemble_dep.get(annee), 0, 1e3),
+                _fmt_num(ensemble_rec.get(annee), 0, 1e3),
+            ]
+            rows_out.append({
+                "regime_code": "ENSEMBLE",
+                "annee": annee,
+                "values": values,
+            })
 
     return {"headers": headers, "rows": rows_out}
 
@@ -3100,6 +3248,21 @@ def build_branches_ess_payload(prestations: list[dict]) -> dict:
 # ── Assemblage HTML final ─────────────────────────────────────────────────────
 def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, prestation_meta: dict) -> str:
     institutions = sorted(set(r["institution"] for r in regimes))
+
+    # Sous-titre d'en-tête : plage d'années disponible par institution, calculée
+    # dynamiquement depuis les données chargées (plutôt que codée en dur), pour
+    # qu'un nouvel import ESS (nouvelle année) se reflète automatiquement ici.
+    def _annee_range(inst: str) -> str | None:
+        annees = sorted({r["annee"] for r in regimes if r["institution"] == inst and r.get("annee")})
+        if not annees:
+            return None
+        if annees[0] == annees[-1]:
+            return f"{inst} ({annees[0]})"
+        return f"{inst} ({annees[0]}–{annees[-1]})"
+
+    header_subtitle = " &nbsp;·&nbsp; ".join(
+        part for part in (_annee_range(inst) for inst in institutions) if part
+    )
 
     # Pré-générer tous les blocs graphiques (évite le recalcul JS)
     charts_institution = {}
@@ -5241,7 +5404,7 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
 
 <header>
   <h1>Tableau de bord — Protection sociale en RDC</h1>
-  <p>CNSS (2019–2022) &nbsp;·&nbsp; CNSSAP (2020–2022) &nbsp;·&nbsp; Source : ESS OIT/BIT</p>
+  <p>{header_subtitle} &nbsp;·&nbsp; Source : ESS OIT/BIT</p>
 </header>
 
 <!-- Barre d'onglets -->
@@ -6399,10 +6562,10 @@ const ODD_METHODOLOGY_SPECS = {{
     formula: "Personnes vulnérables bénéficiaires d’une prestation d’assistance sociale ÷ population vulnérable × 100.",
   }},
   ind_29_cotisants: {{
-    definition: "Proportion de la main-d’œuvre qui cotise activement à un régime de retraite contributif.",
+    definition: "Proportion de la population en âge de travailler qui cotise activement à un régime de retraite contributif.",
     numerator: "Nombre de personnes cotisant activement à un régime de retraite contributif.",
-    denominator: "Main-d’œuvre totale.",
-    formula: "Cotisants actifs à un régime de retraite ÷ main-d’œuvre totale × 100.",
+    denominator: "Population en âge de travailler (15-64 ans, Banque mondiale SP.POP.1564.TO) — voir DM-016.",
+    formula: "Cotisants actifs à un régime de retraite ÷ population en âge de travailler (15-64 ans) × 100.",
   }},
 }};
 
@@ -9520,7 +9683,9 @@ function setChartSexMode(mode, instOverride) {{
     injectHtmlAndRunScripts(containerId, content);
     bindInstitutionLegendCompaction(containerId);
   }});
-  applyPopulationFusion(inst);
+  if (typeof applyPopulationFusion === 'function') {{
+    applyPopulationFusion(inst);
+  }}
   if (typeof applyQ2ToFinChart === 'function') {{
     setTimeout(() => applyQ2ToFinChart(inst), 100);
   }}

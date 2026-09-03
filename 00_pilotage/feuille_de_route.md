@@ -79,6 +79,8 @@ Ce fichier peut être mis à jour régulièrement par l’utilisateur ou par un 
 - [ ] Identifier les tableaux nécessaires par chapitre
 - [ ] Identifier les figures nécessaires par chapitre
 - [x] Préparer les annexes statistiques
+- [x] Rafraîchir les tableaux et données depuis les bases SQL et le tableau de bord (2026-09-03)
+- [ ] Réviser les textes d'accompagnement et contextuels à partir des séries actualisées
 
 ## Phase 6 — Assemblage et export
 

@@ -154,10 +154,10 @@ ODD_METHODOLOGY_SPECS = {
         "formula": "Personnes vulnérables bénéficiaires d'une prestation d'assistance sociale ÷ population vulnérable × 100.",
     },
     "ind_29_cotisants": {
-        "definition": "Proportion de la main-d'œuvre qui cotise activement à un régime de retraite contributif.",
+        "definition": "Proportion de la population en âge de travailler qui cotise activement à un régime de retraite contributif.",
         "numerator": "Nombre de personnes cotisant activement à un régime de retraite contributif.",
-        "denominator": "Main-d'œuvre totale.",
-        "formula": "Cotisants actifs à un régime de retraite ÷ main-d'œuvre totale × 100.",
+        "denominator": "Population en âge de travailler (15-64 ans, Banque mondiale SP.POP.1564.TO) — voir DM-016.",
+        "formula": "Cotisants actifs à un régime de retraite ÷ population en âge de travailler (15-64 ans) × 100.",
     },
 }
 
@@ -254,7 +254,7 @@ def build_fig_indicator_numerator(years: list[int], values: list[float | None], 
 ACRONYME_OVERRIDES = {
     # TRESOR n'est pas un sigle institutionnel au sens strict (mécanisme budgétaire),
     # d'où une graphie capitalisée normale plutôt que tout-majuscules.
-    "TRESOR": "Trésor",
+    "TRESOR": "proxy budgétaire hors CNSSAP",
 }
 
 
@@ -307,7 +307,8 @@ def _build_breakdown_rows(components: dict[str, dict], years: list[int], years_a
         )
         if regime_item is not None:
             header_item = regime_item
-            header_label = f"Dont {header_item['label']} ({acronym}, cotisants)"
+            metric = "personnes potentiellement couvertes estimées" if inst == "TRESOR" else "cotisants"
+            header_label = f"Dont {header_item['label']} ({acronym}, {metric})"
             sub_items = prestation_items
         else:
             header_item = prestation_items[0]
@@ -322,15 +323,18 @@ def _build_breakdown_rows(components: dict[str, dict], years: list[int], years_a
 
 
 def build_methodology_box(indicator_key: str) -> str:
+    # Paragraphes ordinaires (pas de blockquote) : même police/interligne que le
+    # reste du texte, sans encadré — cohérent avec les autres paragraphes de
+    # l'annexe (ex. « Lecture du numérateur et règle de dédoublonnage »).
     spec = ODD_METHODOLOGY_SPECS.get(indicator_key, ODD_METHODOLOGY_SPECS["global_131"])
     return (
-        f"> **Définition (BIT/OIT).** {spec['definition']}\n"
-        f">\n"
-        f"> **Numérateur.** {spec['numerator']}\n"
-        f">\n"
-        f"> **Dénominateur.** {spec['denominator']}\n"
-        f">\n"
-        f"> **Formule.** {spec['formula']}\n"
+        f"**Définition (BIT/OIT).** {spec['definition']}\n"
+        f"\n"
+        f"**Numérateur.** {spec['numerator']}\n"
+        f"\n"
+        f"**Dénominateur.** {spec['denominator']}\n"
+        f"\n"
+        f"**Formule.** {spec['formula']}\n"
     )
 
 
@@ -342,6 +346,7 @@ def build_synthesis_table(
     denominator: dict[int, float | None],
     components: dict[str, dict],
     denom_footnote: str,
+    numerator_footnote: str = "",
 ) -> str:
     """Tableau unique : indicateur, numérateur (avec son détail en italique juste en
     dessous, à la manière du Tableau 14 du premier bulletin RDC — lignes « Dont … »
@@ -351,7 +356,14 @@ def build_synthesis_table(
     header = "| | " + " | ".join(str(y) for y in years) + " |"
     sep = "|---|" + "|".join("---" for _ in years) + "|"
     row_ratio = "| **Indicateur de couverture (%)** | " + " | ".join(f"**{fmt_pct(ratio.get(y))}**" for y in years) + " |"
-    row_num = "| **Numérateur (nombre de personnes)** | " + " | ".join(f"**{fmt_int(numerator.get(y))}**" for y in years) + " |"
+    numerator_footnote_html = (
+        f'<span class="footnote">{_sanitize_table_cell(numerator_footnote)}</span>'
+        if numerator_footnote else ""
+    )
+    row_num = (
+        f"| **Numérateur (nombre de personnes)**{numerator_footnote_html} | "
+        + " | ".join(f"**{fmt_int(numerator.get(y))}**" for y in years) + " |"
+    )
 
     breakdown_rows = _build_breakdown_rows(components, years, years_available)
 
@@ -470,7 +482,7 @@ def build_indicator_section(
         den_value = get_denominator_value(indicator_key, year, denom_constructions, denom_settings, denom_cursor)
         numerator[year] = num_value
         denominator[year] = den_value
-        ratio[year] = (num_value / den_value * 100.0) if (den_value and den_value > 0) else None
+        ratio[year] = (num_value / den_value * 100.0) if (num_value is not None and den_value and den_value > 0) else None
 
         for item in compute_numerator_breakdown(indicator_key, year, regime_rows, prestation_rows, odd_nodes, decisions):
             comp = components.setdefault(item["id"], {
@@ -481,8 +493,25 @@ def build_indicator_section(
             comp["values"][year] = item["value"]
 
     denom_footnote = build_denominator_footnote(indicator_key, years, denom_constructions)
+    numerator_footnote = (
+        "Pour les allocations familiales de la CNSS, le nombre d'enfants bénéficiaires est estimé "
+        "en multipliant par 3,17 le nombre de titulaires de prestations familiales communiqué par "
+        "la CNSS. Ce facteur correspond au nombre moyen d'enfants de moins de 20 ans par foyer en "
+        "RDC en 2013, d'après UN HH Size and Composition 2019. Il s'agit donc d'une estimation et "
+        "non d'un décompte administratif direct d'enfants."
+        if indicator_key == "ind_22_enfants" else ""
+    )
 
-    synthesis_md = build_synthesis_table(years, years_available, ratio, numerator, denominator, components, denom_footnote)
+    synthesis_md = build_synthesis_table(
+        years,
+        years_available,
+        ratio,
+        numerator,
+        denominator,
+        components,
+        denom_footnote,
+        numerator_footnote,
+    )
 
     chart_years = [y for y in years if y in years_available]
     ratio_file = numerator_file = None

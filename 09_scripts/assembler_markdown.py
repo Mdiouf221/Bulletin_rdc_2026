@@ -57,17 +57,19 @@ path_travail = WORKSPACE_DIR / config["outputs"]["working_markdown"]
 path_publication = WORKSPACE_DIR / config["outputs"]["publication_markdown"]
 
 # ---------------------------------------------------------------------------
-# Regex de suppression des blocs NOTE_INTERNE
+# Contenus réservés à la version de travail
 # ---------------------------------------------------------------------------
-NOTE_INTERNE_RE = re.compile(
-    r"<!--\s*NOTE_INTERNE.*?-->",
-    re.DOTALL
+HTML_COMMENT_RE = re.compile(r"<!--.*?-->", re.DOTALL)
+INTERNAL_PARAGRAPH_RE = re.compile(
+    r'<p\b[^>]*class="[^"]*\b(?:dev-note|a-rediger)\b[^"]*"[^>]*>.*?</p>',
+    re.DOTALL | re.IGNORECASE,
 )
 
 
 def remove_notes_internes(text: str) -> str:
-    """Supprime les blocs <!-- NOTE_INTERNE ... --> du texte."""
-    cleaned = NOTE_INTERNE_RE.sub("", text)
+    """Supprime les commentaires et paragraphes réservés au travail interne."""
+    cleaned = HTML_COMMENT_RE.sub("", text)
+    cleaned = INTERNAL_PARAGRAPH_RE.sub("", cleaned)
     # Nettoyer les lignes vides consécutives laissées par la suppression
     cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
     return cleaned.strip()
@@ -120,8 +122,6 @@ print(f"[OK] Version travail écrite : {path_travail.relative_to(WORKSPACE_DIR)}
 
 # Version publication — notes internes supprimées
 header_publication = (
-    f"<!-- VERSION PUBLICATION — notes internes supprimées -->\n"
-    f"<!-- Généré automatiquement par assembler_markdown.py -->\n\n"
     f"# {config['project']['title']}\n\n"
 )
 pub_text = remove_notes_internes(full_text)

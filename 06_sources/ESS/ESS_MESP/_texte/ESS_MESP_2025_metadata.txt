@@ -1,0 +1,38 @@
+TITRE : ESS MESP 2025 — Enquête sur les Sources Statistiques de la protection sociale (format OIT)
+SOURCE / AUTEUR : Mutuelle de Santé des Enseignants de l'Enseignement Primaire, Secondaire et Professionnel (MESP), République Démocratique du Congo
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 2025
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : ESS_MESP_2025.txt / ESS_MESP_2025.xlsm (source)
+NIVEAU FIABILITE : 1 — données institutionnelles primaires (transmission directe de l'institution)
+LIEN SOURCE — Fichier source Excel (present) : 06_sources/ESS/ESS_MESP/ESS_MESP_2025.xlsm
+
+---
+
+CONTENU RÉSUMÉ
+
+Enquête sur les Sources Statistiques (ESS) de la MESP pour l'année 2025 — année la plus récente de la série MESP disponible à ce jour (2019-2025). Structure identique aux éditions précédentes. Feuilles actives : Inventaire des régimes (1 régime recensé), feuille de prestations du Régime 1, Info Pauvreté, ADDITIONAL statistics for SDGs, CALCULATIONS.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+RÉGIME 1 — Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique (MESP, 2025) :
+- Financement contributif, caractère obligatoire
+- 1 prestation recensée dans l'inventaire des régimes
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Continuité de la série MESP ; structure inchangée (1 régime, 1 prestation).
+- Les données quantitatives (effectifs, montants) se trouvent dans la feuille de prestation du régime.
+- Monnaie : Franc congolais (CDF).
+- Fichier intégré en base via le mode d'import progressif (`py 09_scripts/extraire_ess.py --inbox`), déposé par l'institution dans 06_sources/_entrants/MESP/ le 2026-09-02.
+
+---
+
+CITATION RECOMMANDÉE
+
+MESP (2025), Enquête sur les Sources Statistiques (ESS) — format OIT, Mutuelle de Santé des Enseignants de l'Enseignement Primaire, Secondaire et Professionnel, Kinshasa, République Démocratique du Congo.

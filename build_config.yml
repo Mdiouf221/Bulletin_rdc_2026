@@ -43,7 +43,7 @@ sections:
       - "03_chapitres/chapitre_1/1_2_approche_bit_oit.md"
       - "03_chapitres/chapitre_1/1_4_classification_regimes.md"
       - "03_chapitres/chapitre_1/1_5_precautions_lecture.md"
-      # 1_3_champ_statistique.md exclu — contenu déplacé en Annexe D.1
+      # 1_3_champ_statistique.md exclu — contenu déplacé en Annexe A.1
 
   - id: "chapitre_3_cartographie"
     title: "Chapitre 3  Cartographie institutionnelle de la protection sociale"

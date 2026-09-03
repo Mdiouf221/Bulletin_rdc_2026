@@ -1,0 +1,30 @@
+TITRE : Estimation provisoire de la fonction publique hors dispositifs observés — 2024
+SOURCE : Calcul de travail de l'équipe du bulletin
+PÉRIODE : 2024
+NIVEAU : Estimation provisoire — non déclarée par une institution
+FICHIER : 06_sources/ESS/ESS_TRESOR/EST TRESOR 2024.xlsm
+
+---
+
+CONTENU
+
+Fichier au format ESS utilisé pour représenter provisoirement le résiduel de l'emploi public hors CNSSAP et hors régimes spéciaux observés. Institution technique dans la base : TRESOR. Un régime est renseigné : TRESOR_R1.
+
+Donnée importée :
+- Population résiduelle enregistrée dans le champ « cotisants » : 713 896.
+- Bénéficiaires : N/D.
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Cette population n'est pas constituée de cotisants au sens strict. Le champ ESS « cotisants » est utilisé comme support technique pour l'affichage dans le tableau de bord.
+- La valeur est une estimation résiduelle et ne prouve pas une couverture budgétaire effective.
+- Le classeur contient des références internes aux années 2022 et 2024. L'import retient 2024 d'après le nom du fichier ; cette incohérence doit être vérifiée avant publication.
+- Ne pas citer comme donnée institutionnelle et ne pas intégrer automatiquement à l'ODD 1.3.1.
+
+---
+
+CITATION RECOMMANDÉE
+
+Ne pas citer comme source officielle. Présenter comme « estimation provisoire de travail de l'équipe du bulletin ».

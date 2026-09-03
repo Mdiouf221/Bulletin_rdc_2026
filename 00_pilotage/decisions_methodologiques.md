@@ -86,6 +86,26 @@ Le niveau de détail à inclure dans les annexes statistiques devra être fixé 
 **Statut :** à confirmer  
 **Impact :** annexes, chapitre 3, chapitre 6
 
+### DM-019 — Rupture apparente des cotisants CNSSAP (régime de base) entre 2022 et 2023
+
+**Constat (relecture du 2026-09-02) :** La base institutionnelle (`06_donnees/protection_sociale_rdc.db`, table `indicateurs_regime`) enregistre un bond des cotisants actifs CNSSAP (régime de base, CNSSAP_R1) de 198 399 en 2022 à 1 004 106 en 2023, soit une variation de +406 % — largement supérieure au seuil de 50 % que DM-010 (règle 5) définit comme alerte de rupture méthodologique. Le champ `couverture_effective_total` de la table `prestations_historique` montre par ailleurs une valeur quasi identique (≈1 003 277) répétée sur les trois prestations CNSSAP_R1 de 2023, ce qui suggère qu'il pourrait s'agir d'un effectif d'affiliés/éligibles (N3) plutôt que de cotisants actifs au sens strict (N4) — à confirmer.
+
+**Hypothèse de travail, non confirmée :** ce changement pourrait refléter la réforme de transfèrement des agents publics vers la CNSSAP (mentionnée en section 3.1 du chapitre 3 et en 4.2/4.3), qui aurait fait basculer un grand nombre d'agents dans le périmètre CNSSAP en 2023. Cette hypothèse doit être vérifiée directement auprès de la CNSSAP avant toute utilisation de la donnée 2023 dans un tableau ou un indicateur.
+
+**Précaution déjà appliquée :** le Tableau 4.3 (chapitre 4, section âge actif) affiche prudemment `[N/D]` pour les cotisants CNSSAP 2023-2025 plutôt que ce chiffre non vérifié. Cette prudence doit être maintenue tant que ce point n'est pas confirmé.
+
+**Statut :** à confirmer  
+**Impact :** chapitre 4 (sections 4.2, 4.3), chapitre 5 (sous-indicateur ODD 2.9), matrice de couverture CNSSAP, Annexe B  
+**Référence :** DM-010, DM-012 ; à instruire auprès de la CNSSAP (donnée source ESS CNSSAP 2023)
+
+### DM-020 — Nature des données SESOPA pour les exercices 2019–2026 (valeurs reconduites à l'identique)
+
+**Constat (relecture du 2026-09-02, actualisé le 2026-09-03) :** Les valeurs SESOPA enregistrées dans `indicateurs_regime` (cotisants_total = 2 315, bénéficiaires_total = 1 959) sont strictement identiques pour les huit exercices 2019 à 2026, y compris pour 2026 — année non encore écoulée à la date de préparation du bulletin. Ceci pourrait indiquer une valeur de référence ponctuelle reconduite par défaut plutôt que des données annuelles réellement observées. L'alerte initiale concernant la MESP 2025 est levée : la dernière ESS intégrée renseigne 112 608 cotisants et 217 171 bénéficiaires en 2025, contre 96 538 et 196 574 en 2024.
+
+**Statut :** à confirmer  
+**Impact :** Annexe B (fiche SESOPA), tous les tableaux mentionnant SESOPA pour ces années  
+**Référence :** à instruire auprès du SESOPA (toutes années 2019-2026) — vérifier si une ESS a été transmise chaque année ou si la dernière valeur connue a été reconduite par défaut
+
 ## Décisions actées (suite — issues de la session 2026-06-09)
 
 ### DM-010 — Règle de conversion foyers/bénéficiaires pour les prestations enfants et transferts familiaux
@@ -260,7 +280,34 @@ Le sous-indicateur ODD 1.3.1 2.9 (cotisants actifs aux régimes de retraite) uti
 **Impact :** sous-indicateur ODD 2.9, chapitre 4
 **Référence :** `indicateurs_odd_regles_calcul.md`, `visualiser_regimes.py`
 
+### DM-018 — Population totale et structure par âge : INS-RDC 2026 comme référence principale (2019-2024)
+
+**Décision (session du 2026-09-02) :**
+Entre l'estimation de la Division de la population des Nations Unies (ONU WPP 2024, révision de juillet 2024) et les projections démographiques nationales transmises par l'INS-RDC (canevas de collecte 2026), c'est la série **INS-RDC** qui est retenue comme **référence principale** du bulletin pour la population totale et sa structure par âge/sexe (agrégats 0+, 0-14, 0-17, 15+, 60+, 65+), sur la période où elle est disponible (2019-2024), **dans la base comme dans le texte du bulletin**. La série ONU WPP 2024 est conservée en comparaison et reste la seule source disponible pour : les projections au-delà de 2024 (dont 2025), l'âge médian, le ratio de dépendance détaillé (nécessite la tranche 15-64 ans, absente des données INS-RDC transmises), l'urbanisation, la ruralité et la densité de population — dimensions non couvertes par le canevas INS-RDC 2026.
+
+**Cette décision remplace explicitement une décision antérieure prise le même jour (2026-09-02, session distincte — voir `00_pilotage/journal_modifications.md`, entrées relatives à la « Priorisation systématique du dénominateur INS/RDC » et à la « Synchronisation base SQLite ↔ Excel »).** Cette décision antérieure avait au contraire choisi de conserver l'ONU WPP/ILOSTAT comme référence prioritaire dans la base brute et dans le texte de la section 0.1, en réservant l'usage de l'INS-RDC aux seuls dénominateurs des indicateurs ODD 1.3.1 calculés par le tableau de bord (mécanisme `dashboard_settings.json` → `denomSettings.denominatorConstructions`, source manuelle). Sur confirmation explicite de l'utilisateur (session du 2026-09-02, après signalement du conflit), DM-018 prime désormais sur ce choix antérieur : l'INS-RDC devient la référence principale de façon généralisée, y compris dans la base brute et le texte narratif, et pas seulement pour les calculs d'indicateurs ODD.
+
+**Justification :** source nationale directe, plus récente (transmise le 2026-09-01), et cohérente à l'arrondi près avec la série ONU WPP 2024 (écarts de l'ordre de 1 % selon les années et tranches d'âge).
+
+**Mise en œuvre technique :** dans `protection_sociale_rdc.db` (racine), table `denominateurs_ref`, toutes les requêtes de résolution de dénominateur trient les lignes candidates par `ORDER BY priority DESC, id ASC` (la valeur de `priority` la plus **élevée** l'emporte ; à égalité, la ligne la plus anciennement insérée l'emporte). Les 108 lignes `source='src-ins-rdc-2026'` (var_code='var-c-popsx', COD, années 2019-2024) ont donc été passées à `priority=1` pour l'emporter effectivement, et les lignes `source='src-unwpp-2024jul-rev'` correspondant exactement aux mêmes combinaisons (année, sexe, âge) ont été ramenées à `priority=0`. *Point de vigilance corrigé en cours de session : une première tentative avait, par erreur d'interprétation du sens de `priority` (en supposant à tort que la valeur la plus **basse** l'emporte), fait l'inverse — INS à `priority=0`, WPP à `priority=1` — ce qui aurait fait gagner l'ONU WPP dans les requêtes réelles malgré l'intention contraire. Erreur détectée et corrigée avant régénération des sorties (tableau de bord, Annexe C, bulletin assemblé).* Les autres lignes ONU WPP (années hors 2019-2024, tranches d'âge non couvertes par l'INS) restent `priority=0`, faute d'alternative.
+
+**Statut :** actée (2026-09-02)
+**Impact :** section 0.1 (contexte démographique), tous les calculs utilisant la population totale ou la structure par âge/sexe 2019-2024 comme dénominateur, tableau de bord (`dashboard_regimes.html`), Annexe C
+**Référence :** `02_introduction_generale/0_1_contexte_demographique.md`, `protection_sociale_rdc.db` (table `denominateurs_ref`)
+
 ## Décisions en discussion
+
+### DM-021 — Anomalie des prestations AT/MP CNSS 2024 (valeur uniforme suspecte)
+
+**Constat (relecture du 2026-09-02, mise à jour du chapitre 4 avec les données 2023-2024) :** Les 11 types de prestations de la branche Risques professionnels de la CNSS (Régime 2) pour l'exercice 2024 affichent tous exactement la même valeur de bénéficiaires (2 853), qu'il s'agisse d'une rente d'incapacité, de frais funéraires, de fourniture de lunettes ou de transport de la victime. Cette uniformité est statistiquement très improbable pour des prestations de nature aussi différente et contraste avec les années 2019-2023, où seules 2 des 11 prestations sont renseignées avec des valeurs distinctes et plausibles (ex. 2023 : incapacité = 1 020, survivants = 1 608).
+
+**Hypothèse de travail, non confirmée :** erreur de saisie ou d'extraction de l'ESS CNSS 2024 — une valeur unique (peut-être un total de sinistres déclarés ou un total de bénéficiaires toutes prestations confondues) aurait été dupliquée par erreur sur l'ensemble des lignes de prestations lors de l'import.
+
+**Précaution appliquée :** cette valeur n'est pas utilisée dans le détail par type de prestation AT/MP du Tableau 4.5 (chapitre 4.3) pour 2024, qui reste `[N/D]` avec une note signalant l'anomalie, en attendant vérification auprès de la CNSS ou nouvelle extraction du fichier source. Par ailleurs, le montant unitaire de la rente AT/MP déclaré pour 2023 (180 000 CDF) romprait la correspondance historique avec le montant de la pension de vieillesse de la même année (230 000 CDF, Tableau 4.2) ; cette valeur n'est pas non plus retenue dans les tableaux 4.5 et 4.13, dans l'attente de confirmation.
+
+**Statut :** en discussion  
+**Impact :** chapitre 4 (section 4.3, Tableau 4.5), Annexe B (fiche CNSS)  
+**Référence :** à instruire auprès de la CNSS (fichier source ESS CNSS 2024, branche Risques professionnels)
 
 ### DM-017 — Traitement de la protection statutaire budgétaire des agents publics
 
@@ -270,8 +317,10 @@ Son inclusion dans le calcul national du sous-indicateur relatif aux actifs est 
 
 L’écart entre l’effectif estimé de l’emploi public et les affiliés ou cotisants CNSSAP ne constitue pas une mesure suffisante de cette couverture. La mécanisation facilite la retenue des cotisations, mais ne doit pas être confondue avec l’immatriculation à la CNSSAP. Les composantes contributive et budgétaire sont présentées séparément avant toute consolidation.
 
-**Statut :** en discussion
-**Impact :** cartographie institutionnelle, sections 4.2, 4.3 et 5.1, tableaux 2.2, 4.1, 4.3, 5.1 et 5.2
+Dans les fichiers de données et certaines sorties automatisées, le code technique `TRESOR` désigne cette composante budgétaire hors CNSSAP. Il ne correspond pas à une institution gestionnaire. À titre d’hypothèse de travail, les agents publics concernés sont considérés comme relevant d’un dispositif non contributif financé par allocation budgétaire. Leur effectif est estimé par différence à partir des effectifs globaux de la Fonction publique — 1 622 972 pour chacune des années 2019 à 2022, 1 425 000 en 2023 et 1 727 000 en 2024 — et des effectifs CNSSAP retenus dans la base. Les résultats ainsi obtenus sont des estimations de personnes potentiellement couvertes ; ils ne constituent ni un décompte de cotisants ni, à eux seuls, la preuve d’une couverture effective individuelle.
+
+**Statut :** acté comme hypothèse de travail, à confirmer par des données administratives
+**Impact :** cartographie institutionnelle, sections 4.2, 4.3 et 5.1, tableaux 2.2, 4.1, 4.3, 5.1 et 5.2, annexes B et C
 
 ## Décisions abandonnées
 

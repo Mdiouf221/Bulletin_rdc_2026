@@ -1,0 +1,46 @@
+TITRE : ESS CNSS 2024 — Enquête sur les Sources Statistiques de la protection sociale (format OIT)
+SOURCE / AUTEUR : Caisse Nationale de Sécurité Sociale (CNSS), République Démocratique du Congo — Direction des Études et Organisation
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 2024
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : ESS_CNSS_2024.txt / ESS CNSS 2024.xlsm (source)
+NIVEAU FIABILITE : 1 — données institutionnelles primaires (transmission directe de l'institution)
+LIEN SOURCE — Fichier source Excel (present) : 06_sources/ESS/ESS_CNSS/ESS CNSS 2024.xlsm
+
+---
+
+CONTENU RÉSUMÉ
+
+Enquête sur les Sources Statistiques (ESS) de la CNSS pour l'année 2024 — année la plus récente de la série CNSS individuelle (2019–2024). Structure identique aux ESS CNSS 2019-2023. Feuilles actives : Inventaire des régimes (4 régimes recensés), Prestations aux familles (Régime 1), Risques professionnels (Régime 2), Pension (Régime 3), Info Pauvreté, ADDITIONAL statistics for SDGs, CALCULATIONS.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+RÉGIME 1 — Branche des Prestations aux familles (CNSS, 2024) :
+- 4 prestations (structure identique à 2019-2023)
+
+RÉGIME 2 — Branche des Risques Professionnels (CNSS, 2024) :
+- 11 prestations (structure identique à 2019-2023)
+
+RÉGIME 3 — Branche des Pensions (CNSS, 2024) :
+- 7 prestations (structure identique à 2019-2023)
+
+RÉGIME 4 — Action sociale et sanitaire (CNSS, 2024) :
+- Recensé dans l'inventaire des régimes (financement non-contributif) mais sans feuille de prestations dédiée dans le classeur ; aucune donnée de prestation individuelle exploitée pour cette branche à ce stade.
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Continuité directe de la série CNSS individuelle 2019-2023 ; structure et prestations inchangées.
+- Les données quantitatives (effectifs, montants) se trouvent dans les feuilles individuelles des régimes.
+- Monnaie : Franc congolais (CDF).
+- Fichier intégré en base via le mode d'import progressif (`py 09_scripts/extraire_ess.py --inbox`), déposé par l'institution dans 06_sources/_entrants/CNSS/ le 2026-09-02.
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSS (2024), Enquête sur les Sources Statistiques (ESS) — format OIT, Caisse Nationale de Sécurité Sociale, Kinshasa, République Démocratique du Congo.

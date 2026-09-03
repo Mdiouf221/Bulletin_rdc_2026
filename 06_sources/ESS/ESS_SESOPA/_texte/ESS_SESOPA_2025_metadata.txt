@@ -1,0 +1,41 @@
+TITRE : ESS SESOPA 2025 — Enquête sur les Sources Statistiques de la protection sociale (format OIT)
+SOURCE / AUTEUR : Service de Sécurité Sociale des Parlementaires (SESOPA), Assemblée nationale, République Démocratique du Congo
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 2025
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : ESS_SESOPA_2025.txt / ESS_SESOPA_2025.xlsm (source)
+NIVEAU FIABILITE : 1 — données institutionnelles primaires (transmission directe de l'institution)
+LIEN SOURCE — Fichier source Excel (present) : 06_sources/ESS/ESS_SESOPA/ESS_SESOPA_2025.xlsm
+
+---
+
+CONTENU RÉSUMÉ
+
+Enquête sur les Sources Statistiques (ESS) de la SESOPA pour l'année 2025, dernière année de la série historique déposée par l'institution avant le fichier 2026 déjà présent en base. Structure identique à 2019-2024. Feuilles actives : Inventaire des régimes (5 régimes recensés), feuilles de prestations des Régimes 1 à 5, Info Pauvreté, ADDITIONAL statistics for SDGs, CALCULATIONS.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+RÉGIME 1 — Branche des pensions de retraite et de réversion (SESOPA, 2025) : financement mixte, obligatoire — 3 prestations
+RÉGIME 2 — Assurance maladie des parlementaires (SESOPA, 2025) : non-contributif — 8 prestations
+RÉGIME 3 — Assurance décès — rente spéciale de survie (SESOPA, 2025) : non-contributif — 7 prestations
+RÉGIME 4 — Branche des risques liés à l'exercice du mandat parlementaire (SESOPA, 2025) : non-contributif — 9 prestations
+RÉGIME 5 — Assurance maternité des parlementaires (SESOPA, 2025) : non-contributif — 5 prestations
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Structure et prestations identiques à 2019-2024 (voir ESS_SESOPA_2019_metadata.txt pour la confirmation documentaire du sigle SESOPA).
+- Avec ce dépôt, la série SESOPA en base couvre désormais 2019-2026 sans interruption (2019-2025 déposés le 2026-09-02 ; 2026 déjà présent antérieurement).
+- Les données quantitatives (effectifs, montants) se trouvent dans les feuilles individuelles des régimes.
+- Monnaie : Franc congolais (CDF).
+- Fichier intégré en base via le mode d'import progressif (`py 09_scripts/extraire_ess.py --inbox`), déposé par l'institution dans 06_sources/_entrants/Sesopa/ le 2026-09-02.
+
+---
+
+CITATION RECOMMANDÉE
+
+SESOPA (2025), Enquête sur les Sources Statistiques (ESS) — format OIT, Service de Sécurité Sociale des Parlementaires, Assemblée nationale, Kinshasa, République Démocratique du Congo.

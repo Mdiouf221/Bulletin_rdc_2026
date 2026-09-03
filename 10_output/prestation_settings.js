@@ -245,7 +245,7 @@ class PrestationSettings {
     section.innerHTML = '<legend>D — Agrégation des recettes/dépenses</legend>';
 
     const desc = document.createElement('p');
-    desc.textContent = "Pour chaque prestation, indiquer si ses recettes et/ou ses dépenses ont été combinées avec d'autres prestations (même montant reporté). Les dépenses combinées sont fusionnées dans le graphique pour éviter le double comptage.";
+    desc.textContent = "Pour chaque prestation, indiquer si ses recettes et/ou ses dépenses ont été combinées avec d'autres prestations (même montant reporté). Les dépenses combinées sont fusionnées dans le graphique « Dépenses par prestation » (montant affiché une seule fois, la légende indiquant les prestations regroupées). Les recettes combinées sont enregistrées mais restent sans effet visuel : aucun graphique de recettes par prestation n'existe pour l'instant.";
     section.appendChild(desc);
 
     const wrap = document.createElement('div');
