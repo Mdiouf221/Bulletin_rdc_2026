@@ -96,6 +96,10 @@ Régime ou programme financé principalement par l’impôt, le budget public, l
 
 Dispositif non contributif fondé sur un texte légal, réglementaire ou statutaire définissant des droits et des prestations pour une population identifiable, dont le financement et la prise en charge sont assurés directement par le budget de l’État. L’existence d’une base légale ou d’une allocation budgétaire ne suffit pas, à elle seule, à établir une couverture effective : celle-ci doit être documentée par des données sur les personnes couvertes, les droits opérationnels ou les prestations servies et l’exécution du financement.
 
+## Régime octroyé
+
+Expression utilisée dans les documents nationaux (et reprise dans certains tableaux ESS) pour désigner des droits à pension définis par un statut particulier et servis directement par l’État sans cotisation préalable des intéressés — par exemple les pensions des militaires, des policiers, des magistrats ou des anciens parlementaires. Dans la terminologie du bulletin, les régimes octroyés relèvent de la catégorie des **dispositifs statutaires budgétaires** (voir cette entrée) ; le terme « régime octroyé » est conservé lorsqu’il reprend l’intitulé exact de la source.
+
 ## Mécanisation d’un agent public
 
 Intégration administrative et salariale d’un agent dans le système de paie de l’État. La mécanisation facilite la retenue régulière des cotisations sociales, mais demeure distincte de l’immatriculation ou de l’affiliation auprès d’une institution de sécurité sociale.

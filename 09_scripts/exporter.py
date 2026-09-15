@@ -12,11 +12,19 @@ Formats disponibles :
 Options :
   --notes          — inclure les blocs NOTE_INTERNE (version interne de travail)
   --open           — ouvrir automatiquement le(s) fichier(s) produit(s)
+  --excel-charts [linked|embedded|png|auto]
+                 — mode Word pour remplacer (ou non) les PNG annexe B/C
+                   (alias historique : --annexe-b-charts)
+  --refresh-visuals
+                 — régénère explicitement les visuels annexes B/C avant export
+                   (opt-in, jamais exécuté par défaut)
 
 Usage :
     python 09_scripts/exporter.py                  # HTML relecture
     python 09_scripts/exporter.py --all            # tous les formats
     python 09_scripts/exporter.py --word           # Word via pandoc
+    python 09_scripts/exporter.py --word --excel-charts embedded
+    python 09_scripts/exporter.py --all --refresh-visuals
     python 09_scripts/exporter.py --notes --open   # HTML interne + ouverture auto
     python 09_scripts/exporter.py --pdf            # PDF via weasyprint ou pandoc
 """
@@ -64,6 +72,7 @@ WORKSPACE_DIR = SCRIPT_DIR.parent
 OUTPUT_DIR    = WORKSPACE_DIR / "10_output"
 ASSEMBLER     = SCRIPT_DIR / "assembler_markdown.py"
 ANNEXE_B_VISUELS = SCRIPT_DIR / "generer_annexe_b_visuels.py"
+ANNEXE_C_VISUELS = SCRIPT_DIR / "generer_annexe_c_visuels.py"
 EXPORT_CSS    = SCRIPT_DIR / "export_relecture.css"
 PREVIEW_CSS   = SCRIPT_DIR / "preview.css"
 
@@ -431,20 +440,38 @@ def build_export_html(md_file: pathlib.Path, include_notes: bool = False) -> str
 # ---------------------------------------------------------------------------
 # Lancement de l'assembleur
 
-def run_assembler() -> bool:
-    """Relance l'assembleur pour s'assurer que les fichiers .md sont à jour."""
-    if ANNEXE_B_VISUELS.exists():
-        print("[EXPORT] Rafraîchissement Annexe B (visuels + XLSX)…")
-        visuals = subprocess.run(
-            [sys.executable, str(ANNEXE_B_VISUELS)],
+def _refresh_annex_visuals() -> None:
+    scripts = (
+        ("Annexe B", ANNEXE_B_VISUELS),
+        ("Annexe C", ANNEXE_C_VISUELS),
+    )
+    for label, script_path in scripts:
+        if not script_path.exists():
+            print(f"[AVERTISSEMENT] Script visuels {label} introuvable : {script_path.name}")
+            continue
+        print(f"[EXPORT] Rafraîchissement {label} (opt-in --refresh-visuals)…")
+        result = subprocess.run(
+            [sys.executable, str(script_path)],
             capture_output=True,
             cwd=str(WORKSPACE_DIR),
             encoding="utf-8",
             errors="replace",
         )
-        if visuals.returncode != 0:
-            err = (visuals.stderr or visuals.stdout or "").strip()
-            print(f"[AVERTISSEMENT] Génération Annexe B incomplète : {err[:400]}")
+        if result.returncode != 0:
+            details = (result.stderr or result.stdout or "").strip()
+            raise RuntimeError(
+                f"Rafraîchissement {label} échoué ({script_path.name}) : {details[:500]}"
+            )
+
+
+def run_assembler(*, refresh_visuals: bool = False) -> bool:
+    """Relance l'assembleur pour s'assurer que les fichiers .md sont à jour."""
+    if refresh_visuals:
+        try:
+            _refresh_annex_visuals()
+        except RuntimeError as exc:
+            print(f"[AVERTISSEMENT] {exc}")
+            return False
 
     print("[EXPORT] Assemblage du Markdown…")
     result = subprocess.run(
@@ -463,13 +490,18 @@ def run_assembler() -> bool:
 # ---------------------------------------------------------------------------
 # Export HTML
 
-def export_html(include_notes: bool = False, open_after: bool = False) -> "pathlib.Path | None":
+def export_html(
+    include_notes: bool = False,
+    open_after: bool = False,
+    refresh_visuals: bool = False,
+) -> "pathlib.Path | None":
     """Génère le fichier HTML autonome dans 10_output/."""
     label  = "notes" if include_notes else "relecture"
     source = MD_TRAVAIL if include_notes else MD_PUBLICATION
     output = OUTPUT_DIR / f"bulletin_{label}_{STAMP}.html"
 
-    run_assembler()
+    if not run_assembler(refresh_visuals=refresh_visuals):
+        return None
 
     print("[EXPORT HTML] Génération du fichier HTML…")
     html = build_export_html(source, include_notes=include_notes)
@@ -490,7 +522,13 @@ def export_html(include_notes: bool = False, open_after: bool = False) -> "pathl
 # ---------------------------------------------------------------------------
 # Export Word (via pandoc)
 
-def export_word(include_notes: bool = False, open_after: bool = False) -> "pathlib.Path | None":
+def export_word(
+    include_notes: bool = False,
+    open_after: bool = False,
+    excel_chart_mode: str = "embedded",
+    annexe_b_chart_mode: str | None = None,
+    refresh_visuals: bool = False,
+) -> "pathlib.Path | None":
     """
     Délègue entièrement à exporter_word.py (pipeline complet : styles, sauts de
     page, TOF, autofit…).  Cette fonction reste le point d'entrée appelé par le
@@ -500,11 +538,23 @@ def export_word(include_notes: bool = False, open_after: bool = False) -> "pathl
     stamp = STAMP
     html_source = OUTPUT_DIR / f"bulletin_{label}_{stamp}.html"
 
+    if refresh_visuals:
+        refreshed_html = export_html(
+            include_notes=include_notes,
+            open_after=False,
+            refresh_visuals=True,
+        )
+        if refreshed_html is None:
+            print("[EXPORT WORD] Échec du rafraîchissement préalable (--refresh-visuals).")
+            return None
+        html_source = refreshed_html
+
     # Générer le HTML source s'il est absent
     if not html_source.exists():
         subprocess.run(
             [sys.executable, str(pathlib.Path(__file__)),
-             "--notes" if include_notes else "--html"],
+             "--notes" if include_notes else "--html",
+             *(["--refresh-visuals"] if refresh_visuals else [])],
             capture_output=True, cwd=str(WORKSPACE_DIR),
             encoding="utf-8", errors="replace",
         )
@@ -513,6 +563,8 @@ def export_word(include_notes: bool = False, open_after: bool = False) -> "pathl
             print("              Lancez d'abord : python 09_scripts/exporter.py --html")
             return None
 
+    requested_mode = annexe_b_chart_mode if annexe_b_chart_mode is not None else excel_chart_mode
+
     # Déléguer au pipeline Word complet
     exporter_word_path = SCRIPT_DIR / "exporter_word.py"
     if not exporter_word_path.exists():
@@ -520,7 +572,13 @@ def export_word(include_notes: bool = False, open_after: bool = False) -> "pathl
         return None
 
     result = subprocess.run(
-        [sys.executable, str(exporter_word_path), str(html_source)],
+        [
+            sys.executable,
+            str(exporter_word_path),
+            str(html_source),
+            "--excel-charts",
+            requested_mode,
+        ],
         capture_output=True, cwd=str(WORKSPACE_DIR),
         encoding="utf-8", errors="replace",
     )
@@ -657,6 +715,8 @@ def main() -> None:
             "  python 09_scripts/exporter.py                  # HTML relecture\n"
             "  python 09_scripts/exporter.py --all            # tous les formats\n"
             "  python 09_scripts/exporter.py --word --open    # Word, ouvrir auto\n"
+            "  python 09_scripts/exporter.py --word --excel-charts auto\n"
+            "  python 09_scripts/exporter.py --all --refresh-visuals\n"
             "  python 09_scripts/exporter.py --notes          # HTML avec notes internes\n"
         ),
     )
@@ -672,6 +732,26 @@ def main() -> None:
                         help="Inclure les notes internes (version de travail)")
     parser.add_argument("--open",  action="store_true",
                         help="Ouvrir automatiquement le(s) fichier(s) produit(s)")
+    parser.add_argument(
+        "--refresh-visuals",
+        action="store_true",
+        help=(
+            "Régénérer explicitement les visuels annexes B/C avant l'assemblage. "
+            "Opt-in uniquement : absent par défaut pour préserver les classeurs existants."
+        ),
+    )
+    parser.add_argument(
+        "--excel-charts",
+        "--annexe-b-charts",
+        dest="excel_charts",
+        choices=("linked", "embedded", "png", "auto"),
+        default=os.environ.get("EXCEL_CHART_MODE") or os.environ.get("ANNEXE_B_CHART_MODE", "embedded"),
+        help=(
+            "Export Word annexe B/C : linked (objets Excel liés), embedded (objets Excel incorporés), "
+            "png (conserver les PNG) ou auto (embedded si COM Word/Excel disponible, sinon PNG). "
+            "Alias historique accepté : --annexe-b-charts."
+        ),
+    )
     args = parser.parse_args()
 
     # HTML par défaut si aucun format précisé
@@ -682,12 +762,22 @@ def main() -> None:
     produced = []
 
     if do_html:
-        f = export_html(include_notes=args.notes, open_after=args.open)
+        f = export_html(
+            include_notes=args.notes,
+            open_after=args.open,
+            refresh_visuals=args.refresh_visuals,
+        )
         if f:
             produced.append(f)
 
     if do_word:
-        f = export_word(include_notes=args.notes, open_after=args.open)
+        word_refresh_visuals = args.refresh_visuals and not do_html
+        f = export_word(
+            include_notes=args.notes,
+            open_after=args.open,
+            excel_chart_mode=args.excel_charts,
+            refresh_visuals=word_refresh_visuals,
+        )
         if f:
             produced.append(f)
 

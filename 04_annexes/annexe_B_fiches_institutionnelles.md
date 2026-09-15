@@ -54,15 +54,13 @@ Sections de chaque fiche :
 Règle rédactionnelle pour la section "Perspective de l'institution" :
 - Ce texte est rédigé par ou en coordination étroite avec l'institution.
 - Il est clairement attribué : introduit par "Selon la [institution]" ou présenté en encadré avec mention explicite.
-- Il exprime les orientations stratégiques, priorités et engagements de l'institution  pas une appréciation externe.
+- Il exprime les orientations stratégiques, priorités et engagements de l'institution — pas une appréciation externe.
 - Il ne remplace pas l'analyse objective des sections précédentes.
 -->
 
-## Vue synthétique du tableau de bord (onglet « Par institution »)
+## 
 
 Chaque fiche institutionnelle présente, pour l'ensemble des régimes documentés, des graphiques d'évolution des cotisants, des bénéficiaires et des agrégats financiers, ainsi qu'un tableau descriptif des régimes gérés et une répartition par sexe lorsque cette information est disponible.
-
-Dans le tableau « Données détaillées », les institutions et régimes sont désignés par leur nom court ou leur sigle (voir la [Liste des sigles et acronymes](../01_pages_preliminaires/sigles_acronymes.md)) ; les années consécutives sans aucune donnée ESS sont regroupées en une seule ligne « AAAA–AAAA » plutôt que répétées une par une, afin de rester lisible sans perdre l'information d'absence de donnée.
 
 ---
 
@@ -81,7 +79,7 @@ La CNSS a pour mission de coordonner et d'administrer les prestations de sécuri
 | Prestations familiales | Allocations familiales |
 | Maternité | Indemnités de maternité |
 
-*Branches non couvertes par la CNSS : soins de santé (non gérée directement par l'institution) et chômage.*
+**
 
 **Population assujettie :** travailleurs salariés du secteur privé (formel), congolais et étrangers, exerçant sur le territoire national.
 
@@ -109,7 +107,7 @@ La CNSS a pour mission de coordonner et d'administrer les prestations de sécuri
 | Bénéficiaires AT/MP (rentes de survivant) | 1 476 | 1 608 | 1 845 | 1 781 | [N/D] | [N/D] | [N/D] |
 | Bénéficiaires d'allocations familiales | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
-*Sources : premier Bulletin statistique RDC (2023) pour 20192022. Données 2023 à transmettre par la CNSS.*
+*Sources : premier Bulletin statistique RDC (2023) pour 2019–2022. Données 2023 à transmettre par la CNSS.*
 
 <!-- AUTO_GENERE:CNSS:DEBUT -->
 
@@ -141,7 +139,7 @@ La CNSS a pour mission de coordonner et d'administrer les prestations de sécuri
 <p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
 <p align="center"><img src="/files/04_annexes/illustrations/annexe_B_CNSS_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
 
-### Données détaillées (par régime et année)
+### Données détaillées selon formulaire ESS fournies
 
 <p class="table-caption"><strong>Tableau B.1.5</strong> — Données détaillées par régime et année, CNSS (2019–2025)<span class="footnote">Pour les allocations familiales de la CNSS, le nombre d'enfants bénéficiaires est estimé en multipliant par 3,17 le nombre de titulaires de prestations familiales communiqué par la CNSS. Ce facteur correspond au nombre moyen d'enfants de moins de 20 ans par foyer en RDC en 2013, d'après UN HH Size and Composition 2019. Il s'agit donc d'une estimation et non d'un décompte administratif direct d'enfants.</span></p>
 
@@ -189,7 +187,7 @@ La CNSS a pour mission de coordonner et d'administrer les prestations de sécuri
 
 ## Évolutions et réformes en cours
 
-Le nombre de cotisants actifs à la CNSS a enregistré une baisse significative en 2020 (24,7 %), passant de 676 179 à 508 708, sous l'effet de la pandémie de COVID-19. Une reprise progressive a été observée dès 2021 (+16,2 %), puis en 2022 (+3,8 %), portant le total à 613 761 cotisants. La couverture n'a cependant pas encore retrouvé son niveau d'avant-crise.
+
 
 *[À compléter : réformes législatives récentes, extension géographique, informatisation du registre, etc.]*
 
@@ -207,7 +205,7 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 | Accidents du travail / maladies professionnelles (AT/MP) | Branche des risques professionnels, officiellement lancée en mai 2023 |
 | Prestations familiales | Allocations familiales, prénatales et de maternité ; branche prévue par les textes fondateurs, non encore individualisée dans les déclarations ESS |
 
-*Branches non couvertes par la CNSSAP : soins de santé (couverte partiellement par l'action sociale et sanitaire, non documentée comme branche formelle) et chômage.*
+**
 
 **Population assujettie :** agents de carrière des services publics de l'État, fonctionnaires contractuels, stagiaires et apprentis sous contrat. Les militaires et policiers relèvent de régimes spéciaux distincts.
 
@@ -234,7 +232,7 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 | Bénéficiaires de pensions | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Bénéficiaires AT/MP | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
-*Sources : premier Bulletin statistique RDC (2023) pour 20192022. Données 2023 à transmettre par la CNSSAP.*
+*Sources : premier Bulletin statistique RDC (2023) pour 2019–2022. Données 2023 à transmettre par la CNSSAP.*
 
 <!-- AUTO_GENERE:CNSSAP:DEBUT -->
 
@@ -245,7 +243,7 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 | Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
 |---|---|---|---|---|
 | Régime de base | Contributif | Obligatoire | Publique | Vieillesse; Survivances |
-| Reforme du transfert des assurés du sytème octroyé à la CNSSAP | Non-contributif | — | Publique | Vieillesse; Survivances |
+| Réforme du transfert des assurés du système octroyé à la CNSSAP | Non-contributif | — | Publique | Vieillesse; Survivances |
 | Risques professionnels | Non-contributif | — | Publique | Maladie (en espèces); Accident du travail |
 | Régime Complémentaire | Contributif | Obligatoire | Publique | — |
 
@@ -266,7 +264,7 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 <p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
 <p align="center"><img src="/files/04_annexes/illustrations/annexe_B_CNSSAP_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
 
-### Données détaillées (par régime et année)
+### Données détaillées selon formulaire ESS fournies
 
 <p class="table-caption"><strong>Tableau B.2.5</strong> — Données détaillées par régime et année, CNSSAP (2019–2025)</p>
 
@@ -279,11 +277,11 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 | Régime de base | 2023 | 1,004,106 | 6,238 | 24.26 | 281.56 | 3,890 | 280 |
 | Régime de base | 2024 | 1,013,104 | 10,485 | 29.74 | 460.33 | 2,836 | 454 |
 | Régime de base | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Reforme du transfert des assurés du sytème octroyé à la CNSSAP | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Reforme du transfert des assurés du sytème octroyé à la CNSSAP | 2022 | — | 3,653 | 34.40 | 9.80 | — | — |
-| Reforme du transfert des assurés du sytème octroyé à la CNSSAP | 2023 | — | 4,522 | 8.56 | 19.62 | 1,892 | — |
-| Reforme du transfert des assurés du sytème octroyé à la CNSSAP | 2024 | — | 2,510 | 19.62 | 19.62 | 7,817 | — |
-| Reforme du transfert des assurés du sytème octroyé à la CNSSAP | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Réforme du transfert des assurés du système octroyé à la CNSSAP | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Réforme du transfert des assurés du système octroyé à la CNSSAP | 2022 | — | 3,653 | 34.40 | 9.80 | — | — |
+| Réforme du transfert des assurés du système octroyé à la CNSSAP | 2023 | — | 4,522 | 8.56 | 19.62 | 1,892 | — |
+| Réforme du transfert des assurés du système octroyé à la CNSSAP | 2024 | — | 2,510 | 19.62 | 19.62 | 7,817 | — |
+| Réforme du transfert des assurés du système octroyé à la CNSSAP | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Risques professionnels | 2019–2022 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Risques professionnels | 2023 | — | 0 | 0.00 | 30.23 | — | — |
 | Risques professionnels | 2024 | — | 2 | 1.96 | 33.90 | 981,796 | — |
@@ -304,15 +302,39 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 
 ## Évolutions et réformes en cours
 
-**Mécanisation des agents publics.** La RDC est confrontée depuis plusieurs décennies au problème des agents et fonctionnaires de l'État dits  non mécanisés  : des agents possédant un numéro de matricule mais n'apparaissant pas sur la liste de paie officielle, ne percevant donc aucune rémunération et ne bénéficiant d'aucune prestation sociale. Une politique d'inclusion salariale progressive  dite de  mécanisation   a été engagée pour régulariser leur situation. Entre octobre 2021 et décembre 2022, environ 40 000 agents ont été mécanisés, suivis de 101 000 agents supplémentaires.
-
-**Mise à la retraite par vagues.** En 2022, le Vice-Premier Ministre en charge de la Fonction Publique a annoncé que 350 000 agents étaient éligibles à la retraite, dont certains âgés de plus de 90 ans. Des départs ont été organisés en vagues successives : 4 400 agents (septembre 2022), puis 6 369 agents (février 2023), avec une prévision de 50 000 départs supplémentaires en 2023. Ce processus représente un enjeu financier majeur pour la CNSSAP.
+Mécanisation des agents publics.
+Mise à la retraite par vagues.
 
 **Lancement de la branche AT/MP.** En mai 2023, la branche accidents du travail et maladies professionnelles a été officiellement lancée, étendant la couverture de la CNSSAP à l'ensemble de ses contributeurs.
 
 *[À compléter : autres réformes en cours, extension aux enseignants, déploiement du système informatique, etc.]*
 
-# B.3 Fonds National de Promotion et de Service Social (FNPSS)
+# B.3 Service de Sécurité Sociale des Parlementaires (SESOPA)
+Mission et branches couvertes
+Cadre juridique et institutionnel
+Tableau B.6.2 — Cadre juridique et institutionnel, SESOPA
+Régimes gérés
+Répartition par sexe (cotisants et bénéficiaires cumulés)
+Figure B.6.2 — Répartition par sexe des cotisants et bénéficiaires cumulés, SESOPA (2019–2025)
+Données détaillées selon formulaire ESS fournies
+Tableau B.6.7 — Données détaillées par régime et année, SESOPA (2019–2025)
+Source : base consolidée des ESS OIT/BIT.
+Évolutions et réformes en cours
+B.4 Régimes spéciaux non contributifs de la fonction publique
+Note méthodologique importante. « TRESOR » est un code technique de la base et non le nom d'une institution. Il désigne ici la part estimée du secteur public non couverte par la CNSSAP. Le bulletin pose l'hypothèse que cette population relève d'un dispositif non contributif financé directement par allocation budgétaire. Les effectifs présentés sont donc des estimations de personnes potentiellement couvertes et non des cotisants.
+Dispositif représenté
+Tableau B.7.1 — Régimes gérés, dispositif budgétaire hors CNSSAP (proxy technique « TRESOR »)
+Répartition par sexe (personnes potentiellement couvertes estimées et bénéficiaires cumulés)
+Figure B.7.2 — Répartition par sexe des personnes potentiellement couvertes estimées et bénéficiaires cumulés, dispositif budgétaire hors CNSSAP (proxy technique « TRESOR ») (2019–2025)
+Données détaillées selon formulaire ESS fournies
+Tableau B.7.2 — Données détaillées par régime et année, dispositif budgétaire hors CNSSAP (proxy technique « TRESOR ») (2019–2025)
+Source : base consolidée des ESS OIT/BIT.
+Note : la vue technique « TRESOR » est utilisée ici comme proxy opérationnel de la protection budgétaire non contributive des agents publics hors CNSSAP ; elle ne représente pas une institution.
+Ces régimes sont financés par le Trésor public et destinés à des catégories spécifiques d'agents de l'État. Leur identification exhaustive est difficile : le premier bulletin note explicitement qu'il a été impossible d'en obtenir une liste complète et des données détaillées.
+Régimes identifiés
+Données disponibles
+Aucune donnée statistique détaillée n'a pu être obtenue pour ces régimes lors de la préparation du premier bulletin. L'obtention de données auprès des ministères de tutelle constitue un objectif prioritaire pour le présent bulletin.
+B.5 Fonds National de Promotion et de Service Social (FNPSS)
 
 *Capture non disponible à ce stade : l'institution FNPSS n'apparaît pas encore comme entrée dédiée dans l'onglet « Par institution » du tableau de bord.*
 
@@ -357,7 +379,19 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 
 *[À rédiger à réception des informations du FNPSS.]*
 
-# B.4 Mutuelle de Santé des Enseignants de l'Enseignement Primaire, Secondaire et Professionnel (MESP)
+# B.6 Fonds de Solidarité de Santé (FSS)
+Mission et branches couvertes
+Cadre juridique et institutionnel
+Tableau B.5.2 — Cadre juridique et institutionnel, FSS
+Régimes gérés
+Tableau B.5.4 — Régimes gérés, FSS
+Répartition par sexe (cotisants et bénéficiaires cumulés)
+Figure B.5.2 — Répartition par sexe des cotisants et bénéficiaires cumulés, FSS (2019–2025)
+Données détaillées selon formulaire ESS fournies
+Tableau B.5.5 — Données détaillées par régime et année, FSS (2019–2025)
+Source : base consolidée des ESS OIT/BIT.
+Évolutions et réformes en cours
+B.7 Mutuelle de Santé des Enseignants de l'Enseignement Primaire, Secondaire et Professionnel (MESP)
 
 ## Mission et branches couvertes
 
@@ -424,7 +458,7 @@ La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une soc
 <p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
 <p align="center"><img src="/files/04_annexes/illustrations/annexe_B_MESP_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
 
-### Données détaillées (par régime et année)
+### Données détaillées selon formulaire ESS fournies
 
 <p class="table-caption"><strong>Tableau B.4.5</strong> — Données détaillées par régime et année, MESP (2019–2025)</p>
 
@@ -446,23 +480,9 @@ La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une soc
 
 ## Évolutions et réformes en cours
 
-Entre 2019 et 2024, le nombre de contributeurs à la MESP a progressé de **92 %**, passant de 50 256 à 96 538. Le nombre de bénéficiaires (contributeurs et personnes à charge) a suivi une progression comparable, passant de 122 547 à 196 574 sur la même période.<sup>1</sup>
-
-Cette dynamique reste cependant très en deçà du potentiel : si chaque enseignant détenait une carte MESP, la mutuelle compterait plus de 700 000 titulaires et potentiellement 2 800 000 bénéficiaires au total. À fin 2022, la MESP n'était opérationnelle que dans 7 des 26 provinces (Kinshasa, Haut-Katanga, Équateur, Kasaï-Oriental, Kasaï, Tshopo et Nord-Kivu), laissant 19 provinces sans couverture effective. Cette évaluation de la couverture provinciale n'a pas été actualisée depuis ; sa situation pour 2023-2025 reste à confirmer auprès de la MESP.
-
-<sup>1</sup> *Les effectifs 2025 transmis par la MESP reprennent à l'identique ceux de 2024 (96 538 cotisants, 196 574 bénéficiaires) : cette stabilité n'est pas confirmée comme une observation distincte et reste à vérifier auprès de l'institution.*
-
-L'extension géographique progressive constitue le principal enjeu stratégique de la MESP pour les années à venir.
-
-# B.5 Fonds de Solidarité de Santé (FSS)
+# B.8 Mutuelles de Santé volontaire (POMUCO - CGAT)
 
 ## Mission et branches couvertes
-
-Le FSS est l'instrument central de la mise en œuvre de la Couverture Santé Universelle (CSU) en RDC. Il est chargé d'organiser la solidarité financière des cotisants de la CSU, de collecter les fonds, de contractualiser avec les établissements de santé et pharmaceutiques, et d'assurer un financement équitable des soins pour tous.
-
-Le FSS a vocation à regrouper, à terme, plusieurs régimes :
-
-<p class="table-caption"><strong>Tableau B.5.1</strong> — Régimes prévus au sein du FSS et état d'opérationnalisation</p>
 
 | Régime | Statut |
 |---|---|
@@ -493,10 +513,12 @@ Le FSS a vocation à regrouper, à terme, plusieurs régimes :
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | Note |
 |---|---|---|---|---|---|---|---|---|
 | Bénéficiaires de la gratuité de la maternité | [N/D] | [N/D] | [N/D] | [N/D] | *En cours de déploiement* | [N/D] | [N/D] | Lancé en septembre 2023 à Kinshasa |
-| Population cible (ville-province de Kinshasa) | [N/D] | [N/D] | [N/D] | [N/D] | 1618 millions | [N/D] | [N/D] | Première phase |
+| Population cible (ville-province de Kinshasa) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D]¹ | [N/D] | [N/D] | Première phase |
 | Contributeurs actifs | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | Contributions non encore prélevées |
 
 *À compléter à réception des données du FSS.*
+
+¹ *La valeur transmise pour 2023 (« 1618 millions ») est manifestement erronée et a été retirée ; la population cible exacte de la première phase reste à confirmer auprès du FSS. Pour référence, l'agglomération de Kinshasa compte environ 17 millions d'habitants en 2024 selon les World Urbanization Prospects de l'ONU.*
 
 <!-- AUTO_GENERE:FSS:DEBUT -->
 
@@ -610,13 +632,11 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 
 ### Régimes gérés
 
-<p class="table-caption"><strong>Tableau B.6.6</strong> — Régimes gérés, SESOPA</p>
-
 | Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
 |---|---|---|---|---|
 | Branche des pensions  de retraite et de réversion | Mixte | Obligatoire | Publique | Vieillesse; Survivances |
 | Assurance maladie des parlementaires | Non-contributif | — | Publique | Soins de santé |
-| Assurance décès -rente spéciale de survie | Non-contributif | — | Publique | Survivances |
+| Assurance décès - rente spéciale de survie | Non-contributif | — | Publique | Survivances |
 | Branche des risques liés à l'exercice du mandat parlementaire | Non-contributif | — | Publique | Invalidité / Handicap; Survivances; Accident du travail; Soins de santé |
 | Assurance maternité des parlementaires | Non-contributif | — | Publique | Maternité / Paternité; Soins de santé |
 
@@ -659,14 +679,14 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 | Assurance maladie des parlementaires | 2024 | — | — | — | — | — | — |
 | Assurance maladie des parlementaires | 2025 | — | — | — | — | — | — |
 | Assurance maladie des parlementaires | 2026 | — | — | — | — | — | — |
-| Assurance décès -rente spéciale de survie | 2019 | — | — | — | — | — | — |
-| Assurance décès -rente spéciale de survie | 2020 | — | — | — | — | — | — |
-| Assurance décès -rente spéciale de survie | 2021 | — | — | — | — | — | — |
-| Assurance décès -rente spéciale de survie | 2022 | — | — | — | — | — | — |
-| Assurance décès -rente spéciale de survie | 2023 | — | — | — | — | — | — |
-| Assurance décès -rente spéciale de survie | 2024 | — | — | — | — | — | — |
-| Assurance décès -rente spéciale de survie | 2025 | — | — | — | — | — | — |
-| Assurance décès -rente spéciale de survie | 2026 | — | — | — | — | — | — |
+| Assurance décès - rente spéciale de survie | 2019 | — | — | — | — | — | — |
+| Assurance décès - rente spéciale de survie | 2020 | — | — | — | — | — | — |
+| Assurance décès - rente spéciale de survie | 2021 | — | — | — | — | — | — |
+| Assurance décès - rente spéciale de survie | 2022 | — | — | — | — | — | — |
+| Assurance décès - rente spéciale de survie | 2023 | — | — | — | — | — | — |
+| Assurance décès - rente spéciale de survie | 2024 | — | — | — | — | — | — |
+| Assurance décès - rente spéciale de survie | 2025 | — | — | — | — | — | — |
+| Assurance décès - rente spéciale de survie | 2026 | — | — | — | — | — | — |
 | Branche des risques liés à l'exercice du mandat parlementaire | 2019 | — | — | — | — | — | — |
 | Branche des risques liés à l'exercice du mandat parlementaire | 2020 | — | — | — | — | — | — |
 | Branche des risques liés à l'exercice du mandat parlementaire | 2021 | — | — | — | — | — | — |

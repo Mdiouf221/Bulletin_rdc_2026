@@ -1,0 +1,45 @@
+SOURCE : Organisation internationale du Travail (OIT) — ILOSTAT
+TITRE   : Indicateur ODD 1.3.1 — Proportion de la population couverte par au moins
+          une prestation de protection sociale (couverture effective, hors soins de santé) — RDC
+URL     : https://ilostat.ilo.org/data/
+API     : https://rplumber.ilo.org/data/indicator/?id=SDG_0131_SEX_SOC_RT_A&ref_area=COD&format=.csv
+CONSULTE: 2026-09-03 (vérification lors de la relecture intégrale)
+FIABILITE : Source secondaire officielle en ligne (base de données OIT)
+
+----------------------------------------------------------------------
+VALEUR PUBLIEE PAR L'OIT — RDC (ref_area = COD)
+----------------------------------------------------------------------
+
+ODD 1.3.1 — population totale couverte par au moins une prestation
+(SEX_T, SOC_CONTIG_TOTAL) :
+
+2022 : 5,2 %   (source déclarée par l'OIT : XA:6472)
+
+Détail par contingence publié pour 2022 (SEX_T) :
+- Pension (personnes âgées)                 : 1,0 %
+- Chômage                                   : 0,0 %
+- Accidents du travail (AT/MP)              : 1,8 %
+- Enfants / familles                        : 2,5 %
+- Personnes pauvres (assistance sociale)    : 2,2 %
+- Personnes vulnérables                     : 2,9 %
+
+----------------------------------------------------------------------
+NOTE DE LECTURE
+----------------------------------------------------------------------
+
+La valeur publiée par l'OIT (5,2 % en 2022) diffère du calcul effectué
+par le présent bulletin à partir des ESS nationales (≈ 4,6 % en 2022).
+Les deux estimations ne reposent pas sur le même périmètre :
+l'estimation OIT agrège des couvertures par branche issues du Social
+Security Inquiry et de sources administratives, incluant notamment des
+composantes d'assistance sociale (personnes pauvres/vulnérables) que le
+bulletin traite séparément (voir registre d'inclusion des programmes et
+décisions méthodologiques). L'écart est documenté dans la section 4.9
+et dans 00_pilotage/relecture_integrale_points_a_arbitrer.md (point B1).
+
+----------------------------------------------------------------------
+CITATION RECOMMANDEE
+----------------------------------------------------------------------
+
+OIT, ILOSTAT — indicateur SDG_0131_SEX_SOC_RT_A (ODD 1.3.1), République
+démocratique du Congo, consulté le 3 septembre 2026.

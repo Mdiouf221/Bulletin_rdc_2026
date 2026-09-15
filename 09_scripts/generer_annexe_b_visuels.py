@@ -58,6 +58,7 @@ except ImportError:
 try:
     from openpyxl import Workbook
     from openpyxl.chart import BarChart, LineChart, Reference
+    from openpyxl.chart.label import DataLabelList
 except ImportError:
     sys.exit("openpyxl requis : py -m pip install openpyxl")
 
@@ -147,6 +148,16 @@ CHART_DEFAULTS = {
         "type": "colonnes empilées (100%)",
     },
 }
+
+EXCEL_CHART_STYLE_ID = 10
+EXCEL_SERIES_COLORS = [
+    "2E78C8",
+    "D4487A",
+    "4A5568",
+    "38A169",
+    "DD6B20",
+    "805AD5",
+]
 
 # Fonctions qui acceptent un paramètre sex_mode (les autres n'en ont pas besoin)
 _SEX_MODE_BUILDERS = {build_fig_institution_cotisants, build_fig_institution_beneficiaires}
@@ -580,6 +591,8 @@ def generate_charts(
     regimes: list[dict],
     institution: str,
     settings: dict,
+    *,
+    export_images: bool = True,
 ) -> tuple[list[tuple[str, str, str | None]], list[dict]]:
     """Génère les graphiques PNG d'une institution.
 
@@ -588,7 +601,8 @@ def generate_charts(
     (donnée insuffisante), afin que l'emplacement reste visible dans la grille (avec
     un repère [N/D]) plutôt que de disparaître silencieusement.
     """
-    ILLUSTRATIONS_DIR.mkdir(parents=True, exist_ok=True)
+    if export_images:
+        ILLUSTRATIONS_DIR.mkdir(parents=True, exist_ok=True)
     inst_years = {r["annee"] for r in regimes if r["institution"] == institution and r.get("annee") is not None}
     x_min = min([*BULLETIN_YEARS, *inst_years]) if inst_years else BULLETIN_YEARS[0]
     x_max = max([*BULLETIN_YEARS, *inst_years]) if inst_years else BULLETIN_YEARS[-1]
@@ -646,32 +660,34 @@ def generate_charts(
         # par le zoom automatique de Plotly sur les seules années présentes.
         fig.update_xaxes(range=[x_min - 0.5, x_max + 0.5])
 
-        filename = f"annexe_B_{institution}_{key}.png"
-        out_path = ILLUSTRATIONS_DIR / filename
-        try:
-            ok = _write_image_with_retry(
-                fig,
-                out_path,
-                width=CHART_WIDTH,
-                height=CHART_HEIGHT,
-                scale=CHART_SCALE,
-            )
-        except Exception as exc:
-            print(f"    [AVERT] Export image '{label}' ({institution}) échoué : {exc}")
-            results.append((key, label, None))
-            payloads.append(
-                _build_chart_payload(
-                    institution=institution,
-                    chart_key=key,
-                    chart_label=label,
-                    fig=fig,
-                    settings=settings,
-                    fallback_years=fallback_years,
-                    image_filename=None,
+        image_filename = None
+        if export_images:
+            filename = f"annexe_B_{institution}_{key}.png"
+            out_path = ILLUSTRATIONS_DIR / filename
+            try:
+                ok = _write_image_with_retry(
+                    fig,
+                    out_path,
+                    width=CHART_WIDTH,
+                    height=CHART_HEIGHT,
+                    scale=CHART_SCALE,
                 )
-            )
-            continue
-        image_filename = filename if ok else None
+            except Exception as exc:
+                print(f"    [AVERT] Export image '{label}' ({institution}) échoué : {exc}")
+                results.append((key, label, None))
+                payloads.append(
+                    _build_chart_payload(
+                        institution=institution,
+                        chart_key=key,
+                        chart_label=label,
+                        fig=fig,
+                        settings=settings,
+                        fallback_years=fallback_years,
+                        image_filename=None,
+                    )
+                )
+                continue
+            image_filename = filename if ok else None
         results.append((key, label, image_filename))
         payloads.append(
             _build_chart_payload(
@@ -1008,6 +1024,8 @@ def generate_sex_pie_charts(
     regimes: list[dict],
     institution: str,
     settings: dict,
+    *,
+    export_images: bool = True,
 ) -> tuple[list[str], dict]:
     """Génère un unique visuel en grille (cotisants/bénéficiaires par année, plusieurs
     années par ligne) pour l'institution. Retourne les fichiers produits (0 ou 1)."""
@@ -1022,14 +1040,15 @@ def generate_sex_pie_charts(
 
     by_year = _aggregate_sex_data(regimes, institution, settings)
 
-    ILLUSTRATIONS_DIR.mkdir(parents=True, exist_ok=True)
+    if export_images:
+        ILLUSTRATIONS_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Nettoyer les anciens fichiers par année (ancien format annexe_B_<INST>_sexe_<annee>.png)
-    for old_file in ILLUSTRATIONS_DIR.glob(f"annexe_B_{institution}_sexe_*.png"):
-        try:
-            old_file.unlink()
-        except OSError:
-            pass
+        # Nettoyer les anciens fichiers par année (ancien format annexe_B_<INST>_sexe_<annee>.png)
+        for old_file in ILLUSTRATIONS_DIR.glob(f"annexe_B_{institution}_sexe_*.png"):
+            try:
+                old_file.unlink()
+            except OSError:
+                pass
 
     try:
         fig = build_sex_pie_grid_figure(
@@ -1049,6 +1068,14 @@ def generate_sex_pie_charts(
         )
 
     if fig is None:
+        return [], _build_sex_payload(
+            institution=institution,
+            settings=settings,
+            by_year=by_year,
+            image_filename=None,
+        )
+
+    if not export_images:
         return [], _build_sex_payload(
             institution=institution,
             settings=settings,
@@ -1119,6 +1146,42 @@ def _unique_sheet_name(base: str, used: set[str]) -> str:
         idx += 1
 
 
+def _apply_excel_axis_style(chart, y_title: str):
+    chart.style = EXCEL_CHART_STYLE_ID
+    chart.legend.position = "b"
+    chart.x_axis.title = "Année"
+    chart.x_axis.number_format = "0"
+    chart.x_axis.tickLblSkip = 1
+    chart.x_axis.tickMarkSkip = 1
+    chart.y_axis.title = y_title or ""
+
+
+def _style_excel_series(chart, *, line_chart: bool):
+    for idx, series in enumerate(chart.series):
+        color = EXCEL_SERIES_COLORS[idx % len(EXCEL_SERIES_COLORS)]
+        series.graphicalProperties.solidFill = color
+        series.graphicalProperties.line.solidFill = color
+        if line_chart:
+            series.smooth = False
+            series.marker.symbol = "circle"
+            series.marker.size = 6
+            series.graphicalProperties.line.width = 19050  # ~1.5 pt
+
+
+def _enable_column_value_labels(
+    chart,
+    *,
+    show_percent: bool = False,
+    position: str | None = "outEnd",
+):
+    labels = DataLabelList()
+    labels.showVal = True
+    labels.showPercent = show_percent
+    if position:
+        labels.position = position
+    chart.dataLabels = labels
+
+
 def _append_chart_sheet(ws, payload: dict):
     ws["A1"] = "Institution"
     ws["B1"] = payload.get("institution", "")
@@ -1173,12 +1236,14 @@ def _append_chart_sheet(ws, payload: dict):
         cot_chart.grouping = "percentStacked"
         cot_chart.overlap = 100
         cot_chart.title = "Répartition par sexe — cotisants"
-        cot_chart.y_axis.title = "%"
         cot_data = Reference(ws, min_col=2, max_col=4, min_row=data_start, max_row=data_end_row)
         cot_chart.add_data(cot_data, titles_from_data=True)
         cot_chart.set_categories(categories)
         cot_chart.height = 7
         cot_chart.width = 11
+        _apply_excel_axis_style(cot_chart, "%")
+        _style_excel_series(cot_chart, line_chart=False)
+        _enable_column_value_labels(cot_chart, show_percent=True, position="ctr")
         ws.add_chart(cot_chart, "A14")
 
         ben_chart = BarChart()
@@ -1186,12 +1251,14 @@ def _append_chart_sheet(ws, payload: dict):
         ben_chart.grouping = "percentStacked"
         ben_chart.overlap = 100
         ben_chart.title = "Répartition par sexe — bénéficiaires"
-        ben_chart.y_axis.title = "%"
         ben_data = Reference(ws, min_col=5, max_col=7, min_row=data_start, max_row=data_end_row)
         ben_chart.add_data(ben_data, titles_from_data=True)
         ben_chart.set_categories(categories)
         ben_chart.height = 7
         ben_chart.width = 11
+        _apply_excel_axis_style(ben_chart, "%")
+        _style_excel_series(ben_chart, line_chart=False)
+        _enable_column_value_labels(ben_chart, show_percent=True, position="ctr")
         ws.add_chart(ben_chart, "M14")
         return
 
@@ -1199,19 +1266,24 @@ def _append_chart_sheet(ws, payload: dict):
         chart = BarChart()
         chart.type = "col"
         chart.grouping = "clustered"
+        chart.gapWidth = 90
     else:
         chart = LineChart()
         chart.grouping = "standard"
 
     chart.title = payload.get("titre", payload.get("label", "Graphique"))
-    chart.y_axis.title = payload.get("unite", "")
-    chart.x_axis.title = "Année"
     chart.height = 8
     chart.width = 24
     data_ref = Reference(ws, min_col=2, max_col=len(columns), min_row=data_start, max_row=data_end_row)
     chart.add_data(data_ref, titles_from_data=True)
     chart.set_categories(categories)
-    chart.style = 2
+    _apply_excel_axis_style(chart, payload.get("unite", ""))
+    if isinstance(chart, BarChart):
+        _style_excel_series(chart, line_chart=False)
+        _enable_column_value_labels(chart)
+    else:
+        chart.smooth = False
+        _style_excel_series(chart, line_chart=True)
     ws.add_chart(chart, "A14")
 
 

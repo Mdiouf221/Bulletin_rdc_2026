@@ -12,6 +12,7 @@
 | `integrer_dashboard_bulletin.py` | Met à jour automatiquement les tableaux ODD 1.3.1 des chapitres 4 et 5 à partir des données et réglages du dashboard |
 | `generer_annexe_b_visuels.py` | Génère les graphiques et tableaux statistiques de l'annexe B par institution, sans navigateur (kaleido) |
 | `generer_annexe_c_visuels.py` | Génère les tableaux, graphiques et détail des numérateurs de l'annexe C par indicateur ODD 1.3.1, sans navigateur (kaleido) |
+| `sync_graphiques_word.py` | Met à jour une copie Word à partir du classeur de graphiques le plus récent, sans toucher aux sources maîtres |
 | `serveur_preview.py` | Serveur de prévisualisation — surveille les fichiers, relance l'assembleur et rafraîchit le navigateur automatiquement |
 | `exporter.py` | Génère des versions exportables du bulletin (HTML, Word, PDF) pour relecture hors ligne |
 | `preview.css` | Feuille de style du rendu navigateur — modifier librement sans toucher aux `.md` |
@@ -278,6 +279,7 @@ py 09_scripts/generer_annexe_b_visuels.py
 ### Résultat
 
 - Images PNG écrites dans `04_annexes/illustrations/annexe_B_<INSTITUTION>_<graphique>.png` (graphiques temporels) et `annexe_B_<INSTITUTION>_sexe.png` (grille compacte répartition par sexe, toutes années).
+- Classeur Excel `10_output/annexe_B_graphiques_par_institution.xlsx` régénéré avec les séries annuelles (abscisses explicites), courbes à segments droits (non lissées), style uniforme et étiquettes de valeurs sur les graphiques en barres/colonnes.
 - Tableaux Markdown regénérés dans `04_annexes/annexe_B_fiches_institutionnelles.md`.
 - Les institutions sans marqueur `AUTO_GENERE` correspondant (ex. `MEPST`, absent de l'annexe B en tant que fiche dédiée) sont ignorées et signalées en fin d'exécution.
 
@@ -326,6 +328,78 @@ py 09_scripts/generer_annexe_c_visuels.py
 
 - Images PNG écrites dans `04_annexes/illustrations/annexe_C_<indicateur>_indicateur.png` et `annexe_C_<indicateur>_numerateur.png`.
 - Tableaux et encadrés Markdown regénérés dans `04_annexes/annexe_C_detail_indicateurs.md`.
+
+---
+
+## generer_annexe_c_classeur.py
+
+### Rôle
+
+Génère le classeur Excel natif de l'annexe C (`10_output/annexe_C_graphiques_par_indicateur.xlsx`) à partir des mêmes sources de calcul que `generer_annexe_c_visuels.py` (ESS, décisions ODD, constructions de dénominateurs), sans parsing du Markdown.
+
+Le classeur contient :
+
+- un onglet `index` listant les 9 indicateurs (statut calculable/non calculable, onglet, nombre de graphiques, liens internes) ;
+- un onglet par indicateur avec métadonnées méthodologiques (définition, numérateur, dénominateur, formule, période, notes/sources) ;
+- un tableau annuel `Année / Indicateur (%) / Numérateur / Dénominateur` de 2019 à la dernière année ESS disponible ;
+- un tableau de détail des composantes du numérateur par régime/prestation ;
+- deux graphiques Excel natifs par indicateur calculable (courbe de l'indicateur, histogramme du numérateur).
+
+Les indicateurs 2.6 (chômage) et 2.8 (vulnérables) sont conservés avec note d'indisponibilité méthodologique, sans graphique et sans données inventées.
+
+### Usage
+
+```bash
+py 09_scripts/generer_annexe_c_classeur.py
+```
+
+Option de sortie :
+
+```bash
+py 09_scripts/generer_annexe_c_classeur.py --output 10_output/annexe_C_test.xlsx
+```
+
+### Résultat
+
+- Classeur Excel `10_output/annexe_C_graphiques_par_indicateur.xlsx` (10 feuilles : index + 9 indicateurs, 14 graphiques).
+
+---
+
+## sync_graphiques_word.py
+
+### Rôle
+
+Synchronise une **copie** du Word maître avec les graphiques du classeur Excel le plus récent détecté automatiquement dans `10_output/`, en excluant ses propres copies (`__sync_copy__`) et ses fichiers temporaires de données (`__sync_data__`) pour éviter toute chaîne de copies.
+
+Le script :
+
+1. n’écrit jamais dans le Word maître ni dans le classeur source ;
+2. crée à chaque exécution une copie horodatée non écrasante des deux ;
+3. utilise une source de données indépendante du modèle Excel :
+   - annexe B : payloads régénérés depuis la base ESS + questionnaire ;
+   - annexe C : classeur temporaire régénéré via `generer_annexe_c_classeur.py` ;
+4. met à jour uniquement les cellules de données de la copie Excel (compatibilité stricte feuilles/séries/années) ;
+5. relie les objets graphiques existants de la copie Word vers la copie Excel, puis les laisse **liés** ou les **incorpore** (`--word-mode embedded`) ;
+6. échoue explicitement en cas d’incohérence (feuille, année, série, nombre d’objets).
+
+### Usage
+
+```bash
+py 09_scripts/sync_graphiques_word.py
+```
+
+Options utiles :
+
+```bash
+py 09_scripts/sync_graphiques_word.py --word-mode linked
+py 09_scripts/sync_graphiques_word.py --workbook 10_output\annexe_B_graphiques_par_institution.xlsx
+```
+
+### Résultat
+
+- Un DOCX de sortie `10_output\...__sync_copy__YYYYMMDD_HHMMSS.docx`
+- Un XLSX de sortie `10_output\...__sync_copy__YYYYMMDD_HHMMSS.xlsx`
+- Un résumé JSON en console (candidat retenu, cellules examinées/changées/inchangées, objets Word ciblés et mis à jour, contrôle d’intégrité des sources maîtres).
 
 ---
 
@@ -387,6 +461,8 @@ pip install markdown   # déjà requis par le serveur de prévisualisation
 
 # Pour l'export Word :
 # Installer pandoc : https://pandoc.org/installing.html
+# Pour le collage Excel natif (--excel-charts linked|embedded|auto) :
+# Microsoft Word + Microsoft Excel installés (COM desktop, Windows)
 
 # Pour l'export PDF (option 1 — recommandé) :
 pip install weasyprint
@@ -400,11 +476,31 @@ pip install weasyprint
 ```bash
 python 09_scripts/exporter.py             # HTML relecture (défaut)
 python 09_scripts/exporter.py --all       # tous les formats
-python 09_scripts/exporter.py --word      # Word uniquement
+python 09_scripts/exporter.py --word      # Word uniquement, graphiques Excel incorporés par défaut
+python 09_scripts/exporter.py --word --excel-charts linked        # PNG annexe B/C -> objets Excel liés
+python 09_scripts/exporter.py --word --excel-charts embedded      # PNG annexe B/C -> objets Excel incorporés
+python 09_scripts/exporter.py --word --excel-charts png           # conserver tous les PNG
+python 09_scripts/exporter.py --word --excel-charts auto          # embedded si COM dispo, sinon PNG
+# Alias rétrocompatible :
+python 09_scripts/exporter.py --word --annexe-b-charts embedded
+python 09_scripts/exporter.py --all --refresh-visuals             # opt-in : régénère B/C avant export
 python 09_scripts/exporter.py --pdf       # PDF uniquement
 python 09_scripts/exporter.py --notes     # HTML version interne (avec notes)
 python 09_scripts/exporter.py --open      # générer et ouvrir automatiquement
 ```
+
+### Export Word + graphiques Excel (annexes B et C)
+
+- Le pipeline Word conserve le traitement actuel (texte, annotations `source-ref`, styles, TOF, tableaux).
+- En mode `linked`/`embedded`, les images PNG des annexes **B et C** sont remplacées par un **copier-coller COM Excel → Word** (`ChartObject.Copy()` + `PasteSpecial` OLE), sans screenshot ni `CopyPicture`.
+- Les classeurs sources sont lus **en lecture seule** :
+  - `10_output/annexe_B_graphiques_par_institution.xlsx`
+  - `10_output/annexe_C_graphiques_par_indicateur.xlsx`
+- Les classeurs existants servent de source de présentation et **ne sont jamais régénérés/écrasés** par `exporter.py`/`exporter_word.py` en mode normal.
+- La régénération des visuels B/C est **désactivée par défaut**. Elle ne s'exécute que via `--refresh-visuals` (opt-in explicite).
+- `embedded` est le mode par défaut : si Word/Excel COM ou un graphique attendu est indisponible, l'export échoue explicitement au lieu de produire silencieusement une capture PNG.
+- `auto` : tente `embedded` si COM Word/Excel est disponible ; sinon fallback explicite en `png`.
+- `embedded`/`linked` explicites : en cas d'actifs manquants ou incompatibles, l'export échoue avec erreur explicite (pas de DOCX final partiellement collé).
 
 Le fichier HTML produit est **autonome** : CSS intégrée, aucune connexion réseau requise, partageable par email, clé USB ou OneDrive. Il contient la table des matières, les indicateurs de statut, un bouton d'impression, et les règles CSS A4.
 

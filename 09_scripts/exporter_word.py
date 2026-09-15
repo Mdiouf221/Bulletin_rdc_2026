@@ -6,6 +6,7 @@ Convertit le bulletin HTML en fichier Word (.docx) via Pandoc.
 Usage :
     py 09_scripts/exporter_word.py
     py 09_scripts/exporter_word.py 10_output/bulletin_relecture_2026-06-26.html
+    py 09_scripts/exporter_word.py --excel-charts embedded
 
 Le fichier .docx est généré dans 10_output/ avec le même nom de base
 que le fichier HTML source.
@@ -21,8 +22,8 @@ Ajustements appliqués avant conversion (corrections HTML) :
     [STY-002] Conversion blockquote.fig-block / p.fig-caption / p.fig-source
               / p.table-caption / p.table-source en custom-style Pandoc
     [STY-003] Style Body Text par défaut sur tous les paragraphes ordinaires
-    [ANNEXE-B-LINK] Remplacement des PNG de l'annexe B par des graphiques Excel liés
-              après la conversion Pandoc, via l'automatisation COM de Word et Excel
+    [EXCEL-CHARTS] Remplacement des PNG des annexes B et C par des graphiques Excel
+              collés depuis Excel (liés ou incorporés), via COM Word/Excel
 """
 
 import subprocess
@@ -31,6 +32,10 @@ import os
 import sys
 import glob
 import json
+import argparse
+import tempfile
+from datetime import datetime
+from typing import Any
 
 # ---------------------------------------------------------------------------
 # Configuration
@@ -48,8 +53,10 @@ LUA_FILTER      = os.path.join(SCRIPTS_DIR, "table_borders.lua")
 LUA_FOOTNOTES   = os.path.join(SCRIPTS_DIR, "footnotes.lua")
 LUA_STYLES      = os.path.join(SCRIPTS_DIR, "style_mapping.lua")
 ANNEXE_B_WORD_DATA = os.path.join(ROOT, "10_output", "annexe_B_graphiques_word.json")
-ANNEXE_B_VISUALS_SCRIPT = os.path.join(SCRIPTS_DIR, "generer_annexe_b_visuels.py")
-ANNEXE_B_LINK_SCRIPT = os.path.join(SCRIPTS_DIR, "lier_graphiques_annexe_b.ps1")
+ANNEXE_C_WORKBOOK = os.path.join(ROOT, "10_output", "annexe_C_graphiques_par_indicateur.xlsx")
+EXCEL_CHART_LINK_SCRIPT = os.path.join(SCRIPTS_DIR, "lier_graphiques_annexe_b.ps1")
+EXCEL_CHART_MODES = {"linked", "embedded", "png", "auto"}
+ANNEXE_B_CHART_MODES = EXCEL_CHART_MODES  # Alias rétrocompatible
 
 # Localiser pandoc (PATH ou emplacement connu sur Windows)
 def _find_pandoc():
@@ -67,7 +74,144 @@ def _find_pandoc():
     sys.exit("Pandoc introuvable. Installer depuis https://pandoc.org ou l'ajouter au PATH.")
 
 PANDOC = _find_pandoc()
-_ANNEXE_B_LINK_STATS = {"markers": 0}
+_EXCEL_CHART_LINK_STATE: dict[str, Any] = {"markers": 0, "manifest": None}
+
+
+class ExcelChartPreparationError(RuntimeError):
+    """Erreur de préparation des remplacements Excel (assets, mapping, préflight)."""
+
+
+def _build_temp_artifact_path(prefix: str, suffix: str) -> str:
+    safe_prefix = re.sub(r"[^A-Za-z0-9_.-]", "_", prefix).strip("_") or "tmp"
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    token_prefix = "{}_{}_".format(safe_prefix, os.getpid())
+    fd, path = tempfile.mkstemp(prefix=token_prefix, suffix=suffix, dir=OUTPUT_DIR)
+    os.close(fd)
+    os.remove(path)
+    return path
+
+
+def _safe_unlink(path: str | None) -> None:
+    if not path:
+        return
+    try:
+        if os.path.exists(path):
+            os.remove(path)
+    except OSError:
+        pass
+
+
+def _docx_lock_path(docx_path: str) -> str:
+    return docx_path + ".lock"
+
+
+def _acquire_docx_lock(docx_path: str) -> str:
+    lock_path = _docx_lock_path(docx_path)
+    lock_dir = os.path.dirname(lock_path)
+    if lock_dir:
+        os.makedirs(lock_dir, exist_ok=True)
+    payload = json.dumps(
+        {
+            "pid": os.getpid(),
+            "created_at": datetime.now().isoformat(timespec="seconds"),
+            "docx": docx_path,
+        },
+        ensure_ascii=False,
+    )
+    try:
+        fd = os.open(lock_path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+    except FileExistsError as exc:
+        lock_owner = ""
+        try:
+            with open(lock_path, "r", encoding="utf-8") as f:
+                lock_owner = f.read().strip()
+        except OSError:
+            lock_owner = ""
+        owner_message = f" Détails: {lock_owner}" if lock_owner else ""
+        raise RuntimeError(
+            "Un export Word cible déjà ce fichier: {}. "
+            "Attendre la fin de l'export en cours ou supprimer le verrou stale: {}{}".format(
+                os.path.basename(docx_path),
+                lock_path,
+                owner_message,
+            )
+        ) from exc
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
+        f.write(payload)
+    return lock_path
+
+
+def _release_docx_lock(lock_path: str | None) -> None:
+    if not lock_path:
+        return
+    try:
+        os.remove(lock_path)
+    except FileNotFoundError:
+        return
+
+
+def _normalize_excel_chart_mode(mode: str | None) -> str:
+    value = (mode or "auto").strip().lower()
+    if value not in EXCEL_CHART_MODES:
+        raise ValueError(
+            "Mode excel-charts invalide '{}'. Valeurs acceptées : {}.".format(
+                mode, ", ".join(sorted(EXCEL_CHART_MODES))
+            )
+        )
+    return value
+
+
+def _normalize_annexe_b_chart_mode(mode: str | None) -> str:
+    """Alias rétrocompatible."""
+    return _normalize_excel_chart_mode(mode)
+
+
+def _office_com_available() -> bool:
+    command = (
+        "$word = $null; $excel = $null; "
+        "try { "
+        "$word = New-Object -ComObject Word.Application; "
+        "$excel = New-Object -ComObject Excel.Application; "
+        "exit 0 "
+        "} catch { "
+        "exit 1 "
+        "} finally { "
+        "if ($word -ne $null) { try { $word.Quit() } catch {}; "
+        "try { [void][Runtime.InteropServices.Marshal]::ReleaseComObject($word) } catch {} } "
+        "if ($excel -ne $null) { try { $excel.Quit() } catch {}; "
+        "try { [void][Runtime.InteropServices.Marshal]::ReleaseComObject($excel) } catch {} } "
+        "[GC]::Collect(); [GC]::WaitForPendingFinalizers(); "
+        "}"
+    )
+    result = subprocess.run(
+        ["powershell.exe", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", command],
+        capture_output=True,
+        text=True,
+        cwd=ROOT,
+    )
+    return result.returncode == 0
+
+
+def _resolve_excel_chart_mode(
+    requested_mode: str,
+    *,
+    com_probe=_office_com_available,
+) -> tuple[str, str]:
+    mode = _normalize_excel_chart_mode(requested_mode)
+    if mode != "auto":
+        return mode, f"mode explicite '{mode}'"
+    if com_probe():
+        return "embedded", "mode auto -> COM Word/Excel detecte, insertion Excel incorporee activee"
+    return "png", "mode auto -> COM Word/Excel indisponible, conservation des PNG"
+
+
+def _resolve_annexe_b_chart_mode(
+    requested_mode: str,
+    *,
+    com_probe=_office_com_available,
+) -> tuple[str, str]:
+    """Alias rétrocompatible."""
+    return _resolve_excel_chart_mode(requested_mode, com_probe=com_probe)
 
 
 def find_latest_html():
@@ -94,94 +238,513 @@ def _load_annexe_b_word_data():
         return {}
 
 
-def _ensure_annexe_b_word_data():
-    if os.path.exists(ANNEXE_B_WORD_DATA):
-        return
-    if not os.path.exists(ANNEXE_B_VISUALS_SCRIPT):
-        return
-    try:
-        subprocess.run(
-            [sys.executable, ANNEXE_B_VISUALS_SCRIPT],
-            check=False,
-            capture_output=True,
-            text=True,
-            cwd=ROOT,
-        )
-    except OSError:
-        pass
+def _resolve_annexe_b_workbook_path(word_data: dict) -> str:
+    workbook_rel = word_data.get("xlsx") if isinstance(word_data, dict) else None
+    if not workbook_rel:
+        return ""
+    return os.path.abspath(os.path.join(ROOT, str(workbook_rel).replace("/", os.sep)))
 
 
-def _inject_annexe_b_link_markers(html: str, word_data: dict) -> str:
+def _resolve_annexe_c_workbook_path() -> str:
+    return os.path.abspath(ANNEXE_C_WORKBOOK)
+
+
+def _probe_excel_workbook_open_error(workbook_path: str) -> str | None:
+    escaped_path = workbook_path.replace("'", "''")
+    command = (
+        "$excel = $null; $wb = $null; "
+        "try { "
+        "$excel = New-Object -ComObject Excel.Application; "
+        "$excel.Visible = $false; "
+        "$excel.DisplayAlerts = $false; "
+        f"$wb = $excel.Workbooks.Open('{escaped_path}', 0, $true); "
+        "if ($wb -ne $null) { $wb.Close($false) }; "
+        "exit 0 "
+        "} catch { "
+        "Write-Output $_.Exception.Message; "
+        "exit 1 "
+        "} finally { "
+        "if ($wb -ne $null) { try { [void][Runtime.InteropServices.Marshal]::ReleaseComObject($wb) } catch {} } "
+        "if ($excel -ne $null) { try { $excel.Quit() } catch {}; "
+        "try { [void][Runtime.InteropServices.Marshal]::ReleaseComObject($excel) } catch {} } "
+        "[GC]::Collect(); [GC]::WaitForPendingFinalizers(); "
+        "}"
+    )
+    result = subprocess.run(
+        ["powershell.exe", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", command],
+        capture_output=True,
+        text=True,
+        cwd=ROOT,
+    )
+    if result.returncode == 0:
+        return None
+    return (result.stdout or result.stderr or "Erreur inconnue d'ouverture Excel COM.").strip()
+
+
+def _annexe_b_word_assets_ready(word_data: dict, *, require_com_compatible: bool = False) -> bool:
     charts = word_data.get("charts") if isinstance(word_data, dict) else {}
     if not isinstance(charts, dict) or not charts:
-        return html
-    inserted = 0
+        return False
+    workbook_path = _resolve_annexe_b_workbook_path(word_data)
+    if not workbook_path or not os.path.isfile(workbook_path):
+        return False
+    if not require_com_compatible:
+        return True
+    return _probe_excel_workbook_open_error(workbook_path) is None
 
-    def _replace(match):
-        nonlocal inserted
+
+def _ensure_annexe_b_word_data(*, require_com_compatible: bool = False):
+    # Rétrocompatibilité : ce helper ne régénère plus aucun actif.
+    current = _load_annexe_b_word_data()
+    if require_com_compatible and _annexe_b_word_assets_ready(current, require_com_compatible=True):
+        return current
+    return current
+
+
+def _load_workbook_chart_counts(workbook_path: str) -> dict[str, int]:
+    try:
+        from openpyxl import load_workbook
+    except ImportError as exc:
+        raise ExcelChartPreparationError(
+            "openpyxl est requis pour lire les classeurs Excel d'annexe B/C."
+        ) from exc
+
+    try:
+        workbook = load_workbook(workbook_path, data_only=True)
+    except OSError as exc:
+        raise ExcelChartPreparationError(
+            f"Lecture impossible du classeur Excel : {workbook_path} ({exc})"
+        ) from exc
+
+    try:
+        return {ws.title: len(getattr(ws, "_charts", [])) for ws in workbook.worksheets}
+    finally:
+        workbook.close()
+
+
+def _coerce_int(value: Any, *, field_name: str, min_value: int = 0) -> int:
+    if isinstance(value, bool):
+        raise ExcelChartPreparationError(f"{field_name} invalide (bool interdit).")
+    if isinstance(value, int):
+        parsed = value
+    elif isinstance(value, float) and value.is_integer():
+        parsed = int(value)
+    elif isinstance(value, str) and value.strip():
+        try:
+            parsed = int(value.strip())
+        except ValueError as exc:
+            raise ExcelChartPreparationError(
+                f"{field_name} invalide ('{value}') : entier attendu."
+            ) from exc
+    else:
+        raise ExcelChartPreparationError(f"{field_name} invalide : valeur absente.")
+
+    if parsed < min_value:
+        raise ExcelChartPreparationError(f"{field_name} invalide : minimum attendu = {min_value}.")
+    return parsed
+
+
+def _normalize_chart_indices(
+    chart_meta: dict[str, Any],
+    *,
+    chart_count: int,
+    image_name: str,
+    sheet_name: str,
+) -> list[int]:
+    raw_indices = chart_meta.get("chart_indices")
+    if raw_indices is None and "chart_index" in chart_meta:
+        raw_indices = [chart_meta.get("chart_index")]
+
+    if raw_indices is None:
+        if chart_count <= 0:
+            raise ExcelChartPreparationError(
+                f"Image '{image_name}' (feuille '{sheet_name}') : aucun ChartObject disponible."
+            )
+        return list(range(1, chart_count + 1))
+
+    if isinstance(raw_indices, (str, int, float)):
+        raw_items: list[Any] = [raw_indices]
+    elif isinstance(raw_indices, list):
+        raw_items = raw_indices
+    else:
+        raise ExcelChartPreparationError(
+            f"Image '{image_name}' : chart_indices doit être une liste d'entiers."
+        )
+
+    normalized: list[int] = []
+    seen: set[int] = set()
+    for raw_idx in raw_items:
+        idx = _coerce_int(
+            raw_idx,
+            field_name=f"chart_index ({image_name}/{sheet_name})",
+            min_value=1,
+        )
+        if idx > chart_count:
+            raise ExcelChartPreparationError(
+                f"Image '{image_name}' : chart_index {idx} hors plage pour '{sheet_name}' "
+                f"({chart_count} graphique(s))."
+            )
+        if idx not in seen:
+            normalized.append(idx)
+            seen.add(idx)
+    if not normalized:
+        raise ExcelChartPreparationError(
+            f"Image '{image_name}' : aucun chart_index exploitable."
+        )
+    return normalized
+
+
+def _build_annexe_b_chart_sources(word_data: dict, workbook_path: str) -> dict[str, list[dict[str, Any]]]:
+    charts = word_data.get("charts") if isinstance(word_data, dict) else {}
+    if not isinstance(charts, dict) or not charts:
+        raise ExcelChartPreparationError(
+            f"Manifeste annexe B introuvable ou vide : {ANNEXE_B_WORD_DATA}"
+        )
+
+    chart_counts = _load_workbook_chart_counts(workbook_path)
+    sources: dict[str, list[dict[str, Any]]] = {}
+
+    for image_name, chart_meta in charts.items():
+        if not isinstance(chart_meta, dict):
+            continue
+        sheet_name = str(chart_meta.get("sheet_name") or "").strip()
+        if not sheet_name:
+            continue
+        if sheet_name not in chart_counts:
+            raise ExcelChartPreparationError(
+                f"Feuille annexe B introuvable dans le classeur : {sheet_name}"
+            )
+        chart_indices = _normalize_chart_indices(
+            chart_meta,
+            chart_count=chart_counts[sheet_name],
+            image_name=str(image_name),
+            sheet_name=sheet_name,
+        )
+        filename = os.path.basename(str(image_name).replace("\\", "/")).lower()
+        sources[filename] = [
+            {
+                "workbook_key": "annexe_b",
+                "sheet_name": sheet_name,
+                "chart_index": idx,
+                "image_filename": str(image_name),
+            }
+            for idx in chart_indices
+        ]
+    return sources
+
+
+def _load_annexe_c_sheet_map(workbook_path: str) -> dict[str, dict[str, Any]]:
+    try:
+        from openpyxl import load_workbook
+    except ImportError as exc:
+        raise ExcelChartPreparationError(
+            "openpyxl est requis pour lire les classeurs Excel d'annexe C."
+        ) from exc
+
+    try:
+        workbook = load_workbook(workbook_path, data_only=True)
+    except OSError as exc:
+        raise ExcelChartPreparationError(
+            f"Lecture impossible du classeur annexe C : {workbook_path} ({exc})"
+        ) from exc
+
+    mapping: dict[str, dict[str, Any]] = {}
+    try:
+        if "index" in workbook.sheetnames:
+            ws = workbook["index"]
+            for row in range(4, ws.max_row + 1):
+                indicator_key = ws.cell(row=row, column=3).value
+                sheet_name = ws.cell(row=row, column=5).value
+                chart_count_raw = ws.cell(row=row, column=6).value
+                if not indicator_key or not sheet_name:
+                    continue
+                indicator = str(indicator_key).strip()
+                sheet = str(sheet_name).strip()
+                chart_count = _coerce_int(
+                    chart_count_raw if chart_count_raw is not None else 0,
+                    field_name=f"chart_count (index annexe C, indicateur {indicator})",
+                    min_value=0,
+                )
+                mapping[indicator] = {"sheet_name": sheet, "chart_count": chart_count}
+
+        if mapping:
+            return mapping
+
+        # Fallback déterministe basé sur la convention C<section>_<indicator_key>.
+        for ws in workbook.worksheets:
+            if ws.title.lower() == "index":
+                continue
+            match = re.match(r"^C\d+_(.+)$", ws.title)
+            if not match:
+                continue
+            indicator = match.group(1).strip()
+            mapping[indicator] = {
+                "sheet_name": ws.title,
+                "chart_count": len(getattr(ws, "_charts", [])),
+            }
+        return mapping
+    finally:
+        workbook.close()
+
+
+def _build_annexe_c_chart_sources(workbook_path: str) -> tuple[dict[str, list[dict[str, Any]]], dict[str, dict[str, Any]]]:
+    sheet_map = _load_annexe_c_sheet_map(workbook_path)
+    if not sheet_map:
+        raise ExcelChartPreparationError(
+            f"Impossible de dériver la correspondance des feuilles annexe C depuis : {workbook_path}"
+        )
+
+    sources: dict[str, list[dict[str, Any]]] = {}
+    for indicator_key, info in sorted(sheet_map.items()):
+        sheet_name = str(info.get("sheet_name") or "").strip()
+        chart_count = _coerce_int(
+            info.get("chart_count", 0),
+            field_name=f"chart_count annexe C ({indicator_key})",
+            min_value=0,
+        )
+        if not sheet_name:
+            continue
+        if chart_count >= 1:
+            sources[f"annexe_c_{indicator_key}_indicateur.png"] = [
+                {
+                    "workbook_key": "annexe_c",
+                    "sheet_name": sheet_name,
+                    "chart_index": 1,
+                    "image_filename": f"annexe_C_{indicator_key}_indicateur.png",
+                }
+            ]
+        if chart_count >= 2:
+            sources[f"annexe_c_{indicator_key}_numerateur.png"] = [
+                {
+                    "workbook_key": "annexe_c",
+                    "sheet_name": sheet_name,
+                    "chart_index": 2,
+                    "image_filename": f"annexe_C_{indicator_key}_numerateur.png",
+                }
+            ]
+    return sources, sheet_map
+
+
+def _replace_excel_images_with_markers(html: str) -> tuple[str, dict[str, Any]]:
+    needs_annexe_b = bool(re.search(r'annexe_B_[^"]+\.png', html, flags=re.IGNORECASE))
+    needs_annexe_c = bool(re.search(r'annexe_C_[^"]+\.png', html, flags=re.IGNORECASE))
+    if not needs_annexe_b and not needs_annexe_c:
+        return html, {"version": 1, "workbooks": {}, "charts": []}
+
+    source_map: dict[str, list[dict[str, Any]]] = {}
+    workbooks: dict[str, str] = {}
+    annexe_c_sheet_map: dict[str, dict[str, Any]] = {}
+
+    if needs_annexe_b:
+        annexe_b_data = _load_annexe_b_word_data()
+        workbook_b = _resolve_annexe_b_workbook_path(annexe_b_data)
+        if not workbook_b or not os.path.isfile(workbook_b):
+            raise ExcelChartPreparationError(
+                f"Classeur annexe B introuvable : {workbook_b or 'valeur absente dans le manifeste'}"
+            )
+        source_map.update(_build_annexe_b_chart_sources(annexe_b_data, workbook_b))
+        workbooks["annexe_b"] = workbook_b
+
+    if needs_annexe_c:
+        workbook_c = _resolve_annexe_c_workbook_path()
+        if not os.path.isfile(workbook_c):
+            raise ExcelChartPreparationError(f"Classeur annexe C introuvable : {workbook_c}")
+        annexe_c_sources, annexe_c_sheet_map = _build_annexe_c_chart_sources(workbook_c)
+        source_map.update(annexe_c_sources)
+        workbooks["annexe_c"] = workbook_c
+
+    planned_entries: list[dict[str, Any]] = []
+    errors: list[str] = []
+    marker_counter = 0
+
+    def _replace(match: re.Match[str]) -> str:
+        nonlocal marker_counter
         full = match.group(0)
         src = match.group(1)
         filename = os.path.basename(src.replace("\\", "/"))
-        chart_meta = charts.get(filename)
-        if not chart_meta:
-            return full
-        sheet_name = str(chart_meta.get("sheet_name") or "").strip()
-        if not sheet_name:
-            return full
-        inserted += 1
-        return f"[[ANNEXE_B_CHART:{sheet_name}]]"
+        filename_lower = filename.lower()
+        source_entries = source_map.get(filename_lower)
 
-    updated = re.sub(
+        if not source_entries:
+            if filename_lower.startswith("annexe_b_"):
+                errors.append(f"Image annexe B sans correspondance manifeste : {filename}")
+            else:
+                c_match = re.match(
+                    r"^annexe_c_(.+)_(indicateur|numerateur)\.png$",
+                    filename_lower,
+                    flags=re.IGNORECASE,
+                )
+                if c_match:
+                    indicator_key = c_match.group(1)
+                    chart_kind = c_match.group(2)
+                    required_index = 1 if chart_kind == "indicateur" else 2
+                    details = annexe_c_sheet_map.get(indicator_key)
+                    if details:
+                        sheet_name = details.get("sheet_name")
+                        count = details.get("chart_count")
+                        errors.append(
+                            "Image {} sans ChartObject compatible : feuille '{}', "
+                            "{} graphique(s), index {} requis.".format(
+                                filename, sheet_name, count, required_index
+                            )
+                        )
+                    else:
+                        errors.append(
+                            f"Image annexe C sans indicateur correspondant dans le classeur : {filename}"
+                        )
+            return full
+
+        markers: list[str] = []
+        for source_entry in source_entries:
+            marker_counter += 1
+            marker = f"[[EXCEL_CHART:{marker_counter:04d}]]"
+            markers.append(marker)
+            planned_entries.append(
+                {
+                    "marker": marker,
+                    "sequence": marker_counter,
+                    "workbook_key": source_entry["workbook_key"],
+                    "sheet_name": source_entry["sheet_name"],
+                    "chart_index": source_entry["chart_index"],
+                    "image_filename": filename,
+                }
+            )
+        return "<br/>".join(markers)
+
+    updated_html = re.sub(
+        r'<img[^>]*src="([^"]+\.(?:png|PNG))"[^>]*>',
+        _replace,
+        html,
+        flags=re.IGNORECASE,
+    )
+
+    if errors:
+        bullet_list = "\n - ".join(errors)
+        raise ExcelChartPreparationError(
+            "Incohérences de mapping Excel détectées :\n - {}".format(bullet_list)
+        )
+
+    return updated_html, {"version": 1, "workbooks": workbooks, "charts": planned_entries}
+
+
+def _inject_annexe_b_link_markers(html: str, word_data: dict) -> str:
+    """
+    Alias historique conservé pour les tests existants.
+    Remplace uniquement les PNG annexe B en s'appuyant sur le mapping actuel.
+    """
+    workbook_path = _resolve_annexe_b_workbook_path(word_data)
+    if not workbook_path or not os.path.isfile(workbook_path):
+        return html
+
+    source_map = _build_annexe_b_chart_sources(word_data, workbook_path)
+    marker_counter = 0
+
+    def _replace(match: re.Match[str]) -> str:
+        nonlocal marker_counter
+        src = match.group(1)
+        filename = os.path.basename(src.replace("\\", "/")).lower()
+        entries = source_map.get(filename)
+        if not entries:
+            return match.group(0)
+        markers: list[str] = []
+        single_chart = len(entries) == 1
+        for _entry in entries:
+            marker_counter += 1
+            if single_chart:
+                markers.append(f"[[ANNEXE_B_CHART:{_entry['sheet_name']}]]")
+            else:
+                markers.append(
+                    f"[[ANNEXE_B_CHART:{_entry['sheet_name']}#{_entry['chart_index']}]]"
+                )
+        return "<br/>".join(markers)
+
+    return re.sub(
         r'<img[^>]*src="([^"]*annexe_B_[^"]+\.png)"[^>]*>',
         _replace,
         html,
         flags=re.IGNORECASE,
     )
-    _ANNEXE_B_LINK_STATS["markers"] = inserted
-    return updated
 
 
-def _insert_linked_annexe_b_charts(docx_path: str, word_data: dict):
-    marker_count = _ANNEXE_B_LINK_STATS.get("markers", 0)
+def _insert_excel_charts(docx_path: str, *, paste_mode: str):
+    state = _EXCEL_CHART_LINK_STATE
+    marker_count = int(state.get("markers") or 0)
+    manifest = state.get("manifest")
     if marker_count == 0:
         return
-    workbook_rel = word_data.get("xlsx") if isinstance(word_data, dict) else None
-    if not workbook_rel:
-        raise RuntimeError("Le manifeste de l'annexe B ne référence aucun classeur XLSX.")
-    workbook_path = os.path.abspath(os.path.join(ROOT, workbook_rel.replace("/", os.sep)))
-    if not os.path.isfile(workbook_path):
-        raise FileNotFoundError(f"Classeur de l'annexe B introuvable : {workbook_path}")
-    if not os.path.isfile(ANNEXE_B_LINK_SCRIPT):
-        raise FileNotFoundError(f"Script de liaison Word/Excel introuvable : {ANNEXE_B_LINK_SCRIPT}")
+    if not isinstance(manifest, dict) or not manifest.get("charts"):
+        raise RuntimeError("Manifeste Excel absent alors que des marqueurs sont attendus.")
+    if not os.path.isfile(EXCEL_CHART_LINK_SCRIPT):
+        raise FileNotFoundError(f"Script de liaison Word/Excel introuvable : {EXCEL_CHART_LINK_SCRIPT}")
+
+    manifest_tmp = _build_temp_artifact_path("tmp_export_word_excel_manifest", ".json")
+    with open(manifest_tmp, "w", encoding="utf-8") as f:
+        json.dump(manifest, f, ensure_ascii=False, indent=2)
 
     command = [
         "powershell.exe",
         "-NoProfile",
         "-ExecutionPolicy", "Bypass",
-        "-File", ANNEXE_B_LINK_SCRIPT,
+        "-File", EXCEL_CHART_LINK_SCRIPT,
         "-DocxPath", os.path.abspath(docx_path),
-        "-WorkbookPath", workbook_path,
-        "-ManifestPath", os.path.abspath(ANNEXE_B_WORD_DATA),
+        "-ManifestPath", os.path.abspath(manifest_tmp),
+        "-ExpectedCount", str(marker_count),
+        "-PasteMode", paste_mode,
     ]
-    result = subprocess.run(command, capture_output=True, text=True, cwd=ROOT)
+    diagnostic_log_path = os.environ.get("EXCEL_CHART_HELPER_LOG_PATH", "").strip()
+    if diagnostic_log_path:
+        command.extend(["-LogPath", os.path.abspath(diagnostic_log_path)])
+    timeout_seconds = max(120, min(1800, marker_count * 20))
+    try:
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+            cwd=ROOT,
+            timeout=timeout_seconds,
+        )
+    except subprocess.TimeoutExpired as exc:
+        raise RuntimeError(
+            "Timeout de l'insertion COM après {} s ({} graphique(s) attendu(s)).".format(
+                timeout_seconds,
+                marker_count,
+            )
+        ) from exc
+    finally:
+        _safe_unlink(manifest_tmp)
+
     if result.returncode != 0:
         details = (result.stderr or result.stdout or "Erreur COM non détaillée.").strip()
-        raise RuntimeError(f"Échec de la liaison des graphiques Excel dans Word :\n{details}")
+        raise RuntimeError(f"Échec de l'insertion des graphiques Excel dans Word :\n{details}")
     output = result.stdout.strip()
     if output:
         print(output)
+
+
+def _insert_linked_annexe_b_charts(docx_path: str, word_data: dict, *, paste_mode: str):
+    """Alias rétrocompatible."""
+    del word_data
+    _insert_excel_charts(docx_path, paste_mode=paste_mode)
 
 
 # ---------------------------------------------------------------------------
 # Corrections HTML appliquées avant conversion
 # ---------------------------------------------------------------------------
 
-def apply_corrections(html: str) -> str:
+def apply_corrections(
+    html: str,
+    *,
+    excel_chart_mode: str = "auto",
+    annexe_b_chart_mode: str | None = None,
+) -> str:
     """
     Applique toutes les corrections HTML avant l'export Word.
     Ajouter ici les nouveaux correctifs au fil des retours.
     """
-    _ANNEXE_B_LINK_STATS["markers"] = 0
+    requested_mode = annexe_b_chart_mode if annexe_b_chart_mode is not None else excel_chart_mode
+    mode = _normalize_excel_chart_mode(requested_mode)
+    _EXCEL_CHART_LINK_STATE["markers"] = 0
+    _EXCEL_CHART_LINK_STATE["manifest"] = None
 
     # [HR-001] Suppression des barres horizontales inter-chapitres
     html = re.sub(r'<hr\s*/?>', '', html)
@@ -233,11 +796,12 @@ def apply_corrections(html: str) -> str:
         return m.group(0).replace(m.group(1), abs_path)
     html = re.sub(r'src="(/files/[^"]+)"', fix_img, html)
 
-    # [ANNEXE-B-LINK] Remplacer les PNG par des marqueurs que l'étape COM convertira
-    # en graphiques Excel liés une fois le DOCX créé par Pandoc.
-    _ensure_annexe_b_word_data()
-    annexe_b_data = _load_annexe_b_word_data()
-    html = _inject_annexe_b_link_markers(html, annexe_b_data)
+    if mode in {"linked", "embedded"}:
+        # [EXCEL-CHARTS] Remplacer les PNG B/C par des marqueurs uniques.
+        # Le collage OLE Word/Excel est fait après Pandoc via helper COM.
+        html, manifest = _replace_excel_images_with_markers(html)
+        _EXCEL_CHART_LINK_STATE["manifest"] = manifest
+        _EXCEL_CHART_LINK_STATE["markers"] = len(manifest.get("charts") or [])
 
     # [LNK-001] Conversion des annotations source-ref en notes de bas de page
     # Structure HTML : <a href="#" data-offline="true" title="Source : ..." ...>texte</a>
@@ -596,75 +1160,187 @@ def set_tables_autofit(docx_path):
 # Conversion principale
 # ---------------------------------------------------------------------------
 
-def export(html_path: str, out_suffix: str = ""):
+def _ensure_excel_workbooks_com_compatible(manifest: dict[str, Any]) -> None:
+    workbooks = manifest.get("workbooks") if isinstance(manifest, dict) else {}
+    if not isinstance(workbooks, dict):
+        return
+
+    errors: list[str] = []
+    for workbook_key, workbook_path in sorted(workbooks.items()):
+        if not workbook_path or not isinstance(workbook_path, str):
+            errors.append(f"{workbook_key}: chemin de classeur absent.")
+            continue
+        if not os.path.isfile(workbook_path):
+            errors.append(f"{workbook_key}: classeur introuvable ({workbook_path}).")
+            continue
+        open_error = _probe_excel_workbook_open_error(workbook_path)
+        if open_error:
+            errors.append(f"{workbook_key}: ouverture COM impossible ({open_error}).")
+
+    if errors:
+        raise ExcelChartPreparationError(
+            "Préflight COM des classeurs Excel échoué :\n - " + "\n - ".join(errors)
+        )
+
+
+def export(
+    html_path: str,
+    out_suffix: str = "",
+    excel_chart_mode: str = "embedded",
+    annexe_b_chart_mode: str | None = None,
+):
+    requested_raw_mode = annexe_b_chart_mode if annexe_b_chart_mode is not None else excel_chart_mode
+    requested_mode = _normalize_excel_chart_mode(requested_raw_mode)
+    effective_mode, mode_reason = _resolve_excel_chart_mode(requested_mode)
+
     basename = os.path.splitext(os.path.basename(html_path))[0]
-    docx_out = os.path.join(OUTPUT_DIR, basename + out_suffix + ".docx")
-    tmp_html = os.path.join(OUTPUT_DIR, "_tmp_export_word.html")
+    docx_out_final = os.path.join(OUTPUT_DIR, basename + out_suffix + ".docx")
 
     print("Source  : {}".format(os.path.basename(html_path)))
-    print("Sortie  : {}".format(os.path.basename(docx_out)))
+    print("Sortie  : {}".format(os.path.basename(docx_out_final)))
+    print("Graphiques Excel B/C : {} ({})".format(effective_mode, mode_reason))
 
     # Lire le HTML source
     with open(html_path, "r", encoding="utf-8") as f:
-        html = f.read()
+        source_html = f.read()
 
-    # Appliquer les corrections
-    html = apply_corrections(html)
+    attempt_modes = [effective_mode]
+    if requested_mode == "auto" and effective_mode != "png":
+        attempt_modes.append("png")
 
-    # Écrire le HTML corrigé dans un fichier temporaire
-    with open(tmp_html, "w", encoding="utf-8") as f:
-        f.write(html)
-
-    # Générer le template Word de référence
     generate_reference_docx()
 
-    # Lancer Pandoc
-    cmd = [
-        PANDOC, tmp_html,
-        "--from", "html",
-        "--to", "docx",
-        "--reference-doc", REF_DOCX,
-        "--output", docx_out,
-        "--lua-filter", LUA_FILTER,
-        "--lua-filter", LUA_FOOTNOTES,
-        "--lua-filter", LUA_STYLES,
-        "--wrap=none",
-        "--metadata", "title=Deuxieme Bulletin statistique de la protection sociale en RDC",
-    ]
-    res = subprocess.run(cmd, capture_output=True, text=True)
+    lock_path = _acquire_docx_lock(docx_out_final)
+    try:
+        for attempt_index, attempt_mode in enumerate(attempt_modes, start=1):
+            use_excel_pipeline = attempt_mode in {"linked", "embedded"}
+            if len(attempt_modes) > 1:
+                print(
+                    "  [EXCEL-CHARTS] Tentative {} / {} en mode '{}'.".format(
+                        attempt_index, len(attempt_modes), attempt_mode
+                    )
+                )
 
-    # Nettoyage du fichier temporaire
-    if os.path.exists(tmp_html):
-        os.remove(tmp_html)
+            tmp_html = _build_temp_artifact_path("tmp_export_word_html", ".html")
+            docx_out_work = _build_temp_artifact_path(
+                f"tmp_export_word_docx_{basename}",
+                ".docx",
+            )
 
-    # Résultat
-    if res.returncode != 0 or not os.path.exists(docx_out):
-        print("ECHEC :\n" + res.stderr)
-        sys.exit(1)
+            try:
+                try:
+                    corrected_html = apply_corrections(source_html, excel_chart_mode=attempt_mode)
+                    if use_excel_pipeline:
+                        manifest = _EXCEL_CHART_LINK_STATE.get("manifest")
+                        if isinstance(manifest, dict):
+                            _ensure_excel_workbooks_com_compatible(manifest)
+                except ExcelChartPreparationError as exc:
+                    if requested_mode == "auto" and attempt_mode != "png":
+                        print(
+                            "  [EXCEL-CHARTS] Préparation Excel impossible en mode auto "
+                            f"({exc}). Bascule PNG."
+                        )
+                        continue
+                    raise
 
-    if res.stderr:
-        warnings = [l for l in res.stderr.splitlines() if "WARNING" in l]
-        if warnings:
-            print("Avertissements ({}) :".format(len(warnings)))
-            for w in warnings[:5]:
-                print("  " + w)
+                with open(tmp_html, "w", encoding="utf-8") as f:
+                    f.write(corrected_html)
 
-    size = os.path.getsize(docx_out) // 1024
-    print("Succès : {} ({} KB)".format(os.path.basename(docx_out), size))
-    # Post-traitement : sauts de page avant les sections préliminaires
-    insert_page_breaks(docx_out)
+                cmd = [
+                    PANDOC,
+                    tmp_html,
+                    "--from",
+                    "html",
+                    "--to",
+                    "docx",
+                    "--reference-doc",
+                    REF_DOCX,
+                    "--output",
+                    docx_out_work,
+                    "--lua-filter",
+                    LUA_FILTER,
+                    "--lua-filter",
+                    LUA_FOOTNOTES,
+                    "--lua-filter",
+                    LUA_STYLES,
+                    "--wrap=none",
+                    "--metadata",
+                    "title=Deuxieme Bulletin statistique de la protection sociale en RDC",
+                ]
+                res = subprocess.run(cmd, capture_output=True, text=True)
+                if res.returncode != 0 or not os.path.exists(docx_out_work):
+                    details = (res.stderr or res.stdout or "Erreur pandoc non détaillée.").strip()
+                    _safe_unlink(docx_out_work)
+                    print("ECHEC :\n" + details)
+                    sys.exit(1)
 
-    # Post-traitement : insertion des champs TOF Word
-    insert_tof_fields(docx_out)
+                if res.stderr:
+                    warnings = [l for l in res.stderr.splitlines() if "WARNING" in l]
+                    if warnings:
+                        print("Avertissements ({}) :".format(len(warnings)))
+                        for w in warnings[:5]:
+                            print("  " + w)
 
-    # Post-traitement : ajustement automatique des tableaux à la largeur de la page
-    set_tables_autofit(docx_out)
+                insert_page_breaks(docx_out_work)
+                insert_tof_fields(docx_out_work)
+                set_tables_autofit(docx_out_work)
 
-    # Post-traitement final : insertion des graphiques Excel liés à la place des marqueurs.
-    _insert_linked_annexe_b_charts(docx_out, _load_annexe_b_word_data())
+                if use_excel_pipeline:
+                    try:
+                        _insert_excel_charts(docx_out_work, paste_mode=attempt_mode)
+                    except Exception as exc:
+                        _safe_unlink(docx_out_work)
+                        if requested_mode == "auto" and attempt_mode != "png":
+                            print(
+                                "  [EXCEL-CHARTS] Insertion Excel impossible en mode auto "
+                                f"({exc}). Bascule PNG."
+                            )
+                            continue
+                        raise
+                else:
+                    print("  [EXCEL-CHARTS] Mode PNG : conservation des images annexe B/C.")
+
+                os.replace(docx_out_work, docx_out_final)
+                size = os.path.getsize(docx_out_final) // 1024
+                print("Succès : {} ({} KB)".format(os.path.basename(docx_out_final), size))
+                return
+            finally:
+                _safe_unlink(tmp_html)
+                _safe_unlink(docx_out_work)
+    finally:
+        _release_docx_lock(lock_path)
+
+    raise RuntimeError("Échec de l'export Word : aucune tentative n'a abouti.")
 
 # ---------------------------------------------------------------------------
 
+def build_arg_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Exporte un HTML bulletin en DOCX (pandoc + post-traitements Word).",
+    )
+    parser.add_argument(
+        "html_file",
+        nargs="?",
+        help="Chemin du fichier HTML source (défaut : dernier bulletin_relecture_*.html).",
+    )
+    parser.add_argument(
+        "--excel-charts",
+        "--annexe-b-charts",
+        dest="excel_charts",
+        choices=sorted(EXCEL_CHART_MODES),
+        default=os.environ.get("EXCEL_CHART_MODE") or os.environ.get("ANNEXE_B_CHART_MODE", "embedded"),
+        help=(
+            "Mode de remplacement des PNG annexe B/C : "
+            "linked (objets Excel liés), embedded (objets Excel incorporés), "
+            "png (conserver les PNG), auto (embedded si COM disponible, sinon PNG). "
+            "Alias historique accepté : --annexe-b-charts."
+        ),
+    )
+    return parser
+
+
 if __name__ == "__main__":
-    html_file = sys.argv[1] if len(sys.argv) > 1 else find_latest_html()
-    export(html_file)
+    parser = build_arg_parser()
+    args = parser.parse_args()
+    html_file = args.html_file or find_latest_html()
+    export(html_file, excel_chart_mode=args.excel_charts)

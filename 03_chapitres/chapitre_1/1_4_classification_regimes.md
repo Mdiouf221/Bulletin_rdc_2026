@@ -22,4 +22,8 @@ Le bulletin distingue deux notions fondamentales, non interchangeables. La couve
 
 Les dispositifs sont analysés selon quatre dimensions complémentaires : le caractère obligatoire ou volontaire de l'affiliation ; la nature du financement (contributif ou non contributif) ; le statut réglementaire (statutaire ou non) ; la nature des prestations (en espèces ou en nature). Ces dimensions s'appliquent à l'ensemble des régimes cartographiés au chapitre 3. Les conditions d'accès — affiliation et cotisation, statut professionnel, condition de ressources, ciblage catégoriel ou résidence — sont précisées pour chaque dispositif.
 
+Peu de désagrégation au niveau des prestations.
+Peu de désagrégation H/F au niveau des cotisants et bénéficiaires.
+Peu de donnée dépense/recette et peu désagrégé par régimes.
+
 *→ Les définitions complètes et les grilles de classification détaillées sont développées en [Annexe A.2 — Classification des régimes, programmes et prestations](../../04_annexes/annexe_A_notes_methodologiques.md#d2).*

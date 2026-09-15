@@ -76,6 +76,12 @@ _html_cache = "<p><em>Chargement en cours…</em></p>"
 _html_lock  = threading.Lock()
 _clients    = []
 _clients_lock = threading.Lock()
+_word_export_lock = threading.Lock()
+_word_export_state = {
+    "status": "idle",
+    "error": "",
+    "filename": "",
+}
 
 
 def notify_clients():
@@ -386,7 +392,8 @@ def build_html() -> str:
         <a href="/export" target="_blank" class="topbar-dropdown-item">
           🌐 HTML (relecture)
         </a>
-        <a href="/export-word" class="topbar-dropdown-item">
+        <a href="#" id="export-word-btn" class="topbar-dropdown-item"
+           onclick="startWordExport(); return false;">
           📝 Word (.docx)
         </a>
         <a href="/download" class="topbar-dropdown-item">
@@ -436,6 +443,43 @@ function exportPreviewPdf() {{
   document.title = "bulletin_rdc_preview_" + stamp;
   window.print();
   setTimeout(function() {{ document.title = originalTitle; }}, 500);
+}}
+
+async function startWordExport() {{
+  const button = document.getElementById("export-word-btn");
+  if (!button || button.dataset.running === "true") return;
+  button.dataset.running = "true";
+  button.textContent = "⏳ Word — préparation…";
+
+  try {{
+    const startResponse = await fetch("/export-word/start", {{ cache: "no-store" }});
+    const startData = await startResponse.json();
+    if (!startResponse.ok) throw new Error(startData.error || "Impossible de lancer l’export Word.");
+
+    while (true) {{
+      await new Promise(function(resolve) {{ setTimeout(resolve, 1500); }});
+      const statusResponse = await fetch("/export-word/status", {{ cache: "no-store" }});
+      const statusData = await statusResponse.json();
+      if (!statusResponse.ok) throw new Error(statusData.error || "État de l’export indisponible.");
+      if (statusData.status === "done") {{
+        button.textContent = "✅ Word — téléchargement";
+        window.location.href = "/export-word/download";
+        setTimeout(function() {{
+          button.textContent = "📝 Word (.docx)";
+          button.dataset.running = "false";
+        }}, 2500);
+        return;
+      }}
+      if (statusData.status === "error") {{
+        throw new Error(statusData.error || "Échec de l’export Word.");
+      }}
+      button.textContent = "⏳ Word — export en cours…";
+    }}
+  }} catch (error) {{
+    button.textContent = "❌ Word — échec";
+    button.dataset.running = "false";
+    alert(error.message);
+  }}
 }}
 
 /* ------------------------------------------------------------------ */
@@ -961,8 +1005,12 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             self._serve_dashboard()
         elif self.path in ("/export", "/export-notes"):
             self._handle_export(include_notes=(self.path == "/export-notes"))
-        elif self.path == "/export-word":
-            self._handle_export_word()
+        elif self.path in ("/export-word", "/export-word/start"):
+            self._start_export_word()
+        elif self.path == "/export-word/status":
+            self._serve_export_word_status()
+        elif self.path == "/export-word/download":
+            self._download_export_word()
         elif self.path == "/download":
             self._handle_download()
         elif self.path == "/api/dashboard-settings":
@@ -1471,55 +1519,90 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
         print(f"[EXPORT] Fichier généré : bulletin_{label}_{stamp}.html")
 
-    def _handle_export_word(self):
-        """GET /export-word — Génère le .docx avec corrections et le sert en téléchargement."""
+    def _word_export_paths(self):
+        from datetime import datetime as _dt
+        stamp = _dt.now().strftime("%Y-%m-%d")
+        export_file = WORKSPACE_DIR / "10_output" / f"bulletin_relecture_{stamp}.docx"
+        filename = f"bulletin_relecture_{stamp}.docx"
+        return export_file, filename
+
+    def _send_json(self, payload, status=200):
+        body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _start_export_word(self):
+        """Démarre l'export Word en arrière-plan et répond immédiatement."""
+        exporter = SCRIPT_DIR / "exporter.py"
+        if not exporter.exists():
+            self._send_json({"status": "error", "error": "exporter.py introuvable dans 09_scripts/"}, 503)
+            return
+
+        with _word_export_lock:
+            if _word_export_state["status"] == "running":
+                self._send_json({"status": "running"})
+                return
+            _word_export_state.update(status="running", error="", filename="")
+
+        threading.Thread(target=self._run_export_word, daemon=True).start()
+        self._send_json({"status": "running"}, 202)
+
+    @staticmethod
+    def _run_export_word():
+        """Exécute le pipeline Word hors du thread de la requête HTTP."""
         from datetime import datetime as _dt
         exporter = SCRIPT_DIR / "exporter.py"
         stamp = _dt.now().strftime("%Y-%m-%d")
         export_file = WORKSPACE_DIR / "10_output" / f"bulletin_relecture_{stamp}.docx"
-        filename = f"bulletin_relecture_{stamp}.docx"
+        filename = export_file.name
 
-        if not exporter.exists():
-            self.send_response(503)
-            self.send_header("Content-Type", "text/plain; charset=utf-8")
-            self.end_headers()
-            self.wfile.write(b"exporter.py introuvable dans 09_scripts/")
+        try:
+            result = subprocess.run(
+                [sys.executable, str(exporter), "--word"],
+                capture_output=True,
+                cwd=str(WORKSPACE_DIR),
+                encoding="utf-8",
+                errors="replace",
+            )
+            if result.returncode != 0 or not export_file.exists():
+                err = (result.stderr or result.stdout or "Erreur inconnue")[-2000:]
+                raise RuntimeError(err.strip())
+        except (OSError, RuntimeError) as exc:
+            with _word_export_lock:
+                _word_export_state.update(status="error", error=str(exc), filename="")
+            print(f"[EXPORT WORD] Échec : {exc}")
             return
 
-        # Supprimer l'ancien .docx pour forcer la régénération complète
-        # (évite de servir un fichier périmé si le fichier est verrouillé ou si la génération échoue)
-        if export_file.exists():
-            try:
-                export_file.unlink()
-            except OSError as e:
-                self.send_response(500)
-                self.send_header("Content-Type", "text/plain; charset=utf-8")
-                self.end_headers()
-                self.wfile.write(
-                    f"Impossible de supprimer l'ancien fichier Word.\n"
-                    f"Fermez le fichier dans Word avant d'exporter.\n\nDétail : {e}".encode("utf-8")
-                )
-                return
+        with _word_export_lock:
+            _word_export_state.update(status="done", error="", filename=filename)
+        print(f"[EXPORT WORD] Fichier prêt : {filename}")
 
-        result = subprocess.run(
-            [sys.executable, str(exporter), "--word"],
-            capture_output=True,
-            cwd=str(WORKSPACE_DIR),
-            encoding="utf-8",
-            errors="replace",
-        )
+    def _serve_export_word_status(self):
+        with _word_export_lock:
+            payload = dict(_word_export_state)
+        self._send_json(payload)
 
-        if result.returncode != 0 or not export_file.exists():
-            self.send_response(500)
-            self.send_header("Content-Type", "text/plain; charset=utf-8")
-            self.end_headers()
-            err = (result.stderr or result.stdout or "Erreur inconnue")[:800]
-            self.wfile.write(
-                f"Erreur lors de la génération du fichier Word :\n\n{err}".encode("utf-8")
+    def _download_export_word(self):
+        export_file, filename = self._word_export_paths()
+        with _word_export_lock:
+            state = dict(_word_export_state)
+        if state["status"] != "done" or not export_file.exists():
+            self._send_json(
+                {"status": state["status"], "error": state["error"] or "Aucun export Word prêt."},
+                409,
             )
             return
 
-        data = export_file.read_bytes()
+        try:
+            data = export_file.read_bytes()
+        except OSError as exc:
+            self._send_json({"status": "error", "error": str(exc)}, 500)
+            return
+
         self.send_response(200)
         self.send_header("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
         self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
@@ -1528,6 +1611,12 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(data)
         print(f"[EXPORT WORD] Fichier servi : {filename}")
+
+    def _handle_export_word(self):
+        """Compatibilité interne : démarre désormais l'export asynchrone."""
+        self._start_export_word()
+
+    def _handle_download(self):
         """GET /download — Génère le HTML autonome et le sert en téléchargement direct."""
         from datetime import datetime as _dt
         exporter = SCRIPT_DIR / "exporter.py"
@@ -1655,7 +1744,7 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         import mimetypes
         from urllib.parse import urlparse, parse_qs, unquote
         parsed   = urlparse(self.path)
-        rel      = parsed.path[7:]  # retirer "/files/"
+        rel      = unquote(parsed.path[7:])  # retirer "/files/" et décoder %20, accents…
         qs       = parse_qs(parsed.query)
         val_id     = qs.get("val_id",     [""])[0]
         val_file   = qs.get("val_file",   [""])[0]
