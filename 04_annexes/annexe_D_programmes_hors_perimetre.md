@@ -32,4 +32,70 @@ Statut : structure initiale
 
 ## Texte rédigé
 
-*[À rédiger — un tableau ou une fiche par programme, selon le modèle défini ci-dessus.]*
+### Positionnement et périmètre <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Les interventions non contributives regroupent ici des programmes d'assistance sociale,
+de transferts monétaires, d'aide alimentaire et de travaux publics qui ne reposent pas
+sur une cotisation obligatoire ouvrant un droit statutaire permanent. Elles complètent
+la cartographie des régimes contributifs et statutaires, mais leurs résultats ne sont
+pas directement additionnés aux indicateurs de couverture du bulletin.
+
+Les données sont présentées selon l'unité utilisée par chaque opérateur : personnes,
+enfants, ménages ou bénéficiaires directs cumulés. Les périodes de référence sont
+conservées afin d'éviter de comparer un résultat annuel avec un cumul pluriannuel ou
+avec une intervention localisée.
+
+### Programme STEP — Banque mondiale et Fonds social de la RDC <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Le projet STEP a combiné des transferts monétaires sans conditions, des travaux publics
+à haute intensité de main-d'œuvre et d'autres mesures de soutien aux moyens d'existence.
+Selon la <a href="/files/06_sources/officielles_web/Banque_mondiale_STEP_RDC_2023.txt" title="Banque mondiale (2023) — résultats du projet STEP en RDC" class="source-ref source-ref-text nv" data-val-id="sD-p2-c1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">Banque mondiale</a>,
+le projet a directement bénéficié à <span class="val" data-val-id="sD-p2-d1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">530 000 personnes</span>
+entre février 2014 et décembre 2022, dont <span class="val" data-val-id="sD-p2-d2" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">plus de 200 000 femmes</span>, et a décaissé plus
+de <span class="val" data-val-id="sD-p2-d3" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">93 millions de dollars</span>. Ce chiffre est un cumul de projet et non un effectif annuel.
+
+Le même document indique que les investissements ont bénéficié à <span class="val" data-val-id="sD-p2-d4" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">1 166 communautés</span>
+vulnérables et que <span class="val" data-val-id="sD-p2-d5" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">5,8 millions de personnes</span> ont été concernées dans les communautés
+ciblées par les infrastructures et les activités du projet. Ce dernier agrégat ne
+correspond pas à des bénéficiaires directs de transferts et n'est donc pas assimilé à
+un effectif couvert.
+
+### Assistance alimentaire et repas scolaires — PAM <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Le PAM met en œuvre en RDC des activités d'assistance alimentaire, de transferts
+monétaires, de nutrition et de résilience. Son rapport annuel pays 2025 indique
+<span class="val" data-val-id="sD-p3-d1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">5 264 306 bénéficiaires en 2025</span>
+pour l'ensemble de ses interventions dans le pays. Cet agrégat ne constitue pas une
+mesure de couverture nationale, car il regroupe plusieurs modalités d'assistance et
+peut inclure des personnes exposées à plusieurs interventions.
+
+Pour l'alimentation scolaire, le même rapport indique que
+<span class="val" data-val-id="sD-p3-d2" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">145 000 enfants</span>
+ont reçu quotidiennement des repas scolaires dans cinq provinces en 2025 :
+Sud-Kivu, Tanganyika, Kasaï-Oriental, Kasaï-Central et Lomami. Ce résultat est présenté
+comme un nombre d'enfants servis dans les opérations du PAM, et non comme un nombre
+de ménages ou comme une couverture permanente.
+
+<a href="/files/06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf" title="PAM (2025) — Democratic Republic of the Congo Annual Country Report 2025" class="source-ref source-ref-text nv" data-val-id="sD-p3-c1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">Rapport annuel pays du PAM 2025</a>
+
+### Transferts monétaires localisés — UNICEF, PAM et FAO à Nsele <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+À Nsele, dans la ville-province de Kinshasa, une intervention de transferts monétaires
+mise en œuvre avec l'UNICEF, le PAM et la FAO a combiné une phase initiale d'environ
+<span class="val" data-val-id="sD-p4-d1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">23 000 ménages</span> et une phase de protection sociale ciblant environ <span class="val" data-val-id="sD-p4-d2" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">16 000 ménages</span>
+vulnérables. Le programme était localisé et temporaire, avec une phase initiale de
+trois mois puis une phase de protection sociale de six mois. Ces effectifs ne sont
+pas extrapolés à l'échelle nationale.
+
+La source d'évaluation souligne par ailleurs les limites liées à la durée de
+l'intervention, à l'irrégularité des paiements et à l'attrition des participants.
+<a href="/files/06_sources/officielles_web/UNICEF_RDC_evaluation_transferts_monetaires_2024_FR.pdf" title="UNICEF Innocenti (2024) — Évaluation des transferts monétaires à Nsele" class="source-ref source-ref-text nv" data-val-id="sD-p4-c1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">Rapport d'évaluation UNICEF</a>
+
+### Lecture statistique <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Ces interventions illustrent la contribution de l'assistance non contributive à la
+réduction des vulnérabilités, mais elles ne peuvent pas être agrégées sans contrôle
+des recoupements. Un même ménage ou une même personne peut recevoir plusieurs formes
+d'assistance, tandis que les périodes et les unités de mesure diffèrent selon les
+programmes. Les résultats sont donc présentés comme des informations de programme,
+séparément des indicateurs nationaux de couverture effective.

@@ -1,0 +1,1762 @@
+[DOCUMENT : PAM_RDC_plan_strategique_pays_2021-2024.pdf — 43 pages]
+
+
+--- Page 1 ---
+Executive Board
+Second regular session
+Rome, 16–19 November 2020
+Distribution: General Agenda item 7
+Date: 2 October 2020 WFP/EB.2/2020/7-A/2
+Original: English Operational matters – Country strategic plans
+For approval
+Executive Board documents are available on WFP’s website (https://executiveboard.wfp.org).
+Draft Democratic Republic of the Congo country strategic plan
+(2021–2024)
+Duration 1 January 2021–31 December 2024
+Total cost to WFP USD 1,673,766,710
+Gender and age marker* 3
+* https://gender.manuals.wfp.org/en/gender-toolkit/gender-in-programming/gender-and-age-marker/.
+Executive summary
+Food and nutrition security in the Democratic Republic of the Congo is subject to the relentless
+impact of conflict, epidemics and climate events that have persisted in the country for decades.,
+further compounded by the global COVID-19 pandemic. Lack of infrastructure and investment in
+agriculture, health and human capital development combine to impede progress towards the
+achievement of Sustainable Development Goals 2 and 17. While there are several legal instruments
+and policies that promote food and nutrition security, poor coordination, weak national capacity
+and exponential population growth present serious obstacles to the achievement of zero hunger.
+Political instability and siloed sectoral responses to humanitarian and development needs have
+also affected results to date.
+Fragile national disaster preparedness and weak capacity to respond to persistent conflict and
+climate change force poor individuals and households to adopt negative coping strategies that
+disproportionately affect women. Emergency and development response is complicated by the
+sheer size of the country and its limited roads, bridges and river transport systems. Food system
+constraints limit supply; markets affected by conflict are poorly served, and 70–80 armed groups
+are present in areas where WFP operates at any given time. Deep-rooted food insecurity and
+malnutrition are driven by poverty; diseases such as Ebola, measles and tuberculosis; and limited
+access to health services, education and livelihood opportunities that is underpinned by
+Focal points:
+Ms L. Castro Mr C. Jibidar
+Regional Director Country Director
+Southern Africa email: claude.jibidar@wfp.org
+email: lola.castro@wfp.org
+World Food Programme, Via Cesare Giulio Viola, 68/70, 00148 Rome, Italy
+
+--- Page 2 ---
+WFP/EB.2/2020/7-A/2 2
+entrenched gender inequality. Added to this, the COVID-19 pandemic threatens to further deepen
+the fragility of the country.
+Through this country strategic plan, WFP will support the Government’s national priorities for
+achieving food and nutrition security, through key shifts that include a commitment to translating
+the triple-nexus approach into stronger partnerships to strengthen country capacity (including
+South–South and triangular cooperation) in school feeding, nutrition, social protection for food
+security, emergency preparedness and equitable support in agriculture.that support peace and
+development outcomes. New opportunities presented through the socioeconomic response to
+COVID-19 are also captured.
+The plan will allow WFP to work with the Government and partners to address governance and
+technical gaps to increase local production and consumption of nutritious food. With the
+Government and a broad range of partnersSimilarly, WFP will tackle the challenges that women
+and men in rural areas face every day due to their lack of access to land, markets and nutritious
+food and the risks posed by conflict and climate events.
+The country strategic plan addresses issues related to nutrition, livelihoods and gender inequality.
+It seeks to contribute to peacebuilding through food assistance that offers better livelihood options
+for Congolese and refugee men and women in emergencies and development settings. Measures
+based on the promotion of social cohesion, conflict mitigation and peacebuilding, rooted in gender
+and risk analyses, will contribute to building resilience, strengthening national food systems and
+creating new opportunities for decent livelihoods for those most vulnerable to food insecurity
+and malnutrition.
+WFP’s assistance to the Government andWFP is committed to mainstreaming gender equality
+measures in all of its activities and has adopted a gender-transformative approach based on the
+knowledge that men and women, boys and girls experience poverty differently and face different
+barriers in accessing services and economic resources that impact their food security and
+nutritional status.
+WFP interventions will be programmed and implemented in such a way that they are conflict
+sensitive, contributing to conflict transformation and peace building. WFP’s partnership with the
+Government and assistance to the people of the Democratic Republic of the Congo will be based
+on four mutually reinforcing strategic outcomes, which are also WFP corporate priorities:
+➢ Strategic outcome 1: Conflict and crisis-affected populationsmen, women, boys, and
+girls from all ethnic groups are able to meet their food and nutrition requirements
+throughout the year.
+➢ Strategic outcome 2: The human capital of conflict-affected and/or at-risk populations
+is equitably and inclusively protected and strengthened by 2024.
+➢ Strategic outcome 3: Smallholder farmers and food value chain actors have improved
+livelihood opportunities, resilience, social cohesion and protection and make progress
+towards gender equality by 2024.
+➢ Strategic outcome 4: Humanitarian and development partners have access to reliable
+air services and improved supply chain and other services during and in the aftermath
+of conflictconflicts and crises.
+This country strategic plan has been developed in consultation with the Government and other
+partners. It is aligned with the Government’s national strategic development strategyplan
+approved in December 2019 and the 2020–2024 United Nations sustainable development
+cooperation framework. It contributes to efforts to achieve Sustainable Development Goals 2 and
+17 and to WFP Strategic Results 1, 3 and 8.
+
+--- Page 3 ---
+WFP/EB.2/2020/7-A/2 3
+Draft decision*
+The Board approves the Democratic Republic of the Congo country strategic plan (2021–2024)
+(WFP/EB.2/2020/7-A/2) at a total cost to WFP of USD 1,673,766,710.
+* This is a draft decision. For the final decision adopted by the Board, please refer to the decisions and recommendations
+document issued at the end of the session.
+
+--- Page 4 ---
+WFP/EB.2/2020/7-A/2 4
+1. Country analysis
+1.1 Country context
+1. Widespread conflict, poverty, food insecurity, malnutrition, poor access to public services,
+socio-political instability, gender inequality and climate crises continue to affect the
+wellbeing and livelihoods of people in the Democratic Republic of the Congo. Food insecurity
+and malnutrition are exacerbated by conflict, poverty, deteriorating infrastructure and
+productive assets, inefficient food systems and weakening production, which have different
+impacts on men and women because of persistent gender inequality.
+2. The August 2019 17th Integrated Food Security Phase Classification (IPC) analysis of food
+insecurity in the Democratic Republic of the Congo, covering 2019–2020,1 indicates that
+hunger remains a major concern in the country. Around 15.6 million people were food
+insecure in 2019, and for the forecast period of January–May 2020 13.3 million people were
+expected to face crisis or emergency food insecurity in the rural areas analysed.2 In the
+provinces of North and South Kivu and Ituri, food insecurity has been compounded by the
+tenth Ebola outbreak, resulting in increased hunger and disease for affected households.
+Real-time monitoring and assessments carried out in response to the COVID-19 pandemic
+show that the number of acutely hungry people has increased from 15.6 million
+(pre-pandemic) to 19.5 million. While it will take months, even years, for the pandemic to
+have its full impact on food security and nutrition, WFP recognizes that in a country battling
+Ebola alongside ongoing and violent conflict COVID-19 is yet another challenge to be added
+to a long list of issues that have held the country in poverty for decades.
+3. Up to 700,000 Congolese migrant workers3 had been forcibly returned from Angola by the
+end of 2018, while 905,059 Congolese refugees had fled to neighbouring countries. The
+number of internally displaced persons (IDPs) has reached 5 million;4 most are fleeing
+violence between armed groups and Congolese armed forces. The Democratic Republic of
+the Congo hosts 548,801 refugees from neighbouring countries, including Burundi, the
+Central African Republic, Rwanda and South Sudan.5
+4. Gross domestic product (GDP) in the Democratic Republic of the Congo grew by an average
+of 7.8 percent per year between 2011 and 2014 but growth has since slowed and become
+more erratic, ranging between 2 and 5 percent. The economy depends on world mineral
+prices and is directly affected by the security situation in the east of the country. The current
+business climate does not attract many investors, and human development indicators are
+extremely low: in 2018, the Democratic Republic of the Congo ranked 176 of 189 countries
+1 Integrated Food Security Phase Classification Technical Working Group for the Democratic Republic of the Congo. 2019.
+République démocratique du Congo: Analyse IPC de l’insécurité alimentaire aiguë, Juillet 2019–Mai 2020.
+http://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/docs/IPC_DRC_AFI_2019July2020May_French.pdf.
+2 Ibid.
+3 These migrant workers and refugees include equal numbers of women, men girls and boys. See Betts, A. 2017. “Gender,
+violence, and deportation: Angola’s forced return of Congolese migrant workers” in Buckley-Zistel, S. and Krause U. (eds.)
+Gender, Violence, Refugees. An Introduction. https://www.rsc.ox.ac.uk/publications/gender-violence-and-deportation-
+angola2019s-forced-return-of-congolese-migrant-workers; United Nations High Commissioner for Refugees (UNHCR).
+2018. Congolese situation: Responding to the needs of displaced Congolese and refugees. Annex – Angola.
+http://reporting.unhcr.org/sites/default/files/2018%20Congolese%20Situation%20SB%20-%20Angola.pdf.
+4 Humanitarian Needs Overview – December 2019 https://www.humanitarianresponse.info/fr/operations/democratic-
+republic-congo/document/rd-congo-aper%C3%A7u-des-besoins-humanitaires-d%C3%A9cembre-2019; and Humanitarian
+Response Plan 2020: https://www.humanitarianresponse.info/en/operations/democratic-republic-congo/document/rd-
+congo-plan-de-r%C3%A9ponse-humanitaire-2020.
+5 Ibid.
+
+--- Page 5 ---
+WFP/EB.2/2020/7-A/2 5
+on the Human Development Index6 and 152 of 160 countries on the Gender Inequality
+Index.7 Despite being one of the countries that contributes the least to global carbon
+emissions,8 it is highly vulnerable to climate change and is not ready to address its impacts.
+5. The proportion of the population living in poverty has been declining since 2004. According
+to the national strategic development plan (NSDP) 61.1 percent of women live below the
+poverty line, compared with 51.3 percent of men.9 Poverty levels remain high, although they
+fell from 69.3 percent in 2005 to 64 percent in 2012.10 The incidence of poverty is more than
+60 percent in most regions. It is over 70 percent in Greater Kasai and Tanganyika, areas
+recently affected by conflict, and in the provinces of North and South Ubangui, which host
+refugees from the Central African Republic.
+6. Agriculture is the main source of employment for the poorest 40 percent of the rural
+population11 and over 60 percent of national employment. Yet the sector is unable to
+generate sufficient income, sustainable employment or food to meet the country’s needs.12
+Production, particularly of food crops, will need to increase by 60 percent in the coming
+years in order to keep pace with population growth.13 Although as much as 72 percent14 of
+farmers and small-scale agricultural entrepreneurs are women they own less than
+10 percent of the land; only 2 percent of women have access to credit from
+financial institutions.15
+7. The World Bank Human Capital Index 2018 ranked the Democratic Republic of the Congo
+146 of 157 countries,16 a rating strongly driven by its education indicators. The education
+system faces serious challenges: the national completion rate for primary education was
+66.7 percent in 2018 (76 percent for boys and 62 percent for girls)17 and there are large
+provincial disparities. After six years in education, only 47 percent of young people are
+6 United Nations Development Programme. 2018. 2018 Statistical Update: Human Development Indices and Indicators.
+http://hdr.undp.org/en/2018-update. World Bank web page on annual GDP growth for the Democratic Republic of the
+Congo. https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?end=2018&locations=CD&start=2000.
+7 United Nations Development Programme. 2018. 2018 Statistical Update: Human Development Indices and Indicators.
+http://hdr.undp.org/en/2018-update.
+8 The country ranks 186 of 188 countries for per capita carbon emissions and contributes only 0.09 percent of global carbon
+emissions (2017), primarily from land use, land use change and forestry. World Resources Institute. 2017.
+https://www.climatewatchdata.org/ghg-emissions In the Notre Dame Global Adaptation Initiative (ND-GAIN, 2016), the
+country ranks 177 of 181 countries, which makes it the 12th most vulnerable country to climate change and the fifth least
+ready to address climate change effects.
+9 Government of the Democratic Republic of the Congo. 2019. Plan national stratégique de développement: Vision de la RDC
+à l’horizon 2050. https://www.plan.gouv.cd/wp-content/uploads/2020/08/PNSD-2019-2023.pdf.
+10 World Bank. 2016. République démocratique du Congo: Évaluation de la pauvreté.
+http://documents1.worldbank.org/curated/fr/341621571238168904/pdf/Congo-Democratic-Republic-of-Poverty-
+assessment.pdf.
+11 Ibid. The document does not provide data disaggregated by sex or age, or by status as entrepreneur or landowner.
+12 Government of the Democratic Republic of the Congo. 2019. Plan national stratégique de développement: Vision de la RDC
+à l’horizon 2050. https://www.plan.gouv.cd/wp-content/uploads/2020/08/PNSD-2019-2023.pdf.
+13 Ibid.
+14 In 2010, women were 50.4 percent of the total population and 64.8 percent of the rural population. Women form
+38.5 percent of the economically active population, and the agricultural share of these economically active women is
+72.6 percent. United Nations Food and Agriculture Organization (FAO). 2011. The State of Food and Agriculture
+2010–2011. Women in Agriculture: Closing the Gender Gap for Development. http://www.fao.org/publications/sofa/2010-
+11/en/.
+15 United Nations Entity for Gender Equality and the Empowerment of Women (UN-Women). 2016. “Take five: Empowering
+women through climate-smart agriculture in the DRC”. https://www.unwomen.org/en/news/stories/2016/11/take-five-
+empowering-women-through-climate-smart-agriculture-in-the-drc. Please note that current statistics do not provide a
+reliable breakdown by sex and age.
+16 World Bank. 2018. The Democratic Republic of Congo Human Capital Index Rank 146 out of 157.
+https://databank.worldbank.org/data/download/hci/HCI_2pager_COD.pdf.
+17 Government of the Democratic Republic of the Congo. Statistical directory of the Ministry of Planning for 2015.
+
+--- Page 6 ---
+WFP/EB.2/2020/7-A/2 6
+literate (compared with an average of 59 percent in comparable countries).18
+Just 36.7 percent of women have secondary-level education, compared with 65.8 percent
+of men.
+8. Malnutrition and other health-related issues are major concerns affecting human capital
+development. Almost 43 percent of children under 5 are malnourished; 40 percent of girls
+and 45 percent of boys are affected by stunting.19 Micronutrient deficiency is prevalent:
+60 percent of young children and 38 percent of women of childbearing age (15–49 years
+of age) suffer from anaemia.20
+9. HIV prevalence is 1.2 percent (1.6 percent among women and 0.6 percent among men).21
+The country continues to have high levels of tuberculosis,22 outbreaks of measles, cholera
+in almost all provinces and recurring Ebola epidemics. These epidemics add to the burden
+of unpaid care and domestic work on women, increase their risk of infection and further
+limit their ability to obtain food and generate income.
+10. This is the complex context for emergency response and development activities in the
+Democratic Republic of the Congo, a country almost two thirds the size of western Europe
+but with inadequate roads,23 bridges and river transport. Food system constraints create
+supply limitations as poorly served markets are affected by conflict,24 low production and
+limited accessibility. It is a high-risk and volatile environment that requires strong systems
+that can facilitate a transition towards sustainability.
+11. The complexity of the situation necessitates a flexible and agile approach to humanitarian
+and development work, which is rendered even more challenging by the diversity of context
+and needs from one province to another. Increasing insecurity and a distinct lack of
+infrastructure hamper the daily lives of the Congolese, as well as the delivery of
+humanitarian assistance to remote areas.
+1.2 Progress towards the 2030 Agenda for Sustainable Development
+12. The 2019 Democratic Republic of the Congo common country assessment report identified
+the major issues that impede progress towards inclusive sustainable development:
+multidimensional poverty in all regions of the country, caused mostly by the “paradox of
+plenty”; rising food insecurity and malnutrition; lack of access to social protection services;
+decades of poor political governance and corruption; growing social and political tensions
+that often spill over into violence, especially in the east; insufficient economic growth in the
+most labour-intensive sectors of agriculture and industry; and environmental degradation
+caused by conflict, spiralling population growth and climate change. All these factors are
+underpinned by gender inequality and have an inordinate impact on women and girls as
+18 United Nations Educational, Scientific and Cultural Organization (UNESCO), United Nations Children’s Fund (UNICEF) and
+the Government of the Democratic Republic of Congo. 2014. République démocratique du Congo: rapport d’état du système
+éducatif: Pour une éducation au service de la croissance et de la paix. https://unesdoc.unesco.org/ark:/48223/pf0000366700.
+19 Government of the Democratic Republic of the Congo. 2014. République Démocratique du Congo: Enquête démographique
+et de la santé, 2013–2014. https://www.dhsprogram.com/pubs/pdf/FR300/FR300.pdf.
+20 Ibid.
+21 Ibid.
+22 The prevalence of tuberculosis is 532 cases per 100,000 people, while the incidence is 325 cases per 100,000 people. The
+co-infected prevalence is 14 percent and the prevalence of multidrug-resistant tuberculosis is 2.4 percent. National
+Tuberculosis Control Programme. 20172018 National Tuberculosis Drug Resistance Survey.
+https://apps.who.int/iris/bitstream/handle/10665/274453/9789241565646-eng.pdf.
+23 Out of 58,000 km of useable roads, only 17 percent are considered to be in good condition.
+24 The presence of armed groups affects WFP’s ability to provide uninterrupted assistance in its areas of operation. At any
+given time there can be between 70 and 80 groups in an area, with devastating effects on the livelihoods and safety of local
+populations, IDPs, refugees and returnees.
+
+--- Page 7 ---
+WFP/EB.2/2020/7-A/2 7
+they struggle for political and social agency in peacebuilding processes and access to food
+security and economic, financial and legal resources.
+1.3 Progress towards SDGs 2 and 17
+Progress on SDG 2 targets
+13. Access to food: The August 2019 IPC analysis estimates that the most food insecure people
+are in areas of the country subject to recurring conflict, epidemics and crop failure.25 Chronic
+food insecurity is widespread throughout the country.26
+14. Availability: The price volatility of staple goods is driven by illegal taxation systems, a lack of
+price policy implementation, speculation and a sharp depreciation of the currency.27 Urgent
+support is required to improve the accessibility and availability of nutritious foods. Due to
+gender inequality, children in rural households headed by women are more likely to suffer
+from malnutrition. Refugees, returnees and IDPs face particular challenges in accessing food
+because of their loss of livelihoods, lack of access to land and protection risks.
+15. End malnutrition: The determinants of the high prevalence of malnutrition are complex and
+include gender inequality, inadequate dietary diversity and poor infant and young child
+feeding practices. In many areas malnutrition is aggravated by shocks, conflict and recurrent
+epidemics. Many people rely on non-fortified staple foods and only 8 percent of children
+age 6–23 months have a minimum acceptable diet.28
+16. Global acute malnutrition (GAM) affects 7 percent of children under 5.29 Recent nutrition
+surveys30 have found GAM prevalence and under-5 mortality rates reaching emergency
+thresholds in some areas of Greater Kasai, Tanganyika, South Kivu, North Kivu and Ituri. High
+levels of undernutrition have been detected among pregnant and lactating women and girls.
+17. In many rural areas it is very difficult for people – especially women, adolescents and
+children – to have nutritionally balanced diets because the food system does not result in
+the availability of diverse and nutritious foods. When they are available, nutritious foods cost
+up to six times more than foods providing energy only, putting them beyond the reach of
+most rural households.31
+Progress on SDG 17 targets
+18. The common country assessment identified a lack of fundraising for the implementation of
+the public policies needed to achieve the Sustainable Development Goals (SDGs). Dialogue
+between the Government and technical and financial partners is neither well-structured nor
+regular, nor is it based on clear, mutually agreed, coherent and strategic actions.
+25 Integrated Food Security Phase Classification Technical Working Group for the Democratic Republic of the Congo. 2019.
+République démocratique du Congo: Analyse IPC de l’insécurité alimentaire aiguë, Juillet 2019–Mai 2020.
+http://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/docs/IPC_DRC_AFI_2019July2020May_French.pdf.
+26 See country page on the Democratic Republic of the Congo on the website of the United Nations High Commissioner for
+Refugees: https://www.unhcr.org/democratic-republic-of-the-congo.html.
+27 Congolese Institute for Development Research and Strategic Studies (Institut congolais de recherche en développement
+et études stratégiques). 2019. Éliminer la faim en République démocratique du Congo: Rapport de la Revue stratégique sur la
+Faim zéro. https://docs.wfp.org/api/documents/WFP-0000111398/download/.
+28 Government of the Democratic Republic of the Congo. 2019. Enquête par grappes à indicateurs multiples, 2017–2018,
+rapport de résultats de l’enquête. https://www.unicef.org/drcongo/en/reports/summary-mics-palu-2017-2018 (summary in
+English); also available at http://mics.unicef.org/surveys (full survey report in French).
+29 Ibid.
+30 Ibid.
+31 WFP. 2019. Cost of diet study, Democratic Republic of the Congo, final report. Ministry of Health, National Nutrition
+Department. 2019. Cost of diet study, Central Kasai province, Democratic Republic of the Congo, final report. Ministry of
+Health, National Nutrition Department. 2020. Cost of diet study, Tanganyika and Upper Katanga provinces, Democratic
+Republic of the Congo, final report.
+
+--- Page 8 ---
+WFP/EB.2/2020/7-A/2 8
+19. In an example of good practice WFP, together with the Ministry of Health, the World Health
+Organization (WHO) and other health stakeholders including local authorities, played a
+significant role in managing the response to the Ebola crisis, providing critical logistics
+services and operational support to medical response teams. This enabled swift assistance
+in remote affected areas and built the framework for future emergency preparedness and
+response in the health sector, which will improve disaster risk reduction and disaster
+risk management.
+20. During implementation of the country strategic plan (CSP), the country office will seek to
+engage in more sustainable and long-term partnerships with local counterparts. Capacity
+strengthening is a priority and will be based on an assessment of the need for assistance in
+formulating policies and strategies and in strengthening implementation capacities. WFP
+has taken a strategic decision to integrate capacity strengthening across all activities in the
+CSP, a departure from the current interim CSP. This is intended to ensure that capacity
+strengthening is mainstreamed through advocacy for more strategic and consistent
+investments in human capital and agricultural development at the national level and
+through strengthened government capacity at the provincial and local levels.
+21. Institutional strengthening will be measured at multiple levels: through process milestones
+to ensure that planned interventions are on track; through corporate results framework
+indicators to assess capacity creation; and through customized project-level indicators for
+assessing the performance of local systems in using created capacities. Milestones and
+indicators will be defined through co-design with national stakeholders during the
+development of detailed activity workplans. For the first time the Government has dedicated
+a budget line to school feeding, showing its political commitment to this activity. WFP is
+supporting the Government in building capacity for inclusive school feeding programming.
+Through a WFP partnership with the World Bank, a SABER32 school feeding exercise has
+been conducted to review capacity strengthening needs in order to ensure that assistance
+is framed correctly and appropriately for the context. Future endeavours will include
+increasing South–South and triangular cooperation in school feeding and nutrition.
+22. The common cash strategy for the Democratic Republic of the Congo adopted by WFP, the
+United Nations Children’s Fund (UNICEF) and the Office of the United Nations High
+Commissioner for Refugees (UNHCR) is aimed at the development of a common
+collaborative and inclusive mechanism that builds on a single transfer approach and joint
+cash programming, from needs assessment to monitoring.33 The Democratic Republic of the
+Congo is a pilot country for the strategy, and WFP will play a critical role in the project at the
+operational and programmatic levels as the largest cash actor in the country.
+1.4 Hunger gaps and challenges
+23. The Democratic Republic of the Congo zero hunger strategic review (ZHSR) found that
+political turbulence, armed conflict and structural economic problems are obstacles to
+development – particularly with regard to food and nutrition security – for the Congolese
+population (including host communities, IDPs, returnees and refugees). This has contributed
+to an imbalanced emphasis on emergency humanitarian interventions to date, which does
+not align with current strategic thinking as articulated through the SDGs.34
+32 Systems Approach for Better Education Results.
+33 Statement by the principals of the United Nations Office for the Coordination of Humanitarian Affairs, UNHCR, WFP and
+UNICEF on cash assistance, 5 December 2018.
+34 Congolese Institute for Development Research and Strategic Studies (Institut congolais de recherche en développement
+et études stratégiques). 2019. Éliminer la faim en République démocratique du Congo: Rapport de la Revue stratégique sur la
+Faim zéro. https://docs.wfp.org/api/documents/WFP-0000111398/download/.
+
+--- Page 9 ---
+WFP/EB.2/2020/7-A/2 9
+24. The chances of the Democratic Republic of the Congo meeting SDG 2 targets for the
+eradication of hunger are low: the common country assessment forecasts that the country
+will only be able to achieve one third of its zero hunger targets. The food deficit is estimated
+to be 6.9 million mt, or 22 percent of national food needs. Almost two out of
+three households are forced to rely on three food groups for their daily needs: tubers (or
+cereals), vegetables (cassava leaves, sweet potato leaves) and palm oil.35
+25. Geographical analysis and the ZHSR identify conflict, shocks, climate change,36 weak
+infrastructure and inefficient food systems as major factors affecting food security and
+nutrition across the country. The situation is exacerbated by weak governance and a lack of
+policy implementation. Inadequate investment in human capital development, including
+education, could reduce long-term economic prospects and household food security.
+26. Women’s limited access to education and low labour force participation compromises food
+security, economic growth, social cohesion, climate resilience and human capital growth.
+Behavioural change initiatives that tackle systemic and structural gender inequalities and
+disempowerment can help transform the roles, responsibilities and opportunities of women
+and men. Lack of political representation and opportunity for engagement, together with
+gender-based violence (GBV), leave women and girls much more vulnerable to food
+insecurity and malnutrition than men.
+2. Strategic implications for WFP
+2.1 Achievements, lessons learned and strategic changes for WFP
+27. This CSP has been developed based on lessons learned and findings from the evaluation of
+the interim country strategic plan (ICSP) demonstrating that WFP operations in the
+Democratic Republic of the Congo are based on strong supply chain management and
+unique common services, responding at scale to a continually evolving situation. The
+evaluation highlights WFP’s rare blend of activities in emergencies, which include a broad
+range of food security and nutrition support activities as well as the provision of logistics
+and supply chain services to all humanitarian actors in the field in addition to activities that
+contribute to development and peacebuilding. The evaluation findings also affirm that WFP
+has organizational strengths that make it a desirable partner.37
+28. The evaluation shows that WFP must continue to respond to growing humanitarian need
+while ensuring that targeted people have equitable access to productive resources and
+markets so that they can become more resilient. The evaluation also shows that WFP is
+forced to operate in continuous crisis management mode because of the multiple risks and
+crises to which it must respond in its operating environments and the absence of state
+services. The evaluation highlights gaps in the detection and management of risks in this
+complex context, especially related to fraud, security and human resource management.
+29. A recent review of the components of WFP’s resilience programme that focus on increasing
+the empowerment of women38 has shown that joint resilience projects should have longer
+timeframes (a minimum of five years) because joint activities take longer to implement.
+Activities that contribute to sustainable and transformative change, as well as initiatives that
+35 Ibid.
+36 Leading to increased droughts and flooding.
+37 WFP. Pending publication. Democratic Republic of the Congo: Evaluation of WFP’s interim country strategic plan for
+2018–2020. Pages 57 and 58 of the draft dated 27 February 2020.
+38 2018. Rapport de mission Chiarini, dans le cadre du projet conjoint "Accélérer l’autonomisation économique des femmes
+rurales". Septembre 2018. (Not available online.)
+
+--- Page 10 ---
+WFP/EB.2/2020/7-A/2 10
+seek to reduce structural and socio-cultural inequality, also need longer timeframes,39 which
+partners should consider during joint planning.
+30. WFP is continuing to strengthen its work on resilience building through strong partnerships
+with the United Nations Food and Agriculture Organization (FAO), UNICEF and the
+United Nations Population Fund (UNFPA), providing gender-transformative and
+nutrition--sensitive capacity strengthening support and closing the gap between crisis
+response and resilience by including IDPs and refugees in more long-term activities. These
+interventions take into account the specific and complementary roles men and women play
+in agriculture and include gender-specific activities such as literacy training and
+income--generating activities that aim to promote the empowerment of women. As well,
+climate change and environmental degradation will be taken into consideration in all
+resilience programming. This CSP also incorporates the ICSP evaluation recommendation
+on linking school feeding with work on resilience building, which has strengthened the
+home-grown school feeding programme (HGSFP) approach. Findings from the SABER
+exercise and dialogue with stakeholders will guide WFP’s country capacity strengthening
+activities in support of school feeding, which will focus on reinforcing the policy framework,
+coordination and financial capacity.
+31. Prevention of acute malnutrition programming illustrates the importance of partners and
+stakeholders working together to improve the efficiency and effectiveness of activities. This
+has led to increased efforts between UNICEF, WFP, the Government and partners to ensure
+that nutrition services are delivered to promote the continuum of care, with action being
+driven mainly by the nutrition cluster at both the national and provincial levels. Convergence
+of interventions and geographic coverage is mapped and, to the extent possible,
+interventions are implemented synergistically to ensure that moderate and severe acute
+malnutrition services are both available in the same area and further extended to other
+multisectoral and complementary programmes.
+32. Ongoing data collection (post-distribution monitoring surveys) and analysis specifically on
+prevention interventions will inform further strengthening of the approach. Pilots on
+conditional on-demand assistance through WFP’s SCOPE beneficiary tracking system
+(SCOPE CODA) and mobile vulnerability analysis mapping pilots are in progress, with the
+former at a more advanced stage.
+31.33. WFP’s partnership with UNFPA supports the mainstreaming of messages on family planning
+and sexual and reproductive health and ensures access to these services. This work includes
+targeting adolescent girls and boys when tackling the issue of exponential population
+growth. As part of its resilience work, WFP is working with a broad range of stakeholders to
+ensure better, equitable and inclusive financial services for smallholder farmers. All activities
+seek to strengthen the links between WFP’s crisis and resilience work, where feasible.
+Climate change could increase risks related to flash floods and rising temperatures,
+reducing food availability, exacerbating the scarcity of drinking water and threatening
+livelihoods and rural communities. To address these challenges, and in line with national
+priorities on climate change adaptation, WFP will explore options for strengthening capacity
+in early warning; the integration of resilience into development strategies and climate risk
+planning; community-based adaptation; and disaster risk reduction interventions.
+Environmental protection is an integral consideration in all resilience work. In post-harvest
+handling, the key principles regarding environmental and social sustainability are applied.
+These principles include improving efficiency in the use of resources, promoting and
+adopting good practices in order to conserve, protect and enhance natural resources,
+including seeds, enhancing sustainable improved livelihoods for social well-being,
+39 Ibid.
+
+--- Page 11 ---
+WFP/EB.2/2020/7-A/2 11
+enhancing the resilience of people, communities and ecosystems and reinforcing
+responsible and effective governance mechanisms based on participatory approaches.
+32.34. WFP’s supply chain provides bilateral services to partners, including in response to the
+Ebola crisis. The logistics cluster, led by WFP, coordinates and shares information with the
+humanitarian community on logistics issues, seeking to develop common strategies
+and solutions.
+33.35. Co-led by WFP and FAO, the food security cluster provides strategic guidance and ensures
+effective coordination among partners by promoting equitable, appropriate and
+cost-efficient interventions.
+34.36. WFP, together with the development indicator analysis unit in the Prime Minister’s Office,
+established a monthly market bulletin called m-Kengela. The unit now leads the production
+of these bulletins, with WFP providing technical oversight and financial support for data
+collection. WFP will build on this partnership, with a potential expansion into the collection
+of household and individual-level40 food security data to feed into a national food security
+information management system.
+35.37. Since 2016 the country office has contributed to efforts to adapt and refine the WFP gender
+and age marker for gender equitable and transformative programming. WFP collects,
+analyses and uses gender and age data collected at the individual level through the
+post-distribution monitoring of food security and nutrition programming and social change.
+36.38. WFP partners with the United Nations Entity for Gender Equality and the Empowerment of
+Women (UN-Women), UNFPA and the Ministry of Gender, Family and Children to address
+GBV and specifically target survivors of GBV. WFP’s toll-free number for beneficiary feedback
+is managed by a multilingual team of experts, and survivors of GBV are referred to one of
+five gender and protection officers, if appropriate. These officers have been recruited as part
+of a scale-up of protection safeguards. WFP plans to enhance these mechanisms as
+recommended by the ICSP evaluation and forge strong partnerships with committed and
+competent national civil society organizations working for gender equality and women’s
+empowerment and through South–South and triangular cooperation within the region.
+39. In response to COVID-19, WFP is partnering with UNICEF and FAO on the first urban cash
+programmes in Kinshasa, in close cooperation with the Ministry of Social Affairs,
+Humanitarian Action and National Solidarity. The response aims to address the
+socioeconomic impact of the pandemic in one of the poorest communes of the capital and
+to support the development of a national shock responsive social protection platform. A
+joint food and nutrition assessment that considers protection and conflict sensitivity risks,
+alongside long-term self-reliance, will influence the response, which has the potential to be
+scaled up across the country.
+2.2 Alignment with national development plans, the United Nations sustainable
+development cooperation framework and other frameworks
+37.40. The Government’s commitment to the SDGs is well reflected in the NSDP, the national
+agricultural investment plan for 2013 to 2020 and other national food security strategies.41
+The NSDP, approved in December 2019, is the country’s overarching strategy for achieving
+the SDGs.
+40 Household surveys provide WFP with information on gender through the cross-tabulation of the variable “sex of head of
+household” and other variables such as food consumption score and coping strategies index.
+41 Congolese Institute for Development Research and Strategic Studies (Institut congolais de recherche en développement
+et études stratégiques). 2019. Éliminer la faim en République démocratique du Congo: Rapport de la Revue stratégique sur la
+Faim zéro. https://docs.wfp.org/api/documents/WFP-0000111398/download/. See table 3.1, page 119.
+
+--- Page 12 ---
+WFP/EB.2/2020/7-A/2 12
+38.41. The NSDP identifies increasing agricultural productivity as a prime factor in ensuring food
+security and one of the main driving forces that will enable the Democratic Republic of the
+Congo to become a middle-income country by 2050.42 The achievement of the SDGs,
+especially SDG 2, is closely linked to the African Union's Agenda 2063, which calls for the
+vigorous pursuit of climate-smart agriculture and food security in all African countries, and
+to commitments on environmental protection made at the twenty-first session of the
+Conference of the Parties to the United Nations Framework Convention on Climate Change.
+39.42. The Government has allocated funds from the budget to school feeding in the finance law
+for 2020. This is a considerable shift in approach, a continuation of the SABER advocacy
+process led by the country office and a reflection of the weight given to this issue, as
+described in the Government’s education and training sectoral strategy, in order to improve
+educational outcomes. WFP will ensure that school feeding programmes are implemented
+in a transparent way and contribute to the reduction of conflict.
+40.43. The United Nations sustainable development cooperation framework (UNSDCF) for
+2020–2024 is aligned with government development priorities. WFP contributed to the
+development of the UNSDCF through technical workshops and consultation with the
+Government and civil society, as well as by producing or supporting studies such as the
+ZHSR, a cost of hunger study and IPC analyses. The CSP is aligned with the UNSDCF in terms
+of timeline and results.
+41.44. The Democratic Republic of the Congo also committed to reaching World Health Assembly
+nutrition targets through its national multisectoral nutrition plan for 2016–2020, the
+first multisectoral nutrition plan that it has adopted since the country joined the Scaling Up
+Nutrition (SUN) movement in 2013.
+42.45. The Democratic Republic of the Congo has an action plan for the implementation of
+United Nations Security Council resolution 1325 and a national strategy for combating GBV,
+which is fundamental to achieving gender equality and the empowerment of women
+and girls.43
+2.3 Engagement with key stakeholders
+43.46. The ZHSR was developed through an inclusive consultative process. Contributors included
+high-ranking members of the Government, United Nations agencies, donors, national and
+international non-governmental organizations (NGOs), civil society and the private sector at
+both the national and the provincial levels. The CSP was also developed through a series of
+extensive consultations with the Government, other United Nations agencies, international
+and national NGO partners and international donors in the Democratic Republic of
+the Congo.
+44.47. WFP works closely with the Ministry of Agriculture, especially through the joint WFP/FAO
+resilience programme, which supports smallholder farmers in production and post-harvest
+management. WFP also works with the provincial inspection of agriculture, fishing and
+livestock service, the national institute for agricultural research and studies and the national
+seed service.
+42. Government of the Democratic Republic of the Congo. Plan national stratégique de développement – Vision de la RDC à
+l’horizon 2050. https://www.plan.gouv.cd/wp-content/uploads/2020/08/PNSD-2019-2023.pdf.
+43 Government of the Democratic Republic of the Congo. 2010. Plan d’action du Gouvernement de la République Démocratique
+du Congo pour l’application de la résolution 1325 du Conseil de sécurité des Nations Unies and Ministry of Gender, Family and
+Children. 2009. Stratégie nationale de lutte contre les violences basées sur le genre (SNVBG).
+
+--- Page 13 ---
+WFP/EB.2/2020/7-A/2 13
+45.48. Through its joint resilience programming WFP has developed a solid partnership with FAO
+that is now being extended to UNICEF, UNFPA and UNHCR. Renewed collaboration on
+resilience building work with the International Fund for Agricultural Development will be
+sought during the implementation of the CSP.
+46.49. WFP’s resilience building activities are based on community-based participatory planning
+processes carried out with members of farmers’ organizations to ensure their buy-in and
+alignment with local priorities for development assistance. Satisfaction with the services
+provided is equitably assessed through WFP’s complaint and feedback mechanisms and the
+post-distribution monitoring process.
+50. Applying the principle of localization, WFP seeks to scale up its engagement with national
+NGOs in targeted provinces, ensuring inclusiveness in its selection of partners so that the
+perception of neutrality is maintained. While national NGOs have a comparative advantage
+in terms of access and flexibility because they are rooted in the community, they require
+substantive capacity strengthening support for both technical and soft skills building. These
+needs will be addressed in the CSP.
+47.51. The Ministry of Gender, Family and Children and the Ministry of Social Affairs ensure that
+resilience programme activities are consistent with national gender policies. Synergies are
+also sought with decentralized institutions responsible for the implementation of
+gender-specific activities.
+48.52. WFP is working with the Ministry of Agriculture to strengthen access to market information
+by establishing an agricultural market information system, supported through WFP’s
+vulnerability analysis (VAM) and resilience units.
+49.53. WFP works with the provincial branches of the Ministry of Rural Development on the control
+and supervision of road building for feeder road rehabilitation and asset creation activities.
+3. WFP strategic portfolio
+3.1 Direction, focus and intended impact
+50.54. The CSP supports national priorities for achieving food and nutrition security, laying the
+foundations for an eventual transition to more government and community-led responses
+by 2030. Given the current political and social context, approaches to capacity strengthening
+will build on functioning pockets of expertise, with an emphasis on setting priorities and
+building alliances for future capacity strengthening work while WFP continues to provide
+much-needed emergency response and relief. Capacity strengthening will continue at the
+technical level, but WFP will also work with higher levels of government to increase
+awareness of the importance of these exercises for national planning (e.g. the use of crop
+assessment to design the new strategy of the Ministry of Agriculture). This awareness raising
+will serve as a building block to increase ownership and investment.
+51.55. WFP will ensure stronger programmatic links between crisis response, peacebuilding and
+resilience activities and increased coordination for emergency preparedness. While
+emergency relief remains the focus of WFP’s assistance, there should be a gradual decrease
+in the number of people targeted for crisis relief over the four-year implementation period
+of the CSP if the level of conflict and crisis tapers off.
+52.56. WFP will build on synergies between its different crisis response and resilience building
+activities by promoting inclusive and equitable local purchases from resilience programme
+participants, promoting good nutrition for all. Through such purchases, school feeding and
+resilience programmes can also contribute to improving market access and increasing the
+volume and value of food sales from smallholder farmers; improving the food consumption
+scores and dietary diversity of programme participants; and increase benefits for the local
+economy. Part of this synergistic work will include ensuring that supply chain innovations
+
+--- Page 14 ---
+WFP/EB.2/2020/7-A/2 14
+contribute not only to crisis response but to building sustainable resilience through support
+for smallholder farmers and small and medium enterprises along the value chain.
+53.57. WFP will promote inclusive social protection and human capital development, smallholder
+market development, emergency preparedness and response and the strengthening of
+food systems, primarily through its resilience building initiatives, while looking for similar
+opportunities in emergencies. All activities and initiatives will ensure the equitable and
+inclusive participation of the diverse range of people who are vulnerable to food insecurity
+and malnutrition and households affected by disabilities or chronic medical conditions,
+thereby addressing inequalities.
+58. In all resilience activities, specific consideration is given to gender equality and women’s
+empowerment through the introduction of gender-transformative measures. WFP will seek
+to incorporate growing evidence that food security and nutrition outcomes are significantly
+improved by adopting gender-transformative and inclusive approaches. To the extent
+possible, the resilience programme is using the three-pronged approach so that women are
+provided with the space and time to voice their needs and priorities so that they can
+contribute to their own empowerment and help to tailor programmes.
+59. Resilience programming will also be based on conflict analyses to identify causes of conflict
+and exclusion and will identify intervention strategies that will reduce existing inequalities.
+Value chain development will focus on strengthening different actors in the chain including
+farm and non-farm producers (farmers, pastoralists, hunter-gatherers) and will try to create
+economic dependencies between otherwise opposing communities.
+54.60. Capacity strengthening with the Government will focus on the provincial and local levels with
+the sharing of know-how on vulnerability analysis and mapping, design and implementation
+of programmes, emergency preparedness and response, early warning, asset creation and
+supply chain management.
+3.2 Strategic outcomes, focus areas, expected outputs and key activities
+55.61. While acknowledging that the protracted humanitarian crisis in the country is the priority
+for assistance, WFP believes that offering people the opportunity to become more resilient
+and self-reliant presents the possibility to have more sustainable food systems. This is the
+reason for the planned expansion of programmes that contribute to achieving long-term
+sustainability goals.
+Strategic outcome 1: Conflict and crisis-affected populationsmen, women, boys, and girls from
+all ethnic groups are able to meet their food and nutrition requirements throughout the year
+56.62. Targeted populations benefit from a comprehensive package of crisis-response services,
+including a social and behaviour change communication (SBCC) framework44 for raising
+awareness on issues such as peacebuilding, protection, protection from sexual exploitation
+and abuse, nutrition, environmental management measures and conflict mitigation.
+Focus area
+57.63. Strategic outcome 1 is focused on crisis response.
+44 The SBCC framework will includea desk review of existing evidence and best practices regarding nutrition that is context
+specific; relevant theories and models that can support the development of a theory of change and SBCC framework; and
+the identification of barriers to and enablers of the consumption of a nutritious diet, including market analysis, availability
+of, access to and affordability of nutritious foods and consumer preference. WFP will assess programme fidelity against
+implementation plans and include coverage and reach, recall and comprehension of key messages and acceptability of the
+intervention. Indicators will also measure knowledge, attitudes and practices (desired behaviours) identified by the SBCC
+framework to evaluate the effectiveness of the SBCC strategy.
+
+--- Page 15 ---
+WFP/EB.2/2020/7-A/2 15
+Alignment with national priorities
+58.64. NSDP result 1: Economic diversification and transformation; UNSDCF output 3.2: Populations
+and communities affected by emergencies benefit from effective and rapid assistance
+thanks to state services, better equipped to effectively predict, respond to and coordinate
+humanitarian interventions that contribute to resilience building.
+Expected outputs
+59.65. This outcome will be achieved through four outputs:
+➢ Conflict and crisis-affected food insecure populations receive timely, adequate and
+nutritious food assistance that meets their basic food and nutrition requirements,
+promoting social cohesion and conflict mitigation.
+➢ Conflict and crisis-affected populations benefit from the enhanced capacity of the
+Government and partners to predict and prepare for emergencies.
+➢ Targeted populations including children age 6–59 months, pregnant and lactating
+women and girls (PLWG) and clients undergoing anti-retroviral therapy or tuberculosis
+directly observed treatment (TB-DOTS) receive a comprehensive nutrition package
+including specialized nutritious foods to treat moderate acute malnutrition (MAM).
+➢ Vulnerable populations including children age 6–23 months and PLWG receive a
+comprehensive nutrition package, including specialized nutritious foods to prevent
+acute malnutrition.
+Key activities
+Activity 1: Provide gender-equitable and nutrition-sensitive essential needs assistance to conflict- and
+crisis-affected populations through direct assistance and enhanced inter-agency coordination
+60.66. WFP will provide targeted conflict and crisis-affected people45 with cash or food to enable
+them to meet their basic food and nutrition requirements. Food assistance cycles and
+rations will be seasonally adapted to cover the lean periods and periods of longer duration
+(an assistance cycle of six months, as opposed to the current three months); they will be
+designed and adapted based on needs analysis and an assessment of their impact on the
+various target population groups. Coordination around the duration and needs analysis will
+be done through the food security cluster.46 WFP and partners will provide SBCC tailored to
+the differing needs of the target population groups47 in order to raise awareness of nutrition
+issues, protection, protection from sexual exploitation and abuse, GBV, gender inequality
+and conflict mitigation. Programming will also take into account the range of peacebuilding
+actors involved in the country and will include measures to reduce the impact of food
+distribution points on the environment in IDP and refugee camps.
+67. In partnership with UNICEF, WFP will also strengthen infant and young child feeding
+practices in emergencies, particularly in areas where there is limited presence of other
+implementers and where health delivery platforms are disrupted in conflict-affected areas.
+45 Including natural disasters and epidemics.
+46 WFP will strategically shift the cycle from 3 to up to 6 months in select locations based on careful analysis of available
+evidence of context and resourcing levels. As the 3-month cycle has been the norm to date, the proposed change will be
+introduced progressively as it has both practical and budgetary implications. In many cases, for example a temporary
+displacement, assistance will remain at 3 months.
+47 A VAM monitoring and evaluation survey will be conducted to facilitate understanding of preferred communications
+channels. The survey, conducted in 2019 and 2020, will be used to refine the ways in which the country office communicates
+with communities through targeted messages.
+
+--- Page 16 ---
+WFP/EB.2/2020/7-A/2 16
+61.68. Supply chain support will ensure the safe and timely delivery of food assistance to targeted
+populations, reaching those in the most isolated and inaccessible areas. To enhance
+humanitarian access, WFP will mobilize resources for road rehabilitation when necessary.
+62.69. WFP will assist IDPs, returnees, refugees and host communities whose livelihoods have been
+affected by displacement by creating equitable and inclusive
+income-generating opportunities.
+63.70. WFP, in partnership with UNHCR, will progressively expand its vulnerability-based targeting
+approach, already operational with refugees from the Central African Republic, to refugees
+from Burundi and South Sudan.
+64.71. WFP will continue its school feeding activities in emergencies where necessary, working in
+partnership with UNICEF and the education cluster to respond to crises. Providing school
+meals will bring children to temporary safe spaces and support their food security and
+learning. Interventions will aim to make sure that no child is left behind.
+65.72. WFP will work with government institutions, partners and civil society actors on how to plan,
+prepare and manage emergency operations that are equitable and inclusive and to build
+disaster response mechanisms for disaster risk reduction and management, in particular
+for health emergencies.
+Partnerships
+66.73. WFP’s partnerships with United Nations agencies, national and international NGOs,
+community-based organizations and communities will ensure that equitable and inclusive
+assistance is provided in the form of cash or food, SBCC and capacity strengthening.
+67.74. WFP’s partnership with FAO is central to the restoration of livelihoods during initial crisis
+response; this work will be more strongly linked to resilience building activities.
+68.75. WFP works closely with the United Nations country team, the regional inter-organization
+committee (Comité régional inter-organisations) and the cluster system, especially the food
+security cluster, co-led by WFP and FAO.
+Activity 2: Treat moderate acute malnutrition among conflict- and crisis-affected populations48
+69.76. WFP will continue to provide MAM treatment in the areas of highest GAM prevalence with
+aggravating factors, ensuring a continuum of care between treatment services for MAM and
+those for severe acute malnutrition (SAM). WFP will also promote MAM treatment for PLWG.
+70.77. WFP assists people living with HIV undergoing anti-retroviral therapy or TB-DOTS for
+multi-drug-resistant tuberculosis by providing products to improve their nutritional status
+and increase the beneficial effects of their medical therapy. WFP will support the
+Government in integrating nutrition activities into the 2021–2025 national strategy for the
+elimination of parent-to-child transmission of HIV. The organization will also contribute to
+national measures for the prevention of GBV and the provision of social protection for
+HIV-positive women through targeted activities promoting resilience and economic
+well-being for these women.
+71.78. MAM treatment will continue to be implemented directly by health centre staff or at the
+community level with support from NGOs and WFP to ensure that services are
+gender-sensitive and integrated into the health system.
+48 In emergencies WFP ensures that children under 5 and PLWG affected by crises and others at risk of malnutrition receive
+sufficient food and specific nutrients required for good nutrition.
+
+--- Page 17 ---
+WFP/EB.2/2020/7-A/2 17
+72.79. To mitigate the intra-family and intra-community sharing of specialized nutritious food and
+to optimize resources, MAM treatment will be linked to complementary programming such
+as food assistance (in-kind or cash) for food insecure populations or primary healthcare
+services based on the needs of targeted populations with an emphasis on women in order
+to address underlying gender inequality.
+73.80. To enhance complementarity, WFP will continue to integrate nutrition-sensitive and
+nutrition-specific activities into general food distribution and other activities such as school
+feeding and resilience building.
+Partnerships
+74.81. Malnutrition treatment in targeted areas will be supported through partnerships with the
+ministries of health and gender and a wide range of international and national partners
+including the Joint United Nations Programme on HIV and AIDS (UNAIDS), FAO and UNICEF.
+75.82. WFP will support cooperating partners with training to strengthen technical capacity and
+ensure good-quality implementation and monitoring of nutrition activities. WFP will
+continue to engage with the national nutrition programme through capacity
+strengthening activities.
+76.83. In collaboration with WHO and the Ministry of Health, WFP will assist in the development of
+gender-responsive protocols, particularly for nutrition monitoring and research on
+epidemics such as measles, cholera and Ebola.
+Activity 3: Prevent acute malnutrition among conflict- and crisis-affected populations49
+77.84. PLWG and children age 6–23 months will receive specialized nutritious foods that help meet
+their needs during the first 1,000 days of life in order to prevent malnutrition.
+78.85. In line with national guidelines, high-energy biscuits will be distributed at the onset of
+emergencies to targeted population groups – primarily women of childbearing age and girls
+at risk of pregnancy – in order to protect the nutrition status of vulnerable people affected
+by displacement.
+79.86. WFP will continue to support facility- and community-based acute malnutrition prevention
+interventions through a package of high impact nutrition activities including supplementary
+feeding for PLWG and children under 2, particularly during the lean seasons, in areas
+prioritized by the nutrition cluster.
+80.87. Interventions that seek to prevent acute malnutrition will continue to be implemented in
+conjunction with MAM treatment services and general food assistance. WFP will integrate
+nutrition-sensitive activities into all its activities.
+88. WFP's comparative advantage rests on its unmatched ability to respond quickly and
+effectively in crisis situations on a massive scale. WFP’s deep field presence in the most
+remote and often vulnerable communities will allow an integrated package of nutrition
+interventions to reach those who need them most.
+81.89. WFP will support the SUN Business Network, a platform for engaging with the private sector,
+in promoting food fortification and the local production of specialized nutritious foods with
+the Government, local authorities, communities, other agencies and the private sector in
+order to increase food availability and accessibility.
+49 In emergencies WFP ensures that children under 5 and PLWG and others at risk of malnutrition receive not just sufficient
+food but an adequate nutrition ration.
+
+--- Page 18 ---
+WFP/EB.2/2020/7-A/2 18
+Partnerships
+82.90. The implementation partnerships described under activity 2 will also work on activity 3.
+Strategic outcome 2: The human capital of conflict affected and/or at-risk populations is
+equitably and inclusively protected and strengthened by 2024
+83.91. WFP will contribute to the development of the human capital of future generations in the
+Democratic Republic of the Congo. Without investment in children’s health and education
+the next generation will not achieve its social and economic potential, with negative impacts
+on economic growth and the advancement of the country in the medium to long term. The
+HGSFP strengthens the human capital of smallholder farmers by training them in skills that
+will allow them to sell their products to schools. This work will include South–South and
+triangular cooperation with the WFP centre of excellence in Brazil to inform the formulation
+of the HGSF strategy and the HGSFP.
+84.92. WFP will continue MAM treatment, prioritizing zones with the highest acute malnutrition
+prevalence (GAM >10 percent or SAM >2 percent) and where SAM treatment is being
+provided. WFP will continue to support community-based acute malnutrition
+prevention interventions.
+Focus area
+85.93. Strategic outcome 2 is focused on resilience building.
+Alignment with national priorities
+86.94. NSDP result 4: Social and human capital development; UNSDCF output 2.2: By 2024, the
+Congolese population will benefit from inclusive social protection and a demographic
+dividend, driven by population control and the empowerment of young people and women
+and output 3.1: The most vulnerable populations benefit from equitable, quality and
+sustainable access to basic health services, including those living with HIV/AIDS.
+Expected outputs
+87.95. This outcome will be achieved through five outputs:
+➢ Primary school children receive timely and adequate nutritious meals that meet their
+food and nutrition requirements.
+➢ Targeted information on health and nutrition is provided to primary school children
+and their caregivers.
+➢ Targeted populations including children age 6–23 months and PLWG benefit from a
+comprehensive nutrition package including, where appropriate, nutritious foods to
+address chronic malnutrition.
+➢ Targeted populations and communities engage in nutrition-focused and
+gender-transformative SBCC and have equitable access to fortified foods for the
+prevention of wasting and stunting.
+➢ Targeted populations benefit from evidence gathering that supports
+nutrition-sensitive, gender equitable and transformative programming.
+Key activities
+Activity 4: Provide nutritious school meals to targeted school children and support the implementation
+of the home-grown school feeding programme
+88.96. WFP and its partners, including UNICEF and FAO, will help mobilize technical and financial
+support for the implementation of the Government’s education and training sectoral
+strategy and will work with the Government to strengthen the latter’s capacity to undertake
+school feeding initiatives. The broader coalition of partners in school health and nutrition
+
+--- Page 19 ---
+WFP/EB.2/2020/7-A/2 19
+will look at providing fuel-efficient stoves; deworming; water points; water, sanitation and
+hygiene (WASH) facilities; and other school feeding infrastructure, as well as health and
+nutrition education. WFP will support resilience building through the HGSFP, which will aim
+to source food from women producers.
+89.97. Social protection initiatives undertaken in partnership with UNICEF will be expanded to
+include FAO and UNFPA, in addition to local government stakeholders in selected
+geographical areas. The HGSFP aims to provide inclusive social protection and safety nets
+for vulnerable households. School meals save up to 10 percent of household income, and
+linking local production to local consumption helps create a stable and predictable market.
+The HGSFP will also address gender-specific economic inequalities in order to reduce
+poverty, food insecurity and malnutrition. Children’s access to school meals must be
+complemented with better school hygiene (WASH) in order to improve nutrition outcomes.
+WFP will therefore target schools where NGOs and UNICEF are already providing
+WASH services.
+Partnerships
+90.98. Collaboration by the ministries of education, health, gender and agriculture and other
+United Nations agencies and implementing partners well versed in nutrition, health, social
+protection and gender equality issues will be needed to implement the activities described
+above and those included in the school health and nutrition package.
+Activity 5: Support interventions to prevent chronic malnutrition, especially for at-risk people
+91.99. SBCC will be used to create demand for the cultivation and consumption of nutritious food
+and encourage the appropriate use of nutrition products to enhance the complementary
+feeding of young boys and girls and to improve the dietary diversity of women and
+adolescent girls.
+92.100. WFP and partners will work to protect the nutrition status of children age 6–23 months
+and PLWG with food and cash assistance in order to prevent chronic malnutrition.
+93.101. WFP will work with the Government and nutrition stakeholders on improving food safety
+and quality. This will include a review of the national safety norms and regulations for staple
+foods and the regulatory framework governing food fortification. To help improve national
+regulatory standards, WFP will collaborate with partners on SBCC that encourages men and
+women to engage in appropriate infant and young child feeding and care practices.
+Partnerships
+94.102. WFP will work in collaboration with the Ministry of Health and partners including NGOs,
+FAO, WHO, UNFPA and UNICEF on the prevention of stunting and will strengthen the
+national SUN Business Platform to contribute to measurable results in the reduction of
+stunting.
+95.103. WFP will work with UNICEF, FAO, UNFPA and the Ministry of Health within the
+SUN framework for the prevention of stunting.
+Strategic outcome 3: Smallholder farmers and food value chain actors have improved livelihood
+opportunities, resilience, social cohesion and protection and make progress towards gender
+equality by 2024
+96.104. Activities under this strategic outcome seek to strengthen the socioeconomic resilience of
+smallholder farmers and vulnerable populations in targeted communities while contributing
+to stabilization and peacebuilding through inclusive and equitable food security and
+
+--- Page 20 ---
+WFP/EB.2/2020/7-A/2 20
+nutrition programming.50 WFP will aim at strengthening nexus synergies by transitioning
+IDPs, refugees and host communities assisted through activities 1 and 2 from emergency to
+resilience building assistance and adapting the resilience model to their context, ensuring
+that the structural drivers of conflict are addressed. Initiatives will also strengthen the role
+of food chain actors such as small and medium enterprises and national authorities in food
+safety and quality control, thereby increasing food availability and quality in markets.
+Focus area
+97.105. Strategic outcome 3 is focused on resilience building.
+Alignment with national priorities
+98.106. NSDP result 4: Social and human capital development; UNSDCF output 2.1: By 2024,
+Congolese people will enjoy sustainable, inclusive economic growth driven by agricultural
+transformation, economic diversification open to innovation, and the promotion of
+entrepreneurship among young people and women and output 1.1: The prevalence of
+violence and armed conflict is reduced and the security of people and property is improved
+especially for vulnerable people, women and young people.
+Expected outputs
+99.107. The outcome will be achieved through four outputs:
+➢ Targeted women and men smallholder farmers benefit from conditional food
+assistance.
+➢ Targeted women and men smallholder farmers benefit from support that increases
+local food production and marketing and the consumption of nutrient-rich food and
+the enhanced capacity of national and local stakeholders.
+➢ Targeted smallholder farmers and value chain actors benefit from enhanced
+equitable and inclusive livelihood support on improved production skills for
+sustainable value chains.
+➢ Targeted communities benefit from nutrition education, social and behaviour change,
+improved local production and the enhanced capacity of national and
+local stakeholders.
+Key activity
+Activity 6: Support smallholder farmers’ and value chain actors’ equitable access to climate and
+nutrition-smart livelihood opportunities, services and markets.
+100.108. Resilience building activities, identified through inclusive community
+consultations, will equitably address the priority needs of women and men. They will include
+improving production, processing and market infrastructure, on and off-farm income
+opportunities and training for those unable to perform agricultural labour.
+101.109. Activities will strengthen links between humanitarian action, recovery and
+development, helping to nurture peaceful coexistence and social cohesion within and
+between targeted communities. WFP programming will contribute to changes in attitudes,
+behaviours and the relationships between divided communities and will provide an entry
+point for partners to work on deeper structural and cultural changes. WFP’s joint resilience
+programming creates opportunities for communities to identify shared needs and to build
+trust through practical cooperation. In Tanganyika, for example, work in partnership with
+Search for Common Ground is enhancing conflict resolution and early warning mechanisms,
+50 Greater gender equality in access to productive resources and services could increase the yields on women’s farms by
+between 20 and 30 percent. This includes ensuring rural women’s access to farmers’ organizations, processing facilities,
+improved technologies and markets and building their resilience. See http://www.fao.org/3/ca6030en/ca6030en.pdf.
+
+--- Page 21 ---
+WFP/EB.2/2020/7-A/2 21
+enabling local issues to be resolved before they escalate; in North and South Kivu, various
+projects implemented jointly with FAO address access to land, which is a major driver of
+conflict.
+102.110. Drawing on significant in-country experience, WFP will offer opportunities for food-
+insecure individuals and households to participate in productive asset creation and training
+programmes. A food assistance for assets component will provide cash or in-kind transfers
+to smallholder farmers to rehabilitate lands, roads or infrastructure, strengthening their
+livelihoods while covering their immediate food and nutrition needs.
+103.111. WFP support includes the promotion of climate-smart agricultural practices, post-
+harvest management, food systems improvements, nutrition education and gender-
+inclusive community development. Negotiations are under way with partners such as the
+Fund for Financial Inclusion in the Democratic Republic of the Congo (Fonds pour l’inclusion
+financière en République démocratique du Congo) to link the Union of Farmer Organizations
+and Cooperatives (formed by WFP) with financial institutions.
+104.112. Synergies will be forged between WFP’s supply chain and local stakeholders to
+explore mechanisms for the improvement of food systems. This holistic approach is
+expected to strengthen linkages between smallholder farmers and home-grown school
+feeding (strategic outcome 2) and increase market access through local purchases,
+especially from women producers in order to address gender inequalities. Opportunities
+will be sought to ensure that women-headed households vulnerable to food insecurity and
+malnutrition and households affected by disabilities or chronic medical conditions are
+targeted with assistance tailored to their needs. The resilience coordination unit will be
+reinforced to provide technical support on food quality, food safety, asset creation, market
+infrastructure and storage.
+105.113. Assuming that conditions allow, there are ample opportunities for future
+programming in the area of climate change adaptation through the use of a livelihoods
+approach. In addition, existing work by other agencies can provide a basis for scaling up
+ecosystem-based adaptation interventions.
+106.114. WFP will work with the Government and other partners to design activities that are
+environmentally sound, avoiding or mitigating any negative impact on the environment.
+Partnerships
+107.115. WFP’s current partnership with FAO and UNICEF will be scaled up; partnerships
+with other agencies, including UNFPA and UNHCR, and new donors are also evolving. WFP
+resilience building partners are local government institutions, the Ministry of Agriculture and
+the Ministry of Gender, Family and Children. Partnerships with NGOs and grassroots
+organizations will remain central to ensuring community ownership and sustainability
+beyond the term of the CSP.
+108.116. WFP’s resilience programme is implemented in collaboration with the
+International Security and Stabilization Support Strategy (I4S) initiative coordinated by the
+United Nations Organization Stabilization Mission in the Democratic Republic of the Congo
+(MONUSCO). I4S has identified economic recovery and resilience building as fundamental
+to stabilization and peace in North and South Kivu.51 The resilience programme has a seat
+in the triple nexus working group, which is coordinated by the United Nations country team
+and is the means by which members coordinate their work across emergencies,
+51 The joint resilience projects in North and South Kivu are in line with the various components of the I4S, including the
+priorities outlined in the stabilization strategy I4S/Stabilization and Reconstruction Plan. For instance, the new
+FAO–WFP–UNICEF programme has been registered with the Stabilization Support Unit in Goma. The joint team also
+participates in coordination meetings organized by the Stabilization Support Unit to ensure synergy and coordination with
+the various programmes implementing stabilization measures in the region.
+
+--- Page 22 ---
+WFP/EB.2/2020/7-A/2 22
+peacebuilding and development initiatives. WFP is alsoactively working on revivingwith the
+Resilience Donor Group, an informal group of interested donors, chaired by Sweden.
+Strategic outcome 4: Humanitarian and development partners have access to reliable air
+services and improved supply chain and other services during and in the aftermath of
+conflictconflicts and crisiscrises
+109.117. WFP will continue to enhance the coordination of supply chain and common
+services provided to the humanitarian and development community. The need for air
+transport is expected to continue in the near future.
+Focus area
+110.118. Strategic outcome 3 is focused on crisis response.
+Alignment with national priorities
+111.119. NSDP result 1: Economic diversification and transformation; UNSDCF outcome 3.2:
+Populations and communities affected by emergencies benefit from effective and rapid
+assistance thanks to state services, better equipped to effectively predict, respond to and
+coordinate humanitarian interventions that contribute to resilience building.
+Expected outputs
+112.120. The outcome will be achieved through three outputs:
+➢ Populations affected by conflict and crisis benefit from reliable client-oriented air
+services that support timely and efficient humanitarian response.
+➢ Food insecure populations in emergencies benefit from improved evidence-based
+information and coordination from the humanitarian community.
+➢ Vulnerable people benefit from supply chain and other logistical services provided by
+WFP to partners, receiving timely and effective assistance.
+Key activities
+Activity 7: Provide humanitarian air services to the humanitarian community
+113.121. Populations in crisis benefit from reliable, safe, client-oriented air services that
+enable humanitarian actors and donors to carry out, supervise and monitor life-saving
+activities. The United Nations Humanitarian Air Service (UNHAS) will continue to strengthen
+the capacity of the civil aviation authorities of the Democratic Republic of the Congo to
+manage the country’s work with the European Coordination Centre for Accident and
+Incident Reporting Systems.
+Partnerships
+114.122. UNHAS will continue to coordinate with the civil aviation authorities and other local
+authorities on operational issues including airfield rehabilitation, air traffic control
+procedures and international aviation regulations. This collaboration raises awareness of
+aviation safety among stakeholders and ensures that UNHAS' services meet the needs of
+its users.
+115.123. UNHAS will support the management of flights for the European Union’s
+Directorate-General for European Civil Protection and Humanitarian Aid Operations and will
+coordinate with Médecins sans frontières and the International Committee of the Red Cross
+on harmonized schedules and the sharing of aviation safety and security information.
+116.124. UNHAS will also continue to support the civil aviation authorities in working with
+the European Coordination Centre for Accident and Incident Reporting Systems in
+coordination with the WFP Aviation Service and the Aviation Safety Unit.
+
+--- Page 23 ---
+WFP/EB.2/2020/7-A/2 23
+Activity 8: Provide humanitarian platforms (logistics cluster coordination and information services) to
+the humanitarian community
+117.125. WFP will provide technical support, coordination, information and geographic
+information system services to humanitarian partners including United Nations agencies
+and NGOs. Coordination among national institutions will be reinforced; analysis of seasonal
+access and security constraints will be incorporated into planning and guide the formulation
+of policies.
+Partnerships
+118.126. Partners are national institutions, other United Nations agencies, MONUSCO,
+international and national NGOs and community-based organizations.
+Activity 9: Provide on-demand services to humanitarian and development partners
+119.127. WFP will provide bilateral services on a full cost recovery basis to United Nations
+agencies and NGOs in order to facilitate emergency response and development work.
+Partnerships
+120.128. Partners are national institutions, other United Nations agencies, international and
+national NGOs and community-based organizations.
+Assumptions
+121.129. In a volatile and fragile country that faces numerous security, health and
+socioeconomic risks and emergencies, the achievement of the strategic outcomes of this
+CSP relies heavily on successful partnerships and strong programmatic complementarities
+with state actors and development and humanitarian partners. WFP and partners will need
+to be in a position to adjust all the pillars of the CSP to respond to the evolving context,
+which may include reviewing programmatic assumptions and the
+complementaritiescomplementarity of interventions.
+122.130. The two non-emergency pillars of the CSP (strategic outcomes 2 and 3) are strongly
+connected in programme design and have a common set of underlying assumptions.
+Protecting and strengthening the human capital of future generations requires urgent and
+significant investment in their health, nutrition and education, complemented by resilient
+communities that are better able to withstand shocks to their livelihoods. In the complex
+and strongly interlinked set of policies and interventions required to achieve this, the direct
+role of WFP may be quite modest. However, the organization will play a key upstream role
+in supporting evidence-based decision making, coordination with partners and advocacy.
+3.3 Transition and handover strategy
+123.131. The Democratic Republic of the Congo is a fragile country. Civil and political conflict
+have damaged the social fabric of the country and shifted the functions of governance
+towards responding to emergencies rather than creating an environment for long-term
+inclusive social protection and enhanced economic prospects.
+124.132. Through this CSP, WFP will engage with national and decentralized government
+partners, civil society, communities, United Nations agencies, donors and private sector
+actors to prioritize identified and agreed capacity strengthening interventions. WFP’s
+contributions aimed at strengthening institutions will be prompted by local demand and
+informed by an assessment of capacity gaps, WFP’s comparative advantage and the scope
+for achieving sustainable results. The capacity of partners to directly implement all aspects
+of activities identified will be closely examined to ensure that joint work plans feature
+reasonable and traceable milestones that emphasize gender equality measures.
+125.133. Given the current fragility of the country, WFP does not expect to hand over its
+programmes to the Government during the term of this CSP. While implementing the CSP,
+
+--- Page 24 ---
+WFP/EB.2/2020/7-A/2 24
+WFP will discuss with national authorities the potential for the gradual handover of
+programmes in order to identify readiness, critical support needed and realistic timelines.
+Social cohesion is very much a driver for the CSP. The CSP is designed to support national
+priorities for achieving food and nutrition security, setting the foundations for eventual
+transition towards more government- and community-led responses, by 2030.
+4. Implementation arrangements
+4.1 Beneficiary analysis
+126.134. Activity 1 will focus exclusively on providing assistance to people affected by
+conflict or crisis. Activities 2, 3 and 5 will promote nutrition-specific and nutrition-sensitive
+interventions. Activity 4 will address nutrition and human capital protection issues through
+the HGSFP. Activity 6 will provide a comprehensive resilience building package that
+promotes gender equality, environmental and social protection, peacebuilding and social
+cohesion, together with improved livelihood opportunities.
+127.135. Activity 1 responds to the needs of people whose food and nutrition security are
+affected by conflict and crises. There will be a gradual decline in the number of beneficiaries
+receiving assistance under this activity as WFP seeks to shape its emergency assistance to
+contribute to resilience and peacebuilding initiatives over the lifespan of this and future
+CSPs.
+128.136. WFP will reach more beneficiaries because of the high demand for school feeding
+and the high incidence of persistent malnutrition in all its forms. Under activity 2,
+prioritization will be based on high GAM levels, and beneficiaries will include children age 6–
+59 months with MAM, malnourished PLWG, malnourished people living with HIV who are
+taking antiretroviral drugs or undergoing prevention of parent-to-child transmission
+treatment, malnourished patients receiving TB-DOTS and patients with
+multidrug--resistant tuberculosis.
+TABLE 1: FOOD AND CASH-BASED TRANSFER BENEFICIARIES BY STRATEGIC OUTCOME, OUTPUT AND ACTIVITY
+Strategic Output Activity Beneficiary 2021 2022 2023 2024 Total
+outcome group
+1 1.1 1 Girls 783 000 675 000 540 000 540 000 2 538 000
+Boys 812 000 700 000 560 000 560 000 2 632 000
+Women 638 000 550 000 440 000 440 000 2 068 000
+Men 667 000 575 000 460 000 460 000 2 162 000
+Total 2 900 000 2 500 000 2 000 000 2 000 000 9 400 000
+2 2 Girls 544 992 490 493 436 593 378 060 1 850 137
+Boys 418 729 376 856 335 443 288 885 1 419 913
+Women 169 745 152 771 135 983 115 263 573 762
+Men 19 657 17 691 15 747 8 984 62 079
+Total 1 153 120 1 037 808 923 766 791 192 3 905 886
+3 3 Girls 339 867 305 380 271 272 241 407 1 157 926
+Boys 241 008 216 908 193 072 168 706 819 694
+Women 267 063 238 857 210 961 197 444 914 325
+Men - - - - -
+Total 847 938 761 145 675 305 607 557 2 891 945
+
+--- Page 25 ---
+WFP/EB.2/2020/7-A/2 25
+TABLE 1: FOOD AND CASH-BASED TRANSFER BENEFICIARIES BY STRATEGIC OUTCOME, OUTPUT AND ACTIVITY
+Strategic Output Activity Beneficiary 2021 2022 2023 2024 Total
+outcome group
+2 4.1 4 Girls 94 300 124 440 160 707 221 360 600 807
+Boys 114 048 150 547 194 365 267 720 726 680
+Women 3 101 3 974 5 286 7 280 19 641
+Men 1 551 1 987 2 643 3 640 9 821
+Total 213 000 280 948 263 001 500 000 1 356 949
+5.1 5 Girls 35 734 35 734 35 734 35 734 142 936
+Boys 18 346 18 346 18 346 18 346 73 384
+Women 49 920 49 920 49 920 49 920 199 680
+Men - - - - -
+Total 104 000 104 000 104 000 104 000 416 000
+3 6.1 6 Girls 89 520 93 600 108 000 120 000 209 520
+Boys 85 790 89 700 103 500 115 000 200 790
+Women 100 710 105 300 121 500 135 000 235 710
+Men 96 980 101 400 117 000 130 000 226 980
+Total 373 000 390 000 450 000 500 000 873 000
+Total (without overlap) 5 591 058 5 073 901 4 516 072 4 502 749 18 843 783
+129.137. Activity 3 covers all non-malnourished targeted beneficiaries (PLWG and children
+age 6 to 23 months) in conflict and crisis zones in order to prevent the deterioration of their
+nutrition status during lean seasons. Beneficiaries will receive specialized nutritional
+products that improve their nutritional intake. Treatment will be provided at the community
+level in food insecure areas and in high priority areas for nutrition interventions, in line with
+the humanitarian response plan.
+130.138. Activity 4 focuses on primary school children and preschool children where
+applicable. The WFP HGSFP aims to support the development of human capital: school
+meals have been shown to contribute to several SDGs and improvements in education,
+nutrition, gender equality, social protection and, when linked to local purchases, local
+agriculture.
+131.139. Activity 5 uses SBCC to create demand for the cultivation and consumption of
+nutritious foods for population groups while encouraging the use of such foods in the
+complementary feeding of boys and girls under 5 and in improving the dietary diversity of
+women and adolescent girls. The nutrition strategy seeks to improve nutrition outcomes for
+targeted populations by preventing malnutrition (wasting and stunting) through a package
+of nutrition-specific and nutrition-sensitive measures implemented simultaneously under
+all strategic outcomes and linked to the treatment of acute malnutrition. WFP will look for
+opportunities to improve nutrition throughout its portfolio and geographic areas
+of operation.
+
+--- Page 26 ---
+WFP/EB.2/2020/7-A/2 26
+132.140. WFP aims to provide multi-year, holistic support to 873,000 beneficiaries through
+activity 6. The number of beneficiaries will gradually increase over the four years of the CSP
+as new beneficiaries are added. Informed by gender and age analysis, households led by
+women will be one of the target groups for this activity as they are subject to discriminatory
+sociocultural inequality and more exposed to shocks than households led by men. WFP will
+continue to use the three-pronged approach to identify areas for activities52 and will carry
+out joint targeting with United Nations partners working on resilience programmes as much
+as possible.
+52 The three-pronged approach comprises integrated context analysis at the national level; seasonal livelihood
+programming at the sub-national level; and community-based participatory planning at the local level. This approach
+provides a deeper understanding of local context and livelihoods, including gender and social cohesion issues. In view of
+the CSP focus on the triple nexus, the three-pronged approach will be used to support conflict-sensitive programming and
+peace-building approaches.
+
+--- Page 27 ---
+WFP/EB.2/2020/7-A/2 27
+4.2 Transfers
+Food and cash-based transfers
+TABLE 2: FOOD RATIONS (g/person/day) AND CASH-BASED TRANSFER VALUES (USD/person/day) BY STRATEGIC OUTCOME AND ACTIVITY
+Strategic outcome 1 Strategic outcome 2 Strategic
+outcome 3
+Activity 1 Activity 2 Activity 3 Activity 4 Activity 5 Activity 6
+Beneficiary type GFD full GFD Caregivers MAM MAM PLHIV/TB Prevention of Prevention of Students Stunting Stunting FFA/CFA
+ration treatment treatment acute acute prevention prevention
+PLWG 6–59 malnutrition malnutrition 6–23 months PLWG
+months 6–23 months PLWG
+Modality Food/CBTs Food Food Food Food Food Food Food Food Food Food/CBTs Food/CBTs
+Cereals 400 400 400 120 400
+Pulses 120 120 120 30 120
+Oil 30 35 30 25 25 25 10 25 30
+Salt 5 5 5 5 5
+Sugar 20
+Super Cereal 250
+Super Cereal Plus 250 250 250 250
+Plumpy’ 100
+SupPlumpy’Sup
+Plumpy’ 50 50
+DozPlumpy’Doz
+High-energy 330
+biscuit
+Total kcal/day 2 132 2 181 2 132 1 175 500 1 175 281 1 175 628 281 1 175 2 132
+% kcal from 16 60.40 16 13.20 10.20 13.20 8.60 13.20 10 8.60 13.20 13.20
+protein
+CBTs 0.5 0.67 0.38
+Number of 90 21 10 180 60 180 180 180 220 360 360 66
+feeding days per
+year
+Abbreviations: CFA = cash for assets; GFD = general food distribution; MAM = moderate acute malnutrition; PLHIV = people living with HIV; TB = tuberculosis
+
+--- Page 28 ---
+TABLE 3: TOTAL FOOD AND CASH-BASED TRANSFER REQUIREMENTS AND VALUES
+Food type/cash-based transfer Total (mt) Total (USD)
+Cereals 226 698 132 991 534
+Pulses 66 235 46 951 948
+Oil and fats 28 497 34 921 048
+Mixed and blended foods 146 043 144 278 676
+Other 4 156 2 738 718
+Total (food) 471 629 361 881 924
+Cash-based transfers 282 713 388
+Total 471 629 644 595 312
+(food and cash-based transfer value)
+133.141. WFP conducts multisectoral assessments that examine markets, protection issues
+and sectors including finance and information technology in order to evaluate the feasibility
+and appropriateness of cash and voucher assistance modalities compared with in-kind food
+distribution. Analysis covers gender, protection, beneficiary preferences, local authority
+viewpoints and impact on local economies. WFP selects the most appropriate modality in
+terms of equity, economy, efficiency and effectiveness. WFP also reviews geographical
+access, mobile service provider infrastructure and coverage, and cash availability before
+deciding on the preferred transfer modality. For Level-3 emergencies, WFP also considers
+combinations of modalities that will ensure the timely delivery of assistance to beneficiaries.
+For example, for Bele in Haut -Uele province, WFP’s evaluation recommended in-kind
+assistance in the first months with a switch to cash-based transfers (CBTs) once more food
+became available. WFP will use the most appropriate modalities to promote dietary diversity,
+equity, dignity and efficient and effective economic inclusion.
+134.142. CBT transfer values will be based on the estimated minimum expenditure basket
+and the estimated ability of beneficiaries to meet their own needs. The current components
+of the minimum expenditure basket are food, education and health but WFP plans to
+develop a more comprehensive basket that covers all essential needs. CBTs will only cover
+household food needs unless donors agree to support essential needs, in which case they
+will cover the gap between estimated household capacity to meet essential needs and the
+minimum expenditure basket. WFP will also provide in-kind assistance in the form of fortified
+and specialized nutritious food to malnourished children and PLWG to treat and prevent
+MAM and to prevent chronic malnutrition. School meals will be provided to primary school
+children in areas with high levels of malnutrition.
+4.3 Country office capacity and profile
+135.143. The CSP positions the country office as a partner supporting the Government’s
+initiatives for the achievement of its priority SDGs. Before implementation, WFP will analyse
+the results from the country office staffing review conducted in 2020 to assess geographical
+representation, staff profiles, training, technical competencies and information
+technology needs.
+144. WFP will undertake a training needs assessment in conflict-sensitive monitoring and
+programming for all relevant staff. On the basis of this assessment, a training programme
+will be designed and implemented to ensure that staff have ample capacity to work on
+conflict mitigation and peacebuilding.
+136.145. The country office will continue to implement human resources initiatives designed
+to achieve gender parity and diversity.
+
+--- Page 29 ---
+4.4 Partnerships
+137.146. The strategic direction of the CSP is also based on consultations with partners and
+other stakeholders, from Government to beneficiaries, which have contributed to
+understanding where WFP is seen to add value across the nexus both externally and
+internally. Through its food security and logistics clusters and through participation in other
+clusters and coordination WFP will continue to provide information on food security and
+nutrition, livelihood and resilience building initiatives and humanitarian logistics, among
+other things.
+138.147. WFP will reinforce synergies with the other Rome-based agencies related to climate
+change and food security work. Synergies with UNICEF, the United Nations Development
+Programme, UNHCR, UNFPA, the United Nations Entity for Gender Equality and the
+Empowerment of Women, WHO, the World Bank and the ministries of agriculture and
+gender are being identified to ensure that the necessary technical support is provided to
+targeted populations. Joint initiatives will be prioritized to maximize sustainability and impact
+for targeted communities.
+139.148. WFP will develop partnerships with academic and research institutions and its
+centres of excellence. Partnerships with organizations working for the inclusion of young
+people, women’s rights and people living with HIV and disabilities will be explored with the
+aim of promoting inclusive and equitable responses to the needs of these groups. WFP will
+also focus on South–South and triangular cooperation within the region on HGSFP, nutrition,
+gender equality, climate change and peacebuilding initiatives.
+140.149. WFP will explore opportunities with development actors, banks and the private
+sector, especially for resilience building activities, so as to ensure the optimum pooling of
+expertise.
+141.150. WFP will continue to engage and collaborate with humanitarian and development
+partners, donors and the private sector to leverage resources and funding.
+5. Performance management and evaluation
+5.1 Monitoring and evaluation arrangements
+142.151. A VAM monitoring and evaluation planning and budgeting tool has been finalized
+in tandem with the CSP. The gender-responsive tool is aligned with the Revised Corporate
+Results Framework (2017–2021),53 corporate monitoring and evaluation strategies and the
+WFP Strategic Plan (2017–2021).54 Once a new strategic plan and new corporate results
+framework are adopted the tool will be updated to ensure its continued alignment with
+corporate guidance.
+143.152. WFP will ensure that appropriate emergency and resilience-oriented indicators are
+included in the tool and are measured and analysed together to inform broader discussions
+of the humanitarian–development nexus. This will assist WFP in measuring the effectiveness
+and equity of interventions related to chronic and acute food insecurity and malnutrition and
+underlying issues related to livelihoods and poverty, with a strong emphasis on gender
+analysis. Such an approach will meet the needs for outcome-level evidence, as
+recommended in the evaluation of the ICSP for the Democratic Republic of the Congo. WFP
+is strengthening its capacity to monitor CSP implementation by increasing the presence of
+qualified and diverse VAM and monitoring and evaluation staff in the field. WFP will strive to
+ensure that all evidence collected (through process and outcome monitoring reviews and
+evaluations) is used to inform operational decision-making. WFP will continue to engage with
+local government and other partners to assist in data collection, and analysis and use. This
+will include regular, including through training and briefings to strengthen capacity in food
+security data collection and analysis as part of measures that support the eventual handover
+53 WFP/EB.2/2018/5-B/Rev.1.
+54 WFP/EB.2/2016/4-A/1/Rev.2*.
+
+--- Page 30 ---
+of activities to government authorities. Steps will be taken to ensure comprehensive
+coverage, including in regions where WFP does not currently have operations, and if funding
+permits WFP will build up a body of evidence on the root causes of urban food insecurity and
+malnutrition and will link it to lessons learned in responding to the COVID-19 pandemic.
+144.153. WFP will put in place country-wide agreements with government institutions that
+will serve as the overarching framework for regular, task-specific engagements at the
+provincial level on assessments and surveys. This will ensure consistent collaboration with
+these stakeholders, thereby contributing to the transfer of technical skills.
+145.154. Through the CSP, WFP will increase its focus on accountability to affected
+populations. A variety of safe and accessible complaint and feedback mechanisms are in
+place, and a robust tracking system for the provision of feedback to and from beneficiaries
+and the collection of data on communication preferences will be designed and implemented
+under the CSP to ensure that the mechanisms respond to the preferences of different
+groups.
+146.155. To complement the evaluation of the ICSP (2018–2020) and the evaluation of school
+feeding in emergencies,55 the country office will commission an evaluation of nutrition
+activities in 2022 to inform the implementation of activities 2 and 3. In line with conclusions
+reached in the ICSP evaluation, the country office will also commission a decentralized
+impact evaluation of CBTs in 2022. An impact evaluation of the joint WFP–FAO–UNICEF
+resilience project in North and South Kivu (2020–2023) will be led by the Office of Evaluation
+in consultation with FAO and UNICEF and in technical partnership with the Development
+Impact Evaluation Unit of the World Bank. In addition to the resilience impact evaluation, the
+Office of Evaluation will conduct an independent CSP evaluation in 2023 to inform the
+preparation of the next CSP.
+147.156. To complement these multiple independent evaluations, the country office will
+conduct a review of school feeding activities in 2022 and a CSP mid-term review. All the
+evaluations and reviews will contribute to the development of a solid evidence base that will
+be used to refine and adapt the CSP.
+5.2 Risk management
+148.157. The risk management system will be reviewed to reflect the findings and
+recommendations of the ICSP evaluation and the operational context in the Democratic
+Republic of the Congo. The regularly updated risk register will continue to guide
+preparedness, and risk mitigation actions will help in the management of the potential risks
+described below.
+Strategic risks
+149.158. The Democratic Republic of the Congo is highly vulnerable to a variety of natural
+hazards linked to conflict and the climate crisis, which also hamper resilience building and
+emergency initiatives. Epidemics are frequent and often result in a heavy loss of lives.
+Together with the Ministry of Health, WHO, FAO, other United Nations agencies, NGOs and
+community-based organizations, WFP will support implementation capacity and the
+formulation of strategies for emergency preparedness and disaster risk reduction, ensuring
+that climate shock mitigation and peacebuilding are addressed and that contingency
+planning is an integral element of such strategies.
+55 Part of a four-country series commissioned by the school feeding services at WFP headquarters.
+
+--- Page 31 ---
+150.159. Equitable and inclusive social protection for all targeted women and men cannot
+be achieved unless gender equality measures are systematically included in all WFP activities.
+To mitigate this risk WFP will consolidate and scale up its own measures and partnerships
+with national and international organizations working on women’s rights.
+Operational risks
+151.160. Successive waves of violence and mass displacements will continue to fuel the
+protracted humanitarian crisis in the country, causing grave access problems for populations
+in need and interruptions in food assistance. WFP will mitigate this risk through increased
+civil–military and inter-agency coordination and by strategically prepositioning assets and
+resources to assist both affected communities and WFP staff.
+152.161. Logistical challenges, including poor telecommunications, roads networks and
+other infrastructure, create barriers to the timely delivery of assistance to affected
+communities. WFP will mitigate these risks by pre-positioning stocks in remote locations,
+opening a forward logistics base and providing mobile storage units.
+Fiduciary risks
+153.162. Potential fiduciary risks include financial and reputational loss because of fraud or
+abuse. WFP will mitigate this risk by conducting active and continuous fraud risk
+management. The country office is setting up a compliance unit and has a beneficiary hotline
+through which all forms of abuse and corruption can be reported and addressed. WFP will
+continue to improve these and other complaint and feedback mechanisms over the course
+of the CSP in line with recommendations from the ICSP evaluation.
+154.163. The absencedrawdown of MONUSCO during, which will coincide with CSP
+implementation, will increase the pressure on agencies and funds to fill security gaps and
+step up security analysis and the presence of security officers in field offices. To bridge these
+gaps, WFP and partners will have to increase intelligence gathering and sharing on security
+issues, actively participate in the United Nations Security Cell and reinforce Safe and Secure
+Approaches in Field Environments (SSAFE) training.
+Financial risks
+155.164. Severe funding shortfalls would hamper the implementation of this CSP. WFP will
+continue to seek resources, including from new donors and, where possible, the private
+sector. Synergies with government school feeding initiatives and joint activities with other
+United Nations agencies will contribute to ensuring that funds for humanitarian and
+development initiatives are used effectively and efficiently. WFP is also pursuing partnerships
+with international financial institutions such as the World Bank.
+5.3 Social and environmental safeguards
+Social safeguards
+156.165. WFP addresses potential social risks associated with its humanitarian and resilience
+work through its SBCC initiatives with targeted smallholder farmer households, value chain
+actors and their communities. Emphasis is placed on addressing social risks that pertain to
+gender inequalities in access to services and decision-making. Through the systematic
+collection and analysis of sex and age-disaggregated data on the use of unrestricted cash
+transfers, WFP has learned that decisions are made jointly by women and men in only
+16 percent of households that include both women and men. Because this is largely due to
+cultural norms, WFP has scaled up efforts during distributions to raise the awareness of men
+and women on the importance of shared household decision-making.
+
+--- Page 32 ---
+157.166. WFP will mainstream conflict sensitivity throughout all programming taking into
+consideration the various drivers of conflict in the areas of intervention, making sure that all
+ethnic groups are represented in the selection of beneficiaries.56
+158.167. Social and behavioural change will be promoted through various approaches and
+grassroots organizations including farmers’ organizations. Issues to be tackled include
+exclusion, gender inequality and human rights abuses. Post-distribution monitoring and
+complaint and feedback mechanism will be used to identify and respond to issues of
+protection and GBV, in line with WFP’s commitments to system-wide principles relating to
+accountability to affected populations and doing no harm.
+159.168. All WFP field-level agreements with partners address human rights associated with
+humanitarian and development assistance. These include responsibilities related to
+protection, gender equality, GBV and zero tolerance for sexual exploitation and abuse.
+Environmental safeguards
+160.169. In resilience programming, at the level of post-harvest handling, the key principles
+regarding environmental and social sustainability are applied.57
+161.170. Activities proposed under strategic outcome 3 on resilience building are in line with
+the national strategy for reducing emissions from deforestation and forest degradation and
+the national climate change adaptation programme adopted in 2012. They focus on the
+intensification of environmentally conscious agriculture as a key strategy for reducing the
+vulnerability of poor households to climate risks and for saving forests and protected areas.
+WFP in partnership with other agencies will support access to sustainable forms of energy,
+the improvement of safety and efficiency in the way energy is used and strive to diversify
+livelihood portfolios in order to minimize environmental impact.
+162.171. WFP, FAO and the Government will promote the production and use of
+environmentally friendly stoves to reduce deforestation and its impact in HGSFP areas.
+Sustainable and safe waste management techniques will be promoted to facilitate recycling
+and reduce soil degradation, prevent harm to wildlife and minimize food waste. Food safety
+training is an integral part of the regular training provided to school feeding committees.
+6. Resources for results
+6.1 Country portfolio budget
+163.172. The resourcing outlook for the CSP is realistic and in line with recent trends in the
+Democratic Republic of the Congo. WFP expects to mobilize at least 60 percent of the amount
+need to implement the CSP each year. Resources will be allocated for the implementation of
+activities that contribute to gender equality. In the event of funding shortfalls, priority will be
+given to life-saving interventions. WFP’s ability to allocate resources across strategic
+outcomes will depend on the nature of the resources provided by donors and the level of
+earmarking of funds.
+56 Ongoing work with Search for Common Ground to conduct conflict scans and the deeper conflict analysis integrated into
+the new resilience programme in North and South Kivu will be complemented by more in-depth conflict analysis and conflict
+sensitivity assessments to fill any gaps in the country office’s knowledge and to identify any required course correction.
+57 These principles are as follows: improve efficiency in the use of resources; promote and adopt good practices to conserve,
+protect and enhance natural resources including seeds; enhance sustainable improved livelihoods for social wellbeing;
+enhance the resilience of people, communities and ecosystems; and reinforce responsible and effective governance
+mechanisms based on participatory approaches.
+
+--- Page 33 ---
+TABLE 4: COUNTRY PORTFOLIO BUDGET (USD)
+Strategic Activity Year 1 Year 2 Year 3 Year 4 Total
+outcome
+2021 2022 2023 2024
+1 1 233 771 852 208 972 928 174 785 668 175 881 072 793 411 520
+2 52 662 450 48 314 463 43 918 021 36 162 498 181 057 431
+3 63 450 823 58 128 953 52 790 198 49 480 613 223 850 587
+2 4 16 496 266 21 075 824 26 301 761 34 975 158 98 849 009
+5 11 069 910 11 101 537 11 180 596 11 237 779 44 589 822
+3 6 30 468 432 31 689 634 35 041 791 38 091 385 135 291 242
+4 7 42 155 121 42 542 293 42 838 716 43 056 305 170 592 435
+8 1 385 886 1 427 846 1 469 329 1 510 749 5 793 810
+9 5 016 522 5 067 112 5 107 641 5 139 578 20 330 853
+Total 456 477 262 428 320 590 393 433 722 395 535 136 1 673 766 710
+164.173. The internal factors driving the country portfolio budget include transfer costs for
+in-kind distributions and CBTs, capacity strengthening and service delivery, direct
+implementation costs to cover country office and field office staff and related running costs.
+External factors driving the budget include the number of beneficiaries receiving in-kind
+transfers and CBTs and the direct and indirect beneficiaries of capacity strengthening and
+service delivery, such as WFP clients for on-demand service provision, smallholder farmers
+and other stakeholders.
+6.2 Resourcing outlook and strategy
+165.174. WFP’s operations in the Democratic Republic of the Congo have been relatively well
+resourced since 2018. WFP has successfully positioned itself as a reliable partner for
+humanitarian and resilience building programmes, which has enabled the organization to
+secure more than USD 260 million in direct funding from partners in the past few years.
+Most of this funding was for crisis response activities, although significant investments in
+WFP’s resilience building portfolio were also made.
+166.175. WFP will require continued investment from humanitarian, development and
+private-sector donors to implement the CSP. Over the next four years USD 1.67 billion will
+be required, 83 percent of which will be needed for crisis response and 17 percent for
+resilience building.
+167.176. Humanitarian funding has kept WFP’s programmes in the Democratic Republic of
+the Congo going, thanks to consistent engagement and renewed interest on the part of
+donors. WFP’s strategy of linking relief to resilience programmes to the extent possible has
+received positive feedback, as has its approach to seasonal relief assistance. It is therefore
+likely that adequate funding will continue for the crisis response focus area in the 2021–2024
+CSP.
+168.177. Consultations indicate that support for joint resilience activities should continue
+throughout the CSP.
+169.178. To meet its goals, WFP will require flexible long-term funding. The organization will
+therefore engage with donors in order to maximize the flexibility and predictability of
+resources. While continuing to strengthen partnerships with traditional donors, WFP will
+broaden its base to include non-traditional donors, including from the private sector, in order
+to increase resources for its crisis response operations and build the foundations for its mid-
+and long-term resilience building activities.
+
+--- Page 34 ---
+179. Recognizing that COVID-19 presents new opportunities to support the strengthening of the
+overall food and national social inclusion systems, a stronger focus on long-term planning
+and resilience-based response will be more closely aligned with emergency efforts during
+implementation of the CSP. Thus, given the pace of the unfolding impact of the COVID-19
+pandemic and recurring Ebola outbreaks, WFP will rely on budget revisions to adjust
+response levels during the implementation of the CSP.
+170.180. To ensure adequate funding for resilience building, WFP will explore partnerships
+with the Ministry of Finance and the Ministry of Planning, foundations and development
+banks and engage with private-sector companies for technical assistance. WFP will also
+partner with other development actors to leverage both expertise and resources,
+communicating regularly with donors to demonstrate results and impact.
+171.181. In the event of funding gaps, especially for strategic outcome 1, WFP will focus
+available resources on life-saving activities while continuing other CSP activities, honouring
+the focus and investments of specific donors. In view of the current COVID-19 pandemic, it
+may be necessary to change activities or scale up life-saving responses. Given its experience
+in handling Ebola outbreaks, (WFP is currently responding to the eleventh outbreak), the
+country office is in a solid position to reformulate CSP activities ifas needed.
+
+--- Page 35 ---
+WFP/EB.2/2020/7-A/2 35
+ANNEX I
+LOGICAL FRAMEWORK FOR DEMOCRATIC REPUBLIC OF THE CONGO COUNTRY STRATEGIC PLAN (2021–2024)
+Strategic Goal 1: Support countries to achieve zero hunger
+Strategic Objective 1: End hunger by protecting access to food
+Strategic Result 1: Everyone has access to food
+Strategic outcome 1: Conflict and crisis-affected Outcome category: Maintained/enhanced individual
+populationsmen, women, boys, and girls from all and household access to adequate food
+Nutrition sensitive
+ethnic groups are able to meet their basic food and
+nutrition requirements throughout the year
+Focus area: Crisis response
+Assumptions:
+Sufficient budget
+Outcome indicators
+Consumption-based Coping Strategy Index (Average)
+Economic capacity to meet essential needs
+Food Consumption Score
+MAM Treatment Default rate
+MAM Treatment Mortality rate
+MAM Treatment Non-response rate
+MAM Treatment Recovery rate
+Minimum Dietary Diversity – Women
+Proportion of children 6–23 months of age who receive a minimum acceptable diet
+Proportion of eligible population that participates in programme (coverage)
+Proportion of target population that participates in an adequate number of distributions (adherence)
+
+--- Page 36 ---
+WFP/EB.2/2020/7-A/2 36
+Activities and outputs
+1,. Provide gender-equitable and nutrition-sensitive essential needs assistance to conflict- and crisis-affected populations through direct
+assistance and enhanced inter-agency coordination (URT: Unconditional resource transfers to support access to food)
+Conflict- and crisis-affected food insecure populations receive timely, adequate and nutritious food assistance that meets their basic food and nutrition
+requirements promoting social cohesion and conflict mitigation (A: Resources transferred; E: Social and behaviour change communication delivered)
+Conflict and crisis affected populations benefit from the enhanced capacity of the Government and partners to predict and prepare for emergencies
+(C: Capacity development and technical support provided)
+2. Treat moderate acute malnutrition among conflict- and crisis-affected populations (NTA: Nutrition treatment activities)
+Targeted populations, including children 6–59 months, PLW/GPLWG and clients undergoing ART or TB-DOTS, receive a comprehensive nutrition
+package
+including specialized nutritious foods to treat moderate acute malnutrition (A: Resources transferred; B: Nutritious foods provided)
+Prevent acute malnutrition among conflict- and crisis-affected populations (NPA: Malnutrition prevention activities)
+Vulnerable populations, including children 6–23 months and PLW/G, receive a comprehensive nutrition package, including specialized nutritious foods
+to prevent acute malnutrition (A: Resources transferred)
+Vulnerable populations, including children 6–23 months and PLW/G, receive a comprehensive nutrition package, including specialized nutritious foods
+to prevent acute malnutrition (B: Nutritious foods provided)
+3. Prevent acute malnutrition among conflict- and crisis-affected populations (NPA: Malnutrition prevention activities)
+Vulnerable populations, including children 6–23 months and PLWG, receive a comprehensive nutrition package, including specialized nutritious foods
+to prevent acute malnutrition (A: Resources transferred)
+Vulnerable populations, including children 6–23 months and PLWG, receive a comprehensive nutrition package, including specialized nutritious foods
+to prevent acute malnutrition (B: Nutritious foods provided)
+Strategic outcome 2: The human capital of at Outcome category: Maintained/enhanced individual
+conflict affected and/or at risk populations is and household access to adequate food
+
+--- Page 37 ---
+WFP/EB.2/2020/7-A/2 37
+equitably and inclusively protected and Focus area: Resilience building
+strengthened by 2024
+Assumptions:
+Availability of funding
+Outcome indicators
+Minimum Dietary Diversity – Women
+Proportion of eligible population that participates in programme (coverage)
+Retention rate/Drop-out rate
+Value and volume of smallholder sales through WFP-supported aggregation systems
+Activities and outputs
+4. Provide nutritious school meals to targeted school children and support the implementation of the home-grown school feeding
+programme (SMP: School meal activities)
+Primary school children receive timely and adequate nutritious meals that meet their food and nutrition requirements (A: Resources transferred; N:
+School feeding provided)
+Targeted information on health and nutrition is provided to primary school children (Tier 1) and their caregivers (E*:: Social and behaviour change
+communication delivered)
+5. Support interventions to prevent chronic malnutrition, especially for at risk people (NPA: Malnutrition prevention activities)
+Targeted populations and communities engage in nutrition-focused and gender transformative SBCC and have equitable access to fortified foods for the
+prevention of wasting and stunting (B: Nutritious foods provided; E. Social and behaviour change communication delivered)
+Targeted populations benefit from evidence gathering that supports nutrition sensitive, gender equitable and transformative programming
+(E: Social and behaviour change communication delivered)
+Targeted populations including children 6–23 months and PLW/GPLWG benefit from a comprehensive nutrition package including, where appropriate,
+nutritious foods to address chronic malnutrition (A: Resources transferred; B: Nutritious foods provided)
+
+--- Page 38 ---
+WFP/EB.2/2020/7-A/2 38
+Strategic Objective 3: Achieve food security
+Strategic Result 3: Smallholders have improved food security and nutrition through improved productivity and incomes
+Strategic outcome 3: Smallholder Outcome category: Increased smallholder
+producersfarmers and food value chain actors production and sales
+Nutrition sensitive
+have improved livelihood opportunities, resilience,
+social cohesion and protection and make progress
+Focus area: Resilience building
+towards gender equality by 2024
+Assumptions:
+Security situation is calm
+Outcome indicators
+Food consumption score
+Proportion of the population in targeted communities reporting benefits from an enhanced asset base
+Proportion of the population in targeted communities reporting environmental benefits
+Value and volume of smallholder sales through WFP-supported aggregation systems
+Activities and outputs
+6. Support smallholder farmers'farmers’ and value chain actors'actors’ equitable access to climate and nutrition-smart livelihood
+opportunities, services and markets (SMS: Smallholder agricultural market support activities)
+Targeted women and men smallholder farmers benefit from support that increases local food production and marketing and the consumption of
+nutrient-rich food and the enhanced capacity of national and local stakeholders (F: Purchases from smallholders completed)
+Targeted smallholder farmers and value chain actors benefit from enhanced equitable and inclusive livelihood support on improved production skills for
+sustainable value chains (D: Assets created)
+Targeted communities benefit from nutrition education, social behaviour change, improved local production, and the enhanced capacity of national and
+local stakeholders (E: Social and behaviour change communication delivered)
+
+--- Page 39 ---
+WFP/EB.2/2020/7-A/2 39
+Targeted women and men smallholder farmers benefit from conditional food assistance (A: Resources transferred)
+Strategic Goal 2: Partner to support implementation of the SDGs
+Strategic Objective 5: Partner for SDG results
+Strategic Result 8: Sharing of knowledge, expertise and technology strengthen global partnership support to country efforts to achieve the SDGs
+Strategic outcome 4: Humanitarian and Outcome category: Enhanced common coordination
+development partners have access to reliable air platforms
+services and improved supply chain and other
+services during and in the aftermath of
+Focus area: Crisis response
+conflictconflicts and crisiscrises
+Assumptions:
+Funding resource available
+Outcome indicators
+User satisfaction rate
+Activities and outputs
+7. Provide humanitarian air services to the humanitarian community (CPA: Service provision and platforms activities)
+Populations affected by conflict and crisis benefit from reliable client-oriented air services that support timely and efficient humanitarian response
+(H: Shared services and platforms provided)
+
+--- Page 40 ---
+WFP/EB.2/2020/7-A/2 40
+8. Provide humanitarian platforms (logistics cluster coordination and information services) to the humanitarian community
+(CPA: Service provision and platforms activities)
+Food insecure populations in emergencies benefit from improved evidence-based information and coordination from the humanitarian community
+(C: Capacity development and technical support provided)
+Vulnerable people benefit from supply chain and other logistical services provided by WFP to partners, receiving timely and effective assistance (H: Shared
+services and platforms provided)
+9. Provide on-demand services to humanitarian and development partners (CPA: Service provision and platforms activities)
+Vulnerable people benefit from supply chain, and other logistical services provided by WFP to partners receiving timely and effective assistance
+(K: Partnerships supported)
+
+--- Page 41 ---
+WFP/EB.2/2020/7-A/2 41
+Goal 1: Support countries to achieve zero hunger
+C.1. Affected populations are able to hold WFP and partners accountable for meeting their hunger needs in a manner that reflects their
+views and preferences
+Cross-cutting indicators
+C.1.1: Proportion of assisted people informed about the programme (who is included, what people will receive, length of assistance)
+C.1.2: Proportion of project activities for which beneficiary feedback is documented, analysed and integrated into programme improvements
+C.2. Affected populations are able to benefit from WFP programmes in a manner that ensures and promotes their safety, dignity and integrity
+Cross-cutting indicators
+C.2.1: Proportion of targeted people receiving assistance without safety challenges
+C.2.2: Proportion of targeted people who report that WFP programmes are dignified
+C.2.3: Proportion of targeted people having unhindered access to WFP programmes
+C.3. Improved gender equality and women’s empowerment among WFP-assisted population
+Cross-cutting indicators
+C.3.1: Proportion of households where women, men, or both women and men make decisions on the use of food/cash/vouchers, disaggregated
+by transfer modality
+C.3.2: Proportion of food assistance decision-making entity – committees, boards, teams, etc. – members who are women
+C.3.3: Type of transfer (food, cash, voucher, no compensation) received by participants in WFP activities, disaggregated by sex and type of activity
+C.4. Targeted communities benefit from WFP programmes in a manner that does not harm the environment
+C.4.1: Proportion of activities for which environmental risks have been screened and, as required, mitigation actions identified
+
+--- Page 42 ---
+WFP/EB.2/2020/7-A/2 42
+ANNEX II
+INDICATIVE COST BREAKDOWN BY STRATEGIC OUTCOME (USD)
+WFP WFP WFP WFP Total
+Strategic Strategic Strategic Strategic
+Result 1 Result 1 Result 3 Result 8
+Strategic Strategic Strategic Strategic
+outcome 1 outcome 2 outcome 3 outcome 4
+Focus area Crisis Resilience Resilience Crisis
+response building building response
+Transfer 944 851 412 112 187 415 94 109 213 165 816 892 1 316 964 932
+Implementation 128 619 676 16 204 024 27 020 710 11 863 199 183 707 611
+Adjusted direct support 51 711 578 6 292 910 5 904 106 8 625 261 72 533 855
+costs
+Subtotal 1 125 182 666 134 684 349 127 034 030 186 305 353 1 573 206 397
+Indirect support costs 73 136 873 8 754 483 8 257 212 10 411 745 100 560 313
+(6.5 percent)
+Total 1 198 319 539 143 438 831 135 291 242 196 717 097 1 673 766 710
+
+--- Page 43 ---
+WFP/EB.2/2020/7-A/2 43
+Acronyms
+CBT cash-based transfer
+CSP country strategic plan
+FAO Food and Agriculture Organization of the United Nations
+GAM global acute malnutrition
+GBV gender-based violence
+GDP gross domestic product
+GFD general food distribution
+HGSFP home-grown school feeding programme
+I4S International Security and Stabilization Support Strategy
+ICSP interim country strategic plan
+IDP internally displaced person
+IPC Integrated Food Security Phase Classification
+MAM moderate acute malnutrition
+MONUSCO United Nations Organization Stabilization Mission in the Democratic Republic of
+the Congo
+NGO non-governmental organization
+PLWG pregnant and lactating women and girls
+NSDP national strategic plan for development
+PLWG pregnant and lactating women and girls
+SABER Systems Approach for Better Education Results
+SAM severe acute malnutrition
+SBCC social and behaviour change communication
+SDG Sustainable Development Goal
+SUN Scaling Up Nutrition
+TB-DOTS tuberculosis directly observed treatment
+UNDP United Nations Development Programme
+UNFPA United Nations Population Fund
+UNHAS United Nations Humanitarian Air Service
+UNHCR Office of the United Nations High Commissioner for Refugees
+UNICEF United Nations Children’s Fund
+UNSDCF United Nations sustainable development cooperation framework
+VAM vulnerability analysis and mapping
+WASH water, sanitation and hygiene
+WHO World Health Organization
+ZHSR zero hunger strategic review
+CSP-EB22020-18648Erevisionmode

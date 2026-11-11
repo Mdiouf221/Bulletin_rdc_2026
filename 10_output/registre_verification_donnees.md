@@ -2,7 +2,7 @@
 
 > Document de suivi séparé du bulletin imprimable. Les éléments marqués `à valider`, `à rédiger` ou `structure initiale` apparaissent en rouge dans l’export imprimable.
 
-Éléments annotés : **320**  
+Éléments annotés : **332**  
 Identifiants dupliqués détectés : **0**
 
 | Identifiant | Statut | Valeur ou passage | Fichier source | Ligne | Action attendue |
@@ -327,3 +327,15 @@ Identifiants dupliqués détectés : **0**
 | `sB7-p1-d1` | à valider | 1 622 972 | `04_annexes/annexe_B_fiches_institutionnelles.md` | 849 | Vérifier la source et confirmer la valeur. |
 | `sB7-p1-d2` | à valider | 1 425 000 | `04_annexes/annexe_B_fiches_institutionnelles.md` | 849 | Vérifier la source et confirmer la valeur. |
 | `sB7-p1-d3` | à valider | 1 727 000 | `04_annexes/annexe_B_fiches_institutionnelles.md` | 849 | Vérifier la source et confirmer la valeur. |
+| `sD-p2-c1` | à valider | Banque mondiale | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 52 | Vérifier la source et confirmer la valeur. |
+| `sD-p2-d1` | à valider | 530 000 personnes | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 53 | Vérifier la source et confirmer la valeur. |
+| `sD-p2-d2` | à valider | plus de 200 000 femmes | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 54 | Vérifier la source et confirmer la valeur. |
+| `sD-p2-d3` | à valider | 93 millions de dollars | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 55 | Vérifier la source et confirmer la valeur. |
+| `sD-p2-d4` | à valider | 1 166 communautés | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 57 | Vérifier la source et confirmer la valeur. |
+| `sD-p2-d5` | à valider | 5,8 millions de personnes | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 58 | Vérifier la source et confirmer la valeur. |
+| `sD-p3-d1` | à valider | 5 264 306 bénéficiaires en 2025 | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 67 | Vérifier la source et confirmer la valeur. |
+| `sD-p3-d2` | à valider | 145 000 enfants | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 73 | Vérifier la source et confirmer la valeur. |
+| `sD-p3-c1` | à valider | Rapport annuel pays du PAM 2025 | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 79 | Vérifier la source et confirmer la valeur. |
+| `sD-p4-d1` | à valider | 23 000 ménages | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 85 | Vérifier la source et confirmer la valeur. |
+| `sD-p4-d2` | à valider | 16 000 ménages | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 85 | Vérifier la source et confirmer la valeur. |
+| `sD-p4-c1` | à valider | Rapport d'évaluation UNICEF | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 92 | Vérifier la source et confirmer la valeur. |

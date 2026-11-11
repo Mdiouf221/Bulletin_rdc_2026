@@ -1417,6 +1417,40 @@
    "sections_citantes": [],
    "fichier_metadata": "06_sources/institutions/CGAT/CGAT_POMUCO_presentation_2026_metadata.txt",
    "fichier_texte_extrait": "06_sources/institutions/CGAT/_texte/CGAT_POMUCO_presentation_2026.txt"
+  },
+  {
+   "id": "UNICEF-NSELE-EVAL-2024",
+   "titre": "L’impact de l’intervention en transferts monétaires dans la commune de Nsele à Kinshasa",
+   "organisation": "UNICEF Innocenti / UNICEF RDC",
+   "annee": 2024,
+   "niveau_fiabilite": 1,
+   "url_source": "https://www.unicef.org/drcongo/media/11301/file/COD-Innocenti-GRASSP-DRC-Cash-transfers-2024-FR.pdf",
+   "fichier_pdf": "06_sources/officielles_web/UNICEF_RDC_evaluation_transferts_monetaires_2024_FR.pdf",
+   "fichier_metadata": "06_sources/officielles_web/UNICEF_RDC_evaluation_transferts_monetaires_2024_FR_metadata.txt",
+   "fichier_texte_extrait": "06_sources/officielles_web/_texte/UNICEF_RDC_evaluation_transferts_monetaires_2024_FR.txt",
+   "statut_pdf": "présent",
+   "statut_texte": "converti",
+   "statut_verification": "à valider",
+   "note": "Évaluation d'une intervention localisée et temporaire à Nsele. Le document ne confirme pas les chiffres nationaux 2024–2025 de la note de recherche.",
+   "citation_recommandee": "UNICEF Innocenti (2024), L’impact de l’intervention en transferts monétaires dans la commune de Nsele à Kinshasa, UNICEF RDC.",
+   "sections_citantes": []
+  },
+  {
+   "id": "PAM-PSP-RDC-2021-2024",
+   "titre": "Plan stratégique de pays — République démocratique du Congo (2021–2024)",
+   "organisation": "Programme alimentaire mondial (PAM)",
+   "annee": 2020,
+   "niveau_fiabilite": 1,
+   "url_source": "https://executiveboard.wfp.org/document_download/WFP-0000119504",
+   "fichier_pdf": "06_sources/officielles_web/PAM_RDC_plan_strategique_pays_2021-2024.pdf",
+   "fichier_metadata": "06_sources/officielles_web/PAM_RDC_plan_strategique_pays_2021-2024_metadata.txt",
+   "fichier_texte_extrait": "06_sources/officielles_web/_texte/PAM_RDC_plan_strategique_pays_2021-2024.txt",
+   "statut_pdf": "présent",
+   "statut_texte": "converti",
+   "statut_verification": "à valider",
+   "note": "Document de planification. La valeur de 115 000 apparaît dans un tableau de bénéficiaires prévus pour 2024, mais ne confirme pas l'énoncé de 115 000 élèves au premier trimestre 2025.",
+   "citation_recommandee": "PAM (2020), Plan stratégique de pays — République démocratique du Congo (2021–2024), WFP/EB.2/2020/7-A/2.",
+   "sections_citantes": []
   }
  ]
 }
