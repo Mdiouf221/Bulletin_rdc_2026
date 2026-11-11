@@ -549,6 +549,24 @@ def _figure_to_tabular_data(fig, fallback_years: list[int]) -> tuple[list[str], 
     return columns, rows, years
 
 
+def _figure_has_data(fig) -> bool:
+    """Retourne True si une figure contient au moins une valeur observée.
+
+    Les zéros sont des observations valides ; seules les valeurs absentes
+    (None/chaînes vides) sont ignorées.
+    """
+    if fig is None:
+        return False
+    for trace in getattr(fig, "data", []) or []:
+        values = getattr(trace, "y", None)
+        if values is None:
+            values = getattr(trace, "values", None)
+        for value in values or []:
+            if value is not None and value != "":
+                return True
+    return False
+
+
 def _build_chart_payload(
     *,
     institution: str,
@@ -611,6 +629,7 @@ def generate_charts(
     payloads: list[dict] = []
     fallback_years = sorted(set(BULLETIN_YEARS) | {int(year) for year in inst_years if year is not None})
     for key, label, builder in CHART_SPECS:
+        stale_path = ILLUSTRATIONS_DIR / f"annexe_B_{institution}_{key}.png"
         fig = None
         try:
             if builder in _SEX_MODE_BUILDERS:
@@ -622,33 +641,17 @@ def generate_charts(
                 print(f"    [AVERT] Paramètres Q2 ({institution}) : {warning}")
         except Exception as exc:
             print(f"    [AVERT] Graphique '{label}' ({institution}) : {exc}")
+            if export_images:
+                stale_path.unlink(missing_ok=True)
             results.append((key, label, None))
-            payloads.append(
-                _build_chart_payload(
-                    institution=institution,
-                    chart_key=key,
-                    chart_label=label,
-                    fig=None,
-                    settings=settings,
-                    fallback_years=fallback_years,
-                    image_filename=None,
-                )
-            )
             continue
 
-        if fig is None or not getattr(fig, "data", None):
+        if fig is None or not getattr(fig, "data", None) or not _figure_has_data(fig):
+            if export_images:
+                stale_path.unlink(missing_ok=True)
             results.append((key, label, None))
-            payloads.append(
-                _build_chart_payload(
-                    institution=institution,
-                    chart_key=key,
-                    chart_label=label,
-                    fig=None,
-                    settings=settings,
-                    fallback_years=fallback_years,
-                    image_filename=None,
-                )
-            )
+            # Ne pas créer de feuille Excel/entrée JSON pour une série
+            # entièrement vide. Le Markdown conserve toutefois le repère [N/D].
             continue
 
         if institution == "TRESOR" and key == "cotisants":
@@ -779,7 +782,7 @@ def _sex_pie_slice(h: float, f: float, ni: float, total: float):
     unique secteur neutre plutôt qu'un camembert vide. Les catégories à valeur
     nulle sont exclues pour éviter des étiquettes « 0 % » parasites.
     """
-    if not total:
+    if total is None or h is None or f is None:
         return ["Non disponible"], [1], ["#d9dee5"]
     labels_all = ["Hommes", "Femmes", "Non identifié"]
     values_all = [h, f, ni]
@@ -858,9 +861,15 @@ def build_sex_pie_grid_figure(
             year = years[idx]
             row = year_data[year]
             cot_total, cot_h, cot_f = row["cotisants_total"], row["cotisants_h"], row["cotisants_f"]
-            cot_ni = max(cot_total - cot_h - cot_f, 0.0)
+            cot_ni = (
+                max(cot_total - cot_h - cot_f, 0.0)
+                if None not in (cot_total, cot_h, cot_f) else None
+            )
             ben_total, ben_h, ben_f = row["beneficiaires_total"], row["beneficiaires_h"], row["beneficiaires_f"]
-            ben_ni = max(ben_total - ben_h - ben_f, 0.0)
+            ben_ni = (
+                max(ben_total - ben_h - ben_f, 0.0)
+                if None not in (ben_total, ben_h, ben_f) else None
+            )
 
             cot_labels, cot_values, cot_colors = _sex_pie_slice(cot_h, cot_f, cot_ni, cot_total)
             ben_labels, ben_values, ben_colors = _sex_pie_slice(ben_h, ben_f, ben_ni, ben_total)
@@ -929,12 +938,18 @@ def _aggregate_sex_data(regimes: list[dict], institution: str, settings: dict) -
         year = row["annee"]
         regime = row["regime_code"]
         acc = by_year_regime.setdefault(year, {}).setdefault(
-            regime, {field: 0.0 for field in fields},
+            regime, {field: None for field in fields},
         )
         for field in fields:
             value = row.get(field)
             if value is not None:
-                acc[field] += float(value)
+                # Une valeur NULL signifie « non renseigné », pas zéro. La
+                # première valeur observée initialise la somme ; les zéros
+                # réels restent donc explicitement des zéros.
+                if acc[field] is None:
+                    acc[field] = float(value)
+                else:
+                    acc[field] += float(value)
 
     regime_to_group = {}
     for component in _fusion_components(settings.get("Q1b") or {}):
@@ -943,14 +958,15 @@ def _aggregate_sex_data(regimes: list[dict], institution: str, settings: dict) -
             regime_to_group[regime] = group_key
 
     by_year: dict[int, dict] = {
-        year: {field: 0.0 for field in fields}
+        year: {field: None for field in fields}
         for year in BULLETIN_YEARS
     }
     for year, regime_rows in by_year_regime.items():
-        acc = by_year.setdefault(year, {field: 0.0 for field in fields})
+        acc = by_year.setdefault(year, {field: None for field in fields})
         for row in regime_rows.values():
             for field in ("cotisants_total", "cotisants_h", "cotisants_f"):
-                acc[field] += row[field]
+                if row[field] is not None:
+                    acc[field] = (acc[field] or 0.0) + row[field]
 
         grouped: dict[str, list[dict]] = {}
         for regime, row in regime_rows.items():
@@ -959,12 +975,15 @@ def _aggregate_sex_data(regimes: list[dict], institution: str, settings: dict) -
             representative = max(
                 rows,
                 key=lambda row: max(
-                    row["beneficiaires_total"],
-                    row["beneficiaires_h"] + row["beneficiaires_f"],
+                    row["beneficiaires_total"] or float("-inf"),
+                    (row["beneficiaires_h"] or 0.0) + (row["beneficiaires_f"] or 0.0)
+                    if row["beneficiaires_h"] is not None or row["beneficiaires_f"] is not None
+                    else float("-inf"),
                 ),
             )
             for field in ("beneficiaires_total", "beneficiaires_h", "beneficiaires_f"):
-                acc[field] += representative[field]
+                if representative[field] is not None:
+                    acc[field] = (acc[field] or 0.0) + representative[field]
     return by_year
 
 
@@ -988,14 +1007,20 @@ def _build_sex_payload(
     rows = []
     for year in years:
         row = by_year.get(year, {})
-        cot_total = float(row.get("cotisants_total") or 0.0)
-        cot_h = float(row.get("cotisants_h") or 0.0)
-        cot_f = float(row.get("cotisants_f") or 0.0)
-        cot_ni = max(cot_total - cot_h - cot_f, 0.0)
-        ben_total = float(row.get("beneficiaires_total") or 0.0)
-        ben_h = float(row.get("beneficiaires_h") or 0.0)
-        ben_f = float(row.get("beneficiaires_f") or 0.0)
-        ben_ni = max(ben_total - ben_h - ben_f, 0.0)
+        cot_total = row.get("cotisants_total")
+        cot_h = row.get("cotisants_h")
+        cot_f = row.get("cotisants_f")
+        cot_ni = (
+            max(cot_total - cot_h - cot_f, 0.0)
+            if None not in (cot_total, cot_h, cot_f) else None
+        )
+        ben_total = row.get("beneficiaires_total")
+        ben_h = row.get("beneficiaires_h")
+        ben_f = row.get("beneficiaires_f")
+        ben_ni = (
+            max(ben_total - ben_h - ben_f, 0.0)
+            if None not in (ben_total, ben_h, ben_f) else None
+        )
         rows.append([year, cot_h, cot_f, cot_ni, ben_h, ben_f, ben_ni])
 
     default_title = (
@@ -1036,9 +1061,25 @@ def generate_sex_pie_charts(
         image_filename=None,
     )
     if not any(r["institution"] == institution for r in regimes):
+        if export_images:
+            (ILLUSTRATIONS_DIR / f"annexe_B_{institution}_sexe.png").unlink(missing_ok=True)
         return [], empty_payload
 
     by_year = _aggregate_sex_data(regimes, institution, settings)
+    if not any(
+        value is not None
+        for row in by_year.values()
+        for key, value in row.items()
+        if key.endswith(("_total", "_h", "_f"))
+    ):
+        if export_images:
+            (ILLUSTRATIONS_DIR / f"annexe_B_{institution}_sexe.png").unlink(missing_ok=True)
+        return [], _build_sex_payload(
+            institution=institution,
+            settings=settings,
+            by_year=by_year,
+            image_filename=None,
+        )
 
     if export_images:
         ILLUSTRATIONS_DIR.mkdir(parents=True, exist_ok=True)
@@ -1526,7 +1567,7 @@ def build_section_content(
     charts_md = build_charts_markdown(chart_entries, institution)
     regimes_md = build_regime_table_markdown(regime_meta.get(institution, {}))
     sex_chart_files, sex_payload = generate_sex_pie_charts(regimes, institution, settings)
-    if chart_payloads is not None:
+    if chart_payloads is not None and sex_chart_files:
         chart_payloads.append(sex_payload)
     sex_md = build_sex_charts_markdown(sex_chart_files, institution)
     detail_md = build_detailed_data_markdown(regimes, regime_meta, institution)
@@ -1534,17 +1575,21 @@ def build_section_content(
         '\n<span class="footnote">Les valeurs de la colonne « Personnes potentiellement '
         'couvertes (estimation) » ne sont pas des cotisants. Elles correspondent à la part '
         'estimée du secteur public hors CNSSAP, calculée par différence à partir des estimations '
-        'globales de la Fonction publique : '
+        'globales de la Fonction publique : aucune population de référence '
+        'vérifiable n’est disponible pour 2019 ; '
         '<span class="val" data-val-id="sB7-p1-d1" data-val-status="à valider" '
         'data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 622 972</span> '
-        'pour chacune des années 2019 à 2022, '
+        'pour 2020 à 2022, '
         '<span class="val" data-val-id="sB7-p1-d2" data-val-status="à valider" '
         'data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 425 000</span> '
         'en 2023 et '
         '<span class="val" data-val-id="sB7-p1-d3" data-val-status="à valider" '
         'data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 727 000</span> '
         'en 2024. Source : estimations de la Fonction publique ; niveau de fiabilité : '
-        'estimation provisoire, à confirmer par des données administratives détaillées.</span>\n'
+        'estimation provisoire, à confirmer par des données administratives détaillées. '
+        'La rupture entre 2022, 2023 et 2024 n’est pas interprétable comme une évolution '
+        'de la couverture : les classeurs 2023 et 2024 contiennent en outre des références '
+        'internes à des années différentes de leur nom de fichier.</span>\n'
         if institution == "TRESOR" else ""
     )
     contributors_term = (
@@ -1565,6 +1610,28 @@ def build_section_content(
         '<p class="dev-note">Aucun paramètre institutionnel enregistré : les visuels '
         "présentent les données ESS sans correction issue du formulaire.</p>\n"
     )
+    if institution == "CNSSAP":
+        settings_note += (
+            '<span class="footnote">En 2022, la dépense de prestations de 34,40 milliards CDF '
+            "apparaît à la fois pour le régime de base et pour la réforme de transfèrement. "
+            "La ligne « ENSEMBLE » reprend 34,40 milliards CDF et ne constitue pas une addition "
+            "des deux lignes ; le caractère inclusif ou distinct de ces montants doit être "
+            "confirmé par la CNSSAP.</span>\n"
+        )
+        settings_note += (
+            '<span class="footnote">Les effectifs CNSSAP de 1 004 106 en 2023 et 1 013 104 '
+            "en 2024 sont présentés ici tels que déclarés dans les ESS par régime et sont "
+            "traités comme cotisants actifs N4 conformément à DM-019. La rupture avec 2022 "
+            "et la répétition de l'effectif dans les prestations de 2023 restent des réserves "
+            "de comparabilité.</span>\n"
+        )
+        settings_note += (
+            '<span class="footnote">Les champs de montant unitaire renseignés dans les ESS CNSSAP '
+            "2023–2024 présentent des valeurs élevées et leur définition n'est pas suffisamment "
+            "documentée pour être assimilée à une pension individuelle mensuelle. Les montants "
+            "moyens affichés dans ce tableau sont calculés séparément à partir des dépenses du "
+            "régime et du nombre de bénéficiaires.</span>\n"
+        )
 
     if section_no:
         regimes_caption = f'<p class="table-caption"><strong>Tableau B.{section_no}.{table_no}</strong> — Régimes gérés, {label}</p>\n\n'
@@ -1642,6 +1709,24 @@ def main() -> int:
 
     print("  Lecture BDD…")
     regimes, _prestations, regime_meta, _prestation_meta = load_all(DB_PATH)
+    # Le périmètre de l'Annexe B est strictement limité à 2019–2025.
+    # Les observations ultérieures, notamment SESOPA 2026 (janvier–juillet),
+    # ne doivent pas être prolongées dans les tableaux détaillés.
+    regimes = [
+        regime
+        for regime in regimes
+        if regime.get("annee") in BULLETIN_YEARS
+    ]
+    # Périmètre Annexe B : pour la CNSSAP en 2025, ne conserver que R1 et R2.
+    regimes = [
+        regime
+        for regime in regimes
+        if not (
+            regime.get("institution") == "CNSSAP"
+            and regime.get("annee") == 2025
+            and regime.get("regime_code") not in {"CNSSAP_R1", "CNSSAP_R2"}
+        )
+    ]
     try:
         questionnaire_data = load_questionnaire_data()
     except (FileNotFoundError, ValueError) as exc:

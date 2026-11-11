@@ -1,0 +1,17 @@
+Source : Présentation institutionnelle « Mutuelles de santé volontaire (POMUCO – CGAT) »
+Organisation : Plateforme des Organisations Promotrices des Mutuelles de santé du Congo (POMUCO) et CGAT
+Année de transmission : 2026
+Fichier source : CGAT_POMUCO_presentation_2026.docx
+Niveau de fiabilité : source primaire institutionnelle, à valider
+
+Données clés :
+- la POMUCO est présentée comme une plateforme regroupant cinq organisations de la société civile ;
+- le CGAT indique accompagner 13 mutuelles de santé dans le Nord-Kivu, à Kinshasa et au Kongo ;
+- les tableaux institutionnels donnent des agrégats 2021–2025 de cotisants, bénéficiaires, cotisations et dépenses ;
+- les agrégats 2024 et 2025 de cotisants et bénéficiaires concordent avec les trois régimes des formulaires ESS CGAT intégrés dans la base.
+
+Réserve :
+Le document ne remplace pas les formulaires ESS pour la ventilation par régime. Les montants financiers sont libellés en dollars et restent distincts des séries en CDF du bulletin tant qu'aucun taux de conversion documenté n'est validé.
+
+Citation recommandée :
+POMUCO et CGAT (2026), Mutuelles de santé volontaire (POMUCO – CGAT), présentation institutionnelle transmise dans le cadre de l'atelier de validation.

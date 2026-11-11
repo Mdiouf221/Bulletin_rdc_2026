@@ -1,0 +1,57 @@
+NOTE DE COMPARAISON — FSS
+Fonds de solidarité sociale
+ESS et données de l'atelier de validation
+
+Date de vérification : 2026-11-08
+
+1. État de l'import ESS
+
+Le fichier ESS_FSS_2022.xlsm est enregistré dans la base ESS sous
+source_id 200. Cinq lignes de régime FSS sont présentes pour 2022
+(FSS_R1 à FSS_R5), mais les champs d'effectifs, de bénéficiaires, de
+recettes et de dépenses sont vides. L'ESS 2022 ne fournit donc pas, dans
+son état actuel, de valeur statistique exploitable pour ces indicateurs.
+
+2. Nouvelles données de l'atelier
+
+Le fichier « ATELIER DU 2eme BULLETIN STATISTIQUE DE LA PROTECTION SOCIALE
+EN RDC DONNEES FSS » fournit des données de prise en charge des femmes
+enceintes et des nouveau-nés :
+
+- 2023 : 181 733 bénéficiaires indiqués, pour Kinshasa, sur la période
+  septembre–décembre ; coût total indiqué : 15 499 592 328,4 CDF ;
+- 2024 : 951 276 bénéficiaires indiqués, dans les trois provinces, avec
+  des périodes différentes selon la province (Kinshasa 2024, Kongo-Central
+  d'août à décembre, Kasaï-Oriental en décembre) ; coût total indiqué :
+  71 779 182 064,28 CDF ;
+- 2025 : 2 517 081 bénéficiaires indiqués, dans les trois provinces ;
+  coût total indiqué : 116 036 430 002,36 CDF.
+
+Ces totaux additionnent les femmes enceintes et les nouveau-nés. Ils ne
+doivent pas être présentés automatiquement comme un nombre de personnes
+uniques sans clarification méthodologique.
+
+3. Points de périmètre et de cohérence
+
+- Les données de l'atelier 2023–2025 ne sont pas des données ESS déjà
+  importées dans la base.
+- Les périodes et la couverture géographique ne sont pas homogènes :
+  2023 couvre Kinshasa sur quatre mois ; 2024 combine trois périmètres
+  temporels et provinciaux ; 2025 est présenté sur les trois provinces.
+- Les indicateurs « affiliés », « cotisants actifs » et « bénéficiaires
+  Afia Bora (paquet de base) » restent non renseignés ([N/A] ou [N/D]).
+- Les coûts sont des coûts de prise en charge dans les tableaux de
+  l'atelier ; leur correspondance avec les dépenses ESS du régime doit
+  être confirmée avant intégration comptable.
+
+À VÉRIFIER AVEC LE FSS
+
+- Confirmer si les effectifs femmes enceintes et nouveau-nés sont des
+  bénéficiaires distincts ou des actes/prises en charge cumulés.
+- Confirmer le périmètre temporel exact de la colonne 2025.
+- Confirmer si les coûts comprennent uniquement les prestations ou aussi
+  des frais administratifs.
+- Obtenir les affiliés, cotisants actifs et bénéficiaires du paquet de
+  base, absents du fichier transmis.
+- Déterminer si ces données doivent être archivées comme source
+  institutionnelle distincte ou intégrées dans l'ESS après validation.

@@ -786,6 +786,30 @@ def apply_corrections(
     # Supprimer les badges de validation (span.valid-badge) du texte des titres
     html = re.sub(r'<span[^>]*class="valid-badge[^"]*"[^>]*>.*?</span>', '', html, flags=re.DOTALL)
 
+    # Les valeurs non validées restent visibles en rouge dans le document imprimé.
+    # Le data-val-id demeure dans le HTML de travail et sert au registre séparé
+    # de vérification ; il n'est pas imprimé comme une note technique.
+    def mark_unverified_value(m):
+        opening = m.group(1)
+        if re.search(r'\bstyle="', opening, flags=re.IGNORECASE):
+            opening = re.sub(
+                r'\bstyle="([^"]*)"',
+                lambda style: f'style="{style.group(1).rstrip(";")};color:#c00000;"',
+                opening,
+                count=1,
+                flags=re.IGNORECASE,
+            )
+        else:
+            opening += ' style="color:#c00000;"'
+        return opening + m.group(2)
+
+    html = re.sub(
+        r'(<(?:a|span)\b[^>]*data-val-status="(?:à valider|à rédiger|structure initiale)"[^>]*)(>)',
+        mark_unverified_value,
+        html,
+        flags=re.IGNORECASE,
+    )
+
     # [IMG-001] Résoudre toutes les images servies par la route /files/.
     def fix_img(m):
         relative_path = m.group(1)[len("/files/"):].replace("/", os.sep)

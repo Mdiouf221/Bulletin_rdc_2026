@@ -1,0 +1,38 @@
+TITRE : ESS CNSSAP 2025 — Enquête sur les Sources Statistiques de la protection sociale (format OIT)
+SOURCE / AUTEUR : Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP), République Démocratique du Congo
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 2025
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : ESS CNSSAP 2025.xlsm (source)
+NIVEAU FIABILITE : 1 — données institutionnelles primaires, transmission directe de la CNSSAP
+LIEN SOURCE : Non disponible — transmission directe
+
+---
+
+CONTENU RÉSUMÉ
+
+Enquête sur les Sources Statistiques (ESS) de la CNSSAP pour l'année 2025, au format OIT. Le fichier recense quatre régimes : Régime de base, Régime complémentaire, Risques professionnels et Réforme de Basculement. L'import a été effectué dans la base ESS le 11 octobre 2026 via PROC-008.
+
+---
+
+DONNÉES CLÉS / INDICATEURS IMPORTANTS
+
+- Régime de base : 1 470 429 cotisants déclarés ; 9 136 bénéficiaires de pension de retraite ; fonctions déclarées : vieillesse et survivants.
+- Régime complémentaire : 262 419 cotisants déclarés ; aucune fonction ni aucun bénéficiaire renseigné dans le classeur.
+- Risques professionnels : prestations déclarées au titre des accidents du travail et des maladies professionnelles ; aucune donnée de cotisants ou de bénéficiaires renseignée.
+- Réforme de Basculement : 4 038 bénéficiaires de pension de retraite ; 4 383 bénéficiaires de rente de survie au conjoint et 550 bénéficiaires de rente de survie pour orphelin.
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Les indicateurs doivent être interprétés selon les définitions déclarées dans le questionnaire ESS et les conventions terminologiques du bulletin.
+- L'absence de valeur renseignée ne doit pas être interprétée comme une valeur nulle.
+- Les quatre régimes et les données extraites restent à valider avant toute citation dans le bulletin.
+
+---
+
+CITATION RECOMMANDÉE
+
+CNSSAP (2025), Enquête sur les Sources Statistiques (ESS) — format OIT, Caisse Nationale de Sécurité Sociale des Agents Publics, Kinshasa, République Démocratique du Congo.

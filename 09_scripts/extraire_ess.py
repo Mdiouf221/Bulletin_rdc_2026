@@ -66,6 +66,7 @@ ESS_REPORT_DIR = os.path.normpath(os.path.join(_SCRIPT_DIR, '..', '10_output', '
 ESS_DEST_DIRS = {
     'CNSS': os.path.normpath(os.path.join(ESS_BASE_DIR, 'ESS_CNSS')),
     'CNSSAP': os.path.normpath(os.path.join(ESS_BASE_DIR, 'ESS_CNSSAP')),
+    'DEP_SANTE': os.path.normpath(os.path.join(ESS_BASE_DIR, 'ESS_DEP_SANTE')),
     'RDC': os.path.normpath(os.path.join(ESS_BASE_DIR, 'ESS_RDC_tous_regimes')),
 }
 
@@ -178,7 +179,11 @@ SHEET_TO_REGIME = {
 
 _ESS_EXTENSION_RE = re.compile(r'\.(xlsx|xlsm|xls)$', re.IGNORECASE)
 _ESS_YEAR_RE = re.compile(r'(19|20)\d{2}')
-_ESS_INSTITUTION_RE = re.compile(r'\b(?:ESS|EST)[\s_-]*([A-Za-z0-9]{2,32})\b', re.IGNORECASE)
+_ESS_INSTITUTION_RE = re.compile(
+    r'(?:^|[^A-Za-z0-9])(?:ESS|EST)[\s_-]*'
+    r'([A-Za-z0-9]{2,32})(?:[_-](?:19|20)\d{2})?(?:$|[^A-Za-z0-9])',
+    re.IGNORECASE,
+)
 _REGIME_SHEET_RE = re.compile(r'^(?:regime|régime)\s*(\d+)\s*$', re.IGNORECASE)
 _GENERIC_TOKENS = {
     "RDC", "REPUBLIQUE", "DEMOCRATIQUE", "CONGO", "PAYS", "CONTACT", "PERIODE",
@@ -216,6 +221,8 @@ def _infer_ess_institution(name, workbook=None):
         return "CNSSAP"
     if re.search(r"\bCNSS\b", upper):
         return "CNSS"
+    if "DEP-SANTE" in upper or "DEP_SANTE" in upper:
+        return "DEP_SANTE"
     if "RDC" in upper or "TOUS REGIMES" in upper:
         return "RDC"
 
@@ -441,6 +448,10 @@ def _ess_destination_name(filepath, institution, annee):
     if inst == 'RDC':
         suffix = f" {annee}" if annee else ""
         return f"ESS RDC tous regimes{suffix}{ext}"
+
+    if inst == 'DEP_SANTE':
+        suffix = f"_{annee}" if annee else ""
+        return f"DEP_SANTE_ESS{suffix}{ext}"
 
     if inst:
         suffix = f" {annee}" if annee else ""

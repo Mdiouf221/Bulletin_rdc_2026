@@ -60,11 +60,13 @@ NOM_COURT = {
     "CNSSAP_R2": "Réforme du transfert",
     "CNSSAP_R3": "Risques professionnels",
     "CNSSAP_R4": "Réforme de basculement",
+    "MEPST_R1": "Protection sociale scolaire",
 }
 NOM_INSTITUTION = {
     "CNSS":   "Caisse Nationale de Sécurité Sociale (CNSS)",
     "CNSSAP": "Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP)",
     "TRESOR": "Protection statutaire budgétaire — estimation provisoire (Trésor)",
+    "MEPST": "Ministère de l’Enseignement Primaire, Secondaire et Technique (MEPST)",
 }
 
 
@@ -843,7 +845,7 @@ window.addEventListener('load', async () => {
 
 ODD_INDICATORS = [
     {"key": "global_131", "label": "ODD 1.3.1 — Global", "branches": []},
-    {"key": "ind_22_enfants", "label": "2.2 Enfants", "branches": ["enfants_famille"]},
+    {"key": "ind_22_enfants", "label": "2.2 Population 0–17 ans", "branches": ["enfants_famille"]},
     {"key": "ind_23_maternite", "label": "2.3 Maternité", "branches": ["maternite"]},
     {"key": "ind_24_handicap", "label": "2.4 Handicap / invalidité", "branches": ["invalidite"]},
     {"key": "ind_25_atmp", "label": "2.5 AT/MP", "branches": ["at_mp"]},
@@ -2863,8 +2865,8 @@ def _fmt_num(val, digits: int = 0, scale: float = 1.0) -> str:
     except (TypeError, ValueError):
         return "—"
     if digits == 0:
-        return f"{num:,.0f}"
-    return f"{num:,.{digits}f}"
+        return f"{num:,.0f}".replace(",", " ")
+    return f"{num:,.{digits}f}".replace(",", "X").replace(".", ",").replace("X", " ")
 
 
 def build_institution_detail_table(rows: list[dict], institution: str, sex_mode: str = "all"):
@@ -6515,19 +6517,19 @@ const ODD_INDICATOR_LABELS = Object.fromEntries((ODD_INDICATORS || []).map(item 
 const ODD_METHODOLOGY_SPECS = {{
   global_131: {{
     definition: "Proportion de la population couverte par au moins une prestation en espèces de protection sociale ou cotisant activement à au moins un régime de sécurité sociale.",
-    numerator: "Nombre de personnes recevant au moins une prestation en espèces de protection sociale, hors soins de santé, ou cotisant activement à au moins un régime de sécurité sociale, sans double comptage.",
+    numerator: "Nombre de personnes recevant au moins une prestation en espèces de protection sociale, hors soins de santé et indemnités journalières de maladie ou de maternité, ou cotisant activement à au moins un régime de sécurité sociale, sans double comptage.",
     denominator: "Population totale.",
     formula: "Population couverte par au moins une prestation ou cotisant activement ÷ population totale × 100.",
   }},
   ind_22_enfants: {{
     definition: "Proportion d’enfants bénéficiant d’au moins une prestation en espèces de protection sociale destinée aux enfants ou aux familles.",
-    numerator: "Nombre d’enfants recevant au moins une prestation en espèces pour enfants ou famille.",
-    denominator: "Population totale des enfants dans la tranche d’âge retenue.",
+    numerator: "Nombre d’enfants recevant au moins une prestation en espèces pour enfants ou famille, hors indemnités journalières de maladie ou de maternité.",
+    denominator: "Population totale âgée de 0 à 17 ans.",
     formula: "Enfants bénéficiaires ÷ population totale des enfants × 100.",
   }},
   ind_23_maternite: {{
     definition: "Proportion de femmes ayant accouché qui reçoivent une prestation en espèces de maternité.",
-    numerator: "Nombre de femmes ayant accouché et percevant une indemnité ou une allocation de maternité en espèces.",
+    numerator: "Nombre de femmes ayant accouché et percevant une prestation de maternité en espèces, hors indemnité journalière de maternité.",
     denominator: "Nombre total de femmes ayant accouché au cours de la même année, estimé directement ou à partir des naissances vivantes corrigées des naissances multiples.",
     formula: "Femmes bénéficiaires d’une prestation de maternité ÷ femmes ayant accouché × 100.",
   }},
@@ -6944,6 +6946,23 @@ function getDecisionForProgram(program, indicatorKey, yearKey) {{
   return normalizeDecisionForNode(program, getDefaultDecisionForNode(program));
 }}
 
+function hasExplicitDecisionForProgram(program, indicatorKey, yearKey) {{
+  if (!program) return false;
+  const key = indicatorKey || getCurrentOddIndicator();
+  const year = yearKey || getCurrentOddYear();
+  const decisionMap = getActiveOddDecisionMap();
+  const keys = [
+    getOddDecisionStorageKey(program.id, key, year),
+    String(program.id || '') + '::' + key,
+  ];
+  const aliases = Array.isArray(program.legacy_ids) ? program.legacy_ids : [];
+  aliases.forEach(aliasId => {{
+    keys.push(getOddDecisionStorageKey(aliasId, key, year));
+    keys.push(String(aliasId || '') + '::' + key);
+  }});
+  return keys.some(item => Boolean(decisionMap && decisionMap[item]));
+}}
+
 function getRationaleForProgram(program, indicatorKey) {{
   if (!program) return '';
   const key = indicatorKey || getCurrentOddIndicator();
@@ -6970,6 +6989,7 @@ function getEffectiveDecisionById(nodeId, indicatorKey, yearKey, nodeMap, memo) 
   if (memo[memoKey]) return memo[memoKey];
   const node = nodeMap[nodeId];
   const own = normalizeDecisionForNode(node, getDecisionForProgram(node, indicatorKey, yearKey));
+  const explicit = hasExplicitDecisionForProgram(node, indicatorKey, yearKey);
   const parentId = node.parent_id;
   if (!parentId || !nodeMap[parentId]) {{
     memo[memoKey] = own;
@@ -6982,6 +7002,10 @@ function getEffectiveDecisionById(nodeId, indicatorKey, yearKey, nodeMap, memo) 
     return forcedExcluded;
   }}
   if (parentEff === 'entierement_inclus' || parentEff === 'inclus') {{
+    if (node.type === 'prestation_ess' && explicit && own === 'exclus') {{
+      memo[memoKey] = own;
+      return own;
+    }}
     const forcedIncluded = node.type === 'prestation_ess' ? 'inclus' : 'entierement_inclus';
     memo[memoKey] = forcedIncluded;
     return forcedIncluded;
@@ -9007,18 +9031,19 @@ async function computeDenominatorsLegacy() {{
 }}
 
 const ANNUAL_DENOMINATOR_SPECS = {{
-  global_131:       {{ shortKey: 'total',   sources: ['local_db', 'manual'], defaultSource: 'local_db' }},
-  ind_22_enfants:   {{ shortKey: 'child',   sources: ['local_db', 'manual'], defaultSource: 'local_db' }},
-  ind_23_maternite: {{ shortKey: 'mat',     sources: ['local_db', 'manual'], defaultSource: 'local_db' }},
+  global_131:       {{ shortKey: 'total',   sources: ['local_db', 'ins_manual', 'manual'], defaultSource: 'local_db' }},
+  ind_22_enfants:   {{ shortKey: 'child',   sources: ['local_db', 'ins_manual', 'manual'], defaultSource: 'local_db' }},
+  ind_23_maternite: {{ shortKey: 'mat',     sources: ['local_db', 'ins_manual', 'manual'], defaultSource: 'local_db' }},
   ind_24_handicap:  {{ shortKey: 'handicap',sources: ['local_db', 'documented_proxy', 'manual'], defaultSource: 'local_db' }},
-  ind_25_atmp:      {{ shortKey: 'lf',      sources: ['local_db', 'derived_dm014', 'manual'], defaultSource: 'local_db' }},
+  ind_25_atmp:      {{ shortKey: 'lf',      sources: ['local_db', 'ins_manual', 'derived_dm014', 'manual'], defaultSource: 'local_db' }},
   ind_26_chomage:   {{ shortKey: 'active',  sources: ['local_db', 'manual'], defaultSource: 'local_db' }},
-  ind_27_vieillesse:{{ shortKey: 'ret',     sources: ['local_db', 'manual'], defaultSource: 'local_db' }},
-  ind_28_vulnerables:{{ shortKey: 'total',  sources: ['local_db', 'population_total_proxy', 'manual'], defaultSource: 'local_db' }},
-  ind_29_cotisants: {{ shortKey: 'active',  sources: ['local_db', 'manual'], defaultSource: 'local_db' }},
+  ind_27_vieillesse:{{ shortKey: 'ret',     sources: ['local_db', 'ins_manual', 'manual'], defaultSource: 'local_db' }},
+  ind_28_vulnerables:{{ shortKey: 'total',  sources: ['local_db', 'ins_manual', 'population_total_proxy', 'manual'], defaultSource: 'local_db' }},
+  ind_29_cotisants: {{ shortKey: 'active',  sources: ['local_db', 'ins_manual', 'manual'], defaultSource: 'local_db' }},
 }};
 const ANNUAL_DENOMINATOR_SOURCE_LABELS = {{
   local_db: 'Base locale OIT — ONU WPP 2024 / ILOSTAT (Denominateurs 2026.xlsx)',
+  ins_manual: 'INS/RDC — saisie du canevas transmis',
   manual: 'Saisie manuelle pour cette année',
   documented_proxy: 'Proxy documenté : population totale × prévalence paramétrée',
   derived_dm014: "DM-014 : population 15+ × taux d'activité paramétré",
@@ -9073,7 +9098,7 @@ function prepareAnnualManualInput(spec, year, saved) {{
   window.__MANUAL_DENOM_DATA = window.__MANUAL_DENOM_DATA || {{}};
   window.__MANUAL_DENOM_DATA[spec.shortKey] = window.__MANUAL_DENOM_DATA[spec.shortKey] || {{}};
   const yearKey = String(year);
-  if (saved && saved.sourceKey === 'manual' && Number.isFinite(Number(saved.value))) {{
+  if (saved && ['manual', 'ins_manual'].includes(saved.sourceKey) && Number.isFinite(Number(saved.value))) {{
     window.__MANUAL_DENOM_DATA[spec.shortKey][yearKey] = {{
       value: Number(saved.value),
       comment: saved.meta || '',
@@ -9171,7 +9196,7 @@ async function fetchLocalDenomValue(var_code, sex, age, year) {{
 
 async function resolveAnnualDenominator(indicatorKey, year, sourceKey, params) {{
   const spec = getAnnualDenominatorSpec(indicatorKey);
-  if (sourceKey === 'manual') return getManualAnnualDenominator(spec.shortKey, year);
+  if (sourceKey === 'manual' || sourceKey === 'ins_manual') return getManualAnnualDenominator(spec.shortKey, year);
 
   // ── Source : base locale ────────────────────────────────────────────────
   if (sourceKey === 'local_db') {{
@@ -9186,7 +9211,7 @@ async function resolveAnnualDenominator(indicatorKey, year, sourceKey, params) {
 
     if (indicatorKey === 'ind_22_enfants') {{
       // B-CH-15 ou B-CH-18 selon l'âge max demandé
-      const ageMax = Number(params && params.ageMax !== undefined ? params.ageMax : 14);
+      const ageMax = Number(params && params.ageMax !== undefined ? params.ageMax : 17);
       const ageGroup = ageMax <= 15 ? 'age-0-14' : 'age-0-17';
       const label = ageMax <= 15 ? '0–14 ans (B-CH-15)' : '0–17 ans (B-CH-18)';
       res = await fetchLocalDenomValue('var-c-popsx', 'sex-t', ageGroup, year);

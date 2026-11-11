@@ -728,6 +728,9 @@ span.footnote {
 [data-val-id][data-val-status="revu"]:hover { background: rgba(46,120,200,0.08); }
 
 [data-val-id][data-val-status="validé"] { text-decoration-color: #111111; }
+[data-val-id][data-val-status="à valider"],
+[data-val-id][data-val-status="à rédiger"],
+[data-val-id][data-val-status="structure initiale"] { color: #c00000; }
 [data-val-id][data-val-status="validé"]:hover { background: rgba(17,17,17,0.06); }
 
 .val-cite { font-style: italic; }

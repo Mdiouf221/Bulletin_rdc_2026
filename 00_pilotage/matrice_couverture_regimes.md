@@ -23,7 +23,7 @@ Ces niveaux s'appliquent à **tous les régimes**, contributifs et non contribut
 
 | Niveau | Libellé | Définition | Pertinence |
 |--------|---------|-----------|-----------|
-| **N1** | **Population totale de référence** | Population totale du secteur ou du groupe démographique auquel le régime s'adresse en théorie (ex. : tous les travailleurs RDC, toute la population, tous les enfants 0–17 ans). | Dénominateur de base pour les taux de couverture légale et effective |
+| **N1** | **Population totale de référence** | Population totale du secteur ou du groupe démographique auquel le régime s'adresse en théorie (ex. : tous les travailleurs RDC, toute la population, toute la population âgée de 0 à 17 ans). | Dénominateur de base pour les taux de couverture légale et effective |
 | **N2** | **Population légalement couverte** | Population que la loi, le décret ou le statut désigne comme devant être couverte par ce régime. Ne présuppose pas l'affiliation effective ni le paiement de cotisations. | Définit le gap légal vs effectif ; permet de parler des obligations non remplies |
 | **N3** | **Population affiliée / enregistrée** | Personnes effectivement immatriculées ou enregistrées auprès de l'institution, indépendamment de la cotisation active ou de la réception d'une prestation. | Mesure le taux d'affiliation (N3/N2) ; gap affiliation/cotisation |
 | **N4** | **Cotisants actifs** | Personnes pour lesquelles une cotisation est effectivement versée ou enregistrée sur la période de référence. Pour les régimes non contributifs : personnes éligibles activement enregistrées dans le système de ciblage. | **Numérateur ODD 1.3.1 (volet contributif)** |
@@ -78,11 +78,11 @@ Ces niveaux s'appliquent à **tous les régimes**, contributifs et non contribut
 
 ### CNSS — Branche des prestations familiales (famille, maternité)
 
-**Dénominateur ODD 1.3.1 :** Population 0–17 ans (enfants) / Naissances vivantes (maternité)
+**Dénominateur ODD 1.3.1 :** Population âgée de 0 à 17 ans / Naissances vivantes (maternité)
 
 | Niveau | Description | 2019 | 2020 | 2021 | 2022 | 2023 | Source | Fiabilité |
 |--------|-------------|------|------|------|------|------|--------|-----------|
-| N1 enfants | Population 0–17 ans RDC | N/D | N/D | N/D | ~52,5M | N/D | ONU WPP 2024 | Bonne |
+| N1 — population 0–17 ans | Population âgée de 0 à 17 ans en RDC | 48,8M | 50,4M | 52,0M | 53,6M | 55,2M | INS/RDC, canevas de collecte 2026 (A3) | Partielle — proportions approximatives |
 | N1 maternité | Naissances vivantes | N/D | N/D | N/D | N/D | N/D | INS RDC | À vérifier |
 | N2 | Travailleurs du privé couverts légalement (allocations familiales obligatoires) | N/D | N/D | N/D | N/D | N/D | Loi CNSS | Juridique |
 | N3 | Foyers immatriculés bénéficiaires | N/D | N/D | N/D | N/D | N/D | ESS CNSS | À extraire |

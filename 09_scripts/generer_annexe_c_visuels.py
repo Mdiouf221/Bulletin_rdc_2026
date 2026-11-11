@@ -107,19 +107,19 @@ COLOR_NUMERATOR = "#2e78c8"
 ODD_METHODOLOGY_SPECS = {
     "global_131": {
         "definition": "Proportion de la population couverte par au moins une prestation en espèces de protection sociale ou cotisant activement à au moins un régime de sécurité sociale.",
-        "numerator": "Nombre de personnes recevant au moins une prestation en espèces de protection sociale, hors soins de santé, ou cotisant activement à au moins un régime de sécurité sociale, sans double comptage.",
+        "numerator": "Nombre de personnes recevant au moins une prestation en espèces de protection sociale, hors soins de santé et indemnités journalières de maladie ou de maternité, ou cotisant activement à au moins un régime de sécurité sociale, sans double comptage.",
         "denominator": "Population totale.",
         "formula": "Population couverte par au moins une prestation ou cotisant activement ÷ population totale × 100.",
     },
     "ind_22_enfants": {
-        "definition": "Proportion d'enfants bénéficiant d'au moins une prestation en espèces de protection sociale destinée aux enfants ou aux familles.",
-        "numerator": "Nombre d'enfants recevant au moins une prestation en espèces pour enfants ou famille.",
-        "denominator": "Population totale des enfants dans la tranche d'âge retenue.",
-        "formula": "Enfants bénéficiaires ÷ population totale des enfants × 100.",
+        "definition": "Proportion de la population âgée de 0 à 17 ans bénéficiant d'au moins une prestation en espèces de protection sociale destinée aux enfants ou aux familles.",
+        "numerator": "Nombre de bénéficiaires âgés de 0 à 17 ans recevant au moins une prestation en espèces pour enfants ou famille, hors indemnités journalières de maladie ou de maternité.",
+        "denominator": "Population totale âgée de 0 à 17 ans.",
+        "formula": "Bénéficiaires âgés de 0 à 17 ans ÷ population totale âgée de 0 à 17 ans × 100.",
     },
     "ind_23_maternite": {
         "definition": "Proportion de femmes ayant accouché qui reçoivent une prestation en espèces de maternité.",
-        "numerator": "Nombre de femmes ayant accouché et percevant une indemnité ou une allocation de maternité en espèces.",
+        "numerator": "Nombre de femmes ayant accouché et percevant une prestation de maternité en espèces, hors indemnité journalière de maternité.",
         "denominator": "Nombre total de femmes ayant accouché au cours de la même année, estimé directement ou à partir des naissances vivantes corrigées des naissances multiples.",
         "formula": "Femmes bénéficiaires d'une prestation de maternité ÷ femmes ayant accouché × 100.",
     },
@@ -170,7 +170,7 @@ NON_CALCULABLE_NOTE = {
 def fmt_int(value: float | None) -> str:
     if value is None:
         return "[N/D]"
-    return f"{value:,.0f}"
+    return f"{value:,.0f}".replace(",", " ")
 
 
 def fmt_pct(value: float | None) -> str:
@@ -493,14 +493,29 @@ def build_indicator_section(
             comp["values"][year] = item["value"]
 
     denom_footnote = build_denominator_footnote(indicator_key, years, denom_constructions)
-    numerator_footnote = (
-        "Pour les allocations familiales de la CNSS, le nombre d'enfants bénéficiaires est estimé "
-        "en multipliant par 3,17 le nombre de titulaires de prestations familiales communiqué par "
-        "la CNSS. Ce facteur correspond au nombre moyen d'enfants de moins de 20 ans par foyer en "
-        "RDC en 2013, d'après UN HH Size and Composition 2019. Il s'agit donc d'une estimation et "
-        "non d'un décompte administratif direct d'enfants."
-        if indicator_key == "ind_22_enfants" else ""
-    )
+    numerator_notes = []
+    if indicator_key == "ind_22_enfants":
+        numerator_notes.append(
+            "Pour les allocations familiales de la CNSS, le nombre d'enfants bénéficiaires est estimé "
+            "en multipliant par 3,17 le nombre de titulaires de prestations familiales communiqué par "
+            "la CNSS. Ce facteur correspond au nombre moyen d'enfants de moins de 20 ans par foyer en "
+            "RDC en 2013, d'après UN HH Size and Composition 2019. Il s'agit donc d'une estimation et "
+            "non d'un décompte administratif direct d'enfants."
+        )
+    if indicator_key in {"global_131", "ind_25_atmp"} and 2024 in years:
+        numerator_notes.append(
+            "Pour la CNSS en 2024, le fichier ESS corrigé ventile l'effectif de la branche des risques "
+            "professionnels entre la rente ou allocation d'incapacité (2 853), les rentes de survivants "
+            "(1 107,33) et l'indemnité journalière (1 745,67). Cette ventilation remplace la répétition "
+            "antérieure de 2 853 dans les trois lignes ; elle reste à confirmer institutionnellement."
+        )
+    if indicator_key == "ind_29_cotisants":
+        numerator_notes.append(
+            "Pour la CNSSAP, les cotisants du régime complémentaire 2023–2024 sont présentés dans "
+            "l'Annexe B mais exclus de cet indicateur : l'absence d'identifiant commun ne permet pas "
+            "de vérifier qu'ils sont distincts des cotisants du régime de base."
+        )
+    numerator_footnote = " ".join(numerator_notes)
 
     synthesis_md = build_synthesis_table(
         years,
@@ -589,7 +604,7 @@ def main() -> int:
         int(y) for y in (indicateurs.get("years_numerator") or indicateurs.get("years") or [])
         if isinstance(y, int) or (isinstance(y, float) and y.is_integer())
     }
-    years = sorted(set(BULLETIN_YEARS) | years_available)
+    years = list(BULLETIN_YEARS)
 
     settings = {}
     if SETTINGS_PATH.exists():

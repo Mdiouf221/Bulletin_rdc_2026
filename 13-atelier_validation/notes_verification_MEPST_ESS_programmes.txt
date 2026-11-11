@@ -1,0 +1,89 @@
+NOTE DE VERIFICATION — MEPST
+ESS et programmes de gratuité scolaire
+
+Date de vérification : 2026-11-08
+
+1. Identification
+
+Le MEPST est le Ministère de l'Enseignement primaire, secondaire et
+technique. Il est notamment responsable de la gratuité de l'enseignement
+primaire dans les écoles publiques.
+
+2. Données ESS disponibles
+
+Quatre sources ESS MEPST sont enregistrées dans la base, pour 2019–2022.
+Les bénéficiaires enregistrés sont :
+
+Année                 Bénéficiaires ESS
+2019                    16 668 703
+2020                    16 668 703
+2021                    17 941 415
+2022                    18 386 994
+
+Ces valeurs doivent être conservées comme des bénéficiaires enregistrés
+dans l'ESS. Leur définition exacte doit être vérifiée dans le questionnaire
+avant de les assimiler à des élèves effectivement bénéficiaires de la
+gratuité scolaire.
+
+3. Informations de programme disponibles
+
+La gratuité de l'enseignement primaire est documentée comme un programme
+non contributif mis en œuvre depuis la rentrée 2019–2020, avec un périmètre
+national dans les écoles publiques. Une source secondaire indique environ
+4,4 millions d'élèves supplémentaires inscrits en 2023–2024.
+
+Un programme de cantines scolaires est également documenté en phase pilote
+en 2023, avec le PAM et le MEPST. Il s'agit d'une prestation en nature,
+non contributive, distincte des données ESS MEPST.
+
+4. Lacunes
+
+- aucune source ESS MEPST 2023–2025 n'est enregistrée ;
+- les données de cantines ne sont pas intégrées dans l'ESS ;
+- le chiffre de 4,4 millions provient d'une source externe et ne doit pas
+  être additionné aux bénéficiaires ESS ;
+- le périmètre exact des bénéficiaires ESS doit être confirmé avant
+  publication.
+
+5. Comparaison avec les données publiques en ligne
+
+Les recherches en ligne confirment que les valeurs ESS 2019 (16 668 703)
+et 2022 (18 386 994) correspondent à des effectifs scolaires cités dans
+des références publiques. Elles ne permettent toutefois pas d'établir que
+ces effectifs sont exclusivement les bénéficiaires directs de la gratuité.
+
+Le chiffre de 4,4 millions d'élèves supplémentaires transmis dans les
+documents de travail est inférieur aux chiffres publics plus récents, qui
+évoquent plus de 5 millions d'élèves supplémentaires ou une hausse totale
+de 6,3 millions entre 2019 et 2024. Ces indicateurs ne mesurent pas la
+même chose que les totaux ESS et ne doivent pas être fusionnés.
+
+Pour les cantines scolaires, une recherche sur le site du PAM n'a pas
+permis d'identifier un chiffre consolidé propre à la RDC. Le chiffre de
+95 000 enfants dans 574 écoles trouvé dans les résultats concerne la
+République du Congo (Congo-Brazzaville), et non la République
+démocratique du Congo ; il ne doit donc pas être utilisé pour la RDC.
+
+Le rapport local du PAM « Democratic Republic of the Congo Annual Country
+Report 2025 » apporte un chiffre vérifiable pour les opérations du PAM :
+145 000 enfants ont reçu quotidiennement des repas scolaires dans cinq
+provinces (Sud-Kivu, Tanganyika, Kasaï-Oriental, Kasaï-Central et Lomami).
+Ce chiffre concerne les enfants atteints par le programme d'alimentation
+scolaire soutenu par le PAM, et non l'ensemble des enfants fréquentant des
+cantines scolaires en RDC. Le rapport précise aussi que les graphiques par
+domaine d'activité peuvent inclure des enseignants et des cuisiniers
+recevant des transferts de ressources ; ces personnes ne doivent pas être
+ajoutées aux 145 000 enfants.
+
+Les 145 000 enfants ne doivent donc pas être additionnés aux chiffres ESS
+MEPST ni présentés comme une couverture nationale de toutes les cantines.
+Ils constituent un indicateur opérationnel du PAM pour 2025. La couverture
+totale des cantines scolaires en RDC reste à établir auprès du MINEDU-NC et
+des autres opérateurs.
+
+CONCLUSION
+
+Le MEPST doit être présenté comme un ministère porteur de programmes
+non contributifs d'accès à l'éducation, et non comme un régime contributif
+de protection sociale. Les données ESS 2019–2022, la gratuité scolaire et
+les cantines doivent rester trois blocs d'information distincts.

@@ -387,6 +387,9 @@ a[data-offline]:hover { background: rgba(0,0,0,0.04); }
 [data-val-id][data-val-status="revu"]             { text-decoration-color: #2e78c8; }
 [data-val-id][data-val-status="révisé"]           { text-decoration-color: #2e78c8; }
 [data-val-id][data-val-status="validé"]           { text-decoration-color: #111111; }
+[data-val-id][data-val-status="à valider"],
+[data-val-id][data-val-status="à rédiger"],
+[data-val-id][data-val-status="structure initiale"] { color: #c00000; }
 .val-cite { font-style: italic; }
 
 /* ===== Couverture légale / effective ================================= */

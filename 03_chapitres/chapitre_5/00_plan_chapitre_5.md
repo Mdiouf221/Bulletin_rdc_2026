@@ -32,7 +32,7 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 | Sous-indicateur ODD 1.3.1 | Définition |
 |---|---|
 | Population totale | % de la population couverte par au moins une prestation |
-| Enfants (0–14 ans) | % couverts par une prestation enfance/famille |
+| Population âgée de 0 à 17 ans | % couverte par une prestation enfance/famille |
 | Femmes ayant accouché | % couvertes par une prestation maternité |
 | Personnes âgées | % recevant une pension de vieillesse |
 | Actifs — cotisants à un régime contributif | % d'actifs pour lesquels une cotisation est effectivement enregistrée auprès de la CNSS ou de la CNSSAP |
@@ -49,11 +49,11 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 
 | Sous-indicateur ODD 1.3.1 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
-| Population totale (%) | 4,7 | 4,3 | 4,8 | 4,6 | 4,5 | 4,9 | 0,0 |
-| Enfants 0–14 ans (%) | 2,0 | 2,1 | 2,7 | 2,4 | 2,6 | 1,8 | 0,0 |
+| Population totale (%) | 3,2 | 2,8 | 3,3 | 3,2 | 3,9 | 4,1 | 1,6 |
+| Population 0–17 ans (%) | 1,7 | 1,9 | 2,4 | 2,1 | 2,3 | 1,6 | 0,0 |
 | Femmes ayant accouché — maternité (%) | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 | [N/D] |
 | Personnes âgées — pension vieillesse (%) | 1,0 | 1,0 | 1,0 | 1,1 | 1,1 | 1,1 | [N/D] |
-| Actifs — cotisants à un régime contributif (%) | 4,5 | 4,4 | 4,4 | 4,3 | 4,2 | 5,1 | [N/D] |
+| Actifs — cotisants à un régime contributif (%) | 4,5 | 4,4 | 4,4 | 4,3 | 3,8 | 4,7 | [N/D] |
 | Actifs — couverture statutaire budgétaire (%) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Actifs — couverture consolidée nationale (%) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Personnes handicapées — invalidité (%) | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 |

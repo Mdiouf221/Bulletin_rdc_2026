@@ -24,7 +24,6 @@ Toute source utilisée pour un chiffre, une définition, une institution, un ind
 | Données administratives CNSS | CNSS | À préciser | Cotisants, bénéficiaires, prestations, dépenses | à compléter |
 | Données administratives CNSSAP | CNSSAP | À préciser | Cotisants, pensionnés, prestations, dépenses | à compléter |
 | Données SESOPA | SESOPA | À préciser | Régime ou prestations parlementaires | à compléter |
-| Données FNPSS | FNPSS | À préciser | Programmes non contributifs, bénéficiaires, dépenses | à compléter |
 
 ## Sources internationales
 

@@ -1,0 +1,49 @@
+NOTE DE VERIFICATION — MESP
+ESS 2019–2025 et atelier de validation
+
+Date de vérification : 2026-11-08
+
+1. Identification
+
+La MESP est la Mutuelle de santé des enseignants de l'enseignement
+primaire, secondaire et technique. Les données ESS disponibles couvrent
+2019 à 2025, avec un régime recensé et une prestation principale.
+
+2. État de l'import ESS
+
+Les sept sources ESS MESP sont enregistrées séparément dans la base ESS,
+avec les source_id 205 à 211. Chaque année alimente le régime MESP_R1.
+Les effectifs importés sont :
+
+Année                 Cotisants       Bénéficiaires
+2019                    50 256            122 547
+2020                    54 383            130 961
+2021                    60 745            141 826
+2022                    80 041            164 877
+2023                    87 019            176 471
+2024                    96 538            196 574
+2025                   112 608            217 171
+
+3. Vérification des nouvelles informations de l'atelier
+
+Aucune nouvelle source MESP chiffrée distincte n'a été identifiée dans
+les fichiers de l'atelier examinés. La série ESS 2019–2025 reste donc la
+source statistique institutionnelle disponible pour la MESP.
+
+4. Réserves méthodologiques
+
+- Les bénéficiaires importés sont ceux de la prestation de soins de
+  santé ; ils ne doivent pas être assimilés automatiquement au nombre de
+  personnes couvertes.
+- Les données de cotisants et de bénéficiaires ne sont pas accompagnées,
+  dans la base, de dépenses de prestations renseignées.
+- La continuité de la série est établie, mais les définitions exactes des
+  cotisants et des bénéficiaires doivent rester celles du questionnaire
+  ESS.
+
+CONCLUSION
+
+L'import MESP est cohérent et exploitable pour les effectifs 2019–2025.
+Il n'y a pas lieu de remplacer la série par une nouvelle donnée d'atelier.
+Les dépenses restent non renseignées et ne doivent pas être reconstituées
+à partir des effectifs.

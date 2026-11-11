@@ -111,7 +111,6 @@ Statut :
 | CNSS | Caisse Nationale de Sécurité Sociale |
 | CNSSAP | Caisse Nationale de Sécurité Sociale des Agents Publics de l'État |
 | CSU | Couverture Santé Universelle |
-| FNPSS | Fonds National de Promotion et de Service Social |
 | FSS | Fonds de Solidarité de Santé |
 | INS | Institut National de la Statistique |
 | MEPST | Ministère de l'Enseignement Primaire, Secondaire et Technique |
@@ -321,7 +320,7 @@ Logique rédactionnelle :
 Faire le lien entre structure économique, marché du travail et couverture. Ne pas réduire la discussion à l'assistance sociale. Le dernier paragraphe prépare la section 0.3 (stratégie nationale et données statistiques).
 
 Données renseignées :
-- Croissance PIB : +6,4 % (2021), +9,3 % (2022), +8,5 % (2023), +6,1 % (2024)  Banque mondiale WDI (avril 2026)
+- Croissance PIB : +6,4 % (2021), +9,3 % (2022), +8,5 % (2023), +6,1 % (2024) — FMI, WEO/DataMapper (édition consultée en 2026)
 - PIB par habitant : 649 USD en 2024 (USD courants)  Banque mondiale WDI
 - Indice de Gini : 0,447 en 2020 (WDI, estimation antérieure) ; **0,381 en 2024, source directe INS-RDC (ECVM 2024, canevas de collecte 2026)** — valeur retenue en priorité dans le texte rédigé
 - Taux de pauvreté national : **67,9 % en 2024, source directe INS-RDC (ECVM 2024, canevas de collecte 2026)** — remplace la valeur arrondie « 69 % » précédemment citée via une source secondaire (Banque mondiale citant l'INS)
@@ -347,7 +346,7 @@ révisé (données partiellement renseignées  données pauvreté/Gini à actual
 
 ### Une croissance soutenue sur fond de fragilité économique <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-La République Démocratique du Congo a enregistré des taux de croissance économique élevés au cours des dernières années : <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+6,4 % en 2021</a>, <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+9,3 % en 2022</a>, <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+8,5 % en 2023</a> et <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel" class="source-ref nv">+6,1 % en 2024</a> *(FMI, WEO)*. Cette dynamique est notamment portée par le secteur minier, qui concentre d'importants gisements de cuivre, cobalt, or, diamants et coltan. Le <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — WEO, indicateurs macroéconomiques RDC" class="source-ref nv">niveau du PIB par habitant demeure faible</a> à l'échelle du continent. Selon l'<a href="/files/06_sources/officielles_web/INS_RDC_ECVM_pauvrete_inegalites_2024.txt" title="Source : INS-RDC — Enquête sur les conditions de vie des ménages (ECVM) 2024" class="source-ref nv">Institut national de la statistique (INS-RDC, ECVM 2024)</a>, la pauvreté monétaire reste élevée : <span class="val" data-val-id="s2-p1-d1" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">67,9 %</span> de la population vit sous le seuil national de pauvreté, soit près de sept personnes sur dix. Les inégalités de niveau de vie demeurent également marquées, avec un indice de Gini estimé à <span class="val" data-val-id="s2-p1-d2" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">0,381</span> en 2024 *(INS-RDC, ECVM 2024)*<sup>1</sup>. Ces éléments confirment la persistance d'une vulnérabilité économique structurelle.
+La République Démocratique du Congo a enregistré des taux de croissance économique élevés au cours des dernières années : <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel, édition consultée en 2026" class="source-ref nv">+6,4 % en 2021</a>, <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel, édition consultée en 2026" class="source-ref nv">+9,3 % en 2022</a>, <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel, édition consultée en 2026" class="source-ref nv">+8,5 % en 2023</a> et <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — World Economic Outlook (WEO), RDC, croissance du PIB réel, édition consultée en 2026" class="source-ref nv">+6,1 % en 2024</a> *(FMI, WEO/DataMapper, édition consultée en 2026)*. Cette dynamique est notamment portée par le secteur minier, qui concentre d'importants gisements de cuivre, cobalt, or, diamants et coltan. Le <a href="/files/06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt" title="Source : FMI — WEO/DataMapper, indicateurs macroéconomiques RDC, édition consultée en 2026" class="source-ref nv">niveau du PIB par habitant demeure faible</a> à l'échelle du continent. Selon l'<a href="/files/06_sources/officielles_web/INS_RDC_ECVM_pauvrete_inegalites_2024.txt" title="Source : INS-RDC — Enquête sur les conditions de vie des ménages (ECVM) 2024" class="source-ref nv">Institut national de la statistique (INS-RDC, ECVM 2024)</a>, la pauvreté monétaire reste élevée : <span class="val" data-val-id="s2-p1-d1" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">67,9 %</span> de la population vit sous le seuil national de pauvreté, soit près de sept personnes sur dix. Les inégalités de niveau de vie demeurent également marquées, avec un indice de Gini estimé à <span class="val" data-val-id="s2-p1-d2" data-val-status="à valider" data-val-file="02_introduction_generale/0_2_contexte_economique_emploi.md">0,381</span> en 2024 *(INS-RDC, ECVM 2024)*<sup>1</sup>. Ces éléments confirment la persistance d'une vulnérabilité économique structurelle.
 
 <sup>1</sup> *Une estimation antérieure de la Banque mondiale (WDI) situait l'indice de Gini de la RDC à 0,447 en 2020 ; cet écart reflète à la fois l'actualisation méthodologique de l'ECVM 2024 et l'évolution de la période de référence. La valeur INS-RDC 2024, transmise directement par l'institution (canevas de collecte 2026), est retenue ici comme référence prioritaire.*
 
@@ -426,7 +425,7 @@ NOTE POUR SECTIONS FUTURES — Programmes d'assistance sociale et filets de séc
   - Projets de stabilisation Est-RDC (P175834, 250 M USD, 2022-2027) — composante PS zones de conflit
   - Programmes gouvernementaux d'assistance sociale (PDL-145T, gratuité maternité CSU, etc.)
   Ces programmes non contributifs constituent un 4e registre à documenter dans les chapitres analytiques,
-  en complément des régimes CNSS, CNSSAP et FNPSS.
+  en complément des régimes contributifs et statutaires documentés.
   Sources : projets.worldbank.org ; rapport annuel résultats EPNU-RDC 2023 (Reliefweb)
 
 Statut :
@@ -774,17 +773,36 @@ La <a href="/files/06_sources/normes_oit/_texte/R202 - Recommandation sur les so
 
 Ces programmes se distinguent des régimes précédents par trois caractéristiques structurelles : ils sont **financés par des ressources publiques ou des contributions extérieures**, sans cotisation des bénéficiaires ; ils ne confèrent généralement **aucun droit statutaire permanent** susceptible d'être invoqué par les intéressés ; et leur pérennité dépend des décisions budgétaires annuelles ou des cycles de financement des bailleurs. Cette fragilité institutionnelle est une limite importante à leur intégration dans les indicateurs de couverture. Le programme des cantines scolaires du PAM est ainsi présenté dans la cartographie de la protection sociale des enfants, mais demeure exclu du calcul de l'indicateur ODD 1.3.1 en tant que prestation en nature (voir `00_pilotage/registre_inclusion_programmes.md`, FICHE-002, et DM-011).
 
-<p class="table-caption"><strong>Tableau 2.4</strong> — Programmes d'assistance sociale et initiatives non contributives (actifs au 31.12.2025)</p>
+<p class="table-caption"><strong>Tableau 2.4</strong> — Programmes d'assistance sociale et initiatives non contributives documentés (actifs ou clôturés au 31.12.2025)</p>
 
 | Programme | Type d'intervention | Population cible | Bailleur principal | Responsable mise en œuvre | Périmètre | Statut au 31.12.2025 |
 |---|---|---|---|---|:---:|:---:|
-| <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM — Transferts de ressources sans conditions (TRC) — 4 037 575 bénéficiaires en 2021, 3 795 530 en 2022" class="source-ref source-ref-text nv" data-val-id="s31-t4-pam1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">PAM — Transferts de ressources sans conditions</a><br><small><em>Début : continu (2000s) — Actif au 31.12.2025</em></small> <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM RDC — site officiel wfp.org (consulté juin 2026) et Premier bulletin (2023)" class="source-ref source-ref-text nv" data-val-id="s31-t4-pam1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[1]</sup></a> | Transferts monétaires et alimentaires inconditionnels | Ménages en insécurité alimentaire ; déplacés internes ; zones de conflit | Donateurs internationaux (UE, USAID, RU…) | PAM | Est DRC (prioritaire) ; national | Actif |
+| <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM — Transferts de ressources sans conditions ; chiffres historiques 2021–2022 à confirmer" class="source-ref source-ref-text nv" data-val-id="s31-t4-pam1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">PAM — Transferts de ressources sans conditions</a><br><small><em>Début : continu (2000s) — statut au 31.12.2025 : à confirmer</em></small> <a href="/files/06_sources/officielles_web/PAM_RDC_page_officielle_2026.txt" title="PAM RDC — page officielle archivée ; description des activités, sans série historique 2021–2022" class="source-ref source-ref-text nv" data-val-id="s31-t4-pam1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[1]</sup></a> | Transferts monétaires et alimentaires inconditionnels | Ménages en insécurité alimentaire ; déplacés internes ; zones de conflit | Donateurs internationaux (UE, USAID, RU…) | PAM | Est de la RDC (périmètre national à confirmer) | À confirmer |
 | <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM + MEPST — Programme national de cantines scolaires — phase pilote initiée en 2023 pour consolider la gratuité de l'enseignement primaire" class="source-ref source-ref-text nv" data-val-id="s31-t4-cantine" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">PAM — Cantines scolaires</a><br><small><em>Début : 2023 (pilote) — Statut 2025 : en cours (données non consolidées)</em></small> <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM RDC — cantines scolaires : phase pilote, écoles publiques, objectif nutritionnel et scolarisation" class="source-ref source-ref-text nv" data-val-id="s31-t4-cantine-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[1]</sup></a> | Transferts en nature (repas nutritifs en milieu scolaire) | Enfants scolarisés dans les écoles publiques | PAM + donateurs | PAM + MEPST | Phase pilote (périmètre à préciser) | Actif (pilote) |
-| <a href="/files/06_sources/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt" title="UNICEF — Cash + Nutrition (Tanganyika) — 226 648 enfants bénéficiaires en 2021 ; programme humanitaire récurrent" class="source-ref source-ref-text nv" data-val-id="s31-t4-unicef1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">UNICEF — Cash + Nutrition</a><br><small><em>Début : 2021 (données disponibles) — Actif (intermittent) au 31.12.2025</em></small> <a href="/files/06_sources/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt" title="Source : Premier bulletin (2023) citant données UNICEF 2021 — province de Tanganyika" class="source-ref source-ref-text nv" data-val-id="s31-t4-unicef1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[2]</sup></a> | Transferts monétaires + soutien nutritionnel | Enfants malnutris ; ménages vulnérables (urgence humanitaire) | UNICEF + donateurs institutionnels | UNICEF + partenaires | Tanganyika (et autres provinces) | Actif (intermittent) |
+| <a href="/files/06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf" title="PAM — rapport annuel RDC 2025 : 145 000 enfants ont reçu quotidiennement des repas scolaires dans cinq provinces" class="source-ref source-ref-text nv" data-val-id="s31-t4-cantine-2025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">PAM — Cantines scolaires (résultat 2025)</a><br><small><em>2025 : 145 000 enfants servis quotidiennement dans cinq provinces</em></small> <a href="/files/06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf" title="PAM — rapport annuel RDC 2025, alimentation scolaire" class="source-ref source-ref-text nv" data-val-id="s31-t4-cantine-2025-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[2]</sup></a> | Transferts en nature (repas chauds) | Enfants vulnérables scolarisés | PAM + partenaires publics et provinciaux | PAM | Sud-Kivu, Tanganyika, Kasaï-Oriental, Kasaï-Central et Lomami | Actif en 2025 |
+| <a href="/files/06_sources/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt" title="UNICEF — Cash + Nutrition au Tanganyika — 226 648 enfants bénéficiaires en 2021 ; périmètre ultérieur à confirmer" class="source-ref source-ref-text nv" data-val-id="s31-t4-unicef1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">UNICEF — Cash + Nutrition</a><br><small><em>Début : 2021 (données disponibles) — statut au 31.12.2025 : à confirmer</em></small> <a href="/files/06_sources/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt" title="Source : Premier bulletin (2023) citant données UNICEF 2021 — province de Tanganyika" class="source-ref source-ref-text nv" data-val-id="s31-t4-unicef1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[2]</sup></a> | Transferts monétaires + soutien nutritionnel | Enfants malnutris ; ménages vulnérables (urgence humanitaire) | UNICEF + donateurs institutionnels | UNICEF + partenaires | Tanganyika (périmètre hors province à confirmer) | À confirmer |
+| <a href="/files/06_sources/officielles_web/Banque_mondiale_STEP_RDC_2023.txt" title="Banque mondiale — projet STEP : 530 000 bénéficiaires directs de transferts ou THIMO entre 2014 et 2022" class="source-ref source-ref-text nv" data-val-id="s31-t4-step" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Banque mondiale — projet STEP</a><br><small><em>Résultats : février 2014–décembre 2022 — clôturé</em></small> <a href="/files/06_sources/officielles_web/Banque_mondiale_STEP_RDC_2023.txt" title="Source : Banque mondiale — résultats du projet STEP" class="source-ref source-ref-text nv" data-val-id="s31-t4-step-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[3]</sup></a> | Transferts monétaires sans conditions et THIMO | Ménages vulnérables et travailleurs temporaires | Banque mondiale / IDA et fonds fiduciaires | Fonds Social de la RDC | Six provinces et Kinshasa | Clôturé |
+| <a href="/files/06_sources/officielles_web/UNICEF_Nsele_transferts_RDC.txt" title="UNICEF, PAM et FAO — transferts monétaires à Nsele : environ 23 000 ménages puis 16 000 ménages vulnérables" class="source-ref source-ref-text nv" data-val-id="s31-t4-nsele" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">UNICEF/PAM/FAO — transferts monétaires à Nsele</a><br><small><em>Phase initiale : 3 mois — phase de protection sociale : 6 mois — programme ponctuel</em></small> <a href="/files/06_sources/officielles_web/UNICEF_Nsele_transferts_RDC.txt" title="Source : Nations Unies en RDC — évaluation de l'intervention à Nsele" class="source-ref source-ref-text nv" data-val-id="s31-t4-nsele-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[4]</sup></a> | Transferts monétaires et accompagnement | Ménages vulnérables | UNICEF, PAM et FAO | UNICEF, PAM et FAO | Commune de Nsele, Kinshasa | Clôturé / ponctuel |
 
-*Légende : tableau limité aux programmes actifs à un moment de l'année 2025 (période de référence : 1er janvier au 31 décembre 2025). Les programmes clôturés avant 2025 (STEP, clôture févr. 2024 ; UNICEF+FAO, ponctuel 2022) ne sont pas repris. Les programmes « actifs intermittents » dépendent des financements des bailleurs et peuvent être interrompus entre deux cycles.*
+*Légende : le tableau inclut les programmes actifs en 2025 et deux initiatives antérieures documentées à titre de référence. Les nombres de bénéficiaires sont associés à leurs périodes propres et ne constituent pas une série homogène. Les programmes « actifs intermittents » dépendent des financements des bailleurs et peuvent être interrompus entre deux cycles.*
 
-<div class="table-sources"><small>Sources : <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) — ch. 2.3 : cartographie des programmes non contributifs" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-bul" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Premier bulletin RDC (2023), ch. 2.3</a> · <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM — site officiel wfp.org (consulté juin 2026)" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-pam" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">PAM (wfp.org, 2026)</a> · <a href="/files/06_sources/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt" title="UNICEF RDC — transferts monétaires humanitaires (2021-2022, actif intermittent)" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-uni" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">UNICEF RDC (2021–2025)</a> · <a href="/files/06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="OIT — Recommandation no 202 sur les socles de protection sociale (2012)" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-r202" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">R202 (OIT, 2012)</a><br><em>La liste est indicative et non exhaustive. Une cartographie complète des initiatives actives en 2025 dépasse le périmètre du présent chapitre.</em></small></div>
+<div class="table-sources"><small>Sources : <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) — ch. 2.3 : cartographie des programmes non contributifs" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-bul" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Premier bulletin RDC (2023), ch. 2.3</a> · <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM — site officiel wfp.org (consulté juin 2026)" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-pam" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">PAM (wfp.org, 2026)</a> · <a href="/files/06_sources/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt" title="UNICEF RDC — transferts monétaires humanitaires (2021-2022, actif intermittent)" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-uni" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">UNICEF RDC (2021–2025)</a> · <a href="/files/06_sources/officielles_web/Banque_mondiale_STEP_RDC_2023.txt" title="Banque mondiale — projet STEP, résultats 2014–2022" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-step" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Banque mondiale (STEP, 2023)</a> · <a href="/files/06_sources/officielles_web/UNICEF_Nsele_transferts_RDC.txt" title="Nations Unies en RDC — intervention de transferts monétaires à Nsele" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-nsele" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">UNICEF/PAM/FAO (Nsele)</a> · <a href="/files/06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="OIT — Recommandation no 202 sur les socles de protection sociale (2012)" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-r202" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">R202 (OIT, 2012)</a><br><em>La liste est indicative et non exhaustive. Les initiatives antérieures sont conservées pour documenter les expériences pertinentes, sans les confondre avec les programmes actifs en 2025.</em></small></div>
+
+#### Repères chronologiques des programmes PAM documentés
+
+| Année | Programme | Indicateur disponible | Périmètre | Source et interprétation |
+|---|---|---:|---|---|
+| 2021 | Transferts monétaires et alimentaires inconditionnels | 4 037 575 personnes — à confirmer | Principalement les provinces de l'Est — à confirmer | PAM ; chiffre historique non reproductible à partir de la page officielle archivée |
+| 2022 | Transferts monétaires et alimentaires inconditionnels | 3 795 530 personnes — à confirmer | Principalement les provinces de l'Est — à confirmer | PAM ; chiffre historique non reproductible à partir de la page officielle archivée |
+| 2023 | Cantines scolaires | [N/D] | Phase pilote, périmètre à préciser | PAM/MEPST ; existence du programme documentée, total non consolidé |
+| 2024 | Cantines scolaires | [N/D] | Donnée nationale non disponible | Aucun total comparable identifié |
+| 2025 | Cantines scolaires | 145 000 enfants | Cinq provinces : Sud-Kivu, Tanganyika, Kasaï-Oriental, Kasaï-Central et Lomami | Rapport annuel PAM RDC 2025 ; enfants servis quotidiennement dans les opérations soutenues par le PAM |
+
+Cette série constitue une série de repères et non une série homogène de
+couverture : les valeurs 2021–2022 concernent les transferts humanitaires
+généraux, tandis que la valeur 2025 concerne exclusivement l'alimentation
+scolaire. Les enseignants et cuisiniers éventuellement inclus dans les
+graphiques PAM ne sont pas ajoutés aux 145 000 enfants.
 
 ---
 
@@ -992,8 +1010,8 @@ Le tableau suivant retrace l'évolution du nombre de bénéficiaires de pensions
 |---|---|---|---|---|---|---|---|---|
 | CNSS | Pension de retraite (bénéf.) | <span class="val" data-val-id="s42-t1-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">38 641</span> | <span class="val" data-val-id="s42-t1-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">39 465</span> | <span class="val" data-val-id="s42-t1-d3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">42 407</span> | <span class="val" data-val-id="s42-t1-d4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">44 094</span> | <span class="val" data-val-id="s42-t1-d26" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">43 601</span> | <span class="val" data-val-id="s42-t1-d27" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">44 937</span> | [N/D] |
 | CNSS | Pension de retraite anticipée (bénéf.) | 0 | <span class="val" data-val-id="s42-t1-d42020" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">78</span> | <span class="val" data-val-id="s42-t1-d5" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">272</span> | <span class="val" data-val-id="s42-t1-d6" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 235</span> | <span class="val" data-val-id="s42-t1-d28" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">696</span> | <span class="val" data-val-id="s42-t1-d29" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">940</span> | [N/D] |
-| CNSSAP | Pension de vieillesse (bénéf.) | [N/D] | <span class="val" data-val-id="s42-t1-d7" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">814</span> | <span class="val" data-val-id="s42-t1-d8" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">780</span> | <span class="val" data-val-id="s42-t1-d9" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">4 982</span> | <span class="val" data-val-id="s42-t1-d30" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">10 760</span> | <span class="val" data-val-id="s42-t1-d31" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">12 995</span> | [N/D] |
-| SESOPA — anciens parlementaires | Pension de vieillesse (bénéf.) | <span class="val" data-val-id="s42-t1-d52019" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 241</span> | <span class="val" data-val-id="s42-t1-d52020" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 241</span> | <span class="val" data-val-id="s42-t1-d52021" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 241</span> | <span class="val" data-val-id="s42-t1-d52022" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 241</span> | <span class="val" data-val-id="s42-t1-d52023" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 241</span> | <span class="val" data-val-id="s42-t1-d52024" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 241</span> | <span class="val" data-val-id="s42-t1-d52025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 241</span> |
+| CNSSAP | Pension de vieillesse (bénéf.) | [N/D] | <span class="val" data-val-id="s42-t1-d7" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">814</span> | <span class="val" data-val-id="s42-t1-d8" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">780</span> | <span class="val" data-val-id="s42-t1-d9" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">4 982</span> | <span class="val" data-val-id="s42-t1-d30" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">10 760</span> | <span class="val" data-val-id="s42-t1-d31" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">12 995</span> | <span class="val" data-val-id="s42-t1-d2025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">9 136</span> |
+| SESOPA — anciens parlementaires | Pension de vieillesse (bénéf.) | <span class="val" data-val-id="s42-t1-d52019" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 018</span> | <span class="val" data-val-id="s42-t1-d52020" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 031</span> | <span class="val" data-val-id="s42-t1-d52021" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 021</span> | <span class="val" data-val-id="s42-t1-d52022" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 029</span> | <span class="val" data-val-id="s42-t1-d52023" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 023</span> | <span class="val" data-val-id="s42-t1-d52024" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 256</span> | <span class="val" data-val-id="s42-t1-d52025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">1 277</span> |
 | Autres régimes spéciaux (FARDC, PNC, magistrats) | Pension de vieillesse (bénéf.) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Pensions directement financées par le budget de l'État (hors régimes spéciaux) | Pension de vieillesse (bénéf.) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
@@ -1011,11 +1029,11 @@ L'adéquation des pensions est appréciée par leur rapport au seuil de pauvret�
 |---|---|---|---|---|---|---|---|
 | Pension CNSS — montant unitaire (CDF/mois) | <span class="val" data-val-id="s42-t2-d10" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">180 000</span> | <span class="val" data-val-id="s42-t2-d11" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">220 000</span> | <span class="val" data-val-id="s42-t2-d12" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">320 000</span> | <span class="val" data-val-id="s42-t2-d13" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">320 000</span> | <span class="val" data-val-id="s42-t2-d32" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">230 000</span><sup>2</sup> | <span class="val" data-val-id="s42-t2-d33" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">230 000</span> | [N/D] |
 | SMIG — salaire minimum (CDF/mois) | <span class="val" data-val-id="s42-t2-d14" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">183 950</span> | <span class="val" data-val-id="s42-t2-d15" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">183 950</span> | <span class="val" data-val-id="s42-t2-d16" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">183 950</span> | <span class="val" data-val-id="s42-t2-d17" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">183 950</span> | <span class="val" data-val-id="s42-t2-d18" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">183 950</span> | <span class="val" data-val-id="s42-t2-d19" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">183 950</span> | [N/D] |
-| Seuil de pauvreté (CDF/mois, converti)¹ | <span class="val" data-val-id="s42-t2-d20" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">72 420</span> | <span class="val" data-val-id="s42-t2-d21" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">72 420</span> | <span class="val" data-val-id="s42-t2-d22" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">72 420</span> | <span class="val" data-val-id="s42-t2-d23" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">72 420</span> | <span class="val" data-val-id="s42-t2-d24" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">72 420</span> | <span class="val" data-val-id="s42-t2-d25" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">170 400</span> | [N/D] |
+| Seuil de pauvreté (CDF/mois, converti)¹ | <span class="val" data-val-id="s42-t2-d20" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">72 420</span> | <span class="val" data-val-id="s42-t2-d21" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">72 420</span> | <span class="val" data-val-id="s42-t2-d22" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">72 420</span> | <span class="val" data-val-id="s42-t2-d23" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">72 420</span> | <span class="val" data-val-id="s42-t2-d24" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">72 420</span> | <span class="val" data-val-id="s42-t2-d25" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.2_vieillesse.md">172 774</span> | [N/D] |
 
 *Source : ESS OIT — CNSS. SMIG : Décret fixant le SMIG en RDC ; Ministère de l'Emploi et du Travail ; transmis par l'INS/RDC (canevas de collecte 2026) — fixé à 7 075 CDF/jour depuis 2018, soit 183 950 CDF/mois sur une base conventionnelle de 26 jours ouvrés (montant inchangé jusqu'en 2024). Seuil de pauvreté : <a href="/files/06_sources/officielles_web/INS_RDC_ECVM_pauvrete_inegalites_2024.txt" title="Source : INS-RDC — Enquête 1-2-3 (2019-2023) et ECVM 2024 ; canevas de collecte 2026" class="source-ref nv">INS/RDC, Enquête 1-2-3 (2019-2023) et ECVM 2024</a>.*
 
-¹ *Seuil converti en équivalent mensuel à partir des données transmises par l'INS/RDC ; méthode de conversion et note sur la lecture des montants nominaux en contexte d'inflation détaillées en [Annexe A.3](../../04_annexes/annexe_A_notes_methodologiques.md#a3-seuil-de-pauvrete-methode-de-conversion-et-lecture-des-montants-en-termes-reels). **La hausse du seuil en 2024 (72 420 → 170 400 CDF/mois) reflète le passage de l'Enquête 1-2-3 (2019-2023) à l'ECVM 2024 de l'INS et constitue une rupture de série : les comparaisons prestation/seuil de 2024 ne sont pas directement comparables à celles des années antérieures ; conversion à confirmer auprès de l'INS (voir Annexe A.3).***
+¹ *Source : INS/RDC — données transmises au projet et résultats ECVM 2024. Seuil converti en équivalent mensuel ; méthode de conversion et note sur la lecture des montants nominaux en contexte d'inflation détaillées en [Annexe A.3](../../04_annexes/annexe_A_notes_methodologiques.md#a3-seuil-de-pauvrete-methode-de-conversion-et-lecture-des-montants-en-termes-reels). **La hausse du seuil en 2024 (72 420 → environ 172 774 CDF/mois) reflète le passage de l'Enquête 1-2-3 (2019-2023) à l'ECVM 2024 de l'INS et constitue une rupture de série ; la valeur 2 414 CDF/jour des années antérieures reste à confirmer dans une publication INS.***
 
 ² *Le montant unitaire déclaré par la CNSS diminue nominalement entre 2022 (320 000 CDF) et 2023 (230 000 CDF), à rebours de la tendance haussière observée depuis 2019. Cette baisse n'est pas expliquée dans les données disponibles et reste à confirmer auprès de la CNSS avant validation finale du bulletin.*
 
@@ -1127,13 +1145,13 @@ Les estimations de l'emploi public fournissent un ordre de grandeur de la popula
 | CNSS | Régime contributif — secteur formel | Affiliés enregistrés (N3) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | CNSS | Régime contributif — secteur formel | Cotisants actifs (N4) | <span class="val" data-val-id="s43-t1-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">676 179</span> | <span class="val" data-val-id="s43-t1-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">508 708</span> | <span class="val" data-val-id="s43-t1-d3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">591 130</span> | <span class="val" data-val-id="s43-t1-d4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">613 761</span> | <span class="val" data-val-id="s43-t1-d22" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">578 272</span> | <span class="val" data-val-id="s43-t1-d23" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">800 486</span> | [N/D] |
 | CNSSAP | Régime contributif — agents publics | Affiliés enregistrés (N3) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| CNSSAP | Régime contributif — agents publics | Cotisants actifs (N4) | [N/D] | <span class="val" data-val-id="s43-t1-d2020" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">172 304</span> | <span class="val" data-val-id="s43-t1-d5" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">190 545</span> | <span class="val" data-val-id="s43-t1-d6" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">198 399</span> | [N/D]<sup>2</sup> | [N/D]<sup>2</sup> | [N/D] |
+| CNSSAP | Régime contributif — agents publics | Cotisants actifs (N4) | [N/D] | <span class="val" data-val-id="s43-t1-d2020" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">172 304</span> | <span class="val" data-val-id="s43-t1-d5" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">190 545</span> | <span class="val" data-val-id="s43-t1-d6" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">198 399</span> | <span class="val" data-val-id="s43-t1-d2023" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">1 004 106</span><sup>2</sup> | <span class="val" data-val-id="s43-t1-d2024" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">1 013 104</span><sup>2</sup> | <span class="val" data-val-id="s43-t1-d2025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.3_age_actif.md">1 470 429</span> |
 | Régimes spéciaux (FARDC, magistrats, parlementaires…) | Dispositif statutaire budgétaire | Personnes couvertes par dispositif statutaire budgétaire | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Protection budgétaire hors régime spécial | Dispositif statutaire direct de l'État | Agents publics effectivement couverts, hors CNSSAP | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
 *Sources : OIT, ILOSTAT (emploi salarié du secteur public, observation 2020) ; ESS OIT — CNSS (2019–2024) et CNSSAP (2020–2024). ILOSTAT ne fournit pas d'observation pour 2019 et 2021–2025 dans la série retenue : ces années sont indiquées [N/D] et ne font l'objet d'aucune interpolation. Affiliés enregistrés (N3) CNSS et CNSSAP : données non disponibles dans les ESS mobilisées pour ce bulletin — à instruire. Régimes spéciaux et protection budgétaire hors régime spécial : données non disponibles — à instruire. L'écart entre l'emploi public estimé et les affiliés ou cotisants CNSSAP ne constitue pas, à lui seul, une mesure de la couverture budgétaire effective.*
 
-² *La base institutionnelle enregistre un effectif de 1 004 106 (2023) et 1 013 104 (2024) pour la CNSSAP, en forte hausse par rapport aux 198 399 cotisants de 2022. Cette valeur n'est pas retenue ici : elle pourrait correspondre à des affiliés/éligibles (N3) plutôt qu'à des cotisants actifs (N4) au sens strict, possiblement en lien avec la réforme de transfèrement des agents publics vers la CNSSAP. Point à confirmer auprès de la CNSSAP — voir DM-019, `00_pilotage/decisions_methodologiques.md`.*
+² *La base institutionnelle enregistre un effectif de 1 004 106 (2023) et 1 013 104 (2024) pour la CNSSAP, en forte hausse par rapport aux 198 399 cotisants de 2022. Conformément à DM-019, ces valeurs sont retenues comme cotisants actifs N4 pour le calcul du bulletin, avec réserve sur la rupture de série et la répétition de l'effectif dans les prestations de 2023. La comparabilité détaillée avec 2022 reste à documenter auprès de la CNSSAP.*
 
 ### Bénéficiaires de prestations de maternité en espèce <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
@@ -1149,6 +1167,8 @@ La protection maternité de la CNSS comprend trois prestations distinctes : l'in
 | Bénéf. maternité — régimes spéciaux | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
 *Source : ESS OIT — CNSS (2019–2024). Régimes spéciaux : données non disponibles.*
+
+Les indemnités journalières de maternité restent présentées ici comme données institutionnelles, mais elles sont exclues des indicateurs ODD 1.3.1 conformément à la décision méthodologique DM-022. Cette exclusion vise à éviter de compter comme personnes couvertes par une prestation des bénéficiaires ponctuels déjà compris dans les cotisants actifs.
 
 > **Note méthodologique — faiblesse des chiffres de maternité CNSS :** Les effectifs de bénéficiaires déclarés sont faibles au regard de la population féminine cotisante observée dans les ESS. Les données disponibles ne permettent pas d'en établir la cause. Elles peuvent notamment refléter un recours limité aux prestations, une déclaration incomplète ou un décalage dans l'enregistrement des demandes. Ces hypothèses doivent être vérifiées auprès de la CNSS.
 
@@ -1203,14 +1223,14 @@ Points à couvrir :
   · Fragmentation des programmes non contributifs : couverture partielle et géographiquement inégale
 
 Logique rédactionnelle :
-Distinguer la couverture directe (enfant bénéficiaire d'une prestation propre) de la couverture indirecte (enfant d'un assuré). L'ODD 1.3.1 mesure les enfants (0-14) couverts par au moins une prestation — préciser la méthodologie retenue.
+Distinguer la couverture directe (enfant bénéficiaire d'une prestation propre) de la couverture indirecte (enfant d'un assuré). L'ODD 1.3.1 mesure la population âgée de 0 à 17 ans couverte par au moins une prestation — préciser la méthodologie retenue.
 
 Sources mobilisables :
 - ESS CNSS 2019–2022 (branche prestations familiales)
 - ESS CNSSAP 2020–2022 (branche allocations familiales)
 - Rapports PSNPS / programmes gouvernementaux (à rechercher)
 - Rapports UNICEF, PAM, partenaires humanitaires (si disponibles)
-- INS RDC : population 0-14 ans
+- INS RDC : population 0-17 ans (A3)
 
 Séries temporelles :
 CNSS allocations familiales : 2019–2023. CNSSAP : 2020–2023. Non contributif : selon disponibilité des rapports.
@@ -1220,7 +1240,7 @@ Indicateurs clés attendus :
 - Nombre d'enfants couverts par allocations familiales CNSSAP (total)
 - Montant moyen allocation familiale (CDF)
 - Nombre de bénéficiaires programmes non contributifs enfants/familles
-- Taux de couverture enfants 0-14 ODD 1.3.1 (%)
+- Taux de couverture de la population 0-17 ans ODD 1.3.1 (%)
 
 Figures prévues et requêtes SQL :
 
@@ -1265,6 +1285,8 @@ Les allocations familiales constituent, en termes de volume déclaré, la princi
 
 *Source : ESS OIT — CNSS (2019–2024) et CNSSAP (2020–2022). Les valeurs CNSS correspondent aux estimations d'enfants enregistrées dans la base ESS après conversion des foyers bénéficiaires. Le facteur de 3,17 enfants par foyer est documenté pour 2019–2022 ; Régimes spéciaux : données non disponibles — à instruire.*
 
+*Point de vigilance : les valeurs CNSS 2021 et 2023 sont strictement identiques dans l'ESS (1 256 585 enfants, soit 1 256 584,83 avant arrondi). Cette reconduction peut signaler une duplication de saisie ; elle doit être confirmée auprès de la CNSS avant toute interprétation de l'évolution.*
+
 ### Adéquation des allocations familiales <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 L'allocation familiale est versée mensuellement par enfant à charge. Le tableau présente l'évolution du montant unitaire de cette allocation et le seuil de pauvreté par personne pour la même période.
@@ -1274,11 +1296,11 @@ L'allocation familiale est versée mensuellement par enfant à charge. Le tablea
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
 | Montant allocation familiale CNSS (CDF/mois) | — | — | — | — | [N/D] | [N/D] | [N/D] |
-| Seuil de pauvreté par personne (CDF/mois, converti)¹ | <span class="val" data-val-id="s44-t2-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.4_enfants_familles.md">72 420</span> | <span class="val" data-val-id="s44-t2-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.4_enfants_familles.md">72 420</span> | <span class="val" data-val-id="s44-t2-d3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.4_enfants_familles.md">72 420</span> | <span class="val" data-val-id="s44-t2-d4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.4_enfants_familles.md">72 420</span> | <span class="val" data-val-id="s44-t2-d5" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.4_enfants_familles.md">72 420</span> | <span class="val" data-val-id="s44-t2-d6" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.4_enfants_familles.md">170 400</span> | [N/D] |
+| Seuil de pauvreté par personne (CDF/mois, converti)¹ | <span class="val" data-val-id="s44-t2-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.4_enfants_familles.md">72 420</span> | <span class="val" data-val-id="s44-t2-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.4_enfants_familles.md">72 420</span> | <span class="val" data-val-id="s44-t2-d3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.4_enfants_familles.md">72 420</span> | <span class="val" data-val-id="s44-t2-d4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.4_enfants_familles.md">72 420</span> | <span class="val" data-val-id="s44-t2-d5" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.4_enfants_familles.md">72 420</span> | <span class="val" data-val-id="s44-t2-d6" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.4_enfants_familles.md">172 774</span> | [N/D] |
 
 *Source : ESS OIT — CNSS. Seuil de pauvreté : <a href="/files/06_sources/officielles_web/INS_RDC_ECVM_pauvrete_inegalites_2024.txt" title="Source : INS-RDC — Enquête 1-2-3 (2019-2023) et ECVM 2024 ; canevas de collecte 2026" class="source-ref nv">INS/RDC, Enquête 1-2-3 (2019-2023) et ECVM 2024</a>. L’allocation, d’un montant de24 300 FC est versé trimestriellement.*
 
-¹ *Seuil converti en équivalent mensuel à partir des données transmises par l'INS/RDC ; méthode de conversion détaillée en [Annexe A.3](../../04_annexes/annexe_A_notes_methodologiques.md#a3-seuil-de-pauvrete-methode-de-conversion-et-lecture-des-montants-en-termes-reels). **La hausse du seuil en 2024 (72 420 → 170 400 CDF/mois) reflète le passage de l'Enquête 1-2-3 (2019-2023) à l'ECVM 2024 de l'INS et constitue une rupture de série : les comparaisons prestation/seuil de 2024 ne sont pas directement comparables à celles des années antérieures ; conversion à confirmer auprès de l'INS (voir Annexe A.3).***
+¹ *Source : INS/RDC — données transmises au projet et résultats ECVM 2024. Seuil converti en équivalent mensuel ; méthode de conversion détaillée en [Annexe A.3](../../04_annexes/annexe_A_notes_methodologiques.md#a3-seuil-de-pauvrete-methode-de-conversion-et-lecture-des-montants-en-termes-reels). **La hausse du seuil en 2024 (72 420 → environ 172 774 CDF/mois) reflète le passage de l'Enquête 1-2-3 (2019-2023) à l'ECVM 2024 de l'INS et constitue une rupture de série ; la valeur 2 414 CDF/jour des années antérieures reste à confirmer dans une publication INS.***
 
 ### Enfants bénéficiaires de prestations non contributives <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
@@ -1390,7 +1412,7 @@ La pension minimale d'invalidité et la pension minimale de vieillesse sont fix�
 |---|---|---|---|---|---|---|---|
 | Pension invalidité CNSS (CDF/mois) | <span class="val" data-val-id="s45-t2-d5" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">180 000</span> | <span class="val" data-val-id="s45-t2-d6" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">220 000</span> | <span class="val" data-val-id="s45-t2-d7" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">320 000</span> | <span class="val" data-val-id="s45-t2-d8" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">320 000</span> | <span class="val" data-val-id="s45-t2-d19b" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">230 000</span> | <span class="val" data-val-id="s45-t2-d20b" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">230 000</span> | [N/D] |
 | Pension vieillesse CNSS (CDF/mois) | <span class="val" data-val-id="s45-t2-d9" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">180 000</span> | <span class="val" data-val-id="s45-t2-d10" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">220 000</span> | <span class="val" data-val-id="s45-t2-d11" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">320 000</span> | <span class="val" data-val-id="s45-t2-d12" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">320 000</span> | <span class="val" data-val-id="s45-t2-d21b" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">230 000</span> | <span class="val" data-val-id="s45-t2-d22b" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">230 000</span> | [N/D] |
-| Seuil de pauvreté (CDF/mois, converti) | <span class="val" data-val-id="s45-t2-d13" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">72 420</span> | <span class="val" data-val-id="s45-t2-d14" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">72 420</span> | <span class="val" data-val-id="s45-t2-d15" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">72 420</span> | <span class="val" data-val-id="s45-t2-d16" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">72 420</span> | <span class="val" data-val-id="s45-t2-d17" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">72 420</span> | <span class="val" data-val-id="s45-t2-d18" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">170 400</span> | [N/D] |
+| Seuil de pauvreté (CDF/mois, converti) | <span class="val" data-val-id="s45-t2-d13" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">72 420</span> | <span class="val" data-val-id="s45-t2-d14" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">72 420</span> | <span class="val" data-val-id="s45-t2-d15" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">72 420</span> | <span class="val" data-val-id="s45-t2-d16" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">72 420</span> | <span class="val" data-val-id="s45-t2-d17" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">72 420</span> | <span class="val" data-val-id="s45-t2-d18" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.5_invalidite.md">172 774</span> | [N/D] |
 
 ### Bénéficiaires des programmes non contributifs pour les personnes handicapées <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
@@ -1486,16 +1508,16 @@ Les prestations de survie sont versées aux ayants droit d'un assuré décédé 
 |---|---|---|---|---|---|---|---|---|
 | CNSS | Pension des survivants (bénéf.) | <span class="val" data-val-id="s46-t1-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">24 725</span> | <span class="val" data-val-id="s46-t1-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">25 720</span> | <span class="val" data-val-id="s46-t1-d3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">28 355</span> | <span class="val" data-val-id="s46-t1-d4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">31 524</span> | <span class="val" data-val-id="s46-t1-d33" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">30 778</span> | <span class="val" data-val-id="s46-t1-d34" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">33 506</span> | [N/D] |
 | CNSS | Rentes de survivants AT/MP (bénéf.) | <span class="val" data-val-id="s46-t1-d5" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">1 476</span> | <span class="val" data-val-id="s46-t1-d6" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">1 608</span> | <span class="val" data-val-id="s46-t1-d7" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">1 845</span> | <span class="val" data-val-id="s46-t1-d8" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">1 781</span> | <span class="val" data-val-id="s46-t1-d35" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">1 608</span> | [N/D]<sup>2</sup> | [N/D] |
-| CNSS | Allocation frais funéraires (bénéf.) | <span class="val" data-val-id="s46-t1-d9" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">1 766</span> | <span class="val" data-val-id="s46-t1-d10" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">589</span> | <span class="val" data-val-id="s46-t1-d11" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">849</span> | <span class="val" data-val-id="s46-t1-d12" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">533</span> | [N/D] | [N/D]<sup>2</sup> | [N/D] |
-| CNSSAP | Pension des survivants (bénéf.) | [N/D] | <span class="val" data-val-id="s46-t1-d42020" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">90</span> | <span class="val" data-val-id="s46-t1-d13" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">217</span> | <span class="val" data-val-id="s46-t1-d14" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">6 964</span> | <span class="val" data-val-id="s46-t1-d36" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">19 320</span> | <span class="val" data-val-id="s46-t1-d37" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">12 984</span> | [N/D] |
-| SESOPA — anciens parlementaires | Pension de réversion (bénéf.) | <span class="val" data-val-id="s46-t1-d52019" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">718</span> | <span class="val" data-val-id="s46-t1-d52020" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">718</span> | <span class="val" data-val-id="s46-t1-d52021" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">718</span> | <span class="val" data-val-id="s46-t1-d52022" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">718</span> | <span class="val" data-val-id="s46-t1-d52023" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">718</span> | <span class="val" data-val-id="s46-t1-d52024" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">718</span> | <span class="val" data-val-id="s46-t1-d52025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">718</span> |
+| CNSS | Allocation frais funéraires (bénéf.) | [N/D] | <span class="val" data-val-id="s46-t1-d10" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">589</span> | <span class="val" data-val-id="s46-t1-d11" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">849</span> | <span class="val" data-val-id="s46-t1-d12" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">533</span> | [N/D] | [N/D]<sup>2</sup> | [N/D] |
+| CNSSAP | Pension des survivants (bénéf.) | [N/D] | <span class="val" data-val-id="s46-t1-d42020" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">90</span> | <span class="val" data-val-id="s46-t1-d13" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">217</span> | <span class="val" data-val-id="s46-t1-d14" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">6 964</span> | <span class="val" data-val-id="s46-t1-d36" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">19 320</span> | <span class="val" data-val-id="s46-t1-d37" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">12 984</span> | <span class="val" data-val-id="s46-t1-d42025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">448</span> |
+| SESOPA — anciens parlementaires | Pension de réversion (bénéf.) | <span class="val" data-val-id="s46-t1-d52019" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">396</span> | <span class="val" data-val-id="s46-t1-d52020" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">605</span> | <span class="val" data-val-id="s46-t1-d52021" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">636</span> | <span class="val" data-val-id="s46-t1-d52022" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">652</span> | <span class="val" data-val-id="s46-t1-d52023" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">682</span> | <span class="val" data-val-id="s46-t1-d52024" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">674</span> | <span class="val" data-val-id="s46-t1-d52025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">671</span> |
 | Autres régimes spéciaux | Pension des survivants (bénéf.) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
 *Source : ESS OIT — CNSS (2019–2024), CNSSAP (2020–2024) et SESOPA (2019–2025). CNSSAP : régime de base et réforme du transfert additionnés (2023 : 1 476 + 17 844 ; 2024 : 4 756 + 8 228). Les valeurs SESOPA, strictement identiques sur toute la période, peuvent correspondre à la reconduction d'une valeur de référence plutôt qu'à des observations annuelles distinctes ; elles restent à confirmer conformément à DM-020. Pour la CNSS, l'allocation de frais funéraires n'est pas renseignée en 2023 et les données AT/MP de 2024 ne sont pas retenues en raison de l'anomalie décrite ci-dessous. Autres régimes spéciaux : données non disponibles — à instruire.*
 
 La hausse des pensions de survie déclarées par la CNSSAP à partir de 2022 constitue une rupture importante dans la série. Elle doit être lue au regard de l'élargissement du périmètre institutionnel et, pour 2023–2024, de l'addition du régime de base et du dispositif de transfèrement. Les données disponibles ne permettent toutefois pas d'isoler l'effet propre de chaque changement ; les comparaisons interannuelles appellent donc à la prudence.
 
-² *Les données ESS CNSS 2024 pour la branche Risques professionnels (AT/MP) présentent une anomalie (valeur uniforme suspecte sur les 11 types de prestations) ; non retenues ici — voir DM-021, `00_pilotage/decisions_methodologiques.md`.*
+² *Les données ESS CNSS 2024 pour la branche Risques professionnels (AT/MP) ont été corrigées dans le fichier source : l'effectif est ventilé entre incapacité (2 853), survivants (1 107,33) et indemnité journalière (1 745,67). Cette ventilation reste à confirmer institutionnellement ; elle n'est pas utilisée dans le tableau des pensions de survie.*
 
 ### Adéquation des pensions de survie <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
@@ -1507,12 +1529,12 @@ Le tableau présente les montants unitaires de pension de survie et de pension d
 |---|---|---|---|---|---|---|---|
 | Pension survie CNSS (CDF/mois) | <span class="val" data-val-id="s46-t2-d15" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">180 000</span> | <span class="val" data-val-id="s46-t2-d16" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">220 000</span> | <span class="val" data-val-id="s46-t2-d17" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">320 000</span> | <span class="val" data-val-id="s46-t2-d18" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">320 000</span> | <span class="val" data-val-id="s46-t2-d38" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">230 000</span><sup>2</sup> | <span class="val" data-val-id="s46-t2-d39" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">230 000</span> | [N/D] |
 | Pension vieillesse CNSS (CDF/mois) | <span class="val" data-val-id="s46-t2-d19" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">180 000</span> | <span class="val" data-val-id="s46-t2-d20" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">220 000</span> | <span class="val" data-val-id="s46-t2-d21" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">320 000</span> | <span class="val" data-val-id="s46-t2-d22" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">320 000</span> | <span class="val" data-val-id="s46-t2-d40" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">230 000</span> | <span class="val" data-val-id="s46-t2-d41" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">230 000</span> | [N/D] |
-| Montant frais funéraires CNSS (CDF) | <span class="val" data-val-id="s46-t2-d23" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">180 000</span> | <span class="val" data-val-id="s46-t2-d24" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">220 000</span> | <span class="val" data-val-id="s46-t2-d25" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">320 000</span> | <span class="val" data-val-id="s46-t2-d26" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">320 000</span> | <span class="val" data-val-id="s46-t2-d42" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">180 000</span> | <span class="val" data-val-id="s46-t2-d43" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">320 000</span> | [N/D] |
-| Seuil de pauvreté (CDF/mois, converti)¹ | <span class="val" data-val-id="s46-t2-d27" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">72 420</span> | <span class="val" data-val-id="s46-t2-d28" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">72 420</span> | <span class="val" data-val-id="s46-t2-d29" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">72 420</span> | <span class="val" data-val-id="s46-t2-d30" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">72 420</span> | <span class="val" data-val-id="s46-t2-d31" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">72 420</span> | <span class="val" data-val-id="s46-t2-d32" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">170 400</span> | [N/D] |
+| Montant frais funéraires CNSS (CDF) | [N/D] | <span class="val" data-val-id="s46-t2-d24" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">220 000</span> | <span class="val" data-val-id="s46-t2-d25" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">320 000</span> | <span class="val" data-val-id="s46-t2-d26" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">320 000</span> | <span class="val" data-val-id="s46-t2-d42" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">180 000</span> | <span class="val" data-val-id="s46-t2-d43" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">320 000</span> | [N/D] |
+| Seuil de pauvreté (CDF/mois, converti)¹ | <span class="val" data-val-id="s46-t2-d27" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">72 420</span> | <span class="val" data-val-id="s46-t2-d28" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">72 420</span> | <span class="val" data-val-id="s46-t2-d29" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">72 420</span> | <span class="val" data-val-id="s46-t2-d30" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">72 420</span> | <span class="val" data-val-id="s46-t2-d31" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">72 420</span> | <span class="val" data-val-id="s46-t2-d32" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.6_deces_survie.md">172 774</span> | [N/D] |
 
 *Source : ESS OIT — CNSS. Seuil de pauvreté : <a href="/files/06_sources/officielles_web/INS_RDC_ECVM_pauvrete_inegalites_2024.txt" title="Source : INS-RDC — Enquête 1-2-3 (2019-2023) et ECVM 2024 ; canevas de collecte 2026" class="source-ref nv">INS/RDC, Enquête 1-2-3 (2019-2023) et ECVM 2024</a>.*
 
-¹ *Seuil converti en équivalent mensuel à partir des données transmises par l'INS/RDC ; méthode de conversion détaillée en [Annexe A.3](../../04_annexes/annexe_A_notes_methodologiques.md#a3-seuil-de-pauvrete-methode-de-conversion-et-lecture-des-montants-en-termes-reels). **La hausse du seuil en 2024 (72 420 → 170 400 CDF/mois) reflète le passage de l'Enquête 1-2-3 (2019-2023) à l'ECVM 2024 de l'INS et constitue une rupture de série : les comparaisons prestation/seuil de 2024 ne sont pas directement comparables à celles des années antérieures ; conversion à confirmer auprès de l'INS (voir Annexe A.3).***
+¹ *Source : INS/RDC — données transmises au projet et résultats ECVM 2024. Seuil converti en équivalent mensuel ; méthode de conversion détaillée en [Annexe A.3](../../04_annexes/annexe_A_notes_methodologiques.md#a3-seuil-de-pauvrete-methode-de-conversion-et-lecture-des-montants-en-termes-reels). **La hausse du seuil en 2024 (72 420 → environ 172 774 CDF/mois) reflète le passage de l'Enquête 1-2-3 (2019-2023) à l'ECVM 2024 de l'INS et constitue une rupture de série ; la valeur 2 414 CDF/jour des années antérieures reste à confirmer dans une publication INS.***
 
 ² *Le montant unitaire déclaré par la CNSS diminue nominalement entre 2022 (320 000 CDF) et 2023 (230 000 CDF) ; voir la note correspondante au Tableau 4.2 (section 4.2, vieillesse). Ce point reste à confirmer auprès de la CNSS.*
 
@@ -1548,8 +1570,8 @@ Sources disponibles :
 
 Données manquantes :
 - FSS : données 2019–2021 absentes (institution non encore opérationnelle)
-- FSS 2022 : à extraire de l'ESS_FSS_2022.xlsm
-- MESP 2023–2025 : à collecter
+- FSS 2022 : fichier ESS intégré ; champs quantitatifs non renseignés
+- MESP 2023–2025 : fichiers ESS MESP disponibles et intégrés
 - Kobota Ofele (non contributif) : aucune donnée chiffrée disponible en base
 
 Figures prévues :
@@ -1563,15 +1585,19 @@ Statut : rédigé
 
 ## Texte rédigé
 
-La protection de la santé en RDC s'organise autour de trois types de dispositifs : un régime national d'assurance maladie à double composante contributive et non contributive (FSS), un régime statutaire obligatoire pour les enseignants (MESP), et un secteur de mutuelles de santé volontaires.
+La protection de la santé en RDC s'organise autour de plusieurs dispositifs : le FSS, qui porte des régimes d'assurance maladie et des programmes d'assistance ; la MESP, régime statutaire obligatoire pour les enseignants ; les dispositifs d'assistance médicale de l'État ; et un secteur de mutuelles de santé volontaires. Les sources disponibles ne sont pas toutes de même nature : les données ESS sont présentées séparément des informations institutionnelles transmises dans le cadre de l'atelier de validation.
 
 ---
 
-### Protection statutaire en matière de santé : Le FSS — Fonds de Solidarité de Santé <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+### Fonds de solidarité sociale : assurance maladie et assistance <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-<a href="/files/06_sources/officielles_web/FSS_RDC_produits_regimes.txt" title="Source : FSS RDC — Site officiel fss.cd, consulté juin 2026 — Loi n°18/035 du 13 décembre 2018 ; Décret n°22/13 du 09 avril 2022" class="source-ref source-ref-text nv" data-val-id="s47-p1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">Institué par la loi n°18/035 du 13 décembre 2018 et organisé par le décret n°22/13 du 9 avril 2022, le FSS est la caisse nationale d'assurance maladie de la RDC.</a> Il est devenu opérationnel en 2022 et constitue l'un des instruments de mise en œuvre de la couverture sanitaire universelle. Il propose trois produits : Afia Bora (paquet de base obligatoire, régime contributif pour les travailleurs du secteur formel), Afia Bora Prime (paquet complémentaire contributif), et Kobota Ofele (programme d'assistance de l'État pour les mères et les nouveau-nés, financement non contributif).
+<a href="/files/06_sources/officielles_web/FSS_RDC_produits_regimes.txt" title="Source : FSS RDC — Site officiel fss.cd, consulté juin 2026 — Loi n°18/035 du 13 décembre 2018 ; Décret n°22/13 du 09 avril 2022" class="source-ref source-ref-text nv" data-val-id="s47-p1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">Institué par la loi n°18/035 du 13 décembre 2018 et organisé par le décret n°22/13 du 9 avril 2022, le FSS est la caisse nationale d'assurance maladie de la RDC.</a> Il constitue l'un des instruments de mise en œuvre de la couverture sanitaire universelle. Les produits documentés comprennent Afia Bora (paquet de base), Afia Bora Prime (paquet complémentaire) et Kobota Ofele, programme d'assistance de l'État pour les mères et les nouveau-nés.
 
-<p class="table-caption"><strong>Tableau 4.14</strong> — Indicateurs de couverture FSS (2019–2025)</p>
+Les données de l'ESS FSS 2022 ne renseignent pas les effectifs ni les dépenses. En revanche, les données institutionnelles transmises pour l'atelier documentent des prises en charge de femmes enceintes et de nouveau-nés : 181 733 bénéficiaires indiqués à Kinshasa entre septembre et décembre 2023, 951 276 dans les trois provinces couvertes en 2024 et 2 517 081 en 2025. Les coûts correspondants sont respectivement de 15 499 592 328,4 CDF, 71 779 182 064,28 CDF et 116 036 430 002,36 CDF. Ces effectifs additionnent les femmes enceintes et les nouveau-nés ; ils ne doivent pas être interprétés sans confirmation comme des personnes uniques. Les périmètres géographiques et temporels diffèrent selon les années.
+
+La DEP-SANTÉ apporte, pour sa part, une information qualitative sur l'assistance médicale de l'État destinée aux personnes économiquement faibles et vulnérables, ainsi que sur les soins et évacuations sanitaires. Son fichier ESS 2025 n'a pas été importé, aucune ligne de régime valide n'ayant été détectée ; ces éléments sont donc présentés comme une information institutionnelle à confirmer et non comme une série statistique.
+
+<p class="table-caption"><strong>Tableau 4.14</strong> — Indicateurs de couverture FSS issus de l'ESS (2019–2025)</p>
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
@@ -1581,13 +1607,13 @@ La protection de la santé en RDC s'organise autour de trois types de dispositif
 | Bénéficiaires Kobota Ofele (non contributif) | [N/A] | [N/A] | [N/A] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Dépenses de prestations (CDF) | [N/A] | [N/A] | [N/A] | [N/D] | [N/D] | [N/D] | [N/D] |
 
-*[N/A] = institution non encore opérationnelle. [N/D] = donnée non renseignée dans les champs quantitatifs de l'ESS FSS 2022 intégrée à la base, ou non disponible pour les exercices ultérieurs. Source : ESS OIT — FSS 2022 ; FSS, fss.cd, juin 2026.*
+*[N/A] = institution non encore opérationnelle. [N/D] = donnée non renseignée dans les champs quantitatifs de l'ESS FSS 2022 intégrée à la base, ou non disponible pour les exercices ultérieurs. Les données institutionnelles d'atelier présentées dans le texte ci-dessus ne sont pas des données ESS. Sources : ESS OIT — FSS 2022 ; FSS, fss.cd, juin 2026 ; fichier institutionnel FSS transmis lors de l'atelier de validation.*
 
 ---
 
 ### Protection statutaire en matière de santé : La MESP — Mutuelle des Enseignants de l'EPST <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-La Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique (MESP) est une mutuelle de santé statutaire et obligatoire. Elle est antérieure au FSS et couvre les enseignants relevant du ministère de l'EPST selon un mécanisme contributif. Les ESS disponibles couvrent les exercices 2019 à 2025.
+La Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique (MESP) est une institution distincte de la gratuité de l'enseignement : il s'agit d'une mutuelle de santé statutaire et obligatoire, dotée de ses propres données ESS et de son propre mécanisme contributif. Elle couvre les enseignants relevant du ministère de l'EPST et relève de la tutelle du même ministère, aujourd'hui dénommé MINEDU-NC. Les ESS disponibles couvrent les exercices 2019 à 2025 et constituent la source statistique disponible pour cette institution.
 
 <p class="table-caption"><strong>Tableau 4.15</strong> — Indicateurs de couverture MESP (2019–2025)</p>
 
@@ -1595,10 +1621,10 @@ La Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique 
 |---|---|---|---|---|---|---|---|
 | Affiliés MESP | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Cotisants actifs MESP | <span class="val" data-val-id="s47-t2-d12019" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">50 256</span> | <span class="val" data-val-id="s47-t2-d12020" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">54 383</span> | <span class="val" data-val-id="s47-t2-d12021" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">60 745</span> | <span class="val" data-val-id="s47-t2-d12022" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">80 041</span> | <span class="val" data-val-id="s47-t2-d12023" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">87 019</span> | <span class="val" data-val-id="s47-t2-d12024" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">96 538</span> | <span class="val" data-val-id="s47-t2-d12025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">112 608</span> |
-| Bénéficiaires de la prise en charge des soins | <span class="val" data-val-id="s47-t2-d22019" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">122 547</span> | <span class="val" data-val-id="s47-t2-d22020" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">130 961</span> | <span class="val" data-val-id="s47-t2-d22021" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">141 826</span> | <span class="val" data-val-id="s47-t2-d22022" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">164 877</span> | <span class="val" data-val-id="s47-t2-d22023" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">176 471</span> | <span class="val" data-val-id="s47-t2-d22024" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">196 574</span> | <span class="val" data-val-id="s47-t2-d22025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">217 171</span> |
+| Personnes couvertes / bénéficiaires déclarés | <span class="val" data-val-id="s47-t2-d22019" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">122 547</span> | <span class="val" data-val-id="s47-t2-d22020" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">130 961</span> | <span class="val" data-val-id="s47-t2-d22021" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">141 826</span> | <span class="val" data-val-id="s47-t2-d22022" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">164 877</span> | <span class="val" data-val-id="s47-t2-d22023" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">176 471</span> | <span class="val" data-val-id="s47-t2-d22024" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">196 574</span> | <span class="val" data-val-id="s47-t2-d22025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.7_sante.md">217 171</span> |
 | Dépenses de prestations (CDF) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
-*Source : ESS OIT — MESP 2019–2025. Les cotisants actifs correspondent aux enseignants pour lesquels une cotisation est enregistrée. Les bénéficiaires correspondent aux personnes protégés.*
+*Source : fichiers ESS MESP 2019–2022 déjà intégrés à la base et fichiers ESS MESP 2023, 2024 et 2025 déposés par l'institution. Les cotisants actifs correspondent aux enseignants pour lesquels une cotisation est enregistrée. Les personnes couvertes / bénéficiaires déclarés correspondent aux effectifs déclarés dans la prestation ; ils ne mesurent pas nécessairement les personnes ayant effectivement utilisé des soins au cours de l'année. Pour 2019–2022, ils résultent de l'addition des titulaires et des membres de famille ; pour 2023–2025, le questionnaire fournit directement le total de la prestation.*
 
 La série disponible montre une progression continue des cotisants actifs et des bénéficiaires déclarés entre 2019 et 2025. Cette évolution documente l'extension du périmètre observé par la MESP.
 
@@ -1631,11 +1657,6 @@ Points à couvrir :
   · Total dépenses administratives par institution
   · Ratio dépenses administratives / dépenses totales (indicateur d'efficience)
   · NB : toujours séparer dépenses de prestations et dépenses administratives
-- Dépenses en % du PIB :
-  · Total protection sociale / PIB (%)
-  · Régimes contributifs / PIB (%)
-  · Comparaison régionale (Afrique subsaharienne, pays comparables)
-  · Référence OIT : seuil recommandé / trajectoire cible
 
 Logique rédactionnelle :
 Ne jamais additionner des données de sources différentes sans précaution méthodologique. Préciser pour chaque chiffre agrégé s'il inclut ou exclut le financement humanitaire. Séparer systématiquement dépenses de prestations (transfers to households) et dépenses de gestion administrative.
@@ -1645,8 +1666,6 @@ Sources mobilisables :
 - ESS CNSSAP 20202022 (recettes, dépenses, réserves)
 - Budget de l'État (lois de finances — transferts vers CNSSAP, programmes sociaux)
 - Données programmes non contributifs (à vérifier)
-- World Social Protection Report OIT (comparaison régionale % PIB)
-- FMI / Banque mondiale (données PIB RDC)
 
 Séries temporelles :
 CNSS finances : 20192023. CNSSAP finances : 20202023.
@@ -1657,7 +1676,6 @@ Indicateurs clés attendus :
 - Dépenses de prestations CNSS (total et par branche)
 - Dépenses de prestations CNSSAP (total et par branche)
 - Ratio dépenses administratives / dépenses totales CNSS et CNSSAP (%)
-- Dépenses totales PS / PIB (%)
 - Réserves / fonds de réserve (CNSS, CNSSAP)
 
 Figures prévues et requêtes SQL :
@@ -1707,11 +1725,11 @@ Les recettes des régimes contributifs proviennent principalement des cotisation
 | Institution | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
 | CNSS — recettes totales (milliards CDF) | <span class="val" data-val-id="s48-t1-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">577,8 Mds CDF</span> | <span class="val" data-val-id="s48-t1-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">725,7 Mds CDF</span> | <span class="val" data-val-id="s48-t1-d3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">926,5 Mds CDF</span> | <span class="val" data-val-id="s48-t1-d4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">1067,8 Mds CDF</span> | <span class="val" data-val-id="s48-t1-d18" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">1754,6 Mds CDF</span><sup>2</sup> | <span class="val" data-val-id="s48-t1-d19" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">1886,7 Mds CDF</span> | [N/D] |
-| CNSSAP — recettes totales (milliards CDF) | [N/D] | <span class="val" data-val-id="s48-t1-d5" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">40,5 Mds CDF</span> | <span class="val" data-val-id="s48-t1-d6" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">41,6 Mds CDF</span> | <span class="val" data-val-id="s48-t1-d7" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">52,4 Mds CDF</span> | <span class="val" data-val-id="s48-t1-d20" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">281,6 Mds CDF</span> | <span class="val" data-val-id="s48-t1-d21" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">460,3 Mds CDF</span> | [N/D] |
+| CNSSAP — recettes totales (milliards CDF) | [N/D] | <span class="val" data-val-id="s48-t1-d5" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">40,5 Mds CDF</span> | <span class="val" data-val-id="s48-t1-d6" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">41,6 Mds CDF</span> | <span class="val" data-val-id="s48-t1-d7" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">52,4 Mds CDF</span> | <span class="val" data-val-id="s48-t1-d20" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">353,8 Mds CDF</span> | <span class="val" data-val-id="s48-t1-d21" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">569,2 Mds CDF</span> | <span class="val" data-val-id="s48-t1-d2025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">833,1 Mds CDF</span> |
 | Régimes spéciaux — recettes totales (milliards CDF) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Programmes non contributifs — financement public | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
-*Source : ESS OIT — CNSS (2019–2024) et CNSSAP (2020–2024). Régimes spéciaux et programmes non contributifs : données non disponibles — à instruire. Pour la CNSSAP, les valeurs 2020–2022 correspondent au régime de base ; les agrégats 2023–2024 intègrent les composantes déclarées dans les ESS de ces exercices.*
+*Source : ESS OIT — CNSS (2019–2024) et CNSSAP (2020–2024). Régimes spéciaux et programmes non contributifs : données non disponibles — à instruire. Pour la CNSSAP, les valeurs 2020–2022 correspondent au régime de base ; les agrégats 2023–2024 correspondent à la somme des recettes déclarées pour les régimes de base, risques professionnels, réforme de basculement et régime complémentaire. Les périmètres et l'absence éventuelle de doublons restent à confirmer.*
 
 ² *À partir de 2023, l'ESS CNSS ventile les recettes par branche (Prestations aux familles, Risques professionnels, Pensions) avec des montants différenciés, alors que 2019-2022 rapportaient un seul montant institutionnel répliqué sur les trois branches. La valeur 2023-2024 correspond à la somme des trois branches (2023 : 633,6 + 146,2 + 974,8 Mds ; 2024 : 681,3 + 157,2 + 1 048,2 Mds), ce qui introduit une rupture de méthode par rapport aux années antérieures ; à confirmer auprès de la CNSS.*
 
@@ -1724,10 +1742,10 @@ Les dépenses de prestations correspondent aux transferts effectifs versés aux 
 | Institution | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
 | CNSS — dépenses de prestations (milliards CDF) | <span class="val" data-val-id="s48-t2-d8" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">328,5 Mds CDF</span> | <span class="val" data-val-id="s48-t2-d9" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">436,5 Mds CDF</span> | <span class="val" data-val-id="s48-t2-d10" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">493,2 Mds CDF</span> | <span class="val" data-val-id="s48-t2-d11" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">677,8 Mds CDF</span> | [N/D] | [N/D] | [N/D] |
-| CNSSAP — dépenses de prestations (milliards CDF) | [N/D] | <span class="val" data-val-id="s48-t2-d12" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">7,2 Mds CDF</span> | <span class="val" data-val-id="s48-t2-d13" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">8,5 Mds CDF</span> | <span class="val" data-val-id="s48-t2-d14" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">34,4 Mds CDF</span> | <span class="val" data-val-id="s48-t2-d22" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">24,3 Mds CDF</span> | <span class="val" data-val-id="s48-t2-d23" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">29,7 Mds CDF</span> | [N/D] |
+| CNSSAP — dépenses de prestations (milliards CDF) | [N/D] | <span class="val" data-val-id="s48-t2-d12" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">7,2 Mds CDF</span> | <span class="val" data-val-id="s48-t2-d13" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">8,5 Mds CDF</span> | <span class="val" data-val-id="s48-t2-d14" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">34,4 Mds CDF</span> | <span class="val" data-val-id="s48-t2-d22" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">32,8 Mds CDF</span> | <span class="val" data-val-id="s48-t2-d23" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">51,3 Mds CDF</span> | <span class="val" data-val-id="s48-t2-d2025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">140,0 Mds CDF</span> |
 | Régimes spéciaux — dépenses de prestations (milliards CDF) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
-*Source : ESS OIT — CNSS (2019–2024) et CNSSAP (2020–2024). Régimes spéciaux : données non disponibles — à instruire. CNSS : dépenses de prestations non renseignées dans les ESS 2023–2024. Pour la CNSSAP, les valeurs 2020–2022 correspondent au régime de base ; les agrégats 2023–2024 intègrent les composantes déclarées dans les ESS de ces exercices.*
+*Source : ESS OIT — CNSS (2019–2024) et CNSSAP (2020–2024). Régimes spéciaux : données non disponibles — à instruire. CNSS : dépenses de prestations non renseignées dans les ESS 2023–2024. Pour la CNSSAP, les valeurs 2020–2022 correspondent au régime de base ; les agrégats 2023–2024 correspondent à la somme des dépenses de prestations déclarées pour les composantes disponibles.*
 
 Les dépenses de prestations de la CNSS augmentent entre 2019 et 2022, mais l'absence de données pour 2023 et 2024 empêche de prolonger cette lecture. La série CNSSAP présente un niveau plus élevé en 2022, puis un repli en 2023 et une reprise en 2024.
 
@@ -1739,8 +1757,8 @@ Les dépenses de prestations de la CNSS augmentent entre 2019 et 2022, mais l'ab
 |---|---|---|---|---|---|---|---|
 | CNSS — dépenses administratives (milliards CDF) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | CNSS — ratio admin / dépenses totales (%) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| CNSSAP — dépenses administratives (milliards CDF) | [N/D] | <span class="val" data-val-id="s48-t3-d15" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">5,6 Mds CDF</span> | <span class="val" data-val-id="s48-t3-d16" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">6,9 Mds CDF</span> | <span class="val" data-val-id="s48-t3-d17" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">14,0 Mds CDF</span> | <span class="val" data-val-id="s48-t3-d24" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">41,8 Mds CDF</span> | <span class="val" data-val-id="s48-t3-d25" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">73,4 Mds CDF</span> | [N/D] |
-| CNSSAP — ratio admin / dépenses totales (%) | [N/D] | <span class="val" data-val-id="s48-t3-d2020" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">43,8</span> | <span class="val" data-val-id="s48-t3-d2021" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">44,8</span> | <span class="val" data-val-id="s48-t3-d2022" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">28,9</span> | <span class="val" data-val-id="s48-t3-d2023" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">63,3</span> | <span class="val" data-val-id="s48-t3-d2024" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">71,2</span> | [N/D] |
+| CNSSAP — dépenses administratives (milliards CDF) | [N/D] | <span class="val" data-val-id="s48-t3-d15" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">5,6 Mds CDF</span> | <span class="val" data-val-id="s48-t3-d16" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">6,9 Mds CDF</span> | <span class="val" data-val-id="s48-t3-d17" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">14,0 Mds CDF</span> | <span class="val" data-val-id="s48-t3-d24" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">41,8 Mds CDF</span> | <span class="val" data-val-id="s48-t3-d25" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">73,4 Mds CDF</span> | <span class="val" data-val-id="s48-t3-d2025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">261,4 Mds CDF</span> |
+| CNSSAP — ratio admin / dépenses totales (%) | [N/D] | <span class="val" data-val-id="s48-t3-d2020" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">43,8</span> | <span class="val" data-val-id="s48-t3-d2021" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">44,8</span> | <span class="val" data-val-id="s48-t3-d2022" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">28,9</span> | <span class="val" data-val-id="s48-t3-d2023" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">56,0</span> | <span class="val" data-val-id="s48-t3-d2024" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">58,9</span> | <span class="val" data-val-id="s48-t3-d2025-ratio" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">65,1</span> |
 | Régimes spéciaux — dépenses administratives | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
 *Source : ESS OIT — CNSSAP (2020–2024). Le ratio est calculé comme suit : dépenses administratives / (dépenses de prestations + dépenses administratives). Les dépenses administratives de la CNSS et des régimes spéciaux ne sont pas renseignées dans les ESS disponibles.*
@@ -1752,21 +1770,6 @@ Les dépenses de prestations de la CNSS augmentent entre 2019 et 2022, mais l'ab
 ### Responsabilité de l'employeur et régime d'entreprise <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 Certaines obligations de protection peuvent être prises en charge directement par l'employeur, sans transit par un organisme de sécurité sociale. Les données actuellement intégrées ne permettent pas d'identifier séparément les bénéficiaires, les prestations et les dépenses relevant de cette responsabilité directe. Cette composante n'est donc pas agrégée aux dépenses institutionnelles présentées ci-dessus.
-
-### Dépenses en proportion du PIB <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
-
-Le rapport des dépenses de protection sociale au PIB est calculé pour permettre des comparaisons temporelles et internationales. Les valeurs de référence pour l'Afrique subsaharienne et la moyenne mondiale sont issues du World Social Protection Report de l'OIT.
-
-<p class="table-caption"><strong>Tableau 4.19</strong> — Dépenses de protection sociale en proportion du PIB (2019–2025) <a href="/files/06_sources/ESS/ESS_CNSS/_texte/ESS_CNSS_2022.txt" title="Source : ESS OIT — tableaux statistiques standardises" class="source-ref source-ref-text nv" data-val-id="s48-t4-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_4/4.8_depenses_financement.md">[src]</a></p>
-
-| Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
-|---|---|---|---|---|---|---|---|
-| Dépenses PS totales (CNSS + CNSSAP) / PIB (%) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Dépenses PS (y.c. rég. spéciaux si données disponibles) / PIB (%) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Moyenne Afrique subsaharienne / PIB (%) | — | — | [WSPR] | [WSPR] | — | — | — |
-| Moyenne mondiale / PIB (%) | — | — | [WSPR] | [WSPR] | — | — | — |
-
-*Source : ESS OIT ; PIB RDC : Banque mondiale WDI ; comparaisons : World Social Protection Report OIT.*
 
 <!-- FIN FICHIER -->
 
@@ -1811,7 +1814,7 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 | Sous-indicateur ODD 1.3.1 | Définition |
 |---|---|
 | Population totale | % de la population couverte par au moins une prestation |
-| Enfants (0–14 ans) | % couverts par une prestation enfance/famille |
+| Population âgée de 0 à 17 ans | % couverte par une prestation enfance/famille |
 | Femmes ayant accouché | % couvertes par une prestation maternité |
 | Personnes âgées | % recevant une pension de vieillesse |
 | Actifs — cotisants à un régime contributif | % d'actifs pour lesquels une cotisation est effectivement enregistrée auprès de la CNSS ou de la CNSSAP |
@@ -1828,11 +1831,11 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 
 | Sous-indicateur ODD 1.3.1 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
-| Population totale (%) | 4,7 | 4,3 | 4,8 | 4,6 | 4,5 | 4,9 | 0,0 |
-| Enfants 0–14 ans (%) | 2,0 | 2,1 | 2,7 | 2,4 | 2,6 | 1,8 | 0,0 |
+| Population totale (%) | 3,2 | 2,8 | 3,3 | 3,2 | 3,9 | 4,1 | 1,6 |
+| Population 0–17 ans (%) | 1,7 | 1,9 | 2,4 | 2,1 | 2,3 | 1,6 | 0,0 |
 | Femmes ayant accouché — maternité (%) | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 | [N/D] |
 | Personnes âgées — pension vieillesse (%) | 1,0 | 1,0 | 1,0 | 1,1 | 1,1 | 1,1 | [N/D] |
-| Actifs — cotisants à un régime contributif (%) | 4,5 | 4,4 | 4,4 | 4,3 | 4,2 | 5,1 | [N/D] |
+| Actifs — cotisants à un régime contributif (%) | 4,5 | 4,4 | 4,4 | 4,3 | 3,8 | 4,7 | [N/D] |
 | Actifs — couverture statutaire budgétaire (%) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Actifs — couverture consolidée nationale (%) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Personnes handicapées — invalidité (%) | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 |
@@ -2048,7 +2051,7 @@ Ces conditions d'accès ont une incidence directe sur les indicateurs de couvert
 
 Plusieurs tableaux du chapitre 4 comparent le montant de prestations en espèces (pensions, allocations, rentes) au seuil de pauvreté national, afin d'en apprécier l'adéquation. Cette section documente, une seule fois pour l'ensemble du bulletin, la méthode de conversion retenue.
 
-La réponse transmise par l'Institut national de la statistique (INS/RDC) indique un seuil de pauvreté de 2 414 CDF (2019-2023) puis 5 680 CDF (2024), sous l'intitulé « CDF/personne/mois » ; le commentaire méthodologique associé précise toutefois qu'il s'agit d'un montant **par jour**. Ces deux formulations sont incompatibles avec un seuil mensuel usuel (le montant indiqué correspondrait alors à moins d'un dollar américain par mois). Les valeurs présentées dans le bulletin sont donc exprimées en équivalent mensuel, obtenues par une conversion conventionnelle × 30 jours (2 414 × 30 ≈ 72 420 CDF ; 5 680 × 30 ≈ 170 400 CDF), afin de permettre la comparaison directe avec les montants des prestations. Cette conversion est indicative et devra être confirmée auprès de l'INS avant la validation finale du bulletin.
+La réponse transmise au projet attribue à l'INS un seuil de 2 414 CDF (2019–2023) puis de 5 680 CDF (2024), sous l'intitulé « CDF/personne/mois » ; le commentaire méthodologique associé précise toutefois qu'il s'agit de montants **par jour**. La valeur de 2 414 CDF/jour n'a pas été retrouvée dans une publication publique vérifiable de l'INS et reste donc provisoire. En revanche, le seuil ECVM 2024 de 5 680 CDF/jour est corroboré par les résultats publics de l'enquête. Les valeurs présentées dans le bulletin sont exprimées en équivalent mensuel : 2 414 × 30 ≈ 72 420 CDF pour 2019–2023, à titre provisoire, et environ 172 774 CDF/mois en 2024 sur la base du montant annuel ECVM publié de 2 073 282 CDF. Cette différence reflète à la fois l'évolution des prix et le changement d'enquête/méthode ; elle ne doit pas être interprétée comme une simple actualisation automatique par l'inflation.
 
 *Source : <a href="/files/06_sources/officielles_web/INS_RDC_ECVM_pauvrete_inegalites_2024.txt" title="Source : INS-RDC — Enquête 1-2-3 (2019-2023) et ECVM 2024 ; canevas de collecte 2026" class="source-ref nv">INS/RDC, Enquête 1-2-3 (2019-2023) et ECVM 2024</a>.*
 
@@ -2105,7 +2108,6 @@ Pour chaque institution :
 Institutions à couvrir (liste provisoire) :
 - CNSS — Caisse Nationale de Sécurité Sociale (secteur privé)
 - CNSSAP — Caisse Nationale de Sécurité Sociale des Agents Publics
-- FNPSS — Fonds National de Promotion et de Service Social
 - SESOPA — Service de Sécurité Sociale des Parlementaires
 - Autres régimes spéciaux identifiés lors de la collecte
 
@@ -2224,44 +2226,44 @@ La CNSS a pour mission de coordonner et d'administrer les prestations de sécuri
 <p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
 <p align="center"><img src="/files/04_annexes/illustrations/annexe_B_CNSS_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
 
-### Données détaillées selon formulaire ESS fournies
+### Données détaillées (par régime et année)
 
 <p class="table-caption"><strong>Tableau B.1.5</strong> — Données détaillées par régime et année, CNSS (2019–2025)<span class="footnote">Pour les allocations familiales de la CNSS, le nombre d'enfants bénéficiaires est estimé en multipliant par 3,17 le nombre de titulaires de prestations familiales communiqué par la CNSS. Ce facteur correspond au nombre moyen d'enfants de moins de 20 ans par foyer en RDC en 2013, d'après UN HH Size and Composition 2019. Il s'agit donc d'une estimation et non d'un décompte administratif direct d'enfants.</span></p>
 
 | Régime | Année | Cotisants totaux | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./cotisant (k CDF) |
 |---|---|---|---|---|---|---|---|
-| Branche des Prestations aux familles | 2019 | 676,179 | 847,801 | 328.47 | 577.83 | — | — |
-| Branche des Prestations aux familles | 2020 | 508,708 | 933,349 | 436.46 | 725.69 | — | — |
-| Branche des Prestations aux familles | 2021 | 591,130 | 1,256,938 | 493.19 | 926.53 | — | — |
-| Branche des Prestations aux familles | 2022 | 613,761 | 1,130,824 | 677.79 | 1,067.79 | — | — |
-| Branche des Prestations aux familles | 2023 | 578,272 | 1,257,285 | — | 633.61 | — | 1,096 |
-| Branche des Prestations aux familles | 2024 | 800,486 | 911,951 | — | 681.31 | — | 851 |
+| Branche des Prestations aux familles | 2019 | 676 179 | 847 801 | 328,47 | 577,83 | — | — |
+| Branche des Prestations aux familles | 2020 | 508 708 | 933 349 | 436,46 | 725,69 | — | — |
+| Branche des Prestations aux familles | 2021 | 591 130 | 1 256 938 | 493,19 | 926,53 | — | — |
+| Branche des Prestations aux familles | 2022 | 613 761 | 1 130 824 | 677,79 | 1 067,79 | — | — |
+| Branche des Prestations aux familles | 2023 | 578 272 | 1 257 285 | — | 633,61 | — | 1 096 |
+| Branche des Prestations aux familles | 2024 | 800 486 | 911 951 | — | 681,31 | — | 851 |
 | Branche des Prestations aux familles | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Branche des Risques Professionnels | 2019 | 676,179 | 2,558 | 328.47 | 577.83 | — | — |
-| Branche des Risques Professionnels | 2020 | 508,708 | 2,628 | 436.46 | 725.69 | — | — |
-| Branche des Risques Professionnels | 2021 | 591,130 | 2,081 | 493.19 | 926.53 | — | — |
-| Branche des Risques Professionnels | 2022 | 613,761 | 2,834 | 677.79 | 1,067.79 | — | — |
-| Branche des Risques Professionnels | 2023 | 578,272 | 2,785 | — | 146.22 | — | 253 |
-| Branche des Risques Professionnels | 2024 | 800,486 | 2,853 | — | 157.22 | — | 196 |
+| Branche des Risques Professionnels | 2019 | 676 179 | 2 558 | 328,47 | 577,83 | — | — |
+| Branche des Risques Professionnels | 2020 | 508 708 | 2 628 | 436,46 | 725,69 | — | — |
+| Branche des Risques Professionnels | 2021 | 591 130 | 3 649 | 493,19 | 926,53 | — | — |
+| Branche des Risques Professionnels | 2022 | 613 761 | 2 834 | 677,79 | 1 067,79 | — | — |
+| Branche des Risques Professionnels | 2023 | 578 272 | 2 785 | — | 146,22 | — | 253 |
+| Branche des Risques Professionnels | 2024 | 800 486 | 2 853 | — | 157,22 | — | 196 |
 | Branche des Risques Professionnels | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Branche des Pensions | 2019 | 676,179 | 64,249 | 328.47 | 577.83 | — | — |
-| Branche des Pensions | 2020 | 508,708 | 68,459 | 436.46 | 725.69 | — | — |
-| Branche des Pensions | 2021 | 591,130 | 71,558 | 493.19 | 926.53 | — | — |
-| Branche des Pensions | 2022 | 613,761 | 77,581 | 677.79 | 1,067.79 | — | — |
-| Branche des Pensions | 2023 | 578,272 | 75,507 | — | 974.79 | — | 1,686 |
-| Branche des Pensions | 2024 | 800,486 | 79,822 | — | 1,048.16 | — | 1,309 |
+| Branche des Pensions | 2019 | 676 179 | 64 249 | 328,47 | 577,83 | — | — |
+| Branche des Pensions | 2020 | 508 708 | 65 831 | 436,46 | 725,69 | — | — |
+| Branche des Pensions | 2021 | 591 130 | 71 558 | 493,19 | 926,53 | — | — |
+| Branche des Pensions | 2022 | 613 761 | 77 581 | 677,79 | 1 067,79 | — | — |
+| Branche des Pensions | 2023 | 578 272 | 75 507 | — | 974,79 | — | 1 686 |
+| Branche des Pensions | 2024 | 800 486 | 79 822 | — | 1 048,16 | — | 1 309 |
 | Branche des Pensions | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Action sociale et sanitaire | 2019 | — | 1,766 | 0.83 | — | 469 | — |
-| Action sociale et sanitaire | 2020 | — | 849 | 5.64 | — | 6,642 | — |
-| Action sociale et sanitaire | 2021 | — | 849 | 19.95 | — | 23,492 | — |
-| Action sociale et sanitaire | 2022 | — | 479 | 0.27 | — | 554 | — |
+| Action sociale et sanitaire | 2019 | — | 1 766 | 0,83 | — | 469 | — |
+| Action sociale et sanitaire | 2020 | — | 849 | 5,64 | — | 6 642 | — |
+| Action sociale et sanitaire | 2021 | — | 0 | 19,95 | — | — | — |
+| Action sociale et sanitaire | 2022 | — | 479 | 0,27 | — | 554 | — |
 | Action sociale et sanitaire | 2023 | — | 849 | — | — | — | — |
 | Action sociale et sanitaire | 2024 | — | — | — | — | — | — |
 | Action sociale et sanitaire | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| ENSEMBLE | 2019 | 676,179 | 914,608 | 328.47 | 577.83 | 359 | 855 |
-| ENSEMBLE | 2020 | 508,708 | 1,004,436 | 436.46 | 725.69 | 435 | 1,427 |
-| ENSEMBLE | 2021 | 591,130 | 1,330,577 | 493.19 | 926.53 | 371 | 1,567 |
-| ENSEMBLE | 2022 | 613,761 | 1,211,239 | 677.79 | 1,067.79 | 560 | 1,740 |
+| ENSEMBLE | 2019 | 676 179 | 914 608 | 328,47 | 577,83 | 359 | 855 |
+| ENSEMBLE | 2020 | 508 708 | 1 001 808 | 436,46 | 725,69 | 436 | 1 427 |
+| ENSEMBLE | 2021 | 591 130 | 1 332 145 | 493,19 | 926,53 | 370 | 1 567 |
+| ENSEMBLE | 2022 | 613 761 | 1 211 239 | 677,79 | 1 067,79 | 560 | 1 740 |
 | ENSEMBLE | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
 *Source : base consolidée des ESS OIT/BIT.*
@@ -2311,7 +2313,7 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
-| Contributeurs actifs (total) | 172 204 | [N/D] | [N/D] | 198 399 | [N/D] | [N/D] | [N/D] |
+| Contributeurs actifs (total) | [N/D] | 172 304 | 190 545 | 198 399 | [N/D] | [N/D] | [N/D] |
 | dont hommes | 110 912 | [N/D] | [N/D] | 138 443 | [N/D] | [N/D] | [N/D] |
 | dont femmes | [N/D] | 65 624 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Bénéficiaires de pensions | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
@@ -2328,9 +2330,9 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 | Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
 |---|---|---|---|---|
 | Régime de base | Contributif | Obligatoire | Publique | Vieillesse; Survivances |
-| Réforme du transfert des assurés du système octroyé à la CNSSAP | Non-contributif | — | Publique | Vieillesse; Survivances |
-| Risques professionnels | Non-contributif | — | Publique | Maladie (en espèces); Accident du travail |
 | Régime Complémentaire | Contributif | Obligatoire | Publique | — |
+| Risques professionnels | Non-contributif | — | Publique | Maladie (en espèces); Accident du travail |
+| Réforme de Basculement | Non-contributif | — | Publique | Vieillesse; Survivances |
 
 ### Aperçu graphique (tous régimes, toutes années)
 
@@ -2349,38 +2351,41 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 <p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
 <p align="center"><img src="/files/04_annexes/illustrations/annexe_B_CNSSAP_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
 
-### Données détaillées selon formulaire ESS fournies
+### Données détaillées (par régime et année)
 
 <p class="table-caption"><strong>Tableau B.2.5</strong> — Données détaillées par régime et année, CNSSAP (2019–2025)</p>
 
 | Régime | Année | Cotisants totaux | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./cotisant (k CDF) |
 |---|---|---|---|---|---|---|---|
 | Régime de base | 2019 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Régime de base | 2020 | 172,304 | 814 | 7.20 | 40.50 | 8,845 | 235 |
-| Régime de base | 2021 | 190,545 | 780 | 8.50 | 41.60 | 10,897 | 218 |
-| Régime de base | 2022 | 198,399 | 1,329 | 34.40 | 52.40 | — | 264 |
-| Régime de base | 2023 | 1,004,106 | 6,238 | 24.26 | 281.56 | 3,890 | 280 |
-| Régime de base | 2024 | 1,013,104 | 10,485 | 29.74 | 460.33 | 2,836 | 454 |
-| Régime de base | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Réforme du transfert des assurés du système octroyé à la CNSSAP | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Réforme du transfert des assurés du système octroyé à la CNSSAP | 2022 | — | 3,653 | 34.40 | 9.80 | — | — |
-| Réforme du transfert des assurés du système octroyé à la CNSSAP | 2023 | — | 4,522 | 8.56 | 19.62 | 1,892 | — |
-| Réforme du transfert des assurés du système octroyé à la CNSSAP | 2024 | — | 2,510 | 19.62 | 19.62 | 7,817 | — |
-| Réforme du transfert des assurés du système octroyé à la CNSSAP | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Régime de base | 2020 | 172 304 | 814 | 7,20 | 40,50 | 8 845 | 235 |
+| Régime de base | 2021 | 190 545 | 780 | 8,50 | 41,60 | 10 897 | 218 |
+| Régime de base | 2022 | 198 399 | 1 329 | 34,40 | 52,40 | — | 264 |
+| Régime de base | 2023 | 1 004 106 | 6 238 | 24,26 | 281,56 | 3 890 | 280 |
+| Régime de base | 2024 | 1 013 104 | 10 485 | 29,74 | 460,33 | 2 836 | 454 |
+| Régime de base | 2025 | 1 470 429 | 9 136 | 106,73 | 687,27 | 11 682 | 467 |
+| Régime Complémentaire | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Régime Complémentaire | 2022 | — | 3 653 | 34,40 | 9,80 | — | — |
+| Régime Complémentaire | 2023 | — | 4 522 | 8,56 | 19,62 | 1 892 | — |
+| Régime Complémentaire | 2024 | — | 2 510 | 19,62 | 19,62 | 7 817 | — |
+| Régime Complémentaire | 2025 | 262 419 | — | — | 67,75 | — | 258 |
 | Risques professionnels | 2019–2022 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Risques professionnels | 2023 | — | 0 | 0.00 | 30.23 | — | — |
-| Risques professionnels | 2024 | — | 2 | 1.96 | 33.90 | 981,796 | — |
+| Risques professionnels | 2023 | — | 0 | 0,00 | 30,23 | — | — |
+| Risques professionnels | 2024 | — | 2 | 1,96 | 33,90 | 981 796 | — |
 | Risques professionnels | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Régime Complémentaire | 2019–2022 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Régime Complémentaire | 2023 | 218,899 | 0 | 0.00 | 22.35 | — | 102 |
-| Régime Complémentaire | 2024 | 219,327 | 0 | 0.00 | 55.35 | — | 252 |
-| Régime Complémentaire | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Réforme de Basculement | 2019–2022 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Réforme de Basculement | 2023 | 218 899 | 0 | 0,00 | 22,35 | — | 102 |
+| Réforme de Basculement | 2024 | 219 327 | 0 | 0,00 | 55,35 | — | 252 |
+| Réforme de Basculement | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | ENSEMBLE | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| ENSEMBLE | 2022 | — | 4,982 | 34.40 | — | 6,905 | — |
+| ENSEMBLE | 2022 | — | 4 982 | 34,40 | — | 6 905 | — |
 | ENSEMBLE | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
 *Source : base consolidée des ESS OIT/BIT.*
 <p class="dev-note">Les règles enregistrées dans le formulaire institutionnel (Q1, Q1b, Q2 et Q4) sont appliquées aux visuels. Les données détaillées restent présentées par régime, sans déduplication.</p>
+<span class="footnote">En 2022, la dépense de prestations de 34,40 milliards CDF apparaît à la fois pour le régime de base et pour la réforme de transfèrement. La ligne « ENSEMBLE » reprend 34,40 milliards CDF et ne constitue pas une addition des deux lignes ; le caractère inclusif ou distinct de ces montants doit être confirmé par la CNSSAP.</span>
+<span class="footnote">Les effectifs CNSSAP de 1 004 106 en 2023 et 1 013 104 en 2024 sont présentés ici tels que déclarés dans les ESS par régime et sont traités comme cotisants actifs N4 conformément à DM-019. La rupture avec 2022 et la répétition de l'effectif dans les prestations de 2023 restent des réserves de comparabilité.</span>
+<span class="footnote">Les champs de montant unitaire renseignés dans les ESS CNSSAP 2023–2024 présentent des valeurs élevées et leur définition n'est pas suffisamment documentée pour être assimilée à une pension individuelle mensuelle. Les montants moyens affichés dans ce tableau sont calculés séparément à partir des dépenses du régime et du nombre de bénéficiaires.</span>
 <p class="dev-note">Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.</p>
 
 <!-- AUTO_GENERE:CNSSAP:FIN -->
@@ -2419,64 +2424,169 @@ Ces régimes sont financés par le Trésor public et destinés à des catégorie
 Régimes identifiés
 Données disponibles
 Aucune donnée statistique détaillée n'a pu être obtenue pour ces régimes lors de la préparation du premier bulletin. L'obtention de données auprès des ministères de tutelle constitue un objectif prioritaire pour le présent bulletin.
-B.5 Fonds National de Promotion et de Service Social (FNPSS)
-
-*Capture non disponible à ce stade : l'institution FNPSS n'apparaît pas encore comme entrée dédiée dans l'onglet « Par institution » du tableau de bord.*
+# B.6 Fonds de Solidarité de Santé (FSS)
 
 ## Mission et branches couvertes
 
-*[À rédiger à réception des informations du FNPSS.]*
-
-<p class="table-caption"><strong>Tableau B.3.1</strong> — Branches de sécurité sociale couvertes, FNPSS</p>
-
-| Branche | Note |
+| Régime | Statut |
 |---|---|
-| Vieillesse, invalidité, décès | *À confirmer* |
-| AT/MP | *À confirmer* |
-| Prestations familiales | *À confirmer* |
-| Maternité | *À confirmer* |
-| Soins de santé | *À confirmer* |
-
-**Population assujettie :** *À préciser.*
+| Afia Bora — Paquet de base obligatoire | Affiliés, cotisants et bénéficiaires non renseignés dans la transmission de l'atelier ; opérationnalité quantitative non documentée |
+| Afia Bora Prime — Paquet complémentaire | Données non renseignées ; ne pas présenter comme programme opérationnel dans cette édition |
+| Kobota Ofele — Programme d'assistance de l'État pour mère et enfant | **Opérationnel et quantifié** dans les données de prise en charge 2023–2025 |
+| Assurance maladie obligatoire pour les agents publics actifs et retraités | En cours d'opérationnalisation ; aucune donnée quantitative dans l'atelier |
+| Assurance maladie obligatoire pour les travailleurs régis par le Code du travail, retraités et actifs | En cours ; aucune donnée quantitative dans l'atelier |
+| Assurance maladie obligatoire pour élèves et étudiants | En cours ; aucune donnée quantitative dans l'atelier |
+| Assurance maladie du secteur informel | Régime prévu ; statut opérationnel non confirmé |
+| Assurance médicale de l'État aux personnes vulnérables | Non quantifiée ; statut opérationnel non documenté |
 
 ## Cadre juridique et institutionnel
 
-<p class="table-caption"><strong>Tableau B.3.2</strong> — Cadre juridique et institutionnel, FNPSS</p>
+<p class="table-caption"><strong>Tableau B.5.2</strong> — Cadre juridique et institutionnel, FSS</p>
 
 | Élément | Détail |
 |---|---|
-| Texte fondateur | *À préciser* |
-| Tutelle ministérielle | *À préciser* |
-| Statut juridique | *À préciser* |
-| Année de création | *À préciser* |
+| Texte fondateur | Loi n° 18/035 du 13 décembre 2018 fixant les principes fondamentaux relatifs à l'organisation de la santé publique |
+| Décret d'organisation | Décret n° 22/13 du 09 avril 2022 |
+| Tutelle ministérielle | Ministère de la Santé Publique, Hygiène et Prévoyance Sociale |
+| Statut juridique | Établissement public à caractère administratif, doté de la personnalité juridique et de l'autonomie de gestion |
+| Année de création | 2018 (loi) ; organisation précisée en 2022 |
 
 ## Données de couverture
 
-<p class="table-caption"><strong>Tableau B.3.3</strong> — Données de couverture, FNPSS (2019–2025)</p>
+<p class="table-caption"><strong>Tableau B.5.3</strong> — Données de couverture, FSS (2019–2025)</p>
 
-| Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+| Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | Note |
+|---|---|---|---|---|---|---|---|---|
+| Kobota Ofele — femmes enceintes et nouveau-nés pris en charge | [N/D] | [N/D] | [N/D] | [N/D] | 181 733¹ | 951 276¹ | 2 517 081¹ | Données de l'atelier ; périmètres temporels et géographiques non homogènes |
+| Population de référence (agglomération de Kinshasa) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | ≈17 000 000² | [N/D] | Référence démographique ONU, non donnée FSS |
+| Contributeurs actifs | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | Contributions non encore prélevées |
+
+*Le fichier ESS FSS 2022 est disponible, mais ses champs quantitatifs ne renseignent pas de série exploitable. Les valeurs 2023–2025 ci-dessus proviennent d'un fichier institutionnel distinct transmis lors de l'atelier de validation ; elles ne sont pas issues de l'ESS et ne doivent pas être intégrées aux agrégats ESS sans validation méthodologique complémentaire.*
+
+### Données de prise en charge transmises par le FSS lors de l'atelier
+
+| Programme | Année | Périmètre et période | Femmes enceintes | Nouveau-nés | Total indiqué | Coût total indiqué (CDF) |
+|---|---:|---|---:|---:|---:|---:|
+| Kobota Ofele (non contributif) | 2023 | Kinshasa, septembre–décembre | 137 570 | 44 163 | 181 733 | 15 499 592 328,40 |
+| Kobota Ofele (non contributif) | 2024 | Kinshasa ; Kongo-Central (août–décembre) ; Kasaï-Oriental (décembre) | 700 098 | 251 178 | 951 276 | 71 779 182 064,28 |
+| Kobota Ofele (non contributif) | 2025 | Kinshasa, Kongo-Central et Kasaï-Oriental | 1 986 066 | 531 015 | 2 517 081 | 116 036 430 002,36 |
+
+¹ *Le total additionne les femmes enceintes et les nouveau-nés pris en charge. Il ne constitue pas nécessairement un nombre de personnes uniques. Source : fichier institutionnel FSS transmis lors de l'atelier de validation, distinct de l'ESS.*
+
+² *Référence démographique externe, et non donnée de couverture du FSS : environ 17 millions d'habitants dans l'agglomération de Kinshasa en 2024 selon les World Urbanization Prospects de l'ONU. Cette valeur ne doit pas être interprétée comme le nombre de bénéficiaires ou de personnes effectivement couvertes.*
+
+<!-- AUTO_GENERE:FSS:DEBUT -->
+
+### Régimes gérés
+
+<p class="table-caption"><strong>Tableau B.6.1</strong> — Régimes gérés, FSS</p>
+
+| Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
+|---|---|---|---|---|
+| FSS-Assurance maladie du secteur informel | Contributif | Obligatoire | Publique | Soins de santé |
+| FSS-Assurance maladie obligatoire pour les agents de carrière des Services publics de l'Etat, actifs et retraités | Contributif | Obligatoire | Publique | Soins de santé |
+| FSS-Assurance maladie obligatoire des travailleurs régis par le Code du travail, retraités et actifs | Contributif | Obligatoire | Publique | Soins de santé |
+| FSS-Assurance maladie obligatoire pour élèves et étudiants | Contributif | Obligatoire | Publique | Soins de santé |
+| FSS-Assurance médicale de l’Etat aux personnes vulnérables | Non-contributif | — | Publique | Soins de santé |
+
+### Aperçu graphique (tous régimes, toutes années)
+
+<p class="fig-caption"><strong>Figure B.6.1</strong> — Évolution des cotisants, bénéficiaires, dépenses et recettes (tous régimes), FSS (2019–2025)</p>
+
+<table style="width:100%; border-collapse:collapse;">
+<tr><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Cotisants actifs</div></td><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Bénéficiaires</div></td></tr>
+<tr><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Dépenses totales</div></td><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Dépense moyenne par bénéficiaire</div></td></tr>
+<tr><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Recettes totales</div></td><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Contribution moyenne</div></td></tr>
+</table>
+
+### Répartition par sexe (cotisants et bénéficiaires cumulés)
+
+<p class="fig-caption"><strong>Figure B.6.2</strong> — Répartition par sexe des cotisants et bénéficiaires cumulés, FSS (2019–2025)</p>
+
+*Aucune donnée de répartition par sexe disponible.*
+
+### Données détaillées (par régime et année)
+
+<p class="table-caption"><strong>Tableau B.6.2</strong> — Données détaillées par régime et année, FSS (2019–2025)</p>
+
+| Régime | Année | Cotisants totaux | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./cotisant (k CDF) |
 |---|---|---|---|---|---|---|---|
-| Affiliés enregistrés | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Cotisants actifs | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Bénéficiaires | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| FSS-Assurance maladie du secteur informel | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| FSS-Assurance maladie du secteur informel | 2022 | — | — | — | — | — | — |
+| FSS-Assurance maladie du secteur informel | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| FSS-Assurance maladie obligatoire pour les agents de carrière des Services publics de l'Etat, actifs et retraités | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| FSS-Assurance maladie obligatoire pour les agents de carrière des Services publics de l'Etat, actifs et retraités | 2022 | — | — | — | — | — | — |
+| FSS-Assurance maladie obligatoire pour les agents de carrière des Services publics de l'Etat, actifs et retraités | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| FSS-Assurance maladie obligatoire des travailleurs régis par le Code du travail, retraités et actifs | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| FSS-Assurance maladie obligatoire des travailleurs régis par le Code du travail, retraités et actifs | 2022 | — | — | — | — | — | — |
+| FSS-Assurance maladie obligatoire des travailleurs régis par le Code du travail, retraités et actifs | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| FSS-Assurance maladie obligatoire pour élèves et étudiants | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| FSS-Assurance maladie obligatoire pour élèves et étudiants | 2022 | — | — | — | — | — | — |
+| FSS-Assurance maladie obligatoire pour élèves et étudiants | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| FSS-Assurance médicale de l’Etat aux personnes vulnérables | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| FSS-Assurance médicale de l’Etat aux personnes vulnérables | 2022 | — | — | — | — | — | — |
+| FSS-Assurance médicale de l’Etat aux personnes vulnérables | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+
+*Source : base consolidée des ESS OIT/BIT.*
+<p class="dev-note">Aucun paramètre institutionnel enregistré : les visuels présentent les données ESS sans correction issue du formulaire.</p>
+<p class="dev-note">Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.</p>
+
+<!-- AUTO_GENERE:FSS:FIN -->
 
 ## Évolutions et réformes en cours
 
-*[À rédiger à réception des informations du FNPSS.]*
+Le FSS représente l'architecture institutionnelle centrale de la CSU en RDC, mais son déploiement effectif est progressif. En septembre 2023, la politique de gratuité des accouchements et des soins néonatals a été lancée dans la ville-province de Kinshasa. Ce paquet couvre les consultations prénatales, l'échographie obstétricale, les accouchements simples et par césarienne, les soins du nouveau-né, la vaccination, les consultations post-natales et l'accès aux médicaments essentiels.
 
-# B.6 Fonds de Solidarité de Santé (FSS)
-Mission et branches couvertes
-Cadre juridique et institutionnel
-Tableau B.5.2 — Cadre juridique et institutionnel, FSS
-Régimes gérés
-Tableau B.5.4 — Régimes gérés, FSS
-Répartition par sexe (cotisants et bénéficiaires cumulés)
-Figure B.5.2 — Répartition par sexe des cotisants et bénéficiaires cumulés, FSS (2019–2025)
-Données détaillées selon formulaire ESS fournies
-Tableau B.5.5 — Données détaillées par régime et année, FSS (2019–2025)
-Source : base consolidée des ESS OIT/BIT.
-Évolutions et réformes en cours
-B.7 Mutuelle de Santé des Enseignants de l'Enseignement Primaire, Secondaire et Professionnel (MESP)
+L'extension est prévue vers le Sud-Kivu, le Kasaï-Oriental et le Kongo-Central, avant une généralisation progressive à l'ensemble du territoire national. La vocation du FSS est à terme de remplacer tous les régimes particuliers de financement des soins médicaux existants pour assurer une couverture universelle.
+
+# B.9 Ministère de l'Enseignement Primaire, Secondaire et Technique (MEPST)
+
+<!-- AUTO_GENERE:MEPST:DEBUT -->
+
+### Régimes gérés
+
+<p class="table-caption"><strong>Tableau B.9.1</strong> — Régimes gérés, MEPST</p>
+
+| Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
+|---|---|---|---|---|
+| Gratuité de l'EPST | Non-contributif | — | Publique | Accès à l'éducation |
+
+### Aperçu graphique (tous régimes, toutes années)
+
+<p class="fig-caption"><strong>Figure B.9.1</strong> — Évolution des cotisants, bénéficiaires, dépenses et recettes (tous régimes), MEPST (2019–2025)</p>
+
+<table style="width:100%; border-collapse:collapse;">
+<tr><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Cotisants actifs</div></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_MEPST_beneficiaires.png" style="width:100%; height:auto;"></td></tr>
+<tr><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Dépenses totales</div></td><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Dépense moyenne par bénéficiaire</div></td></tr>
+<tr><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Recettes totales</div></td><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Contribution moyenne</div></td></tr>
+</table>
+
+### Répartition par sexe (cotisants et bénéficiaires cumulés)
+
+<p class="fig-caption"><strong>Figure B.9.2</strong> — Répartition par sexe des cotisants et bénéficiaires cumulés, MEPST (2019–2025)</p>
+
+<p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
+<p align="center"><img src="/files/04_annexes/illustrations/annexe_B_MEPST_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
+
+### Données détaillées (par régime et année)
+
+<p class="table-caption"><strong>Tableau B.9.2</strong> — Données détaillées par régime et année, MEPST (2019–2025)</p>
+
+| Régime | Année | Cotisants totaux | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./cotisant (k CDF) |
+|---|---|---|---|---|---|---|---|
+| Gratuité de l'EPST | 2019 | — | 16 668 703 | — | — | — | — |
+| Gratuité de l'EPST | 2020 | — | 16 668 703 | — | — | — | — |
+| Gratuité de l'EPST | 2021 | — | 17 941 415 | — | — | — | — |
+| Gratuité de l'EPST | 2022 | — | 18 386 994 | — | — | — | — |
+| Gratuité de l'EPST | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+
+*Source : base consolidée des ESS OIT/BIT.*
+<p class="dev-note">Aucun paramètre institutionnel enregistré : les visuels présentent les données ESS sans correction issue du formulaire.</p>
+<p class="dev-note">Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.</p>
+
+<!-- AUTO_GENERE:MEPST:FIN -->
+
+# B.7 Mutuelle de Santé des Enseignants de l'Enseignement Primaire, Secondaire et Professionnel (MESP)
 
 ## Mission et branches couvertes
 
@@ -2510,17 +2620,16 @@ La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une soc
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
-| Contributeurs (titulaires enseignants) | 50 256 | 54 383 | 60 745 | 80 041 | [N/D] | [N/D] | [N/D] |
-| Membres de famille à charge | 72 291 | 76 578 | 81 081 | 84 836 | [N/D] | [N/D] | [N/D] |
-| **Total couvert** | **122 547** | **130 961** | **141 826** | **164 877** | **[N/D]** | **[N/D]** | **[N/D]** |
+| Contributeurs (titulaires enseignants) | 50 256 | 54 383 | 60 745 | 80 041 | 87 019 | 96 538 | 112 608 |
+| Bénéficiaires / personnes couvertes déclarées | 122 547 | 130 961 | 141 826 | 164 877 | 176 471 | 196 574 | 217 171 |
 
-*Source : données transmises par le MEPST (2023), reprises dans le premier Bulletin statistique RDC N°1/2023.*
+*Source : ESS MESP 2019–2025. Pour 2019–2022, les bénéficiaires correspondent à l'addition des titulaires et des membres de famille déclarés ; pour 2023–2025, le questionnaire ESS fournit directement un total de bénéficiaires de la prestation. Les deux présentations doivent être interprétées avec cette réserve de comparabilité.*
 
 <!-- AUTO_GENERE:MESP:DEBUT -->
 
 ### Régimes gérés
 
-<p class="table-caption"><strong>Tableau B.4.4</strong> — Régimes gérés, MESP</p>
+<p class="table-caption"><strong>Tableau B.7.1</strong> — Régimes gérés, MESP</p>
 
 | Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
 |---|---|---|---|---|
@@ -2528,34 +2637,34 @@ La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une soc
 
 ### Aperçu graphique (tous régimes, toutes années)
 
-<p class="fig-caption"><strong>Figure B.4.1</strong> — Évolution des cotisants, bénéficiaires, dépenses et recettes (tous régimes), MESP (2019–2025)</p>
+<p class="fig-caption"><strong>Figure B.7.1</strong> — Évolution des cotisants, bénéficiaires, dépenses et recettes (tous régimes), MESP (2019–2025)</p>
 
 <table style="width:100%; border-collapse:collapse;">
 <tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_MESP_cotisants.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_MESP_beneficiaires.png" style="width:100%; height:auto;"></td></tr>
-<tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_MESP_depenses.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_MESP_depense_par_beneficiaire.png" style="width:100%; height:auto;"></td></tr>
-<tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_MESP_recettes.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_MESP_contribution.png" style="width:100%; height:auto;"></td></tr>
+<tr><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Dépenses totales</div></td><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Dépense moyenne par bénéficiaire</div></td></tr>
+<tr><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Recettes totales</div></td><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Contribution moyenne</div></td></tr>
 </table>
 
 ### Répartition par sexe (cotisants et bénéficiaires cumulés)
 
-<p class="fig-caption"><strong>Figure B.4.2</strong> — Répartition par sexe des cotisants et bénéficiaires cumulés, MESP (2019–2025)</p>
+<p class="fig-caption"><strong>Figure B.7.2</strong> — Répartition par sexe des cotisants et bénéficiaires cumulés, MESP (2019–2025)</p>
 
 <p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
 <p align="center"><img src="/files/04_annexes/illustrations/annexe_B_MESP_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
 
-### Données détaillées selon formulaire ESS fournies
+### Données détaillées (par régime et année)
 
-<p class="table-caption"><strong>Tableau B.4.5</strong> — Données détaillées par régime et année, MESP (2019–2025)</p>
+<p class="table-caption"><strong>Tableau B.7.2</strong> — Données détaillées par régime et année, MESP (2019–2025)</p>
 
 | Régime | Année | Cotisants totaux | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./cotisant (k CDF) |
 |---|---|---|---|---|---|---|---|
-| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2019 | 50,256 | 122,547 | — | — | — | — |
-| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2020 | 54,383 | 130,961 | — | — | — | — |
-| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2021 | 60,745 | 141,826 | — | — | — | — |
-| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2022 | 80,041 | 164,877 | — | — | — | — |
-| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2023 | 87,019 | 176,471 | — | — | — | — |
-| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2024 | 96,538 | 196,574 | — | — | — | — |
-| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2025 | 112,608 | 217,171 | — | — | — | — |
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2019 | 50 256 | 122 547 | — | — | — | — |
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2020 | 54 383 | 130 961 | — | — | — | — |
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2021 | 60 745 | 141 826 | — | — | — | — |
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2022 | 80 041 | 164 877 | — | — | — | — |
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2023 | 87 019 | 176 471 | — | — | — | — |
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2024 | 96 538 | 196 574 | — | — | — | — |
+| Mutuelle des Enseignants de l'Enseignement Primaire, Secondaire et Technique | 2025 | 112 608 | 217 171 | — | — | — | — |
 
 *Source : base consolidée des ESS OIT/BIT.*
 <p class="dev-note">Aucun paramètre institutionnel enregistré : les visuels présentent les données ESS sans correction issue du formulaire.</p>
@@ -2565,110 +2674,92 @@ La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une soc
 
 ## Évolutions et réformes en cours
 
-# B.8 Mutuelles de Santé volontaire (POMUCO - CGAT)
+*[À compléter à réception des informations institutionnelles de la MESP.]*
+
+# B.8 Mutuelles de santé volontaire (POMUCO - CGAT)
 
 ## Mission et branches couvertes
 
-| Régime | Statut |
-|---|---|
-| Assurance maladie obligatoire pour les agents publics actifs et retraités | En cours d'opérationnalisation |
-| Assurance maladie obligatoire pour les travailleurs du secteur privé | En cours |
-| Assurance maladie obligatoire scolaire et estudiantine | En cours |
-| Assurance maladie du secteur informel | En cours |
-| Assistance médicale aux personnes vulnérables (non contributif) | En cours |
-| Régime spécial sur la gratuité de la maternité | **Opérationnel depuis septembre 2023** (Kinshasa) |
-| Assurance maladie complémentaire | En cours |
+La POMUCO-CGAT correspond à un dispositif mutualiste volontaire. Les éléments
+institutionnels descriptifs (base légale, tutelle et périmètre exact) restent à consolider.
 
 ## Cadre juridique et institutionnel
 
-<p class="table-caption"><strong>Tableau B.5.2</strong> — Cadre juridique et institutionnel, FSS</p>
-
-| Élément | Détail |
-|---|---|
-| Texte fondateur | Loi n° 18/035 du 13 décembre 2018 fixant les principes fondamentaux relatifs à l'organisation de la santé publique |
-| Décret d'organisation | Décret n° 22/13 du 09 avril 2022 |
-| Tutelle ministérielle | Ministère de la Santé Publique, Hygiène et Prévoyance Sociale |
-| Statut juridique | Établissement public à caractère administratif, doté de la personnalité juridique et de l'autonomie de gestion |
-| Année de création | 2018 (loi) ; organisation précisée en 2022 |
+*[À compléter à réception des textes fondateurs et des documents institutionnels CGAT.]*
 
 ## Données de couverture
 
-<p class="table-caption"><strong>Tableau B.5.3</strong> — Données de couverture, FSS (2019–2025)</p>
+Les données ESS disponibles pour CGAT sont partielles : elles couvrent 2021–2025 pour
+trois mutuelles, tandis qu'aucune donnée exploitable n'est disponible ici pour 2019–2020.
+Elles sont restituées ci-dessous via le bloc auto-généré (régimes, visuels et tableau
+détaillé). Ces mutuelles volontaires restent hors des indicateurs de couverture du bulletin.
+Les formulaires 2024–2025 expriment les montants financiers en dollars ; ils sont conservés
+comme données de source mais ne sont pas convertis en CDF en l'absence de taux documenté,
+ce qui explique les cellules financières non renseignées pour ces deux années.
 
-| Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | Note |
-|---|---|---|---|---|---|---|---|---|
-| Bénéficiaires de la gratuité de la maternité | [N/D] | [N/D] | [N/D] | [N/D] | *En cours de déploiement* | [N/D] | [N/D] | Lancé en septembre 2023 à Kinshasa |
-| Population cible (ville-province de Kinshasa) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D]¹ | [N/D] | [N/D] | Première phase |
-| Contributeurs actifs | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | Contributions non encore prélevées |
-
-*À compléter à réception des données du FSS.*
-
-¹ *La valeur transmise pour 2023 (« 1618 millions ») est manifestement erronée et a été retirée ; la population cible exacte de la première phase reste à confirmer auprès du FSS. Pour référence, l'agglomération de Kinshasa compte environ 17 millions d'habitants en 2024 selon les World Urbanization Prospects de l'ONU.*
-
-<!-- AUTO_GENERE:FSS:DEBUT -->
+<!-- AUTO_GENERE:CGAT:DEBUT -->
 
 ### Régimes gérés
 
-<p class="table-caption"><strong>Tableau B.5.4</strong> — Régimes gérés, FSS</p>
+<p class="table-caption"><strong>Tableau B.8.1</strong> — Régimes gérés, CGAT</p>
 
 | Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
 |---|---|---|---|---|
-| FSS-Assurance maladie du secteur informel | Contributif | Obligatoire | Publique | Soins de santé |
-| FSS-Assurance maladie obligatoire pour les agents de carrière des Services publics de l'Etat, actifs et retraités | Contributif | Obligatoire | Publique | Soins de santé |
-| FSS-Assurance maladie obligatoire des travailleurs régis par le Code du travail, retraités et actifs | Contributif | Obligatoire | Publique | Soins de santé |
-| FSS-Assurance maladie obligatoire pour élèves et étudiants | Contributif | Obligatoire | Publique | Soins de santé |
-| FSS-Assurance médicale de l’Etat aux personnes vulnérables | Non-contributif | — | Publique | Soins de santé |
+| MUSA DE KINSHASA | Contributif | Volontaire | Privée | Soins de santé |
+| MUSA DU KONGO CENTRAL | Contributif | Volontaire | Privée | Soins de santé |
+| MUSA DE GOMA | Contributif | Volontaire | Privée | Soins de santé |
 
 ### Aperçu graphique (tous régimes, toutes années)
 
-<p class="fig-caption"><strong>Figure B.5.1</strong> — Évolution des cotisants, bénéficiaires, dépenses et recettes (tous régimes), FSS (2019–2025)</p>
+<p class="fig-caption"><strong>Figure B.8.1</strong> — Évolution des cotisants, bénéficiaires, dépenses et recettes (tous régimes), CGAT (2019–2025)</p>
 
 <table style="width:100%; border-collapse:collapse;">
-<tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_FSS_cotisants.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_FSS_beneficiaires.png" style="width:100%; height:auto;"></td></tr>
-<tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_FSS_depenses.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_FSS_depense_par_beneficiaire.png" style="width:100%; height:auto;"></td></tr>
-<tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_FSS_recettes.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_FSS_contribution.png" style="width:100%; height:auto;"></td></tr>
+<tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_CGAT_cotisants.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_CGAT_beneficiaires.png" style="width:100%; height:auto;"></td></tr>
+<tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_CGAT_depenses.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_CGAT_depense_par_beneficiaire.png" style="width:100%; height:auto;"></td></tr>
+<tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_CGAT_recettes.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_CGAT_contribution.png" style="width:100%; height:auto;"></td></tr>
 </table>
 
 ### Répartition par sexe (cotisants et bénéficiaires cumulés)
 
-<p class="fig-caption"><strong>Figure B.5.2</strong> — Répartition par sexe des cotisants et bénéficiaires cumulés, FSS (2019–2025)</p>
+<p class="fig-caption"><strong>Figure B.8.2</strong> — Répartition par sexe des cotisants et bénéficiaires cumulés, CGAT (2019–2025)</p>
 
 <p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
-<p align="center"><img src="/files/04_annexes/illustrations/annexe_B_FSS_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
+<p align="center"><img src="/files/04_annexes/illustrations/annexe_B_CGAT_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
 
 ### Données détaillées (par régime et année)
 
-<p class="table-caption"><strong>Tableau B.5.5</strong> — Données détaillées par régime et année, FSS (2019–2025)</p>
+<p class="table-caption"><strong>Tableau B.8.2</strong> — Données détaillées par régime et année, CGAT (2019–2025)</p>
 
 | Régime | Année | Cotisants totaux | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./cotisant (k CDF) |
 |---|---|---|---|---|---|---|---|
-| FSS-Assurance maladie du secteur informel | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| FSS-Assurance maladie du secteur informel | 2022 | — | — | — | — | — | — |
-| FSS-Assurance maladie du secteur informel | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| FSS-Assurance maladie obligatoire pour les agents de carrière des Services publics de l'Etat, actifs et retraités | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| FSS-Assurance maladie obligatoire pour les agents de carrière des Services publics de l'Etat, actifs et retraités | 2022 | — | — | — | — | — | — |
-| FSS-Assurance maladie obligatoire pour les agents de carrière des Services publics de l'Etat, actifs et retraités | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| FSS-Assurance maladie obligatoire des travailleurs régis par le Code du travail, retraités et actifs | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| FSS-Assurance maladie obligatoire des travailleurs régis par le Code du travail, retraités et actifs | 2022 | — | — | — | — | — | — |
-| FSS-Assurance maladie obligatoire des travailleurs régis par le Code du travail, retraités et actifs | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| FSS-Assurance maladie obligatoire pour élèves et étudiants | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| FSS-Assurance maladie obligatoire pour élèves et étudiants | 2022 | — | — | — | — | — | — |
-| FSS-Assurance maladie obligatoire pour élèves et étudiants | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| FSS-Assurance médicale de l’Etat aux personnes vulnérables | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| FSS-Assurance médicale de l’Etat aux personnes vulnérables | 2022 | — | — | — | — | — | — |
-| FSS-Assurance médicale de l’Etat aux personnes vulnérables | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| MUSA DE KINSHASA | 2019–2020 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| MUSA DE KINSHASA | 2021 | 5 068 | 15 632 | 2,69 | 2,75 | 172 | 542 |
+| MUSA DE KINSHASA | 2022 | 6 016 | 18 555 | 2,09 | 2,15 | 113 | 357 |
+| MUSA DE KINSHASA | 2023 | 7 579 | 18 228 | 2,30 | 2,34 | 126 | 309 |
+| MUSA DE KINSHASA | 2024 | 6 264 | 19 281 | — | — | — | — |
+| MUSA DE KINSHASA | 2025 | 5 910 | 18 491 | — | — | — | — |
+| MUSA DU KONGO CENTRAL | 2019–2020 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| MUSA DU KONGO CENTRAL | 2021 | 7 102 | 10 354 | 0,47 | 0,51 | 46 | 72 |
+| MUSA DU KONGO CENTRAL | 2022 | 8 114 | 11 205 | 0,63 | 0,66 | 56 | 82 |
+| MUSA DU KONGO CENTRAL | 2023 | 7 524 | 14 010 | 0,79 | 0,83 | 57 | 110 |
+| MUSA DU KONGO CENTRAL | 2024 | 8 015 | 13 339 | — | — | — | — |
+| MUSA DU KONGO CENTRAL | 2025 | 9 124 | 13 871 | — | — | — | — |
+| MUSA DE GOMA | 2019–2020 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| MUSA DE GOMA | 2021 | 4 056 | 10 695 | 0,77 | 0,78 | 72 | 193 |
+| MUSA DE GOMA | 2022 | 842 | 3 006 | — | — | — | — |
+| MUSA DE GOMA | 2023 | 544 | 2 304 | 0,15 | 0,16 | 65 | 291 |
+| MUSA DE GOMA | 2024 | 792 | 2 717 | — | — | — | — |
+| MUSA DE GOMA | 2025 | 585 | 2 696 | — | — | — | — |
 
 *Source : base consolidée des ESS OIT/BIT.*
 <p class="dev-note">Aucun paramètre institutionnel enregistré : les visuels présentent les données ESS sans correction issue du formulaire.</p>
 <p class="dev-note">Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.</p>
 
-<!-- AUTO_GENERE:FSS:FIN -->
+<!-- AUTO_GENERE:CGAT:FIN -->
 
 ## Évolutions et réformes en cours
 
-Le FSS représente l'architecture institutionnelle centrale de la CSU en RDC, mais son déploiement effectif est progressif. En septembre 2023, la politique de gratuité des accouchements et des soins néonatals a été lancée dans la ville-province de Kinshasa. Ce paquet couvre les consultations prénatales, l'échographie obstétricale, les accouchements simples et par césarienne, les soins du nouveau-né, la vaccination, les consultations post-natales et l'accès aux médicaments essentiels.
-
-L'extension est prévue vers le Sud-Kivu, le Kasaï-Oriental et le Kongo-Central, avant une généralisation progressive à l'ensemble du territoire national. La vocation du FSS est à terme de remplacer tous les régimes particuliers de financement des soins médicaux existants pour assurer une couverture universelle.
+*[À compléter à réception des informations institutionnelles CGAT.]*
 
 # B.6 Service de Sécurité Sociale des Parlementaires (SESOPA)
 
@@ -2713,15 +2804,19 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 
 *Source : ESS OIT — SESOPA (2019–2025). Le détail par régime figure au Tableau B.6.5. Les effectifs déclarés sont strictement identiques d'une année sur l'autre sur l'ensemble de la période transmise (voir DM-020, `00_pilotage/decisions_methodologiques.md`) : cette stabilité n'est pas confirmée comme une observation annuelle réelle et reste à vérifier auprès du SESOPA.*
 
+Une transmission SESOPA couvrant janvier–juillet 2026 est conservée dans la base ESS à titre documentaire. Comme le bulletin couvre la période 2019–2025, ses valeurs ne sont pas intégrées aux tableaux ni aux graphiques ; elles pourront être mentionnées dans le texte lors d'une actualisation ultérieure, sous réserve de leur périmètre temporel partiel.
+
 <!-- AUTO_GENERE:SESOPA:DEBUT -->
 
 ### Régimes gérés
+
+<p class="table-caption"><strong>Tableau B.6.6</strong> — Régimes gérés, SESOPA</p>
 
 | Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
 |---|---|---|---|---|
 | Branche des pensions  de retraite et de réversion | Mixte | Obligatoire | Publique | Vieillesse; Survivances |
 | Assurance maladie des parlementaires | Non-contributif | — | Publique | Soins de santé |
-| Assurance décès - rente spéciale de survie | Non-contributif | — | Publique | Survivances |
+| Assurance décès -rente spéciale de survie | Non-contributif | — | Publique | Survivances |
 | Branche des risques liés à l'exercice du mandat parlementaire | Non-contributif | — | Publique | Invalidité / Handicap; Survivances; Accident du travail; Soins de santé |
 | Assurance maternité des parlementaires | Non-contributif | — | Publique | Maternité / Paternité; Soins de santé |
 
@@ -2731,8 +2826,8 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 
 <table style="width:100%; border-collapse:collapse;">
 <tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_SESOPA_cotisants.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_SESOPA_beneficiaires.png" style="width:100%; height:auto;"></td></tr>
-<tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_SESOPA_depenses.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_SESOPA_depense_par_beneficiaire.png" style="width:100%; height:auto;"></td></tr>
-<tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_SESOPA_recettes.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_SESOPA_contribution.png" style="width:100%; height:auto;"></td></tr>
+<tr><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Dépenses totales</div></td><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Dépense moyenne par bénéficiaire</div></td></tr>
+<tr><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Recettes totales</div></td><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Contribution moyenne</div></td></tr>
 </table>
 
 ### Répartition par sexe (cotisants et bénéficiaires cumulés)
@@ -2748,14 +2843,13 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 
 | Régime | Année | Cotisants totaux | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./cotisant (k CDF) |
 |---|---|---|---|---|---|---|---|
-| Branche des pensions  de retraite et de réversion | 2019 | 2,315 | 1,959 | — | — | — | — |
-| Branche des pensions  de retraite et de réversion | 2020 | 2,315 | 1,959 | — | — | — | — |
-| Branche des pensions  de retraite et de réversion | 2021 | 2,315 | 1,959 | — | — | — | — |
-| Branche des pensions  de retraite et de réversion | 2022 | 2,315 | 1,959 | — | — | — | — |
-| Branche des pensions  de retraite et de réversion | 2023 | 2,315 | 1,959 | — | — | — | — |
-| Branche des pensions  de retraite et de réversion | 2024 | 2,315 | 1,959 | — | — | — | — |
-| Branche des pensions  de retraite et de réversion | 2025 | 2,315 | 1,959 | — | — | — | — |
-| Branche des pensions  de retraite et de réversion | 2026 | 2,315 | 1,959 | — | — | — | — |
+| Branche des pensions  de retraite et de réversion | 2019 | 1 815 | 1 414 | — | — | — | — |
+| Branche des pensions  de retraite et de réversion | 2020 | 1 815 | 1 636 | — | — | — | — |
+| Branche des pensions  de retraite et de réversion | 2021 | 1 815 | 1 657 | — | — | — | — |
+| Branche des pensions  de retraite et de réversion | 2022 | 1 815 | 1 681 | — | — | — | — |
+| Branche des pensions  de retraite et de réversion | 2023 | 2 315 | 1 705 | — | — | — | — |
+| Branche des pensions  de retraite et de réversion | 2024 | 2 315 | 1 930 | — | — | — | — |
+| Branche des pensions  de retraite et de réversion | 2025 | 2 315 | 1 948 | — | — | — | — |
 | Assurance maladie des parlementaires | 2019 | — | — | — | — | — | — |
 | Assurance maladie des parlementaires | 2020 | — | — | — | — | — | — |
 | Assurance maladie des parlementaires | 2021 | — | — | — | — | — | — |
@@ -2763,15 +2857,13 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 | Assurance maladie des parlementaires | 2023 | — | — | — | — | — | — |
 | Assurance maladie des parlementaires | 2024 | — | — | — | — | — | — |
 | Assurance maladie des parlementaires | 2025 | — | — | — | — | — | — |
-| Assurance maladie des parlementaires | 2026 | — | — | — | — | — | — |
-| Assurance décès - rente spéciale de survie | 2019 | — | — | — | — | — | — |
-| Assurance décès - rente spéciale de survie | 2020 | — | — | — | — | — | — |
-| Assurance décès - rente spéciale de survie | 2021 | — | — | — | — | — | — |
-| Assurance décès - rente spéciale de survie | 2022 | — | — | — | — | — | — |
-| Assurance décès - rente spéciale de survie | 2023 | — | — | — | — | — | — |
-| Assurance décès - rente spéciale de survie | 2024 | — | — | — | — | — | — |
-| Assurance décès - rente spéciale de survie | 2025 | — | — | — | — | — | — |
-| Assurance décès - rente spéciale de survie | 2026 | — | — | — | — | — | — |
+| Assurance décès -rente spéciale de survie | 2019 | — | — | — | — | — | — |
+| Assurance décès -rente spéciale de survie | 2020 | — | — | — | — | — | — |
+| Assurance décès -rente spéciale de survie | 2021 | — | — | — | — | — | — |
+| Assurance décès -rente spéciale de survie | 2022 | — | — | — | — | — | — |
+| Assurance décès -rente spéciale de survie | 2023 | — | — | — | — | — | — |
+| Assurance décès -rente spéciale de survie | 2024 | — | — | — | — | — | — |
+| Assurance décès -rente spéciale de survie | 2025 | — | — | — | — | — | — |
 | Branche des risques liés à l'exercice du mandat parlementaire | 2019 | — | — | — | — | — | — |
 | Branche des risques liés à l'exercice du mandat parlementaire | 2020 | — | — | — | — | — | — |
 | Branche des risques liés à l'exercice du mandat parlementaire | 2021 | — | — | — | — | — | — |
@@ -2779,7 +2871,6 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 | Branche des risques liés à l'exercice du mandat parlementaire | 2023 | — | — | — | — | — | — |
 | Branche des risques liés à l'exercice du mandat parlementaire | 2024 | — | — | — | — | — | — |
 | Branche des risques liés à l'exercice du mandat parlementaire | 2025 | — | — | — | — | — | — |
-| Branche des risques liés à l'exercice du mandat parlementaire | 2026 | — | — | — | — | — | — |
 | Assurance maternité des parlementaires | 2019 | — | — | — | — | — | — |
 | Assurance maternité des parlementaires | 2020 | — | — | — | — | — | — |
 | Assurance maternité des parlementaires | 2021 | — | — | — | — | — | — |
@@ -2787,7 +2878,6 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 | Assurance maternité des parlementaires | 2023 | — | — | — | — | — | — |
 | Assurance maternité des parlementaires | 2024 | — | — | — | — | — | — |
 | Assurance maternité des parlementaires | 2025 | — | — | — | — | — | — |
-| Assurance maternité des parlementaires | 2026 | — | — | — | — | — | — |
 
 *Source : base consolidée des ESS OIT/BIT.*
 <p class="dev-note">Aucun paramètre institutionnel enregistré : les visuels présentent les données ESS sans correction issue du formulaire.</p>
@@ -2818,9 +2908,9 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 <p class="fig-caption"><strong>Figure B.7.1</strong> — Évolution des personnes potentiellement couvertes estimées, bénéficiaires, dépenses et recettes (tous régimes), dispositif budgétaire hors CNSSAP (proxy technique « TRESOR ») (2019–2025)</p>
 
 <table style="width:100%; border-collapse:collapse;">
-<tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_TRESOR_cotisants.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_TRESOR_beneficiaires.png" style="width:100%; height:auto;"></td></tr>
-<tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_TRESOR_depenses.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_TRESOR_depense_par_beneficiaire.png" style="width:100%; height:auto;"></td></tr>
-<tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_TRESOR_recettes.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_TRESOR_contribution.png" style="width:100%; height:auto;"></td></tr>
+<tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_TRESOR_cotisants.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Bénéficiaires</div></td></tr>
+<tr><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Dépenses totales</div></td><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Dépense moyenne par bénéficiaire</div></td></tr>
+<tr><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Recettes totales</div></td><td style="width:50%; padding:4px;"><div style="min-height:180px; display:flex; align-items:center; justify-content:center; border:1px dashed #cbd5e0; border-radius:6px; color:#888; font-size:0.9em; text-align:center;">[N/D] — Contribution moyenne</div></td></tr>
 </table>
 
 ### Répartition par sexe (personnes potentiellement couvertes estimées et bénéficiaires cumulés)
@@ -2836,15 +2926,15 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 
 | Régime | Année | Personnes potentiellement couvertes (estimation) | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./personne couverte estimée (k CDF) |
 |---|---|---|---|---|---|---|---|
-| Pensions de retraite octroyé de la fonction publique | 2019 | 1,450,668 | — | — | — | — | — |
-| Pensions de retraite octroyé de la fonction publique | 2020 | 1,450,668 | — | — | — | — | — |
-| Pensions de retraite octroyé de la fonction publique | 2021 | 1,432,427 | — | — | — | — | — |
-| Pensions de retraite octroyé de la fonction publique | 2022 | 1,424,573 | — | — | — | — | — |
-| Pensions de retraite octroyé de la fonction publique | 2023 | 420,894 | — | — | — | — | — |
-| Pensions de retraite octroyé de la fonction publique | 2024 | 713,896 | — | — | — | — | — |
+| Pensions de retraite octroyé de la fonction publique | 2019 | 1 450 668 | — | — | — | — | — |
+| Pensions de retraite octroyé de la fonction publique | 2020 | 1 450 668 | — | — | — | — | — |
+| Pensions de retraite octroyé de la fonction publique | 2021 | 1 432 427 | — | — | — | — | — |
+| Pensions de retraite octroyé de la fonction publique | 2022 | 1 424 573 | — | — | — | — | — |
+| Pensions de retraite octroyé de la fonction publique | 2023 | 420 894 | — | — | — | — | — |
+| Pensions de retraite octroyé de la fonction publique | 2024 | 713 896 | — | — | — | — | — |
 | Pensions de retraite octroyé de la fonction publique | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 
-<span class="footnote">Les valeurs de la colonne « Personnes potentiellement couvertes (estimation) » ne sont pas des cotisants. Elles correspondent à la part estimée du secteur public hors CNSSAP, calculée par différence à partir des estimations globales de la Fonction publique : <span class="val" data-val-id="sB7-p1-d1" data-val-status="à valider" data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 622 972</span> pour chacune des années 2019 à 2022, <span class="val" data-val-id="sB7-p1-d2" data-val-status="à valider" data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 425 000</span> en 2023 et <span class="val" data-val-id="sB7-p1-d3" data-val-status="à valider" data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 727 000</span> en 2024. Source : estimations de la Fonction publique ; niveau de fiabilité : estimation provisoire, à confirmer par des données administratives détaillées.</span>
+<span class="footnote">Les valeurs de la colonne « Personnes potentiellement couvertes (estimation) » ne sont pas des cotisants. Elles correspondent à la part estimée du secteur public hors CNSSAP, calculée par différence à partir des estimations globales de la Fonction publique : aucune population de référence vérifiable n’est disponible pour 2019 ; <span class="val" data-val-id="sB7-p1-d1" data-val-status="à valider" data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 622 972</span> pour 2020 à 2022, <span class="val" data-val-id="sB7-p1-d2" data-val-status="à valider" data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 425 000</span> en 2023 et <span class="val" data-val-id="sB7-p1-d3" data-val-status="à valider" data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 727 000</span> en 2024. Source : estimations de la Fonction publique ; niveau de fiabilité : estimation provisoire, à confirmer par des données administratives détaillées. La rupture entre 2022, 2023 et 2024 n’est pas interprétable comme une évolution de la couverture : les classeurs 2023 et 2024 contiennent en outre des références internes à des années différentes de leur nom de fichier.</span>
 
 *Source : base consolidée des ESS OIT/BIT.*
 <p class="dev-note">Aucun paramètre institutionnel enregistré : les visuels présentent les données ESS sans correction issue du formulaire.</p>
@@ -2928,7 +3018,7 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 
 **Lecture du numérateur et règle de dédoublonnage.** Un même régime peut apparaître sous plusieurs branches lorsque ses cotisants relèvent simultanément de plusieurs risques couverts (par exemple, les cotisants de la CNSS financent à la fois la branche des pensions, celle des risques professionnels et celle des prestations familiales). Dans ce cas, les lignes « Dont … » répètent le même effectif de cotisants sous chaque branche à laquelle il contribue, afin de montrer la composition complète du calcul. Ces lignes ne s'additionnent donc pas entre elles : chaque cotisant n'est comptabilisé qu'une seule fois dans la ligne « Numérateur » de l'indicateur global, quel que soit le nombre de branches auxquelles il est rattaché. Le numérateur global correspond à l'union dédupliquée des personnes couvertes par au moins une des composantes retenues, et non à la somme brute des lignes « Dont … ».
 
-**Cas particulier de la protection budgétaire hors CNSSAP.** Le code « TRESOR » utilisé dans la base ne désigne pas une institution. Il représente, à titre d'hypothèse de travail, la part estimée des agents publics hors CNSSAP considérée comme relevant d'un dispositif non contributif financé par allocation budgétaire. Les effectifs associés sont des estimations de personnes potentiellement couvertes et non des cotisants.
+**Cas particulier de la protection budgétaire hors CNSSAP.** Le code « TRESOR » utilisé dans la base ne désigne pas une institution. Il représente, à titre d'hypothèse de travail, la part estimée des agents publics hors CNSSAP considérée comme relevant d'un dispositif non contributif financé par allocation budgétaire. Les effectifs associés sont des estimations de personnes potentiellement couvertes et non des cotisants ; faute de preuve d'une prestation effectivement reçue ou d'une couverture administrative vérifiée, ils sont exclus du numérateur principal de l'ODD 1.3.1 et restent présentés uniquement comme série contextuelle dans l'Annexe B.
 
 ---
 
@@ -2937,59 +3027,53 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 
 **Définition (BIT/OIT).** Proportion de la population couverte par au moins une prestation en espèces de protection sociale ou cotisant activement à au moins un régime de sécurité sociale.
 
-**Numérateur.** Nombre de personnes recevant au moins une prestation en espèces de protection sociale, hors soins de santé, ou cotisant activement à au moins un régime de sécurité sociale, sans double comptage.
+**Numérateur.** Nombre de personnes recevant au moins une prestation en espèces de protection sociale, hors soins de santé et indemnités journalières de maladie ou de maternité, ou cotisant activement à au moins un régime de sécurité sociale, sans double comptage.
 
 **Dénominateur.** Population totale.
 
 **Formule.** Population couverte par au moins une prestation ou cotisant activement ÷ population totale × 100.
 
 
-<p class="table-caption"><strong>Tableau C.1</strong> — Indicateur de couverture, numérateur et dénominateur — ODD 1.3.1 — Global (2019–2026)</p>
+<p class="table-caption"><strong>Tableau C.1</strong> — Indicateur de couverture, numérateur et dénominateur — ODD 1.3.1 — Global (2019–2025)</p>
 
-| | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 |
-|---|---|---|---|---|---|---|---|---|
-| **Indicateur de couverture (%)** | **4,7** | **4,3** | **4,8** | **4,6** | **4,5** | **4,9** | **0,0** | **[N/D]** |
-| **Numérateur (nombre de personnes)** | **4,399,853** | **4,156,671** | **4,733,778** | **4,692,924** | **4,748,489** | **5,402,045** | **4,274** | **[N/D]** |
-| *Dont Branche des Prestations aux familles (CNSS, cotisants)* | *676,179* | *508,708* | *591,130* | *613,761* | *578,272* | *800,486* | *—* | *—* |
-| *↳ allocation de maternité (bénéf.)* | *—* | *108* | *167* | *414* | *167* | *390* | *—* | *—* |
-| *↳ allocations familiales (bénéf.)* | *847,801* | *933,077* | *1,256,585* | *1,129,861* | *1,256,585* | *911,125* | *—* | *—* |
-| *↳ allocations prénatales (bénéf.)* | *—* | *162* | *184* | *532* | *531* | *365* | *—* | *—* |
-| *↳ indemnité journalière de maternité (bénéf.)* | *—* | *2* | *2* | *17* | *2* | *71* | *—* | *—* |
-| *Dont Branche des Risques Professionnels (CNSS, cotisants)* | *676,179* | *508,708* | *591,130* | *613,761* | *578,272* | *800,486* | *—* | *—* |
-| *↳ Rente ou allocation d'incapacité (bénéf.)* | *1,082* | *1,020* | *955* | *1,053* | *1,020* | *2,853* | *—* | *—* |
-| *↳ allocation des frais funéraires (bénéf.)* | *1,766* | *589* | *849* | *533* | *—* | *2,853* | *—* | *—* |
-| *↳ assistance médicale, chirurgicale et soins dentaires (bénéf.)* | *—* | *—* | *—* | *—* | *—* | *2,853* | *—* | *—* |
-| *↳ fourniture des produits pharmaceutiques (bénéf.)* | *—* | *—* | *—* | *—* | *—* | *2,853* | *—* | *—* |
-| *↳ fourniture, entretien et renouvellement des appareils prophèse et d'orthopédie (bénéf.)* | *—* | *—* | *—* | *—* | *—* | *2,853* | *—* | *—* |
-| *↳ frais de réadaptation fonctionnelle  ou de reclassement de la victime (bénéf.)* | *—* | *—* | *—* | *677* | *—* | *2,853* | *—* | *—* |
-| *↳ indemnité journalière (bénéf.)* | *—* | *—* | *—* | *—* | *—* | *2,853* | *—* | *—* |
-| *↳ lunettes, soins infirmiers et visites à domicile (bénéf.)* | *—* | *—* | *—* | *—* | *—* | *2,853* | *—* | *—* |
-| *↳ rentes de survivants (bénéf.)* | *1,476* | *1,608* | *1,845* | *1,781* | *1,608* | *2,853* | *—* | *—* |
-| *↳ réadaptation fonctionnelle ou reclassement de la victime. (bénéf.)* | *—* | *—* | *—* | *—* | *—* | *2,853* | *—* | *—* |
-| *↳ transport de la victime (bénéf.)* | *—* | *—* | *—* | *—* | *—* | *2,853* | *—* | *—* |
-| *Dont Branche des Pensions (CNSS, cotisants)* | *676,179* | *508,708* | *591,130* | *613,761* | *578,272* | *800,486* | *—* | *—* |
-| *↳ Pension d'invalidité (bénéf.)* | *883* | *568* | *524* | *728* | *432* | *439* | *—* | *—* |
-| *↳ Pension de retraite (bénéf.)* | *38,641* | *39,465* | *42,407* | *44,094* | *43,601* | *44,937* | *—* | *—* |
-| *↳ Pension de retraite anticipée (bénéf.)* | *—* | *78* | *272* | *1,235* | *696* | *940* | *—* | *—* |
-| *↳ Pension des survivants (bénéf.)* | *24,725* | *25,720* | *28,355* | *31,524* | *30,778* | *33,506* | *—* | *—* |
-| *↳ frais funéraires (bénéf.)* | *—* | *—* | *—* | *—* | *—* | *849* | *—* | *—* |
-| *Dont Régime de base (CNSSAP, cotisants)* | *—* | *172,304* | *190,545* | *198,399* | *1,004,106* | *1,013,104* | *—* | *—* |
-| *↳ Pension de retraite (bénéf.)* | *—* | *814* | *780* | *1,329* | *6,238* | *10,485* | *—* | *—* |
-| *↳ Rente de survie au conjoint survivants (bénéf.)* | *—* | *50* | *114* | *184* | *738* | *2,378* | *—* | *—* |
-| *↳ Rente de survie pour l'orphelin (bénéf.)* | *—* | *40* | *103* | *187* | *738* | *2,378* | *—* | *—* |
-| *Dont Pension de retraite — Réforme du transfert (CNSSAP, bénéf.)* | *—* | *—* | *—* | *3,653* | *4,522* | *2,510* | *—* | *—* |
-| *↳ Rente de survie au conjoint survivants (bénéf.)* | *—* | *—* | *—* | *6,044* | *8,922* | *7,508* | *—* | *—* |
-| *↳ Rente de survie pour l'orphelin (bénéf.)* | *—* | *—* | *—* | *549* | *8,922* | *720* | *—* | *—* |
-| *Dont Prestations en cas d'accident du travail — Risques professionnels (CNSSAP, bénéf.)* | *—* | *—* | *—* | *—* | *—* | *2* | *—* | *—* |
-| *Dont Régime Complémentaire (CNSSAP, cotisants)* | *—* | *—* | *—* | *—* | *218,899* | *219,327* | *—* | *—* |
-| *Dont Branche des pensions  de retraite et de réversion (SESOPA, cotisants)* | *2,315* | *2,315* | *2,315* | *2,315* | *2,315* | *2,315* | *2,315* | *—* |
-| *↳ Pension de retraite contributive (bénéf.)* | *964* | *964* | *964* | *964* | *964* | *964* | *964* | *—* |
-| *↳ Pension de retraite des anciens parlementaires non cotisants prise en charge par le Trésor public (bénéf.)* | *277* | *277* | *277* | *277* | *277* | *277* | *277* | *—* |
-| *↳ Pension de réversion (rente viagère du conjoint survivant) (bénéf.)* | *718* | *718* | *718* | *718* | *718* | *718* | *718* | *—* |
-| *Dont Pensions de retraite octroyé de la fonction publique (estimation) (proxy budgétaire hors CNSSAP, personnes potentiellement couvertes estimées)* | *1,450,668* | *1,450,668* | *1,432,427* | *1,424,573* | *420,894* | *713,896* | *—* | *—* |
-| Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019–2024 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale ; 2025 : src-unwpp-2024jul-rev [var-c-popsx / sex-t / age-0+] — population 0+ ; 2026 : Saisie manuelle : valeur manquante pour 2026.</span> | 92,947,442 | 95,989,998 | 99,148,932 | 102,396,968 | 105,789,731 | 109,276,265 | 112,832,473 | 116,452,162 |
+| | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| **Indicateur de couverture (%)** | **3,2** | **2,8** | **3,3** | **3,2** | **3,9** | **4,1** | **1,6** |
+| **Numérateur (nombre de personnes)**<span class="footnote">Pour la CNSS en 2024, le fichier ESS corrigé ventile l'effectif de la branche des risques professionnels entre la rente ou allocation d'incapacité (2 853), les rentes de survivants (1 107,33) et l'indemnité journalière (1 745,67). Cette ventilation remplace la répétition antérieure de 2 853 dans les trois lignes ; elle reste à confirmer institutionnellement.</span> | **2 946 374** | **2 705 178** | **3 300 547** | **3 267 556** | **4 108 440** | **4 440 450** | **1 755 668** |
+| *Dont Branche des Prestations aux familles (CNSS, cotisants)* | *676 179* | *508 708* | *591 130* | *613 761* | *578 272* | *800 486* | *—* |
+| *↳ allocation de maternité (bénéf.)* | *—* | *108* | *167* | *414* | *167* | *390* | *—* |
+| *↳ allocations familiales (bénéf.)* | *847 801* | *933 077* | *1 256 585* | *1 129 861* | *1 256 585* | *911 125* | *—* |
+| *↳ allocations prénatales (bénéf.)* | *—* | *162* | *184* | *532* | *531* | *365* | *—* |
+| *Dont Branche des Risques Professionnels (CNSS, cotisants)* | *676 179* | *508 708* | *591 130* | *613 761* | *578 272* | *800 486* | *—* |
+| *↳ Rente ou allocation d'incapacité (bénéf.)* | *1 082* | *1 020* | *955* | *1 053* | *1 020* | *2 853* | *—* |
+| *↳ allocation des frais funéraires (bénéf.)* | *—* | *589* | *849* | *533* | *—* | *—* | *—* |
+| *↳ frais de réadaptation fonctionnelle  ou de reclassement de la victime (bénéf.)* | *—* | *—* | *—* | *677* | *—* | *—* | *—* |
+| *↳ rentes de survivants (bénéf.)* | *1 476* | *1 608* | *1 845* | *1 781* | *1 608* | *1 107* | *—* |
+| *Dont Branche des Pensions (CNSS, cotisants)* | *676 179* | *508 708* | *591 130* | *613 761* | *578 272* | *800 486* | *—* |
+| *↳ Pension d'invalidité (bénéf.)* | *883* | *568* | *524* | *728* | *432* | *439* | *—* |
+| *↳ Pension de retraite (bénéf.)* | *38 641* | *39 465* | *42 407* | *44 094* | *43 601* | *44 937* | *—* |
+| *↳ Pension de retraite anticipée (bénéf.)* | *—* | *78* | *272* | *1 235* | *696* | *940* | *—* |
+| *↳ Pension des survivants (bénéf.)* | *24 725* | *25 720* | *28 355* | *31 524* | *30 778* | *33 506* | *—* |
+| *Dont Régime de base (CNSSAP, cotisants)* | *—* | *172 304* | *190 545* | *198 399* | *1 004 106* | *1 013 104* | *1 470 429* |
+| *↳ Pension de retraite (bénéf.)* | *—* | *814* | *780* | *1 329* | *6 238* | *10 485* | *9 136* |
+| *↳ Rente de survie au conjoint survivants (bénéf.)* | *—* | *50* | *114* | *184* | *738* | *2 378* | *—* |
+| *↳ Rente de survie pour l'orphelin (bénéf.)* | *—* | *40* | *103* | *187* | *738* | *2 378* | *448* |
+| *Dont Régime Complémentaire (CNSSAP, cotisants)* | *—* | *—* | *—* | *—* | *—* | *—* | *262 419* |
+| *↳ Pension de retraite (bénéf.)* | *—* | *—* | *—* | *3 653* | *4 522* | *2 510* | *—* |
+| *↳ Rente de survie au conjoint survivants (bénéf.)* | *—* | *—* | *—* | *6 044* | *8 922* | *7 508* | *—* |
+| *↳ Rente de survie pour l'orphelin (bénéf.)* | *—* | *—* | *—* | *549* | *8 922* | *720* | *—* |
+| *Dont Prestations en cas d'accident du travail — Risques professionnels (CNSSAP, bénéf.)* | *—* | *—* | *—* | *—* | *—* | *2* | *2* |
+| *Dont Pension de retraite — Réforme de basculement (CNSSAP, bénéf.)* | *—* | *—* | *—* | *—* | *—* | *—* | *4 038* |
+| *↳ Rente de survie au conjoint survivants (bénéf.)* | *—* | *—* | *—* | *—* | *—* | *—* | *4 383* |
+| *↳ Rente de survie pour l'orphelin (bénéf.)* | *—* | *—* | *—* | *—* | *—* | *—* | *550* |
+| *Dont Branche des pensions  de retraite et de réversion (SESOPA, cotisants)* | *1 815* | *1 815* | *1 815* | *1 815* | *2 315* | *2 315* | *2 315* |
+| *↳ Pension de retraite contributive (bénéf.)* | *1 018* | *1 031* | *1 021* | *1 029* | *1 023* | *1 256* | *1 277* |
+| *↳ Pension de réversion (rente viagère du conjoint survivant) (bénéf.)* | *396* | *605* | *636* | *652* | *682* | *674* | *671* |
+| Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019–2024 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale ; 2025 : src-unwpp-2024jul-rev [var-c-popsx / sex-t / age-0+] — population 0+.</span> | 92 947 442 | 95 989 998 | 99 148 932 | 102 396 968 | 105 789 731 | 109 276 265 | 112 832 473 |
 
-<p class="fig-caption"><strong>Figure C.1</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — ODD 1.3.1 — Global (2019–2026)</p>
+*Lignes « Dont … » / « ↳ … » : détail du numérateur — régimes (« Dont ») et prestations (« ↳ », sous le régime dont elles relèvent) classés « inclus » ou « inclus avec réserve » dans le module Décisions de l'onglet « Indicateurs » du tableau de bord, pour l'année et l'indicateur considérés. Institutions désignées par leur sigle (cf. Liste des sigles et acronymes). « — » : composante non incluse cette année-là (ou décision non encore documentée). « [N/D] » : aucune donnée ESS disponible cette année-là.*
+
+<p class="fig-caption"><strong>Figure C.1</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — ODD 1.3.1 — Global (2019–2025)</p>
 
 <table style="width:100%; border-collapse:collapse;">
 <tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_C_global_131_indicateur.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_C_global_131_numerateur.png" style="width:100%; height:auto;"></td></tr>
@@ -3000,29 +3084,31 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 ---
 
 <!-- AUTO_GENERE:ind_22_enfants:DEBUT -->
-## C.2 — 2.2 Enfants
+## C.2 — 2.2 Population 0–17 ans
 
-**Définition (BIT/OIT).** Proportion d'enfants bénéficiant d'au moins une prestation en espèces de protection sociale destinée aux enfants ou aux familles.
+**Définition (BIT/OIT).** Proportion de la population âgée de 0 à 17 ans bénéficiant d'au moins une prestation en espèces de protection sociale destinée aux enfants ou aux familles.
 
-**Numérateur.** Nombre d'enfants recevant au moins une prestation en espèces pour enfants ou famille.
+**Numérateur.** Nombre de bénéficiaires âgés de 0 à 17 ans recevant au moins une prestation en espèces pour enfants ou famille, hors indemnités journalières de maladie ou de maternité.
 
-**Dénominateur.** Population totale des enfants dans la tranche d'âge retenue.
+**Dénominateur.** Population totale âgée de 0 à 17 ans.
 
-**Formule.** Enfants bénéficiaires ÷ population totale des enfants × 100.
+**Formule.** Bénéficiaires âgés de 0 à 17 ans ÷ population totale âgée de 0 à 17 ans × 100.
 
 
-<p class="table-caption"><strong>Tableau C.2</strong> — Indicateur de couverture, numérateur et dénominateur — 2.2 Enfants (2019–2026)</p>
+<p class="table-caption"><strong>Tableau C.2</strong> — Indicateur de couverture, numérateur et dénominateur — 2.2 Population 0–17 ans (2019–2025)</p>
 
-| | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 |
-|---|---|---|---|---|---|---|---|---|
-| **Indicateur de couverture (%)** | **2,0** | **2,1** | **2,7** | **2,4** | **2,6** | **1,8** | **0,0** | **0,0** |
-| **Numérateur (nombre de personnes)**<span class="footnote">Pour les allocations familiales de la CNSS, le nombre d'enfants bénéficiaires est estimé en multipliant par 3,17 le nombre de titulaires de prestations familiales communiqué par la CNSS. Ce facteur correspond au nombre moyen d'enfants de moins de 20 ans par foyer en RDC en 2013, d'après UN HH Size and Composition 2019. Il s'agit donc d'une estimation et non d'un décompte administratif direct d'enfants.</span> | **847,801** | **933,117** | **1,256,688** | **1,130,597** | **1,266,245** | **914,223** | **0** | **0** |
-| *Dont allocations familiales — Prestations familiales (CNSS, bénéf.)* | *847,801* | *933,077* | *1,256,585* | *1,129,861* | *1,256,585* | *911,125* | *—* | *—* |
-| *Dont Rente de survie pour l'orphelin — Régime de base (CNSSAP, bénéf.)* | *—* | *40* | *103* | *187* | *738* | *2,378* | *—* | *—* |
-| *Dont Rente de survie pour l'orphelin — Réforme du transfert (CNSSAP, bénéf.)* | *—* | *—* | *—* | *549* | *8,922* | *720* | *—* | *—* |
-| Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019–2024 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–14 ans, calculee = % INS x population totale INS.</span> | 42,737,234 | 44,203,394 | 45,697,743 | 47,215,242 | 48,758,487 | 50,299,865 | 51,846,285 | 53,371,488 |
+| | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| **Indicateur de couverture (%)** | **1,7** | **1,9** | **2,4** | **2,1** | **2,3** | **1,6** | **0,0** |
+| **Numérateur (nombre de personnes)**<span class="footnote">Pour les allocations familiales de la CNSS, le nombre d'enfants bénéficiaires est estimé en multipliant par 3,17 le nombre de titulaires de prestations familiales communiqué par la CNSS. Ce facteur correspond au nombre moyen d'enfants de moins de 20 ans par foyer en RDC en 2013, d'après UN HH Size and Composition 2019. Il s'agit donc d'une estimation et non d'un décompte administratif direct d'enfants.</span> | **847 801** | **933 117** | **1 256 688** | **1 130 597** | **1 266 245** | **914 223** | **448** |
+| *Dont allocations familiales — Prestations familiales (CNSS, bénéf.)* | *847 801* | *933 077* | *1 256 585* | *1 129 861* | *1 256 585* | *911 125* | *—* |
+| *Dont Rente de survie pour l'orphelin — Régime de base (CNSSAP, bénéf.)* | *—* | *40* | *103* | *187* | *738* | *2 378* | *448* |
+| *Dont Rente de survie pour l'orphelin — Réforme du transfert (CNSSAP, bénéf.)* | *—* | *—* | *—* | *549* | *8 922* | *720* | *—* |
+| Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–17 ans (A3), calculee = % INS x population totale INS (2019) ; proportion INS approximative ; 2020 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–17 ans (A3), calculee = % INS x population totale INS (2020) ; proportion INS approximative ; 2021 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–17 ans (A3), calculee = % INS x population totale INS (2021) ; proportion INS approximative ; 2022 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–17 ans (A3), calculee = % INS x population totale INS (2022) ; proportion INS approximative ; 2023 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–17 ans (A3), calculee = % INS x population totale INS (2023) ; proportion INS approximative ; 2024 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–17 ans (A3), calculee = % INS x population totale INS (2024) ; proportion INS approximative.</span> | 48 797 407 | 50 394 749 | 51 954 040 | 53 553 614 | 55 222 240 | 56 932 934 | 59 229 488 |
 
-<p class="fig-caption"><strong>Figure C.2</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — 2.2 Enfants (2019–2026)</p>
+*Lignes « Dont … » / « ↳ … » : détail du numérateur — régimes (« Dont ») et prestations (« ↳ », sous le régime dont elles relèvent) classés « inclus » ou « inclus avec réserve » dans le module Décisions de l'onglet « Indicateurs » du tableau de bord, pour l'année et l'indicateur considérés. Institutions désignées par leur sigle (cf. Liste des sigles et acronymes). « — » : composante non incluse cette année-là (ou décision non encore documentée). « [N/D] » : aucune donnée ESS disponible cette année-là.*
+
+<p class="fig-caption"><strong>Figure C.2</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — 2.2 Population 0–17 ans (2019–2025)</p>
 
 <table style="width:100%; border-collapse:collapse;">
 <tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_C_ind_22_enfants_indicateur.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_C_ind_22_enfants_numerateur.png" style="width:100%; height:auto;"></td></tr>
@@ -3037,24 +3123,25 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 
 **Définition (BIT/OIT).** Proportion de femmes ayant accouché qui reçoivent une prestation en espèces de maternité.
 
-**Numérateur.** Nombre de femmes ayant accouché et percevant une indemnité ou une allocation de maternité en espèces.
+**Numérateur.** Nombre de femmes ayant accouché et percevant une prestation de maternité en espèces, hors indemnité journalière de maternité.
 
 **Dénominateur.** Nombre total de femmes ayant accouché au cours de la même année, estimé directement ou à partir des naissances vivantes corrigées des naissances multiples.
 
 **Formule.** Femmes bénéficiaires d'une prestation de maternité ÷ femmes ayant accouché × 100.
 
 
-<p class="table-caption"><strong>Tableau C.3</strong> — Indicateur de couverture, numérateur et dénominateur — 2.3 Maternité (2019–2026)</p>
+<p class="table-caption"><strong>Tableau C.3</strong> — Indicateur de couverture, numérateur et dénominateur — 2.3 Maternité (2019–2025)</p>
 
-| | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 |
-|---|---|---|---|---|---|---|---|---|
-| **Indicateur de couverture (%)** | **0,0** | **0,0** | **0,0** | **0,0** | **0,0** | **0,0** | **[N/D]** | **[N/D]** |
-| **Numérateur (nombre de personnes)** | **0** | **110** | **169** | **431** | **169** | **461** | **[N/D]** | **[N/D]** |
-| *Dont allocation de maternité — Prestations familiales (CNSS, bénéf.)* | *—* | *108* | *167* | *414* | *167* | *390* | *—* | *—* |
-| *↳ indemnité journalière de maternité (bénéf.)* | *—* | *2* | *2* | *17* | *2* | *71* | *—* | *—* |
-| Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019 : Base locale ONU WPP 2024 — femmes 15–49 (B-MA) ; 2020 : Saisie manuelle - INS/RDC, canevas de collecte 2026 : nombre de naissances vivantes (2020), utilise comme approximation du nombre de femmes ayant accouche ; 2021–2024 : Base locale ONU WPP 2024 — femmes 15–49 (B-MA).</span> | 3,926,761 | 719,335 | 4,127,847 | 4,230,812 | 4,337,283 | 4,435,281 | 4,527,231 | 4,602,608 |
+| | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| **Indicateur de couverture (%)** | **0,0** | **0,0** | **0,0** | **0,0** | **0,0** | **0,0** | **[N/D]** |
+| **Numérateur (nombre de personnes)** | **0** | **108** | **167** | **414** | **167** | **390** | **[N/D]** |
+| *Dont allocation de maternité — Prestations familiales (CNSS, bénéf.)* | *—* | *108* | *167* | *414* | *167* | *390* | *—* |
+| Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019 : Base locale ONU WPP 2024 — femmes 15–49 (B-MA) ; 2020 : Saisie manuelle - INS/RDC, canevas de collecte 2026 : nombre de naissances vivantes (2020), utilise comme approximation du nombre de femmes ayant accouche ; 2021–2024 : Base locale ONU WPP 2024 — femmes 15–49 (B-MA).</span> | 3 926 761 | 719 335 | 4 127 847 | 4 230 812 | 4 337 283 | 4 435 281 | 4 527 231 |
 
-<p class="fig-caption"><strong>Figure C.3</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — 2.3 Maternité (2019–2026)</p>
+*Lignes « Dont … » / « ↳ … » : détail du numérateur — régimes (« Dont ») et prestations (« ↳ », sous le régime dont elles relèvent) classés « inclus » ou « inclus avec réserve » dans le module Décisions de l'onglet « Indicateurs » du tableau de bord, pour l'année et l'indicateur considérés. Institutions désignées par leur sigle (cf. Liste des sigles et acronymes). « — » : composante non incluse cette année-là (ou décision non encore documentée). « [N/D] » : aucune donnée ESS disponible cette année-là.*
+
+<p class="fig-caption"><strong>Figure C.3</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — 2.3 Maternité (2019–2025)</p>
 
 <table style="width:100%; border-collapse:collapse;">
 <tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_C_ind_23_maternite_indicateur.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_C_ind_23_maternite_numerateur.png" style="width:100%; height:auto;"></td></tr>
@@ -3076,17 +3163,19 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 **Formule.** Bénéficiaires de prestations d'invalidité ÷ population en situation de handicap grave × 100.
 
 
-<p class="table-caption"><strong>Tableau C.4</strong> — Indicateur de couverture, numérateur et dénominateur — 2.4 Handicap / invalidité (2019–2026)</p>
+<p class="table-caption"><strong>Tableau C.4</strong> — Indicateur de couverture, numérateur et dénominateur — 2.4 Handicap / invalidité (2019–2025)</p>
 
-| | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 |
-|---|---|---|---|---|---|---|---|---|
-| **Indicateur de couverture (%)** | **0,0** | **0,0** | **0,0** | **0,0** | **0,0** | **0,0** | **0,0** | **[N/D]** |
-| **Numérateur (nombre de personnes)** | **1,965** | **1,588** | **1,479** | **1,781** | **1,452** | **3,292** | **0** | **[N/D]** |
-| *Dont Rente ou allocation d'incapacité — Risques professionnels (CNSS, bénéf.)* | *1,082* | *1,020* | *955* | *1,053* | *1,020* | *2,853* | *—* | *—* |
-| *Dont Pension d'invalidité — Pension (CNSS, bénéf.)* | *883* | *568* | *524* | *728* | *432* | *439* | *—* | *—* |
-| Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019–2024 : Base locale — population × prévalence 15 % (proxy).</span> | 13,942,116 | 14,398,500 | 14,872,340 | 15,359,545 | 15,868,460 | 16,391,440 | 16,924,871 | 17,467,824 |
+| | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| **Indicateur de couverture (%)** | **0,0** | **0,0** | **0,0** | **0,0** | **0,0** | **0,0** | **0,0** |
+| **Numérateur (nombre de personnes)** | **1 965** | **1 588** | **1 479** | **1 781** | **1 452** | **3 292** | **0** |
+| *Dont Rente ou allocation d'incapacité — Risques professionnels (CNSS, bénéf.)* | *1 082* | *1 020* | *955* | *1 053* | *1 020* | *2 853* | *—* |
+| *Dont Pension d'invalidité — Pension (CNSS, bénéf.)* | *883* | *568* | *524* | *728* | *432* | *439* | *—* |
+| Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019–2024 : Base locale — population × prévalence 15 % (proxy).</span> | 13 942 116 | 14 398 500 | 14 872 340 | 15 359 545 | 15 868 460 | 16 391 440 | 16 924 871 |
 
-<p class="fig-caption"><strong>Figure C.4</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — 2.4 Handicap / invalidité (2019–2026)</p>
+*Lignes « Dont … » / « ↳ … » : détail du numérateur — régimes (« Dont ») et prestations (« ↳ », sous le régime dont elles relèvent) classés « inclus » ou « inclus avec réserve » dans le module Décisions de l'onglet « Indicateurs » du tableau de bord, pour l'année et l'indicateur considérés. Institutions désignées par leur sigle (cf. Liste des sigles et acronymes). « — » : composante non incluse cette année-là (ou décision non encore documentée). « [N/D] » : aucune donnée ESS disponible cette année-là.*
+
+<p class="fig-caption"><strong>Figure C.4</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — 2.4 Handicap / invalidité (2019–2025)</p>
 
 <table style="width:100%; border-collapse:collapse;">
 <tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_C_ind_24_handicap_indicateur.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_C_ind_24_handicap_numerateur.png" style="width:100%; height:auto;"></td></tr>
@@ -3108,19 +3197,20 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 **Formule.** Main-d'œuvre couverte contre les accidents du travail et maladies professionnelles ÷ main-d'œuvre totale × 100.
 
 
-<p class="table-caption"><strong>Tableau C.5</strong> — Indicateur de couverture, numérateur et dénominateur — 2.5 AT/MP (2019–2026)</p>
+<p class="table-caption"><strong>Tableau C.5</strong> — Indicateur de couverture, numérateur et dénominateur — 2.5 AT/MP (2019–2025)</p>
 
-| | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 |
-|---|---|---|---|---|---|---|---|---|
-| **Indicateur de couverture (%)** | **1,4** | **1,0** | **1,1** | **1,1** | **1,0** | **1,4** | **0,0** | **[N/D]** |
-| **Numérateur (nombre de personnes)** | **678,737** | **511,336** | **593,930** | **616,595** | **580,900** | **809,045** | **0** | **[N/D]** |
-| *Dont Branche des Risques Professionnels (CNSS, cotisants)* | *676,179* | *508,708* | *591,130* | *613,761* | *578,272* | *800,486* | *—* | *—* |
-| *↳ Rente ou allocation d'incapacité (bénéf.)* | *1,082* | *1,020* | *955* | *1,053* | *1,020* | *2,853* | *—* | *—* |
-| *↳ indemnité journalière (bénéf.)* | *—* | *—* | *—* | *—* | *—* | *2,853* | *—* | *—* |
-| *↳ rentes de survivants (bénéf.)* | *1,476* | *1,608* | *1,845* | *1,781* | *1,608* | *2,853* | *—* | *—* |
-| Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019–2024 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population active 15 ans et plus, calculee = % INS x population totale INS.</span> | 50,191,619 | 51,642,619 | 53,143,828 | 54,679,981 | 56,280,137 | 57,916,420 | 39,847,328 | 41,199,460 |
+| | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| **Indicateur de couverture (%)** | **1,4** | **1,0** | **1,1** | **1,1** | **1,0** | **1,4** | **0,0** |
+| **Numérateur (nombre de personnes)**<span class="footnote">Pour la CNSS en 2024, le fichier ESS corrigé ventile l'effectif de la branche des risques professionnels entre la rente ou allocation d'incapacité (2 853), les rentes de survivants (1 107,33) et l'indemnité journalière (1 745,67). Cette ventilation remplace la répétition antérieure de 2 853 dans les trois lignes ; elle reste à confirmer institutionnellement.</span> | **678 737** | **511 336** | **593 930** | **616 595** | **580 900** | **804 446** | **0** |
+| *Dont Branche des Risques Professionnels (CNSS, cotisants)* | *676 179* | *508 708* | *591 130* | *613 761* | *578 272* | *800 486* | *—* |
+| *↳ Rente ou allocation d'incapacité (bénéf.)* | *1 082* | *1 020* | *955* | *1 053* | *1 020* | *2 853* | *—* |
+| *↳ rentes de survivants (bénéf.)* | *1 476* | *1 608* | *1 845* | *1 781* | *1 608* | *1 107* | *—* |
+| Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019–2024 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population active 15 ans et plus, calculee = % INS x population totale INS.</span> | 50 191 619 | 51 642 619 | 53 143 828 | 54 679 981 | 56 280 137 | 57 916 420 | 39 847 328 |
 
-<p class="fig-caption"><strong>Figure C.5</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — 2.5 AT/MP (2019–2026)</p>
+*Lignes « Dont … » / « ↳ … » : détail du numérateur — régimes (« Dont ») et prestations (« ↳ », sous le régime dont elles relèvent) classés « inclus » ou « inclus avec réserve » dans le module Décisions de l'onglet « Indicateurs » du tableau de bord, pour l'année et l'indicateur considérés. Institutions désignées par leur sigle (cf. Liste des sigles et acronymes). « — » : composante non incluse cette année-là (ou décision non encore documentée). « [N/D] » : aucune donnée ESS disponible cette année-là.*
+
+<p class="fig-caption"><strong>Figure C.5</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — 2.5 AT/MP (2019–2025)</p>
 
 <table style="width:100%; border-collapse:collapse;">
 <tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_C_ind_25_atmp_indicateur.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_C_ind_25_atmp_numerateur.png" style="width:100%; height:auto;"></td></tr>
@@ -3160,21 +3250,22 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 **Formule.** Bénéficiaires de prestations de vieillesse ÷ population ayant atteint l'âge légal de la retraite × 100.
 
 
-<p class="table-caption"><strong>Tableau C.7</strong> — Indicateur de couverture, numérateur et dénominateur — 2.7 Vieillesse (2019–2026)</p>
+<p class="table-caption"><strong>Tableau C.7</strong> — Indicateur de couverture, numérateur et dénominateur — 2.7 Vieillesse (2019–2025)</p>
 
-| | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 |
-|---|---|---|---|---|---|---|---|---|
-| **Indicateur de couverture (%)** | **1,0** | **1,0** | **1,0** | **1,1** | **1,1** | **1,1** | **[N/D]** | **[N/D]** |
-| **Numérateur (nombre de personnes)** | **39,882** | **41,598** | **44,700** | **51,552** | **56,298** | **60,113** | **[N/D]** | **[N/D]** |
-| *Dont Pension de retraite — Pension (CNSS, bénéf.)* | *38,641* | *39,465* | *42,407* | *44,094* | *43,601* | *44,937* | *—* | *—* |
-| *↳ Pension de retraite anticipée (bénéf.)* | *—* | *78* | *272* | *1,235* | *696* | *940* | *—* | *—* |
-| *Dont Pension de retraite — Régime de base (CNSSAP, bénéf.)* | *—* | *814* | *780* | *1,329* | *6,238* | *10,485* | *—* | *—* |
-| *Dont Pension de retraite — Réforme du transfert (CNSSAP, bénéf.)* | *—* | *—* | *—* | *3,653* | *4,522* | *2,510* | *—* | *—* |
-| *Dont Pension de retraite contributive — SESOPA_R1 (SESOPA, bénéf.)* | *964* | *964* | *964* | *964* | *964* | *964* | *—* | *—* |
-| *↳ Pension de retraite des anciens parlementaires non cotisants prise en charge par le Trésor public (bénéf.)* | *277* | *277* | *277* | *277* | *277* | *277* | *—* | *—* |
-| Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019–2024 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus (age legal CNSSAP), calculee = % INS x population totale INS.</span> | 3,996,740 | 4,223,560 | 4,461,702 | 4,710,261 | 4,972,117 | 5,245,261 | [N/D] | [N/D] |
+| | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| **Indicateur de couverture (%)** | **1,0** | **1,0** | **1,0** | **1,1** | **1,1** | **1,1** | **[N/D]** |
+| **Numérateur (nombre de personnes)** | **39 659** | **41 388** | **44 480** | **51 340** | **56 080** | **60 128** | **[N/D]** |
+| *Dont Pension de retraite — Pension (CNSS, bénéf.)* | *38 641* | *39 465* | *42 407* | *44 094* | *43 601* | *44 937* | *—* |
+| *↳ Pension de retraite anticipée (bénéf.)* | *—* | *78* | *272* | *1 235* | *696* | *940* | *—* |
+| *Dont Pension de retraite — Régime de base (CNSSAP, bénéf.)* | *—* | *814* | *780* | *1 329* | *6 238* | *10 485* | *—* |
+| *Dont Pension de retraite — Réforme du transfert (CNSSAP, bénéf.)* | *—* | *—* | *—* | *3 653* | *4 522* | *2 510* | *—* |
+| *Dont Pension de retraite contributive — SESOPA_R1 (SESOPA, bénéf.)* | *1 018* | *1 031* | *1 021* | *1 029* | *1 023* | *1 256* | *—* |
+| Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019–2024 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus (age legal CNSSAP), calculee = % INS x population totale INS.</span> | 3 996 740 | 4 223 560 | 4 461 702 | 4 710 261 | 4 972 117 | 5 245 261 | [N/D] |
 
-<p class="fig-caption"><strong>Figure C.7</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — 2.7 Vieillesse (2019–2026)</p>
+*Lignes « Dont … » / « ↳ … » : détail du numérateur — régimes (« Dont ») et prestations (« ↳ », sous le régime dont elles relèvent) classés « inclus » ou « inclus avec réserve » dans le module Décisions de l'onglet « Indicateurs » du tableau de bord, pour l'année et l'indicateur considérés. Institutions désignées par leur sigle (cf. Liste des sigles et acronymes). « — » : composante non incluse cette année-là (ou décision non encore documentée). « [N/D] » : aucune donnée ESS disponible cette année-là.*
+
+<p class="fig-caption"><strong>Figure C.7</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — 2.7 Vieillesse (2019–2025)</p>
 
 <table style="width:100%; border-collapse:collapse;">
 <tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_C_ind_27_vieillesse_indicateur.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_C_ind_27_vieillesse_numerateur.png" style="width:100%; height:auto;"></td></tr>
@@ -3214,20 +3305,21 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 **Formule.** Cotisants actifs à un régime de retraite ÷ population en âge de travailler (15-64 ans) × 100.
 
 
-<p class="table-caption"><strong>Tableau C.9</strong> — Indicateur de couverture, numérateur et dénominateur — 2.9 Cotisants actifs retraite (2019–2026)</p>
+<p class="table-caption"><strong>Tableau C.9</strong> — Indicateur de couverture, numérateur et dénominateur — 2.9 Cotisants actifs retraite (2019–2025)</p>
 
-| | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 |
-|---|---|---|---|---|---|---|---|---|
-| **Indicateur de couverture (%)** | **4,5** | **4,4** | **4,4** | **4,3** | **4,2** | **5,1** | **[N/D]** | **[N/D]** |
-| **Numérateur (nombre de personnes)** | **2,129,162** | **2,133,995** | **2,216,417** | **2,239,048** | **2,224,486** | **2,749,128** | **[N/D]** | **[N/D]** |
-| *Dont Branche des Pensions (CNSS, cotisants)* | *676,179* | *508,708* | *591,130* | *613,761* | *578,272* | *800,486* | *—* | *—* |
-| *Dont Régime de base (CNSSAP, cotisants)* | *—* | *172,304* | *190,545* | *198,399* | *1,004,106* | *1,013,104* | *—* | *—* |
-| *Dont Régime Complémentaire (CNSSAP, cotisants)* | *—* | *—* | *—* | *—* | *218,899* | *219,327* | *—* | *—* |
-| *Dont Branche des pensions  de retraite et de réversion (SESOPA, cotisants)* | *2,315* | *2,315* | *2,315* | *2,315* | *2,315* | *2,315* | *—* | *—* |
-| *Dont Pensions de retraite octroyé de la fonction publique (estimation) (proxy budgétaire hors CNSSAP, personnes potentiellement couvertes estimées)* | *1,450,668* | *1,450,668* | *1,432,427* | *1,424,573* | *420,894* | *713,896* | *—* | *—* |
-| Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019–2024 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : approximation calculee a partir des donnees INS : population active 15 ans et plus moins population 65 ans et plus.</span> | 47,589,090 | 48,858,909 | 50,169,360 | 51,505,675 | 52,894,866 | 54,310,304 | 57,506,566 | 59,478,100 |
+| | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|
+| **Indicateur de couverture (%)** | **4,5** | **4,4** | **4,4** | **4,3** | **3,8** | **4,7** | **[N/D]** |
+| **Numérateur (nombre de personnes)**<span class="footnote">Pour la CNSSAP, les cotisants du régime complémentaire 2023–2024 sont présentés dans l'Annexe B mais exclus de cet indicateur : l'absence d'identifiant commun ne permet pas de vérifier qu'ils sont distincts des cotisants du régime de base.</span> | **2 128 662** | **2 133 495** | **2 215 917** | **2 238 548** | **2 005 587** | **2 529 801** | **[N/D]** |
+| *Dont Branche des Pensions (CNSS, cotisants)* | *676 179* | *508 708* | *591 130* | *613 761* | *578 272* | *800 486* | *—* |
+| *Dont Régime de base (CNSSAP, cotisants)* | *—* | *172 304* | *190 545* | *198 399* | *1 004 106* | *1 013 104* | *—* |
+| *Dont Branche des pensions  de retraite et de réversion (SESOPA, cotisants)* | *1 815* | *1 815* | *1 815* | *1 815* | *2 315* | *2 315* | *—* |
+| *Dont Pensions de retraite octroyé de la fonction publique (estimation) (proxy budgétaire hors CNSSAP, personnes potentiellement couvertes estimées)* | *1 450 668* | *1 450 668* | *1 432 427* | *1 424 573* | *420 894* | *713 896* | *—* |
+| Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019–2024 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : approximation calculee a partir des donnees INS : population active 15 ans et plus moins population 65 ans et plus.</span> | 47 589 090 | 48 858 909 | 50 169 360 | 51 505 675 | 52 894 866 | 54 310 304 | 57 506 566 |
 
-<p class="fig-caption"><strong>Figure C.9</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — 2.9 Cotisants actifs retraite (2019–2026)</p>
+*Lignes « Dont … » / « ↳ … » : détail du numérateur — régimes (« Dont ») et prestations (« ↳ », sous le régime dont elles relèvent) classés « inclus » ou « inclus avec réserve » dans le module Décisions de l'onglet « Indicateurs » du tableau de bord, pour l'année et l'indicateur considérés. Institutions désignées par leur sigle (cf. Liste des sigles et acronymes). « — » : composante non incluse cette année-là (ou décision non encore documentée). « [N/D] » : aucune donnée ESS disponible cette année-là.*
+
+<p class="fig-caption"><strong>Figure C.9</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — 2.9 Cotisants actifs retraite (2019–2025)</p>
 
 <table style="width:100%; border-collapse:collapse;">
 <tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_C_ind_29_cotisants_indicateur.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_C_ind_29_cotisants_numerateur.png" style="width:100%; height:auto;"></td></tr>

@@ -77,9 +77,9 @@ Utilisateur clique [Sauvegarder]
 
 ### **Données brutes (ESS)**
 ```
-Prestations familiales : 613,761 cotisants
-Risques professionnels : 613,761 cotisants  ← IDENTIQUE
-Pension : 613,761 cotisants                 ← IDENTIQUE
+Prestations familiales : 613 761 cotisants
+Risques professionnels : 613 761 cotisants  ← IDENTIQUE
+Pension : 613 761 cotisants                 ← IDENTIQUE
 Action sociale : null
 ```
 
@@ -93,21 +93,21 @@ Action sociale : null
 ### **Graphique avant fusion**
 ```
 ❌ Mauvaise représentation (données gonflées) :
-   ├─ Prestations familiales : 613,761
-   ├─ Risques prof : 613,761  (doublonné !)
-   ├─ Pension : 613,761       (doublonné !)
+   ├─ Prestations familiales : 613 761
+   ├─ Risques prof : 613 761  (doublonné !)
+   ├─ Pension : 613 761       (doublonné !)
    └─ Action soc : (vide)
    
-   Total : 1,841,283 cotisants (faux !)
+   Total : 1 841 283 cotisants (faux !)
 ```
 
 ### **Graphique après fusion**
 ```
 ✓ Représentation correcte :
-   ├─ Prestations fam + Risques prof + Pension : 613,761
+   ├─ Prestations fam + Risques prof + Pension : 613 761
    └─ Action soc : (vide)
    
-   Total : 613,761 cotisants (juste !)
+   Total : 613 761 cotisants (juste !)
 ```
 
 ---

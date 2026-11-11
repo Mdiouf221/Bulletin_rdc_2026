@@ -1,0 +1,214 @@
+NOTES DE COMPARAISON — CNSSAP
+ESS 2025, annuaire statistique 2025 et base ESS
+
+Date de comparaison : 2026-11-08
+Objet : repérage des contradictions et différences de périmètre avant arbitrage avec la CNSSAP.
+
+SOURCES EXAMINÉES
+
+1. 06_sources/ESS/ESS_CNSSAP/ESS CNSSAP 2025.xlsm
+   Source institutionnelle ESS importée dans la base ESS sous source_id=227.
+2. 13-atelier_validation/Entrant de l'atelier de validation/Fichiers/ANNUAIRE STATISTIQUE CNSSAP_2025.xlsx
+   Annuaire statistique transmis dans le cadre de l'atelier de validation.
+3. 06_donnees/protection_sociale_rdc.db
+   Données importées et structurées dans les tables ESS.
+
+NETTOYAGE DE LA BASE
+
+Le doublon d'import CNSSAP 2024 a été supprimé conformément à PROC-010 :
+- source_id=80 : ESS CNSSAPP 2024.xlsm, ancien nom non canonique ;
+- source_id=197 : ESS CNSSAP 2024.xlsm, source canonique conservée.
+
+La suppression a retiré 4 lignes de regimes_historique, 4 lignes de
+indicateurs_regime et 8 lignes de prestations_historique. Aucune ligne liée
+à source_id=80 ne subsiste. L'import canonique source_id=197 reste présent.
+
+COMPARAISONS PRINCIPALES
+
+1. Cotisants de la branche des pensions en 2025
+
+- ESS CNSSAP 2025, régime de base : 1 470 429 cotisants.
+- Annuaire statistique, cotisants à la branche des pensions : 1 021 676
+  cotisants, soit 321 977 hors personnel EPST et 699 699 personnel EPST.
+- Écart observé : 448 753 personnes.
+
+Point à clarifier : l'ESS et l'annuaire ne semblent pas utiliser le même
+périmètre ou la même définition pour les cotisants 2025. Vérifier notamment
+la distinction entre cotisants actifs, affiliés, agents mécanisés et personnes
+rattachées aux différentes composantes du régime.
+
+2. Cotisants du régime complémentaire en 2025
+
+- ESS CNSSAP 2025 : 262 419 cotisants.
+- Annuaire statistique : 262 419 cotisants.
+
+Constat : concordance sur l'effectif. Les cotisations restent toutefois
+légèrement différentes : 67,750 milliards CDF dans l'ESS contre
+66,068418725 milliards CDF dans l'annuaire.
+
+3. Retraités ou bénéficiaires de pension en 2025
+
+- ESS CNSSAP 2025, régime de base : 9 136 bénéficiaires de pension de
+  retraite.
+- Annuaire statistique : 10 613 retraités payés, dont 7 850 agents de
+  carrière et 2 763 membres du personnel EPST.
+- Écart observé : 1 477 personnes.
+
+Point à clarifier : vérifier si le chiffre ESS concerne uniquement une
+catégorie de bénéficiaires ou un périmètre différent de celui des retraités
+payés dans l'annuaire.
+
+4. Réforme de basculement en 2025
+
+- ESS : 4 038 bénéficiaires de pension de retraite, 4 383 bénéficiaires de
+  rente de survie au conjoint et 550 bénéficiaires de rente de survie pour
+  l'orphelin.
+- Annuaire : 2 561 retraités basculés ; 2 561 conjoints et 4 933 orphelins
+  dans le détail des ayants droit.
+
+L'annuaire présente également une incohérence interne :
+- la ligne « Effectifs ayants droit basculés » indique 4 933 ;
+- le détail conjoints + orphelins donne 2 561 + 4 933 = 7 494 ;
+- la ligne « Total » indique 7 494.
+
+Ces valeurs ne doivent pas être intégrées avant confirmation de la CNSSAP.
+
+5. Dépenses et prestations en 2025
+
+- ESS : dépenses de prestations du régime de base de 106,730 milliards CDF.
+- Annuaire : prestations servies totalisant 35,511682898 milliards CDF :
+  24,984298417 milliards pour les agents de carrière, 4,928572221 milliards
+  de rentes de survie, 5,525820060 milliards pour le personnel EPST et
+  0,072992200 milliard de rentes de survie EPST.
+- Écart observé : 71,218317102 milliards CDF.
+
+Observation importante : les dépenses ESS des composantes 2025 totalisent
+environ 140 milliards CDF :
+106,730 milliards (régime de base) + 8,350 milliards (risques
+professionnels) + 24,920 milliards (réforme de basculement).
+Ce total correspond aux « charges techniques » de l'annuaire, et non à la
+ligne « prestations servies ». Il s'agit probablement d'une différence entre
+un agrégat comptable ESS et les prestations effectivement servies.
+
+Clarification d'unité et de périmètre :
+- dans l'onglet « Prestations servies », 35 511,682898 millions CDF en 2025
+  correspondent à 35,5117 milliards CDF ;
+- dans l'onglet « Compte de résultats », la valeur 140 de la ligne
+  « Charges techniques » est exprimée en milliards de CDF, soit 140 milliards
+  CDF et non 140 millions ;
+- le total des dépenses ESS des composantes 2025 atteint également environ
+  140 milliards CDF.
+
+La concordance à 140 milliards porte donc sur un agrégat de charges
+techniques, tandis que le montant de 35,5117 milliards porte sur les
+prestations servies. Ces deux valeurs ne doivent pas être comparées comme si
+elles désignaient le même indicateur.
+
+6. Recettes et cotisations en 2025
+
+Les recettes ESS par composante sont :
+- régime de base : 687,269785020 milliards CDF ;
+- régime complémentaire : 67,750 milliards CDF ;
+- risques professionnels : 58,420 milliards CDF ;
+- réforme de basculement : 19,620214980 milliards CDF.
+
+Le total ESS est exactement égal à 833,060 milliards CDF, correspondant aux
+« produits techniques » de l'annuaire.
+
+En revanche :
+- risques professionnels : 58,420 milliards CDF dans l'ESS contre
+  39,727023979 milliards CDF de cotisations BRP dans l'annuaire ;
+- régime complémentaire : 67,750 milliards CDF dans l'ESS contre
+  66,068418725 milliards CDF dans l'annuaire.
+
+Point à clarifier : déterminer si les recettes ESS incluent des produits
+autres que les cotisations de branche.
+
+CONCLUSION DE TRAVAIL
+
+Les contradictions les plus importantes à soumettre à la CNSSAP sont :
+1. le nombre de cotisants 2025 du régime de base ;
+2. les effectifs de retraités et de bénéficiaires du basculement ;
+3. la différence entre dépenses ESS, prestations servies et charges techniques ;
+4. le périmètre des recettes par composante ;
+5. l'incohérence interne des ayants droit basculés dans l'annuaire.
+
+Les données ne doivent pas être remplacées automatiquement dans le bulletin.
+Elles doivent être conservées comme deux sources distinctes jusqu'à réception
+d'une clarification écrite de la CNSSAP.
+
+À VÉRIFIER AVEC LA CNSSAP
+
+1. Source la plus cohérente avec la série antérieure
+
+Pour les effectifs de cotisants et les prestations servies, l'annuaire
+statistique 2025 paraît plus cohérent avec les évolutions observées jusqu'en
+2024 :
+- cotisants de la branche des pensions : 1 013 104 en 2024, 1 021 676 en
+  2025 dans l'annuaire, contre 1 470 429 dans l'ESS 2025 ;
+- retraités payés dans l'annuaire : 9 015 en 2024 et 10 613 en 2025 ;
+- prestations servies dans l'annuaire : 28,9295 milliards CDF en 2024 et
+  35,5117 milliards CDF en 2025.
+
+L'ESS 2025 indique pour sa part 9 136 bénéficiaires de pension de retraite et
+106,730 milliards CDF de dépenses de prestations au régime de base. Ces
+valeurs ne doivent pas être écartées automatiquement : elles peuvent
+correspondre à un autre périmètre, à un agrégat comptable ou à une définition
+différente des bénéficiaires et des dépenses.
+
+2. Arbitrage à documenter
+
+Avant toute mise à jour du bulletin, demander à la CNSSAP :
+- quelle source doit être retenue pour les cotisants 2025 de la branche des
+  pensions ;
+- si les 1 470 429 cotisants ESS correspondent à des cotisants actifs, des
+  affiliés ou à un périmètre élargi ;
+- si les 9 136 bénéficiaires ESS et les 10 613 retraités de l'annuaire
+  couvrent la même population ;
+- si les 106,730 milliards CDF de l'ESS correspondent aux prestations servies
+  ou à un agrégat de charges techniques ;
+- quelle source doit alimenter les séries statistiques principales et quelle
+  source doit être utilisée pour les agrégats financiers.
+
+Orientation provisoire de travail, non validée institutionnellement :
+utiliser l'annuaire pour les séries de cotisants, retraités et prestations
+servies, et conserver l'ESS comme source comptable à réconcilier.
+
+3. Autres problèmes CNSSAP à vérifier
+
+3.1. Réforme de basculement
+
+Les chiffres ESS et annuaire sont très différents pour les retraités basculés
+et leurs ayants droit. L'annuaire présente en outre une incohérence interne :
+la ligne des ayants droit indique 4 933 personnes, tandis que le détail des
+conjoints et des orphelins donne 2 561 + 4 933 = 7 494 personnes, chiffre
+repris dans le total.
+
+3.2. Risques professionnels
+
+L'ESS ne renseigne aucun cotisant pour la branche des risques professionnels,
+alors que l'annuaire utilise 1 021 676 cotisants. Les recettes diffèrent
+également : 58,420 milliards CDF dans l'ESS contre 39,727023979 milliards
+CDF de cotisations BRP dans l'annuaire.
+
+3.3. Désagrégation par sexe
+
+Certaines répartitions hommes/femmes de l'ESS sont décimales, par exemple
+964 681,3 hommes et 506 769,0 femmes pour le régime de base 2025. Ces valeurs
+semblent être des répartitions calculées ou des proxies et ne doivent pas être
+présentées comme des effectifs déclarés sans confirmation.
+
+3.4. Couverture effective des prestations 2025
+
+La couverture effective enregistrée pour trois prestations du régime de base
+apparaît comme 1 471 448, 1 471 449 et 1 471 450, alors que l'indicateur de
+cotisants indique 1 470 429. Cette progression unité par unité doit être
+vérifiée : elle peut signaler une mauvaise lecture ou un mauvais classement
+d'une valeur dans le classeur ESS.
+
+3.5. Accident du travail 2025
+
+L'ESS indique 2 bénéficiaires et un montant unitaire de
+695 456 112,25 CDF, soit environ 695,456 millions CDF. Le montant paraît
+plutôt correspondre à un montant global ou à une dépense de régime qu'à un
+montant unitaire par bénéficiaire. La définition du champ doit être confirmée.

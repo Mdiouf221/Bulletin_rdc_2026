@@ -76,19 +76,19 @@ THIN_BORDER = Border(
 ODD_METHODOLOGY_SPECS = {
     "global_131": {
         "definition": "Proportion de la population couverte par au moins une prestation en espèces de protection sociale ou cotisant activement à au moins un régime de sécurité sociale.",
-        "numerator": "Nombre de personnes recevant au moins une prestation en espèces de protection sociale, hors soins de santé, ou cotisant activement à au moins un régime de sécurité sociale, sans double comptage.",
+        "numerator": "Nombre de personnes recevant au moins une prestation en espèces de protection sociale, hors soins de santé et indemnités journalières de maladie ou de maternité, ou cotisant activement à au moins un régime de sécurité sociale, sans double comptage.",
         "denominator": "Population totale.",
         "formula": "Population couverte par au moins une prestation ou cotisant activement ÷ population totale × 100.",
     },
     "ind_22_enfants": {
         "definition": "Proportion d'enfants bénéficiant d'au moins une prestation en espèces de protection sociale destinée aux enfants ou aux familles.",
-        "numerator": "Nombre d'enfants recevant au moins une prestation en espèces pour enfants ou famille.",
+        "numerator": "Nombre d'enfants recevant au moins une prestation en espèces pour enfants ou famille, hors indemnités journalières de maladie ou de maternité.",
         "denominator": "Population totale des enfants dans la tranche d'âge retenue.",
         "formula": "Enfants bénéficiaires ÷ population totale des enfants × 100.",
     },
     "ind_23_maternite": {
         "definition": "Proportion de femmes ayant accouché qui reçoivent une prestation en espèces de maternité.",
-        "numerator": "Nombre de femmes ayant accouché et percevant une indemnité ou une allocation de maternité en espèces.",
+        "numerator": "Nombre de femmes ayant accouché et percevant une prestation de maternité en espèces, hors indemnité journalière de maternité.",
         "denominator": "Nombre total de femmes ayant accouché au cours de la même année, estimé directement ou à partir des naissances vivantes corrigées des naissances multiples.",
         "formula": "Femmes bénéficiaires d'une prestation de maternité ÷ femmes ayant accouché × 100.",
     },

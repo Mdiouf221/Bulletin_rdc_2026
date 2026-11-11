@@ -32,7 +32,7 @@ NOTE POUR SECTIONS FUTURES — Programmes d'assistance sociale et filets de séc
   - Projets de stabilisation Est-RDC (P175834, 250 M USD, 2022-2027) — composante PS zones de conflit
   - Programmes gouvernementaux d'assistance sociale (PDL-145T, gratuité maternité CSU, etc.)
   Ces programmes non contributifs constituent un 4e registre à documenter dans les chapitres analytiques,
-  en complément des régimes CNSS, CNSSAP et FNPSS.
+  en complément des régimes contributifs et statutaires documentés.
   Sources : projets.worldbank.org ; rapport annuel résultats EPNU-RDC 2023 (Reliefweb)
 
 Statut :

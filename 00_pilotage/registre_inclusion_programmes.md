@@ -148,7 +148,7 @@ Règle de travail :
 | **Sous-indicateurs ODD concernés** | 2.7 (vieillesse), 2.9 (cotisants actifs), indicateur global |
 | **Statut** | **Inclus avec réserve** |
 
-**Réserve :** Les données de cotisants CNSSAP déclarées dans l'ESS (198 399 en 2022) diffèrent significativement de l'estimation utilisée par le tableau de bord OIT (1 623 000, équivalent fonctionnaires publics ILOSTAT 2020). Le bulletin doit présenter les deux valeurs et expliquer l'écart — voir DM-010 et Q3 des questions ouvertes.
+**Réserve :** Les données de cotisants CNSSAP déclarées dans l'ESS passent de 198 399 en 2022 à 1 004 106 en 2023 et 1 013 104 en 2024. Ces effectifs sont retenus comme cotisants actifs N4 conformément à DM-019, mais la rupture de série et la différence avec l'estimation OIT de 1 623 000 doivent rester explicites.
 
 **Référence :** DM-010 | Inclus par défaut pour les branches opérationnelles | 2026-06-09
 

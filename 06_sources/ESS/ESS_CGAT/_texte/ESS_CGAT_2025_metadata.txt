@@ -1,0 +1,18 @@
+Source : Enquête sur les Sources Statistiques (ESS) — CGAT 2025
+Institution : Centre de gestion et d'appui technique (CGAT), données de mutuelles de santé volontaire
+Année de référence : 2025
+Fichier source : ../ESS_CGAT_2025.xlsm
+Niveau de fiabilité : source primaire transmise dans le cadre de l'atelier de validation
+
+Données clés :
+- MUSA de Kinshasa : 5 910 cotisants et 18 491 bénéficiaires ;
+- MUSA du Kongo Central : 9 124 cotisants et 13 871 bénéficiaires ;
+- MUSA de Goma : 585 cotisants et 2 696 bénéficiaires ;
+- total : 15 619 cotisants et 35 058 bénéficiaires.
+
+Réserve :
+Les montants financiers sont exprimés en dollars dans le formulaire et ne sont pas convertis en CDF sans taux documenté.
+Une feuille complémentaire « Complement Word CGAT » conserve les agrégats du document institutionnel sans modifier les feuilles ESS originales.
+
+Citation recommandée :
+CGAT (2025), Enquête sur les Sources Statistiques (ESS), données des mutuelles de santé volontaire, document transmis dans le cadre de l'atelier de validation.

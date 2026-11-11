@@ -1,0 +1,30 @@
+TITRE : ESS DEP-SANTÉ 2025 — Enquête sur les Sources Statistiques de la protection sociale (format OIT)
+SOURCE / AUTEUR : DEP-SANTÉ, République Démocratique du Congo
+PAYS / RÉGION : République Démocratique du Congo
+DATE : 2025
+LANGUE : Français
+TYPE : données institutionnelles
+FICHIER : DEP_SANTE_ESS_2025.xlsm (source)
+NIVEAU FIABILITE : 1 — données institutionnelles primaires, transmission directe de la DEP-SANTÉ
+LIEN SOURCE : Non disponible — transmission directe
+
+---
+
+CONTENU RÉSUMÉ
+
+Classeur ESS 2025 transmis par la DEP-SANTÉ, archivé sans import dans la base ESS. La lecture directe du classeur fait apparaître des prestations au titre d'un régime d'assistance médicale de l'État aux Congolais économiquement faibles et aux personnes vulnérables, ainsi que des soins et évacuations sanitaires.
+
+---
+
+OBSERVATIONS MÉTHODOLOGIQUES
+
+- Le rapport de validation du 11 octobre 2026 est bloquant : aucune ligne de régime valide n'est détectée dans l'onglet « Inventaire des régimes ».
+- L'année n'est pas lisible dans la cellule attendue de l'inventaire.
+- Le fichier ne doit pas être importé dans la base ESS ni cité dans le bulletin tant qu'une version corrigée ou une clarification institutionnelle n'a pas été obtenue.
+- Le classeur est conservé pour traçabilité avec le statut « à vérifier ».
+
+---
+
+CITATION RECOMMANDÉE
+
+DEP-SANTÉ (2025), Enquête sur les Sources Statistiques (ESS) — format OIT, République Démocratique du Congo. Document transmis directement, à vérifier.

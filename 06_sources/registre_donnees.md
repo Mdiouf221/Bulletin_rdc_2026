@@ -81,6 +81,13 @@ Ces fichiers sont les tableaux ESS (format OIT) utilisés pour la production du 
 | `ESS CNSSAP 2020.xlsm` | `06_sources/ESS/ESS_CNSSAP/` | CNSSAP | Tableau ESS OIT | Données statistiques standardisées CNSSAP — 1 régime (pensions) — date interne affiche 2022 | 2020 | Oui (`_texte/`) | **Disponible** |
 | `ESS CNSSAP 2021.xlsm` | `06_sources/ESS/ESS_CNSSAP/` | CNSSAP | Tableau ESS OIT | Données statistiques standardisées CNSSAP — 1 régime (pensions) — date interne affiche 2022 | 2021 | Oui (`_texte/`) | **Disponible** |
 | `ESS CNSSAP 2022.xlsm` | `06_sources/ESS/ESS_CNSSAP/` | CNSSAP | Tableau ESS OIT | Données statistiques standardisées CNSSAP — 2 régimes (pensions + réforme du transfert) | 2022 | Oui (`_texte/`) | **Disponible** |
+| `ESS CNSSAP 2025.xlsm` | `06_sources/ESS/ESS_CNSSAP/` | CNSSAP | Tableau ESS OIT | Données statistiques standardisées CNSSAP — 4 régimes (base, complémentaire, risques professionnels, réforme de basculement) — intégré via PROC-008 (mode `--inbox`) le 2026-10-11 | 2025 | Oui (`_texte/ESS_CNSSAP_2025_metadata.txt`) | **Disponible — à valider** |
+
+### ESS_DEP_SANTE/
+
+| Fichier | Chemin | Institution | Type | Description | Période | Converti | Statut |
+|---|---|---|---|---|---|---|---|
+| `DEP_SANTE_ESS_2025.xlsm` | `06_sources/ESS/ESS_DEP_SANTE/` | DEP-SANTÉ | Tableau ESS OIT | Transmission directe. Le rapport de validation ne détecte aucune ligne de régime valide dans l'inventaire ; fichier archivé sans import dans la base ESS. | 2025 | Oui (`_texte/DEP_SANTE_ESS_2025_metadata.txt`) | **À vérifier — import bloqué** |
 
 ### ESS_RDC_tous_regimes/
 
@@ -157,8 +164,20 @@ Ces fichiers sont les tableaux ESS (format OIT) utilisés pour la production du 
 | `CNSSAP_RDC_branches_prestations.txt` | `06_sources/officielles_web/` | CNSSAP | Site officiel institutionnel | Branches couvertes par la CNSSAP : pensions, risques professionnels, prestations aux familles ; textes légaux fondateurs | https://www.cnssap.cd/qui-sommes-nous/ | 2026 (consulté) | Oui | **Disponible** |
 | `FSS_RDC_produits_regimes.txt` | `06_sources/officielles_web/` | FSS | Site officiel institutionnel | Mission, 3 produits (Afia Bora, Kobota Ofele, Afia Bora Prime), statut opérationnel 2026, base légale (Loi 18/035 + Décret 22/13) | https://www.fss.cd/ | 2026 (consulté) | Oui | **Disponible** |
 | `PAM_RDC_programmes_transferts_2026.txt` | `06_sources/officielles_web/` | PAM | Site officiel institutionnel | Transferts sans conditions (4 037 575 bénéficiaires 2021 ; 3 795 530 en 2022 ; 1,3 M dans l'Est depuis janv. 2026) ; cantines scolaires pilote (2023) ; nutrition | https://www.wfp.org/countries/democratic-republic-congo | 2021–2026 | Oui | **Disponible** |
+| `WFP_RDC_rapport_annuel_2025.pdf` | `06_sources/officielles_web/` | PAM | Rapport annuel pays | Alimentation scolaire : 145 000 enfants ayant reçu quotidiennement des repas scolaires en 2025 dans cinq provinces ; distinction entre enfants servis et autres personnes soutenant l'activité | https://www.wfp.org/countries/democratic-republic-congo | 2025 | Non (PDF archivé) | **Disponible** |
+| `PAM_RDC_page_officielle_2026.txt` | `06_sources/officielles_web/` | PAM | Page officielle archivée | Description des activités PAM en RDC : aide alimentaire, transferts monétaires, assistance nutritionnelle, repas scolaires et résilience ; la page ne fournit pas les séries historiques 2021–2022 | https://www.wfp.org/countries/democratic-republic-congo | Consultée le 2026-11-08 | Oui | **Disponible avec réserve** |
+| `Banque_mondiale_STEP_RDC_2023.txt` | `06_sources/officielles_web/` | Banque mondiale | Résultats de projet | Projet STEP : 530 000 bénéficiaires directs de transferts ou THIMO entre février 2014 et décembre 2022 ; plus de 200 000 femmes ; 93 millions USD versés | https://www.banquemondiale.org/fr/results/2023/02/10/providing-safety-nets-for-the-most-vulnerable-in-the-democratic-republic-of-congo-incremental-steps-with-a-large-footpri | 2014–2022 | Oui | **Disponible** |
+| `UNICEF_Nsele_transferts_RDC.txt` | `06_sources/officielles_web/` | UNICEF, PAM et FAO | Évaluation de programme | Transferts monétaires à Nsele : environ 23 000 ménages dans la phase initiale, puis environ 16 000 ménages vulnérables dans la phase de protection sociale ; programme ponctuel | https://drcongo.un.org/fr/265954-l%E2%80%99impact-de-l%E2%80%99intervention-en-transferts-mon%C3%A9taires-dans-la-commune-de-nsele-%C3%A0-kinshasa | Périodes de 3 puis 6 mois ; année non indiquée sur la page | Oui | **Disponible** |
 | `RDC_programmes_non_contributifs_gouvernementaux.txt` | `06_sources/officielles_web/` | Gouvernement RDC + Banque mondiale | Synthesis / sources officielles | STEP Phase III (470 000 bénéficiaires transferts + 150 000 THIMO, clôture fév. 2024) ; gratuité enseignement primaire ; gratuité maternité ; PNPS | Sources multiples (Banque mondiale, MEPST, MINAS) | 2016–2024 | Oui | **Disponible** |
 | `UNICEF_RDC_transferts_monetaires_2021-2022.txt` | `06_sources/officielles_web/` | UNICEF + FAO | Données programmes humanitaires | Cash+Nutrition Tanganyika 2021 (226 648 enfants) ; transferts UNICEF+FAO 2022 (4 000 ménages vulnérables) | Premier bulletin RDC (2023) citant données UNICEF/FAO | 2021–2022 | Oui | **Disponible** |
+
+### ESS — CGAT / mutuelles de santé volontaire
+
+| Fichier | Source | Type | Description | Année | Niveau de fiabilité | Statut |
+|---|---|---|---|---|---|---|
+| `ESS_CGAT_2024.xlsm` | `06_sources/ESS/ESS_CGAT/` | CGAT | Trois mutuelles : Kinshasa, Kongo Central et Goma ; effectifs de cotisants et bénéficiaires ; montants financiers en dollars non convertis | 2024 | Source primaire transmise dans le cadre de l’atelier de validation | **Intégré** |
+| `ESS_CGAT_2025.xlsm` | `06_sources/ESS/ESS_CGAT/` | CGAT | Trois mutuelles : Kinshasa, Kongo Central et Goma ; effectifs de cotisants et bénéficiaires ; montants financiers en dollars non convertis | 2025 | Source primaire transmise dans le cadre de l’atelier de validation | **Intégré** |
+| `CGAT_POMUCO_presentation_2026.docx` | `06_sources/institutions/CGAT/` | POMUCO et CGAT | Présentation institutionnelle ; périmètre, cadre juridique et agrégats 2021–2025 ; utilisée pour confirmer les totaux 2024–2025 | 2026 | Source primaire institutionnelle, à valider | **Archivé et converti en texte** |
 
 ---
 

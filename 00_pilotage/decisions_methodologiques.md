@@ -62,7 +62,7 @@ Les services sociaux, gratuités, interventions d’urgence, programmes sectorie
 
 Le bulletin prévoit un chapitre spécifique sur la santé et la couverture sanitaire. Le statut méthodologique exact de la santé doit être clarifié, notamment concernant son articulation avec les indicateurs ODD 1.3.1 et les indicateurs agrégés.
 
-**Statut :** à confirmer  
+**Statut :** actée pour la présente édition — la série publiée s'arrête à 2025 ; la transmission 2026 (janvier–juillet) reste documentaire et pourra être mentionnée uniquement dans le texte
 **Impact :** chapitre 1, chapitre 3, chapitre 4
 
 ### DM-007 — Liste finale des institutions contributrices
@@ -92,9 +92,9 @@ Le niveau de détail à inclure dans les annexes statistiques devra être fixé 
 
 **Hypothèse de travail, non confirmée :** ce changement pourrait refléter la réforme de transfèrement des agents publics vers la CNSSAP (mentionnée en section 3.1 du chapitre 3 et en 4.2/4.3), qui aurait fait basculer un grand nombre d'agents dans le périmètre CNSSAP en 2023. Cette hypothèse doit être vérifiée directement auprès de la CNSSAP avant toute utilisation de la donnée 2023 dans un tableau ou un indicateur.
 
-**Précaution déjà appliquée :** le Tableau 4.3 (chapitre 4, section âge actif) affiche prudemment `[N/D]` pour les cotisants CNSSAP 2023-2025 plutôt que ce chiffre non vérifié. Cette prudence doit être maintenue tant que ce point n'est pas confirmé.
+**Arbitrage acté (2026-11-10) :** sur instruction de l'utilisateur, les effectifs ESS de 1 004 106 en 2023 et 1 013 104 en 2024 sont traités comme des cotisants actifs N4. Ils sont réintégrés dans le Tableau 4.3, le sous-indicateur ODD des cotisants et le numérateur global, avec maintien d'une réserve sur la rupture de série et la répétition de l'effectif dans les prestations.
 
-**Statut :** à confirmer  
+**Statut :** actée avec réserve sur la rupture de série
 **Impact :** chapitre 4 (sections 4.2, 4.3), chapitre 5 (sous-indicateur ODD 2.9), matrice de couverture CNSSAP, Annexe B  
 **Référence :** DM-010, DM-012 ; à instruire auprès de la CNSSAP (donnée source ESS CNSSAP 2023)
 
@@ -295,6 +295,22 @@ Entre l'estimation de la Division de la population des Nations Unies (ONU WPP 20
 **Impact :** section 0.1 (contexte démographique), tous les calculs utilisant la population totale ou la structure par âge/sexe 2019-2024 comme dénominateur, tableau de bord (`dashboard_regimes.html`), Annexe C
 **Référence :** `02_introduction_generale/0_1_contexte_demographique.md`, `protection_sociale_rdc.db` (table `denominateurs_ref`)
 
+### DM-022 — Exclusion des indemnités journalières des indicateurs ODD 1.3.1
+
+Les indemnités journalières de maladie et de maternité sont exclues des indicateurs ODD 1.3.1, y compris du sous-indicateur maternité. Elles restent conservées dans les ESS et dans les tableaux institutionnels du bulletin, mais ne sont pas comptabilisées comme personnes couvertes dans les numérateurs ODD. Cette règle vise à éviter le double comptage de bénéficiaires ponctuels déjà compris dans les effectifs de cotisants actifs ; les allocations de maternité distinctes peuvent rester examinées selon leur nature et la possibilité d'identifier leurs bénéficiaires.
+
+### DM-024 — Périmètre d'âge du sous-indicateur enfants
+
+Le sous-indicateur 2.2 est présenté comme la couverture de la **population âgée de 0 à 17 ans**. Ce périmètre est retenu conformément à l'arbitrage de l'utilisateur et à la priorité donnée aux dénominateurs INS/RDC : la ligne A3 du canevas INS fournit les proportions de population 0–17 ans pour 2019–2024. Les effectifs utilisés sont calculés à partir de ces proportions, arrondies dans le canevas, et de la population totale INS ; ils sont donc signalés comme dérivés avec proportions approximatives.
+
+**Statut :** actée (2026-11-11, révisée)
+**Impact :** indicateur ODD 2.2, chapitre 4, Annexe C, tableau de bord et règles de calcul
+**Référence :** `06_donnees/INS/Canevas_donnees_INS_Bulletin_PS_RDC.xlsx`, ligne A3 ; `10_output/dashboard_settings.json`
+
+**Statut :** actée (2026-11-10)
+**Impact :** tableau de bord ODD, chapitre 4.9, chapitre 5, Annexe C
+**Référence :** `indicateurs_odd_regles_calcul.md`, `10_output/dashboard_settings.json`
+
 ## Décisions en discussion
 
 ### DM-021 — Anomalie des prestations AT/MP CNSS 2024 (valeur uniforme suspecte)
@@ -321,6 +337,13 @@ Dans les fichiers de données et certaines sorties automatisées, le code techni
 
 **Statut :** acté comme hypothèse de travail, à confirmer par des données administratives
 **Impact :** cartographie institutionnelle, sections 4.2, 4.3 et 5.1, tableaux 2.2, 4.1, 4.3, 5.1 et 5.2, annexes B et C
+
+### DM-023 — Coexistence du calcul national et de la valeur OIT publiée pour l'ODD 1.3.1
+
+Pour 2022, le bulletin conserve comme valeur principale le calcul national établi à partir des ESS et des décisions d'inclusion documentées. La valeur publiée par l'OIT dans ILOSTAT (5,2 %) est présentée séparément comme référence comparative, avec une explication de la différence de périmètre et de méthode.
+
+**Statut :** actée
+**Impact :** section 4.9, tableau de comparaison régionale et Annexe C
 
 ## Décisions abandonnées
 

@@ -1,0 +1,56 @@
+NOTE DE COMPARAISON — SESOPA
+ESS et synthèse de l'atelier de validation
+
+Date de vérification : 2026-11-08
+
+1. Vérification de l'import ESS
+
+Les données SESOPA sont correctement enregistrées dans la base ESS
+06_donnees/protection_sociale_rdc.db. Les sources ESS suivantes sont
+enregistrées séparément :
+
+- ESS_SESOPA_2019.xlsm (source_id 212) ;
+- ESS_SESOPA_2020.xlsm (source_id 213) ;
+- ESS_SESOPA_2021.xlsm (source_id 214) ;
+- ESS_SESOPA_2022.xlsm (source_id 215) ;
+- ESS_SESOPA_2023.xlsm (source_id 216) ;
+- ESS_SESOPA_2024.xlsm (source_id 217) ;
+- ESS_SESOPA_2025.xlsm (source_id 218) ;
+- ESS_SESOPA_2026.xlsm (source_id 219).
+
+Les valeurs sont importées dans le régime SESOPA_R1. Les autres lignes de
+régime standardisées sont vides et ne constituent pas des données
+supplémentaires.
+
+2. Comparaison avec la synthèse de l'atelier
+
+Les valeurs importées correspondent à la série publiée dans la
+Synthese_SESOPA_Assemblee_nationale_2019_juillet_2026.pdf :
+
+Année                 Cotisants       Bénéficiaires
+2019                    1 815             1 414
+2020                    1 815             1 636
+2021                    1 815             1 657
+2022                    1 815             1 681
+2023                    2 315             1 705
+2024                    2 315             1 930
+2025                    2 315             1 948
+2026                    2 315             1 959
+
+3. Point à corriger dans la présentation
+
+La source de l'atelier couvre 2026 jusqu'en juillet seulement. La valeur de
+1 959 bénéficiaires doit donc être présentée comme une donnée
+« janvier–juillet 2026 » ou « à juillet 2026 ». Elle ne doit pas être
+présentée comme une valeur annuelle 2026.
+
+L'import ESS est techniquement correct. La réserve porte uniquement sur
+le périmètre temporel de l'année 2026 et sur le libellé à utiliser dans
+les tableaux, graphiques et textes du bulletin.
+
+À VÉRIFIER AVANT PUBLICATION
+
+- Remplacer, pour SESOPA, le libellé annuel « 2026 » par « à juillet 2026 »
+  lorsque la valeur 1 959 est affichée.
+- Ne pas calculer ni présenter une valeur SESOPA pour l'ensemble de
+  l'année 2026 sans nouvelle transmission couvrant les douze mois.

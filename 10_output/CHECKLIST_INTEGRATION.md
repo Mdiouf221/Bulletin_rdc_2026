@@ -147,7 +147,7 @@ Pour tester rapidement, utiliser ces paramètres Q1 :
 
 **Résultat attendu** : 
 - Les 3 branches (R1, R2, R3) doivent être fusionnées en 1 courbe avec label « Prestations familiales + Risques professionnels + Pension »
-- Valeur unique : 613,761 cotisants (au lieu de 1,841,283)
+- Valeur unique : 613 761 cotisants (au lieu de 1 841 283)
 
 ---
 

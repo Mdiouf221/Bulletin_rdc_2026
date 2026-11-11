@@ -145,6 +145,39 @@ def cnss_financial_series(
     return values
 
 
+def cnssap_financial_series(
+    connection: sqlite3.Connection,
+    column: str,
+) -> dict[int, float | None]:
+    if column not in {
+        "recettes_cdf",
+        "depenses_prestations_cdf",
+        "depenses_admin_cdf",
+    }:
+        raise ValueError(f"Colonne financière non autorisée : {column}")
+    values = {year: None for year in YEARS}
+    rows = connection.execute(
+        f"""
+        SELECT annee, regime_code, {column}
+        FROM indicateurs_regime
+        WHERE institution='CNSSAP'
+          AND regime_code IN ('CNSSAP_R1', 'CNSSAP_R2', 'CNSSAP_R3', 'CNSSAP_R4')
+          AND {column} IS NOT NULL
+        ORDER BY annee, regime_code
+        """
+    )
+    grouped: dict[int, list[tuple[str, float]]] = {}
+    for year, regime_code, value in rows:
+        grouped.setdefault(int(year), []).append((str(regime_code), float(value)))
+    for year, year_values in grouped.items():
+        if year >= 2023:
+            values[year] = sum(value for _, value in year_values)
+        else:
+            base_values = [value for regime, value in year_values if regime == "CNSSAP_R1"]
+            values[year] = base_values[0] if base_values else None
+    return values
+
+
 def ratio_series(
     numerator: dict[int, float | None],
     denominator_component: dict[int, float | None],
@@ -247,13 +280,9 @@ def build_rules(connection: sqlite3.Connection) -> list[Rule]:
     cnss_revenue = cnss_financial_series(connection, "recettes_cdf")
     cnss_benefit_expense = cnss_financial_series(connection, "depenses_prestations_cdf")
     cnss_admin_expense = cnss_financial_series(connection, "depenses_admin_cdf")
-    cnssap_revenue = indicator_series(connection, "CNSSAP", "recettes_cdf", "CNSSAP_R1")
-    cnssap_benefit_expense = indicator_series(
-        connection, "CNSSAP", "depenses_prestations_cdf", "CNSSAP_R1"
-    )
-    cnssap_admin_expense = indicator_series(
-        connection, "CNSSAP", "depenses_admin_cdf", "CNSSAP_R1"
-    )
+    cnssap_revenue = cnssap_financial_series(connection, "recettes_cdf")
+    cnssap_benefit_expense = cnssap_financial_series(connection, "depenses_prestations_cdf")
+    cnssap_admin_expense = cnssap_financial_series(connection, "depenses_admin_cdf")
     cnss_ratio = ratio_series(cnss_admin_expense, cnss_benefit_expense)
     cnssap_ratio = ratio_series(cnssap_admin_expense, cnssap_benefit_expense)
 

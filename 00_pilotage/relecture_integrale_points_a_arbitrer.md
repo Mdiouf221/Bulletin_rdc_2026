@@ -25,6 +25,7 @@ Chaque point indique : localisation, constat, éléments de vérification, gravi
 ## A. Données à confirmer auprès des institutions
 
 ### A1. CNSS — enfants couverts identiques en 2021 et 2023 (Tableau 4.6)
+- **Statut : réserve ajoutée (2026-11-10).** La valeur est conservée, mais une note de prudence signale la duplication apparente et demande confirmation à la CNSS.
 - **Fichier :** `03_chapitres/chapitre_4/4.4_enfants_familles.md`, Tableau 4.6 ; repris en Annexe C (C.1, ligne allocations familiales).
 - **Constat :** 2021 = 2023 = 1 256 585 enfants, valeur strictement identique.
 - **Vérification :** la base ESS (`prestations_historique`) contient bien 1 256 584,83 pour les deux années — la transcription est fidèle, mais la source elle-même est suspecte (duplication probable dans l'ESS CNSS 2023).
@@ -32,76 +33,80 @@ Chaque point indique : localisation, constat, éléments de vérification, gravi
 - **Arbitrage proposé :** interroger la CNSS/l'équipe ESS ; en attendant, ajouter une note de prudence sous le Tableau 4.6.
 
 ### A2. CNSS — allocation des frais funéraires : série erratique et incohérence 4.12/4.13
+- **Statut : vérifié et requalifié (2026-11-10).** Le fichier ESS CNSS 2024 ne contient qu'une seule prestation funéraire, « allocation des frais funéraires », avec un montant unitaire de 320 000 CDF ; cette ligne est également la seule retrouvée dans l'import `source_id=228`. Le montant de 230 000 CDF concerne des pensions et non une seconde prestation funéraire.
 - **Fichier :** `03_chapitres/chapitre_4/4.6_deces_survie.md`, Tableaux 4.12 et 4.13.
-- **Constat :** (i) montants unitaires 180K/220K/320K/320K/180K/320K CDF sans logique temporelle ; (ii) T4.12 affiche [N/D] pour 2024 (bénéficiaires écartés au titre de l'anomalie « 2 853 » — DM-021) alors que T4.13 affiche un montant 2024 de 320 000 CDF.
-- **Vérification :** la base ESS reflète fidèlement ces valeurs (deux lignes distinctes « allocation des frais funéraires » et « frais funéraires » coexistent, avec montants différents : 320 000 vs 230 000 en 2024).
+- **Constat restant :** la série historique des montants unitaires doit toujours être confirmée auprès de la CNSS ; la réserve ne repose toutefois plus sur une prétendue seconde ligne funéraire en 2024.
+- **Vérification :** le classeur source et la base ESS concordent sur l'unique ligne funéraire 2024 ; aucune fusion ni correction de donnée n'est effectuée.
 - **Gravité :** majeur.
 - **Arbitrage proposé :** demander à la CNSS la distinction entre les deux prestations funéraires et la validation des montants ; harmoniser ensuite T4.12/T4.13.
 
 ### A3. CNSS — indemnité journalière de maternité : 2, 2, 17, 2, 71 bénéficiaires (2020–2024)
+- **Statut : vérifié et réservé (2026-11-10).** Les valeurs du tableau concordent avec les imports ESS CNSS 2020–2024 : 2, 2, 17, 2 et 71 bénéficiaires. Aucune correction de donnée n'est justifiée sans confirmation de la CNSS.
 - **Fichier :** `03_chapitres/chapitre_4/4.3_age_actif.md`, Tableau 4.4 ; Annexe C.
 - **Constat :** effectifs implausiblement faibles au regard des cotisantes CNSS. Le texte signale déjà la fragilité.
 - **Gravité :** majeur.
 - **Arbitrage proposé :** vérification auprès de la CNSS (taux de recours, exhaustivité de la déclaration ESS). Conserver la mention de prudence existante.
 
 ### A4. CNSSAP — rupture 2022→2023 des cotisants (198 399 → 1 004 106) — DM-019
-- **Statut : transparence renforcée (2026-09-03).** Un « point de vigilance (DM-019) » a été ajouté dans la section 4.9 : il signale explicitement que le numérateur 2023-2024 du tableau de bord intègre ces effectifs alors que le Tableau 4.3 les écarte, et que les taux 2023-2024 doivent être lus comme des valeurs hautes provisoires. **L'arbitrage de fond (N3 vs N4) reste entier** et nécessite la confirmation de la CNSSAP.
+- **Statut : arbitrage acté avec réserve (2026-11-10).** Les effectifs 2023–2024 sont traités comme des cotisants actifs N4 et réintégrés de manière homogène dans le Tableau 4.3, le tableau de bord et les annexes. La rupture de série et la répétition de l'effectif dans les prestations restent signalées comme réserves de comparabilité.
 - **Fichiers :** chapitre 4 (Tableau 4.3, [N/D] appliqué), Annexe B (B.2.3/B.2.5), Annexe C (C.1 : la ligne « Régime de base (CNSSAP, cotisants) » affiche 1 004 106 en 2023 et 1 013 104 en 2024).
-- **Constat :** le chapitre 4 écarte prudemment ces valeurs ([N/D]) alors que l'Annexe C les intègre au numérateur ODD 1.3.1 — traitement non homogène d'une même donnée.
+- **Constat résolu :** le chapitre 4, l'Annexe C et le tableau de bord appliquent désormais le même traitement N4.
 - **Gravité :** critique (cohérence inter-chapitres et niveau de l'indicateur global).
-- **Arbitrage proposé :** trancher au niveau DM-019 : soit affiliés (N3, à exclure du numérateur « cotisants actifs »), soit cotisants (N4, à réintégrer partout). Appliquer ensuite le même traitement au chapitre 4, à l'Annexe B et à l'Annexe C/tableau de bord.
+- **Arbitrage appliqué :** retenir N4 dans l'ensemble des sorties, avec réserve explicite sur la rupture 2022–2023.
 
 ### A5. CNSSAP — périmètre des agrégats financiers 2023–2024 (Tableaux 4.16 et 4.17)
+- **Statut : vérifié et traité (2026-11-10).** Les agrégats et ratios concordent avec la somme des composantes ESS disponibles ; la réserve sur les doublons potentiels est maintenue.
 - **Fichier :** `03_chapitres/chapitre_4/4.8_depenses_financement.md`.
-- **Constat :** les notes de source indiquent que « les agrégats 2023–2024 intègrent les composantes déclarées dans les ESS » ; or les valeurs affichées correspondent au **régime de base seul** (recettes 2023 : 281,6 Mds = R1 ; total toutes composantes ≈ 353,7 Mds ; prestations 2023 : 24,3 Mds = R1 ; R2 déclare en outre 8,6 Mds).
+- **Constat corrigé :** les valeurs ont été recalculées sur l'ensemble des composantes déclarées dans les ESS (recettes 2023 : 353,8 Mds ; 2024 : 569,2 Mds ; prestations 2023 : 32,8 Mds ; 2024 : 51,3 Mds).
 - **Vérification :** table `indicateurs_regime` (source ESS CNSSAP 2023/2024).
 - **Gravité :** majeur.
-- **Arbitrage proposé :** décider du périmètre (régime de base seul ou somme des composantes), corriger la note de source ou les valeurs en conséquence.
-- **Note :** le ratio d'efficience 2023 de 63,3 % (Tableau 4.18) a été revérifié avec les valeurs exactes de la base : il est **correct** (41 841/66 105 = 63,29 %).
+- **Traitement :** la somme des composantes est retenue pour 2023–2025, avec réserve sur l'absence éventuelle de doublons. Les ratios d'efficience sont recalculés sur ce même périmètre : 56,0 % en 2023 et 58,9 % en 2024.
 
 ### A6. SESOPA — effectifs strictement identiques 2019–2026, y compris année non écoulée (2026)
+- **Statut : traitement éditorial arbitré (2026-11-10).** Le bulletin reste limité à 2019–2025 ; les données SESOPA 2026, disponibles pour janvier–juillet seulement, sont conservées dans l'ESS et la base mais ne figurent pas dans les tableaux ni les graphiques. Elles pourront être mentionnées uniquement dans le texte.
 - **Fichiers :** `03_chapitres/chapitre_4/4.6_deces_survie.md` (T4.12), Annexe B (B.6.3/B.6.7), Annexe C (C.1).
 - **Constat :** 2 315 cotisants / 964+277+718 bénéficiaires reconduits chaque année, y compris 2026. DM-020 documente déjà l'anomalie.
 - **Gravité :** majeur.
-- **Arbitrage proposé :** confirmer auprès du SESOPA ; décider si la colonne 2026 doit être affichée ou remplacée par [N/D].
+- **Traitement retenu :** ne pas afficher de colonne 2026 dans les tableaux du bulletin ; conserver la donnée ESS 2026 comme information documentaire, avec mention explicite de la couverture janvier–juillet uniquement dans le texte si nécessaire.
 
 ### A7. TRESOR (proxy budgétaire) — rupture 2022→2023 : 1 424 573 → 420 894, puis 713 896 en 2024
+- **Statut : traité pour la présente édition (2026-11-11).** Les effectifs TRESOR sont exclus du numérateur principal de l'ODD 1.3.1, car ils sont estimés par différence et ne démontrent ni une couverture effective ni une prestation effectivement reçue. Ils restent visibles dans l'Annexe B comme série contextuelle, avec leur caractère provisoire.
 - **Fichier :** Annexe B (B.7.2), Annexe C (C.1, ligne « Pensions de retraite octroyé de la fonction publique »).
-- **Constat :** rupture non expliquée dans la fiche ; estimation de la Fonction publique déjà marquée « provisoire, à confirmer ».
+- **Constat :** rupture non expliquée dans la fiche ; estimation de la Fonction publique déjà marquée « provisoire, à confirmer ». En 2019, aucune population de référence vérifiable n'est disponible pour confirmer le calcul affiché.
 - **Gravité :** majeur.
-- **Arbitrage proposé :** documenter la cause (changement de méthode d'estimation ?) ou marquer la série comme non comparable.
+- **Réserve maintenue :** la cause de la rupture et l'existence d'une série administrative de couverture effective restent à confirmer ; aucune réintégration n'est effectuée dans la présente édition.
 
 ### A8. FSS — « Population cible (ville-province de Kinshasa) : 1618 millions » (Tableau B.5.3)
-- **Statut : traité partiellement (2026-09-03).** La valeur absurde a été remplacée par [N/D] avec note explicative (« valeur transmise manifestement erronée, à confirmer auprès du FSS ; référence : ~17 M selon ONU WUP 2024 »). La valeur exacte reste à obtenir du FSS.
+- **Statut : traité avec intégration des données de l'atelier (2026-11-11).** La valeur manifestement erronée est retirée. Les données institutionnelles FSS 2023–2025 sont désormais présentées comme une source distincte de l'ESS, sous l'intitulé original « Kobota Ofele (non contributif) », avec distinction entre le programme quantifié et les programmes non renseignés ou non opérationnels.
 - **Fichier :** `04_annexes/annexe_B_fiches_institutionnelles.md`, ligne « Population cible ».
 - **Constat initial :** valeur manifestement mal saisie. Aucune source dans le dépôt ne permet de trancher entre « 16–18 millions » (fourchette FSS) et une autre valeur. Référence externe : ONU WUP donne ≈ 17,0 M d'habitants pour l'agglomération de Kinshasa en 2024.
 - **Gravité :** critique (valeur absurde en l'état) — corrigée en [N/D], valeur définitive à confirmer.
-- **Arbitrage restant :** obtenir la valeur exacte du document FSS d'origine.
+- **Réserve maintenue :** les totaux additionnent femmes enceintes et nouveau-nés et les périmètres varient selon l'année ; ils ne sont pas assimilés à des personnes uniques ni intégrés aux agrégats ESS.
 
 ---
 
 ## B. Choix méthodologiques à trancher
 
 ### B1. ODD 1.3.1 — écart entre la valeur calculée (≈ 4,6 % en 2022) et la valeur publiée par l'OIT (5,2 % en 2022)
-- **Statut : traité (2026-09-03).** Source ILOSTAT archivée (`06_sources/officielles_web/OIT_ILOSTAT_RDC_ODD131_couverture_2022.txt`, enregistrée dans les deux registres) ; paragraphe comparatif ajouté dans 4.9 et ligne « RDC (valeur publiée par l'OIT) » ajoutée au tableau de comparaison. Le choix de conserver le calcul national comme valeur principale reste à confirmer formellement (DM à acter).
+- **Statut : traité et acté (2026-11-11).** La source ILOSTAT est archivée ; le paragraphe comparatif et la ligne « RDC (valeur publiée par l'OIT) » sont présents. Le calcul national reste la valeur principale et la valeur OIT (5,2 % en 2022) est présentée séparément, conformément à DM-023.
 - **Fichiers :** `03_chapitres/chapitre_4/4.9_odd_131.md`, Annexe C.
 - **Vérification Internet :** ILOSTAT (`SDG_0131_SEX_SOC_RT_A`, ref_area=COD) publie **5,2 %** pour 2022 (source XA:6472) ; détail par branche : pension 1,0 ; AT 1,8 ; enfants 2,5 ; etc. — https://rplumber.ilo.org/data/indicator/?id=SDG_0131_SEX_SOC_RT_A&ref_area=COD&format=.csv
 - **Constat :** le bulletin calcule à partir des ESS nationales (option documentée dans `indicateurs_odd_regles_calcul.md`) ; l'OIT publie une estimation différente. Aucune des deux n'est « fausse », mais l'écart doit être explicité.
 - **Gravité :** majeur (comparabilité internationale).
-- **Arbitrage proposé :** conserver le calcul national ET ajouter un encadré comparatif citant la valeur OIT publiée (5,2 % en 2022) avec explication de l'écart, dans 4.9 et dans la ligne RDC du tableau de comparaison régionale.
+- **Traitement retenu :** conserver le calcul national et présenter la valeur OIT séparément, sans les additionner ni les substituer l'une à l'autre.
 
-### B2. Seuil de pauvreté : 72 420 CDF/mois (2019–2023) puis 170 400 CDF/mois (2024)
-- **Statut : traité partiellement (2026-09-03).** Note de rupture de série 2024 (passage Enquête 1-2-3 → ECVM 2024, conversion à confirmer auprès de l'INS) ajoutée aux notes ¹ des tableaux concernés dans 4.2, 4.4, 4.5 et 4.6. La confirmation INS de la conversion ×30 reste à obtenir.
+### B2. Seuil de pauvreté : 72 420 CDF/mois (2019–2023, provisoire) puis environ 172 774 CDF/mois (2024)
+- **Statut : traité avec réserve (2026-11-11).** Le seuil ECVM 2024 de 5 680 CDF/jour est corroboré par les résultats publics ; le montant mensuel retenu est dérivé du seuil annuel publié (2 073 282 CDF / 12). La valeur 2 414 CDF/jour pour 2019–2023 n'a pas été retrouvée dans une publication publique vérifiable et reste provisoire.
 - **Fichiers :** Tableaux 4.2, 4.7, 4.10 ; Annexe A.3.
 - **Constat :** saut de +135 % non commenté dans les notes de tableau. Vraisemblablement passage de l'Enquête 1-2-3 à l'ECVM 2024 (INS), mais non documenté explicitement à côté des valeurs.
 - **Gravité :** majeur (le ratio pension/seuil change de base en 2024).
-- **Arbitrage proposé :** confirmer auprès de l'INS ; ajouter une note commune aux trois tableaux renvoyant à l'Annexe A.3 et signalant la rupture de série 2024.
+- **Traitement retenu :** conserver les deux périodes avec une note de rupture méthodologique ; ne pas présenter 2 414 CDF/jour comme une valeur INS définitivement confirmée.
 
-### B3. Sous-indicateur « Enfants » : 0–14 ans (4.9) vs 0–17 ans (règles de calcul)
-- **Statut : instruit (2026-09-03).** Vérification faite : le tableau de bord calcule effectivement avec la population 0–14 ans (`integrer_dashboard_bulletin.py`, mapping `ind_22_enfants` → `age-0-14`). Le libellé du tableau 4.9 est donc conforme à l'implémentation ; c'est `00_pilotage/indicateurs_odd_regles_calcul.md` (0–15/0–17) qui diverge. Décision à acter : conserver 0–14 (et amender la règle écrite) ou basculer le dénominateur sur 0–15/0–17 (et recalculer).
-- **Fichiers :** `4.9_odd_131.md` (tableau : « Enfants 0–14 ans ») vs `00_pilotage/indicateurs_odd_regles_calcul.md` (dénominateur : population 0–17, option 0–15 WSPR).
+### B3. Sous-indicateur « Enfants » : dénominateur INS 0–17 ans
+- **Statut : traité (2026-11-11, arbitrage révisé).** Le dénominateur INS/RDC A3 est prioritaire pour le sous-indicateur : population âgée de 0 à 17 ans. Les effectifs 2019–2024 sont dérivés des proportions A3 arrondies et de la population totale INS ; cette précision est conservée dans les métadonnées et les notes méthodologiques.
+- **Fichiers :** `4.9_odd_131.md`, `00_pilotage/indicateurs_odd_regles_calcul.md`, `10_output/dashboard_settings.json`.
 - **Gravité :** majeur (le taux dépend directement du dénominateur retenu).
-- **Arbitrage proposé :** identifier le dénominateur réellement utilisé par le tableau de bord (`integrer_dashboard_bulletin.py`) et aligner le libellé du tableau 4.9 sur celui-ci ; documenter le choix dans une DM.
+- **Arbitrage retenu :** utiliser le dénominateur INS A3 0–17 ans et documenter le choix dans DM-024.
 
 ### B4. Cantines scolaires PAM — « décision a été prise d'intégrer » non documentée
 - **Statut : traité (2026-09-03).** Phrase reformulée dans la note du Tableau 2.4 : le programme est présenté dans la cartographie de la protection sociale des enfants mais demeure exclu de l'ODD 1.3.1 (prestation en nature), avec renvoi explicite à FICHE-002 et DM-011 — conforme au registre d'inclusion.
@@ -110,9 +115,15 @@ Chaque point indique : localisation, constat, éléments de vérification, gravi
 - **Arbitrage proposé :** soit référencer une décision méthodologique explicite (nouvelle DM), soit reformuler la note pour préciser que l'intégration vaut pour la cartographie (protection sociale des enfants au sens large) et non pour l'indicateur ODD 1.3.1.
 
 ### B5. MINAS présent dans le Tableau 2.4 (transferts) et le Tableau 2.5 (services — niveau 3)
+- **Statut : vérifié (2026-11-10).** La version actuelle du Tableau 2.4 ne contient pas de programme MINAS de transferts ; le MINAS n'apparaît que dans le Tableau 2.5, pour les centres de promotion sociale et d'apprentissage professionnel. Le risque de double lecture n'est donc pas constaté dans la version actuelle.
 - **Fichier :** `2_1_cartographie_tableaux.md`.
 - **Gravité :** mineur à majeur (risque de double lecture).
-- **Arbitrage proposé :** distinguer explicitement « programmes de transferts MINAS » (2.4) et « centres de promotion sociale MINAS » (2.5).
+- **Traitement :** aucune modification supplémentaire nécessaire ; conserver la distinction actuelle entre assistance sociale et politique sectorielle de niveau 3.
+
+### B5 bis. Mutuelles volontaires (POMUCO/CGAT) — séries manquantes
+- **Statut : traité (2026-11-10).** Les formulaires ESS CGAT 2024 et 2025 et la présentation institutionnelle POMUCO/CGAT ont été extraits des entrants, classés et intégrés. La série couvre désormais trois mutuelles sur 2021–2025 ; les années 2019–2020 restent [N/D]. Ces régimes volontaires ne sont pas inclus dans les indicateurs de couverture.
+- **Fichier :** `04_annexes/annexe_B_fiches_institutionnelles.md`, section B.8.
+- **Traitement :** les effectifs 2024–2025 sont ajoutés sans extrapolation. Les montants financiers libellés en dollars sont conservés comme données de source mais ne sont pas convertis en CDF sans taux documenté.
 
 ### B6. Terminologie « régimes octroyés » / « dispositif statutaire budgétaire »
 - **Statut : traité (2026-09-03).** Entrée « Régime octroyé » ajoutée au glossaire (`05_references/glossaire.md`), rattachée explicitement à la catégorie « dispositif statutaire budgétaire », avec règle d'usage (conserver l'intitulé exact des sources).
@@ -122,15 +133,16 @@ Chaque point indique : localisation, constat, éléments de vérification, gravi
 - **Arbitrage proposé :** ajouter une entrée au glossaire ou unifier vers « dispositif statutaire budgétaire ».
 
 ### B7. Millésime FMI WEO à préciser
+- **Statut : clôturé (2026-11-11).** Les valeurs sont attribuées explicitement au FMI, WEO/DataMapper, millésime 2026 dans la citation de la source ; la mention erronée de la Banque mondiale WDI dans le résumé de section a été corrigée. Le millésime 2026 est conservé, car les données correspondent à la série DataMapper courante consultée le 15 juillet 2026.
 - **Fichier :** `02_introduction_generale/0_2_contexte_economique_emploi.md` ; source `06_sources/officielles_web/FMI_WEO_RDC_croissance_pib_pib_habitant_2024.txt`.
 - **Vérification Internet :** les valeurs (+6,4 ; +9,3 ; +8,5 ; +6,1) correspondent exactement au DataMapper FMI **courant** (édition 2025/2026), pas au WEO d'octobre 2024 (qui donnait 5,9 ; 8,8 ; 8,4 ; 4,7).
 - **Gravité :** mineur (chiffres justes, millésime imprécis).
-- **Arbitrage proposé :** renommer/mettre à jour le fichier source et la citation avec le millésime exact du WEO utilisé.
+- **Traitement :** aucune modification supplémentaire nécessaire pour la présente édition.
 
 ### B8. Ratification C102 — ajouter la date exacte
-- **Statut : traité (2026-09-03).** « ratifiée en 1987 » précisé en « ratifiée le 3 avril 1987 » dans `1_2_approche_bit_oit.md` (NORMLEX).
+- **Statut : clôturé (2026-11-11).** La date exacte est bien indiquée dans `1_2_approche_bit_oit.md` : « ratifiée le 3 avril 1987 » (NORMLEX).
 - **Vérification Internet :** NORMLEX confirme : Parties V, VII, IX, X acceptées, en vigueur, ratification du **3 avril 1987**. Le bulletin dit « ratifiée en 1987 » : exact.
-- **Gravité :** aucun problème — simple enrichissement possible (« le 3 avril 1987 »).
+- **Traitement :** aucune modification supplémentaire nécessaire pour la présente édition.
 
 ---
 
@@ -142,10 +154,8 @@ Chaque point indique : localisation, constat, éléments de vérification, gravi
 | Table des matières | `01_pages_preliminaires/table_des_matieres.md` | placeholder |
 | Listes tableaux/figures/encadrés | `01_pages_preliminaires/listes_tableaux_figures_encadres.md` | « À compléter » |
 | Annexes A1, A2, D, E, F, G | `04_annexes/` | structures initiales, à rédiger |
-| Fiche FNPSS | Annexe B, section B.3 | vide ([N/D] partout) |
 | Figures FIG_CH4_4.2 à 4.7 | notes internes des sections 4.2–4.8 | prévues, non générées (aucun fichier dans `08_figures/`) |
-| Tableau 4.19 (dépenses/PIB) | `4.8_depenses_financement.md` | entièrement [N/D] |
-| Comparaisons régionales ODD 1.3.1 | `4.9_odd_131.md` | [N/D] — valeurs WSPR à intégrer |
+| Comparaisons régionales ODD 1.3.1 | `4.9_odd_131.md` | traité — Afrique subsaharienne 19,1 % et monde 52,4 % (2023), pays comparables non chiffrés faute de valeur vérifiée |
 | Données CNSS 2023–2025 (cotisants, dépenses de prestations) | ch. 4, Annexes B et C | à obtenir auprès de la CNSS |
 
 ---
@@ -159,6 +169,6 @@ Chaque point indique : localisation, constat, éléments de vérification, gravi
 - Croissance démographique 3,3 %/an (92,9 M → 109,3 M sur 2019–2024) : **calcul exact** ((109,3/92,9)^(1/5)−1 = 3,3 %).
 - Taux d'activité 63,44 % (ILOSTAT/MICS 2020), emploi informel ≈ 96 % (96,3 % en 2020) : **confirmés**.
 - Chômage 4,4 % : correspond à l'estimation modélisée ILOEST 2024 (4,421 %), sourcée dans `06_sources/officielles_web/OIT_ILOSTAT_RDC_emploi_secteur_chomage_2021_2024.txt` — cohérent (l'enquête MICS 2020 donne 1,47 %, série différente ; le texte cite bien la définition BIT/estimation OIT).
-- Ratio d'efficience CNSSAP 2023 = 63,3 % : **exact** avec les valeurs non arrondies de la base.
+- Ratio d'efficience CNSSAP 2023 = 56,0 % : **recalculé** après intégration des composantes ESS déclarées.
 - Annexe C, numérateur 2025 = 4 274 : cohérent (somme des seules composantes SESOPA disponibles en 2025 : 2 315 + 964 + 277 + 718) ; la note de lecture du tableau et le texte 4.9 expliquent le caractère partiel de 2025.
 - Population Kinshasa ≈ 17,1 M (2024) : confirmée (ONU World Urbanization Prospects) — à sourcer « ONU DESA, WUP » et non « WPP » le cas échéant.

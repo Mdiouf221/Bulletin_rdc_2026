@@ -32,7 +32,7 @@ TARGETS = (
         BASE_DIR / "03_chapitres" / "chapitre_4" / "4.9_odd_131.md",
         {
             "Population totale (%)": "global_131",
-            "Enfants 0–14 ans (%)": "ind_22_enfants",
+            "Population 0–17 ans (%)": "ind_22_enfants",
             "Femmes ayant accouché — maternité (%)": "ind_23_maternite",
             "Personnes âgées — pension vieillesse (%)": "ind_27_vieillesse",
             "Actifs — cotisants à un régime contributif (%)": "ind_29_cotisants",
@@ -44,7 +44,7 @@ TARGETS = (
         BASE_DIR / "03_chapitres" / "chapitre_5" / "00_plan_chapitre_5.md",
         {
             "Population totale (%)": "global_131",
-            "Enfants 0–14 ans (%)": "ind_22_enfants",
+            "Population 0–17 ans (%)": "ind_22_enfants",
             "Femmes ayant accouché — maternité (%)": "ind_23_maternite",
             "Personnes âgées — pension vieillesse (%)": "ind_27_vieillesse",
             "Actifs — cotisants à un régime contributif (%)": "ind_29_cotisants",
@@ -70,7 +70,7 @@ METRIC_BY_INDICATOR = {
 
 LOCAL_DENOM_MAP = {
     "global_131": ("var-c-popsx", "sex-t", "age-0+"),
-    "ind_22_enfants": ("var-c-popsx", "sex-t", "age-0-14"),
+    "ind_22_enfants": ("var-c-popsx", "sex-t", "age-0-17"),
     "ind_23_maternite": ("var-c-popma", "sex-f", "age-15-49"),
     "ind_25_atmp": ("var-c-lf", "sex-t", "age-15+"),
     "ind_27_vieillesse": ("var-c-popsx", "sex-t", "age-65+"),
@@ -101,6 +101,25 @@ def default_decision(node_type: str) -> str:
     if node_type == "prestation_ess":
         return "exclus"
     return "en_discussion"
+
+
+def has_explicit_decision(
+    program: dict,
+    indicator_key: str,
+    year_key: str,
+    decisions: dict[str, str],
+) -> bool:
+    pid = str(program.get("id") or "")
+    keys = [f"{pid}::{indicator_key}::{year_key}", f"{pid}::{indicator_key}"]
+    keys.extend(
+        key
+        for alias in program.get("legacy_ids") or []
+        for key in (
+            f"{str(alias or '')}::{indicator_key}::{year_key}",
+            f"{str(alias or '')}::{indicator_key}",
+        )
+    )
+    return any(key in decisions for key in keys)
 
 
 def decision_for_program(program: dict, indicator_key: str, year_key: str, decisions: dict[str, str]) -> str:
@@ -138,6 +157,7 @@ def effective_decision(
         return memo[memo_key]
     node = node_map[node_id]
     own = decision_for_program(node, indicator_key, year_key, decisions)
+    explicit = has_explicit_decision(node, indicator_key, year_key, decisions)
     parent_id = str(node.get("parent_id") or "")
     if not parent_id or parent_id not in node_map:
         memo[memo_key] = own
@@ -148,6 +168,9 @@ def effective_decision(
         memo[memo_key] = forced
         return forced
     if parent_eff in {"entierement_inclus", "inclus"}:
+        if node.get("type") == "prestation_ess" and explicit and own == "exclus":
+            memo[memo_key] = own
+            return own
         forced = "inclus" if node.get("type") == "prestation_ess" else "entierement_inclus"
         memo[memo_key] = forced
         return forced

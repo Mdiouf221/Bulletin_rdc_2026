@@ -404,6 +404,11 @@ def _derive_annexe_b_source_payloads(required_entries: list[dict[str, str]]) -> 
         raise ValueError("Aucune institution requise pour l'annexe B.")
 
     regimes, _prestations, _regime_meta, _prestation_meta = load_all(DB_PATH)
+    regimes = [
+        regime
+        for regime in regimes
+        if regime.get("annee") in annexe_b.BULLETIN_YEARS
+    ]
     questionnaire = annexe_b.load_questionnaire_data()
 
     by_key: dict[str, dict[str, Any]] = {}

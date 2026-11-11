@@ -1,7 +1,465 @@
 {
-  "generated_at": "2026-09-03T20:59:27",
+  "generated_at": "2026-11-10T23:57:16",
   "xlsx": "10_output/annexe_B_graphiques_par_institution.xlsx",
   "charts": {
+    "annexe_B_CGAT_cotisants.png": {
+      "institution": "CGAT",
+      "chart_key": "cotisants",
+      "sheet_name": "CGAT_cotisants",
+      "titre": "CGAT — Cotisants actifs",
+      "unite": "personnes",
+      "source": "Base consolidée des ESS OIT/BIT.",
+      "periode": "2019–2025",
+      "type": "courbe",
+      "notes": "",
+      "regles": [],
+      "columns": [
+        "Année",
+        "CGAT_R1",
+        "CGAT_R2",
+        "CGAT_R3"
+      ],
+      "rows": [
+        [
+          2019,
+          null,
+          null,
+          null
+        ],
+        [
+          2020,
+          null,
+          null,
+          null
+        ],
+        [
+          2021,
+          5068.0,
+          7102.0,
+          4056.0
+        ],
+        [
+          2022,
+          6016.0,
+          8114.0,
+          842.0
+        ],
+        [
+          2023,
+          7579.0,
+          7524.0,
+          544.0
+        ],
+        [
+          2024,
+          6264.0,
+          8015.0,
+          792.0
+        ],
+        [
+          2025,
+          5910.0,
+          9124.0,
+          585.0
+        ]
+      ]
+    },
+    "annexe_B_CGAT_beneficiaires.png": {
+      "institution": "CGAT",
+      "chart_key": "beneficiaires",
+      "sheet_name": "CGAT_beneficiaires",
+      "titre": "CGAT — Bénéficiaires",
+      "unite": "personnes",
+      "source": "Base consolidée des ESS OIT/BIT.",
+      "periode": "2019–2025",
+      "type": "courbe",
+      "notes": "",
+      "regles": [],
+      "columns": [
+        "Année",
+        "CGAT_R1",
+        "CGAT_R2",
+        "CGAT_R3"
+      ],
+      "rows": [
+        [
+          2019,
+          null,
+          null,
+          null
+        ],
+        [
+          2020,
+          null,
+          null,
+          null
+        ],
+        [
+          2021,
+          15632.0,
+          10354.0,
+          10695.0
+        ],
+        [
+          2022,
+          18555.0,
+          11205.0,
+          3006.0
+        ],
+        [
+          2023,
+          18228.0,
+          14010.0,
+          2304.0
+        ],
+        [
+          2024,
+          19281.0,
+          13339.0,
+          2717.0
+        ],
+        [
+          2025,
+          18491.0,
+          13871.0,
+          2696.0
+        ]
+      ]
+    },
+    "annexe_B_CGAT_depenses.png": {
+      "institution": "CGAT",
+      "chart_key": "depenses",
+      "sheet_name": "CGAT_depenses",
+      "titre": "CGAT — Dépenses totales (Mds CDF)",
+      "unite": "Mds CDF",
+      "source": "Base consolidée des ESS OIT/BIT.",
+      "periode": "2019–2025",
+      "type": "barres",
+      "notes": "",
+      "regles": [],
+      "columns": [
+        "Année",
+        "CGAT_R1",
+        "CGAT_R2",
+        "CGAT_R3"
+      ],
+      "rows": [
+        [
+          2019,
+          null,
+          null,
+          null
+        ],
+        [
+          2020,
+          null,
+          null,
+          null
+        ],
+        [
+          2021,
+          2.69166027172,
+          0.47156554910000004,
+          0.77194069375
+        ],
+        [
+          2022,
+          2.09160090151,
+          0.6285616176900001,
+          null
+        ],
+        [
+          2023,
+          2.2985975354,
+          0.79239046743,
+          0.15047608241
+        ],
+        [
+          2024,
+          null,
+          null,
+          null
+        ],
+        [
+          2025,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "annexe_B_CGAT_depense_par_beneficiaire.png": {
+      "institution": "CGAT",
+      "chart_key": "depense_par_beneficiaire",
+      "sheet_name": "CGAT_depense_par_beneficiaire",
+      "titre": "CGAT — Dépense moyenne par bénéficiaire (k CDF)",
+      "unite": "k CDF / bénéficiaire",
+      "source": "Base consolidée des ESS OIT/BIT.",
+      "periode": "2019–2025",
+      "type": "courbe",
+      "notes": "",
+      "regles": [],
+      "columns": [
+        "Année",
+        "CGAT_R1",
+        "CGAT_R2",
+        "CGAT_R3"
+      ],
+      "rows": [
+        [
+          2019,
+          null,
+          null,
+          null
+        ],
+        [
+          2020,
+          null,
+          null,
+          null
+        ],
+        [
+          2021,
+          172.18911666581369,
+          45.544287145064715,
+          72.17771797568957
+        ],
+        [
+          2022,
+          112.72438164969012,
+          56.096529914323966,
+          null
+        ],
+        [
+          2023,
+          126.10256393460611,
+          56.558919873661665,
+          65.31079965711805
+        ],
+        [
+          2024,
+          null,
+          null,
+          null
+        ],
+        [
+          2025,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "annexe_B_CGAT_recettes.png": {
+      "institution": "CGAT",
+      "chart_key": "recettes",
+      "sheet_name": "CGAT_recettes",
+      "titre": "CGAT — Recettes totales (Mds CDF)",
+      "unite": "Mds CDF",
+      "source": "Base consolidée des ESS OIT/BIT.",
+      "periode": "2019–2025",
+      "type": "barres",
+      "notes": "",
+      "regles": [],
+      "columns": [
+        "Année",
+        "CGAT_R1",
+        "CGAT_R2",
+        "CGAT_R3"
+      ],
+      "rows": [
+        [
+          2019,
+          null,
+          null,
+          null
+        ],
+        [
+          2020,
+          null,
+          null,
+          null
+        ],
+        [
+          2021,
+          2.74740933922,
+          0.51260688145,
+          0.78163618375
+        ],
+        [
+          2022,
+          2.1466620509100003,
+          0.66180329769,
+          null
+        ],
+        [
+          2023,
+          2.34476630456,
+          0.82527253708,
+          0.15832481241
+        ],
+        [
+          2024,
+          null,
+          null,
+          null
+        ],
+        [
+          2025,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "annexe_B_CGAT_contribution.png": {
+      "institution": "CGAT",
+      "chart_key": "contribution",
+      "sheet_name": "CGAT_contribution",
+      "titre": "CGAT — Contribution moyenne (k CDF / cotisant)",
+      "unite": "k CDF / cotisant",
+      "source": "Base consolidée des ESS OIT/BIT.",
+      "periode": "2019–2025",
+      "type": "courbe",
+      "notes": "",
+      "regles": [],
+      "columns": [
+        "Année",
+        "CGAT_R1",
+        "CGAT_R2",
+        "CGAT_R3"
+      ],
+      "rows": [
+        [
+          2019,
+          null,
+          null,
+          null
+        ],
+        [
+          2020,
+          null,
+          null,
+          null
+        ],
+        [
+          2021,
+          542.109182955801,
+          72.1778205364686,
+          192.71109066814594
+        ],
+        [
+          2022,
+          356.8254738879654,
+          81.56313750184866,
+          null
+        ],
+        [
+          2023,
+          309.3767389576461,
+          109.68534517278043,
+          291.03825810661766
+        ],
+        [
+          2024,
+          null,
+          null,
+          null
+        ],
+        [
+          2025,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "annexe_B_CGAT_sexe.png": {
+      "institution": "CGAT",
+      "chart_key": "sexe",
+      "sheet_name": "CGAT_sexe",
+      "titre": "CGAT — Répartition par sexe (cotisants et bénéficiaires)",
+      "unite": "personnes",
+      "source": "Base consolidée des ESS OIT/BIT.",
+      "periode": "2019–2025",
+      "type": "colonnes empilées (100%)",
+      "notes": "",
+      "regles": [],
+      "columns": [
+        "Année",
+        "Cotisants - Hommes",
+        "Cotisants - Femmes",
+        "Cotisants - Non identifié",
+        "Bénéficiaires - Hommes",
+        "Bénéficiaires - Femmes",
+        "Bénéficiaires - Non identifié"
+      ],
+      "rows": [
+        [
+          2019,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          2020,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          2021,
+          8597.0,
+          7629.0,
+          0.0,
+          15837.0,
+          20844.0,
+          0.0
+        ],
+        [
+          2022,
+          7606.0,
+          7366.0,
+          0.0,
+          15226.0,
+          17540.0,
+          0.0
+        ],
+        [
+          2023,
+          8361.0,
+          7286.0,
+          0.0,
+          16322.0,
+          18220.0,
+          0.0
+        ],
+        [
+          2024,
+          7995.0,
+          7076.0,
+          0.0,
+          18315.0,
+          17022.0,
+          0.0
+        ],
+        [
+          2025,
+          8275.0,
+          7344.0,
+          0.0,
+          18128.0,
+          16930.0,
+          0.0
+        ]
+      ]
+    },
     "annexe_B_CNSS_cotisants.png": {
       "institution": "CNSS",
       "chart_key": "cotisants",
@@ -88,15 +546,15 @@
           2020,
           933348.82,
           2628.0,
-          68459.0,
+          65831.0,
           849.0
         ],
         [
           2021,
           1256937.83,
-          2081.0,
+          3649.0,
           71558.0,
-          849.0
+          0.0
         ],
         [
           2022,
@@ -211,12 +669,12 @@
         [
           2020,
           6641.624494911662,
-          434.5342875006389
+          435.67418288252134
         ],
         [
           2021,
-          23492.36296819788,
-          370.6609256692903
+          null,
+          370.2246395250507
         ],
         [
           2022,
@@ -407,66 +865,66 @@
       "rows": [
         [
           2019,
-          0.0,
-          0.0,
-          2028537.0,
-          0.0,
-          0.0,
-          916373.65
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2020,
-          0.0,
-          0.0,
-          1526124.0,
-          0.0,
-          0.0,
-          1005284.82
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2021,
-          0.0,
-          0.0,
-          1773390.0,
-          0.0,
-          0.0,
-          1331425.83
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2022,
-          0.0,
-          0.0,
-          1841283.0,
-          0.0,
-          0.0,
-          1211717.91
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2023,
-          0.0,
-          0.0,
-          1734816.0,
-          0.0,
-          0.0,
-          1336425.83
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2024,
-          0.0,
-          0.0,
-          2401458.0,
-          0.0,
-          0.0,
-          994625.57
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2025,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
@@ -533,8 +991,8 @@
         ],
         [
           2025,
-          null,
-          null,
+          1470429.0,
+          262419.0,
           null,
           null
         ]
@@ -603,7 +1061,7 @@
         ],
         [
           2025,
-          null,
+          9136.0,
           null,
           null,
           null
@@ -682,7 +1140,7 @@
         ],
         [
           2025,
-          null,
+          106.73,
           null,
           null,
           null,
@@ -755,7 +1213,7 @@
         ],
         [
           2025,
-          null,
+          11682.355516637477,
           null,
           null,
           null
@@ -825,8 +1283,8 @@
         ],
         [
           2025,
-          null,
-          null,
+          687.26978502,
+          67.75,
           null,
           null
         ]
@@ -846,42 +1304,50 @@
       "columns": [
         "Année",
         "Régime de base",
+        "Réforme du transfert",
         "Réforme de basculement"
       ],
       "rows": [
         [
           2019,
           null,
+          null,
           null
         ],
         [
           2020,
           235.0496796359922,
+          null,
           null
         ],
         [
           2021,
           218.3211314912488,
+          null,
           null
         ],
         [
           2022,
           264.1142344467462,
+          null,
           null
         ],
         [
           2023,
           280.40773102939335,
+          null,
           102.08538028953993
         ],
         [
           2024,
           454.3775942706771,
+          null,
           252.36547922508402
         ],
         [
           2025,
-          null,
+          467.3940632427679,
+          258.1749034940305,
           null
         ]
       ]
@@ -909,12 +1375,12 @@
       "rows": [
         [
           2019,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2020,
@@ -963,98 +1429,20 @@
         ],
         [
           2025,
+          1137877.8488,
+          595991.483338319,
           0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
+          7562.400829171771,
+          1573.5991708282295,
           0.0
         ]
       ]
     },
-    "annexe_B_FSS_cotisants.png": {
-      "institution": "FSS",
-      "chart_key": "cotisants",
-      "sheet_name": "FSS_cotisants",
-      "titre": "FSS — Cotisants actifs",
-      "unite": "personnes",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2025",
-      "type": "courbe",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "FSS_R1",
-        "FSS_R2",
-        "FSS_R3",
-        "FSS_R4",
-        "FSS_R5"
-      ],
-      "rows": [
-        [
-          2019,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2020,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2021,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2022,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2023,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2024,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2025,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      ]
-    },
-    "annexe_B_FSS_beneficiaires.png": {
-      "institution": "FSS",
+    "annexe_B_MEPST_beneficiaires.png": {
+      "institution": "MEPST",
       "chart_key": "beneficiaires",
-      "sheet_name": "FSS_beneficiaires",
-      "titre": "FSS — Bénéficiaires",
+      "sheet_name": "MEPST_beneficiaires",
+      "titre": "Ministère de l’Enseignement Primaire, Secondaire et Technique (MEPST) — Bénéficiaires",
       "unite": "personnes",
       "source": "Base consolidée des ESS OIT/BIT.",
       "periode": "2019–2025",
@@ -1063,388 +1451,44 @@
       "regles": [],
       "columns": [
         "Année",
-        "FSS_R1",
-        "FSS_R2",
-        "FSS_R3",
-        "FSS_R4",
-        "FSS_R5"
+        "Protection sociale scolaire"
       ],
       "rows": [
         [
           2019,
-          null,
-          null,
-          null,
-          null,
-          null
+          16668703.0
         ],
         [
           2020,
-          null,
-          null,
-          null,
-          null,
-          null
+          16668703.0
         ],
         [
           2021,
-          null,
-          null,
-          null,
-          null,
-          null
+          17941415.0
         ],
         [
           2022,
-          null,
-          null,
-          null,
-          null,
-          null
+          18386994.0
         ],
         [
           2023,
-          null,
-          null,
-          null,
-          null,
           null
         ],
         [
           2024,
-          null,
-          null,
-          null,
-          null,
           null
         ],
         [
           2025,
-          null,
-          null,
-          null,
-          null,
           null
         ]
       ]
     },
-    "annexe_B_FSS_depenses.png": {
-      "institution": "FSS",
-      "chart_key": "depenses",
-      "sheet_name": "FSS_depenses",
-      "titre": "FSS — Dépenses totales (Mds CDF)",
-      "unite": "Mds CDF",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2025",
-      "type": "barres",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "FSS_R1",
-        "FSS_R2",
-        "FSS_R3",
-        "FSS_R4",
-        "FSS_R5"
-      ],
-      "rows": [
-        [
-          2019,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2020,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2021,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2022,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2023,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2024,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2025,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      ]
-    },
-    "annexe_B_FSS_depense_par_beneficiaire.png": {
-      "institution": "FSS",
-      "chart_key": "depense_par_beneficiaire",
-      "sheet_name": "FSS_depense_par_beneficiaire",
-      "titre": "FSS — Dépense moyenne par bénéficiaire (k CDF)",
-      "unite": "k CDF / bénéficiaire",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2025",
-      "type": "courbe",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "FSS_R1",
-        "FSS_R2",
-        "FSS_R3",
-        "FSS_R4",
-        "FSS_R5"
-      ],
-      "rows": [
-        [
-          2019,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2020,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2021,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2022,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2023,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2024,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2025,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      ]
-    },
-    "annexe_B_FSS_recettes.png": {
-      "institution": "FSS",
-      "chart_key": "recettes",
-      "sheet_name": "FSS_recettes",
-      "titre": "FSS — Recettes totales (Mds CDF)",
-      "unite": "Mds CDF",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2025",
-      "type": "barres",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "FSS_R1",
-        "FSS_R2",
-        "FSS_R3",
-        "FSS_R4",
-        "FSS_R5"
-      ],
-      "rows": [
-        [
-          2019,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2020,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2021,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2022,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2023,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2024,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2025,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      ]
-    },
-    "annexe_B_FSS_contribution.png": {
-      "institution": "FSS",
-      "chart_key": "contribution",
-      "sheet_name": "FSS_contribution",
-      "titre": "FSS — Contribution moyenne (k CDF / cotisant)",
-      "unite": "k CDF / cotisant",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2025",
-      "type": "courbe",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "FSS_R1",
-        "FSS_R2",
-        "FSS_R3",
-        "FSS_R4",
-        "FSS_R5"
-      ],
-      "rows": [
-        [
-          2019,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2020,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2021,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2022,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2023,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2024,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2025,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      ]
-    },
-    "annexe_B_FSS_sexe.png": {
-      "institution": "FSS",
+    "annexe_B_MEPST_sexe.png": {
+      "institution": "MEPST",
       "chart_key": "sexe",
-      "sheet_name": "FSS_sexe",
-      "titre": "FSS — Répartition par sexe (cotisants et bénéficiaires)",
+      "sheet_name": "MEPST_sexe",
+      "titre": "Ministère de l’Enseignement Primaire, Secondaire et Technique (MEPST) — Répartition par sexe (cotisants et bénéficiaires)",
       "unite": "personnes",
       "source": "Base consolidée des ESS OIT/BIT.",
       "periode": "2019–2025",
@@ -1463,66 +1507,66 @@
       "rows": [
         [
           2019,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2020,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2021,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2022,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2023,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2024,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2025,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
@@ -1618,190 +1662,6 @@
         ]
       ]
     },
-    "annexe_B_MESP_depenses.png": {
-      "institution": "MESP",
-      "chart_key": "depenses",
-      "sheet_name": "MESP_depenses",
-      "titre": "MESP — Dépenses totales (Mds CDF)",
-      "unite": "Mds CDF",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2025",
-      "type": "barres",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "MESP_R1"
-      ],
-      "rows": [
-        [
-          2019,
-          null
-        ],
-        [
-          2020,
-          null
-        ],
-        [
-          2021,
-          null
-        ],
-        [
-          2022,
-          null
-        ],
-        [
-          2023,
-          null
-        ],
-        [
-          2024,
-          null
-        ],
-        [
-          2025,
-          null
-        ]
-      ]
-    },
-    "annexe_B_MESP_depense_par_beneficiaire.png": {
-      "institution": "MESP",
-      "chart_key": "depense_par_beneficiaire",
-      "sheet_name": "MESP_depense_par_beneficiaire",
-      "titre": "MESP — Dépense moyenne par bénéficiaire (k CDF)",
-      "unite": "k CDF / bénéficiaire",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2025",
-      "type": "courbe",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "MESP_R1"
-      ],
-      "rows": [
-        [
-          2019,
-          null
-        ],
-        [
-          2020,
-          null
-        ],
-        [
-          2021,
-          null
-        ],
-        [
-          2022,
-          null
-        ],
-        [
-          2023,
-          null
-        ],
-        [
-          2024,
-          null
-        ],
-        [
-          2025,
-          null
-        ]
-      ]
-    },
-    "annexe_B_MESP_recettes.png": {
-      "institution": "MESP",
-      "chart_key": "recettes",
-      "sheet_name": "MESP_recettes",
-      "titre": "MESP — Recettes totales (Mds CDF)",
-      "unite": "Mds CDF",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2025",
-      "type": "barres",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "MESP_R1"
-      ],
-      "rows": [
-        [
-          2019,
-          null
-        ],
-        [
-          2020,
-          null
-        ],
-        [
-          2021,
-          null
-        ],
-        [
-          2022,
-          null
-        ],
-        [
-          2023,
-          null
-        ],
-        [
-          2024,
-          null
-        ],
-        [
-          2025,
-          null
-        ]
-      ]
-    },
-    "annexe_B_MESP_contribution.png": {
-      "institution": "MESP",
-      "chart_key": "contribution",
-      "sheet_name": "MESP_contribution",
-      "titre": "MESP — Contribution moyenne (k CDF / cotisant)",
-      "unite": "k CDF / cotisant",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2025",
-      "type": "courbe",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "MESP_R1"
-      ],
-      "rows": [
-        [
-          2019,
-          null
-        ],
-        [
-          2020,
-          null
-        ],
-        [
-          2021,
-          null
-        ],
-        [
-          2022,
-          null
-        ],
-        [
-          2023,
-          null
-        ],
-        [
-          2024,
-          null
-        ],
-        [
-          2025,
-          null
-        ]
-      ]
-    },
     "annexe_B_MESP_sexe.png": {
       "institution": "MESP",
       "chart_key": "sexe",
@@ -1825,66 +1685,66 @@
       "rows": [
         [
           2019,
-          0.0,
-          0.0,
-          50256.0,
-          0.0,
-          0.0,
-          122547.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2020,
-          0.0,
-          0.0,
-          54383.0,
-          0.0,
-          0.0,
-          130961.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2021,
-          0.0,
-          0.0,
-          60745.0,
-          0.0,
-          0.0,
-          141826.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2022,
-          0.0,
-          0.0,
-          80041.0,
-          0.0,
-          0.0,
-          164877.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2023,
-          0.0,
-          0.0,
-          87019.0,
-          0.0,
-          0.0,
-          176471.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2024,
-          0.0,
-          0.0,
-          96538.0,
-          0.0,
-          0.0,
-          196574.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2025,
-          0.0,
-          0.0,
-          112608.0,
-          0.0,
-          0.0,
-          217171.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
@@ -1895,7 +1755,7 @@
       "titre": "SESOPA — Cotisants actifs",
       "unite": "personnes",
       "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2026",
+      "periode": "2019–2025",
       "type": "courbe",
       "notes": "",
       "regles": [],
@@ -1910,7 +1770,7 @@
       "rows": [
         [
           2019,
-          2315.0,
+          1815.0,
           null,
           null,
           null,
@@ -1918,7 +1778,7 @@
         ],
         [
           2020,
-          2315.0,
+          1815.0,
           null,
           null,
           null,
@@ -1926,7 +1786,7 @@
         ],
         [
           2021,
-          2315.0,
+          1815.0,
           null,
           null,
           null,
@@ -1934,7 +1794,7 @@
         ],
         [
           2022,
-          2315.0,
+          1815.0,
           null,
           null,
           null,
@@ -1958,14 +1818,6 @@
         ],
         [
           2025,
-          2315.0,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2026,
           2315.0,
           null,
           null,
@@ -1981,7 +1833,7 @@
       "titre": "SESOPA — Bénéficiaires",
       "unite": "personnes",
       "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2026",
+      "periode": "2019–2025",
       "type": "courbe",
       "notes": "",
       "regles": [],
@@ -1996,7 +1848,7 @@
       "rows": [
         [
           2019,
-          1959.0,
+          1414.0,
           null,
           null,
           null,
@@ -2004,7 +1856,7 @@
         ],
         [
           2020,
-          1959.0,
+          1636.0,
           null,
           null,
           null,
@@ -2012,7 +1864,7 @@
         ],
         [
           2021,
-          1959.0,
+          1657.0,
           null,
           null,
           null,
@@ -2020,7 +1872,7 @@
         ],
         [
           2022,
-          1959.0,
+          1681.0,
           null,
           null,
           null,
@@ -2028,7 +1880,7 @@
         ],
         [
           2023,
-          1959.0,
+          1705.0,
           null,
           null,
           null,
@@ -2036,7 +1888,7 @@
         ],
         [
           2024,
-          1959.0,
+          1930.0,
           null,
           null,
           null,
@@ -2044,359 +1896,7 @@
         ],
         [
           2025,
-          1959.0,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2026,
-          1959.0,
-          null,
-          null,
-          null,
-          null
-        ]
-      ]
-    },
-    "annexe_B_SESOPA_depenses.png": {
-      "institution": "SESOPA",
-      "chart_key": "depenses",
-      "sheet_name": "SESOPA_depenses",
-      "titre": "SESOPA — Dépenses totales (Mds CDF)",
-      "unite": "Mds CDF",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2026",
-      "type": "barres",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "SESOPA_R1",
-        "SESOPA_R2",
-        "SESOPA_R3",
-        "SESOPA_R4",
-        "SESOPA_R5"
-      ],
-      "rows": [
-        [
-          2019,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2020,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2021,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2022,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2023,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2024,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2025,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2026,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      ]
-    },
-    "annexe_B_SESOPA_depense_par_beneficiaire.png": {
-      "institution": "SESOPA",
-      "chart_key": "depense_par_beneficiaire",
-      "sheet_name": "SESOPA_depense_par_beneficiaire",
-      "titre": "SESOPA — Dépense moyenne par bénéficiaire (k CDF)",
-      "unite": "k CDF / bénéficiaire",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2026",
-      "type": "courbe",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "SESOPA_R1",
-        "SESOPA_R2",
-        "SESOPA_R3",
-        "SESOPA_R4",
-        "SESOPA_R5"
-      ],
-      "rows": [
-        [
-          2019,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2020,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2021,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2022,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2023,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2024,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2025,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2026,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      ]
-    },
-    "annexe_B_SESOPA_recettes.png": {
-      "institution": "SESOPA",
-      "chart_key": "recettes",
-      "sheet_name": "SESOPA_recettes",
-      "titre": "SESOPA — Recettes totales (Mds CDF)",
-      "unite": "Mds CDF",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2026",
-      "type": "barres",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "SESOPA_R1",
-        "SESOPA_R2",
-        "SESOPA_R3",
-        "SESOPA_R4",
-        "SESOPA_R5"
-      ],
-      "rows": [
-        [
-          2019,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2020,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2021,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2022,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2023,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2024,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2025,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2026,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      ]
-    },
-    "annexe_B_SESOPA_contribution.png": {
-      "institution": "SESOPA",
-      "chart_key": "contribution",
-      "sheet_name": "SESOPA_contribution",
-      "titre": "SESOPA — Contribution moyenne (k CDF / cotisant)",
-      "unite": "k CDF / cotisant",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2026",
-      "type": "courbe",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "SESOPA_R1",
-        "SESOPA_R2",
-        "SESOPA_R3",
-        "SESOPA_R4",
-        "SESOPA_R5"
-      ],
-      "rows": [
-        [
-          2019,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2020,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2021,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2022,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2023,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2024,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2025,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          2026,
-          null,
+          1948.0,
           null,
           null,
           null,
@@ -2411,7 +1911,7 @@
       "titre": "SESOPA — Répartition par sexe (cotisants et bénéficiaires)",
       "unite": "personnes",
       "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2026",
+      "periode": "2019–2025",
       "type": "colonnes empilées (100%)",
       "notes": "",
       "regles": [],
@@ -2427,75 +1927,66 @@
       "rows": [
         [
           2019,
-          0.0,
-          0.0,
-          2315.0,
-          0.0,
-          0.0,
-          1959.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2020,
-          0.0,
-          0.0,
-          2315.0,
-          0.0,
-          0.0,
-          1959.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2021,
-          0.0,
-          0.0,
-          2315.0,
-          0.0,
-          0.0,
-          1959.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2022,
-          0.0,
-          0.0,
-          2315.0,
-          0.0,
-          0.0,
-          1959.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2023,
-          0.0,
-          0.0,
-          2315.0,
-          0.0,
-          0.0,
-          1959.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2024,
-          0.0,
-          0.0,
-          2315.0,
-          0.0,
-          0.0,
-          1959.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         [
           2025,
-          0.0,
-          0.0,
-          2315.0,
-          0.0,
-          0.0,
-          1959.0
-        ],
-        [
-          2026,
-          0.0,
-          0.0,
-          2315.0,
-          0.0,
-          0.0,
-          1959.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
@@ -2545,236 +2036,6 @@
         ]
       ]
     },
-    "annexe_B_TRESOR_beneficiaires.png": {
-      "institution": "TRESOR",
-      "chart_key": "beneficiaires",
-      "sheet_name": "TRESOR_beneficiaires",
-      "titre": "Protection statutaire budgétaire — estimation provisoire (Trésor) — Bénéficiaires",
-      "unite": "personnes",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2025",
-      "type": "courbe",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "TRESOR_R1"
-      ],
-      "rows": [
-        [
-          2019,
-          null
-        ],
-        [
-          2020,
-          null
-        ],
-        [
-          2021,
-          null
-        ],
-        [
-          2022,
-          null
-        ],
-        [
-          2023,
-          null
-        ],
-        [
-          2024,
-          null
-        ],
-        [
-          2025,
-          null
-        ]
-      ]
-    },
-    "annexe_B_TRESOR_depenses.png": {
-      "institution": "TRESOR",
-      "chart_key": "depenses",
-      "sheet_name": "TRESOR_depenses",
-      "titre": "Protection statutaire budgétaire — estimation provisoire (Trésor) — Dépenses totales (Mds CDF)",
-      "unite": "Mds CDF",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2025",
-      "type": "barres",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "TRESOR_R1"
-      ],
-      "rows": [
-        [
-          2019,
-          null
-        ],
-        [
-          2020,
-          null
-        ],
-        [
-          2021,
-          null
-        ],
-        [
-          2022,
-          null
-        ],
-        [
-          2023,
-          null
-        ],
-        [
-          2024,
-          null
-        ],
-        [
-          2025,
-          null
-        ]
-      ]
-    },
-    "annexe_B_TRESOR_depense_par_beneficiaire.png": {
-      "institution": "TRESOR",
-      "chart_key": "depense_par_beneficiaire",
-      "sheet_name": "TRESOR_depense_par_beneficiaire",
-      "titre": "Protection statutaire budgétaire — estimation provisoire (Trésor) — Dépense moyenne par bénéficiaire (k CDF)",
-      "unite": "k CDF / bénéficiaire",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2025",
-      "type": "courbe",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "TRESOR_R1"
-      ],
-      "rows": [
-        [
-          2019,
-          null
-        ],
-        [
-          2020,
-          null
-        ],
-        [
-          2021,
-          null
-        ],
-        [
-          2022,
-          null
-        ],
-        [
-          2023,
-          null
-        ],
-        [
-          2024,
-          null
-        ],
-        [
-          2025,
-          null
-        ]
-      ]
-    },
-    "annexe_B_TRESOR_recettes.png": {
-      "institution": "TRESOR",
-      "chart_key": "recettes",
-      "sheet_name": "TRESOR_recettes",
-      "titre": "Protection statutaire budgétaire — estimation provisoire (Trésor) — Recettes totales (Mds CDF)",
-      "unite": "Mds CDF",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2025",
-      "type": "barres",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "TRESOR_R1"
-      ],
-      "rows": [
-        [
-          2019,
-          null
-        ],
-        [
-          2020,
-          null
-        ],
-        [
-          2021,
-          null
-        ],
-        [
-          2022,
-          null
-        ],
-        [
-          2023,
-          null
-        ],
-        [
-          2024,
-          null
-        ],
-        [
-          2025,
-          null
-        ]
-      ]
-    },
-    "annexe_B_TRESOR_contribution.png": {
-      "institution": "TRESOR",
-      "chart_key": "contribution",
-      "sheet_name": "TRESOR_contribution",
-      "titre": "Protection statutaire budgétaire — estimation provisoire (Trésor) — Contribution moyenne (k CDF / cotisant)",
-      "unite": "k CDF / cotisant",
-      "source": "Base consolidée des ESS OIT/BIT.",
-      "periode": "2019–2025",
-      "type": "courbe",
-      "notes": "",
-      "regles": [],
-      "columns": [
-        "Année",
-        "TRESOR_R1"
-      ],
-      "rows": [
-        [
-          2019,
-          null
-        ],
-        [
-          2020,
-          null
-        ],
-        [
-          2021,
-          null
-        ],
-        [
-          2022,
-          null
-        ],
-        [
-          2023,
-          null
-        ],
-        [
-          2024,
-          null
-        ],
-        [
-          2025,
-          null
-        ]
-      ]
-    },
     "annexe_B_TRESOR_sexe.png": {
       "institution": "TRESOR",
       "chart_key": "sexe",
@@ -2803,7 +2064,7 @@
           1450668.0,
           5086.0,
           1152.0,
-          0.0
+          null
         ],
         [
           2020,
@@ -2812,7 +2073,7 @@
           1450668.0,
           5086.0,
           1152.0,
-          0.0
+          null
         ],
         [
           2021,
@@ -2821,7 +2082,7 @@
           1432427.0,
           5086.0,
           1152.0,
-          0.0
+          null
         ],
         [
           2022,
@@ -2830,7 +2091,7 @@
           1424573.0,
           5086.0,
           1152.0,
-          0.0
+          null
         ],
         [
           2023,
@@ -2839,7 +2100,7 @@
           420894.0,
           5086.0,
           1152.0,
-          0.0
+          null
         ],
         [
           2024,
@@ -2848,16 +2109,16 @@
           713896.0,
           5086.0,
           1152.0,
-          0.0
+          null
         ],
         [
           2025,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ]
       ]
     }

@@ -63,6 +63,7 @@ CSS_FILE      = SCRIPT_DIR / "preview.css"
 ASSEMBLER     = SCRIPT_DIR / "assembler_markdown.py"
 REGIME_VISUALIZER = SCRIPT_DIR / "visualiser_regimes.py"
 REGIME_DASHBOARD  = WORKSPACE_DIR / "10_output" / "dashboard_regimes.html"
+REGIME_DB_FILE          = WORKSPACE_DIR / "06_donnees" / "protection_sociale_rdc.db"
 DASHBOARD_SETTINGS_FILE   = WORKSPACE_DIR / "10_output" / "dashboard_settings.json"
 QUESTIONNAIRE_DATA_FILE   = WORKSPACE_DIR / "10_output" / "questionnaire_data.json"
 PRESTATION_SETTINGS_FILE  = WORKSPACE_DIR / "10_output" / "prestation_settings.json"
@@ -126,6 +127,30 @@ def run_regime_dashboard():
         return False
     print("[DASHBOARD] OK")
     return True
+
+
+def _dashboard_refresh_required(dashboard_path: pathlib.Path) -> bool:
+    """Indique si le dashboard doit être régénéré avant d'être servi.
+
+    Le dashboard dépend du script de génération et des bases SQLite
+    (ESS + dénominateurs). Un import ESS peut modifier la base sans toucher
+    le script ; dans ce cas il faut régénérer le HTML/JS.
+    """
+    if not dashboard_path.exists():
+        return True
+    try:
+        dashboard_mtime = dashboard_path.stat().st_mtime
+    except OSError:
+        return True
+
+    dependencies = [REGIME_VISUALIZER, REGIME_DB_FILE, DENOMINATEURS_DB_FILE]
+    for dep in dependencies:
+        try:
+            if dep.exists() and dep.stat().st_mtime > dashboard_mtime:
+                return True
+        except OSError:
+            continue
+    return False
 
 
 # ---------------------------------------------------------------------------
@@ -1664,7 +1689,7 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         dashboard = REGIME_DASHBOARD
         if REGIME_VISUALIZER.exists():
             try:
-                if (not dashboard.exists() or REGIME_VISUALIZER.stat().st_mtime > dashboard.stat().st_mtime):
+                if _dashboard_refresh_required(dashboard):
                     run_regime_dashboard()
             except OSError:
                 pass

@@ -26,7 +26,7 @@ L'indicateur mesure la **couverture effective**, pas seulement la couverture lé
 - les personnes recevant effectivement au moins une prestation en espèces, **ou**
 - les personnes cotisant activement à au moins un régime de protection sociale.
 
-**Exclusion critique :** les prestations de soins de santé (couverture maladie) et les indemnités de maladie sont **exclues** de l'indicateur global (sauf mention contraire). La santé relève des indicateurs ODD 3.8.1 et 3.8.2.
+**Exclusion critique :** les prestations de soins de santé (couverture maladie) et les indemnités journalières de maladie ou de maternité sont **exclues** des indicateurs ODD 1.3.1. La santé relève des indicateurs ODD 3.8.1 et 3.8.2. Cette exclusion s'applique même lorsque le régime parent est inclus ; elle évite de compter comme personnes couvertes par une prestation des bénéficiaires ponctuels déjà comptabilisés parmi les cotisants actifs.
 
 ---
 
@@ -44,29 +44,29 @@ L'indicateur mesure la **couverture effective**, pas seulement la couverture lé
 | **Unité** | % de la population totale |
 | **Note** | Cet indicateur est la somme non-dupliquée des sous-indicateurs 2.2 à 2.8 ; le double comptage entre groupes doit être évité |
 
-### 2.2 Enfants (0–17 ans) — Prestations famille/enfants
+### 2.2 Population âgée de 0–17 ans — Prestations famille/enfants
 
 | Élément | Définition |
 |---------|-----------|
-| **Numérateur** | Nombre d'enfants (0–15 ans selon WSPR, 0–17 selon certains pays) recevant au moins une prestation en espèces pour enfants ou famille |
-| **Dénominateur** | Population totale d'enfants (0–15 ou 0–17 ans) |
+| **Numérateur** | Nombre de bénéficiaires âgés de 0 à 17 ans recevant au moins une prestation en espèces pour enfants ou famille |
+| **Dénominateur** | Population totale âgée de 0 à 17 ans |
 | **Source OIT recommandée** | ESS — feuille famille/enfants (bénéficiaires allocations familiales, allocations prénatales, pensions d'orphelins) |
 | **Référence mondiale 2023** | 28,2 % (enfants 0–15) / 23,9 % (enfants 0–18) |
 | **Référence mondiale 2020** | 26,4 % |
-| **Unité** | % de la population d'enfants |
+| **Unité** | % de la population âgée de 0 à 17 ans |
 | **Note** | En RDC, la CNSS déclare des allocations familiales (bénéficiaires = enfants imputés via un facteur de conversion) ; la CNSSAP déclare des orphelins. L'actualisation du facteur de conversion enfants/foyer est critique. |
 
 ### 2.3 Femmes ayant accouché — Prestations de maternité
 
 | Élément | Définition |
 |---------|-----------|
-| **Numérateur** | Nombre de femmes ayant accouché recevant une prestation en espèces de maternité (indemnité journalière de maternité ou allocation de maternité) |
+| **Numérateur** | Nombre de femmes ayant accouché recevant une prestation en espèces de maternité, à l'exclusion des indemnités journalières de maternité retenues hors des indicateurs ODD |
 | **Dénominateur** | Nombre total de naissances vivantes dans l'année (ou femmes ayant accouché) |
 | **Source OIT recommandée** | ESS — feuille maternité (indemnités journalières versées), données état civil (naissances) |
 | **Référence mondiale 2023** | 36,4 % |
 | **Référence mondiale 2020** | 44,9 % |
 | **Unité** | % des femmes ayant accouché |
-| **Note** | En RDC : non quantifié dans le 1er bulletin (N/A). La CNSS déclare des indemnités journalières de maternité ; leur nombre rapporté aux naissances vivantes INS permettrait le calcul. |
+| **Note** | En RDC, les indemnités journalières de maternité déclarées dans les ESS sont conservées comme données institutionnelles, mais exclues des indicateurs ODD pour éviter le double comptage avec les cotisants actifs. Les allocations de maternité peuvent être retenues si leur bénéficiaire est individualisable et distinct. |
 
 ### 2.4 Personnes en situation de handicap grave — Prestations d'invalidité
 
@@ -164,14 +164,14 @@ L'indicateur mesure la **couverture effective**, pas seulement la couverture lé
 
 | Sous-indicateur ODD | Source primaire ESS | Données numérateur | Données dénominateur | Disponibilité |
 |---------------------|--------------------|--------------------|----------------------|---------------|
-| 2.2 Enfants | CNSS Familles, CNSSAP Familles | Foyers bénéficiaires × facteur enfants | Population 0–17 ans (ONU WPP) | ⚠ Partielle (CNSSAP familles non opérationnel 2022) |
+| 2.2 — Population 0–17 ans | CNSS Familles, CNSSAP Familles | Foyers bénéficiaires × facteur enfants | Population 0–17 ans (INS/RDC, A3) | ⚠ Partielle (CNSSAP familles non opérationnel 2022) |
 | 2.3 Maternité | CNSS Familles | Indemnités journalières maternité | Naissances vivantes (INS) | ⚠ Possible mais non réalisé dans 1er bulletin |
 | 2.4 Handicap | CNSS Pensions (invalidité) | Bénéficiaires pensions invalidité | Population handicapée grave (à estimer) | ✗ Dénominateur absent |
 | 2.5 AT/MP | CNSS AT/MP, CNSSAP AT/MP | Cotisants/assurés actifs AT/MP | Force de travail 15+ (ILOSTAT LFP × pop 15+) | ✓ Bonne (CNSS seule pour 2019-2022) |
 | 2.6 Chômage | Aucune | Aucun bénéficiaire | Chômeurs (ILOSTAT) | ✓ = 0,0 % confirmé |
 | 2.7 Vieillesse | CNSS Pensions, CNSSAP Base | Pensionnés vieillesse | Pop. au-delà âge légal (ONU WPP) | ✓ Bonne |
 | 2.8 Assistance sociale | MINAS, PAM, STEP | Bénéficiaires programmes | Population totale | ⚠ Fragmentée, double comptage |
-| 2.9 Cotisants retraite | CNSS Pensions, CNSSAP Base | Cotisants actifs déclarés | Force de travail (ILOSTAT) | ⚠ Problème estimation CNSSAP |
+| 2.9 Cotisants retraite | CNSS Pensions, CNSSAP Base | Cotisants actifs déclarés | Force de travail (ILOSTAT) | ⚠ Rupture CNSSAP 2022–2023, réserve de comparabilité |
 
 ---
 
@@ -206,7 +206,7 @@ L'indicateur mesure la **couverture effective**, pas seulement la couverture lé
 
 | Indicateur | Tableau 23 | Calcul possible | Écart |
 |-----------|-----------|-----------------|-------|
-| Enfants (0–17) | 2,6 % | 1 130 048 / 52 490 412 ≈ **2,15 %** | **+0,45 points** |
+| Population 0–14 ans | 2,6 % | 1 130 048 / 52 490 412 ≈ **2,15 %** | **+0,45 points** |
 
 **Cause probable :** facteur enfants/foyer différent ou population de référence différente (0–14 vs 0–17).
 
@@ -334,7 +334,7 @@ Pour chaque sous-indicateur ODD 1.3.1 :
 | Dénominateur | Source | Référence |
 |-------------|--------|-----------|
 | Population totale | ONU WPP 2024 RDC | `06_sources/officielles_web/_texte/ONU_WPP_2024_RDC_population.txt` |
-| Population 0–17 ans | ONU WPP 2024 | Idem |
+| Population 0–17 ans | INS/RDC, canevas de collecte 2026 (A3) | Idem |
 | Population au-delà âge légal retraite | ONU WPP 2024 | Idem |
 | Force de travail / population active | ILOSTAT Modelled Estimates | `EAP_DWAP_SEX_AGE_RT_A` (population 15+, tous indicateurs sauf AT/MP) |
 | Population en emploi (AT/MP) | ILOSTAT (population active × (1 - taux chômage)) | Calculée à partir de `EAP_DWAP_SEX_AGE_RT_A` et `UNE_DEUI_RT_A` |

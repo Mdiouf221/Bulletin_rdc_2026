@@ -225,9 +225,9 @@ Event 'questionnaire-saved'
 
 ### Données brutes (CHARTS_INST)
 ```
-Prestations familiales : 613,761 cotisants
-Risques professionnels : 613,761 cotisants ← IDENTIQUE
-Pension : 613,761 cotisants ← IDENTIQUE
+Prestations familiales : 613 761 cotisants
+Risques professionnels : 613 761 cotisants ← IDENTIQUE
+Pension : 613 761 cotisants ← IDENTIQUE
 Action sociale : null
 ```
 
@@ -241,17 +241,17 @@ Action sociale : null
 ### Résultat graphique
 ```
 Au lieu de :
-  ├─ Prestations familiales : 613,761
-  ├─ Risques prof : 613,761 (doublonné !)
-  ├─ Pension : 613,761 (doublonné !)
+  ├─ Prestations familiales : 613 761
+  ├─ Risques prof : 613 761 (doublonné !)
+  ├─ Pension : 613 761 (doublonné !)
   └─ Action soc : (vide)
 
 On obtient :
-  ├─ Prestations familiales + Risques prof + Pension : 613,761
+  ├─ Prestations familiales + Risques prof + Pension : 613 761
   └─ Action soc : (vide)
 ```
 
-Le graphique affiche maintenant la réalité : une seule population de 613,761 cotisants couverts par 3 branches.
+Le graphique affiche maintenant la réalité : une seule population de 613 761 cotisants couverts par 3 branches.
 
 ---
 

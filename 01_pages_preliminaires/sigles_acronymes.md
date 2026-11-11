@@ -27,7 +27,6 @@ Statut :
 | CNSS | Caisse Nationale de Sécurité Sociale |
 | CNSSAP | Caisse Nationale de Sécurité Sociale des Agents Publics de l'État |
 | CSU | Couverture Santé Universelle |
-| FNPSS | Fonds National de Promotion et de Service Social |
 | FSS | Fonds de Solidarité de Santé |
 | INS | Institut National de la Statistique |
 | MEPST | Ministère de l'Enseignement Primaire, Secondaire et Technique |
