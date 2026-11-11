@@ -3410,6 +3410,27 @@ de ménages ou comme une couverture permanente.
 
 <a href="/files/06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf" title="PAM (2025) — Democratic Republic of the Congo Annual Country Report 2025" class="source-ref source-ref-text nv" data-val-id="sD-p3-c1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">Rapport annuel pays du PAM 2025</a>
 
+#### Série documentaire des bénéficiaires du PAM <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Le tableau suivant rassemble les données disponibles sur plusieurs années. Il s'agit
+d'une série documentaire et non d'une série statistique entièrement comparable :
+les modalités d'intervention, le périmètre géographique et l'unité de mesure changent
+selon l'année.
+
+<p class="table-caption"><strong>Tableau D.1</strong> — Bénéficiaires documentés des interventions du PAM en RDC, 2021–2026</p>
+
+| Année | Donnée disponible | Périmètre | Source |
+|---|---:|---|---|
+| 2021 | <span class="val" data-val-id="sD-p3-t1-d1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">4 037 575 personnes</span> | Transferts sans conditions | <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM — activités documentées en RDC, données 2021–2022" class="source-ref source-ref-text nv" data-val-id="sD-p3-t1-c1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">PAM, fiche d'activités 2021–2022</a> |
+| 2022 | <span class="val" data-val-id="sD-p3-t1-d2" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">3 795 530 personnes</span> | Transferts sans conditions | <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM — activités documentées en RDC, données 2021–2022" class="source-ref source-ref-text nv" data-val-id="sD-p3-t1-c2" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">PAM, fiche d'activités 2021–2022</a> |
+| 2025 | <span class="val" data-val-id="sD-p3-t1-d3" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">5 264 306 personnes</span> | Toutes interventions du PAM | <a href="/files/06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf" title="PAM — rapport annuel RDC 2025" class="source-ref source-ref-text nv" data-val-id="sD-p3-t1-c3" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">PAM, rapport annuel pays 2025</a> |
+| 2026 | <span class="val" data-val-id="sD-p3-t1-d4" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">1,3 million de personnes</span> | Est de la RDC, depuis janvier 2026 | <a href="/files/06_sources/officielles_web/PAM_RDC_page_officielle_2026.txt" title="PAM — page officielle archivée, données 2026" class="source-ref source-ref-text nv" data-val-id="sD-p3-t1-c4" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">PAM, page officielle 2026</a> |
+
+Les valeurs 2021 et 2022 forment la seule séquence présentant une modalité
+explicitement identique. Les résultats 2025 et 2026 sont conservés pour documenter
+l'activité récente du PAM, mais ne doivent pas être comparés directement aux deux
+premières années.
+
 ### Transferts monétaires localisés — UNICEF, PAM et FAO à Nsele <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
 À Nsele, dans la ville-province de Kinshasa, une intervention de transferts monétaires

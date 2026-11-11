@@ -2,7 +2,7 @@
 
 > Document de suivi séparé du bulletin imprimable. Les éléments marqués `à valider`, `à rédiger` ou `structure initiale` apparaissent en rouge dans l’export imprimable.
 
-Éléments annotés : **332**  
+Éléments annotés : **340**
 Identifiants dupliqués détectés : **0**
 
 | Identifiant | Statut | Valeur ou passage | Fichier source | Ligne | Action attendue |
@@ -336,6 +336,14 @@ Identifiants dupliqués détectés : **0**
 | `sD-p3-d1` | à valider | 5 264 306 bénéficiaires en 2025 | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 67 | Vérifier la source et confirmer la valeur. |
 | `sD-p3-d2` | à valider | 145 000 enfants | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 73 | Vérifier la source et confirmer la valeur. |
 | `sD-p3-c1` | à valider | Rapport annuel pays du PAM 2025 | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 79 | Vérifier la source et confirmer la valeur. |
-| `sD-p4-d1` | à valider | 23 000 ménages | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 85 | Vérifier la source et confirmer la valeur. |
-| `sD-p4-d2` | à valider | 16 000 ménages | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 85 | Vérifier la source et confirmer la valeur. |
-| `sD-p4-c1` | à valider | Rapport d'évaluation UNICEF | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 92 | Vérifier la source et confirmer la valeur. |
+| `sD-p3-t1-d1` | à valider | 4 037 575 personnes | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 92 | Vérifier la source et confirmer la valeur. |
+| `sD-p3-t1-c1` | à valider | PAM, fiche d'activités 2021–2022 | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 92 | Vérifier la source et confirmer la valeur. |
+| `sD-p3-t1-d2` | à valider | 3 795 530 personnes | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 93 | Vérifier la source et confirmer la valeur. |
+| `sD-p3-t1-c2` | à valider | PAM, fiche d'activités 2021–2022 | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 93 | Vérifier la source et confirmer la valeur. |
+| `sD-p3-t1-d3` | à valider | 5 264 306 personnes | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 94 | Vérifier la source et confirmer la valeur. |
+| `sD-p3-t1-c3` | à valider | PAM, rapport annuel pays 2025 | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 94 | Vérifier la source et confirmer la valeur. |
+| `sD-p3-t1-d4` | à valider | 1,3 million de personnes | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 95 | Vérifier la source et confirmer la valeur. |
+| `sD-p3-t1-c4` | à valider | PAM, page officielle 2026 | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 95 | Vérifier la source et confirmer la valeur. |
+| `sD-p4-d1` | à valider | 23 000 ménages | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 106 | Vérifier la source et confirmer la valeur. |
+| `sD-p4-d2` | à valider | 16 000 ménages | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 106 | Vérifier la source et confirmer la valeur. |
+| `sD-p4-c1` | à valider | Rapport d'évaluation UNICEF | `04_annexes/annexe_D_programmes_hors_perimetre.md` | 113 | Vérifier la source et confirmer la valeur. |

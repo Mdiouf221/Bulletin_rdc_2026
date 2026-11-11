@@ -61,7 +61,7 @@ def main() -> None:
         "`à valider`, `à rédiger` ou `structure initiale` apparaissent en rouge "
         "dans l’export imprimable.",
         "",
-        f"Éléments annotés : **{len(rows)}**  ",
+        f"Éléments annotés : **{len(rows)}**",
         f"Identifiants dupliqués détectés : **{duplicate_ids}**",
         "",
         "| Identifiant | Statut | Valeur ou passage | Fichier source | Ligne | Action attendue |",
