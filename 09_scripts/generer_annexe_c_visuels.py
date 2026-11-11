@@ -28,10 +28,10 @@ de bas de page factorisée par plage d'années) :
      via Plotly/kaleido, avec le même style que le tableau de bord et l'annexe B.
      Aucun graphique pour le dénominateur (non demandé).
 
-Les indicateurs 2.6 (chômage) et 2.8 (vulnérables) ne disposent d'aucune règle de
-calcul opérationnelle dans la base actuelle : seul l'encadré méthodologique est
-généré pour eux, avec une note explicite d'indisponibilité — jamais de valeur
-inventée.
+L'indicateur 2.6 (chômage) est N/A, car aucun régime d'assurance chômage n'existe.
+L'indicateur 2.8 (vulnérables) est N/D : aucun numérateur individuel ni dénominateur
+compatible BIT/OIT n'est disponible. Seul l'encadré méthodologique est généré pour
+ces indicateurs — jamais de valeur inventée.
 
 Le contenu généré est injecté dans 04_annexes/annexe_C_detail_indicateurs.md entre
 les marqueurs :
@@ -119,7 +119,7 @@ ODD_METHODOLOGY_SPECS = {
     },
     "ind_23_maternite": {
         "definition": "Proportion de femmes ayant accouché qui reçoivent une prestation en espèces de maternité.",
-        "numerator": "Nombre de femmes ayant accouché et percevant une prestation de maternité en espèces, hors indemnité journalière de maternité.",
+        "numerator": "Nombre de bénéficiaires de l'allocation de maternité de la CNSS. Les indemnités journalières de maternité sont exclues.",
         "denominator": "Nombre total de femmes ayant accouché au cours de la même année, estimé directement ou à partir des naissances vivantes corrigées des naissances multiples.",
         "formula": "Femmes bénéficiaires d'une prestation de maternité ÷ femmes ayant accouché × 100.",
     },
@@ -143,27 +143,26 @@ ODD_METHODOLOGY_SPECS = {
     },
     "ind_27_vieillesse": {
         "definition": "Proportion de personnes ayant atteint l'âge légal de la retraite qui reçoivent une prestation de vieillesse contributive ou non contributive.",
-        "numerator": "Nombre de personnes ayant atteint l'âge légal de la retraite et percevant effectivement une pension ou une prestation de vieillesse.",
-        "denominator": "Population totale ayant atteint l'âge légal de la retraite, lequel peut différer selon le sexe ou le régime.",
+        "numerator": "Nombre de bénéficiaires d'une pension de vieillesse, y compris les pensions de retraite anticipée. Ces dernières peuvent concerner des personnes âgées de moins de 60 ans.",
+        "denominator": "Population totale âgée de 60 ans et plus. Ce seuil unique correspond à l'âge d'ouverture du droit à pension CNSS ; la mise à la retraite d'office intervient à 65 ans.",
         "formula": "Bénéficiaires de prestations de vieillesse ÷ population ayant atteint l'âge légal de la retraite × 100.",
     },
     "ind_28_vulnerables": {
-        "definition": "Proportion de personnes vulnérables qui reçoivent une prestation d'assistance sociale en espèces.",
-        "numerator": "Nombre de personnes vulnérables percevant une prestation d'assistance sociale en espèces.",
-        "denominator": "Population vulnérable, obtenue en retranchant de la population totale les personnes en âge de travailler cotisant à une assurance sociale ou percevant une prestation contributive, ainsi que les personnes d'âge légal de la retraite percevant une prestation contributive.",
-        "formula": "Personnes vulnérables bénéficiaires d'une prestation d'assistance sociale ÷ population vulnérable × 100.",
+        "definition": "Proportion de personnes vulnérables qui reçoivent une intervention d'assistance sociale, en espèces ou en nature.",
+        "numerator": "Somme des enfants bénéficiaires de prestations familiales et des enfants servis par les repas scolaires PAM.",
+        "denominator": "Population totale, moins les cotisants actifs dédupliqués, TRESOR inclus, et les bénéficiaires de pensions de vieillesse.",
+        "formula": "Enfants bénéficiaires de prestations familiales + enfants servis par les repas scolaires PAM, le tout ÷ population vulnérable × 100.",
     },
     "ind_29_cotisants": {
         "definition": "Proportion de la population en âge de travailler qui cotise activement à un régime de retraite contributif.",
         "numerator": "Nombre de personnes cotisant activement à un régime de retraite contributif.",
-        "denominator": "Population en âge de travailler (15-64 ans, Banque mondiale SP.POP.1564.TO) — voir DM-016.",
+        "denominator": "Population en âge de travailler (15-64 ans, Banque mondiale SP.POP.1564.TO).",
         "formula": "Cotisants actifs à un régime de retraite ÷ population en âge de travailler (15-64 ans) × 100.",
     },
 }
 
 NON_CALCULABLE_NOTE = {
-    "ind_26_chomage": "Aucun régime d'assurance chômage opérationnel n'est identifié dans les ESS disponibles : ni numérateur ni dénominateur ne peuvent être calculés à ce stade.",
-    "ind_28_vulnerables": "La population vulnérable et ses bénéficiaires d'assistance sociale ne font l'objet d'aucune mesure individualisable dans les sources actuellement disponibles : cet indicateur n'est pas calculé dans la présente édition.",
+    "ind_26_chomage": "N/A — aucun régime d'assurance chômage n'existe dans le périmètre du bulletin. Aucune allocation de chômage ne peut donc être mesurée.",
 }
 
 
@@ -254,7 +253,7 @@ def build_fig_indicator_numerator(years: list[int], values: list[float | None], 
 ACRONYME_OVERRIDES = {
     # TRESOR n'est pas un sigle institutionnel au sens strict (mécanisme budgétaire),
     # d'où une graphie capitalisée normale plutôt que tout-majuscules.
-    "TRESOR": "proxy budgétaire hors CNSSAP",
+    "TRESOR": "cotisants actifs estimés hors CNSSAP (hypothèse)",
 }
 
 
@@ -268,20 +267,35 @@ def _sanitize_table_cell(text: str) -> str:
     return text.replace("|", "/").replace("\n", " ").strip()
 
 
-def _format_component_row(label: str, item: dict, years: list[int], years_available: set[int]) -> str:
+def _format_component_row(
+    label: str,
+    item: dict,
+    years: list[int],
+    years_available: set[int],
+    structural_availability: dict[str, dict],
+) -> str:
     cells = []
+    regime_id = f"regime::{item.get('institution') or ''}::{item.get('regime_code') or ''}"
+    implemented_from = (structural_availability.get(regime_id) or {}).get("implemented_from")
     for y in years:
-        if y not in years_available:
+        if isinstance(implemented_from, int) and y < implemented_from:
+            cells.append("[N/A]")
+        elif y not in years_available:
             cells.append("[N/D]")
         elif y in item["values"]:
             cells.append(fmt_int(item["values"][y]))
         else:
-            cells.append("—")
+            cells.append("[N/D]")
     sanitized = _sanitize_table_cell(label)
     return f"| *{sanitized}* | " + " | ".join(f"*{c}*" for c in cells) + " |"
 
 
-def _build_breakdown_rows(components: dict[str, dict], years: list[int], years_available: set[int]) -> list[str]:
+def _build_breakdown_rows(
+    components: dict[str, dict],
+    years: list[int],
+    years_available: set[int],
+    structural_availability: dict[str, dict],
+) -> list[str]:
     """Regroupe les composantes du numérateur par régime pour éviter de répéter
     l'institution (remplacée par son sigle — cf. Liste des sigles et acronymes) et le
     régime sur chaque ligne : une ligne d'en-tête « Dont [régime/prestation] (SIGLE,
@@ -307,7 +321,7 @@ def _build_breakdown_rows(components: dict[str, dict], years: list[int], years_a
         )
         if regime_item is not None:
             header_item = regime_item
-            metric = "personnes potentiellement couvertes estimées" if inst == "TRESOR" else "cotisants"
+            metric = "cotisants actifs estimés" if inst == "TRESOR" else "cotisants"
             header_label = f"Dont {header_item['label']} ({acronym}, {metric})"
             sub_items = prestation_items
         else:
@@ -315,10 +329,26 @@ def _build_breakdown_rows(components: dict[str, dict], years: list[int], years_a
             regime_label = NOM_COURT.get(rc, rc)
             header_label = f"Dont {header_item['label']} — {regime_label} ({acronym}, bénéf.)"
             sub_items = prestation_items[1:]
-        rows.append(_format_component_row(header_label, header_item, years, years_available))
+        rows.append(
+            _format_component_row(
+                header_label,
+                header_item,
+                years,
+                years_available,
+                structural_availability,
+            )
+        )
         for it in sub_items:
             sub_label = f"↳ {it['label']} (bénéf.)"
-            rows.append(_format_component_row(sub_label, it, years, years_available))
+            rows.append(
+                _format_component_row(
+                    sub_label,
+                    it,
+                    years,
+                    years_available,
+                    structural_availability,
+                )
+            )
     return rows
 
 
@@ -346,6 +376,7 @@ def build_synthesis_table(
     denominator: dict[int, float | None],
     components: dict[str, dict],
     denom_footnote: str,
+    structural_availability: dict[str, dict],
     numerator_footnote: str = "",
 ) -> str:
     """Tableau unique : indicateur, numérateur (avec son détail en italique juste en
@@ -365,7 +396,12 @@ def build_synthesis_table(
         + " | ".join(f"**{fmt_int(numerator.get(y))}**" for y in years) + " |"
     )
 
-    breakdown_rows = _build_breakdown_rows(components, years, years_available)
+    breakdown_rows = _build_breakdown_rows(
+        components,
+        years,
+        years_available,
+        structural_availability,
+    )
 
     footnote_html = f'<span class="footnote">{_sanitize_table_cell(denom_footnote)}</span>' if denom_footnote else ""
     row_den = (
@@ -405,6 +441,11 @@ def _strip_trailing_year(meta: str, year: int) -> str:
 
 
 def build_denominator_footnote(indicator_key: str, years: list[int], denom_constructions: dict) -> str:
+    if indicator_key == "ind_28_vulnerables":
+        return (
+            "Dénominateur : population totale moins les cotisants actifs dédupliqués, "
+            "TRESOR inclus, et les bénéficiaires de pensions de vieillesse."
+        )
     """Factorise, par plage d'années consécutives partageant la même source, le détail
     de construction du dénominateur — au lieu de répéter la même source une fois par
     année (ex. « 2019 : Base OIT (2019) ; 2020 : Base OIT (2020)… »), produit
@@ -455,6 +496,7 @@ def build_indicator_section(
     decisions: dict[str, str],
     denom_constructions: dict,
     denom_settings: dict,
+    structural_availability: dict[str, dict],
     denom_cursor: sqlite3.Cursor | None,
 ) -> str:
     title = f"## C.{section_no} — {label}\n\n"
@@ -479,7 +521,17 @@ def build_indicator_section(
             denominator[year] = None
             continue
         num_value = compute_numerator(indicator_key, year, regime_rows, prestation_rows, odd_nodes, decisions)
-        den_value = get_denominator_value(indicator_key, year, denom_constructions, denom_settings, denom_cursor)
+        den_value = get_denominator_value(
+            indicator_key,
+            year,
+            denom_constructions,
+            denom_settings,
+            denom_cursor,
+            regime_rows,
+            prestation_rows,
+            odd_nodes,
+            decisions,
+        )
         numerator[year] = num_value
         denominator[year] = den_value
         ratio[year] = (num_value / den_value * 100.0) if (num_value is not None and den_value and den_value > 0) else None
@@ -502,12 +554,17 @@ def build_indicator_section(
             "RDC en 2013, d'après UN HH Size and Composition 2019. Il s'agit donc d'une estimation et "
             "non d'un décompte administratif direct d'enfants."
         )
-    if indicator_key in {"global_131", "ind_25_atmp"} and 2024 in years:
+    if indicator_key == "ind_28_vulnerables":
         numerator_notes.append(
-            "Pour la CNSS en 2024, le fichier ESS corrigé ventile l'effectif de la branche des risques "
-            "professionnels entre la rente ou allocation d'incapacité (2 853), les rentes de survivants "
-            "(1 107,33) et l'indemnité journalière (1 745,67). Cette ventilation remplace la répétition "
-            "antérieure de 2 853 dans les trois lignes ; elle reste à confirmer institutionnellement."
+            "Le numérateur additionne les enfants bénéficiaires de prestations familiales, "
+            "dont les allocations familiales CNSS déjà estimées à partir de 3,17 enfants "
+            "par titulaire, et les enfants servis par les repas scolaires PAM (2021-2025). "
+            "Faute d'identifiant individuel commun, cette somme ne déduplique pas un éventuel "
+            "recoupement entre les deux interventions. En 2024, la valeur PAM retenue est "
+            "272 000 enfants, avec réserve : le tableau détaillé du rapport indique 194 636 "
+            "enfants servis sur site. Le dénominateur est la population totale, moins les "
+            "cotisants actifs dédupliqués, TRESOR inclus, et les bénéficiaires de pensions "
+            "de vieillesse."
         )
     if indicator_key == "ind_29_cotisants":
         numerator_notes.append(
@@ -525,6 +582,7 @@ def build_indicator_section(
         denominator,
         components,
         denom_footnote,
+        structural_availability,
         numerator_footnote,
     )
 
@@ -549,8 +607,8 @@ def build_indicator_section(
         "(« ↳ », sous le régime dont elles relèvent) classés « inclus » ou « inclus avec réserve » "
         "dans le module Décisions de l'onglet « Indicateurs » du tableau de bord, pour l'année et "
         "l'indicateur considérés. Institutions désignées par leur sigle (cf. Liste des sigles et "
-        "acronymes). « — » : composante non incluse cette année-là (ou décision non encore "
-        "documentée). « [N/D] » : aucune donnée ESS disponible cette année-là.*\n"
+        "acronymes). « [N/A] » : composante structurellement hors périmètre ou non encore "
+        "mise en œuvre. « [N/D] » : donnée ESS attendue mais indisponible ou non vérifiable.*\n"
         if components else ""
     )
 
@@ -612,6 +670,7 @@ def main() -> int:
     decisions = settings.get("oddDecisions") or {}
     denom_settings = settings.get("denomSettings") or {}
     denom_constructions = denom_settings.get("denominatorConstructions") or {}
+    structural_availability = settings.get("oddStructuralAvailability") or {}
 
     denom_conn = sqlite3.connect(DENOM_DB_PATH) if DENOM_DB_PATH.exists() else None
     denom_cursor = None
@@ -650,6 +709,7 @@ def main() -> int:
                 decisions=decisions,
                 denom_constructions=denom_constructions,
                 denom_settings=denom_settings,
+                structural_availability=structural_availability,
                 denom_cursor=denom_cursor,
             )
             md_text, updated = inject_into_markdown(md_text, indicator_key, content)

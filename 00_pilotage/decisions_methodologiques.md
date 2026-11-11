@@ -88,7 +88,7 @@ Le niveau de détail à inclure dans les annexes statistiques devra être fixé 
 
 ### DM-019 — Rupture apparente des cotisants CNSSAP (régime de base) entre 2022 et 2023
 
-**Constat (relecture du 2026-09-02) :** La base institutionnelle (`06_donnees/protection_sociale_rdc.db`, table `indicateurs_regime`) enregistre un bond des cotisants actifs CNSSAP (régime de base, CNSSAP_R1) de 198 399 en 2022 à 1 004 106 en 2023, soit une variation de +406 % — largement supérieure au seuil de 50 % que DM-010 (règle 5) définit comme alerte de rupture méthodologique. Le champ `couverture_effective_total` de la table `prestations_historique` montre par ailleurs une valeur quasi identique (≈1 003 277) répétée sur les trois prestations CNSSAP_R1 de 2023, ce qui suggère qu'il pourrait s'agir d'un effectif d'affiliés/éligibles (N3) plutôt que de cotisants actifs au sens strict (N4) — à confirmer.
+**Constat (relecture du 2026-09-02, vérifié au réimport du 2026-11-11) :** La base institutionnelle (`06_donnees/protection_sociale_rdc.db`, table `indicateurs_regime`) enregistre un bond des cotisants actifs CNSSAP (régime de base, CNSSAP_R1) de 198 399 en 2022 à 1 004 106 en 2023, soit une variation de +406 % — largement supérieure au seuil de 50 % que DM-010 (règle 5) définit comme alerte de rupture méthodologique. Le champ `couverture_effective_total` de la table `prestations_historique` répète désormais cette même valeur (1 004 106) sur les trois prestations CNSSAP_R1 de 2023, ce qui suggère qu'il pourrait s'agir d'un effectif d'affiliés/éligibles (N3) plutôt que de cotisants actifs au sens strict (N4) — à confirmer.
 
 **Hypothèse de travail, non confirmée :** ce changement pourrait refléter la réforme de transfèrement des agents publics vers la CNSSAP (mentionnée en section 3.1 du chapitre 3 et en 4.2/4.3), qui aurait fait basculer un grand nombre d'agents dans le périmètre CNSSAP en 2023. Cette hypothèse doit être vérifiée directement auprès de la CNSSAP avant toute utilisation de la donnée 2023 dans un tableau ou un indicateur.
 
@@ -140,7 +140,7 @@ L'inclusion d'un programme ou régime dans les indicateurs ODD 1.3.1 n'est pas a
 
 1. **Transferts monétaires PAM** : exclus de ODD 1.3.1. Le seul critère favorable (prestation en espèces) est insuffisant pour compenser l'absence de cadre statutaire national, de responsabilité primaire étatique, de permanence et de financement national. Classé « Indicateur connexe » — présenté dans le tableau des programmes non statutaires.
 
-2. **Repas scolaires PAM/MEPST** : exclus de ODD 1.3.1 par définition (prestation en nature ; ODD 1.3.1 = prestations en espèces uniquement selon WSPR 2024-26). Peut figurer dans des indicateurs connexes (alimentation, éducation).
+2. **Repas scolaires PAM/MEPST** : inclus avec réserve dans le calcul national de l'ODD 1.3.1 et dans le sous-indicateur relatif aux personnes vulnérables. Cette décision de finalisation retient les enfants effectivement servis, tout en signalant que la prestation est en nature et qu'aucun dédoublonnage individuel avec les allocations familiales n'est possible.
 
 **Règle générale :**
 Tout programme présentant au moins une réponse négative parmi les critères C2–C5 (cadre statutaire, responsabilité État, permanence, financement) doit être instruit selon PROC-009 avant d'être inclus ou exclu. Cette instruction produit une fiche dans le registre. Le jugement motivé prime sur l'application mécanique des critères.
@@ -259,6 +259,16 @@ L'API GHO de l'OMS ne contient aucun indicateur de prévalence du handicap par p
 **Impact :** tous les sous-indicateurs ODD 1.3.1, Dashboard onglet Indicateurs
 **Référence :** `visualiser_regimes.py` (section `static_rows`), API BM et WPP consultées le 2026-07-04
 
+### DM-027 — Dénominateur handicap : estimation de 3 % pour le handicap grave
+
+Le sous-indicateur 2.4 porte sur les personnes en situation de handicap grave, et non sur la prévalence globale du handicap. La valeur de 15 % issue du Rapport mondial sur le handicap OMS/Banque mondiale correspond à une prévalence globale et ne peut pas être appliquée à ce sous-indicateur.
+
+En l'absence de série nationale annuelle, le dénominateur est estimé à 3 % de la population totale, soit le point médian de la fourchette internationale OMS de 2 à 4 % pour les difficultés fonctionnelles graves. Cette règle rétablit la continuité avec le premier bulletin, qui utilisait des estimations BIT fondées sur les données OMS et ONU. Elle doit être présentée comme une estimation internationale, à confirmer par une source nationale.
+
+**Statut :** actée (2026-11-11)
+**Impact :** sous-indicateur ODD 2.4, tableau de bord, Annexe C, chapitres 4.9 et 5
+**Référence :** `06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt`, note 41 ; `10_output/dashboard_settings.json`
+
 ### DM-016 — Indicateur 2.9 : dénominateur = population 15-64 (BM) et non force de travail (ILOSTAT)
 
 **Principe :**
@@ -307,6 +317,26 @@ Le sous-indicateur 2.2 est présenté comme la couverture de la **population âg
 **Impact :** indicateur ODD 2.2, chapitre 4, Annexe C, tableau de bord et règles de calcul
 **Référence :** `06_donnees/INS/Canevas_donnees_INS_Bulletin_PS_RDC.xlsx`, ligne A3 ; `10_output/dashboard_settings.json`
 
+### DM-025 — Déduplication inter-régimes des cotisants dans l'indicateur global
+
+L'indicateur global ODD 1.3.1 utilise la matrice Q1 du questionnaire institutionnel pour éviter le double comptage des cotisants déclarés dans plusieurs régimes d'une même institution. Les régimes reliés par une valeur Q1 égale à `true` sont traités comme un seul groupe de personnes : pour chaque année, l'effectif retenu est la valeur maximale des régimes du groupe. Les régimes non reliés restent additionnés.
+
+La matrice Q1 n'est pas paramétrée par année ; cette même règle s'applique donc à toute la série temporelle. Le détail des régimes reste affiché dans les tableaux et graphiques institutionnels, sans que ses lignes soient additionnées à nouveau dans l'indicateur global.
+
+**Statut :** actée (2026-11-11)
+**Impact :** tableau de bord ODD, indicateur global, Annexe C, chapitres 4.9 et 5
+**Référence :** `10_output/questionnaire_data.json`, `09_scripts/integrer_dashboard_bulletin.py`, `09_scripts/visualiser_regimes.py`
+
+### DM-026 — Dénominateur de maternité : naissances vivantes observées ou estimées avec réserve
+
+Le dénominateur du sous-indicateur 2.3 correspond au nombre annuel de femmes ayant accouché, approché par le nombre de naissances vivantes. La population féminine de 15 à 49 ans ne peut pas être utilisée comme substitut : elle ne mesure pas les accouchements annuels et est donc exclue de la construction et des sources sélectionnables du tableau de bord.
+
+Le canevas INS/RDC 2026 documente 719 335 naissances vivantes en 2020. Cette valeur est conservée comme observation administrative, sans correction des naissances multiples faute de coefficient RDC documenté. Pour 2019 et 2021–2024, faute de série INS, le dénominateur est estimé en appliquant les taux bruts de natalité publiés par DonnéesMondiales.com aux populations totales annuelles du canevas INS/RDC. Ces valeurs sont une estimation démographique issue d'une source secondaire non institutionnelle, à confirmer, et ne doivent pas être présentées comme des naissances administrativement enregistrées. L'année 2025 reste `N/D`.
+
+**Statut :** actée (2026-11-11)
+**Impact :** indicateur ODD 2.3, tableau de bord, Annexe C, chapitres 4.9 et 5
+**Référence :** `06_donnees/INS/Canevas_donnees_INS_Bulletin_PS_RDC.xlsx`, cellule A4 ; `06_sources/sources_incertaines/DonneesMondiales_RDC_taux_natalite_2019_2024.txt` ; `10_output/dashboard_settings.json`
+
 **Statut :** actée (2026-11-10)
 **Impact :** tableau de bord ODD, chapitre 4.9, chapitre 5, Annexe C
 **Référence :** `indicateurs_odd_regles_calcul.md`, `10_output/dashboard_settings.json`
@@ -331,9 +361,9 @@ Le bulletin distingue la couverture contributive observée par la CNSSAP de la p
 
 Son inclusion dans le calcul national du sous-indicateur relatif aux actifs est subordonnée à cinq conditions : une base statutaire en vigueur, une population identifiable, des droits ou prestations identifiables, un financement budgétaire documenté et exécuté, et l’absence de double comptage dans le numérateur considéré.
 
-L’écart entre l’effectif estimé de l’emploi public et les affiliés ou cotisants CNSSAP ne constitue pas une mesure suffisante de cette couverture. La mécanisation facilite la retenue des cotisations, mais ne doit pas être confondue avec l’immatriculation à la CNSSAP. Les composantes contributive et budgétaire sont présentées séparément avant toute consolidation.
+Dans les fichiers de données et certaines sorties automatisées, le code technique `TRESOR` désigne cette composante hors CNSSAP ; il ne correspond pas à une institution gestionnaire. À titre d’hypothèse de travail, son effectif est assimilé à des cotisants actifs relevant de dispositifs statutaires financés par le budget de l’État. Il est calculé, sans double compte, comme la différence entre le total de salariés du secteur public retenu et les cotisants actifs CNSSAP déclarés pour la même année.
 
-Dans les fichiers de données et certaines sorties automatisées, le code technique `TRESOR` désigne cette composante budgétaire hors CNSSAP. Il ne correspond pas à une institution gestionnaire. À titre d’hypothèse de travail, les agents publics concernés sont considérés comme relevant d’un dispositif non contributif financé par allocation budgétaire. Leur effectif est estimé par différence à partir des effectifs globaux de la Fonction publique — 1 622 972 pour chacune des années 2019 à 2022, 1 425 000 en 2023 et 1 727 000 en 2024 — et des effectifs CNSSAP retenus dans la base. Les résultats ainsi obtenus sont des estimations de personnes potentiellement couvertes ; ils ne constituent ni un décompte de cotisants ni, à eux seuls, la preuve d’une couverture effective individuelle.
+La référence est l’observation ILOSTAT de 1 622 972 salariés du secteur public en 2020, reprise pour 2019 à 2023 faute d’une série annuelle homogène. Pour 2024, le total de 1 727 000 agents de l’État rémunérés, rapporté dans *La Fonction publique en chiffres*, est retenu ; il produit le résiduel de 713 896 après soustraction des 1 013 104 cotisants CNSSAP. Cette hypothèse prolonge la logique du premier bulletin, tout en évitant de compter deux fois les agents déjà enregistrés à la CNSSAP. Elle ne constitue pas un décompte administratif direct des affiliés ni des personnes ayant effectivement perçu une prestation.
 
 **Statut :** acté comme hypothèse de travail, à confirmer par des données administratives
 **Impact :** cartographie institutionnelle, sections 4.2, 4.3 et 5.1, tableaux 2.2, 4.1, 4.3, 5.1 et 5.2, annexes B et C

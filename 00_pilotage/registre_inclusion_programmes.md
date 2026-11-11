@@ -73,8 +73,8 @@ Règle de travail :
 | **Programme** | Repas scolaires distribués par le PAM en collaboration avec le MEPST |
 | **Institution** | PAM / MEPST |
 | **Années concernées** | 2019–2024 |
-| **Sous-indicateur ODD concerné** | Non applicable à ODD 1.3.1 |
-| **Statut** | **Exclu — prestation en nature** |
+| **Sous-indicateur ODD concerné** | 2.8 — Personnes vulnérables / assistance sociale ; indicateur global |
+| **Statut** | **Inclus avec réserve** |
 
 **Grille des critères :**
 
@@ -86,11 +86,11 @@ Règle de travail :
 | C4 — Programme permanent | Non | Dépend des financements PAM annuels |
 | C5 — Financement national | Non | Principalement financé par le PAM |
 
-**Décision :** Exclu de ODD 1.3.1 sur la base du critère C1 (exclusion définitionnelle). Les prestations en nature sont exclues par définition de l'indicateur ODD 1.3.1 selon les standards OIT (WSPR 2024-26, tous sous-indicateurs libellés "receiving cash benefits").
+**Décision :** Inclus avec réserve dans le calcul national de l'ODD 1.3.1 et dans le sous-indicateur 2.8. Cette décision méthodologique de finalisation retient les enfants servis par les repas scolaires PAM comme une composante documentée de la couverture, tout en conservant la nature en nature de la prestation et l'absence de dédoublonnage individuel.
 
-**Présentation dans le bulletin :** Peut être présenté dans des indicateurs connexes (alimentation scolaire, éducation, sécurité alimentaire — ODD 2).
+**Présentation dans le bulletin :** Présenté dans l'ODD 1.3.1 national, avec réserve méthodologique, ainsi que dans les lectures relatives à l'alimentation scolaire, l'éducation et la sécurité alimentaire.
 
-**Référence :** DM-011 | PROC-009 | Instruit le 2026-06-09
+**Référence :** DM-011 révisée | PROC-009 | Révisé le 2026-11-11
 
 ---
 
@@ -100,7 +100,7 @@ Règle de travail :
 |-------|--------|
 | **Programme** | STEP — Projet pour la stabilisation de l'Est de la RDC (Banque mondiale/IDA) |
 | **Institution** | IDA (Banque mondiale) / co-implémentation gouvernementale |
-| **Années concernées** | 2021–2024 (clôturé février 2024) |
+| **Années concernées** | 2021–2025 (clôturé en juin 2025) |
 | **Sous-indicateur ODD concerné** | 2.8 — Personnes vulnérables / assistance sociale |
 | **Statut** | **En discussion** |
 
@@ -111,7 +111,7 @@ Règle de travail :
 | C1 — Prestation en espèces | **Oui** | Transferts monétaires aux ménages vulnérables |
 | C2 — Cadre statutaire national | **Non** | Projet de la Banque mondiale sans base légale nationale propre |
 | C3 — Responsabilité primaire État | **Partiel** | Le MINAS co-implémente mais l'IDA reste le responsable fiduciaire principal |
-| C4 — Programme permanent | **Non** | Projet à durée déterminée, clôturé en février 2024 |
+| C4 — Programme permanent | **Non** | Projet à durée déterminée, clôturé en juin 2025 |
 | C5 — Financement national | **Non** | Entièrement financé par prêt/don IDA |
 
 **Note :** Le programme STEP a été inclus dans l'ESS RDC tous régimes 2023 (Régime 1). Cette inclusion dans l'ESS ne préjuge pas de l'inclusion dans ODD 1.3.1.

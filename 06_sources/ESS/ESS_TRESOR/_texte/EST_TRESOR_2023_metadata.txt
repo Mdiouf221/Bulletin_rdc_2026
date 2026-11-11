@@ -11,15 +11,17 @@ CONTENU
 Fichier au format ESS utilisé pour représenter provisoirement le résiduel de l'emploi public hors CNSSAP et hors régimes spéciaux observés. Institution technique dans la base : TRESOR. Un régime est renseigné : TRESOR_R1.
 
 Donnée importée :
-- Population résiduelle enregistrée dans le champ « cotisants » : 420 894.
+- Population résiduelle enregistrée dans le champ « cotisants » : 618 866.
 - Bénéficiaires : N/D.
 
 ---
 
 OBSERVATIONS MÉTHODOLOGIQUES
 
-- Cette population n'est pas constituée de cotisants au sens strict. Le champ ESS « cotisants » est utilisé comme support technique pour l'affichage dans le tableau de bord.
-- La valeur est une estimation résiduelle et ne prouve pas une couverture budgétaire effective.
+- En l'absence de total 2023 homogène avec l'ILOSTAT, le total de 1 622 972 salariés du secteur public observé par l'ILOSTAT en 2020 est repris comme référence de repli.
+- Le résiduel est calculé ainsi : 1 622 972 salariés du secteur public − 1 004 106 cotisants actifs CNSSAP = 618 866.
+- Conformément à l'hypothèse de travail retenue pour le bulletin, ce résiduel est assimilé à des cotisants actifs relevant de dispositifs statutaires financés par le Trésor public, hors CNSSAP.
+- Cette valeur reste une estimation et ne constitue pas un décompte administratif direct des affiliés ou des personnes ayant effectivement perçu une prestation.
 - Le classeur contient des références internes aux années 2022 et 2023. L'import retient 2023 d'après le nom du fichier ; cette incohérence doit être vérifiée avant publication.
 - Ne pas citer comme donnée institutionnelle et ne pas intégrer automatiquement à l'ODD 1.3.1.
 
@@ -27,4 +29,4 @@ OBSERVATIONS MÉTHODOLOGIQUES
 
 CITATION RECOMMANDÉE
 
-Ne pas citer comme source officielle. Présenter comme « estimation provisoire de travail de l'équipe du bulletin ».
+Présenter comme « estimation de cotisants actifs hors CNSSAP, calculée à partir de l'observation ILOSTAT 2020 sur les salariés du secteur public et des cotisants CNSSAP déclarés en 2023 ».

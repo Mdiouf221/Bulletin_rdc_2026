@@ -24,6 +24,8 @@ Toute source utilisée pour un chiffre, une définition, une institution, un ind
 | Données administratives CNSS | CNSS | À préciser | Cotisants, bénéficiaires, prestations, dépenses | à compléter |
 | Données administratives CNSSAP | CNSSAP | À préciser | Cotisants, pensionnés, prestations, dépenses | à compléter |
 | Données SESOPA | SESOPA | À préciser | Régime ou prestations parlementaires | à compléter |
+| Loi organique n° 06/020 du 10 octobre 2006 portant statut des magistrats | Journal officiel de la RDC | 2006 | Cadre juridique et prestations statutaires des magistrats | disponible |
+| Déclaration de la direction de la MESP sur les ayants droit | 7SUR7.CD, citant la direction MESP | 2025 | Règle de prise en charge des enfants des enseignants affiliés | disponible avec réserve |
 
 ## Sources internationales
 

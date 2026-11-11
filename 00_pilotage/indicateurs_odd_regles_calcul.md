@@ -28,6 +28,10 @@ L'indicateur mesure la **couverture effective**, pas seulement la couverture lé
 
 **Exclusion critique :** les prestations de soins de santé (couverture maladie) et les indemnités journalières de maladie ou de maternité sont **exclues** des indicateurs ODD 1.3.1. La santé relève des indicateurs ODD 3.8.1 et 3.8.2. Cette exclusion s'applique même lorsque le régime parent est inclus ; elle évite de compter comme personnes couvertes par une prestation des bénéficiaires ponctuels déjà comptabilisés parmi les cotisants actifs.
 
+### Convention de disponibilité des valeurs
+
+Dans les sorties ODD, `0` signifie une valeur explicitement observée égale à zéro dans l’ESS. `N/D` indique qu’une donnée attendue est indisponible ou non vérifiable ; une valeur `NULL` de la base doit donc rester `N/D` jusqu’à la sortie. `N/A` désigne un programme, une prestation ou un élément structurellement hors périmètre, y compris avant sa mise en œuvre. Ces statuts ne sont pas interchangeables.
+
 ---
 
 ## 2. Les neuf sous-indicateurs officiels
@@ -66,19 +70,19 @@ L'indicateur mesure la **couverture effective**, pas seulement la couverture lé
 | **Référence mondiale 2023** | 36,4 % |
 | **Référence mondiale 2020** | 44,9 % |
 | **Unité** | % des femmes ayant accouché |
-| **Note** | En RDC, les indemnités journalières de maternité déclarées dans les ESS sont conservées comme données institutionnelles, mais exclues des indicateurs ODD pour éviter le double comptage avec les cotisants actifs. Les allocations de maternité peuvent être retenues si leur bénéficiaire est individualisable et distinct. |
+| **Note** | En RDC, les indemnités journalières de maternité déclarées dans les ESS sont conservées comme données institutionnelles, mais exclues des indicateurs ODD pour éviter le double comptage avec les cotisants actifs. Le numérateur retient les bénéficiaires de l'allocation de maternité CNSS. Le dénominateur applique une règle stable : naissances vivantes observées lorsqu'elles sont disponibles ; à défaut, estimation démographique documentée à partir du taux brut de natalité et de la population de la même année. |
 
 ### 2.4 Personnes en situation de handicap grave — Prestations d'invalidité
 
 | Élément | Définition |
 |---------|-----------|
 | **Numérateur** | Nombre de personnes en situation de handicap grave recevant une prestation en espèces pour invalidité |
-| **Dénominateur** | Population estimée de personnes en situation de handicap grave selon les données OMS |
+| **Dénominateur** | Population estimée de personnes en situation de handicap grave : 3 % de la population totale, à défaut de donnée nationale annuelle |
 | **Source OIT recommandée** | ESS — feuille invalidité (pensions d'invalidité, rentes d'incapacité permanente) ; enquêtes ménages sur le handicap |
 | **Référence mondiale 2023** | 38,9 % |
 | **Référence mondiale 2020** | 33,5 % |
 | **Unité** | % des personnes en situation de handicap grave |
-| **Note** | En RDC : affiché N/A dans le 1er bulletin alors que la CNSS déclare 1 781 bénéficiaires de pensions d'invalidité (2022). **Le dénominateur est calculé via l'API Global Health Observatory (GHO) de l'OMS pour récupérer la prévalence du handicap grave en RDC par année. En cas d'indisponibilité de l'API, un taux par défaut de 15% est appliqué à la population totale.** |
+| **Note** | En RDC : le premier bulletin retient une estimation BIT fondée sur les données OMS et ONU. En l'absence de donnée nationale annuelle comparable, le présent bulletin applique 3 % de la population totale : point médian de la fourchette internationale OMS de 2 à 4 % pour les limitations fonctionnelles graves. Cette valeur est une estimation, non une observation nationale. |
 
 ### 2.5 Travailleurs en cas d'accidents du travail — Prestations AT/MP
 
@@ -90,7 +94,7 @@ L'indicateur mesure la **couverture effective**, pas seulement la couverture lé
 | **Référence mondiale 2023** | 37,4 % |
 | **Référence mondiale 2020** | 35,4 % |
 | **Unité** | % de la force de travail |
-| **Note** | Confirmé par ILOSTAT SDG_0131_SEX_SOC_RT_A : le libellé officiel est « Labour force covered in the event of work injury » (RDC 2022 = 1,8 %). La CNSS Régime 2 est la source principale. La CNSSAP AT/MP n'était pas opérationnelle avant 2023. |
+| **Note** | Le libellé officiel ILOSTAT est « Labour force covered in the event of work injury ». La CNSS Régime 2 est la source principale ; la CNSSAP AT/MP n'était pas opérationnelle avant 2023. L'estimation ILOSTAT de 1,8 % pour 2022 est une référence externe : elle ne doit pas être substituée au taux de 1,1 % calculé dans le bulletin avec les effectifs ESS et le dénominateur national retenu. |
 
 ### 2.6 Chômeurs — Protection contre le chômage
 
@@ -102,42 +106,42 @@ L'indicateur mesure la **couverture effective**, pas seulement la couverture lé
 | **Référence mondiale 2023** | 16,7 % |
 | **Référence mondiale 2020** | 18,6 % |
 | **Unité** | % des chômeurs |
-| **Note** | En RDC : 0,0 % — aucun régime d'assurance chômage n'existe. Valeur correcte et stable. |
+| **Statut en RDC** | N/A — aucun régime d'assurance chômage n'existe dans le périmètre du bulletin. |
 
 ### 2.7 Personnes âgées — Pension de vieillesse
 
 | Élément | Définition |
 |---------|-----------|
-| **Numérateur** | Nombre de personnes ayant dépassé l'âge légal de la retraite et recevant effectivement une pension de vieillesse (contributive ou non contributive) |
+| **Numérateur** | Nombre de bénéficiaires d'une pension de vieillesse, y compris les pensions de retraite anticipée ; ces dernières peuvent concerner des personnes âgées de moins de 60 ans |
 | **Dénominateur** | Population totale au-dessus de l'âge légal de la retraite |
 | **Source OIT recommandée** | ESS — feuille vieillesse (nombre de pensionnés) ; projections démographiques ONU pour le dénominateur |
 | **Référence mondiale 2023** | 79,6 % |
 | **Référence mondiale 2020** | 77,5 % |
 | **Unité** | % de la population au-delà de l'âge légal de la retraite |
-| **Note** | En RDC : 1 % affiché dans le 1er bulletin. Sources : CNSS (pensions de vieillesse) + CNSSAP (pensions). L'âge légal RDC (CNSS : 65 ans hommes / 60 ans femmes ; CNSSAP : 60 ans) détermine le dénominateur. |
+| **Note** | En RDC : le dénominateur unique retient la population âgée de 60 ans et plus. Le numérateur conserve les pensions de retraite anticipée ouvertes dès 55 ans sous conditions ; cette différence de périmètre est explicitement signalée dans le bulletin. |
 
 ### 2.8 Personnes vulnérables — Assistance sociale
 
 | Élément | Définition |
 |---------|-----------|
-| **Numérateur** | Nombre de personnes vulnérables/pauvres recevant des prestations en espèces d'assistance sociale (contributives ou non, mais sous conditions de ressources ou de vulnérabilité) |
-| **Dénominateur** | Population nationale totale (WSPR) ou population pauvre/vulnérable (certains pays) |
+| **Numérateur** | Somme des enfants bénéficiaires de prestations familiales, dont les allocations familiales CNSS, et des enfants servis par les repas scolaires PAM |
+| **Dénominateur** | Population totale, moins les cotisants actifs dédupliqués, TRESOR inclus, et les bénéficiaires de pensions de vieillesse |
 | **Source OIT recommandée** | ESS — programmes non contributifs (MINAS, transferts monétaires, programmes d'assistance) ; enquêtes ménages sur la pauvreté |
 | **Référence mondiale 2023** | 37,3 % |
 | **Référence mondiale 2020** | 28,9 % |
-| **Unité** | % de la population totale (ou des personnes vulnérables) |
-| **Note** | Indicateur le plus sujet à interprétation nationale. L'OIT précise : *"This indicator refers to social assistance although non-means-tested tax-financed benefits are also included."* En RDC : 2,9 % affiché mais non réconcilié avec les données détaillées (voir section 4). |
+| **Unité** | % de la population vulnérable |
+| **Note** | Tous les enfants relèvent de la population vulnérable selon le guide statistique de l'OIT. Les allocations familiales CNSS sont déjà exprimées comme une estimation d'enfants bénéficiaires, sur la base historique de 3,17 enfants par titulaire ; elles ne sont pas multipliées une seconde fois. Les repas scolaires PAM sont une intervention non contributive en nature ; les séries disponibles couvrent 2021–2025. Faute d'identifiant individuel commun, le numérateur ne déduplique pas un éventuel recoupement entre les deux interventions. La valeur PAM 2024 de 272 000 enfants est retenue avec réserve, car le tableau détaillé du même rapport indique 194 636 enfants servis sur site. L'estimation OIT de 2,9 % en 2022 reste une référence externe, distincte du calcul du bulletin. |
 
 ### 2.9 Cotisants actifs à un régime de retraite (indicateur complémentaire)
 
 | Élément | Définition |
 |---------|-----------|
 | **Numérateur** | Nombre de personnes cotisant activement à un régime de retraite contributif |
-| **Dénominateur** | Force de travail 15+ ans (ou population en âge de travailler 15+) |
-| **Source OIT recommandée** | ESS — feuilles retraite (cotisants actifs) ; ILOSTAT (force de travail) |
+| **Dénominateur** | Population en âge de travailler de 15 à 64 ans |
+| **Source OIT recommandée** | ESS — feuilles retraite (cotisants actifs) ; population âgée de 15 à 64 ans |
 | **Référence** | Variable selon pays |
-| **Unité** | % de la force de travail |
-| **Note** | Indicateur complémentaire mesurant la couverture contributive, distinct de la couverture effective par prestations. En RDC : 6,4 % affiché (utilisant une estimation CNSSAP controversée — voir section 4). |
+| **Unité** | % de la population âgée de 15 à 64 ans |
+| **Note** | Indicateur complémentaire mesurant la couverture contributive, distinct de la couverture effective par prestations. Le dénominateur de 15 à 64 ans est retenu uniformément pour toutes les années de la série. |
 
 ---
 
@@ -156,7 +160,7 @@ L'indicateur mesure la **couverture effective**, pas seulement la couverture lé
 | FSS — Santé | FSS | Santé | Non inclus ODD 1.3.1 (exclusion santé) | N/A | — |
 | MINAS | MINAS | Assistance sociale | Bénéficiaires programmes (partiel), pas d'effectifs annuels précis | Fragmentée | 2023 |
 | MEPST — Cantines | MEPST | Alimentation/nutrition | Repas servis (non monétaire) | Partielle | 2023 |
-| STEP (Banque mondiale) | IDA | Transferts + santé | Bénéficiaires (clôturé fév. 2024) | Ponctuelle | 2023 |
+| STEP (Banque mondiale) | IDA | Transferts + santé | Bénéficiaires (clôturé en juin 2025) | Ponctuelle | 2023 |
 | PAM | PAM | Transferts, repas | Bénéficiaires estimés (très larges) | Externe | Annuelle |
 | MESP | MESP | Santé enseignants | Non inclus ODD 1.3.1 (exclusion santé) | N/A | — |
 
@@ -168,7 +172,7 @@ L'indicateur mesure la **couverture effective**, pas seulement la couverture lé
 | 2.3 Maternité | CNSS Familles | Indemnités journalières maternité | Naissances vivantes (INS) | ⚠ Possible mais non réalisé dans 1er bulletin |
 | 2.4 Handicap | CNSS Pensions (invalidité) | Bénéficiaires pensions invalidité | Population handicapée grave (à estimer) | ✗ Dénominateur absent |
 | 2.5 AT/MP | CNSS AT/MP, CNSSAP AT/MP | Cotisants/assurés actifs AT/MP | Force de travail 15+ (ILOSTAT LFP × pop 15+) | ✓ Bonne (CNSS seule pour 2019-2022) |
-| 2.6 Chômage | Aucune | Aucun bénéficiaire | Chômeurs (ILOSTAT) | ✓ = 0,0 % confirmé |
+| 2.6 Chômage | Aucune | N/A — assurance chômage inexistante | Chômeurs (ILOSTAT) | N/A |
 | 2.7 Vieillesse | CNSS Pensions, CNSSAP Base | Pensionnés vieillesse | Pop. au-delà âge légal (ONU WPP) | ✓ Bonne |
 | 2.8 Assistance sociale | MINAS, PAM, STEP | Bénéficiaires programmes | Population totale | ⚠ Fragmentée, double comptage |
 | 2.9 Cotisants retraite | CNSS Pensions, CNSSAP Base | Cotisants actifs déclarés | Force de travail (ILOSTAT) | ⚠ Rupture CNSSAP 2022–2023, réserve de comparabilité |
@@ -268,42 +272,27 @@ Le sous-indicateur ODD 1.3.1 2.5 mesure la couverture contre les accidents du tr
 
 Le dénominateur est donc la **force de travail 15+** (labour force = personnes en emploi + chômeurs), et non la population totale ni la population en emploi seule.
 
-**Vérification croisée :** ILOSTAT publie 1,8 % pour la RDC en 2022. Notre calcul : 613 761 / 35 005 912 = 1,75 % (concordance à l'arrondi près).
+**Règle appliquée dans le bulletin :** le numérateur est constitué des cotisants
+AT/MP et des bénéficiaires de rentes AT/MP inclus dans les ESS ; le dénominateur est
+la force de travail 15+ correspondante, selon les valeurs annuelles retenues dans le
+canevas INS/RDC. Cette règle est appliquée uniformément à chaque année calculée.
 
-### Formule de calcul
+### Exemple de calcul (année 2022)
 
-```
-Force de travail = Population 15+ × Taux de participation à la force de travail (LFP rate)
-                 = (Population totale − Population 0-14 ans) × LFP rate
-```
+- Numérateur ESS retenu : 616 595 personnes ;
+- Force de travail 15+ retenue : 54 679 981 personnes ;
+- **Taux du bulletin : 616 595 / 54 679 981 = 1,1 %**.
 
-**Données RDC** :
-- Taux de participation (15+) : **63,44 %** (ILOSTAT, enquête MICS 2020 ; stable depuis 2016 : 63,51 % en 2016)
-- Population 15+ (2022) : 102 396 968 − 47 217 409 = 55 179 559
-- Force de travail (2022) : 55 179 559 × 0,6344 = **35 005 912**
-
-### Exemple de calcul (année 2022, CNSS seule)
-
-- Cotisants CNSS AT/MP 2022 : 613 761 (ESS CNSS 2022)
-- Force de travail 2022 : 35 005 912
-- **Taux = 613 761 / 35 005 912 = 1,75 % de la force de travail**
-- **Référence OIT publiée : 1,8 %**
+La valeur ILOSTAT publiée de 1,8 % pour 2022 est une référence externe fondée sur
+un périmètre et un dénominateur distincts ; elle n'est pas utilisée pour modifier la
+série du bulletin.
 
 ### Sources de données utilisées
 
 | Données | Source | Référence |
 |---------|--------|-----------|
-| Force de travail (nombre) | Dérivée | Pop 15+ × LFP rate 63,44 % |
-| Taux de participation LFP | ILOSTAT MICS 2020 | `EAP_DWAP_SEX_AGE_RT_A` (RDC, 15+, 2020) |
-| Force de travail directe | ILOSTAT MICS 2020 | `EAP_TEAP_SEX_AGE_NB_A` (31 547 329 en 2020) |
-| Population 0-14 ans | ONU WPP 2024 | PopulationPyramid.net API (M49:180) |
+| Force de travail 15+ | INS/RDC, canevas de collecte 2026 | Valeurs annuelles retenues pour la série |
 | Cotisants AT/MP | CNSS ESS, CNSSAP ESS | `06_sources/ESS/` |
-
-### Éléments à éliminer
-
-Les sources suivantes, qui **ne produisent que des données de population active**, ne sont plus applicables directement :
-- ~~ILOSTAT pour la population active directement~~ (remplacé par calcul dérivé)
-- ~~Sources uniquement basées sur la population active~~ (à vérifier lors de la compilation des sources)
 
 **Règle :** Si une source ne produit que la population active (sans taux de chômage associé), appliquer le taux de chômage RDC par défaut (4,4 %, 2024) ou utiliser l'année spécifique si disponible.
 
@@ -316,7 +305,7 @@ Les sources suivantes, qui **ne produisent que des données de population active
 Calculer les indicateurs ODD 1.3.1 à partir des données ESS RDC (Option B ou C), en distinguant :
 - Les données **administratives directes** (cotisants CNSS, pensionnés CNSSAP, rentes AT/MP) → chiffres robustes ;
 - Les données **estimées ou partielles** (CNSSAP cotisants, enfants via facteur, MINAS) → signalées explicitement ;
-- Les données **absentes** (chômage, handicap dénominateur, maternité) → indiquées comme N/D ou 0.
+- Les données **absentes** sont indiquées comme N/D ; une branche inexistante, telle que l'assurance chômage, est indiquée N/A.
 
 ### 6.2 Arbre de décision pour chaque sous-indicateur
 

@@ -18,6 +18,8 @@
 | `preview.css` | Feuille de style du rendu navigateur — modifier librement sans toucher aux `.md` |
 | `export_relecture.css` | Feuille de style des exports HTML de relecture (optimisée lecture + impression A4) |
 
+Les scripts ODD conservent les valeurs `NULL` de l’ESS jusqu’à la restitution : `0` correspond uniquement à une observation explicite nulle, `N/D` à une donnée attendue mais indisponible, et `N/A` à un élément structurellement hors périmètre ou antérieur à sa mise en œuvre. Les disponibilités structurelles annuelles sont définies dans `10_output/dashboard_settings.json`, sous `oddStructuralAvailability`.
+
 ---
 
 ## assembler_markdown.py
@@ -294,7 +296,7 @@ Génère les visuels et tableaux statistiques statiques de l'**annexe C** (déta
 1. Un **encadré méthodologique** (définition, numérateur, dénominateur, formule) — copie fidèle des textes `ODD_METHODOLOGY_SPECS` du tableau de bord (`visualiser_regimes.py`), pour ne jamais faire diverger les deux supports.
 2. Un **tableau de synthèse unique 2019-2025** (inspiré du Tableau 14 du premier bulletin RDC), à colonnes années partagées :
    - la ligne **Indicateur de couverture (%)** ;
-   - la ligne **Numérateur (nombre de personnes)**, immédiatement suivie de ses lignes de détail en italique, groupées par régime pour rester compactes et lisibles (`_build_breakdown_rows`) : un en-tête **« Dont [régime] (SIGLE, cotisants) »** par régime contributeur — avec un traitement explicite du code technique `TRESOR`, affiché comme proxy budgétaire hors CNSSAP et qualifié en personnes potentiellement couvertes estimées, jamais en cotisants — suivi de ses prestations en sous-lignes indentées **« ↳ [prestation] (bénéf.) »** qui ne répètent ni l'institution ni le régime déjà portés par la ligne d'en-tête juste au-dessus. Réutilise la logique d'inclusion/exclusion de `integrer_dashboard_bulletin.py` (`compute_numerator`, `get_denominator_value`) et sa nouvelle fonction `compute_numerator_breakdown` (détail ligne par ligne au lieu d'un simple total) ;
+   - la ligne **Numérateur (nombre de personnes)**, immédiatement suivie de ses lignes de détail en italique, groupées par régime pour rester compactes et lisibles (`_build_breakdown_rows`) : un en-tête **« Dont [régime] (SIGLE, cotisants) »** par régime contributeur — avec un traitement explicite du code technique `TRESOR`, affiché comme hypothèse de cotisants actifs estimés hors CNSSAP — suivi de ses prestations en sous-lignes indentées **« ↳ [prestation] (bénéf.) »** qui ne répètent ni l'institution ni le régime déjà portés par la ligne d'en-tête juste au-dessus. Réutilise la logique d'inclusion/exclusion de `integrer_dashboard_bulletin.py` (`compute_numerator`, `get_denominator_value`) et sa nouvelle fonction `compute_numerator_breakdown` (détail ligne par ligne au lieu d'un simple total) ;
    - la ligne **Dénominateur (population de référence)**, dont le détail de construction par année (source retenue, cf. panneau « Construction des dénominateurs » du tableau de bord) est renvoyé en **note de bas de page** (`<span class="footnote">…</span>`, la même convention que celle utilisée pour les sources du bulletin — voir `09_scripts/footnotes.lua`) plutôt qu'affiché en clair dans le corps du tableau. Cette note est **factorisée par plage d'années consécutives partageant la même source** (`build_denominator_footnote`) — ex. « 2019–2024 : Base locale ONU WPP 2024 — population 0+ ; 2026 : Saisie manuelle » — plutôt que répétée une fois par année. Dans la prévisualisation HTML, ce marqueur s'affiche en petit texte italique discret (voir règle `.footnote` dans `preview.css`) ; à l'export Word, il devient une vraie note de bas de page.
 3. **Deux graphiques PNG** (indicateur en %, numérateur en nombre de personnes) exportés via Plotly/kaleido, dans le même style que le tableau de bord et l'annexe B. **Aucun graphique pour le dénominateur** (non demandé).
 
@@ -476,7 +478,8 @@ pip install weasyprint
 ```bash
 python 09_scripts/exporter.py             # HTML relecture (défaut)
 python 09_scripts/exporter.py --all       # tous les formats
-python 09_scripts/exporter.py --word      # Word uniquement, graphiques Excel incorporés par défaut
+python 09_scripts/exporter.py --word      # Word uniquement (réassemble et régénère le HTML)
+python 09_scripts/exporter.py --word --reuse-html  # réutiliser explicitement le HTML daté du jour
 python 09_scripts/exporter.py --word --excel-charts linked        # PNG annexe B/C -> objets Excel liés
 python 09_scripts/exporter.py --word --excel-charts embedded      # PNG annexe B/C -> objets Excel incorporés
 python 09_scripts/exporter.py --word --excel-charts png           # conserver tous les PNG
@@ -498,6 +501,7 @@ python 09_scripts/exporter.py --open      # générer et ouvrir automatiquement
   - `10_output/annexe_C_graphiques_par_indicateur.xlsx`
 - Les classeurs existants servent de source de présentation et **ne sont jamais régénérés/écrasés** par `exporter.py`/`exporter_word.py` en mode normal.
 - La régénération des visuels B/C est **désactivée par défaut**. Elle ne s'exécute que via `--refresh-visuals` (opt-in explicite).
+- Avant tout export Word, le bulletin est assemblé et le HTML source est régénéré. `--reuse-html` permet de déroger explicitement à cette règle pour réutiliser le HTML daté du jour ; il échoue si ce fichier n'existe pas.
 - `embedded` est le mode par défaut : si Word/Excel COM ou un graphique attendu est indisponible, l'export échoue explicitement au lieu de produire silencieusement une capture PNG.
 - `auto` : tente `embedded` si COM Word/Excel est disponible ; sinon fallback explicite en `png`.
 - `embedded`/`linked` explicites : en cas d'actifs manquants ou incompatibles, l'export échoue avec erreur explicite (pas de DOCX final partiellement collé).

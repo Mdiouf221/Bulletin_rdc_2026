@@ -16,6 +16,7 @@ import math
 import re
 import sqlite3
 import sys
+from functools import lru_cache
 from pathlib import Path
 
 from visualiser_regimes import (  # type: ignore
@@ -27,17 +28,19 @@ from visualiser_regimes import (  # type: ignore
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SETTINGS_PATH = BASE_DIR / "10_output" / "dashboard_settings.json"
+QUESTIONNAIRE_PATH = BASE_DIR / "10_output" / "questionnaire_data.json"
 TARGETS = (
     (
         BASE_DIR / "03_chapitres" / "chapitre_4" / "4.9_odd_131.md",
         {
             "Population totale (%)": "global_131",
             "Population 0–17 ans (%)": "ind_22_enfants",
-            "Femmes ayant accouché — maternité (%)": "ind_23_maternite",
+            "Femmes ayant accouché — allocation de maternité CNSS (%)": "ind_23_maternite",
             "Personnes âgées — pension vieillesse (%)": "ind_27_vieillesse",
             "Actifs — cotisants à un régime contributif (%)": "ind_29_cotisants",
             "Personnes handicapées — invalidité (%)": "ind_24_handicap",
             "Force de travail — AT/MP (%)": "ind_25_atmp",
+            "Personnes vulnérables — assistance sociale (%)": "ind_28_vulnerables",
         },
     ),
     (
@@ -45,11 +48,12 @@ TARGETS = (
         {
             "Population totale (%)": "global_131",
             "Population 0–17 ans (%)": "ind_22_enfants",
-            "Femmes ayant accouché — maternité (%)": "ind_23_maternite",
+            "Femmes ayant accouché — allocation de maternité CNSS (%)": "ind_23_maternite",
             "Personnes âgées — pension vieillesse (%)": "ind_27_vieillesse",
             "Actifs — cotisants à un régime contributif (%)": "ind_29_cotisants",
             "Personnes handicapées — invalidité (%)": "ind_24_handicap",
             "Force de travail — AT/MP (%)": "ind_25_atmp",
+            "Personnes vulnérables — assistance sociale (%)": "ind_28_vulnerables",
         },
     ),
 )
@@ -65,15 +69,15 @@ METRIC_BY_INDICATOR = {
     "ind_24_handicap": "beneficiaires_estimes",
     "ind_25_atmp": "couverts_bruts_estimes",
     "ind_27_vieillesse": "beneficiaires_estimes",
+    "ind_28_vulnerables": "beneficiaires_estimes",
     "ind_29_cotisants": "cotisants_estimes",
 }
 
 LOCAL_DENOM_MAP = {
     "global_131": ("var-c-popsx", "sex-t", "age-0+"),
     "ind_22_enfants": ("var-c-popsx", "sex-t", "age-0-17"),
-    "ind_23_maternite": ("var-c-popma", "sex-f", "age-15-49"),
     "ind_25_atmp": ("var-c-lf", "sex-t", "age-15+"),
-    "ind_27_vieillesse": ("var-c-popsx", "sex-t", "age-65+"),
+    "ind_27_vieillesse": ("var-c-popsx", "sex-t", "age-60+"),
     "ind_29_cotisants": ("var-c-popsx", "sex-t", "age-15-64"),
 }
 
@@ -178,6 +182,45 @@ def effective_decision(
     return own
 
 
+@lru_cache(maxsize=1)
+def load_questionnaire_data() -> dict:
+    if not QUESTIONNAIRE_PATH.exists():
+        raise FileNotFoundError(f"Matrice Q1 introuvable : {QUESTIONNAIRE_PATH}")
+    with QUESTIONNAIRE_PATH.open(encoding="utf-8") as file:
+        data = json.load(file)
+    if not isinstance(data, dict):
+        raise ValueError(f"Matrice Q1 invalide : {QUESTIONNAIRE_PATH}")
+    return data
+
+
+def build_q1_regime_groups(questionnaire_data: dict) -> dict[tuple[str, str], tuple[str, str]]:
+    """Construit les groupes de régimes à ne compter qu'une fois selon Q1."""
+    groups: dict[tuple[str, str], tuple[str, str]] = {}
+    for institution, settings in questionnaire_data.items():
+        if not isinstance(settings, dict):
+            continue
+        parent: dict[str, str] = {}
+
+        def find(regime: str) -> str:
+            if regime not in parent:
+                parent[regime] = regime
+            if parent[regime] != regime:
+                parent[regime] = find(parent[regime])
+            return parent[regime]
+
+        for pair, value in (settings.get("Q1") or {}).items():
+            if value != "true":
+                continue
+            regimes = str(pair).split("__")
+            if len(regimes) != 2 or not all(regimes):
+                continue
+            parent[find(regimes[0])] = find(regimes[1])
+
+        for regime in parent:
+            groups[(str(institution), regime)] = (str(institution), find(regime))
+    return groups
+
+
 def compute_numerator(
     indicator_key: str,
     year: int,
@@ -185,6 +228,50 @@ def compute_numerator(
     prestation_rows: list[dict],
     odd_nodes: list[dict],
     decisions: dict[str, str],
+    questionnaire_data: dict | None = None,
+) -> float | None:
+    if indicator_key == "ind_28_vulnerables":
+        children = _compute_numerator_for_indicator(
+            "ind_22_enfants",
+            year,
+            regime_rows,
+            prestation_rows,
+            odd_nodes,
+            decisions,
+            questionnaire_data,
+        )
+        assistance = _compute_numerator_for_indicator(
+            "ind_28_vulnerables",
+            year,
+            regime_rows,
+            prestation_rows,
+            odd_nodes,
+            decisions,
+            questionnaire_data,
+        )
+        if children is None and assistance is None:
+            return None
+        return (children or 0.0) + (assistance or 0.0)
+
+    return _compute_numerator_for_indicator(
+        indicator_key,
+        year,
+        regime_rows,
+        prestation_rows,
+        odd_nodes,
+        decisions,
+        questionnaire_data,
+    )
+
+
+def _compute_numerator_for_indicator(
+    indicator_key: str,
+    year: int,
+    regime_rows: list[dict],
+    prestation_rows: list[dict],
+    odd_nodes: list[dict],
+    decisions: dict[str, str],
+    questionnaire_data: dict | None = None,
 ) -> float | None:
     metric_key = METRIC_BY_INDICATOR[indicator_key]
     include_cotisants = metric_key in {"cotisants_estimes", "couverts_bruts_estimes"}
@@ -213,28 +300,43 @@ def compute_numerator(
                 included_regimes.add(parent)
 
     total = 0.0
-    found_any = False
+    found_observation = False
     if include_cotisants:
+        q1_groups = build_q1_regime_groups(
+            questionnaire_data if questionnaire_data is not None else load_questionnaire_data()
+        )
+        contributor_groups: dict[tuple[str, str], float] = {}
         for row in regime_rows:
             if int(row.get("annee") or -1) != year:
                 continue
             if str(row.get("programme_id") or "") not in included_regimes:
                 continue
-            found_any = True
-            value = float(row.get("cotisants") or 0)
+            raw_value = row.get("cotisants")
+            if raw_value is None:
+                continue
+            found_observation = True
+            value = float(raw_value)
             if value > 0:
-                total += value
+                group = q1_groups.get(
+                    (str(row.get("institution") or ""), str(row.get("regime_code") or "")),
+                    (str(row.get("institution") or ""), str(row.get("regime_code") or "")),
+                )
+                contributor_groups[group] = max(contributor_groups.get(group, 0.0), value)
+        total += sum(contributor_groups.values())
     if include_beneficiaires:
         for row in prestation_rows:
             if int(row.get("annee") or -1) != year:
                 continue
             if str(row.get("programme_id") or "") not in included_prestations:
                 continue
-            found_any = True
-            value = float(row.get("beneficiaires") or 0)
+            raw_value = row.get("beneficiaires")
+            if raw_value is None:
+                continue
+            found_observation = True
+            value = float(raw_value)
             if value > 0:
                 total += value
-    if not found_any:
+    if not found_observation:
         # Aucune ligne ESS incluse pour cette année/cet indicateur : donnée absente,
         # à distinguer d'une couverture réellement nulle (voir constat de révision 2026-09-02).
         return None
@@ -252,6 +354,43 @@ def compute_numerator_breakdown(
     """Détail des régimes/prestations inclus dans le numérateur d'un indicateur, pour une
     année donnée — même logique d'inclusion/exclusion que `compute_numerator`, mais restituée
     ligne par ligne (au lieu d'un total) pour la traçabilité du calcul (Annexe C)."""
+    if indicator_key == "ind_28_vulnerables":
+        children = _compute_numerator_breakdown_for_indicator(
+            "ind_22_enfants",
+            year,
+            regime_rows,
+            prestation_rows,
+            odd_nodes,
+            decisions,
+        )
+        assistance = _compute_numerator_breakdown_for_indicator(
+            "ind_28_vulnerables",
+            year,
+            regime_rows,
+            prestation_rows,
+            odd_nodes,
+            decisions,
+        )
+        return children + assistance
+
+    return _compute_numerator_breakdown_for_indicator(
+        indicator_key,
+        year,
+        regime_rows,
+        prestation_rows,
+        odd_nodes,
+        decisions,
+    )
+
+
+def _compute_numerator_breakdown_for_indicator(
+    indicator_key: str,
+    year: int,
+    regime_rows: list[dict],
+    prestation_rows: list[dict],
+    odd_nodes: list[dict],
+    decisions: dict[str, str],
+) -> list[dict]:
     metric_key = METRIC_BY_INDICATOR[indicator_key]
     include_cotisants = metric_key in {"cotisants_estimes", "couverts_bruts_estimes"}
     include_beneficiaires = metric_key in {"beneficiaires_estimes", "couverts_bruts_estimes"}
@@ -285,9 +424,10 @@ def compute_numerator_breakdown(
             pid = str(row.get("programme_id") or "")
             if pid not in included_regimes:
                 continue
-            value = float(row.get("cotisants") or 0)
-            if value <= 0:
+            raw_value = row.get("cotisants")
+            if raw_value is None:
                 continue
+            value = float(raw_value)
             node = node_map.get(pid) or {}
             items.append({
                 "id": pid,
@@ -305,9 +445,10 @@ def compute_numerator_breakdown(
             pid = str(row.get("programme_id") or "")
             if pid not in included_prestations:
                 continue
-            value = float(row.get("beneficiaires") or 0)
-            if value <= 0:
+            raw_value = row.get("beneficiaires")
+            if raw_value is None:
                 continue
+            value = float(raw_value)
             node = node_map.get(pid) or {}
             items.append({
                 "id": pid,
@@ -370,7 +511,42 @@ def get_denominator_value(
     denom_constructions: dict,
     denom_settings: dict,
     cursor: sqlite3.Cursor | None,
+    regime_rows: list[dict] | None = None,
+    prestation_rows: list[dict] | None = None,
+    odd_nodes: list[dict] | None = None,
+    decisions: dict[str, str] | None = None,
 ) -> float | None:
+    if indicator_key == "ind_28_vulnerables":
+        if not all(value is not None for value in (regime_rows, prestation_rows, odd_nodes, decisions)):
+            return None
+        population_total = get_denominator_value(
+            "global_131",
+            year,
+            denom_constructions,
+            denom_settings,
+            cursor,
+        )
+        cotisants = compute_numerator(
+            "ind_29_cotisants",
+            year,
+            regime_rows or [],
+            prestation_rows or [],
+            odd_nodes or [],
+            decisions or {},
+        )
+        pensionnes = compute_numerator(
+            "ind_27_vieillesse",
+            year,
+            regime_rows or [],
+            prestation_rows or [],
+            odd_nodes or [],
+            decisions or {},
+        )
+        if population_total is None or cotisants is None or pensionnes is None:
+            return None
+        denominator = population_total - cotisants - pensionnes
+        return denominator if denominator > 0 else None
+
     construction = denom_constructions.get(f"{indicator_key}::{year}") or {}
     value = construction.get("value")
     if value is not None:
@@ -483,6 +659,10 @@ def main() -> int:
                         denom_constructions=denom_constructions,
                         denom_settings=denom_settings,
                         cursor=cursor,
+                        regime_rows=regime_rows,
+                        prestation_rows=prestation_rows,
+                        odd_nodes=odd_nodes,
+                        decisions=decisions,
                     )
                     ratio = (
                         (numerator / denominator * 100.0)

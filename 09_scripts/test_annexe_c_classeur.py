@@ -38,12 +38,12 @@ class AnnexeCWorkbookTests(unittest.TestCase):
         self.assertIn("index", wb.sheetnames)
 
         total_charts = sum(len(ws._charts) for ws in wb.worksheets)
-        self.assertEqual(total_charts, 14)
+        self.assertEqual(total_charts, 16)
 
         years = summary["years"]
         self.assertEqual(years, list(range(2019, 2027)))
 
-        non_calculables = {"ind_26_chomage", "ind_28_vulnerables"}
+        non_calculables = {"ind_26_chomage"}
         for entry in summary["entries"]:
             ws = wb[entry["sheet_name"]]
             header_row = self._find_annual_header_row(ws)

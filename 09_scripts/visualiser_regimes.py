@@ -61,11 +61,14 @@ NOM_COURT = {
     "CNSSAP_R3": "Risques professionnels",
     "CNSSAP_R4": "Réforme de basculement",
     "MEPST_R1": "Protection sociale scolaire",
+    "CGAT_R1":   "MUSA de Kinshasa",
+    "CGAT_R2":   "MUSA du Kongo Central",
+    "CGAT_R3":   "MUSA de Goma (Nord-Kivu)",
 }
 NOM_INSTITUTION = {
     "CNSS":   "Caisse Nationale de Sécurité Sociale (CNSS)",
     "CNSSAP": "Caisse Nationale de Sécurité Sociale des Agents Publics (CNSSAP)",
-    "TRESOR": "Protection statutaire budgétaire — estimation provisoire (Trésor)",
+    "TRESOR": "Cotisants actifs estimés hors CNSSAP — hypothèse TRESOR",
     "MEPST": "Ministère de l’Enseignement Primaire, Secondaire et Technique (MEPST)",
 }
 
@@ -102,9 +105,9 @@ def population_labels(institution: str, sex_mode: str = "all") -> tuple[str, str
     if institution == "TRESOR":
         suffix = "" if sex_mode == "all" else " — " + ("hommes" if sex_mode == "hommes" else "femmes")
         return (
-            "Personnes couvertes estimées" + suffix,
+            "Cotisants actifs estimés" + suffix,
             "Bénéficiaires — N/D",
-            "personnes couvertes estimées",
+            "cotisants actifs estimés",
         )
     suffix = "" if sex_mode == "all" else " " + ("Hommes" if sex_mode == "hommes" else "Femmes")
     return "Cotisants actifs" + suffix, "Bénéficiaires" + suffix, "cotisants"
@@ -522,6 +525,31 @@ document.addEventListener('DOMContentLoaded', () => {{
       if (typeof applyRegimeQuickFilter === 'function') {{
         applyRegimeQuickFilter();
       }}
+
+      function getVulnerablePopulation(year, payload) {{
+        const construction = getDenominatorConstructions()['global_131::' + String(year)];
+        const populationTotal = construction && Number(construction.value);
+        if (!Number.isFinite(populationTotal)) return null;
+        const regimeRows = (payload && payload.rows_regimes) || [];
+        const prestationRows = (payload && payload.rows_prestations) || [];
+        const cotisants = buildNumeratorYearSummary(
+          'ind_29_cotisants',
+          year,
+          regimeRows,
+          prestationRows,
+          getOddIndicatorNumeratorSpec('ind_29_cotisants')
+        ).total;
+        const pensionnes = buildNumeratorYearSummary(
+          'ind_27_vieillesse',
+          year,
+          regimeRows,
+          prestationRows,
+          getOddIndicatorNumeratorSpec('ind_27_vieillesse')
+        ).total;
+        if (!Number.isFinite(Number(cotisants)) || !Number.isFinite(Number(pensionnes))) return null;
+        const value = populationTotal - Number(cotisants) - Number(pensionnes);
+        return value > 0 ? value : null;
+      }}
     }}, 100);
   }}
 }});
@@ -851,7 +879,7 @@ ODD_INDICATORS = [
     {"key": "ind_25_atmp", "label": "2.5 AT/MP", "branches": ["at_mp"]},
     {"key": "ind_26_chomage", "label": "2.6 Chômage", "branches": []},
     {"key": "ind_27_vieillesse", "label": "2.7 Vieillesse", "branches": ["vieillesse"]},
-    {"key": "ind_28_vulnerables", "label": "2.8 Vulnérables / assistance", "branches": ["enfants_famille", "autres"]},
+    {"key": "ind_28_vulnerables", "label": "2.8 Vulnérables / assistance", "branches": []},
     {"key": "ind_29_cotisants", "label": "2.9 Cotisants actifs retraite", "branches": ["vieillesse", "invalidite", "survivants"]},
 ]
 ODD_INDICATOR_KEYS = [item["key"] for item in ODD_INDICATORS]
@@ -887,8 +915,6 @@ def _supported_indicators_from_branches(branch_keys: list[str], has_cotisants: b
         supported.add("ind_25_atmp")
     if "vieillesse" in bset:
         supported.add("ind_27_vieillesse")
-    if "enfants_famille" in bset or "autres" in bset:
-        supported.add("ind_28_vulnerables")
     if has_cotisants:
         supported.add("ind_29_cotisants")
     return supported
@@ -903,7 +929,10 @@ def _build_status_maps(supported: set[str], base_status: str, base_rationale: st
             rationales[indicator_key] = base_rationale
         elif indicator_key == "ind_26_chomage":
             propositions[indicator_key] = "exclu_hors_indicateur"
-            rationales[indicator_key] = "Aucun régime d'assurance chômage opérationnel n'est identifié dans les ESS."
+            rationales[indicator_key] = "N/A — aucun régime d'assurance chômage n'existe dans le périmètre du bulletin."
+        elif indicator_key == "ind_28_vulnerables":
+            propositions[indicator_key] = "exclu_hors_indicateur"
+            rationales[indicator_key] = "N/D — aucun numérateur individuel ni dénominateur compatible BIT/OIT n'est disponible."
         else:
             propositions[indicator_key] = "exclu_hors_indicateur"
             rationales[indicator_key] = non_support_reason
@@ -960,7 +989,7 @@ def build_odd_programmes_payload(regimes: list[dict], prestations: list[dict], r
         meta = ((regime_meta.get(inst) or {}).get(rc) or {})
         versions = meta.get("versions") or []
         latest = versions[-1] if versions else {}
-        nom_regime = latest.get("nom_regime") or row.get("nom_fr") or NOM_COURT.get(rc, rc)
+        nom_regime = NOM_COURT.get(rc) or latest.get("nom_regime") or row.get("nom_fr") or rc
         fonctions = latest.get("fonctions_oit") if isinstance(latest.get("fonctions_oit"), list) else []
         financement = (latest.get("type_financement") or "").strip()
         caractere = (latest.get("caractere") or "").strip()
@@ -1189,7 +1218,7 @@ def load_all(db_path: Path) -> tuple[list[dict], list[dict], dict, dict]:
 
         signature = json.dumps({
             "nom_original": row.get("nom_original"),
-            "nom_regime": row.get("nom_fr") or row.get("nom_original") or NOM_COURT.get(rc, rc),
+            "nom_regime": NOM_COURT.get(rc) or row.get("nom_fr") or row.get("nom_original") or rc,
             "type_financement": row.get("type_financement"),
             "caractere": row.get("caractere"),
             "type_assurance": row.get("type_assurance"),
@@ -1201,7 +1230,7 @@ def load_all(db_path: Path) -> tuple[list[dict], list[dict], dict, dict]:
         regime_meta[inst][rc].append({
             "annee": row.get("annee"),
             "nom_original": row.get("nom_original"),
-            "nom_regime": row.get("nom_fr") or row.get("nom_original") or NOM_COURT.get(rc, rc),
+            "nom_regime": NOM_COURT.get(rc) or row.get("nom_fr") or row.get("nom_original") or rc,
             "type_financement": row.get("type_financement"),
             "caractere": row.get("caractere"),
             "type_assurance": row.get("type_assurance"),
@@ -3042,10 +3071,18 @@ def build_indicateurs_payload(regime_rows: list[dict], prestation_rows: list[dic
             "programme_id": f"regime::{inst}::{r.get('regime_code')}",
             "institution": inst,
             "regime_code": r.get("regime_code"),
-            "nom_regime": r.get("nom_fr") or NOM_COURT.get(r.get("regime_code"), r.get("regime_code")),
+            "nom_regime": NOM_COURT.get(r.get("regime_code")) or r.get("nom_fr") or r.get("regime_code"),
             "annee": year,
-            "cotisants": float(r.get("cotisants_total") or 0),
-            "beneficiaires": float(r.get("beneficiaires_total") or 0),
+            "cotisants": (
+                float(r["cotisants_total"])
+                if r.get("cotisants_total") is not None
+                else None
+            ),
+            "beneficiaires": (
+                float(r["beneficiaires_total"])
+                if r.get("beneficiaires_total") is not None
+                else None
+            ),
             "depenses_cdf": float(r.get("depenses_prestations_cdf") or 0),
             "recettes_cdf": float(r.get("recettes_cdf") or 0),
         })
@@ -3069,7 +3106,11 @@ def build_indicateurs_payload(regime_rows: list[dict], prestation_rows: list[dic
             "prestation_num": prestation_num,
             "nom_prestation": nom_prest or (f"Prestation {prestation_num}" if prestation_num is not None else ""),
             "annee": year,
-            "beneficiaires": float(p.get("beneficiaires_total") or 0),
+            "beneficiaires": (
+                float(p["beneficiaires_total"])
+                if p.get("beneficiaires_total") is not None
+                else None
+            ),
         })
 
     years_regime = sorted(by_year.keys())
@@ -3383,7 +3424,6 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
         ("populationTotale",   "Pop. totale (0+)",                  "var-c-popsx",  "sex-t", "age-0+"),
         ("enfants0_14",        "Enfants 0-14 (B-CH-15)",            "var-c-popsx",  "sex-t", "age-0-14"),
         ("enfants0_17",        "Enfants 0-17 (B-CH-18)",            "var-c-popsx",  "sex-t", "age-0-17"),
-        ("femmesAccouche",     "Femmes 15-49 (B-MA)",               "var-c-popma",  "sex-f", "age-15-49"),
         ("forceDeTravail",     "Force de travail 15+ (C-WI/C-SI)",  "var-c-lf",     "sex-t", "age-15+"),
         ("chomeurs",           "Chômeurs 15+ (B-UN)",               "var-c-un",     "sex-t", "age-15+"),
         ("populationRetraite", "Pop. retraite 65+ (B-OA)",          "var-c-popsx",  "sex-t", "age-65+"),
@@ -3426,11 +3466,11 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
                     )
                 # ── Normalisation : alias vers les noms de champs attendus par le JS ──
                 # rowField JS        ← clé SQLite
-                _row["populationEnfants"]      = _row.get("enfants0_14") or _row.get("enfants0_17")
+                _row["populationEnfants"]      = _row.get("enfants0_17") or _row.get("enfants0_14")
                 _row["femmesAyantAccouche"]    = _row.get("femmesAccouche")
                 _row["populationForceDeTravail"] = _row.get("forceDeTravail")
                 # meta correspondants
-                _meta_enfants = _row.get("enfants0_14_meta") or _row.get("enfants0_17_meta") or "N/D"
+                _meta_enfants = _row.get("enfants0_17_meta") or _row.get("enfants0_14_meta") or "N/D"
                 _row["metaTotal"]            = _row.get("populationTotale_meta", "N/D")
                 _row["metaEnfants"]          = _meta_enfants
                 _row["metaActive"]           = _row.get("populationActive_meta", _row.get("wap15_64_meta", "N/D"))
@@ -3460,6 +3500,8 @@ def build_html(regimes: list[dict], prestations: list[dict], regime_meta: dict, 
             "source_maternite":           "local_db",
             "retirement_age_h": 65,
             "retirement_age_f": 60,
+            "child_age_min": 0,
+            "child_age_max": 17,
             "working_age_min": 15,
             "working_age_max": 64,
             "maternity_age_min": 15,
@@ -6529,7 +6571,7 @@ const ODD_METHODOLOGY_SPECS = {{
   }},
   ind_23_maternite: {{
     definition: "Proportion de femmes ayant accouché qui reçoivent une prestation en espèces de maternité.",
-    numerator: "Nombre de femmes ayant accouché et percevant une prestation de maternité en espèces, hors indemnité journalière de maternité.",
+    numerator: "Nombre de bénéficiaires de l’allocation de maternité de la CNSS. Les indemnités journalières de maternité sont exclues.",
     denominator: "Nombre total de femmes ayant accouché au cours de la même année, estimé directement ou à partir des naissances vivantes corrigées des naissances multiples.",
     formula: "Femmes bénéficiaires d’une prestation de maternité ÷ femmes ayant accouché × 100.",
   }},
@@ -6553,20 +6595,20 @@ const ODD_METHODOLOGY_SPECS = {{
   }},
   ind_27_vieillesse: {{
     definition: "Proportion de personnes ayant atteint l’âge légal de la retraite qui reçoivent une prestation de vieillesse contributive ou non contributive.",
-    numerator: "Nombre de personnes ayant atteint l’âge légal de la retraite et percevant effectivement une pension ou une prestation de vieillesse.",
-    denominator: "Population totale ayant atteint l’âge légal de la retraite, lequel peut différer selon le sexe ou le régime.",
+    numerator: "Nombre de bénéficiaires d’une pension de vieillesse, y compris les pensions de retraite anticipée. Ces dernières peuvent concerner des personnes âgées de moins de 60 ans.",
+    denominator: "Population totale âgée de 60 ans et plus. Ce seuil unique correspond à l’âge d’ouverture du droit à pension CNSS ; la mise à la retraite d’office intervient à 65 ans.",
     formula: "Bénéficiaires de prestations de vieillesse ÷ population ayant atteint l’âge légal de la retraite × 100.",
   }},
   ind_28_vulnerables: {{
-    definition: "Proportion de personnes vulnérables qui reçoivent une prestation d’assistance sociale en espèces.",
-    numerator: "Nombre de personnes vulnérables percevant une prestation d’assistance sociale en espèces.",
-    denominator: "Population vulnérable, obtenue en retranchant de la population totale les personnes en âge de travailler cotisant à une assurance sociale ou percevant une prestation contributive, ainsi que les personnes d’âge légal de la retraite percevant une prestation contributive.",
-    formula: "Personnes vulnérables bénéficiaires d’une prestation d’assistance sociale ÷ population vulnérable × 100.",
+    definition: "Mesure opérationnelle nationale des personnes vulnérables couvertes par une intervention d’assistance sociale, en espèces ou en nature.",
+    numerator: "Somme des enfants bénéficiaires de prestations familiales et des enfants servis par les repas scolaires PAM.",
+    denominator: "Population totale, moins les cotisants actifs dédupliqués, TRESOR inclus, et les bénéficiaires de pensions de vieillesse.",
+    formula: "(Enfants bénéficiaires de prestations familiales + enfants servis par les repas scolaires PAM) ÷ population vulnérable × 100.",
   }},
   ind_29_cotisants: {{
     definition: "Proportion de la population en âge de travailler qui cotise activement à un régime de retraite contributif.",
     numerator: "Nombre de personnes cotisant activement à un régime de retraite contributif.",
-    denominator: "Population en âge de travailler (15-64 ans, Banque mondiale SP.POP.1564.TO) — voir DM-016.",
+    denominator: "Population en âge de travailler (15-64 ans, Banque mondiale SP.POP.1564.TO).",
     formula: "Cotisants actifs à un régime de retraite ÷ population en âge de travailler (15-64 ans) × 100.",
   }},
 }};
@@ -6598,7 +6640,7 @@ const DENOMINATOR_BY_INDICATOR = {{
     shortKey: 'handicap',
     rowField: 'populationHandicapGrave',
     label: 'Population handicapée grave (OMS)',
-    definition: "Population estimée de personnes en situation de handicap grave selon les données de prévalence de l'OMS (Global Health Observatory) appliquées à la population totale de la RDC.",
+    definition: "Population estimée de personnes en situation de handicap grave : 3 % de la population totale, soit le point médian de la fourchette internationale OMS de 2 à 4 % reprise par le BIT. Cette estimation n'est pas une observation nationale annuelle.",
   }},
   ind_25_atmp: {{
     shortKey: 'lf',
@@ -6620,9 +6662,9 @@ const DENOMINATOR_BY_INDICATOR = {{
   }},
   ind_28_vulnerables: {{
     shortKey: 'total',
-    rowField: 'populationTotale',
-    label: 'Population totale',
-    definition: 'Proxy global pour la population potentiellement vulnérable.',
+    rowField: 'populationVulnerable',
+    label: 'Population vulnérable',
+    definition: 'Population totale moins les cotisants actifs dédupliqués, TRESOR inclus, et les bénéficiaires de pensions de vieillesse.',
   }},
   ind_29_cotisants: {{
     shortKey: 'active',
@@ -6670,9 +6712,9 @@ const ODD_INDICATOR_NUMERATOR_SPECS = {{
   ind_26_chomage: {{
     metricKey: 'beneficiaires_estimes',
     metricLabel: 'Bénéficiaires estimés',
-    modeLabel: 'Sous-indicateur chômage (aucun régime identifié dans les ESS)',
+    modeLabel: 'Sous-indicateur chômage (N/A — assurance chômage inexistante)',
     numeratorName: 'Bénéficiaires estimés',
-    numeratorDefinition: 'Personnes recevant des prestations chômage (aucune composante ESS opérationnelle identifiée à ce stade).',
+    numeratorDefinition: 'N/A — aucune assurance chômage n’existe dans le périmètre du bulletin.',
   }},
   ind_27_vieillesse: {{
     metricKey: 'beneficiaires_estimes',
@@ -6684,9 +6726,9 @@ const ODD_INDICATOR_NUMERATOR_SPECS = {{
   ind_28_vulnerables: {{
     metricKey: 'beneficiaires_estimes',
     metricLabel: 'Bénéficiaires estimés',
-    modeLabel: 'Prestations classées Enfants/Famille et autres fonctions',
+    modeLabel: 'Enfants bénéficiaires de prestations familiales',
     numeratorName: 'Bénéficiaires estimés',
-    numeratorDefinition: 'Personnes recevant des prestations ciblant les ménages vulnérables selon le périmètre retenu.',
+    numeratorDefinition: 'Enfants bénéficiaires de prestations familiales, dont les allocations familiales CNSS estimées à partir de 3,17 enfants par titulaire.',
   }},
   ind_29_cotisants: {{
     metricKey: 'cotisants_estimes',
@@ -7122,6 +7164,20 @@ function aggregateIndicatorRows(regimeRows, prestationRows, includedRegimeSet, i
 }}
 
 function buildNumeratorYearSummary(indicatorKey, yearValue, regimeRows, prestationRows, metricSpec) {{
+  if (indicatorKey === 'ind_28_vulnerables') {{
+    const childrenSummary = buildNumeratorYearSummary(
+      'ind_22_enfants',
+      yearValue,
+      regimeRows,
+      prestationRows,
+      getOddIndicatorNumeratorSpec('ind_22_enfants')
+    );
+    return {{
+      ...childrenSummary,
+      ruleText: 'Reprise des enfants bénéficiaires de prestations familiales, dont les allocations familiales CNSS estimées à partir de 3,17 enfants par titulaire.',
+    }};
+  }}
+
   const yearNum = Number(yearValue);
   const yearKey = String(yearValue);
   const includeCotisants = metricSpec.metricKey === 'cotisants_estimes' || metricSpec.metricKey === 'couverts_bruts_estimes';
@@ -7134,6 +7190,29 @@ function buildNumeratorYearSummary(indicatorKey, yearValue, regimeRows, prestati
     cotisantsViaPrestationsSet = addParentRegimesOfIncludedPrestations(includedRegimeSet, includedPrestationSet);
   }}
   const instMap = {{}};
+  let hasObservation = false;
+  const q1Groups = (() => {{
+    const groups = {{}};
+    const questionnaire = (window.questionnaire && window.questionnaire.data) || {{}};
+    Object.entries(questionnaire).forEach(([institution, settings]) => {{
+      const parent = {{}};
+      const find = (regime) => {{
+        if (parent[regime] === undefined) parent[regime] = regime;
+        if (parent[regime] !== regime) parent[regime] = find(parent[regime]);
+        return parent[regime];
+      }};
+      Object.entries((settings && settings.Q1) || {{}}).forEach(([pair, value]) => {{
+        if (value !== 'true') return;
+        const parts = pair.split('__');
+        if (parts.length !== 2 || !parts[0] || !parts[1]) return;
+        parent[find(parts[0])] = find(parts[1]);
+      }});
+      Object.keys(parent).forEach(regime => {{
+        groups[institution + '__' + regime] = find(regime);
+      }});
+    }});
+    return groups;
+  }})();
 
   function ensureRegime(instEntry, regimeCode, regimeName) {{
     const key = String(regimeCode || '');
@@ -7165,8 +7244,11 @@ function buildNumeratorYearSummary(indicatorKey, yearValue, regimeRows, prestati
     (regimeRows || []).forEach(row => {{
       if (Number(row.annee) !== yearNum) return;
       if (!includedRegimeSet.has(row.programme_id)) return;
-      const value = Number(row.cotisants || 0);
-      if (!Number.isFinite(value) || value <= 0) return;
+      if (row.cotisants === null || row.cotisants === undefined) return;
+      const value = Number(row.cotisants);
+      if (!Number.isFinite(value)) return;
+      hasObservation = true;
+      if (value <= 0) return;
       const instEntry = ensureInstitution(row.institution || '');
       const regime = ensureRegime(instEntry, row.regime_code, row.nom_regime || NOM_COURT[row.regime_code] || row.regime_code);
       if (cotisantsViaPrestationsSet.has(row.programme_id)) regime.cotisantsViaPrestations = true;
@@ -7178,8 +7260,11 @@ function buildNumeratorYearSummary(indicatorKey, yearValue, regimeRows, prestati
     (prestationRows || []).forEach(row => {{
       if (Number(row.annee) !== yearNum) return;
       if (!includedPrestationSet.has(row.programme_id)) return;
-      const value = Number(row.beneficiaires || 0);
-      if (!Number.isFinite(value) || value <= 0) return;
+      if (row.beneficiaires === null || row.beneficiaires === undefined) return;
+      const value = Number(row.beneficiaires);
+      if (!Number.isFinite(value)) return;
+      hasObservation = true;
+      if (value <= 0) return;
       const instEntry = ensureInstitution(row.institution || '');
       const regime = ensureRegime(instEntry, row.regime_code, NOM_COURT[row.regime_code] || row.regime_code);
       regime.beneficiaires += value;
@@ -7199,12 +7284,26 @@ function buildNumeratorYearSummary(indicatorKey, yearValue, regimeRows, prestati
         name: reg.name,
         cotisants: reg.cotisants,
         beneficiaires: reg.beneficiaires,
-        total: total,
+        total: hasObservation ? total : null,
         prestations: prestations,
       }};
     }}).filter(r => r.total > 0)
       .sort((a, b) => (b.total - a.total) || String(a.name).localeCompare(String(b.name), 'fr', {{ sensitivity: 'base' }}));
-    const total = regimes.reduce((acc, r) => acc + Number(r.total || 0), 0);
+    const cotisantsByGroup = {{}};
+    regimes.forEach(regime => {{
+      const key = inst.code + '__' + regime.code;
+      const group = q1Groups[key] || regime.code;
+      cotisantsByGroup[group] = Math.max(
+        Number(cotisantsByGroup[group] || 0),
+        Number(regime.cotisants || 0)
+      );
+    }});
+    const cotisantsTotal = Object.values(cotisantsByGroup)
+      .reduce((acc, value) => acc + Number(value || 0), 0);
+    const beneficiairesTotal = regimes
+      .reduce((acc, regime) => acc + Number(regime.beneficiaires || 0), 0);
+    const total = (includeCotisants ? cotisantsTotal : 0)
+      + (includeBeneficiaires ? beneficiairesTotal : 0);
     return {{
       code: inst.code,
       total: total,
@@ -7219,6 +7318,9 @@ function buildNumeratorYearSummary(indicatorKey, yearValue, regimeRows, prestati
     ruleText = 'Addition des cotisants des régimes inclus (y compris les régimes portant au moins une prestation incluse).';
   }} else if (metricSpec.metricKey === 'couverts_bruts_estimes') {{
     ruleText = 'Addition des cotisants (régimes inclus, y compris ceux portant une prestation incluse) + bénéficiaires (prestations incluses).';
+  }}
+  if (indicatorKey === 'global_131') {{
+    ruleText += ' Les régimes reliés par la matrice Q1 sont dédupliqués par groupe, avec conservation de l’effectif maximal.';
   }}
 
   return {{
@@ -7851,11 +7953,11 @@ function getActiveDenominatorSpec(indicatorKey) {{
   const settings = {{ ...defaults, ...(CURRENT_DENOM_SETTINGS || {{}}) }};
   const ageMin = Number(settings.child_age_min);
   const ageMax = Number(settings.child_age_max);
-  const rangeLabel = formatAgeRangeLabel(ageMin, ageMax) || '0–15 ans';
+  const rangeLabel = formatAgeRangeLabel(ageMin, ageMax) || '0–17 ans';
   return {{
     ...base,
     label: 'Population enfants (' + rangeLabel + ')',
-    definition: "Population des enfants dans la tranche d'âge retenue pour l'indicateur 2.2 (par défaut OIT/WSPR : 0–15 ans).",
+    definition: "Population des enfants dans la tranche d'âge de 0 à 17 ans retenue pour l'indicateur 2.2 du bulletin.",
   }};
 }}
 
@@ -8072,10 +8174,12 @@ function renderAggregateIndicatorViews() {{
   const results = alignedYears.map(year => {{
     const summary = summaryByYear[String(year)];
     const denominatorRow = denominatorByYear[String(year)];
-    const denominator = denominatorRow
-      ? getDenominatorValueFromRow(denominatorRow, denominatorSpec)
+    const denominator = indicatorKey === 'ind_28_vulnerables'
+      ? getVulnerablePopulation(year, payload)
+      : (denominatorRow ? getDenominatorValueFromRow(denominatorRow, denominatorSpec) : null);
+    const numerator = summary && summary.total !== null && summary.total !== undefined
+      ? Number(summary.total)
       : null;
-    const numerator = summary ? Number(summary.total) : null;
     const ratio = Number.isFinite(numerator) && denominator !== null && Number(denominator) > 0
       ? numerator / Number(denominator)
       : null;
@@ -8153,6 +8257,23 @@ function renderActiveDenominatorViews() {{
   updateDenominatorPackVisibility(spec.shortKey);
   contextHost.innerHTML = '<strong>Indicateur en cours :</strong> ' + escapeHtml(indicatorLabel) +
     '<br><strong>Dénominateur — définition OIT :</strong> ' + escapeHtml(methodologySpec.denominator);
+
+  if (indicatorKey === 'ind_28_vulnerables') {{
+    const values = getOddAvailableYears().map(year => ({{
+      year: year,
+      value: getVulnerablePopulation(year, payload),
+    }}));
+    visualHost.innerHTML = values.map(item =>
+      '<div class="odd-year-block">' +
+        '<div class="odd-year-banner">' + escapeHtml(String(item.year)) + '</div>' +
+        '<div class="odd-year-total">Population vulnérable = ' + escapeHtml(fmtPlain(item.value)) + '</div>' +
+      '</div>'
+    ).join('');
+    breakdownHost.innerHTML =
+      '<p class="empty">Population totale moins les cotisants actifs dédupliqués, TRESOR inclus, et les bénéficiaires de pensions de vieillesse. Les allocations familiales CNSS sont déjà estimées à partir de 3,17 enfants par titulaire.</p>';
+    renderAggregateIndicatorViews();
+    return;
+  }}
 
   const rows = (CURRENT_DENOM_ROWS || []).slice().sort((a, b) => Number(a.year) - Number(b.year));
   const payload = INDICATEURS_DATA || {{}};
@@ -8475,12 +8596,12 @@ async function fetchWHO_DisabilityPrevalence() {{
     return rows;
   }} catch (err) {{
     console.warn('Erreur API OMS GHO:', err);
-    // Fallback : données par défaut OMS (15% prévalence globale)
+    // Fallback : estimation BIT/OMS de la prévalence du handicap grave (3 %)
     const fallback = [
-      {{ year: 2019, value: 0.15 }},
-      {{ year: 2020, value: 0.15 }},
-      {{ year: 2021, value: 0.15 }},
-      {{ year: 2022, value: 0.15 }},
+      {{ year: 2019, value: 0.03 }},
+      {{ year: 2020, value: 0.03 }},
+      {{ year: 2021, value: 0.03 }},
+      {{ year: 2022, value: 0.03 }},
     ];
     window.__WHO_CACHE[cacheKey] = fallback;
     return fallback;
@@ -8953,17 +9074,17 @@ async function computeDenominatorsLegacy() {{
                 meta: `OMS GHO ${{(prevalence * 100).toFixed(1)}}% prévalence × Pop totale`
               }};
             }} else {{
-              // Fallback : 15% si aucune donnée OMS disponible
+              // Fallback : estimation BIT/OMS de 3 % pour le handicap grave
               handicapGrave = {{
-                value: Math.round(total.value * 0.15),
-                meta: 'OMS 15% prévalence (défaut) × Pop totale'
+                value: Math.round(total.value * 0.03),
+                meta: 'Estimation BIT/OMS 3 % handicap grave × population totale'
               }};
             }}
           }} catch (err) {{
             console.warn('Erreur calcul handicap grave:', err);
             handicapGrave = {{
-              value: Math.round(total.value * 0.15),
-              meta: 'OMS 15% prévalence (erreur API) × Pop totale'
+              value: Math.round(total.value * 0.03),
+              meta: 'Estimation BIT/OMS 3 % handicap grave × population totale'
             }};
           }}
         }} else {{
@@ -9033,20 +9154,22 @@ async function computeDenominatorsLegacy() {{
 const ANNUAL_DENOMINATOR_SPECS = {{
   global_131:       {{ shortKey: 'total',   sources: ['local_db', 'ins_manual', 'manual'], defaultSource: 'local_db' }},
   ind_22_enfants:   {{ shortKey: 'child',   sources: ['local_db', 'ins_manual', 'manual'], defaultSource: 'local_db' }},
-  ind_23_maternite: {{ shortKey: 'mat',     sources: ['local_db', 'ins_manual', 'manual'], defaultSource: 'local_db' }},
+  ind_23_maternite: {{ shortKey: 'mat',     sources: ['ins_manual', 'birth_rate_estimate', 'manual'], defaultSource: 'ins_manual' }},
   ind_24_handicap:  {{ shortKey: 'handicap',sources: ['local_db', 'documented_proxy', 'manual'], defaultSource: 'local_db' }},
   ind_25_atmp:      {{ shortKey: 'lf',      sources: ['local_db', 'ins_manual', 'derived_dm014', 'manual'], defaultSource: 'local_db' }},
   ind_26_chomage:   {{ shortKey: 'active',  sources: ['local_db', 'manual'], defaultSource: 'local_db' }},
   ind_27_vieillesse:{{ shortKey: 'ret',     sources: ['local_db', 'ins_manual', 'manual'], defaultSource: 'local_db' }},
-  ind_28_vulnerables:{{ shortKey: 'total',  sources: ['local_db', 'ins_manual', 'population_total_proxy', 'manual'], defaultSource: 'local_db' }},
+  ind_28_vulnerables:{{ shortKey: 'vulnerable', sources: ['derived_vulnerable'], defaultSource: 'derived_vulnerable' }},
   ind_29_cotisants: {{ shortKey: 'active',  sources: ['local_db', 'ins_manual', 'manual'], defaultSource: 'local_db' }},
 }};
 const ANNUAL_DENOMINATOR_SOURCE_LABELS = {{
   local_db: 'Base locale OIT — ONU WPP 2024 / ILOSTAT (Denominateurs 2026.xlsx)',
   ins_manual: 'INS/RDC — saisie du canevas transmis',
+  birth_rate_estimate: 'Estimation démographique — taux brut de natalité × population INS',
   manual: 'Saisie manuelle pour cette année',
   documented_proxy: 'Proxy documenté : population totale × prévalence paramétrée',
   derived_dm014: "DM-014 : population 15+ × taux d'activité paramétré",
+  derived_vulnerable: 'Calcul dérivé : population totale moins cotisants actifs et pensionnés contributifs',
   population_total_proxy: 'Population totale — proxy explicite',
 }};
 
@@ -9080,9 +9203,9 @@ function applyAnnualDenominatorParams(indicatorKey, savedParams) {{
   }};
   if (indicatorKey === 'ind_22_enfants') {{
     setValue('denom-child-age-min', params.ageMin ?? defaults.child_age_min ?? 0);
-    setValue('denom-child-age-max', params.ageMax ?? defaults.child_age_max ?? 15);
+    setValue('denom-child-age-max', params.ageMax ?? defaults.child_age_max ?? 17);
   }} else if (indicatorKey === 'ind_24_handicap') {{
-    setValue('denom-handicap-prevalence', params.prevalencePercent ?? defaults.handicap_prevalence_percent ?? 15);
+    setValue('denom-handicap-prevalence', params.prevalencePercent ?? defaults.handicap_prevalence_percent ?? 3);
   }} else if (indicatorKey === 'ind_25_atmp') {{
     setValue('denom-lf-rate', params.activityRatePercent ?? defaults.activity_rate_percent ?? 63.44);
   }} else if (indicatorKey === 'ind_27_vieillesse') {{
@@ -9098,7 +9221,7 @@ function prepareAnnualManualInput(spec, year, saved) {{
   window.__MANUAL_DENOM_DATA = window.__MANUAL_DENOM_DATA || {{}};
   window.__MANUAL_DENOM_DATA[spec.shortKey] = window.__MANUAL_DENOM_DATA[spec.shortKey] || {{}};
   const yearKey = String(year);
-  if (saved && ['manual', 'ins_manual'].includes(saved.sourceKey) && Number.isFinite(Number(saved.value))) {{
+  if (saved && ['manual', 'ins_manual', 'birth_rate_estimate'].includes(saved.sourceKey) && Number.isFinite(Number(saved.value))) {{
     window.__MANUAL_DENOM_DATA[spec.shortKey][yearKey] = {{
       value: Number(saved.value),
       comment: saved.meta || '',
@@ -9196,7 +9319,19 @@ async function fetchLocalDenomValue(var_code, sex, age, year) {{
 
 async function resolveAnnualDenominator(indicatorKey, year, sourceKey, params) {{
   const spec = getAnnualDenominatorSpec(indicatorKey);
-  if (sourceKey === 'manual' || sourceKey === 'ins_manual') return getManualAnnualDenominator(spec.shortKey, year);
+  if (indicatorKey === 'ind_28_vulnerables') {{
+    const value = getVulnerablePopulation(year, INDICATEURS_DATA);
+    if (!Number.isFinite(Number(value))) {{
+      throw new Error('Données insuffisantes pour calculer la population vulnérable en ' + year + '.');
+    }}
+    return {{
+      value: Number(value),
+      meta: 'Population totale moins cotisants actifs dédupliqués, TRESOR inclus, et pensionnés de vieillesse (' + year + ')',
+      sourceYears: [year],
+      warnings: [],
+    }};
+  }}
+  if (sourceKey === 'manual' || sourceKey === 'ins_manual' || sourceKey === 'birth_rate_estimate') return getManualAnnualDenominator(spec.shortKey, year);
 
   // ── Source : base locale ────────────────────────────────────────────────
   if (sourceKey === 'local_db') {{
@@ -9220,10 +9355,7 @@ async function resolveAnnualDenominator(indicatorKey, year, sourceKey, params) {
     }}
 
     if (indicatorKey === 'ind_23_maternite') {{
-      // B-MA : femmes 15–49 (var-c-popma)
-      res = await fetchLocalDenomValue('var-c-popma', 'sex-f', 'age-15-49', year);
-      if (!res) throw new Error('Base locale : aucune donnée femmes 15–49 pour ' + year + '.');
-      return {{ value: res.value, meta: (res.source || 'Base locale') + ' [var-c-popma / sex-f / age-15-49] — femmes 15–49 (B-MA) (' + year + ')', sourceYears: [year], warnings: [] }};
+      throw new Error('Le dénominateur maternité doit provenir des naissances vivantes ou des femmes ayant accouché ; le repli WPP femmes 15–49 est interdit.');
     }}
 
     if (indicatorKey === 'ind_24_handicap') {{
@@ -9235,9 +9367,9 @@ async function resolveAnnualDenominator(indicatorKey, year, sourceKey, params) {
         const _warnH1 = 'Taux invalidite OMS - estimation ; seule periode 2010 disponible.';
         return {{ value: Math.round(popRes.value * rate / 100), meta: (rateRes.source || 'Base locale') + ' [var-c-dirt] x ' + (popRes.source || 'Base locale') + ' [var-c-popsx] — pop. x taux invalidite ' + rate.toLocaleString('fr-FR') + ' % (' + year + ')', sourceYears: [year], warnings: [_warnH1] }};
       }}
-      // Fallback : proxy prevalence 15 %
+      // Fallback : proxy documenté de handicap grave à 3 %
       if (popRes) {{
-        const prev = Number(params && params.prevalencePercent !== undefined ? params.prevalencePercent : 15);
+        const prev = Number(params && params.prevalencePercent !== undefined ? params.prevalencePercent : 3);
         const _warnH2 = 'Taux invalidite non disponible en base pour ' + year + ' ; prevalence parametree utilisee.';
         return {{ value: Math.round(popRes.value * prev / 100), meta: (popRes.source || 'Base locale') + ' [var-c-popsx] — pop. x prevalence ' + prev + ' % (proxy) (' + year + ')', sourceYears: [year], warnings: [_warnH2] }};
       }}
@@ -9259,10 +9391,10 @@ async function resolveAnnualDenominator(indicatorKey, year, sourceKey, params) {
     }}
 
     if (indicatorKey === 'ind_27_vieillesse') {{
-      // B-OA : population 65+
-      res = await fetchLocalDenomValue('var-c-popsx', 'sex-t', 'age-65+', year);
-      if (!res) throw new Error('Base locale : aucune donnée population 65+ pour ' + year + '.');
-      return {{ value: res.value, meta: (res.source || 'Base locale') + ' [var-c-popsx / sex-t / age-65+] — population 65+ (B-OA) (' + year + ')', sourceYears: [year], warnings: [] }};
+      // B-OA : population 60+, seuil unique retenu pour la série nationale
+      res = await fetchLocalDenomValue('var-c-popsx', 'sex-t', 'age-60+', year);
+      if (!res) throw new Error('Base locale : aucune donnée population 60+ pour ' + year + '.');
+      return {{ value: res.value, meta: (res.source || 'Base locale') + ' [var-c-popsx / sex-t / age-60+] — population 60+ (' + year + ')', sourceYears: [year], warnings: [] }};
     }}
 
     if (indicatorKey === 'ind_29_cotisants') {{
@@ -9308,7 +9440,8 @@ function rebuildCurrentDenominatorRows() {{
   const metaFields = {{
     populationTotale: 'metaTotal', populationEnfants: 'metaEnfants', populationActive: 'metaActive',
     populationForceDeTravail: 'metaForceDeTravail', populationRetraite: 'metaRetraite',
-    populationHandicapGrave: 'metaHandicapGrave', femmesAyantAccouche: 'metaFemmes',
+    populationHandicapGrave: 'metaHandicapGrave', populationVulnerable: 'metaVulnerable',
+    femmesAyantAccouche: 'metaFemmes',
   }};
   CURRENT_DENOM_ROWS = Object.values(getDenominatorConstructions())
     .filter(item => item && item.indicatorKey === indicatorKey && Number.isFinite(Number(item.value)))
@@ -9496,7 +9629,7 @@ function initDenominatorPanel() {{
   }}
 
   document.getElementById('denom-child-age-min').value = merged.child_age_min ?? 0;
-  document.getElementById('denom-child-age-max').value = merged.child_age_max ?? 15;
+  document.getElementById('denom-child-age-max').value = merged.child_age_max ?? 17;
   document.getElementById('denom-active-age-min').value = merged.working_age_min || 15;
   document.getElementById('denom-active-age-max').value = merged.working_age_max || 64;
   document.getElementById('denom-ret-age-h').value = merged.retirement_age_h || 65;

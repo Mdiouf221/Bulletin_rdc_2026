@@ -1,0 +1,7 @@
+Source : Programme alimentaire mondial (PAM), Annual Country Report 2024 — Democratic Republic of the Congo.
+Identifiant WFP : WFP-0000165346.
+Nature : rapport annuel institutionnel ; source primaire.
+Indicateur retenu : 272 000 enfants, valeur narrative retenue à la demande du responsable du bulletin.
+Usage : ESS PAM 2024 et indicateur d'assistance sociale des personnes vulnérables.
+Réserve majeure : le tableau détaillé du même rapport donne 194 636 enfants servis sur site. L'écart n'est pas résolu et doit être signalé. L'activité couvrait six provinces.
+Citation recommandée : PAM (2025), Annual Country Report 2024 — Democratic Republic of the Congo, WFP-0000165346.

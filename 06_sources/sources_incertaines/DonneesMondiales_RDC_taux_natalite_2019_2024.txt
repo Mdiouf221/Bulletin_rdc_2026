@@ -1,0 +1,39 @@
+Source : DonnéesMondiales.com
+Titre de la page : Évolution de la population en République démocratique du Congo depuis 1960
+URL : https://www.donneesmondiales.com/afrique/congo-kinshasa/croissance-population.php
+Date de consultation : 2026-11-11
+Niveau de fiabilité : 5 — source secondaire non institutionnelle, à confirmer.
+
+Donnée retenue
+---------------
+La page publie les taux bruts de natalité suivants pour la RDC :
+
+| Année | Taux de natalité |
+|---|---:|
+| 2019 | 42,5 pour 1 000 |
+| 2020 | 42,2 pour 1 000 |
+| 2021 | 41,9 pour 1 000 |
+| 2022 | 41,6 pour 1 000 |
+| 2023 | 41,3 pour 1 000 |
+| 2024 | 40,9 pour 1 000 |
+
+Méthode d'estimation
+---------------------
+Estimation annuelle des naissances vivantes = population totale annuelle INS/RDC × taux brut
+de natalité / 1 000. Les populations totales INS/RDC sont celles du canevas de collecte 2026.
+
+| Année | Population totale INS/RDC | Taux | Naissances vivantes estimées |
+|---|---:|---:|---:|
+| 2019 | 92 947 442 | 42,5 pour 1 000 | 3 950 266 |
+| 2021 | 99 148 932 | 41,9 pour 1 000 | 4 154 340 |
+| 2022 | 102 396 968 | 41,6 pour 1 000 | 4 259 714 |
+| 2023 | 105 789 731 | 41,3 pour 1 000 | 4 369 116 |
+| 2024 | 109 276 265 | 40,9 pour 1 000 | 4 469 399 |
+
+Réserve méthodologique
+-----------------------
+La page ne précise pas, dans le contenu consulté, la source primaire ou la méthode de sa série.
+Les valeurs sont donc intégrées comme estimations démographiques à confirmer, non comme des
+observations administratives. La valeur INS de 2020 (719 335 naissances vivantes enregistrées)
+est conservée comme observation distincte ; elle n'est pas remplacée par l'estimation
+démographique de 4 050 778.

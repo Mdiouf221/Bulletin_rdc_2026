@@ -932,8 +932,8 @@
    "fichier_source": "06_sources/ESS/ESS_TRESOR/EST TRESOR 2023.xlsm",
    "statut_texte": "métadonnées disponibles",
    "statut_verification": "estimation à réviser",
-   "note": "Population résiduelle enregistrée dans le champ technique cotisants ; bénéficiaires N/D. Le classeur contient aussi des références internes à 2022. Ne constitue pas une déclaration institutionnelle ESS.",
-   "citation_recommandee": "Ne pas citer comme source officielle ; présenter comme estimation provisoire de travail.",
+   "note": "Estimation de 618 866 cotisants actifs hors CNSSAP : 1 622 972 salariés du secteur public (ILOSTAT, 2020, valeur de repli) moins 1 004 106 cotisants CNSSAP déclarés en 2023. Bénéficiaires N/D. Le classeur contient aussi des références internes à 2022. Ne constitue pas une déclaration institutionnelle ESS.",
+   "citation_recommandee": "Présenter comme estimation de cotisants actifs hors CNSSAP, calculée à partir de l'observation ILOSTAT 2020 et des cotisants CNSSAP déclarés en 2023.",
    "sections_citantes": [],
    "fichier_metadata": "06_sources/ESS/ESS_TRESOR/_texte/EST_TRESOR_2023_metadata.txt",
    "fichier_texte_extrait": null
@@ -1451,6 +1451,172 @@
    "note": "Document de planification. La valeur de 115 000 apparaît dans un tableau de bénéficiaires prévus pour 2024, mais ne confirme pas l'énoncé de 115 000 élèves au premier trimestre 2025.",
    "citation_recommandee": "PAM (2020), Plan stratégique de pays — République démocratique du Congo (2021–2024), WFP/EB.2/2020/7-A/2.",
    "sections_citantes": []
+  },
+  {
+   "id": "DONNEESMONDIALES-RDC-NATALITE-2026",
+   "titre": "Évolution de la population en République démocratique du Congo depuis 1960",
+   "organisation": "DonnéesMondiales.com",
+   "annee": 2026,
+   "niveau_fiabilite": 5,
+   "sous_dossier": "sources_incertaines",
+   "url_source": "https://www.donneesmondiales.com/afrique/congo-kinshasa/croissance-population.php",
+   "fichier_source": "06_sources/sources_incertaines/DonneesMondiales_RDC_taux_natalite_2019_2024.txt",
+   "statut_texte": "archivé",
+   "statut_verification": "à confirmer — source primaire et méthode de la série non indiquées dans le contenu consulté",
+   "note": "La page publie les taux bruts de natalité de 42,5 pour 1 000 (2019), 41,9 (2021), 41,6 (2022), 41,3 (2023) et 40,9 (2024). Ils sont appliqués aux populations totales du canevas INS/RDC pour estimer les naissances vivantes du dénominateur maternité. La valeur administrative INS de 719 335 naissances vivantes en 2020 est conservée et n'est pas remplacée.",
+   "citation_recommandee": "DonnéesMondiales.com (consulté le 11 novembre 2026), « Évolution de la population en République démocratique du Congo depuis 1960 » — taux de natalité à confirmer.",
+   "sections_citantes": [
+    "04_annexes/annexe_C_detail_indicateurs.md"
+   ]
+  },
+  {
+   "id": "RDC-LOI-ORGANIQUE-06-020-2006",
+   "titre": "Loi organique n° 06/020 du 10 octobre 2006 portant statut des magistrats",
+   "organisation": "Journal officiel de la République démocratique du Congo",
+   "annee": 2006,
+   "niveau_fiabilite": 2,
+   "sous_dossier": "officielles_web",
+   "url_source": "https://droitcongolais.info/files/150.10.06-Loi-du-10-octobre-2006_Magistrats.pdf",
+   "fichier_pdf": "06_sources/officielles_web/RDC_Loi_organique_06_020_statut_magistrats_2006.pdf",
+   "fichier_metadata": "06_sources/officielles_web/RDC_Loi_organique_06_020_statut_magistrats_2006.txt",
+   "statut_pdf": "présent",
+   "statut_texte": "métadonnées disponibles",
+   "statut_verification": "vérifié — article 91 et articles 25, 70-74, 76-82",
+   "note": "L'article 91 abroge l'ordonnance-loi n° 88/056 du 29 septembre 1988 ; les articles cités précisent les prestations statutaires des magistrats.",
+   "citation_recommandee": "Journal officiel de la République démocratique du Congo (2006), Loi organique n° 06/020 du 10 octobre 2006 portant statut des magistrats.",
+   "sections_citantes": [
+    "04_annexes/annexe_B_fiches_institutionnelles.md"
+   ]
+  },
+  {
+   "id": "MESP-AYANTS-DROIT-2025",
+   "titre": "RDC : avec près de 195 000 enseignants déjà identifiés, la MESP poursuit son déploiement",
+   "organisation": "7SUR7.CD, citant la direction de la MESP",
+   "annee": 2025,
+   "niveau_fiabilite": 5,
+   "sous_dossier": "sources_incertaines",
+   "url_source": "https://7sur7.cd/2025/07/30/rdc-avec-pres-de-195000-enseignants-deja-identifies-la-mutuelle-de-sante-mesp-poursuit",
+   "fichier_source": "06_sources/sources_incertaines/MESP_ayants_droit_declaration_direction_2025.html",
+   "fichier_metadata": "06_sources/sources_incertaines/MESP_ayants_droit_declaration_direction_2025.txt",
+   "statut_texte": "archivé",
+   "statut_verification": "déclaration attribuée à la direction de la MESP ; règlement institutionnel écrit non retrouvé",
+   "note": "La déclaration indique trois enfants pris en charge, portés à six lorsque les deux conjoints sont enseignants affiliés.",
+   "citation_recommandee": "7SUR7.CD (2025), citant la direction de la MESP, déclaration sur les ayants droit.",
+   "sections_citantes": [
+    "04_annexes/annexe_B_fiches_institutionnelles.md"
+   ]
+  },
+  {
+   "id": "RADIO-OKAPI-FONCTION-PUBLIQUE-2026",
+   "titre": "Plus d'un million d'agents de l'État rémunérés sur plus de deux millions",
+   "organisation": "Radio Okapi, citant le rapport gouvernemental « La Fonction publique en chiffres »",
+   "annee": 2026,
+   "niveau_fiabilite": 5,
+   "sous_dossier": "sources_incertaines",
+   "url_source": "https://www.radiookapi.net/2026/05/15/actualite/politique/plus-dun-million-dagents-de-letat-remuneres-sur-plus-de-deux-millions",
+   "fichier_source": "06_sources/sources_incertaines/Radio_Okapi_fonction_publique_chiffres_2026.txt",
+   "statut_texte": "archivé",
+   "statut_verification": "à confirmer par le rapport gouvernemental primaire",
+   "note": "L'article rapporte 1 727 000 agents de l'État rémunérés en 2024. Cette valeur est utilisée avec réserve comme total de référence de l'hypothèse TRESOR 2024, sans démontrer l'équivalence avec le périmètre ILOSTAT.",
+   "citation_recommandee": "Radio Okapi (2026), citant La Fonction publique en chiffres, rapport présenté par le ministère chargé de la Fonction publique.",
+   "sections_citantes": [
+    "03_chapitres/chapitre_4/4.3_age_actif.md"
+   ]
+  },
+  {
+   "id": "PAM-RAPPORT-ANNUEL-RDC-2021",
+   "titre": "Annual Country Report 2021 — Democratic Republic of the Congo",
+   "organisation": "Programme alimentaire mondial (PAM)",
+   "annee": 2021,
+   "niveau_fiabilite": 1,
+   "url_source": "https://docs.wfp.org/api/documents/WFP-0000138022/download/",
+   "fichier_pdf": "06_sources/officielles_web/WFP_RDC_rapport_annuel_2021.pdf",
+   "fichier_metadata": "06_sources/officielles_web/WFP_RDC_rapport_annuel_2021_metadata.txt",
+   "fichier_texte_extrait": "06_sources/officielles_web/_texte/WFP_RDC_rapport_annuel_2021.txt",
+   "statut_pdf": "présent",
+   "statut_texte": "converti",
+   "statut_verification": "vérifié",
+   "note": "226 000 enfants ont reçu des repas scolaires communautaires. Intervention en nature inscrite dans le périmètre de l'assistance sociale, sans assimilation à une prestation contributive.",
+   "citation_recommandee": "PAM (2022), Annual Country Report 2021 — Democratic Republic of the Congo, WFP-0000138022.",
+   "sections_citantes": [
+    "04_annexes/annexe_C_detail_indicateurs.md"
+   ]
+  },
+  {
+   "id": "PAM-RAPPORT-ANNUEL-RDC-2022",
+   "titre": "Annual Country Report 2022 — Democratic Republic of the Congo",
+   "organisation": "Programme alimentaire mondial (PAM)",
+   "annee": 2022,
+   "niveau_fiabilite": 1,
+   "url_source": "https://docs.wfp.org/api/documents/WFP-0000147935/download/",
+   "fichier_pdf": "06_sources/officielles_web/WFP_RDC_rapport_annuel_2022.pdf",
+   "fichier_metadata": "06_sources/officielles_web/WFP_RDC_rapport_annuel_2022_metadata.txt",
+   "fichier_texte_extrait": "06_sources/officielles_web/_texte/WFP_RDC_rapport_annuel_2022.txt",
+   "statut_pdf": "présent",
+   "statut_texte": "converti",
+   "statut_verification": "vérifié",
+   "note": "222 800 enfants ont reçu des repas nutritifs et équilibrés. Intervention en nature inscrite dans le périmètre de l'assistance sociale, sans assimilation à une prestation contributive.",
+   "citation_recommandee": "PAM (2023), Annual Country Report 2022 — Democratic Republic of the Congo, WFP-0000147935.",
+   "sections_citantes": [
+    "04_annexes/annexe_C_detail_indicateurs.md"
+   ]
+  },
+  {
+   "id": "PAM-RAPPORT-ANNUEL-RDC-2023",
+   "titre": "Annual Country Report 2023 — Democratic Republic of the Congo",
+   "organisation": "Programme alimentaire mondial (PAM)",
+   "annee": 2023,
+   "niveau_fiabilite": 1,
+   "url_source": "https://docs.wfp.org/api/documents/WFP-0000157699/download/",
+   "fichier_pdf": "06_sources/officielles_web/WFP_RDC_rapport_annuel_2023.pdf",
+   "fichier_metadata": "06_sources/officielles_web/WFP_RDC_rapport_annuel_2023_metadata.txt",
+   "fichier_texte_extrait": "06_sources/officielles_web/_texte/WFP_RDC_rapport_annuel_2023.txt",
+   "statut_pdf": "présent",
+   "statut_texte": "converti",
+   "statut_verification": "vérifié",
+   "note": "237 000 enfants ont bénéficié de repas scolaires dans quatre provinces. Intervention en nature inscrite dans le périmètre de l'assistance sociale.",
+   "citation_recommandee": "PAM (2024), Annual Country Report 2023 — Democratic Republic of the Congo, WFP-0000157699.",
+   "sections_citantes": [
+    "04_annexes/annexe_C_detail_indicateurs.md"
+   ]
+  },
+  {
+   "id": "PAM-RAPPORT-ANNUEL-RDC-2024",
+   "titre": "Annual Country Report 2024 — Democratic Republic of the Congo",
+   "organisation": "Programme alimentaire mondial (PAM)",
+   "annee": 2024,
+   "niveau_fiabilite": 1,
+   "url_source": "https://docs.wfp.org/api/documents/WFP-0000165346/download/",
+   "fichier_pdf": "06_sources/officielles_web/WFP_RDC_rapport_annuel_2024.pdf",
+   "fichier_metadata": "06_sources/officielles_web/WFP_RDC_rapport_annuel_2024_metadata.txt",
+   "fichier_texte_extrait": "06_sources/officielles_web/_texte/WFP_RDC_rapport_annuel_2024.txt",
+   "statut_pdf": "présent",
+   "statut_texte": "converti",
+   "statut_verification": "vérifié avec réserve",
+   "note": "La valeur narrative de 272 000 enfants est retenue. Le tableau détaillé du même rapport indique 194 636 enfants servis sur site ; cet écart non résolu est documenté. L'activité couvrait six provinces.",
+   "citation_recommandee": "PAM (2025), Annual Country Report 2024 — Democratic Republic of the Congo, WFP-0000165346.",
+   "sections_citantes": [
+    "04_annexes/annexe_C_detail_indicateurs.md"
+   ]
+  },
+  {
+   "id": "PAM-RAPPORT-ANNUEL-RDC-2025",
+   "titre": "Annual Country Report 2025 — Democratic Republic of the Congo",
+   "organisation": "Programme alimentaire mondial (PAM)",
+   "annee": 2025,
+   "niveau_fiabilite": 1,
+   "url_source": "https://docs.wfp.org/api/documents/WFP-0000172856/download/",
+   "fichier_pdf": "06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf",
+   "fichier_metadata": "06_sources/officielles_web/WFP_RDC_rapport_annuel_2025_metadata.txt",
+   "fichier_texte_extrait": "06_sources/officielles_web/_texte/WFP_RDC_rapport_annuel_2025.txt",
+   "statut_pdf": "présent",
+   "statut_texte": "converti",
+   "statut_verification": "vérifié",
+   "note": "145 030 élèves du primaire ont reçu des repas chauds sur site dans cinq provinces, hors personnel d'appui et rations à emporter.",
+   "citation_recommandee": "PAM (2026), Annual Country Report 2025 — Democratic Republic of the Congo, WFP-0000172856.",
+   "sections_citantes": [
+    "04_annexes/annexe_C_detail_indicateurs.md"
+   ]
   }
  ]
 }

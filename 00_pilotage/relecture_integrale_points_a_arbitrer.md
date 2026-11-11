@@ -22,6 +22,40 @@ Chaque point indique : localisation, constat, éléments de vérification, gravi
 
 ---
 
+## Note de suivi — Observations techniques retirées de la version publique (2026-11-11)
+
+Les observations ci-dessous sont maintenues dans ce registre de travail ; elles ne figurent plus dans le bulletin destiné à la publication.
+
+- Les ruptures de séries et les réserves de comparabilité relatives aux effectifs CNSSAP 2023–2024 sont documentées au point A4.
+- La stabilité des effectifs SESOPA sur la période 2019–2025 est documentée au point A6.
+- Les valeurs identiques des enfants couverts par la CNSS en 2021 et 2023 sont documentées au point A1.
+- Les contrôles relatifs aux données CNSS 2024 de la branche des risques professionnels, ainsi qu'aux agrégats financiers CNSSAP, relèvent du suivi technique des données et ne font pas l'objet d'une note dans le bulletin.
+- Les écarts de définition entre les séries et les choix de périmètre restent consignés dans les décisions méthodologiques et les sources de calcul, sans renvoi dans la version publique.
+
+---
+
+## Note de suivi — Reprise de la relecture PROC-003 (2026-11-11)
+
+La revue des sections 4.2 à 4.9 du chapitre 4 et des annexes B et C a été reprise après interruption. Aucun texte du bulletin n'a été modifié dans le cadre de cette passe : conformément à PROC-003, les corrections ci-dessous restent soumises à confirmation avant intervention dans les sections rédigées.
+
+### Constats à traiter après confirmation
+
+1. **Traçabilité des séries pluriannuelles.** Plusieurs tableaux des sections 4.2 à 4.8 et des annexes B et C renvoient à une seule ESS, souvent CNSS 2022, alors que les valeurs couvrent plusieurs institutions et années. Les sources annuelles pertinentes, leurs annotations de validation et les sources des dénominateurs doivent être ajoutées.
+2. **CNSSAP, famille et invalidité.** La valeur `0` de la branche familiale CNSSAP en 2022 doit être requalifiée en `N/A`, la branche n'étant pas opérationnelle. La série CNSS 2021/2023 identique doit conserver une réserve explicite ; les périodicités et sources des montants familiaux et des seuils de pauvreté doivent être vérifiées.
+3. **Cohérence méthodologique PAM/TRESOR.** `decisions_methodologiques.md` exclut les repas scolaires PAM de l'ODD 1.3.1 strict, tandis que `indicateurs_odd_regles_calcul.md` les retient pour le sous-indicateur national 2.8 des personnes vulnérables. Cette distinction doit être rendue explicite dans les sorties. De même, le libellé de l'indicateur 2.9 doit refléter l'hypothèse TRESOR admise pour cet indicateur complémentaire, sans l'assimiler à une donnée administrative contributive directe.
+4. **Annexes.** L'Annexe B contient un bloc résiduel SESOPA/TRESOR non structuré, en doublon des fiches générées, et ses titres de paragraphe ne portent pas systématiquement les badges de validation requis. Les tableaux de l'Annexe C nécessitent des captions et références interactives plus précises.
+5. **Points de fond à vérifier auprès des institutions.** Restent notamment à confirmer : la série CNSS des frais funéraires, les données FSS (unités, périmètres et coûts), les données des mutuelles CGAT 2024-2025, les sources primaires des seuils de pauvreté et les données CNSSAP 2025.
+
+### Contrôles effectués
+
+- Les NOTE_INTERNE, la numérotation et les badges déjà présents dans les sections du chapitre 4 ont été préservés.
+- Les exclusions des indemnités journalières de maladie et de maternité, ainsi que l'exclusion de la santé de l'ODD 1.3.1, sont correctement appliquées.
+- La valeur OIT 2022 est séparée du calcul national dans la section 4.9.
+- `py -3 -m unittest discover -s 09_scripts -p "test_*.py" -v` : 40 tests réussis.
+- `git diff --check` : aucune erreur d'espacement.
+
+---
+
 ## A. Données à confirmer auprès des institutions
 
 ### A1. CNSS — enfants couverts identiques en 2021 et 2023 (Tableau 4.6)
@@ -69,12 +103,12 @@ Chaque point indique : localisation, constat, éléments de vérification, gravi
 - **Gravité :** majeur.
 - **Traitement retenu :** ne pas afficher de colonne 2026 dans les tableaux du bulletin ; conserver la donnée ESS 2026 comme information documentaire, avec mention explicite de la couverture janvier–juillet uniquement dans le texte si nécessaire.
 
-### A7. TRESOR (proxy budgétaire) — rupture 2022→2023 : 1 424 573 → 420 894, puis 713 896 en 2024
-- **Statut : traité pour la présente édition (2026-11-11).** Les effectifs TRESOR sont exclus du numérateur principal de l'ODD 1.3.1, car ils sont estimés par différence et ne démontrent ni une couverture effective ni une prestation effectivement reçue. Ils restent visibles dans l'Annexe B comme série contextuelle, avec leur caractère provisoire.
+### A7. TRESOR (hypothèse de cotisants actifs hors CNSSAP) — série révisée
+- **Statut : arbitré (2026-11-11).** Les effectifs TRESOR sont retenus dans le sous-indicateur des cotisants actifs à la retraite (2.9), mais restent exclus de l'indicateur global ODD 1.3.1. Ils sont estimés par différence, sans double compte avec la CNSSAP.
 - **Fichier :** Annexe B (B.7.2), Annexe C (C.1, ligne « Pensions de retraite octroyé de la fonction publique »).
-- **Constat :** rupture non expliquée dans la fiche ; estimation de la Fonction publique déjà marquée « provisoire, à confirmer ». En 2019, aucune population de référence vérifiable n'est disponible pour confirmer le calcul affiché.
+- **Constat :** en l'absence de total public homogène pour 2023, le calcul reprend l'observation ILOSTAT 2020 (1 622 972) et donne 618 866 après soustraction des 1 004 106 cotisants CNSSAP. En 2024, le total de 1 727 000 agents rémunérés, rapporté par Radio Okapi à partir de « La Fonction publique en chiffres », donne 713 896.
 - **Gravité :** majeur.
-- **Réserve maintenue :** la cause de la rupture et l'existence d'une série administrative de couverture effective restent à confirmer ; aucune réintégration n'est effectuée dans la présente édition.
+- **Réserve maintenue :** les totaux de référence 2019–2024 ne constituent pas encore une série administrative homogène. Le rapport gouvernemental primaire et une ventilation institutionnelle des agents publics restent à obtenir.
 
 ### A8. FSS — « Population cible (ville-province de Kinshasa) : 1618 millions » (Tableau B.5.3)
 - **Statut : traité avec intégration des données de l'atelier (2026-11-11).** La valeur manifestement erronée est retirée. Les données institutionnelles FSS 2023–2025 sont désormais présentées comme une source distincte de l'ESS, sous l'intitulé original « Kobota Ofele (non contributif) », avec distinction entre le programme quantifié et les programmes non renseignés ou non opérationnels.

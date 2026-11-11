@@ -18,12 +18,14 @@ Options :
   --refresh-visuals
                  — régénère explicitement les visuels annexes B/C avant export
                    (opt-in, jamais exécuté par défaut)
+  --reuse-html   — réutilise explicitement le HTML daté du jour pour Word
 
 Usage :
     python 09_scripts/exporter.py                  # HTML relecture
     python 09_scripts/exporter.py --all            # tous les formats
     python 09_scripts/exporter.py --word           # Word via pandoc
     python 09_scripts/exporter.py --word --excel-charts embedded
+    python 09_scripts/exporter.py --word --reuse-html
     python 09_scripts/exporter.py --all --refresh-visuals
     python 09_scripts/exporter.py --notes --open   # HTML interne + ouverture auto
     python 09_scripts/exporter.py --pdf            # PDF via weasyprint ou pandoc
@@ -169,6 +171,25 @@ def preprocess_md(md_text: str, include_notes: bool = False) -> str:
     """
     if not include_notes:
         md_text = re.sub(r'<!--\s*NOTE_INTERNE.*?-->', '', md_text, flags=re.DOTALL)
+        md_text = re.sub(
+            r'<span\b[^>]*class="[^"]*\bvalid-badge\b[^"]*"[^>]*>.*?</span>',
+            '',
+            md_text,
+            flags=re.DOTALL | re.IGNORECASE,
+        )
+        md_text = re.sub(
+            r'<a\b[^>]*>\s*\[src\]\s*</a>',
+            '',
+            md_text,
+            flags=re.DOTALL | re.IGNORECASE,
+        )
+        md_text = re.sub(r'(?im)(?<!\w)\[src\](?!\w)', '', md_text)
+        md_text = re.sub(
+            r'(?im)^\s*(?:[*_]\s*)?\[(?:à rédiger|à définir|à compléter)(?:[^\]]*)\]'
+            r'(?:\s*[*_])?\s*$',
+            '',
+            md_text,
+        )
 
     # Supprimer les commentaires restants (SECTION, VERSION, FIN FICHIER…)
     md_text = re.sub(r'<!--[^>]*-->', '', md_text)
@@ -204,7 +225,8 @@ def preprocess_md(md_text: str, include_notes: bool = False) -> str:
                 )
             )
             if is_empty:
-                result.append('\n<p class="a-rediger">&#9998; Texte à rédiger</p>\n')
+                if include_notes:
+                    result.append('\n<p class="a-rediger">&#9998; Texte à rédiger</p>\n')
             else:
                 result.extend(content_lines)
             continue
@@ -261,7 +283,7 @@ def build_export_html(md_file: pathlib.Path, include_notes: bool = False) -> str
         doc_title = m_title.group(1).strip()
 
     # Lire les statuts avant preprocessing (les NOTE_INTERNE sont encore présentes)
-    status_map = build_status_map(md_text)
+    status_map = build_status_map(md_text) if include_notes else {}
 
     # Préparer le Markdown
     md_preview = preprocess_md(md_text, include_notes=include_notes)
@@ -318,12 +340,38 @@ def build_export_html(md_file: pathlib.Path, include_notes: bool = False) -> str
     now              = datetime.now()
     export_date      = now.strftime("%d %B %Y à %H:%M")
     export_date_print = now.strftime("%d/%m/%Y  %H:%M")   # format compact pour le pied de page imprimé
-    label_type  = "VERSION INTERNE — notes de travail incluses" if include_notes else "VERSION RELECTURE"
+    label_type  = (
+        "VERSION INTERNE — notes de travail incluses"
+        if include_notes
+        else "VERSION PUBLICATION"
+    )
 
     toc_html = (
         toc if toc
         else '<p style="padding:12px;color:#667;font-size:12px;">Aucun titre détecté.</p>'
     )
+    status_legend_script = ""
+    if include_notes:
+        status_legend_script = """
+/* Légende des statuts */
+(function() {{
+  var legend = document.createElement("div");
+  legend.id = "status-legend";
+  var items = [
+    ["#d42b2b", "Brouillon / Structure initiale"],
+    ["#e07820", "À revoir / Notes développées"],
+    ["#c8a800", "Rédigé"],
+    ["#2e78c8", "Revu / Révisé"],
+    ["#111111", "Validé"],
+  ];
+  var inner = '<div class="legend-title">Statut des sections</div>';
+  items.forEach(function(item) {{
+    inner += '<div><span class="l-dot" style="background:' + item[0] + '"></span>' + item[1] + '</div>';
+  }});
+  legend.innerHTML = inner;
+  document.body.appendChild(legend);
+}})();
+"""
 
     html = f"""<!DOCTYPE html>
 <html lang="fr">
@@ -361,24 +409,7 @@ def build_export_html(md_file: pathlib.Path, include_notes: bool = False) -> str
 </div>
 
 <script>
-/* Légende des statuts */
-(function() {{
-  var legend = document.createElement("div");
-  legend.id = "status-legend";
-  var items = [
-    ["#d42b2b", "Brouillon / Structure initiale"],
-    ["#e07820", "À revoir / Notes développées"],
-    ["#c8a800", "Rédigé"],
-    ["#2e78c8", "Revu / Révisé"],
-    ["#111111", "Validé"],
-  ];
-  var inner = '<div class="legend-title">Statut des sections</div>';
-  items.forEach(function(item) {{
-    inner += '<div><span class="l-dot" style="background:' + item[0] + '"></span>' + item[1] + '</div>';
-  }});
-  legend.innerHTML = inner;
-  document.body.appendChild(legend);
-}})();
+{status_legend_script}
 
 /* Highlight de la section active dans la TOC */
 (function() {{
@@ -528,40 +559,36 @@ def export_word(
     excel_chart_mode: str = "embedded",
     annexe_b_chart_mode: str | None = None,
     refresh_visuals: bool = False,
+    reuse_html: bool = False,
 ) -> "pathlib.Path | None":
     """
     Délègue entièrement à exporter_word.py (pipeline complet : styles, sauts de
     page, TOF, autofit…).  Cette fonction reste le point d'entrée appelé par le
-    serveur de prévisualisation et par --word / --all.
+    serveur de prévisualisation et par --word / --all. Sauf demande explicite
+    de réutilisation, elle régénère d'abord le HTML afin d'exporter l'état
+    courant du bulletin.
     """
     label = "notes" if include_notes else "relecture"
     stamp = STAMP
     html_source = OUTPUT_DIR / f"bulletin_{label}_{stamp}.html"
 
-    if refresh_visuals:
-        refreshed_html = export_html(
+    if not reuse_html:
+        regenerated_html = export_html(
             include_notes=include_notes,
             open_after=False,
-            refresh_visuals=True,
+            refresh_visuals=refresh_visuals,
         )
-        if refreshed_html is None:
-            print("[EXPORT WORD] Échec du rafraîchissement préalable (--refresh-visuals).")
+        if regenerated_html is None:
+            print("[EXPORT WORD] Échec de l'assemblage et de la génération du HTML préalable.")
             return None
-        html_source = refreshed_html
-
-    # Générer le HTML source s'il est absent
-    if not html_source.exists():
-        subprocess.run(
-            [sys.executable, str(pathlib.Path(__file__)),
-             "--notes" if include_notes else "--html",
-             *(["--refresh-visuals"] if refresh_visuals else [])],
-            capture_output=True, cwd=str(WORKSPACE_DIR),
-            encoding="utf-8", errors="replace",
+        html_source = regenerated_html
+    elif not html_source.exists():
+        print(
+            "[EXPORT WORD] --reuse-html a été demandé, mais le fichier HTML "
+            f"attendu est introuvable : {html_source.name}"
         )
-        if not html_source.exists():
-            print(f"[EXPORT WORD] Fichier HTML source introuvable : {html_source.name}")
-            print("              Lancez d'abord : python 09_scripts/exporter.py --html")
-            return None
+        print("              Relancez sans --reuse-html pour le régénérer.")
+        return None
 
     requested_mode = annexe_b_chart_mode if annexe_b_chart_mode is not None else excel_chart_mode
 
@@ -741,6 +768,14 @@ def main() -> None:
         ),
     )
     parser.add_argument(
+        "--reuse-html",
+        action="store_true",
+        help=(
+            "Pour Word, réutiliser explicitement le HTML daté du jour au lieu "
+            "de réassembler et régénérer le bulletin."
+        ),
+    )
+    parser.add_argument(
         "--excel-charts",
         "--annexe-b-charts",
         dest="excel_charts",
@@ -777,6 +812,7 @@ def main() -> None:
             open_after=args.open,
             excel_chart_mode=args.excel_charts,
             refresh_visuals=word_refresh_visuals,
+            reuse_html=args.reuse_html,
         )
         if f:
             produced.append(f)

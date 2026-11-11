@@ -43,21 +43,22 @@ L'indicateur est décomposé par groupe de population conformément aux catégor
 
 ###  <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
 
-**Note méthodologique :** Conformément à DM-014, le sous-indicateur AT/MP (accidents du travail et maladies professionnelles) rapporte le numérateur (cotisants actifs AT/MP) à la **force de travail 15+** (labour force = personnes en emploi + chômeurs), et non à la population totale ni à la seule population en emploi. Cette définition correspond au libellé officiel ILOSTAT de l'indicateur SDG_0131_SEX_SOC_RT_A : « *Labour force covered in the event of work injury* ». La force de travail est estimée en appliquant le taux de participation à la force de travail (63,44 %, ILOSTAT/MICS 2020) à la population de 15 ans et plus.
+**Note méthodologique :** Le sous-indicateur AT/MP (accidents du travail et maladies professionnelles) rapporte le numérateur (cotisants actifs AT/MP) à la **force de travail 15+** (labour force = personnes en emploi + chômeurs), et non à la population totale ni à la seule population en emploi. Cette définition correspond au libellé officiel ILOSTAT de l'indicateur SDG_0131_SEX_SOC_RT_A : « *Labour force covered in the event of work injury* ». La force de travail est estimée en appliquant le taux de participation à la force de travail (63,44 %, ILOSTAT/MICS 2020) à la population de 15 ans et plus.
 
 <p class="table-caption"><strong>Tableau 5.2</strong> — Valeurs de l'ODD 1.3.1 pour la RDC par groupe de population (2019–2025)</p>
 
 | Sous-indicateur ODD 1.3.1 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
-| Population totale (%) | 3,2 | 2,8 | 3,3 | 3,2 | 3,9 | 4,1 | 1,6 |
+| Population totale (%) | 1,7 | 1,8 | 2,4 | 2,2 | 3,0 | 2,8 | 1,7 |
 | Population 0–17 ans (%) | 1,7 | 1,9 | 2,4 | 2,1 | 2,3 | 1,6 | 0,0 |
-| Femmes ayant accouché — maternité (%) | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 | [N/D] |
+| Femmes ayant accouché — allocation de maternité CNSS (%) | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 | [N/D] |
 | Personnes âgées — pension vieillesse (%) | 1,0 | 1,0 | 1,0 | 1,1 | 1,1 | 1,1 | [N/D] |
-| Actifs — cotisants à un régime contributif (%) | 4,5 | 4,4 | 4,4 | 4,3 | 3,8 | 4,7 | [N/D] |
+| Actifs — cotisants à un régime contributif (%) | 4,5 | 4,4 | 4,4 | 4,3 | 4,2 | 4,7 | [N/D] |
 | Actifs — couverture statutaire budgétaire (%) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Actifs — couverture consolidée nationale (%) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Personnes handicapées — invalidité (%) | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 | 0,0 |
-| Force de travail — AT/MP (%) | 1,4 | 1,0 | 1,1 | 1,1 | 1,0 | 1,4 | 0,0 |
+| Personnes handicapées — invalidité (%) | 0,1 | 0,1 | 0,0 | 0,1 | 0,0 | 0,1 | [N/D] |
+| Force de travail — AT/MP (%) | 1,4 | 1,0 | 1,1 | 1,1 | 1,0 | 1,4 | [N/D] |
+| Personnes vulnérables — assistance sociale (%) | 0,9 | 1,0 | 1,5 | 1,4 | 1,5 | 1,1 | [N/D] |
 
 *Source : calculs du tableau de bord à partir de la base ESS OIT/BIT, des décisions d'inclusion enregistrées et des dénominateurs démographiques prioritaires de la base de référence.*
 

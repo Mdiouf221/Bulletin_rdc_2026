@@ -58,7 +58,7 @@ except ImportError:
 
 SCRIPT_DIR    = pathlib.Path(__file__).resolve().parent
 WORKSPACE_DIR = SCRIPT_DIR.parent
-ASSEMBLED     = WORKSPACE_DIR / "10_output" / "bulletin_complet_travail.md"
+ASSEMBLED     = WORKSPACE_DIR / "10_output" / "bulletin_complet_publication.md"
 CSS_FILE      = SCRIPT_DIR / "preview.css"
 ASSEMBLER     = SCRIPT_DIR / "assembler_markdown.py"
 REGIME_VISUALIZER = SCRIPT_DIR / "visualiser_regimes.py"
@@ -227,11 +227,30 @@ def preprocess_md(md_text: str) -> str:
     """Prépare le markdown pour la prévisualisation :
     - Supprime le H1 initial (titre du document) — déjà affiché dans la topbar
     - Supprime les titres '## Texte rédigé' (conserve le contenu dessous)
-    - Si le contenu est vide ou placeholder, affiche un bloc 'Texte à rédiger'
+    - Ne fabrique pas de marqueur pour les sections sans texte
     - Supprime les blocs NOTE_INTERNE (<!-- NOTE_INTERNE ... -->)
     """
     # 1. Supprimer les blocs NOTE_INTERNE
     md_text = re.sub(r'<!--\s*NOTE_INTERNE.*?-->', '', md_text, flags=re.DOTALL)
+    md_text = re.sub(
+        r'<span\b[^>]*class="[^"]*\bvalid-badge\b[^"]*"[^>]*>.*?</span>',
+        '',
+        md_text,
+        flags=re.DOTALL | re.IGNORECASE,
+    )
+    md_text = re.sub(
+        r'<a\b[^>]*>\s*\[src\]\s*</a>',
+        '',
+        md_text,
+        flags=re.DOTALL | re.IGNORECASE,
+    )
+    md_text = re.sub(r'(?im)(?<!\w)\[src\](?!\w)', '', md_text)
+    md_text = re.sub(
+        r'(?im)^\s*(?:[*_]\s*)?\[(?:à rédiger|à définir|à compléter)(?:[^\]]*)\]'
+        r'(?:\s*[*_])?\s*$',
+        '',
+        md_text,
+    )
 
     # 2. Supprimer les commentaires de version (<!-- VERSION ... --> et <!-- Généré ... -->)
     md_text = re.sub(r'<!--[^>]*-->', '', md_text)
@@ -264,7 +283,7 @@ def preprocess_md(md_text: str) -> str:
                             content_no_comments, re.IGNORECASE)
             )
             if is_empty:
-                result.append('\n<p class="a-rediger">&#9998; Texte à rédiger</p>\n')
+                pass
             else:
                 result.extend(content_lines)
             continue
@@ -358,13 +377,13 @@ def build_html() -> str:
     if not ASSEMBLED.exists():
         md_text = (
             "# Fichier introuvable\n\n"
-            "_Le fichier `10_output/bulletin_complet_travail.md` n'existe pas encore._\n\n"
+            "_Le fichier `10_output/bulletin_complet_publication.md` n'existe pas encore._\n\n"
             "Vérifiez que `build_config.yml` est correct et relancez l'assembleur."
         )
     else:
         md_text = ASSEMBLED.read_text(encoding="utf-8")
 
-    status_map = build_status_map(md_text)
+    status_map = {}
     md_preview = preprocess_md(md_text)
     md = markdown.Markdown(
         extensions=[

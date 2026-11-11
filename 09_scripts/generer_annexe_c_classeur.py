@@ -88,7 +88,7 @@ ODD_METHODOLOGY_SPECS = {
     },
     "ind_23_maternite": {
         "definition": "Proportion de femmes ayant accouché qui reçoivent une prestation en espèces de maternité.",
-        "numerator": "Nombre de femmes ayant accouché et percevant une prestation de maternité en espèces, hors indemnité journalière de maternité.",
+        "numerator": "Nombre de bénéficiaires de l'allocation de maternité de la CNSS. Les indemnités journalières de maternité sont exclues.",
         "denominator": "Nombre total de femmes ayant accouché au cours de la même année, estimé directement ou à partir des naissances vivantes corrigées des naissances multiples.",
         "formula": "Femmes bénéficiaires d'une prestation de maternité ÷ femmes ayant accouché × 100.",
     },
@@ -112,27 +112,26 @@ ODD_METHODOLOGY_SPECS = {
     },
     "ind_27_vieillesse": {
         "definition": "Proportion de personnes ayant atteint l'âge légal de la retraite qui reçoivent une prestation de vieillesse contributive ou non contributive.",
-        "numerator": "Nombre de personnes ayant atteint l'âge légal de la retraite et percevant effectivement une pension ou une prestation de vieillesse.",
-        "denominator": "Population totale ayant atteint l'âge légal de la retraite, lequel peut différer selon le sexe ou le régime.",
+        "numerator": "Nombre de bénéficiaires d'une pension de vieillesse, y compris les pensions de retraite anticipée. Ces dernières peuvent concerner des personnes âgées de moins de 60 ans.",
+        "denominator": "Population totale âgée de 60 ans et plus. Ce seuil unique correspond à l'âge d'ouverture du droit à pension CNSS ; la mise à la retraite d'office intervient à 65 ans.",
         "formula": "Bénéficiaires de prestations de vieillesse ÷ population ayant atteint l'âge légal de la retraite × 100.",
     },
     "ind_28_vulnerables": {
         "definition": "Proportion de personnes vulnérables qui reçoivent une prestation d'assistance sociale en espèces.",
-        "numerator": "Nombre de personnes vulnérables percevant une prestation d'assistance sociale en espèces.",
+        "numerator": "Nombre d'enfants bénéficiaires de prestations familiales, dont les allocations familiales CNSS.",
         "denominator": "Population vulnérable, obtenue en retranchant de la population totale les personnes en âge de travailler cotisant à une assurance sociale ou percevant une prestation contributive, ainsi que les personnes d'âge légal de la retraite percevant une prestation contributive.",
-        "formula": "Personnes vulnérables bénéficiaires d'une prestation d'assistance sociale ÷ population vulnérable × 100.",
+        "formula": "Enfants bénéficiaires de prestations familiales ÷ population vulnérable × 100.",
     },
     "ind_29_cotisants": {
         "definition": "Proportion de la population en âge de travailler qui cotise activement à un régime de retraite contributif.",
         "numerator": "Nombre de personnes cotisant activement à un régime de retraite contributif.",
-        "denominator": "Population en âge de travailler (15-64 ans, Banque mondiale SP.POP.1564.TO) — voir DM-016.",
+        "denominator": "Population en âge de travailler (15-64 ans, Banque mondiale SP.POP.1564.TO).",
         "formula": "Cotisants actifs à un régime de retraite ÷ population en âge de travailler (15-64 ans) × 100.",
     },
 }
 
 NON_CALCULABLE_NOTE = {
-    "ind_26_chomage": "Aucun régime d'assurance chômage opérationnel n'est identifié dans les ESS disponibles : ni numérateur ni dénominateur ne peuvent être calculés à ce stade.",
-    "ind_28_vulnerables": "La population vulnérable et ses bénéficiaires d'assistance sociale ne font l'objet d'aucune mesure individualisable dans les sources actuellement disponibles : cet indicateur n'est pas calculé dans la présente édition.",
+    "ind_26_chomage": "N/A — aucun régime d'assurance chômage n'existe dans le périmètre du bulletin. Aucune allocation de chômage ne peut donc être mesurée.",
 }
 
 
@@ -179,6 +178,11 @@ def _strip_trailing_year(meta: str, year: int) -> str:
 
 
 def _build_denominator_note(indicator_key: str, years: list[int], constructions: dict) -> str:
+    if indicator_key == "ind_28_vulnerables":
+        return (
+            "Dénominateur : population totale moins les cotisants actifs dédupliqués, "
+            "TRESOR inclus, et les bénéficiaires de pensions de vieillesse."
+        )
     meta_by_year: dict[int, str] = {}
     for year in years:
         construction = constructions.get(f"{indicator_key}::{year}") or {}
@@ -268,7 +272,17 @@ def _build_indicator_payload(
                 compute_numerator(indicator_key, year, regime_rows, prestation_rows, odd_nodes, decisions)
             )
             denominator_value = _safe_float(
-                get_denominator_value(indicator_key, year, denom_constructions, denom_settings, denom_cursor)
+                get_denominator_value(
+                    indicator_key,
+                    year,
+                    denom_constructions,
+                    denom_settings,
+                    denom_cursor,
+                    regime_rows,
+                    prestation_rows,
+                    odd_nodes,
+                    decisions,
+                )
             )
             if (
                 numerator_value is not None
@@ -315,6 +329,13 @@ def _build_indicator_payload(
         notes += (
             " Estimation CNSS enfants : titulaires d'allocations familiales × 3,17 "
             "(UN HH Size and Composition 2019)."
+        )
+    if indicator_key == "ind_28_vulnerables":
+        notes += (
+            " Numérateur : enfants bénéficiaires de prestations familiales, dont les "
+            "allocations familiales CNSS déjà estimées à 3,17 enfants par titulaire. "
+            "Dénominateur : population totale moins cotisants actifs dédupliqués, "
+            "TRESOR inclus, et pensionnés de vieillesse."
         )
     if not calculable:
         notes = NON_CALCULABLE_NOTE.get(indicator_key, "Indicateur non calculable avec les données actuelles.")

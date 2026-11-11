@@ -655,7 +655,7 @@ def generate_charts(
             continue
 
         if institution == "TRESOR" and key == "cotisants":
-            fig.update_layout(title_text="Personnes potentiellement couvertes (estimation)")
+            fig.update_layout(title_text="Cotisants actifs estimés hors CNSSAP (hypothèse)")
 
         # Fixe la plage de l'axe des années sur toute la période du bulletin (2019-2025,
         # étendue si des données réelles existent au-delà) : les années sans donnée ESS
@@ -1025,7 +1025,7 @@ def _build_sex_payload(
 
     default_title = (
         f"{NOM_INSTITUTION.get(institution, institution)} — Répartition par sexe"
-        f" ({'personnes potentiellement couvertes estimées' if institution == 'TRESOR' else 'cotisants'} et bénéficiaires)"
+        f" ({'cotisants actifs estimés' if institution == 'TRESOR' else 'cotisants'} et bénéficiaires)"
     )
     metadata = _resolve_chart_metadata(
         institution=institution,
@@ -1096,7 +1096,7 @@ def generate_sex_pie_charts(
             by_year,
             large_format=False,
             contributors_label=(
-                "Personnes couvertes estimées" if institution == "TRESOR" else "Cotisants"
+                "Cotisants actifs estimés" if institution == "TRESOR" else "Cotisants"
             ),
         )
     except Exception as exc:
@@ -1442,9 +1442,9 @@ def build_detailed_data_markdown(regimes: list[dict], regime_meta: dict, institu
     ]
     if institution == "TRESOR":
         headers = [
-            "Personnes potentiellement couvertes (estimation)"
+            "Cotisants actifs estimés (hypothèse)"
             if header == "Cotisants totaux"
-            else header.replace("cotisant", "personne couverte estimée")
+            else header.replace("cotisant", "cotisant actif estimé")
             for header in headers
         ]
     n_value_cols = len(headers) - 2  # hors « Régime » et « Année »
@@ -1515,7 +1515,7 @@ def _institution_caption_label(institution: str) -> str:
     """Sigle court utilisé dans les légendes (ex. « CNSS », « CNSSAP »), distinct du
     libellé long NOM_INSTITUTION utilisé dans les titres des graphiques Plotly."""
     if institution == "TRESOR":
-        return 'dispositif budgétaire hors CNSSAP (proxy technique « TRESOR »)'
+        return 'cotisants actifs estimés hors CNSSAP (hypothèse « TRESOR »)'
     return institution
 
 
@@ -1572,33 +1572,36 @@ def build_section_content(
     sex_md = build_sex_charts_markdown(sex_chart_files, institution)
     detail_md = build_detailed_data_markdown(regimes, regime_meta, institution)
     tresor_detail_footnote = (
-        '\n<span class="footnote">Les valeurs de la colonne « Personnes potentiellement '
-        'couvertes (estimation) » ne sont pas des cotisants. Elles correspondent à la part '
-        'estimée du secteur public hors CNSSAP, calculée par différence à partir des estimations '
-        'globales de la Fonction publique : aucune population de référence '
-        'vérifiable n’est disponible pour 2019 ; '
-        '<span class="val" data-val-id="sB7-p1-d1" data-val-status="à valider" '
-        'data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 622 972</span> '
-        'pour 2020 à 2022, '
-        '<span class="val" data-val-id="sB7-p1-d2" data-val-status="à valider" '
-        'data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 425 000</span> '
-        'en 2023 et '
-        '<span class="val" data-val-id="sB7-p1-d3" data-val-status="à valider" '
-        'data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 727 000</span> '
-        'en 2024. Source : estimations de la Fonction publique ; niveau de fiabilité : '
-        'estimation provisoire, à confirmer par des données administratives détaillées. '
-        'La rupture entre 2022, 2023 et 2024 n’est pas interprétable comme une évolution '
-        'de la couverture : les classeurs 2023 et 2024 contiennent en outre des références '
-        'internes à des années différentes de leur nom de fichier.</span>\n'
+        '\n<span class="footnote">Les valeurs de la colonne « Cotisants actifs estimés '
+        '(hypothèse) » représentent, par hypothèse, la part des agents publics rémunérés '
+        'hors CNSSAP. Elles sont calculées par différence entre le total public de référence '
+        'et les cotisants CNSSAP, afin d’éviter leur double compte : '
+        '<a href="/files/06_sources/officielles_web/_texte/OIT_ILOSTAT_RDC_salaries_secteur_public_2020_metadata.txt" '
+        'title="Source : OIT, ILOSTAT — salariés du secteur public en RDC, observation 2020" '
+        'class="source-ref" data-val-id="sB7-p1-d1" data-val-status="à valider" '
+        'data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 622 972</a> '
+        'pour 2019 à 2023 (observation ILOSTAT 2020 reprise faute de série annuelle homogène), '
+        '<a href="/files/06_sources/ESS/ESS_TRESOR/_texte/EST_TRESOR_2023_metadata.txt" '
+        'title="Source : ESS TRESOR 2023 — hypothèse de calcul documentée" '
+        'class="source-ref" data-val-id="sB7-p1-d2" data-val-status="à valider" '
+        'data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">618 866</a> '
+        'pour le résiduel 2023, et '
+        '<a href="/files/06_sources/sources_incertaines/Radio_Okapi_fonction_publique_chiffres_2026.txt" '
+        'title="Source : Radio Okapi (2026), citant « La Fonction publique en chiffres » — à confirmer par le rapport primaire" '
+        'class="source-ref" data-val-id="sB7-p1-d3" data-val-status="à valider" '
+        'data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">1 727 000</a> '
+        'pour le total 2024 des agents rémunérés, d’après Radio Okapi citant « La Fonction '
+        'publique en chiffres ». Cette série n’est pas un décompte administratif direct ; '
+        'les périmètres ILOSTAT et administratifs ne sont pas encore démontrés comparables.</span>\n'
         if institution == "TRESOR" else ""
     )
     contributors_term = (
-        "personnes potentiellement couvertes estimées"
+        "cotisants actifs estimés"
         if institution == "TRESOR" else "cotisants"
     )
     regimes_heading = "Dispositif représenté" if institution == "TRESOR" else "Régimes gérés"
     sex_heading = (
-        "Répartition par sexe (personnes potentiellement couvertes estimées et bénéficiaires cumulés)"
+        "Répartition par sexe (cotisants actifs estimés et bénéficiaires cumulés)"
         if institution == "TRESOR"
         else "Répartition par sexe (cotisants et bénéficiaires cumulés)"
     )

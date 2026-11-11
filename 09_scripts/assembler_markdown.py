@@ -64,12 +64,28 @@ INTERNAL_PARAGRAPH_RE = re.compile(
     r'<p\b[^>]*class="[^"]*\b(?:dev-note|a-rediger)\b[^"]*"[^>]*>.*?</p>',
     re.DOTALL | re.IGNORECASE,
 )
+VALIDATION_BADGE_RE = re.compile(
+    r'<span\b[^>]*class="[^"]*\bvalid-badge\b[^"]*"[^>]*>.*?</span>',
+    re.DOTALL | re.IGNORECASE,
+)
+SOURCE_MARKER_LINK_RE = re.compile(
+    r'<a\b[^>]*>\s*\[src\]\s*</a>',
+    re.DOTALL | re.IGNORECASE,
+)
+EDITORIAL_PLACEHOLDER_LINE_RE = re.compile(
+    r'(?im)^\s*(?:[*_]\s*)?\[(?:à rédiger|à définir|à compléter)(?:[^\]]*)\]'
+    r'(?:\s*[*_])?\s*$'
+)
 
 
 def remove_notes_internes(text: str) -> str:
     """Supprime les commentaires et paragraphes réservés au travail interne."""
     cleaned = HTML_COMMENT_RE.sub("", text)
     cleaned = INTERNAL_PARAGRAPH_RE.sub("", cleaned)
+    cleaned = VALIDATION_BADGE_RE.sub("", cleaned)
+    cleaned = SOURCE_MARKER_LINK_RE.sub("", cleaned)
+    cleaned = re.sub(r'(?im)(?<!\w)\[src\](?!\w)', "", cleaned)
+    cleaned = EDITORIAL_PLACEHOLDER_LINE_RE.sub("", cleaned)
     # Nettoyer les lignes vides consécutives laissées par la suppression
     cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
     return cleaned.strip()
@@ -125,6 +141,7 @@ header_publication = (
     f"# {config['project']['title']}\n\n"
 )
 pub_text = remove_notes_internes(full_text)
+pub_text = "\n".join(line.rstrip() for line in pub_text.splitlines())
 path_publication.write_text(header_publication + pub_text, encoding="utf-8")
 print(f"[OK] Version publication écrite : {path_publication.relative_to(WORKSPACE_DIR)}")
 

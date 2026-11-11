@@ -84,7 +84,7 @@ Exemple : programme STEP (Banque mondiale / IDA), cantines scolaires MEPST co-fi
 → Appliquer C3 avec nuance : si l'État a signé un accord de co-responsabilité et que le programme figure dans les rapports institutionnels nationaux, C3 peut être considéré comme « Partiel » et non « Non ». La décision reste du profil C (jugement requis).
 
 ### Programmes clôturés mais dont les données restent dans la série historique
-Exemple : STEP clôturé en février 2024.
+Exemple : STEP clôturé en juin 2025.
 → Appliquer la décision d'inclusion/exclusion de manière rétroactive et cohérente sur toute la série. Un programme exclu pour 2024 doit être exclu pour toutes les années antérieures également, sauf décision motivée contraire.
 
 ### Changement de nature d'un programme dans le temps

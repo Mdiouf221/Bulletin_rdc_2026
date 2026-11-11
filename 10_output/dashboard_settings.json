@@ -295,42 +295,6 @@
     "regime::SESOPA::SESOPA_R1::ind_24_handicap::2022": "entierement_exclus",
     "prestation::SESOPA::SESOPA_R4::num_3::ind_24_handicap::2022": "inclus",
     "prestation::SESOPA::SESOPA_R4::num_2::ind_24_handicap::2022": "inclus",
-    "regime::CNSS::CNSS_R4::ind_28_vulnerables::2019": "entierement_exclus",
-    "regime::CNSS::CNSS_R3::ind_28_vulnerables::2019": "entierement_exclus",
-    "prestation::CNSS::CNSS_R1::num_3::ind_28_vulnerables::2019": "inclus",
-    "regime::CNSS::CNSS_R2::ind_28_vulnerables::2019": "entierement_exclus",
-    "institution::CNSSAP::ind_28_vulnerables::2019": "entierement_exclus",
-    "institution::FSS::ind_28_vulnerables::2019": "entierement_exclus",
-    "institution::MEPST::ind_28_vulnerables::2019": "entierement_exclus",
-    "institution::MESP::ind_28_vulnerables::2019": "entierement_exclus",
-    "institution::SESOPA::ind_28_vulnerables::2019": "entierement_exclus",
-    "regime::CNSS::CNSS_R4::ind_28_vulnerables::2020": "entierement_exclus",
-    "regime::CNSS::CNSS_R3::ind_28_vulnerables::2020": "entierement_exclus",
-    "prestation::CNSS::CNSS_R1::num_3::ind_28_vulnerables::2020": "inclus",
-    "regime::CNSS::CNSS_R2::ind_28_vulnerables::2020": "entierement_exclus",
-    "institution::CNSSAP::ind_28_vulnerables::2020": "entierement_exclus",
-    "institution::FSS::ind_28_vulnerables::2020": "entierement_exclus",
-    "institution::MEPST::ind_28_vulnerables::2020": "entierement_exclus",
-    "institution::MESP::ind_28_vulnerables::2020": "entierement_exclus",
-    "institution::SESOPA::ind_28_vulnerables::2020": "entierement_exclus",
-    "regime::CNSS::CNSS_R4::ind_28_vulnerables::2021": "entierement_exclus",
-    "regime::CNSS::CNSS_R3::ind_28_vulnerables::2021": "entierement_exclus",
-    "prestation::CNSS::CNSS_R1::num_3::ind_28_vulnerables::2021": "inclus",
-    "regime::CNSS::CNSS_R2::ind_28_vulnerables::2021": "entierement_exclus",
-    "institution::CNSSAP::ind_28_vulnerables::2021": "entierement_exclus",
-    "institution::FSS::ind_28_vulnerables::2021": "entierement_exclus",
-    "institution::MEPST::ind_28_vulnerables::2021": "entierement_exclus",
-    "institution::MESP::ind_28_vulnerables::2021": "entierement_exclus",
-    "institution::SESOPA::ind_28_vulnerables::2021": "entierement_exclus",
-    "regime::CNSS::CNSS_R4::ind_28_vulnerables::2022": "entierement_exclus",
-    "regime::CNSS::CNSS_R3::ind_28_vulnerables::2022": "entierement_exclus",
-    "prestation::CNSS::CNSS_R1::num_3::ind_28_vulnerables::2022": "inclus",
-    "regime::CNSS::CNSS_R2::ind_28_vulnerables::2022": "entierement_exclus",
-    "institution::CNSSAP::ind_28_vulnerables::2022": "entierement_exclus",
-    "institution::FSS::ind_28_vulnerables::2022": "entierement_exclus",
-    "institution::MEPST::ind_28_vulnerables::2022": "entierement_exclus",
-    "institution::MESP::ind_28_vulnerables::2022": "entierement_exclus",
-    "institution::SESOPA::ind_28_vulnerables::2022": "entierement_exclus",
     "institution::CNSSAP::global_131::2019": "entierement_inclus",
     "prestation::TRESOR::TRESOR_R1::num_1::ind_27_vieillesse::2019": "inclus",
     "prestation::TRESOR::TRESOR_R1::num_1::ind_27_vieillesse::2020": "inclus",
@@ -988,33 +952,6 @@
     "prestation::SESOPA::SESOPA_R4::num_3::ind_25_atmp::2025": "inclus",
     "prestation::SESOPA::SESOPA_R4::num_2::ind_25_atmp::2025": "inclus",
     "prestation::SESOPA::SESOPA_R4::num_8::ind_25_atmp::2025": "exclus",
-    "regime::CNSS::CNSS_R4::ind_28_vulnerables::2023": "entierement_exclus",
-    "regime::CNSS::CNSS_R3::ind_28_vulnerables::2023": "entierement_exclus",
-    "prestation::CNSS::CNSS_R1::num_3::ind_28_vulnerables::2023": "inclus",
-    "regime::CNSS::CNSS_R2::ind_28_vulnerables::2023": "entierement_exclus",
-    "institution::CNSSAP::ind_28_vulnerables::2023": "entierement_exclus",
-    "institution::FSS::ind_28_vulnerables::2023": "entierement_exclus",
-    "institution::MEPST::ind_28_vulnerables::2023": "entierement_exclus",
-    "institution::MESP::ind_28_vulnerables::2023": "entierement_exclus",
-    "institution::SESOPA::ind_28_vulnerables::2023": "entierement_exclus",
-    "regime::CNSS::CNSS_R4::ind_28_vulnerables::2024": "entierement_exclus",
-    "regime::CNSS::CNSS_R3::ind_28_vulnerables::2024": "entierement_exclus",
-    "prestation::CNSS::CNSS_R1::num_3::ind_28_vulnerables::2024": "inclus",
-    "regime::CNSS::CNSS_R2::ind_28_vulnerables::2024": "entierement_exclus",
-    "institution::CNSSAP::ind_28_vulnerables::2024": "entierement_exclus",
-    "institution::FSS::ind_28_vulnerables::2024": "entierement_exclus",
-    "institution::MEPST::ind_28_vulnerables::2024": "entierement_exclus",
-    "institution::MESP::ind_28_vulnerables::2024": "entierement_exclus",
-    "institution::SESOPA::ind_28_vulnerables::2024": "entierement_exclus",
-    "regime::CNSS::CNSS_R4::ind_28_vulnerables::2025": "entierement_exclus",
-    "regime::CNSS::CNSS_R3::ind_28_vulnerables::2025": "entierement_exclus",
-    "prestation::CNSS::CNSS_R1::num_3::ind_28_vulnerables::2025": "inclus",
-    "regime::CNSS::CNSS_R2::ind_28_vulnerables::2025": "entierement_exclus",
-    "institution::CNSSAP::ind_28_vulnerables::2025": "entierement_exclus",
-    "institution::FSS::ind_28_vulnerables::2025": "entierement_exclus",
-    "institution::MEPST::ind_28_vulnerables::2025": "entierement_exclus",
-    "institution::MESP::ind_28_vulnerables::2025": "entierement_exclus",
-    "institution::SESOPA::ind_28_vulnerables::2025": "entierement_exclus",
     "prestation::CNSS::CNSS_R1::num_4::global_131::2019": "exclus",
     "prestation::CNSS::CNSS_R1::num_4::ind_22_enfants::2019": "exclus",
     "prestation::CNSS::CNSS_R2::num_3::global_131::2019": "exclus",
@@ -1040,7 +977,22 @@
     "prestation::CNSS::CNSS_R1::num_4::ind_22_enfants::2026": "exclus",
     "prestation::CNSS::CNSS_R1::num_4::ind_23_maternite::2026": "exclus",
     "prestation::CNSS::CNSS_R2::num_3::global_131::2026": "exclus",
-    "prestation::CNSS::CNSS_R2::num_3::ind_25_atmp::2026": "exclus"
+    "prestation::CNSS::CNSS_R2::num_3::ind_25_atmp::2026": "exclus",
+    "prestation::PAM::PAM_R1::num_1::global_131::2021": "inclus",
+    "prestation::PAM::PAM_R1::num_1::global_131::2022": "inclus",
+    "prestation::PAM::PAM_R1::num_1::global_131::2023": "inclus",
+    "prestation::PAM::PAM_R1::num_1::global_131::2024": "inclus",
+    "prestation::PAM::PAM_R1::num_1::global_131::2025": "inclus",
+    "prestation::PAM::PAM_R1::num_1::ind_28_vulnerables::2021": "inclus",
+    "prestation::PAM::PAM_R1::num_1::ind_28_vulnerables::2022": "inclus",
+    "prestation::PAM::PAM_R1::num_1::ind_28_vulnerables::2023": "inclus",
+    "prestation::PAM::PAM_R1::num_1::ind_28_vulnerables::2024": "inclus",
+    "prestation::PAM::PAM_R1::num_1::ind_28_vulnerables::2025": "inclus"
+  },
+  "oddStructuralAvailability": {
+    "regime::CNSSAP::CNSSAP_R4": {
+      "implemented_from": 2022
+    }
   },
   "denomSettings": {
     "source_population_totale": "local_db",
@@ -1068,8 +1020,8 @@
     "year_start_maternite": null,
     "year_end_maternite": null,
     "child_age_min": 0,
-    "child_age_max": 15,
-    "prevalence_handicap_fallback": 15,
+    "child_age_max": 17,
+    "prevalence_handicap_fallback": 3,
     "strict_exact_year_default": true,
     "lfp_rate_atmp_pct": 63.44,
     "source_force_de_travail": "",
@@ -1223,7 +1175,7 @@
         }
       }
     },
-    "handicap_prevalence_percent": 15,
+    "handicap_prevalence_percent": 3,
     "activity_rate_percent": 63.44,
     "denominatorConstructions": {
       "global_131::2019": {
@@ -1479,7 +1431,7 @@
         "params": {},
         "value": 3996740,
         "status": "draft",
-        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus (age legal CNSSAP), calculee = % INS x population totale INS (2019)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus, seuil unique retenu (2019)",
         "sourceYears": [
           2019
         ],
@@ -1493,7 +1445,7 @@
         "params": {},
         "value": 4223560,
         "status": "draft",
-        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus (age legal CNSSAP), calculee = % INS x population totale INS (2020)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus, seuil unique retenu (2020)",
         "sourceYears": [
           2020
         ],
@@ -1507,7 +1459,7 @@
         "params": {},
         "value": 4461702,
         "status": "draft",
-        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus (age legal CNSSAP), calculee = % INS x population totale INS (2021)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus, seuil unique retenu (2021)",
         "sourceYears": [
           2021
         ],
@@ -1521,65 +1473,9 @@
         "params": {},
         "value": 4710261,
         "status": "draft",
-        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus (age legal CNSSAP), calculee = % INS x population totale INS (2022)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus, seuil unique retenu (2022)",
         "sourceYears": [
           2022
-        ],
-        "warnings": [],
-        "calculatedAt": "2026-09-02T01:30:34.000Z"
-      },
-      "ind_28_vulnerables::2022": {
-        "indicatorKey": "ind_28_vulnerables",
-        "year": 2022,
-        "sourceKey": "manual",
-        "params": {},
-        "value": 102396968,
-        "status": "draft",
-        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2022), proxy explicite",
-        "sourceYears": [
-          2022
-        ],
-        "warnings": [],
-        "calculatedAt": "2026-09-02T01:30:34.000Z"
-      },
-      "ind_28_vulnerables::2019": {
-        "indicatorKey": "ind_28_vulnerables",
-        "year": 2019,
-        "sourceKey": "manual",
-        "params": {},
-        "value": 92947442,
-        "status": "draft",
-        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2019), proxy explicite",
-        "sourceYears": [
-          2019
-        ],
-        "warnings": [],
-        "calculatedAt": "2026-09-02T01:30:34.000Z"
-      },
-      "ind_28_vulnerables::2020": {
-        "indicatorKey": "ind_28_vulnerables",
-        "year": 2020,
-        "sourceKey": "manual",
-        "params": {},
-        "value": 95989998,
-        "status": "draft",
-        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2020), proxy explicite",
-        "sourceYears": [
-          2020
-        ],
-        "warnings": [],
-        "calculatedAt": "2026-09-02T01:30:34.000Z"
-      },
-      "ind_28_vulnerables::2021": {
-        "indicatorKey": "ind_28_vulnerables",
-        "year": 2021,
-        "sourceKey": "manual",
-        "params": {},
-        "value": 99148932,
-        "status": "draft",
-        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2021), proxy explicite",
-        "sourceYears": [
-          2021
         ],
         "warnings": [],
         "calculatedAt": "2026-09-02T01:30:34.000Z"
@@ -1589,16 +1485,16 @@
         "year": 2019,
         "sourceKey": "local_db",
         "params": {
-          "prevalencePercent": 15
+          "prevalencePercent": 3
         },
-        "value": 13942116,
+        "value": 2788423,
         "status": "draft",
-        "meta": "Base locale — population × prévalence 15 % (proxy)",
+        "meta": "Estimation BIT/OMS : population totale INS/RDC × 3 % (handicap grave)",
         "sourceYears": [
           2019
         ],
         "warnings": [
-          "Taux d'invalidité non disponible en base pour 2019 ; prévalence paramétrée utilisée."
+          "Estimation internationale BIT/OMS : 3 % de la population totale pour le handicap grave ; ce taux ne constitue pas une observation nationale."
         ],
         "calculatedAt": "2026-07-21T00:36:47.405Z"
       },
@@ -1607,16 +1503,16 @@
         "year": 2020,
         "sourceKey": "local_db",
         "params": {
-          "prevalencePercent": 15
+          "prevalencePercent": 3
         },
-        "value": 14398500,
+        "value": 2879700,
         "status": "draft",
-        "meta": "Base locale — population × prévalence 15 % (proxy)",
+        "meta": "Estimation BIT/OMS : population totale INS/RDC × 3 % (handicap grave)",
         "sourceYears": [
           2020
         ],
         "warnings": [
-          "Taux d'invalidité non disponible en base pour 2020 ; prévalence paramétrée utilisée."
+          "Estimation internationale BIT/OMS : 3 % de la population totale pour le handicap grave ; ce taux ne constitue pas une observation nationale."
         ],
         "calculatedAt": "2026-07-21T00:36:57.546Z"
       },
@@ -1625,16 +1521,16 @@
         "year": 2021,
         "sourceKey": "local_db",
         "params": {
-          "prevalencePercent": 15
+          "prevalencePercent": 3
         },
-        "value": 14872340,
+        "value": 2974468,
         "status": "draft",
-        "meta": "Base locale — population × prévalence 15 % (proxy)",
+        "meta": "Estimation BIT/OMS : population totale INS/RDC × 3 % (handicap grave)",
         "sourceYears": [
           2021
         ],
         "warnings": [
-          "Taux d'invalidité non disponible en base pour 2021 ; prévalence paramétrée utilisée."
+          "Estimation internationale BIT/OMS : 3 % de la population totale pour le handicap grave ; ce taux ne constitue pas une observation nationale."
         ],
         "calculatedAt": "2026-07-21T00:37:17.036Z"
       },
@@ -1643,16 +1539,16 @@
         "year": 2022,
         "sourceKey": "local_db",
         "params": {
-          "prevalencePercent": 15
+          "prevalencePercent": 3
         },
-        "value": 15359545,
+        "value": 3071909,
         "status": "draft",
-        "meta": "Base locale — population × prévalence 15 % (proxy)",
+        "meta": "Estimation BIT/OMS : population totale INS/RDC × 3 % (handicap grave)",
         "sourceYears": [
           2022
         ],
         "warnings": [
-          "Taux d'invalidité non disponible en base pour 2022 ; prévalence paramétrée utilisée."
+          "Estimation internationale BIT/OMS : 3 % de la population totale pour le handicap grave ; ce taux ne constitue pas une observation nationale."
         ],
         "calculatedAt": "2026-07-21T00:37:23.949Z"
       },
@@ -1712,24 +1608,10 @@
         "warnings": [],
         "calculatedAt": "2026-09-02T01:30:34.000Z"
       },
-      "ind_23_maternite::2019": {
-        "indicatorKey": "ind_23_maternite",
-        "year": 2019,
-        "sourceKey": "local_db",
-        "params": {},
-        "value": 3926761,
-        "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — femmes 15–49 (B-MA) (2019)",
-        "sourceYears": [
-          2019
-        ],
-        "warnings": [],
-        "calculatedAt": "2026-07-21T00:35:51.591Z"
-      },
       "ind_23_maternite::2020": {
         "indicatorKey": "ind_23_maternite",
         "year": 2020,
-        "sourceKey": "manual",
+        "sourceKey": "ins_manual",
         "params": {},
         "value": 719335,
         "status": "draft",
@@ -1742,77 +1624,116 @@
         ],
         "calculatedAt": "2026-09-02T06:46:41.000Z"
       },
-      "ind_23_maternite::2022": {
+      "ind_23_maternite::2019": {
         "indicatorKey": "ind_23_maternite",
-        "year": 2022,
-        "sourceKey": "local_db",
-        "params": {},
-        "value": 4230812,
+        "year": 2019,
+        "sourceKey": "birth_rate_estimate",
+        "params": {
+          "birthRatePerThousand": 42.5,
+          "populationSource": "INS/RDC, canevas de collecte 2026"
+        },
+        "value": 3950266,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — femmes 15–49 (B-MA) (2022)",
+        "meta": "Estimation démographique : population totale INS/RDC (92 947 442) × taux brut de natalité DonnéesMondiales.com (42,5 pour 1 000)",
         "sourceYears": [
-          2022
+          2019
         ],
-        "warnings": [],
-        "calculatedAt": "2026-07-21T00:36:00.937Z"
+        "warnings": [
+          "Estimation démographique provenant d'une source secondaire non institutionnelle à confirmer ; elle ne constitue pas une observation administrative des naissances vivantes."
+        ],
+        "calculatedAt": "2026-11-11T03:36:30.000Z"
       },
       "ind_23_maternite::2021": {
         "indicatorKey": "ind_23_maternite",
         "year": 2021,
-        "sourceKey": "local_db",
-        "params": {},
-        "value": 4127847,
+        "sourceKey": "birth_rate_estimate",
+        "params": {
+          "birthRatePerThousand": 41.9,
+          "populationSource": "INS/RDC, canevas de collecte 2026"
+        },
+        "value": 4154340,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — femmes 15–49 (B-MA) (2021)",
+        "meta": "Estimation démographique : population totale INS/RDC (99 148 932) × taux brut de natalité DonnéesMondiales.com (41,9 pour 1 000)",
         "sourceYears": [
           2021
         ],
-        "warnings": [],
-        "calculatedAt": "2026-07-21T00:36:04.451Z"
+        "warnings": [
+          "Estimation démographique provenant d'une source secondaire non institutionnelle à confirmer ; elle ne constitue pas une observation administrative des naissances vivantes."
+        ],
+        "calculatedAt": "2026-11-11T03:36:30.000Z"
+      },
+      "ind_23_maternite::2022": {
+        "indicatorKey": "ind_23_maternite",
+        "year": 2022,
+        "sourceKey": "birth_rate_estimate",
+        "params": {
+          "birthRatePerThousand": 41.6,
+          "populationSource": "INS/RDC, canevas de collecte 2026"
+        },
+        "value": 4259714,
+        "status": "draft",
+        "meta": "Estimation démographique : population totale INS/RDC (102 396 968) × taux brut de natalité DonnéesMondiales.com (41,6 pour 1 000)",
+        "sourceYears": [
+          2022
+        ],
+        "warnings": [
+          "Estimation démographique provenant d'une source secondaire non institutionnelle à confirmer ; elle ne constitue pas une observation administrative des naissances vivantes."
+        ],
+        "calculatedAt": "2026-11-11T03:36:30.000Z"
       },
       "ind_23_maternite::2023": {
         "indicatorKey": "ind_23_maternite",
         "year": 2023,
-        "sourceKey": "local_db",
-        "params": {},
-        "value": 4337282.999999999,
+        "sourceKey": "birth_rate_estimate",
+        "params": {
+          "birthRatePerThousand": 41.3,
+          "populationSource": "INS/RDC, canevas de collecte 2026"
+        },
+        "value": 4369116,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — femmes 15–49 (B-MA) (2023)",
+        "meta": "Estimation démographique : population totale INS/RDC (105 789 731) × taux brut de natalité DonnéesMondiales.com (41,3 pour 1 000)",
         "sourceYears": [
           2023
         ],
-        "warnings": [],
-        "calculatedAt": "2026-07-21T00:36:09.981Z"
+        "warnings": [
+          "Estimation démographique provenant d'une source secondaire non institutionnelle à confirmer ; elle ne constitue pas une observation administrative des naissances vivantes."
+        ],
+        "calculatedAt": "2026-11-11T03:36:30.000Z"
       },
       "ind_23_maternite::2024": {
         "indicatorKey": "ind_23_maternite",
         "year": 2024,
-        "sourceKey": "local_db",
-        "params": {},
-        "value": 4435281.000000001,
+        "sourceKey": "birth_rate_estimate",
+        "params": {
+          "birthRatePerThousand": 40.9,
+          "populationSource": "INS/RDC, canevas de collecte 2026"
+        },
+        "value": 4469399,
         "status": "draft",
-        "meta": "Base locale ONU WPP 2024 — femmes 15–49 (B-MA) (2024)",
+        "meta": "Estimation démographique : population totale INS/RDC (109 276 265) × taux brut de natalité DonnéesMondiales.com (40,9 pour 1 000)",
         "sourceYears": [
           2024
         ],
-        "warnings": [],
-        "calculatedAt": "2026-07-21T00:36:14.989Z"
+        "warnings": [
+          "Estimation démographique provenant d'une source secondaire non institutionnelle à confirmer ; elle ne constitue pas une observation administrative des naissances vivantes."
+        ],
+        "calculatedAt": "2026-11-11T03:36:30.000Z"
       },
       "ind_24_handicap::2023": {
         "indicatorKey": "ind_24_handicap",
         "year": 2023,
         "sourceKey": "local_db",
         "params": {
-          "prevalencePercent": 15
+          "prevalencePercent": 3
         },
-        "value": 15868460,
+        "value": 3173692,
         "status": "draft",
-        "meta": "Base locale — population × prévalence 15 % (proxy)",
+        "meta": "Estimation BIT/OMS : population totale INS/RDC × 3 % (handicap grave)",
         "sourceYears": [
           2023
         ],
         "warnings": [
-          "Taux d'invalidité non disponible en base pour 2023 ; prévalence paramétrée utilisée."
+          "Estimation internationale BIT/OMS : 3 % de la population totale pour le handicap grave ; ce taux ne constitue pas une observation nationale."
         ],
         "calculatedAt": "2026-07-21T00:37:32.829Z"
       },
@@ -1821,18 +1742,36 @@
         "year": 2024,
         "sourceKey": "local_db",
         "params": {
-          "prevalencePercent": 15
+          "prevalencePercent": 3
         },
-        "value": 16391440,
+        "value": 3278288,
         "status": "draft",
-        "meta": "Base locale — population × prévalence 15 % (proxy)",
+        "meta": "Estimation BIT/OMS : population totale INS/RDC × 3 % (handicap grave)",
         "sourceYears": [
           2024
         ],
         "warnings": [
-          "Taux d'invalidité non disponible en base pour 2024 ; prévalence paramétrée utilisée."
+          "Estimation internationale BIT/OMS : 3 % de la population totale pour le handicap grave ; ce taux ne constitue pas une observation nationale."
         ],
         "calculatedAt": "2026-07-21T00:37:40.703Z"
+      },
+      "ind_24_handicap::2025": {
+        "indicatorKey": "ind_24_handicap",
+        "year": 2025,
+        "sourceKey": "documented_proxy",
+        "params": {
+          "prevalencePercent": 3
+        },
+        "value": 3384974,
+        "status": "draft",
+        "meta": "Estimation BIT/OMS : population totale ONU WPP 2024 (112 832 473) × 3 % (handicap grave)",
+        "sourceYears": [
+          2025
+        ],
+        "warnings": [
+          "Estimation internationale BIT/OMS : 3 % de la population totale pour le handicap grave ; ce taux ne constitue pas une observation nationale."
+        ],
+        "calculatedAt": "2026-11-11T03:55:00.000Z"
       },
       "ind_25_atmp::2024": {
         "indicatorKey": "ind_25_atmp",
@@ -1856,34 +1795,6 @@
         "value": 56280137,
         "status": "draft",
         "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population active 15 ans et plus, calculee = % INS x population totale INS (2023)",
-        "sourceYears": [
-          2023
-        ],
-        "warnings": [],
-        "calculatedAt": "2026-09-02T01:30:34.000Z"
-      },
-      "ind_28_vulnerables::2024": {
-        "indicatorKey": "ind_28_vulnerables",
-        "year": 2024,
-        "sourceKey": "manual",
-        "params": {},
-        "value": 109276265,
-        "status": "draft",
-        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2024), proxy explicite",
-        "sourceYears": [
-          2024
-        ],
-        "warnings": [],
-        "calculatedAt": "2026-09-02T01:30:34.000Z"
-      },
-      "ind_28_vulnerables::2023": {
-        "indicatorKey": "ind_28_vulnerables",
-        "year": 2023,
-        "sourceKey": "manual",
-        "params": {},
-        "value": 105789731,
-        "status": "draft",
-        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population totale (2023), proxy explicite",
         "sourceYears": [
           2023
         ],
@@ -1929,7 +1840,7 @@
         "params": {},
         "value": 4972117,
         "status": "draft",
-        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus (age legal CNSSAP), calculee = % INS x population totale INS (2023)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus, seuil unique retenu (2023)",
         "sourceYears": [
           2023
         ],
@@ -1943,7 +1854,7 @@
         "params": {},
         "value": 5245261,
         "status": "draft",
-        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus (age legal CNSSAP), calculee = % INS x population totale INS (2024)",
+        "meta": "Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus, seuil unique retenu (2024)",
         "sourceYears": [
           2024
         ],

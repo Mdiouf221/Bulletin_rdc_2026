@@ -448,6 +448,7 @@ class ExporterRunAssemblerTests(unittest.TestCase):
                         include_notes=False,
                         excel_chart_mode="png",
                         annexe_b_chart_mode="linked",
+                        reuse_html=True,
                     )
 
         self.assertIsNotNone(result)
@@ -455,6 +456,48 @@ class ExporterRunAssemblerTests(unittest.TestCase):
         self.assertIn("--excel-charts", commands[0])
         mode_index = commands[0].index("--excel-charts") + 1
         self.assertEqual(commands[0][mode_index], "linked")
+
+    def test_export_word_regenerates_html_by_default(self):
+        stamp = "2099-01-01"
+        html_source = self.tmp_dir / f"bulletin_relecture_{stamp}.html"
+        output_docx = self.tmp_dir / f"bulletin_relecture_{stamp}.docx"
+        commands: list[list[str]] = []
+
+        def fake_run(cmd, capture_output=True, cwd=None, encoding=None, errors=None):  # noqa: ANN001
+            commands.append(cmd)
+            output_docx.write_bytes(b"DOCX")
+            return SimpleNamespace(returncode=0, stderr="", stdout="")
+
+        with patch.object(exporter, "OUTPUT_DIR", self.tmp_dir):
+            with patch.object(exporter, "STAMP", stamp):
+                with patch.object(
+                    exporter,
+                    "export_html",
+                    return_value=html_source,
+                ) as export_html:
+                    with patch.object(exporter.subprocess, "run", side_effect=fake_run):
+                        result = exporter.export_word(
+                            include_notes=False,
+                            excel_chart_mode="png",
+                        )
+
+        self.assertEqual(result, output_docx)
+        export_html.assert_called_once_with(
+            include_notes=False,
+            open_after=False,
+            refresh_visuals=False,
+        )
+        self.assertEqual(len(commands), 1)
+
+    def test_export_word_reuse_html_requires_existing_file(self):
+        stamp = "2099-01-01"
+        with patch.object(exporter, "OUTPUT_DIR", self.tmp_dir):
+            with patch.object(exporter, "STAMP", stamp):
+                with patch.object(exporter, "export_html") as export_html:
+                    result = exporter.export_word(reuse_html=True)
+
+        self.assertIsNone(result)
+        export_html.assert_not_called()
 
 
 

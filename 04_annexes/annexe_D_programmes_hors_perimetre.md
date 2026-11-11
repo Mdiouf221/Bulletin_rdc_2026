@@ -76,6 +76,11 @@ Sud-Kivu, Tanganyika, Kasaï-Oriental, Kasaï-Central et Lomami. Ce résultat es
 comme un nombre d'enfants servis dans les opérations du PAM, et non comme un nombre
 de ménages ou comme une couverture permanente.
 
+Les repas scolaires PAM/MEPST sont inclus avec réserve dans le calcul national de
+l'ODD 1.3.1 et dans le sous-indicateur relatif aux personnes vulnérables. Cette décision
+est distincte de celle applicable aux transferts monétaires du PAM, qui restent exclus
+de l'ODD 1.3.1 et sont présentés dans cette annexe comme informations de programme.
+
 <a href="/files/06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf" title="PAM (2025) — Democratic Republic of the Congo Annual Country Report 2025" class="source-ref source-ref-text nv" data-val-id="sD-p3-c1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">Rapport annuel pays du PAM 2025</a>
 
 #### Série documentaire des bénéficiaires du PAM <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>

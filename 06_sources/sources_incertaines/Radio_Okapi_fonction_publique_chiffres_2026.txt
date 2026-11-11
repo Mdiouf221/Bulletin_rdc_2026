@@ -1,0 +1,26 @@
+TITRE : Plus d'un million d'agents de l'État rémunérés sur plus de deux millions
+SOURCE : Radio Okapi, citant le rapport gouvernemental « La Fonction publique en chiffres »
+DATE DE PUBLICATION : 15 mai 2026
+URL : https://www.radiookapi.net/2026/05/15/actualite/politique/plus-dun-million-dagents-de-letat-remuneres-sur-plus-de-deux-millions
+NIVEAU : Source de presse relayant un rapport gouvernemental — à confirmer par le document primaire
+
+DONNÉES RAPPORTÉES
+
+- 1 805 000 agents de l'État rémunérés en 2020.
+- 1 727 000 agents de l'État rémunérés en 2024.
+- 1 867 000 agents de l'État rémunérés en 2025, sur 2 501 000 recensés.
+- 634 000 agents recensés ne sont pas encore pris en charge dans la rémunération en 2025.
+- 181 000 mécanisations aux traitements de base entre 2021 et 2025 dans le régime général.
+
+USAGE DANS LE BULLETIN
+
+La valeur de 1 727 000 est utilisée uniquement comme total de référence 2024 pour
+l'hypothèse TRESOR : 1 727 000 agents rémunérés moins 1 013 104 cotisants CNSSAP
+égale 713 896 cotisants actifs estimés hors CNSSAP.
+
+RÉSERVE
+
+L'article ne fournit pas la composition institutionnelle de l'effectif et ne démontre
+pas l'équivalence de son périmètre avec la définition ILOSTAT des salariés du secteur
+public. Il ne prouve pas non plus que chaque agent rémunéré cotise à un régime de retraite.
+Le rapport gouvernemental primaire reste à obtenir avant validation définitive.

@@ -1,0 +1,7 @@
+Source : Programme alimentaire mondial (PAM), Annual Country Report 2025 — Democratic Republic of the Congo.
+Identifiant WFP : WFP-0000172856.
+Nature : rapport annuel institutionnel ; source primaire.
+Indicateur retenu : 145 030 élèves du primaire ont reçu des repas chauds sur site.
+Usage : ESS PAM 2025 et indicateur d'assistance sociale des personnes vulnérables.
+Réserve : la valeur exclut le personnel d'appui et les bénéficiaires de rations à emporter ; l'activité couvrait cinq provinces. Le dénominateur de l'indicateur vulnérables étant indisponible en 2025, aucun taux n'est produit.
+Citation recommandée : PAM (2026), Annual Country Report 2025 — Democratic Republic of the Congo, WFP-0000172856.
