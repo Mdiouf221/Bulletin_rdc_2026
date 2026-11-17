@@ -17,16 +17,21 @@ Structure retenue :
     — Tableau 2 : Régimes spéciaux (financement par allocation budgétaire)
     — Tableau 3 : Protection de la santé (par segment de population)
     — Tableau 4 : Programmes d'assistance sociale et initiatives non contributives
-3.2 Synthèse : lacunes de couverture et enjeux d'extension (à rédiger)
+3.2 Programmes d'assistance sociale et initiatives non contributives
+    — Tableau 3.6 : Estimation des bénéficiaires de la gratuité de l'enseignement primaire public
+    — Tableau 3.7 : Bénéficiaires documentés des interventions du PAM en RDC
 
 Fichiers du chapitre (ordre d'assemblage) :
 1. 00_intro_chapitre_2.md
 2. 2_1_cartographie_tableaux.md
+3. 2_2_programmes_hors_perimetre.md
 
 Logique rédactionnelle :
 Le chapitre 2 définit les outils conceptuels. Ce chapitre les applique.
 Présentation factuelle et institutionnelle. Les données chiffrées détaillées
-par institution figurent en Annexe B.
+par institution figurent en Annexe B. La section 3.2 documente séparément les
+programmes d'assistance sociale, les initiatives non contributives et les politiques
+sectorielles à dimension protectrice, en précisant leur traitement statistique.
 
 Statut global : en cours de rédaction (section 3.1 rédigée)
 -->

@@ -17,7 +17,7 @@ révisé  2026-06-08
 2. Pages préliminaires
 3. Introduction générale — Chapitre 1 (sections 1.1–1.3)
 4. Chapitre 2  Cadre conceptuel et périmètre statistique (sections 2.1–2.5)
-5. Chapitre 3  Cartographie institutionnelle de la protection sociale (section 3.1)
+5. Chapitre 3  Cartographie institutionnelle de la protection sociale (sections 3.1–3.2)
 6. Chapitre 4  Protection sociale face aux risques de vie — couverture, prestations et financement (sections 4.2–4.8)
 7. Chapitre 5  Positionnement au regard des indicateurs ODD (sections 5.1–5.2)
 8. Chapitre 6  Qualité, disponibilité et perspectives (sections 6.1–6.4) *(structure initiale)*
@@ -56,6 +56,10 @@ révisé  2026-06-08
 Voir 03_chapitres/chapitre_2/00_plan_chapitre_2.md
 -->
 
+3.1 Panorama des régimes et programmes de protection sociale en RDC
+
+3.2 Programmes et dispositifs hors périmètre OIT
+
 ## Chapitre 4  Protection sociale face aux risques de vie — couverture, prestations et financement
 
 <!-- NOTE_INTERNE
@@ -84,7 +88,6 @@ Voir 03_chapitres/chapitre_6/00_plan_chapitre_6.md
   - Annexe A1  Liste des institutions contributrices
   - Annexe A2  Tableau de correspondance institutions / indicateurs
 - Annexe C  Détail des indicateurs de couverture (indicateur, numérateur, dénominateur — onglet « Indicateurs » du tableau de bord)
-- Annexe D  Programmes et dispositifs hors périmètre OIT
 - Annexe E  Définitions détaillées des indicateurs
 - Annexe F  Tableaux statistiques détaillés
 - Annexe G  Outil ou questionnaire de collecte

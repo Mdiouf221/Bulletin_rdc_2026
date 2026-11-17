@@ -50,6 +50,7 @@ sections:
     files:
       - "03_chapitres/chapitre_2/00_intro_chapitre_2.md"
       - "03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"
+      - "03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md"
 
   - id: "chapitre_4_couverture"
     title: "Chapitre 4  Couverture effective et prestations"
@@ -84,6 +85,5 @@ sections:
       - "04_annexes/annexe_A_notes_methodologiques.md"
       - "04_annexes/annexe_B_fiches_institutionnelles.md"
       - "04_annexes/annexe_C_detail_indicateurs.md"
-      - "04_annexes/annexe_D_programmes_hors_perimetre.md"
       # Annexes A.1, A.2, E, F et G conservées dans le dépôt, hors publication
       # tant que leur contenu n'est pas finalisé.

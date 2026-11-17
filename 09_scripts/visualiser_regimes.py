@@ -525,31 +525,6 @@ document.addEventListener('DOMContentLoaded', () => {{
       if (typeof applyRegimeQuickFilter === 'function') {{
         applyRegimeQuickFilter();
       }}
-
-      function getVulnerablePopulation(year, payload) {{
-        const construction = getDenominatorConstructions()['global_131::' + String(year)];
-        const populationTotal = construction && Number(construction.value);
-        if (!Number.isFinite(populationTotal)) return null;
-        const regimeRows = (payload && payload.rows_regimes) || [];
-        const prestationRows = (payload && payload.rows_prestations) || [];
-        const cotisants = buildNumeratorYearSummary(
-          'ind_29_cotisants',
-          year,
-          regimeRows,
-          prestationRows,
-          getOddIndicatorNumeratorSpec('ind_29_cotisants')
-        ).total;
-        const pensionnes = buildNumeratorYearSummary(
-          'ind_27_vieillesse',
-          year,
-          regimeRows,
-          prestationRows,
-          getOddIndicatorNumeratorSpec('ind_27_vieillesse')
-        ).total;
-        if (!Number.isFinite(Number(cotisants)) || !Number.isFinite(Number(pensionnes))) return null;
-        const value = populationTotal - Number(cotisants) - Number(pensionnes);
-        return value > 0 ? value : null;
-      }}
     }}, 100);
   }}
 }});
@@ -8244,6 +8219,31 @@ function renderAggregateIndicatorViews() {{
   syncIndicatorYearScrolls();
 }}
 
+function getVulnerablePopulation(year, payload) {{
+  const construction = getDenominatorConstructions()['global_131::' + String(year)];
+  const populationTotal = construction && Number(construction.value);
+  if (!Number.isFinite(populationTotal)) return null;
+  const regimeRows = (payload && payload.rows_regimes) || [];
+  const prestationRows = (payload && payload.rows_prestations) || [];
+  const cotisants = buildNumeratorYearSummary(
+    'ind_29_cotisants',
+    year,
+    regimeRows,
+    prestationRows,
+    getOddIndicatorNumeratorSpec('ind_29_cotisants')
+  ).total;
+  const pensionnes = buildNumeratorYearSummary(
+    'ind_27_vieillesse',
+    year,
+    regimeRows,
+    prestationRows,
+    getOddIndicatorNumeratorSpec('ind_27_vieillesse')
+  ).total;
+  if (!Number.isFinite(Number(cotisants)) || !Number.isFinite(Number(pensionnes))) return null;
+  const value = populationTotal - Number(cotisants) - Number(pensionnes);
+  return value > 0 ? value : null;
+}}
+
 function renderActiveDenominatorViews() {{
   const contextHost = document.getElementById('denom-active-context');
   const visualHost = document.getElementById('denom-active-visual-grid');
@@ -8254,6 +8254,7 @@ function renderActiveDenominatorViews() {{
   const indicatorLabel = ODD_INDICATOR_LABELS[indicatorKey] || indicatorKey;
   const spec = getActiveDenominatorSpec(indicatorKey);
   const methodologySpec = getOddMethodologySpec(indicatorKey);
+  const payload = INDICATEURS_DATA || {{}};
   updateDenominatorPackVisibility(spec.shortKey);
   contextHost.innerHTML = '<strong>Indicateur en cours :</strong> ' + escapeHtml(indicatorLabel) +
     '<br><strong>Dénominateur — définition OIT :</strong> ' + escapeHtml(methodologySpec.denominator);
@@ -8276,7 +8277,6 @@ function renderActiveDenominatorViews() {{
   }}
 
   const rows = (CURRENT_DENOM_ROWS || []).slice().sort((a, b) => Number(a.year) - Number(b.year));
-  const payload = INDICATEURS_DATA || {{}};
   const numeratorSummaries = getNumeratorYearSummaries(
     indicatorKey,
     payload.rows_regimes || [],

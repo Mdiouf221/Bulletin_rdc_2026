@@ -773,7 +773,7 @@ Les régimes décrits dans les tableaux précédents reposent sur un fondement c
 
 La <a href="/files/06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="OIT — Recommandation no 202 (2012) — §8 : les socles de protection sociale comprennent des garanties minimales pour les populations non couvertes par les régimes contributifs" class="source-ref source-ref-text nv" data-val-id="s31-t4-r202" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Recommandation no 202 de l'OIT (2012)</a> définit les **socles de protection sociale** comme des garanties élémentaires devant couvrir toute la population, y compris ceux qui ne participent à aucun régime contributif. En RDC, cette fonction est partiellement assurée par un ensemble de **programmes non contributifs et d'initiatives sectorielles**, portés soit par le gouvernement, soit par des partenaires techniques et financiers. <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) — ch. 2.3 : programmes non contributifs d'assistance sociale" class="source-ref source-ref-text nv" data-val-id="s31-t4-bul1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">[Premier bulletin 2023]</a>
 
-Ces programmes se distinguent des régimes précédents par trois caractéristiques structurelles : ils sont **financés par des ressources publiques ou des contributions extérieures**, sans cotisation des bénéficiaires ; ils ne confèrent généralement **aucun droit statutaire permanent** susceptible d'être invoqué par les intéressés ; et leur pérennité dépend des décisions budgétaires annuelles ou des cycles de financement des bailleurs. Cette fragilité institutionnelle est une limite importante à leur intégration dans les indicateurs de couverture. Le programme des cantines scolaires du PAM est ainsi présenté dans la cartographie de la protection sociale des enfants, mais demeure exclu du calcul de l'indicateur ODD 1.3.1 en tant que prestation en nature.
+Ces programmes se distinguent des régimes précédents par trois caractéristiques structurelles : ils sont **financés par des ressources publiques ou des contributions extérieures**, sans cotisation des bénéficiaires ; ils ne confèrent généralement **aucun droit statutaire permanent** susceptible d'être invoqué par les intéressés ; et leur pérennité dépend des décisions budgétaires annuelles ou des cycles de financement des bailleurs. Cette fragilité institutionnelle est une limite importante à leur intégration dans les indicateurs de couverture. Les repas scolaires PAM/MEPST sont inclus avec réserve dans le calcul national de l'ODD 1.3.1 ; les transferts monétaires du PAM demeurent exclus. Les précisions documentaires sur ces interventions figurent en section 3.2.
 
 <p class="table-caption"><strong>Tableau 3.4</strong> — Programmes d'assistance sociale et initiatives non contributives documentés (actifs ou clôturés au 31.12.2025)</p>
 
@@ -781,7 +781,7 @@ Ces programmes se distinguent des régimes précédents par trois caractéristiq
 |---|---|---|---|---|:---:|:---:|
 | <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM — Transferts de ressources sans conditions ; chiffres historiques 2021–2022 à confirmer" class="source-ref source-ref-text nv" data-val-id="s31-t4-pam1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">PAM — Transferts de ressources sans conditions</a><br><small><em>Début : continu (2000s) — statut au 31.12.2025 : à confirmer</em></small> <a href="/files/06_sources/officielles_web/PAM_RDC_page_officielle_2026.txt" title="PAM RDC — page officielle archivée ; description des activités, sans série historique 2021–2022" class="source-ref source-ref-text nv" data-val-id="s31-t4-pam1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[1]</sup></a> | Transferts monétaires et alimentaires inconditionnels | Ménages en insécurité alimentaire ; déplacés internes ; zones de conflit | Donateurs internationaux (UE, USAID, RU…) | PAM | Est de la RDC (périmètre national à confirmer) | À confirmer |
 | <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM + MEPST — Programme national de cantines scolaires — phase pilote initiée en 2023 pour consolider la gratuité de l'enseignement primaire" class="source-ref source-ref-text nv" data-val-id="s31-t4-cantine" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">PAM — Cantines scolaires</a><br><small><em>Début : 2023 (pilote) — Statut 2025 : en cours (données non consolidées)</em></small> <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM RDC — cantines scolaires : phase pilote, écoles publiques, objectif nutritionnel et scolarisation" class="source-ref source-ref-text nv" data-val-id="s31-t4-cantine-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[1]</sup></a> | Transferts en nature (repas nutritifs en milieu scolaire) | Enfants scolarisés dans les écoles publiques | PAM + donateurs | PAM + MEPST | Phase pilote (périmètre à préciser) | Actif (pilote) |
-| <a href="/files/06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf" title="PAM — rapport annuel RDC 2025 : 145 000 enfants ont reçu quotidiennement des repas scolaires dans cinq provinces" class="source-ref source-ref-text nv" data-val-id="s31-t4-cantine-2025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">PAM — Cantines scolaires (résultat 2025)</a><br><small><em>2025 : 145 000 enfants servis quotidiennement dans cinq provinces</em></small> <a href="/files/06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf" title="PAM — rapport annuel RDC 2025, alimentation scolaire" class="source-ref source-ref-text nv" data-val-id="s31-t4-cantine-2025-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[2]</sup></a> | Transferts en nature (repas chauds) | Enfants vulnérables scolarisés | PAM + partenaires publics et provinciaux | PAM | Sud-Kivu, Tanganyika, Kasaï-Oriental, Kasaï-Central et Lomami | Actif en 2025 |
+| <a href="/files/06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf" title="PAM — rapport annuel RDC 2025 ; données détaillées en section 3.2" class="source-ref source-ref-text nv" data-val-id="s31-t4-cantine-2025" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">PAM — Cantines scolaires</a><br><small><em>Données détaillées : section 3.2, Tableau 3.7</em></small> <a href="/files/06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf" title="PAM — rapport annuel RDC 2025, alimentation scolaire" class="source-ref source-ref-text nv" data-val-id="s31-t4-cantine-2025-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[2]</sup></a> | Transferts en nature (repas chauds) | Enfants vulnérables scolarisés | PAM + partenaires publics et provinciaux | PAM | Sud-Kivu, Tanganyika, Kasaï-Oriental, Kasaï-Central et Lomami | Actif en 2025 |
 | <a href="/files/06_sources/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt" title="UNICEF — Cash + Nutrition au Tanganyika — 226 648 enfants bénéficiaires en 2021 ; périmètre ultérieur à confirmer" class="source-ref source-ref-text nv" data-val-id="s31-t4-unicef1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">UNICEF — Cash + Nutrition</a><br><small><em>Début : 2021 (données disponibles) — statut au 31.12.2025 : à confirmer</em></small> <a href="/files/06_sources/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt" title="Source : Premier bulletin (2023) citant données UNICEF 2021 — province de Tanganyika" class="source-ref source-ref-text nv" data-val-id="s31-t4-unicef1-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[2]</sup></a> | Transferts monétaires + soutien nutritionnel | Enfants malnutris ; ménages vulnérables (urgence humanitaire) | UNICEF + donateurs institutionnels | UNICEF + partenaires | Tanganyika (périmètre hors province à confirmer) | À confirmer |
 | <a href="/files/06_sources/officielles_web/Banque_mondiale_STEP_RDC_2023.txt" title="Banque mondiale — projet STEP : 530 000 bénéficiaires directs de transferts ou THIMO entre 2014 et 2022" class="source-ref source-ref-text nv" data-val-id="s31-t4-step" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Banque mondiale — projet STEP</a><br><small><em>Résultats : février 2014–décembre 2022 — clôturé</em></small> <a href="/files/06_sources/officielles_web/Banque_mondiale_STEP_RDC_2023.txt" title="Source : Banque mondiale — résultats du projet STEP" class="source-ref source-ref-text nv" data-val-id="s31-t4-step-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[3]</sup></a> | Transferts monétaires sans conditions et THIMO | Ménages vulnérables et travailleurs temporaires | Banque mondiale / IDA et fonds fiduciaires | Fonds Social de la RDC | Six provinces et Kinshasa | Clôturé |
 | <a href="/files/06_sources/officielles_web/UNICEF_Nsele_transferts_RDC.txt" title="UNICEF, PAM et FAO — transferts monétaires à Nsele : environ 23 000 ménages puis 16 000 ménages vulnérables" class="source-ref source-ref-text nv" data-val-id="s31-t4-nsele" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">UNICEF/PAM/FAO — transferts monétaires à Nsele</a><br><small><em>Phase initiale : 3 mois — phase de protection sociale : 6 mois — programme ponctuel</em></small> <a href="/files/06_sources/officielles_web/UNICEF_Nsele_transferts_RDC.txt" title="Source : Nations Unies en RDC — évaluation de l'intervention à Nsele" class="source-ref source-ref-text nv" data-val-id="s31-t4-nsele-src" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md"><sup>[4]</sup></a> | Transferts monétaires et accompagnement | Ménages vulnérables | UNICEF, PAM et FAO | UNICEF, PAM et FAO | Commune de Nsele, Kinshasa | Clôturé / ponctuel |
@@ -790,21 +790,9 @@ Ces programmes se distinguent des régimes précédents par trois caractéristiq
 
 <div class="table-sources"><small>Sources : <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) — ch. 2.3 : cartographie des programmes non contributifs" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-bul" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Premier bulletin RDC (2023), ch. 2.3</a> · <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM — site officiel wfp.org (consulté juin 2026)" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-pam" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">PAM (wfp.org, 2026)</a> · <a href="/files/06_sources/officielles_web/UNICEF_RDC_transferts_monetaires_2021-2022.txt" title="UNICEF RDC — transferts monétaires humanitaires (2021-2022, actif intermittent)" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-uni" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">UNICEF RDC (2021–2025)</a> · <a href="/files/06_sources/officielles_web/Banque_mondiale_STEP_RDC_2023.txt" title="Banque mondiale — projet STEP, résultats 2014–2022" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-step" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Banque mondiale (STEP, 2023)</a> · <a href="/files/06_sources/officielles_web/UNICEF_Nsele_transferts_RDC.txt" title="Nations Unies en RDC — intervention de transferts monétaires à Nsele" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-nsele" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">UNICEF/PAM/FAO (Nsele)</a> · <a href="/files/06_sources/normes_oit/_texte/R202 - Recommandation sur les socles de protection sociale (No. 202), 2012 - Brochure.txt" title="OIT — Recommandation no 202 sur les socles de protection sociale (2012)" class="source-ref source-ref-text nv" data-val-id="s31-t4-src-r202" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">R202 (OIT, 2012)</a><br><em>La liste est indicative et non exhaustive. Les initiatives antérieures sont conservées pour documenter les expériences pertinentes, sans les confondre avec les programmes actifs en 2025.</em></small></div>
 
-#### Repères chronologiques des programmes PAM documentés
-
-| Année | Programme | Indicateur disponible | Périmètre | Source et interprétation |
-|---|---|---:|---|---|
-| 2021 | Transferts monétaires et alimentaires inconditionnels | 4 037 575 personnes — à confirmer | Principalement les provinces de l'Est — à confirmer | PAM ; chiffre historique non reproductible à partir de la page officielle archivée |
-| 2022 | Transferts monétaires et alimentaires inconditionnels | 3 795 530 personnes — à confirmer | Principalement les provinces de l'Est — à confirmer | PAM ; chiffre historique non reproductible à partir de la page officielle archivée |
-| 2023 | Cantines scolaires | [N/D] | Phase pilote, périmètre à préciser | PAM/MEPST ; existence du programme documentée, total non consolidé |
-| 2024 | Cantines scolaires | [N/D] | Donnée nationale non disponible | Aucun total comparable identifié |
-| 2025 | Cantines scolaires | 145 000 enfants | Cinq provinces : Sud-Kivu, Tanganyika, Kasaï-Oriental, Kasaï-Central et Lomami | Rapport annuel PAM RDC 2025 ; enfants servis quotidiennement dans les opérations soutenues par le PAM |
-
-Cette série constitue une série de repères et non une série homogène de
-couverture : les valeurs 2021–2022 concernent les transferts humanitaires
-généraux, tandis que la valeur 2025 concerne exclusivement l'alimentation
-scolaire. Les enseignants et cuisiniers éventuellement inclus dans les
-graphiques PAM ne sont pas ajoutés aux 145 000 enfants.
+Les repères chronologiques et les précautions d'interprétation relatives aux
+interventions du PAM sont présentés en section 3.2 (Tableau 3.7) afin de distinguer
+le panorama institutionnel des informations de programme détaillées.
 
 ---
 
@@ -851,7 +839,7 @@ Conformément au cadre méthodologique du présent bulletin (Annexe A.1, Niveau 
 
 | Dispositif | Nature de l'effet protecteur | Population visée | Responsable | Périmètre | Statut au 31.12.2025 |
 |---|---|---|---|:---:|:---:|
-| <a href="/files/06_sources/officielles_web/RDC_programmes_non_contributifs_gouvernementaux.txt" title="Gratuité de l'enseignement primaire — Instruction n°001/MINEPSP/CABMIN/2019 — suppression des frais de scolarité dans les écoles primaires publiques. 18,4 millions de bénéficiaires estimés en 2022 (MEPST)." class="source-ref source-ref-text nv" data-val-id="s31-t5-educ" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Gratuité de l'enseignement primaire public</a><br><small><em>Depuis rentrée sept. 2019</em></small> | Suppression des frais de scolarité — réduction de la vulnérabilité éducative des ménages pauvres | Enfants en âge scolaire (écoles primaires publiques) | MEPST | National | Actif |
+| <a href="/files/06_sources/officielles_web/RDC_programmes_non_contributifs_gouvernementaux.txt" title="Gratuité de l'enseignement primaire — Instruction n°001/MINEPSP/CABMIN/2019 — suppression des frais de scolarité dans les écoles primaires publiques. Série chronologique disponible en section 3.2." class="source-ref source-ref-text nv" data-val-id="s31-t5-educ" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Gratuité de l'enseignement primaire public</a><br><small><em>Depuis rentrée sept. 2019 — données détaillées : section 3.2, tableau 3.6</em></small> | Suppression des frais de scolarité — réduction de la vulnérabilité éducative des ménages pauvres | Enfants en âge scolaire (écoles primaires publiques) | MEPST | National | Actif |
 | <a href="/files/06_sources/officielles_web/RDC_programmes_non_contributifs_gouvernementaux.txt" title="Gratuité de la maternité — arrêté ministériel MSPHPS — soins d'accouchement gratuits dans les formations sanitaires publiques. Opérationnalité variable selon les zones et la disponibilité des intrants." class="source-ref source-ref-text nv" data-val-id="s31-t5-matern" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Gratuité de l'accouchement en formations sanitaires publiques</a><br><small><em>Cadre légal antérieur à 2019 — dispositif distinct du FSS Kobota Ofele</em></small> | Suppression des frais d'accouchement — réduction de la mortalité maternelle et du risque financier lié à la maternité | Femmes enceintes (formations sanitaires publiques) | MSPHPS | National (application variable) | Partiellement opérationnel |
 | <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin (2023), tableau 11 — interventions du MSPHPS : vaccination, kits médicaux, moustiquaires, dépistage VIH/TB. Données de couverture non consolidées." class="source-ref source-ref-text nv" data-val-id="s31-t5-prev" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Soins préventifs et vaccination (programmes MSPHPS)</a><br><small><em>Vaccinations, moustiquaires, kits médicaux, dépistage VIH/TB — continu</em></small> | Prévention des risques sanitaires — réduction de la vulnérabilité morbide des populations non couvertes par une assurance | Enfants de moins de 5 ans, PVVIH, personnes vulnérables | MSPHPS + partenaires (OMS, UNICEF, GAVI) | National | Actif (données non consolidées) |
 | <a href="/files/06_sources/officielles_web/RDC_programmes_non_contributifs_gouvernementaux.txt" title="THIMO — composante travaux publics du projet STEP (Fonds Social RDC / Banque mondiale) — 150 000 personnes ciblées dans les provinces de l'Est. Projet STEP clôturé en juin 2025. Éventuels programmes HIMO successeurs non documentés à la date de rédaction." class="source-ref source-ref-text nv" data-val-id="s31-t5-himo" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Programmes de travaux à Haute Intensité de Main d'Œuvre (HIMO / THIMO)</a><br><small><em>Référence principale : composante THIMO du projet STEP — clôturé en juin 2025</em></small> | Création temporaire d'emplois et de revenus — activation économique des ménages vulnérables en zone de conflit ou post-conflit | Communautés vulnérables accueillant des personnes déplacées | Fonds Social de la RDC + bailleurs (BM / IDA) | Est DRC (provinces de l'Est) | Clôturé (STEP juin 2025) — successeurs non documentés |
@@ -860,6 +848,166 @@ Conformément au cadre méthodologique du présent bulletin (Annexe A.1, Niveau 
 *Légende : les dispositifs de ce tableau ne sont pas intégrés dans les indicateurs de couverture ODD 1.3.1 du présent bulletin. Leur inscription ici répond à un souci de complétude institutionnelle. Les données chiffrées mentionnées en note sont indicatives ; elles ne constituent pas des indicateurs de couverture effective comparables à ceux du Chapitre 4.*
 
 <div class="table-sources"><small>Sources : <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) — tableaux 10, 11, 12 : gratuité éducation, interventions MSPHPS et MINAS" class="source-ref source-ref-text nv" data-val-id="s31-t5-src-bul" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Premier bulletin RDC (2023), tableaux 10–12</a> · <a href="/files/06_sources/officielles_web/RDC_programmes_non_contributifs_gouvernementaux.txt" title="Programmes gouvernementaux non contributifs RDC — MEPST, gratuité enseignement (2019–2025) ; MSPHPS gratuité maternité ; Fonds Social RDC STEP/THIMO" class="source-ref source-ref-text nv" data-val-id="s31-t5-src-gouv" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Programmes gouvernementaux RDC (compilation, juin 2026)</a> · <a href="/files/06_sources/officielles_web/RDC_SNPS_2016.txt" title="Gouvernement RDC — Stratégie nationale de la protection sociale (SNPS), 2016" class="source-ref source-ref-text nv" data-val-id="s31-t5-src-snps" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">SNPS (Gouvernement RDC, 2016)</a> · <a href="/files/04_annexes/annexe_A_notes_methodologiques.md" title="Annexe A.1 — Classification niveau 3 : dispositifs mentionnés à titre contextuel" class="source-ref source-ref-text nv" data-val-id="s31-t5-src-ann" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_1_cartographie_tableaux.md">Annexe A.1 du présent bulletin (cadre méthodologique, Niveau 3)</a></small></div>
+
+<!-- FIN FICHIER -->
+
+
+## 3.2 Programmes d'assistance sociale et initiatives non contributives
+
+<!-- NOTE_INTERNE
+Objectif de la section :
+Présenter les programmes d'assistance sociale et les initiatives non contributives, y compris les politiques sectorielles à dimension protectrice, en distinguant leur contribution sociale de leur traitement dans les indicateurs OIT et ODD 1.3.1.
+
+Positionnement éditorial :
+Ces données sont présentées ici avec transparence et sans jugement de valeur. Elles ne sont intégrées aux indicateurs ODD 1.3.1 que lorsqu'elles répondent aux règles méthodologiques retenues pour le bulletin.
+
+Cette section répond à un enjeu spécifique à la RDC : les acteurs nationaux incluent souvent dans la "protection sociale" des programmes qui relèvent de l'action sociale, de l'aide humanitaire, de l'insertion professionnelle ou des transferts conditionnels non contributifs sans base légale de protection sociale formelle.
+
+Contenu attendu par programme ou initiative :
+- Nom du programme
+- Opérateur (ministère, ONG, partenaire international)
+- Base légale ou cadre de référence
+- Population cible
+- Nombre de bénéficiaires (si disponible)
+- Nombre de contributeurs (si applicable)
+- Budget ou dépenses (si disponible)
+- Source et période
+- Traitement statistique dans le bulletin (brève note)
+
+Catégories probables :
+- Programmes d'assistance sociale ciblée (transferts monétaires conditionnels)
+- Politiques sectorielles à dimension protectrice, dont la gratuité de l'enseignement primaire
+- Programmes d'insertion et d'emploi (actifs, pas passifs)
+- Actions sociales ministérielles hors régime formel
+- Aide humanitaire d'urgence
+- Dispositifs de protection sociale informelle (tontines, mutuelles non formalisées)
+
+Statut : rédigé
+-->
+
+## Texte rédigé
+
+### Positionnement et périmètre <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Cette section rassemble des programmes d'assistance sociale, de transferts monétaires,
+d'aide alimentaire et de travaux publics, ainsi que des politiques sectorielles à
+dimension protectrice. Ces interventions ne reposent généralement pas sur une
+cotisation obligatoire ouvrant un droit statutaire permanent. Elles complètent la
+cartographie des régimes contributifs et statutaires, mais ne sont pas toutes traitées
+de la même manière dans les indicateurs de couverture du bulletin.
+
+Les données sont présentées selon l'unité utilisée par chaque opérateur : élèves,
+personnes, enfants, ménages ou bénéficiaires directs cumulés. Les périodes de
+référence sont conservées afin d'éviter de comparer un résultat annuel avec un cumul
+pluriannuel ou avec une intervention localisée. La gratuité de l'enseignement primaire
+est ainsi présentée comme une initiative sectorielle d'accès à l'éducation, sans être
+assimilée à une prestation de protection sociale ni intégrée à l'indicateur ODD 1.3.1.
+
+### Gratuité de l'enseignement primaire public <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+La gratuité de l'enseignement primaire public, appliquée depuis la rentrée 2019,
+supprime les frais de scolarité dans les établissements publics. Elle constitue une
+initiative publique à dimension protectrice en réduisant la charge financière de la
+scolarisation pour les ménages. Les effectifs ci-dessous décrivent l'accès à
+l'enseignement primaire public ; ils ne correspondent pas à des bénéficiaires d'une
+prestation de protection sociale et ne sont donc pas inclus dans le calcul de
+l'indicateur ODD 1.3.1.
+
+<p class="table-caption"><strong>Tableau 3.6</strong> — Estimation des bénéficiaires de la gratuité de l'enseignement primaire public, 2019–2022</p>
+
+| Année | Bénéficiaires estimés | Source |
+|---|---:|---|
+| 2019 | <span class="val" data-val-id="s32-p1-t1-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">15 105 337 élèves</span> | <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) — estimation des bénéficiaires de la gratuité de l'éducation primaire publique" class="source-ref source-ref-text nv" data-val-id="s32-p1-t1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">Premier bulletin RDC (2023)</a> |
+| 2020 | <span class="val" data-val-id="s32-p1-t1-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">16 668 703 élèves</span> | <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) — estimation des bénéficiaires de la gratuité de l'éducation primaire publique" class="source-ref source-ref-text nv" data-val-id="s32-p1-t1-c2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">Premier bulletin RDC (2023)</a> |
+| 2021 | <span class="val" data-val-id="s32-p1-t1-d3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">17 941 415 élèves</span> | <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) — estimation des bénéficiaires de la gratuité de l'éducation primaire publique" class="source-ref source-ref-text nv" data-val-id="s32-p1-t1-c3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">Premier bulletin RDC (2023)</a> |
+| 2022 | <span class="val" data-val-id="s32-p1-t1-d4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">18 386 994 élèves</span> | <a href="/files/06_sources/bulletins_rdc/_texte/Bulletin Statistique RDC- premiere édition.txt" title="Premier bulletin statistique de la protection sociale en RDC (2023) — estimation des bénéficiaires de la gratuité de l'éducation primaire publique" class="source-ref source-ref-text nv" data-val-id="s32-p1-t1-c4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">Premier bulletin RDC (2023)</a> |
+
+La série reproduit les estimations transmises et publiées dans le premier bulletin.
+Elle est conservée à titre documentaire : elle ne permet pas, à elle seule, de mesurer
+une couverture effective de protection sociale. Les années postérieures à 2022 sont
+affichées comme N/D jusqu'à l'intégration de données comparables transmises par le
+ministère compétent.
+
+### Programme STEP — Banque mondiale et Fonds social de la RDC <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Le projet STEP a combiné des transferts monétaires sans conditions, des travaux publics
+à haute intensité de main-d'œuvre et d'autres mesures de soutien aux moyens d'existence.
+Selon la <a href="/files/06_sources/officielles_web/Banque_mondiale_STEP_RDC_2023.txt" title="Banque mondiale (2023) — résultats du projet STEP en RDC" class="source-ref source-ref-text nv" data-val-id="s32-p2-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">Banque mondiale</a>,
+le projet a directement bénéficié à <span class="val" data-val-id="s32-p2-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">530 000 personnes</span>
+entre février 2014 et décembre 2022, dont <span class="val" data-val-id="s32-p2-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">plus de 200 000 femmes</span>, et a décaissé plus
+de <span class="val" data-val-id="s32-p2-d3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">93 millions de dollars</span>. Ce chiffre est un cumul de projet et non un effectif annuel.
+
+Le même document indique que les investissements ont bénéficié à <span class="val" data-val-id="s32-p2-d4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">1 166 communautés</span>
+vulnérables et que <span class="val" data-val-id="s32-p2-d5" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">5,8 millions de personnes</span> ont été concernées dans les communautés
+ciblées par les infrastructures et les activités du projet. Ce dernier agrégat ne
+correspond pas à des bénéficiaires directs de transferts et n'est donc pas assimilé à
+un effectif couvert.
+
+### Assistance alimentaire et repas scolaires — PAM <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Le PAM met en œuvre en RDC des activités d'assistance alimentaire, de transferts
+monétaires, de nutrition et de résilience. Son rapport annuel pays 2025 indique
+<span class="val" data-val-id="s32-p3-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">5 264 306 bénéficiaires en 2025</span>
+pour l'ensemble de ses interventions dans le pays. Cet agrégat ne constitue pas une
+mesure de couverture nationale, car il regroupe plusieurs modalités d'assistance et
+peut inclure des personnes exposées à plusieurs interventions.
+
+Pour l'alimentation scolaire, le même rapport indique que
+<span class="val" data-val-id="s32-p3-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">145 000 enfants</span>
+ont reçu quotidiennement des repas scolaires dans cinq provinces en 2025 :
+Sud-Kivu, Tanganyika, Kasaï-Oriental, Kasaï-Central et Lomami. Ce résultat est présenté
+comme un nombre d'enfants servis dans les opérations du PAM, et non comme un nombre
+de ménages ou comme une couverture permanente.
+
+Les repas scolaires PAM/MEPST sont inclus avec réserve dans le calcul national de
+l'ODD 1.3.1 et dans le sous-indicateur relatif aux personnes vulnérables. Cette décision
+est distincte de celle applicable aux transferts monétaires du PAM, qui restent exclus
+de l'ODD 1.3.1 et sont présentés dans cette annexe comme informations de programme.
+
+<a href="/files/06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf" title="PAM (2025) — Democratic Republic of the Congo Annual Country Report 2025" class="source-ref source-ref-text nv" data-val-id="s32-p3-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">Rapport annuel pays du PAM 2025</a>
+
+#### Série documentaire des bénéficiaires du PAM <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Le tableau suivant rassemble les données disponibles sur plusieurs années. Il s'agit
+d'une série documentaire et non d'une série statistique entièrement comparable :
+les modalités d'intervention, le périmètre géographique et l'unité de mesure changent
+selon l'année.
+
+<p class="table-caption"><strong>Tableau 3.7</strong> — Bénéficiaires documentés des interventions du PAM en RDC, 2021–2026</p>
+
+| Année | Donnée disponible | Périmètre | Source |
+|---|---:|---|---|
+| 2021 | <span class="val" data-val-id="s32-p3-t1-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">4 037 575 personnes</span> | Transferts sans conditions | <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM — activités documentées en RDC, données 2021–2022" class="source-ref source-ref-text nv" data-val-id="s32-p3-t1-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">PAM, fiche d'activités 2021–2022</a> |
+| 2022 | <span class="val" data-val-id="s32-p3-t1-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">3 795 530 personnes</span> | Transferts sans conditions | <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM — activités documentées en RDC, données 2021–2022" class="source-ref source-ref-text nv" data-val-id="s32-p3-t1-c2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">PAM, fiche d'activités 2021–2022</a> |
+| 2025 | <span class="val" data-val-id="s32-p3-t1-d3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">5 264 306 personnes</span> | Toutes interventions du PAM | <a href="/files/06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf" title="PAM — rapport annuel RDC 2025" class="source-ref source-ref-text nv" data-val-id="s32-p3-t1-c3" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">PAM, rapport annuel pays 2025</a> |
+| 2026 | <span class="val" data-val-id="s32-p3-t1-d4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">1,3 million de personnes</span> | Est de la RDC, depuis janvier 2026 | <a href="/files/06_sources/officielles_web/PAM_RDC_page_officielle_2026.txt" title="PAM — page officielle archivée, données 2026" class="source-ref source-ref-text nv" data-val-id="s32-p3-t1-c4" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">PAM, page officielle 2026</a> |
+
+Les valeurs 2021 et 2022 forment la seule séquence présentant une modalité
+explicitement identique. Les résultats 2025 et 2026 sont conservés pour documenter
+l'activité récente du PAM, mais ne doivent pas être comparés directement aux deux
+premières années.
+
+### Transferts monétaires localisés — UNICEF, PAM et FAO à Nsele <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+À Nsele, dans la ville-province de Kinshasa, une intervention de transferts monétaires
+mise en œuvre avec l'UNICEF, le PAM et la FAO a combiné une phase initiale d'environ
+<span class="val" data-val-id="s32-p4-d1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">23 000 ménages</span> et une phase de protection sociale ciblant environ <span class="val" data-val-id="s32-p4-d2" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">16 000 ménages</span>
+vulnérables. Le programme était localisé et temporaire, avec une phase initiale de
+trois mois puis une phase de protection sociale de six mois. Ces effectifs ne sont
+pas extrapolés à l'échelle nationale.
+
+La source d'évaluation souligne par ailleurs les limites liées à la durée de
+l'intervention, à l'irrégularité des paiements et à l'attrition des participants.
+<a href="/files/06_sources/officielles_web/UNICEF_RDC_evaluation_transferts_monetaires_2024_FR.pdf" title="UNICEF Innocenti (2024) — Évaluation des transferts monétaires à Nsele" class="source-ref source-ref-text nv" data-val-id="s32-p4-c1" data-val-status="à valider" data-val-file="03_chapitres/chapitre_2/2_2_programmes_hors_perimetre.md">Rapport d'évaluation UNICEF</a>
+
+### Lecture statistique <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
+
+Ces interventions illustrent la contribution de l'assistance non contributive à la
+réduction des vulnérabilités, mais elles ne peuvent pas être agrégées sans contrôle
+des recoupements. Un même ménage ou une même personne peut recevoir plusieurs formes
+d'assistance, tandis que les périodes et les unités de mesure diffèrent selon les
+programmes. Les résultats sont donc présentés comme des informations de programme,
+séparément des indicateurs nationaux de couverture effective.
 
 <!-- FIN FICHIER -->
 
@@ -3387,136 +3535,5 @@ Le tableau ci-dessous rapproche les valeurs publiées dans le premier Bulletin s
 | Chômage | Absence de régime constatée | N/A | Aucun régime d'assurance chômage n'est identifié dans les deux éditions. La présente édition affiche donc N/A plutôt qu'un taux nul. |
 
 *Source : premier Bulletin statistique de la protection sociale en RDC, tableaux 13 à 20, et recalculs de la présente édition à partir des ESS, des décisions d'inclusion et des dénominateurs documentés dans la présente annexe.*
-
-<!-- FIN FICHIER -->
-
-
-# Annexe D — Programmes et dispositifs hors périmètre OIT
-
-<!-- NOTE_INTERNE
-Objectif de l'annexe :
-Inventorier et décrire les programmes et dispositifs qui ont été transmis par des acteurs ou institutions mais qui n'entrent pas dans la définition OIT de la protection sociale au sens strict (branches de la C.102, cadre R.202, ODD 1.3.1).
-
-Positionnement éditorial :
-Ces données sont présentées ici avec transparence et sans jugement de valeur. Le fait qu'un programme figure dans cette annexe ne signifie pas qu'il est sans intérêt — il signifie que ses indicateurs ne sont pas directement comparables aux indicateurs ODD 1.3.1 présentés au chapitre 3.
-
-Cette annexe répond à un enjeu spécifique à la RDC : les acteurs nationaux incluent souvent dans la "protection sociale" des programmes qui relèvent de l'action sociale, de l'aide humanitaire, de l'insertion professionnelle ou des transferts conditionnels non contributifs sans base légale de protection sociale formelle.
-
-Contenu attendu par programme :
-- Nom du programme
-- Opérateur (ministère, ONG, partenaire international)
-- Base légale ou cadre de référence
-- Population cible
-- Nombre de bénéficiaires (si disponible)
-- Nombre de contributeurs (si applicable)
-- Budget ou dépenses (si disponible)
-- Source et période
-- Raison de l'exclusion du périmètre OIT (brève note)
-
-Catégories probables :
-- Programmes d'assistance sociale ciblée (transferts monétaires conditionnels)
-- Programmes d'insertion et d'emploi (actifs, pas passifs)
-- Actions sociales ministérielles hors régime formel
-- Aide humanitaire d'urgence
-- Dispositifs de protection sociale informelle (tontines, mutuelles non formalisées)
-
-Statut : structure initiale
--->
-
-## Texte rédigé
-
-### Positionnement et périmètre <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
-
-Les interventions non contributives regroupent ici des programmes d'assistance sociale,
-de transferts monétaires, d'aide alimentaire et de travaux publics qui ne reposent pas
-sur une cotisation obligatoire ouvrant un droit statutaire permanent. Elles complètent
-la cartographie des régimes contributifs et statutaires, mais leurs résultats ne sont
-pas directement additionnés aux indicateurs de couverture du bulletin.
-
-Les données sont présentées selon l'unité utilisée par chaque opérateur : personnes,
-enfants, ménages ou bénéficiaires directs cumulés. Les périodes de référence sont
-conservées afin d'éviter de comparer un résultat annuel avec un cumul pluriannuel ou
-avec une intervention localisée.
-
-### Programme STEP — Banque mondiale et Fonds social de la RDC <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
-
-Le projet STEP a combiné des transferts monétaires sans conditions, des travaux publics
-à haute intensité de main-d'œuvre et d'autres mesures de soutien aux moyens d'existence.
-Selon la <a href="/files/06_sources/officielles_web/Banque_mondiale_STEP_RDC_2023.txt" title="Banque mondiale (2023) — résultats du projet STEP en RDC" class="source-ref source-ref-text nv" data-val-id="sD-p2-c1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">Banque mondiale</a>,
-le projet a directement bénéficié à <span class="val" data-val-id="sD-p2-d1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">530 000 personnes</span>
-entre février 2014 et décembre 2022, dont <span class="val" data-val-id="sD-p2-d2" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">plus de 200 000 femmes</span>, et a décaissé plus
-de <span class="val" data-val-id="sD-p2-d3" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">93 millions de dollars</span>. Ce chiffre est un cumul de projet et non un effectif annuel.
-
-Le même document indique que les investissements ont bénéficié à <span class="val" data-val-id="sD-p2-d4" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">1 166 communautés</span>
-vulnérables et que <span class="val" data-val-id="sD-p2-d5" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">5,8 millions de personnes</span> ont été concernées dans les communautés
-ciblées par les infrastructures et les activités du projet. Ce dernier agrégat ne
-correspond pas à des bénéficiaires directs de transferts et n'est donc pas assimilé à
-un effectif couvert.
-
-### Assistance alimentaire et repas scolaires — PAM <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
-
-Le PAM met en œuvre en RDC des activités d'assistance alimentaire, de transferts
-monétaires, de nutrition et de résilience. Son rapport annuel pays 2025 indique
-<span class="val" data-val-id="sD-p3-d1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">5 264 306 bénéficiaires en 2025</span>
-pour l'ensemble de ses interventions dans le pays. Cet agrégat ne constitue pas une
-mesure de couverture nationale, car il regroupe plusieurs modalités d'assistance et
-peut inclure des personnes exposées à plusieurs interventions.
-
-Pour l'alimentation scolaire, le même rapport indique que
-<span class="val" data-val-id="sD-p3-d2" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">145 000 enfants</span>
-ont reçu quotidiennement des repas scolaires dans cinq provinces en 2025 :
-Sud-Kivu, Tanganyika, Kasaï-Oriental, Kasaï-Central et Lomami. Ce résultat est présenté
-comme un nombre d'enfants servis dans les opérations du PAM, et non comme un nombre
-de ménages ou comme une couverture permanente.
-
-Les repas scolaires PAM/MEPST sont inclus avec réserve dans le calcul national de
-l'ODD 1.3.1 et dans le sous-indicateur relatif aux personnes vulnérables. Cette décision
-est distincte de celle applicable aux transferts monétaires du PAM, qui restent exclus
-de l'ODD 1.3.1 et sont présentés dans cette annexe comme informations de programme.
-
-<a href="/files/06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf" title="PAM (2025) — Democratic Republic of the Congo Annual Country Report 2025" class="source-ref source-ref-text nv" data-val-id="sD-p3-c1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">Rapport annuel pays du PAM 2025</a>
-
-#### Série documentaire des bénéficiaires du PAM <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
-
-Le tableau suivant rassemble les données disponibles sur plusieurs années. Il s'agit
-d'une série documentaire et non d'une série statistique entièrement comparable :
-les modalités d'intervention, le périmètre géographique et l'unité de mesure changent
-selon l'année.
-
-<p class="table-caption"><strong>Tableau D.1</strong> — Bénéficiaires documentés des interventions du PAM en RDC, 2021–2026</p>
-
-| Année | Donnée disponible | Périmètre | Source |
-|---|---:|---|---|
-| 2021 | <span class="val" data-val-id="sD-p3-t1-d1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">4 037 575 personnes</span> | Transferts sans conditions | <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM — activités documentées en RDC, données 2021–2022" class="source-ref source-ref-text nv" data-val-id="sD-p3-t1-c1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">PAM, fiche d'activités 2021–2022</a> |
-| 2022 | <span class="val" data-val-id="sD-p3-t1-d2" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">3 795 530 personnes</span> | Transferts sans conditions | <a href="/files/06_sources/officielles_web/PAM_RDC_programmes_transferts_2026.txt" title="PAM — activités documentées en RDC, données 2021–2022" class="source-ref source-ref-text nv" data-val-id="sD-p3-t1-c2" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">PAM, fiche d'activités 2021–2022</a> |
-| 2025 | <span class="val" data-val-id="sD-p3-t1-d3" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">5 264 306 personnes</span> | Toutes interventions du PAM | <a href="/files/06_sources/officielles_web/WFP_RDC_rapport_annuel_2025.pdf" title="PAM — rapport annuel RDC 2025" class="source-ref source-ref-text nv" data-val-id="sD-p3-t1-c3" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">PAM, rapport annuel pays 2025</a> |
-| 2026 | <span class="val" data-val-id="sD-p3-t1-d4" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">1,3 million de personnes</span> | Est de la RDC, depuis janvier 2026 | <a href="/files/06_sources/officielles_web/PAM_RDC_page_officielle_2026.txt" title="PAM — page officielle archivée, données 2026" class="source-ref source-ref-text nv" data-val-id="sD-p3-t1-c4" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">PAM, page officielle 2026</a> |
-
-Les valeurs 2021 et 2022 forment la seule séquence présentant une modalité
-explicitement identique. Les résultats 2025 et 2026 sont conservés pour documenter
-l'activité récente du PAM, mais ne doivent pas être comparés directement aux deux
-premières années.
-
-### Transferts monétaires localisés — UNICEF, PAM et FAO à Nsele <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
-
-À Nsele, dans la ville-province de Kinshasa, une intervention de transferts monétaires
-mise en œuvre avec l'UNICEF, le PAM et la FAO a combiné une phase initiale d'environ
-<span class="val" data-val-id="sD-p4-d1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">23 000 ménages</span> et une phase de protection sociale ciblant environ <span class="val" data-val-id="sD-p4-d2" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">16 000 ménages</span>
-vulnérables. Le programme était localisé et temporaire, avec une phase initiale de
-trois mois puis une phase de protection sociale de six mois. Ces effectifs ne sont
-pas extrapolés à l'échelle nationale.
-
-La source d'évaluation souligne par ailleurs les limites liées à la durée de
-l'intervention, à l'irrégularité des paiements et à l'attrition des participants.
-<a href="/files/06_sources/officielles_web/UNICEF_RDC_evaluation_transferts_monetaires_2024_FR.pdf" title="UNICEF Innocenti (2024) — Évaluation des transferts monétaires à Nsele" class="source-ref source-ref-text nv" data-val-id="sD-p4-c1" data-val-status="à valider" data-val-file="04_annexes/annexe_D_programmes_hors_perimetre.md">Rapport d'évaluation UNICEF</a>
-
-### Lecture statistique <span class="valid-badge nv" title="Non validé — processus de validation non déclenché">non validé</span>
-
-Ces interventions illustrent la contribution de l'assistance non contributive à la
-réduction des vulnérabilités, mais elles ne peuvent pas être agrégées sans contrôle
-des recoupements. Un même ménage ou une même personne peut recevoir plusieurs formes
-d'assistance, tandis que les périodes et les unités de mesure diffèrent selon les
-programmes. Les résultats sont donc présentés comme des informations de programme,
-séparément des indicateurs nationaux de couverture effective.
 
 <!-- FIN FICHIER -->
