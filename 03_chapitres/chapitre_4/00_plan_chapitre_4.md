@@ -15,14 +15,14 @@ Logique rédactionnelle :
 
 Structure :
 
-4.2 Protection dans la vieillesse
+4.1 Protection dans la vieillesse
     — Bénéficiaires de pensions de vieillesse (CNSS : secteur privé ; CNSSAP : agents publics)
     — Transferts sociaux aux personnes âgées relevant du régime non contributif
     — Désagrégation : sexe, province
     — Adéquation : pension moyenne vs. salaire minimum national et seuil de pauvreté
     — Lacunes : estimation des personnes âgées sans protection
 
-4.3 Protection des personnes en âge actif
+4.2 Protection des personnes en âge actif
     — Couverture des travailleurs : assurés et cotisants actifs (CNSS, CNSSAP)
       Désagrégation : sexe, secteur d'activité, province
     — Protection maternité : bénéficiaires, prestations versées
@@ -30,31 +30,31 @@ Structure :
     — Accidents du travail et maladies professionnelles : nombre de cas, prestations
     — Lacunes : travailleurs de l'économie informelle, travailleurs indépendants
 
-4.4 Protection des enfants et des familles
+4.3 Protection des enfants et des familles
     — Allocations familiales (régime contributif : CNSS, CNSSAP)
     — Programmes d'assistance ciblant les enfants et familles vulnérables (régime non contributif)
     — Bénéficiaires par programme, province et sexe
     — Adéquation des transferts
     — Lacunes : enfants sans protection
 
-4.5 Protection en cas d'invalidité
+4.4 Protection en cas d'invalidité
     — Pensions d'invalidité (CNSS, CNSSAP) : nombre de bénéficiaires, montants
     — Programmes d'appui aux personnes handicapées (non contributif)
     — Désagrégation : sexe, degré d'invalidité (si disponible)
     — Lacunes de couverture
 
-4.6 Protection en cas de décès (prestations de survie)
+4.5 Protection des survivants en cas de décès
     — Pensions de survie / ayants droit (CNSS, CNSSAP)
     — Capital décès et autres prestations
     — Désagrégation : sexe, type de bénéficiaire (conjoint, enfants)
 
-4.7 Protection en matière de santé
+4.6 Protection en matière de santé
     — FSS (Fonds de Solidarité de Santé) : régime contributif Afia Bora (travailleurs formels)
       et non contributif Kobota Ofele (mères et nouveau-nés, financement État)
     — MESP (Mutuelle des Enseignants de l'EPST) : régime statutaire contributif pour les enseignants
     — Mutuelles de santé volontaires : mentionnées à titre contextuel (pas de données consolidées)
 
-4.8 Dépenses et financement du système
+4.7 Dépenses et financement du système
     — Recettes totales : cotisations, transferts publics, autres
     — Dépenses de prestations par contingence et par régime
     — Dépenses administratives (séparées des dépenses de prestations)
@@ -73,3 +73,7 @@ Le détail des données institution par institution (CNSS, CNSSAP, et programmes
 
 Statut : structure initiale
 -->
+
+## Texte rédigé
+
+Ce chapitre examine qui bénéficie effectivement d’une protection sociale en RDC et sous quelle forme. Pour chaque risque, les données disponibles permettent de distinguer les droits prévus par les textes des prestations effectivement servies par les régimes contributifs et les programmes non contributifs. Dans le cas de la vieillesse, qui ouvre le chapitre, cette distinction est celle entre le droit à une pension et le fait de la percevoir. La dernière section présente les dépenses de protection sociale et leur financement.

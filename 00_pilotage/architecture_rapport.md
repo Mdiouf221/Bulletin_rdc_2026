@@ -1,4 +1,4 @@
-﻿# Architecture générale du deuxième Bulletin statistique de la protection sociale en RDC
+# Architecture générale du deuxième Bulletin statistique de la protection sociale en RDC
 
 <!-- NOTE_INTERNE
 Objet du fichier :
@@ -16,15 +16,15 @@ révisé  2026-06-08
 1. Résumé exécutif *(à rédiger)*
 2. Pages préliminaires
 3. Introduction générale — Chapitre 1 (sections 1.1–1.3)
-4. Chapitre 2  Cadre conceptuel et périmètre statistique (sections 2.1–2.5)
+4. Chapitre 2  Cadre conceptuel et périmètre statistique (sections 2.1, 2.2 et 2.4 ; numérotation conservée)
 5. Chapitre 3  Cartographie institutionnelle de la protection sociale (sections 3.1–3.2)
-6. Chapitre 4  Protection sociale face aux risques de vie — couverture, prestations et financement (sections 4.2–4.8)
+6. Chapitre 4  Protection sociale face aux risques de vie — couverture, prestations et financement (sections 4.1–4.7)
 7. Chapitre 5  Positionnement au regard des indicateurs ODD (sections 5.1–5.2)
 8. Chapitre 6  Qualité, disponibilité et perspectives (sections 6.1–6.4) *(structure initiale)*
 9. Conclusion générale et recommandations *(à rédiger)*
 10. Annexes
 
-> **Note de cohérence (juin 2026) :** La numérotation ci-dessus correspond à celle effectivement utilisée dans les titres des fichiers Markdown. L'introduction générale constitue le Chapitre 1 du rapport (sections 1.1–1.3). Le cadre conceptuel est le Chapitre 2 (sections 2.1–2.5). Le dossier `03_chapitres/chapitre_3/` contient un plan orphelin issu d'une révision architecturale antérieure — son contenu a été fusionné dans le chapitre 4 ; ce dossier sera traité lors de la prochaine révision structurelle.
+> **Note de cohérence (mise à jour novembre 2026) :** La numérotation ci-dessus correspond à celle effectivement utilisée dans les titres des fichiers Markdown. L'introduction générale constitue le Chapitre 1 du rapport (sections 1.1–1.3). Le cadre conceptuel est le Chapitre 2 (sections 2.1, 2.2 et 2.4 ; la section 2.3 a été déplacée en annexe et la section 2.5 retirée de l'assemblage). Le dossier `03_chapitres/chapitre_3/` contient un plan orphelin issu d'une révision architecturale antérieure — son contenu a été fusionné dans le chapitre 4 ; ce dossier sera traité lors de la prochaine révision structurelle.
 
 ## Pages préliminaires prévues
 
@@ -48,7 +48,8 @@ révisé  2026-06-08
 2.2 Approche retenue pour le bulletin : cadre BIT/OIT et indicateurs de couverture effective
 2.3 Champ de la protection sociale et critères d'inclusion statistique *(déplacé en Annexe A.1)*
 2.4 Grilles de lecture : classification des régimes, programmes et prestations
-2.5 Précautions de lecture : distinctions statistiques et limites méthodologiques
+
+La section 2.5 « Précautions de lecture » est retirée de l'assemblage ; son fichier est conservé pour traçabilité. Les distinctions essentielles figurent en 2.2 et les précisions méthodologiques dans les annexes et les sections concernées.
 
 ## Chapitre 3  Cartographie institutionnelle de la protection sociale
 
@@ -56,9 +57,15 @@ révisé  2026-06-08
 Voir 03_chapitres/chapitre_2/00_plan_chapitre_2.md
 -->
 
-3.1 Panorama des régimes et programmes de protection sociale en RDC
+3.1 Régimes contributifs obligatoires hors santé
 
-3.2 Programmes et dispositifs hors périmètre OIT
+3.2 Régimes spéciaux
+
+3.3 Protection de la santé
+
+3.4 Programmes d'assistance sociale et initiatives non contributives
+
+3.5 Prestations relevant de la responsabilité de l’employeur
 
 ## Chapitre 4  Protection sociale face aux risques de vie — couverture, prestations et financement
 

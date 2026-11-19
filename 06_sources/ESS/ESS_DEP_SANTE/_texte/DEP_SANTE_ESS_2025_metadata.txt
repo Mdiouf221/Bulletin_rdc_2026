@@ -18,6 +18,9 @@ Classeur ESS 2025 transmis par la DEP-SANTÉ, archivé sans import dans la base 
 
 OBSERVATIONS MÉTHODOLOGIQUES
 
+- Lecture directe, « Régime 2 », B21 : le Secrétariat général à la santé indique avoir traité 124 dossiers d’évacuation sanitaire à l’étranger et 47 dossiers de prise en charge à l’hôpital Ngaliema (Kinshasa). Il ne renseigne ni le montant minimum ni le montant moyen payé.
+- « Inventaire des régimes », B48 : seuls sont comptés les dossiers transmis par le Secrétariat général au cabinet du ministre pour signature ; les dossiers préparés directement par le cabinet sont exclus. Les chiffres ne mesurent ni les autorisations signées, ni les soins réalisés, ni les personnes distinctes. Période à confirmer avant publication.
+
 - Le rapport de validation du 11 octobre 2026 est bloquant : aucune ligne de régime valide n'est détectée dans l'onglet « Inventaire des régimes ».
 - L'année n'est pas lisible dans la cellule attendue de l'inventaire.
 - Le fichier ne doit pas être importé dans la base ESS ni cité dans le bulletin tant qu'une version corrigée ou une clarification institutionnelle n'a pas été obtenue.

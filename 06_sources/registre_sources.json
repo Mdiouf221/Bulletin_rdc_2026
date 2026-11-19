@@ -13,6 +13,14 @@
   }
  },
  "sources": [
+  {"id":"RDC-Code-travail-015-2002","titre":"Loi n° 015/2002 du 16 octobre 2002 portant Code du travail","organisation":"RDC, Journal officiel","annee":2002,"niveau_fiabilite":2,"url_source":"https://annuairetravail.gouv.cd/admin/pdf_storage/code-du-travail-2002_694dd6b8c1741.pdf","fichier_pdf":"06_sources/officielles_web/RDC_Code_travail_2002.pdf","fichier_metadata":"06_sources/officielles_web/RDC_Code_travail_2002.txt","fichier_texte_extrait":"06_sources/officielles_web/_texte/RDC_Code_travail_2002.txt","statut_pdf":"présent","statut_texte":"converti","statut_verification":"vérifié","note":"Texte initial non consolidé ; lire avec la loi n° 16/010.","sections_citantes":[]},
+  {"id":"RDC-Code-travail-16-010","titre":"Loi n° 16/010 du 15 juillet 2016 modifiant et complétant la loi n° 015-2002 portant Code du travail","organisation":"RDC, Journal officiel","annee":2016,"niveau_fiabilite":2,"url_source":"https://annuairetravail.gouv.cd/admin/pdf_storage/loi-n-16-010-du-juillet-2016-modifiant-et-compl-tant-la-loi-n-015-2002-portant-code-de-travail_6957fa9c4a5b2.pdf","fichier_pdf":"06_sources/officielles_web/RDC_Modification_code_travail_2016.pdf","fichier_metadata":"06_sources/officielles_web/RDC_Modification_code_travail_2016.txt","fichier_texte_extrait":"06_sources/officielles_web/_texte/RDC_Modification_code_travail_2016.txt","statut_pdf":"présent","statut_texte":"converti","statut_verification":"vérifié","note":"Art. 129 remplacé ; art. 130 non remplacé par cette loi.","sections_citantes":[]},
+  {"id":"RDC-Securite-sociale-16-009","titre":"Loi n° 16/009 du 15 juillet 2016 fixant les règles relatives au régime général de la sécurité sociale","organisation":"RDC, Journal officiel","annee":2016,"niveau_fiabilite":2,"url_source":"https://annuairetravail.gouv.cd/admin/pdf_storage/loi-sur-la-cnss_694bfeb47b1cd.pdf","fichier_pdf":"06_sources/officielles_web/RDC_Regime_general_securite_sociale_2016.pdf","fichier_metadata":"06_sources/officielles_web/RDC_Regime_general_securite_sociale_2016.txt","fichier_texte_extrait":"06_sources/officielles_web/_texte/RDC_Regime_general_securite_sociale_2016.txt","statut_pdf":"présent","statut_texte":"converti","statut_verification":"vérifié","note":"Reproduction au Journal officiel du 5 avril 2019. Coordination monétaire de la maternité non explicitée dans les trois lois examinées.","sections_citantes":[]},
+  {"id": "MSPHPS_RDC_programmes_sante", "titre": "Programmes de lutte contre les maladies transmissibles", "organisation": "Ministère de la Santé publique, de l’Hygiène et de la Prévoyance sociale (RDC)", "annee": null, "niveau_fiabilite": 2, "url_source": "https://sante.gouv.cd/programme/programmes-de-lutte-contre-les-maladies-transmissibles", "fichier_metadata": "06_sources/officielles_web/MSPHPS_RDC_programmes_sante.txt", "statut_verification": "à valider", "donnees_cles": ["Répertoire institutionnel des programmes, notamment de vaccination et de lutte contre le VIH. Il documente le ministère compétent, pas les tarifs des prestations."], "sections_citantes": ["03_chapitres/chapitre_4/4.7_sante.md"]},
+  {"id": "UNICEF_RDC_calendrier_vaccinal", "titre": "Calendrier vaccinal pour les enfants de 0 à 15 mois", "organisation": "UNICEF RDC", "annee": null, "niveau_fiabilite": 1, "url_source": "https://www.unicef.org/drcongo/calendrier-vaccinal-enfants-rdc", "fichier_metadata": "06_sources/officielles_web/UNICEF_RDC_calendrier_vaccinal.txt", "statut_verification": "à valider", "donnees_cles": ["L’UNICEF indique que la vaccination de routine des enfants est gratuite. Le calendrier ne mesure pas le nombre d’enfants effectivement vaccinés."], "sections_citantes": ["03_chapitres/chapitre_4/4.7_sante.md"]},
+  {"id": "ACP_RDC_traitement_VIH_2023", "titre": "RDC : plus de 400.000 personnes vivant avec le VIH accèdent au traitement antirétroviral", "organisation": "Agence congolaise de presse (ACP), déclaration du directeur du Programme national de lutte contre le sida", "annee": 2023, "niveau_fiabilite": 5, "url_source": "https://acp.cd/science-sante-environnement/rdc-plus-de-400-000-personnes-vivant-avec-le-vih-accedent-au-traitement-antiretroviral/", "fichier_metadata": "06_sources/sources_incertaines/ACP_RDC_traitement_VIH_2023.txt", "statut_verification": "à valider", "donnees_cles": ["Le directeur indique que le traitement antirétroviral est gratuit dans toutes les provinces. Déclaration rapportée par la presse, non une vérification de la disponibilité continue dans chaque établissement."], "sections_citantes": ["03_chapitres/chapitre_4/4.7_sante.md"]},
+  {"id": "ACP_RDC_tuberculose_2025", "titre": "Tuberculose : 1 050 patients attendus au dépistage gratuit dans un camp militaire de Kinshasa", "organisation": "Agence congolaise de presse (ACP), déclaration d’un responsable du Programme national de lutte contre la tuberculose", "annee": 2025, "niveau_fiabilite": 5, "url_source": "https://acp.cd/science-sante-environnement/tuberculose-1-050-patients-attendus-au-depistage-gratuit-dans-un-camp-militaire-de-kinshasa/", "fichier_metadata": "06_sources/sources_incertaines/ACP_RDC_tuberculose_2025.txt", "statut_verification": "à valider", "donnees_cles": ["Lors de cette campagne à Kinshasa, le PNLT a annoncé la gratuité du dépistage et du traitement si la maladie était détectée. La source n’établit pas le nombre de patients soignés ni une couverture nationale."], "sections_citantes": ["03_chapitres/chapitre_4/4.7_sante.md"]},
+  {"id": "OMS_RDC_soins_primaires_Kivu_2025", "titre": "RDC : l’OMS appuie la continuité des services de santé à l’Est", "organisation": "Organisation mondiale de la Santé (OMS), Bureau régional de l’Afrique", "annee": 2025, "niveau_fiabilite": 1, "url_source": "https://www.afro.who.int/node/21661", "fichier_metadata": "06_sources/officielles_web/OMS_RDC_soins_primaires_Kivu_2025.txt", "statut_verification": "à valider", "donnees_cles": ["L’OMS rapporte 197 088 bénéficiaires de soins de santé primaires gratuits au Nord-Kivu et au Sud-Kivu dans le cadre de la réponse humanitaire avec les partenaires de santé. Il s’agit du bilan rapporté en juin, pas d’un total annuel ou national. Aucun dédoublonnage avec les prises en charge du FSS n’est établi."], "sections_citantes": ["03_chapitres/chapitre_4/4.7_sante.md"]},
   {
    "id": "BIT-WSPR-2024",
    "titre": "Rapport mondial sur la protection sociale 2024-26 : Protection sociale universelle pour une action climatique et une transition juste",
@@ -422,6 +430,53 @@
    ]
   },
   {
+   "id": "MINAS-SNPS-NC-2025",
+   "titre": "Stratégie nationale de protection sociale non contributive (SNPS-NC) — RDC, 2025–2029",
+   "organisation": "Gouvernement RDC — Ministère des Affaires Sociales (MINAS)",
+   "annee": 2025,
+   "niveau_fiabilite": 1,
+   "url_source": "https://minas.gouv.cd/wp-content/uploads/2026/07/SNPS-NC-18x248-.pdf-VF.pdf",
+   "fichier_pdf": "06_sources/officielles_web/MINAS_SNPS-NC_RDC_2025-2029.pdf",
+   "fichier_texte_extrait": "06_sources/officielles_web/_texte/MINAS_SNPS-NC_RDC_2025-2029.txt",
+   "statut_pdf": "présent — document consulté sur le site officiel du MINAS",
+   "statut_texte": "converti — 172 pages",
+   "statut_verification": "à valider",
+   "donnees_cles": [
+    "Stratégie consacrée à la protection sociale non contributive pour la période 2025–2029",
+    "Quatre axes : filets sociaux ; inclusion économique et capacités productives ; protection adaptative aux chocs ; renforcement institutionnel",
+    "La date de publication formelle et l'adoption par le Conseil des ministres ne sont pas établies par le document consulté"
+   ],
+   "citation_recommandee": "Gouvernement de la RDC — MINAS (2025), Stratégie nationale de protection sociale non contributive 2025–2029, Kinshasa.",
+   "sections_citantes": [
+    "03_chapitres/chapitre_1"
+   ],
+   "fichier_metadata": "06_sources/officielles_web/_texte/MINAS_SNPS-NC_RDC_2025-2029_metadata.txt"
+  },
+  {
+   "id": "MINAS-SNPS-NC-VALID-2025",
+   "titre": "Annonce de validation technique de la SNPS-NC 2025–2029 — MINAS, 21 mai 2025",
+   "organisation": "MINAS — CCOM/CP/CSPP-MINAS",
+   "annee": 2025,
+   "niveau_fiabilite": 1,
+   "url_source": "https://minas.gouv.cd/affaires-sociales-validation-de-la-strategie-de-protection-sociale-non-contributive-2025-2029-en-rdc-une-etape-decisive-vers-une-protection-equitable-et-inclusive/",
+   "fichier_pdf": null,
+   "fichier_texte_extrait": "06_sources/officielles_web/_texte/MINAS_validation_SNPS-NC_RDC_2025.txt",
+   "statut_pdf": "sans objet — page institutionnelle archivée en HTML",
+   "statut_texte": "extrait du contenu de la page HTML archivée",
+   "statut_verification": "à valider",
+   "donnees_cles": [
+    "L'atelier de validation de la SNPS-NC s'est tenu les 13 et 14 mai 2025",
+    "La publication rapporte une validation au niveau technique et indique que le document devait être soumis au Conseil des ministres en vue de son adoption officielle",
+    "La publication ne confirme pas l'adoption formelle ultérieure ni la mise en œuvre"
+   ],
+   "note": "Une copie HTML statique contenant uniquement le texte de l'article est archivée sous 06_sources/officielles_web/MINAS_validation_SNPS-NC_RDC_2025.html ; les scripts de la page web n'ont pas été conservés.",
+   "citation_recommandee": "MINAS (2025), « Affaires Sociales : Validation de la Stratégie de Protection Sociale Non Contributive 2025–2029 en RDC », 21 mai 2025.",
+   "sections_citantes": [
+    "03_chapitres/chapitre_1"
+   ],
+   "fichier_metadata": "06_sources/officielles_web/_texte/MINAS_validation_SNPS-NC_RDC_2025_metadata.txt"
+  },
+  {
    "id": "RDC-PROG-NON-CONTRIB",
    "titre": "Programmes gouvernementaux non contributifs — RDC (2019-2026)",
    "organisation": "Diverses sources officielles RDC compilées",
@@ -508,7 +563,7 @@
     "Caisse nationale d'assurance maladie de la RDC (CSU)",
     "Créé par Loi n°18/035 du 13/12/2018 ; organisé par Décret n°22/13 du 09/04/2022",
     "Produits : Afia Bora (paquet de base) / Kobota Ofele (mère et enfant) / Afia Bora Prime (complémentaire)",
-    "Statut 2026 : opérationnel (pas encore opérationnel au moment du 1er bulletin 2024)",
+    "Kobota Ofele : prises en charge documentées depuis septembre 2023 ; assurance maladie obligatoire : affiliation encadrée par le décret du 15 décembre 2025, premiers encaissements non documentés par sous-régime",
     "Assemblée générale FSS : 15 avril 2026"
    ],
    "note": "Nombre d'affiliés, cotisants et bénéficiaires non disponibles sur le site à la date de consultation.",
@@ -1382,7 +1437,7 @@
    "fichier_source": "06_sources/ESS/ESS_CGAT/ESS_CGAT_2024.xlsm",
    "statut_texte": "fiche de m?tadonn?es cr??e",
    "statut_verification": "? valider",
-   "note": "Formulaire ESS transmis dans le cadre de l?atelier de validation et int?gr? via PROC-008. Trois r?gimes de mutuelles de sant? volontaire sont renseign?s. Les montants financiers sont libell?s en dollars et ne sont pas convertis en CDF sans taux document?.",
+   "note": "Formulaire ESS transmis dans le cadre de l?atelier de validation et int?gr? via PROC-008. Les effectifs sont ventilés entre Kinshasa, le Kongo-Central et Goma. Les montants financiers sont libell?s en dollars et ne sont pas convertis en CDF sans taux document?.",
    "citation_recommandee": "CGAT (2024), Enqu?te sur les Sources Statistiques (ESS), donn?es des mutuelles de sant? volontaire, document transmis dans le cadre de l?atelier de validation.",
    "sections_citantes": [],
    "fichier_metadata": "06_sources/ESS/ESS_CGAT/_texte/ESS_CGAT_2024_metadata.txt",
@@ -1397,7 +1452,7 @@
    "fichier_source": "06_sources/ESS/ESS_CGAT/ESS_CGAT_2025.xlsm",
    "statut_texte": "fiche de m?tadonn?es cr??e",
    "statut_verification": "? valider",
-   "note": "Formulaire ESS transmis dans le cadre de l?atelier de validation et int?gr? via PROC-008. Trois r?gimes de mutuelles de sant? volontaire sont renseign?s. Les montants financiers sont libell?s en dollars et ne sont pas convertis en CDF sans taux document?.",
+   "note": "Formulaire ESS transmis dans le cadre de l?atelier de validation et int?gr? via PROC-008. Les effectifs sont ventilés entre Kinshasa, le Kongo-Central et Goma. Les montants financiers sont libell?s en dollars et ne sont pas convertis en CDF sans taux document?.",
    "citation_recommandee": "CGAT (2025), Enqu?te sur les Sources Statistiques (ESS), donn?es des mutuelles de sant? volontaire, document transmis dans le cadre de l?atelier de validation.",
    "sections_citantes": [],
    "fichier_metadata": "06_sources/ESS/ESS_CGAT/_texte/ESS_CGAT_2025_metadata.txt",

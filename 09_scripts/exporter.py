@@ -556,7 +556,7 @@ def export_html(
 def export_word(
     include_notes: bool = False,
     open_after: bool = False,
-    excel_chart_mode: str = "embedded",
+    excel_chart_mode: str = "linked",
     annexe_b_chart_mode: str | None = None,
     refresh_visuals: bool = False,
     reuse_html: bool = False,
@@ -780,9 +780,9 @@ def main() -> None:
         "--annexe-b-charts",
         dest="excel_charts",
         choices=("linked", "embedded", "png", "auto"),
-        default=os.environ.get("EXCEL_CHART_MODE") or os.environ.get("ANNEXE_B_CHART_MODE", "embedded"),
+        default=os.environ.get("EXCEL_CHART_MODE") or os.environ.get("ANNEXE_B_CHART_MODE", "linked"),
         help=(
-            "Export Word annexe B/C : linked (objets Excel liés), embedded (objets Excel incorporés), "
+            "Export Word annexe B/C : linked (objets Excel liés, par défaut), embedded (objets Excel incorporés), "
             "png (conserver les PNG) ou auto (embedded si COM Word/Excel disponible, sinon PNG). "
             "Alias historique accepté : --annexe-b-charts."
         ),

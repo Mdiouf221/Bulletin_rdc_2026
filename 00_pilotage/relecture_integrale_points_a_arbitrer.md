@@ -14,6 +14,21 @@ Statut : rédigé — 2026-09-03
 
 ## Méthode
 
+### Annexe d’accompagnement — rapprochement du chapitre 4 et des annexes B et C (19 novembre 2026)
+
+Cette note de validation est distincte du bulletin publié. Les tableaux conservent leurs sources et leur périmètre ; les arbitrages ci-dessous ne constituent pas des corrections institutionnellement validées.
+
+| Point | Écart documenté | Vérification à obtenir |
+|---|---|---|
+| CNSSAP — cotisants du régime de base (4.3, B.2, C.9) | En 2023 : 1 004 106 dans l’ESS, 1 003 277 dans l’annuaire (+829). En 2025 : 1 470 429 contre 1 021 676 (+448 753). | Rapprocher la date d’arrêté et le champ EPST/hors EPST avec la feuille « Cotisants branche des pensions » de l’annuaire 2025. |
+| CNSSAP — retraites (4.1, B.2, C.7) | En 2024, 10 485 retraités de base dans l’ESS contre 9 015 dans l’annuaire. En 2025, les deux sources totalisent 13 174 retraites : base/basculement = 9 136/4 038 dans l’ESS, 10 613/2 561 dans l’annuaire. | Confirmer le classement des 1 477 dossiers de différence ; ne pas en déduire un mouvement individuel. |
+| CNSSAP — survivants (4.12, B.2, C.1) | Basculement : 6 593 dans l’ESS contre 6 177 dans l’annuaire en 2022 ; 17 844 contre 9 460 en 2023. Les cellules conjoint/orphelin sont répétées dans les deux régimes en 2023 et dans la base en 2024. En 2024, au basculement, l’annuaire affiche 8 285 pour un détail de 8 228. En 2025, l’ESS donne 4 383 + 550 = 4 933 ; l’annuaire affiche 4 933, mais son détail donne 2 561 + 4 933 = 7 494. | Vérifier les rubriques conjoint/orphelin et les totaux de l’annuaire (« Beneficiaires Basc », « Ayant droit retr Basc »). |
+| ODD — couverture globale 2022 | Tableau 4.20 et C.1 : 2 262 834 / 102 396 968, soit 2,2 %. Tableau 4.21 : 2,0 %. Retrancher les 222 800 élèves reproduit l’arrondi de 2,0 %, sans établir comment il a été obtenu. | Retrouver la source et le périmètre exacts du comparatif avant de conclure. |
+| ODD — orphelins 2025 | C.2 et C.8 retiennent les 448 orphelins de la base, sans les 550 du basculement (ESS CNSSAP, régime 4, L7). | Vérifier la règle d’inclusion et le risque de double compte avant tout changement du calcul. |
+| ODD global — cotisants CNSSAP 2025 | C.1 additionne 1 470 429 cotisants de base et 262 419 cotisants du complémentaire. Leur recoupement n’est pas établi. | Obtenir le nombre de cotisants du complémentaire absents du régime de base avant de modifier le numérateur publié. |
+| Graphiques CNSSAP — figures B.2.1 et B.2.2 | Les figures livrées ne couvrent pas les rubriques R3 et R4 de 2025. Le complémentaire passe de R4 à R2 ; le basculement passe de R2 à R4. | Raccorder les séries par régime, non par numéro de feuille, avant de présenter une évolution tous régimes. |
+| Comptes — tableau 4.16 | L’inclusion des dépenses de la quatrième branche dans le montant commun des trois premières branches CNSS reste indéterminée. En 2023–2024, les montants ESS de la CNSSAP ne coïncident pas avec les postes comptables de l’annuaire. | Confirmer le périmètre des charges et les unités ; ne pas ajouter les postes par hypothèse. |
+
 Relecture croisée : fichiers sources Markdown, base `06_donnees/protection_sociale_rdc.db` (ESS),
 prévisualisation navigateur, tableau de bord, et vérification Internet sur sources officielles
 (NORMLEX, ILOSTAT, FMI DataMapper, Banque mondiale PIP/WDI, ONU WPP/WUP, WSPR 2024-26).
@@ -136,13 +151,23 @@ La revue des sections 4.2 à 4.9 du chapitre 4 et des annexes B et C a été rep
 - **Gravité :** majeur (le ratio pension/seuil change de base en 2024).
 - **Traitement retenu :** conserver les deux périodes avec une note de rupture méthodologique ; ne pas présenter 2 414 CDF/jour comme une valeur INS définitivement confirmée.
 
+- **Harmonisation (2026-11-19), tableaux 4.2, 4.7, 4.10 et 4.13 :** afficher la référence provisoire de 72 420 CDF/mois reconduite de 2019 à 2023, le seuil ECVM de 172 774 CDF/mois en 2024 et N/D en 2025, sans ligne de pourcentage. Il ne s’agit pas de cinq observations INS indépendantes. Demander à l’INS la publication primaire, l’unité et les années de validité des 2 414 CDF/jour.
+
+### B2 bis. CNSS — rupture du minimum mensuel de pension payé en 2023
+- **Constat vérifié :** ESS CNSS, feuille « Régime 3 », ligne « Pension de retraite » : la cellule Q5 (minimum mensuel payé) passe de 320 000 CDF en 2022 à 230 000 CDF en 2023 et 2024. R5 (moyenne) n’est pas renseignée.
+- **Question à la CNSS :** confirmer la comparabilité des montants et préciser l’origine de la baisse déclarée. Dans l’intervalle, conserver la série telle que déclarée, sans en déduire une baisse du minimum légal ou des pensions individuelles.
+
 ### B3. Sous-indicateur « Enfants » : dénominateur INS 0–17 ans
+
+**Point connexe — tableau 4.7, barème des allocations familiales CNSS (2019–2025).** Les articles 3 et 4 de l’[arrêté ministériel n° 137](https://annuairetravail-rdc.cd/detail?slug=arrete-ministeriel-n-137-determinant-le-montant-les-modalites-de-paiement-des-allocations-familiales-et-les-conditions-de-suspension) fixent 8 100 CDF par enfant et par mois, payables à terme échu chaque trimestre (24 300 CDF pour trois mois de droits). La reproduction consultée est signalée « modifié » sans préciser si le montant a changé. Demander à la CNSS les dates d’application de ce barème et des éventuelles revalorisations. Ne pas reconduire la valeur sur sept années sans cette chronologie ; distinguer barème et montant effectivement payé.
 - **Statut : traité (2026-11-11, arbitrage révisé).** Le dénominateur INS/RDC A3 est prioritaire pour le sous-indicateur : population âgée de 0 à 17 ans. Les effectifs 2019–2024 sont dérivés des proportions A3 arrondies et de la population totale INS ; cette précision est conservée dans les métadonnées et les notes méthodologiques.
 - **Fichiers :** `4.9_odd_131.md`, `00_pilotage/indicateurs_odd_regles_calcul.md`, `10_output/dashboard_settings.json`.
 - **Gravité :** majeur (le taux dépend directement du dénominateur retenu).
 - **Arbitrage retenu :** utiliser le dénominateur INS A3 0–17 ans et documenter le choix dans DM-024.
 
 ### B4. Cantines scolaires PAM — « décision a été prise d'intégrer » non documentée
+
+**Rupture de série 2024–2025 — tableau 4.8.** Le [rapport PAM 2024](../06_sources/officielles_web/WFP_RDC_rapport_annuel_2024_metadata.txt) cite 272 000 enfants dans le texte et 194 636 enfants servis sur site dans le tableau détaillé, pour une activité couvrant six provinces. Le [rapport PAM 2025](../06_sources/officielles_web/WFP_RDC_rapport_annuel_2025_metadata.txt) dénombre 145 030 élèves du primaire servis en repas chauds sur site dans cinq provinces, hors personnel d’appui et rations à emporter. Le niveau scolaire et le territoire ne sont pas établis à périmètre constant. **Décision :** conserver 145 030 comme donnée source, afficher **[N/D]** en 2025 dans le tableau 4.8 et ne pas calculer de variation 2024–2025. N/D désigne ici l’absence d’effectif comparable, non l’absence de repas servis. Cette décision de présentation ne modifie pas les calculs ODD.
 - **Statut : traité (2026-09-03).** Phrase reformulée dans la note du Tableau 2.4 : le programme est présenté dans la cartographie de la protection sociale des enfants mais demeure exclu de l'ODD 1.3.1 (prestation en nature), avec renvoi explicite à FICHE-002 et DM-011 — conforme au registre d'inclusion.
 - **Fichier :** `03_chapitres/chapitre_2/2_1_cartographie_tableaux.md` (note du Tableau 2.4) vs `00_pilotage/registre_inclusion_programmes.md` (FICHE-002 : exclu de ODD 1.3.1, prestation en nature).
 - **Gravité :** majeur (contradiction apparente entre cartographie et registre).
@@ -155,7 +180,7 @@ La revue des sections 4.2 à 4.9 du chapitre 4 et des annexes B et C a été rep
 - **Traitement :** aucune modification supplémentaire nécessaire ; conserver la distinction actuelle entre assistance sociale et politique sectorielle de niveau 3.
 
 ### B5 bis. Mutuelles volontaires (POMUCO/CGAT) — séries manquantes
-- **Statut : traité (2026-11-10).** Les formulaires ESS CGAT 2024 et 2025 et la présentation institutionnelle POMUCO/CGAT ont été extraits des entrants, classés et intégrés. La série couvre désormais trois mutuelles sur 2021–2025 ; les années 2019–2020 restent [N/D]. Ces régimes volontaires ne sont pas inclus dans les indicateurs de couverture.
+- **Statut : traité (2026-11-10).** Les formulaires ESS CGAT 2024 et 2025 et la présentation institutionnelle POMUCO/CGAT ont été extraits des entrants, classés et intégrés. La série ESS distingue Kinshasa, le Kongo-Central et Goma sur 2021–2025 ; les années 2019–2020 restent [N/D]. Ces régimes volontaires ne sont pas inclus dans les indicateurs de couverture.
 - **Fichier :** `04_annexes/annexe_B_fiches_institutionnelles.md`, section B.8.
 - **Traitement :** les effectifs 2024–2025 sont ajoutés sans extrapolation. Les montants financiers libellés en dollars sont conservés comme données de source mais ne sont pas convertis en CDF sans taux documenté.
 

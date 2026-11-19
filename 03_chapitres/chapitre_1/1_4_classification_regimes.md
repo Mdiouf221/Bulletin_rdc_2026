@@ -1,11 +1,11 @@
-﻿## 2.4 Grilles de lecture : classification des régimes, programmes et prestations
+## 2.4 Grilles de lecture : classification des régimes, programmes et prestations
 
 <!-- NOTE_INTERNE
 Contenu à couvrir :
 Version condensée. Le développement complet figure en Annexe A.2.
 Présente les distinctions essentielles (couverture légale/effective, dimensions de classification) de façon synthétique.
 
-Note : les tableaux de cartographie institutionnelle figurent en section 3.1 du Chapitre 3.
+Note : les tableaux de cartographie institutionnelle figurent aux sections 3.1 à 3.4 du chapitre 3.
 
 Sources mobilisées :
 - C102 (1952)  9 branches, Parties II à X

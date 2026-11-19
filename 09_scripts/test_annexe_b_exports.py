@@ -53,6 +53,24 @@ class AnnexeBExportTests(unittest.TestCase):
         self.assertFalse(annexe_b.has_auto_generated_block(incomplete, "CNSS"))
         self.assertFalse(annexe_b.has_auto_generated_block(complete, "MEPST"))
 
+    def test_chart_mosaic_keeps_half_width_cells(self):
+        from docx import Document
+        from docx.oxml.ns import qn
+
+        path = self.tmp_dir / "mosaique.docx"
+        doc = Document()
+        mosaic = doc.add_table(rows=1, cols=2)
+        mosaic.cell(0, 0).text = "[[EXCEL_CHART:0001]]"
+        doc.add_table(rows=1, cols=2)
+        doc.save(path)
+        exporter_word.set_tables_autofit(path)
+        mosaic, ordinary = Document(path).tables
+        self.assertFalse(mosaic.autofit)
+        self.assertTrue(ordinary.autofit)
+        for cell in mosaic.rows[0].cells:
+            width = cell._tc.tcPr.tcW
+            self.assertEqual((width.get(qn('w:type')), width.get(qn('w:w'))), ('pct', '2500'))
+
     def test_figure_to_tabular_data_aligns_years(self):
         fig = go.Figure()
         fig.add_trace(go.Scatter(name="Série A", x=[2020, 2022], y=[10, 30]))
@@ -314,7 +332,7 @@ class AnnexeBExportTests(unittest.TestCase):
             args_default = parser.parse_args([])
             args_alias = parser.parse_args(["--annexe-b-charts", "linked"])
             args_new = parser.parse_args(["--excel-charts", "embedded"])
-        self.assertEqual(args_default.excel_charts, "embedded")
+        self.assertEqual(args_default.excel_charts, "linked")
         self.assertEqual(args_alias.excel_charts, "linked")
         self.assertEqual(args_new.excel_charts, "embedded")
 

@@ -2,6 +2,6 @@
 
 <!-- NOTE_INTERNE
 Objectif :
-Fichier d'en-tête du chapitre 1. Fournit le titre du chapitre dans la prévisualisation et dans le document assemblé.
+Fichier d'en-tête du chapitre 2. Fournit le titre du chapitre dans la prévisualisation et dans le document assemblé.
 Statut : validé
 -->

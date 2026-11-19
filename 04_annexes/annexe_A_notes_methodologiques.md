@@ -5,7 +5,7 @@ Objet :
 Présente les éléments méthodologiques détaillés déplacés depuis le chapitre 2, le chapitre 4 et le chapitre 5 pour alléger le corps du texte. Comprend :
 - A.1 : Champ de la protection sociale et critères d'inclusion statistique (ex-section 2.3)
 - A.2 : Classification des régimes, programmes et prestations — grilles complètes (ex-section 2.4)
-- A.3 : Note méthodologique unique sur la conversion du seuil de pauvreté et la lecture des montants nominaux, consolidée à partir de notes de bas de page identiques répétées dans les sections 4.2, 4.4, 4.5 et 4.6
+- A.3 : Note méthodologique unique sur la conversion du seuil de pauvreté et la lecture des montants nominaux, consolidée à partir de notes de bas de page identiques répétées dans les sections 4.1, 4.3, 4.4 et 4.5
 - A.4 : Tableau des cinq critères d'inclusion (C1-C5) de la composante statutaire budgétaire dans l'indicateur ODD 1.3.1, déplacé depuis la section 5.1 où il était présenté deux fois (avant et après le tableau de résultats)
 
 Ces annexes sont destinées au lecteur qui souhaite comprendre les fondements opérationnels des choix statistiques du bulletin. Les chapitres 2, 4 et 5 en présentent les principes essentiels ou les résultats ; ces annexes en fournissent le détail.
@@ -90,7 +90,7 @@ Plusieurs tableaux du chapitre 4 comparent le montant de prestations en espèces
 
 La réponse transmise au projet attribue à l'INS un seuil de 2 414 CDF (2019–2023) puis de 5 680 CDF (2024), sous l'intitulé « CDF/personne/mois » ; le commentaire méthodologique associé précise toutefois qu'il s'agit de montants **par jour**. La valeur de 2 414 CDF/jour n'a pas été retrouvée dans une publication publique vérifiable de l'INS et reste donc provisoire. En revanche, le seuil ECVM 2024 de 5 680 CDF/jour est corroboré par les résultats publics de l'enquête. Les valeurs présentées dans le bulletin sont exprimées en équivalent mensuel : 2 414 × 30 ≈ 72 420 CDF pour 2019–2023, à titre provisoire, et environ 172 774 CDF/mois en 2024 sur la base du montant annuel ECVM publié de 2 073 282 CDF. Cette différence reflète à la fois l'évolution des prix et le changement d'enquête/méthode ; elle ne doit pas être interprétée comme une simple actualisation automatique par l'inflation.
 
-*Source : <a href="/files/06_sources/officielles_web/INS_RDC_ECVM_pauvrete_inegalites_2024.txt" title="Source : INS-RDC — Enquête 1-2-3 (2019-2023) et ECVM 2024 ; canevas de collecte 2026" class="source-ref nv">INS/RDC, Enquête 1-2-3 (2019-2023) et ECVM 2024</a>.*
+*Sources : pour 2019–2023, [canevas de collecte, feuille « Canevas de saisie », ligne 18](../06_donnees/INS/Canevas_donnees_INS_Bulletin_PS_RDC.xlsx) : une référence reconduite, et non cinq observations annuelles. Pour 2024, [INS, rapport final de l’ECVM, p. 32 du PDF](https://www.ins.gouv.cd/publication/Rapport%20Final_ECVM%20RDC%202024.pdf) : 2 073 282 ÷ 12 = 172 773,50 CDF par personne et par mois, arrondis à 172 774 CDF.*
 
 ---
 

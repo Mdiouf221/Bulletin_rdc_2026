@@ -17,6 +17,7 @@ Dépendances :
 import re
 import sys
 import pathlib
+from html import escape
 
 # --- Vérification de PyYAML ------------------------------------------------
 try:
@@ -59,7 +60,10 @@ path_publication = WORKSPACE_DIR / config["outputs"]["publication_markdown"]
 # ---------------------------------------------------------------------------
 # Contenus réservés à la version de travail
 # ---------------------------------------------------------------------------
-HTML_COMMENT_RE = re.compile(r"<!--.*?-->", re.DOTALL)
+HTML_COMMENT_RE = re.compile(
+    r"<!--(?!\s*MANUEL_EDIT:(?:DEBUT|FIN)\s*-->).*?-->",
+    re.DOTALL,
+)
 INTERNAL_PARAGRAPH_RE = re.compile(
     r'<p\b[^>]*class="[^"]*\b(?:dev-note|a-rediger)\b[^"]*"[^>]*>.*?</p>',
     re.DOTALL | re.IGNORECASE,
@@ -97,6 +101,7 @@ def remove_notes_internes(text: str) -> str:
 sections = config.get("sections", [])
 fichiers_manquants = []
 blocs_assembled = []
+preview_markers = {}
 
 for section in sections:
     section_title = section.get("title", "")
@@ -119,6 +124,9 @@ for section in sections:
             continue
 
         content = abs_path.read_text(encoding="utf-8-sig").strip()
+        preview_markers[len(blocs_assembled)] = (
+            f'\n\n<div hidden data-preview-file="{escape(rel_path, quote=True)}"></div>\n\n'
+        )
         blocs_assembled.append(f"\n\n{content}\n\n")
         blocs_assembled.append("<!-- FIN FICHIER -->\n")
 
@@ -140,9 +148,15 @@ print(f"[OK] Version travail écrite : {path_travail.relative_to(WORKSPACE_DIR)}
 header_publication = (
     f"# {config['project']['title']}\n\n"
 )
-pub_text = remove_notes_internes(full_text)
-pub_text = "\n".join(line.rstrip() for line in pub_text.splitlines())
-path_publication.write_text(header_publication + pub_text, encoding="utf-8")
+def publication(text):
+    cleaned = remove_notes_internes(text)
+    return header_publication + "\n".join(line.rstrip() for line in cleaned.splitlines())
+
+
+path_publication.write_text(publication(full_text), encoding="utf-8")
+if len(sys.argv) == 3 and sys.argv[1] == "--preview-markdown":
+    marked = "".join(preview_markers.get(i, "") + block for i, block in enumerate(blocs_assembled))
+    pathlib.Path(sys.argv[2]).write_text(publication(marked), encoding="utf-8")
 print(f"[OK] Version publication écrite : {path_publication.relative_to(WORKSPACE_DIR)}")
 
 # ---------------------------------------------------------------------------

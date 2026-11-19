@@ -526,13 +526,18 @@ def _build_annexe_c_chart_sources(workbook_path: str) -> tuple[dict[str, list[di
 
 
 def _replace_excel_images_with_markers(html: str) -> tuple[str, dict[str, Any]]:
+    from graphiques_word_hors_annexes import preparer_graphiques
+
+    intro = preparer_graphiques(html, os.path.join(OUTPUT_DIR, "introduction_graphiques.xlsx"))
+    for warning in intro["avertissements"]:
+        print(f"  [EXCEL-CHARTS] PNG conservé : {warning}")
     needs_annexe_b = bool(re.search(r'annexe_B_[^"]+\.png', html, flags=re.IGNORECASE))
     needs_annexe_c = bool(re.search(r'annexe_C_[^"]+\.png', html, flags=re.IGNORECASE))
-    if not needs_annexe_b and not needs_annexe_c:
+    if not needs_annexe_b and not needs_annexe_c and not intro["source_map"]:
         return html, {"version": 1, "workbooks": {}, "charts": []}
 
-    source_map: dict[str, list[dict[str, Any]]] = {}
-    workbooks: dict[str, str] = {}
+    source_map: dict[str, list[dict[str, Any]]] = intro["source_map"]
+    workbooks: dict[str, str] = intro["workbooks"]
     annexe_c_sheet_map: dict[str, dict[str, Any]] = {}
 
     if needs_annexe_b:
@@ -810,6 +815,11 @@ def apply_corrections(
         flags=re.IGNORECASE,
     )
 
+    if mode in {"linked", "embedded"}:
+        html, manifest = _replace_excel_images_with_markers(html)
+        _EXCEL_CHART_LINK_STATE["manifest"] = manifest
+        _EXCEL_CHART_LINK_STATE["markers"] = len(manifest.get("charts") or [])
+
     # [IMG-001] Résoudre toutes les images servies par la route /files/.
     def fix_img(m):
         relative_path = m.group(1)[len("/files/"):].replace("/", os.sep)
@@ -819,13 +829,6 @@ def apply_corrections(
         abs_path = abs_path.replace("\\", "/")
         return m.group(0).replace(m.group(1), abs_path)
     html = re.sub(r'src="(/files/[^"]+)"', fix_img, html)
-
-    if mode in {"linked", "embedded"}:
-        # [EXCEL-CHARTS] Remplacer les PNG B/C par des marqueurs uniques.
-        # Le collage OLE Word/Excel est fait après Pandoc via helper COM.
-        html, manifest = _replace_excel_images_with_markers(html)
-        _EXCEL_CHART_LINK_STATE["manifest"] = manifest
-        _EXCEL_CHART_LINK_STATE["markers"] = len(manifest.get("charts") or [])
 
     # [LNK-001] Conversion des annotations source-ref en notes de bas de page
     # Structure HTML : <a href="#" data-offline="true" title="Source : ..." ...>texte</a>
@@ -1172,7 +1175,17 @@ def set_tables_autofit(docx_path):
         if tblLayout is None:
             tblLayout = OxmlElement('w:tblLayout')
             tblPr.append(tblLayout)
-        tblLayout.set(qn('w:type'), 'autofit')
+        # Ne pas laisser un objet OLE agrandir une colonne de la mosaïque.
+        mosaic = len(table.columns) == 2 and any(
+            "[[EXCEL_CHART:" in text.text for text in tbl.iter(qn("w:t")) if text.text
+        )
+        tblLayout.set(qn('w:type'), 'fixed' if mosaic else 'autofit')
+        if mosaic:
+            for row in table.rows:
+                for cell in row.cells:
+                    width = cell._tc.get_or_add_tcPr().get_or_add_tcW()
+                    width.set(qn('w:type'), 'pct')
+                    width.set(qn('w:w'), str(2500 * cell._tc.grid_span))
 
         count += 1
 
@@ -1210,7 +1223,7 @@ def _ensure_excel_workbooks_com_compatible(manifest: dict[str, Any]) -> None:
 def export(
     html_path: str,
     out_suffix: str = "",
-    excel_chart_mode: str = "embedded",
+    excel_chart_mode: str = "linked",
     annexe_b_chart_mode: str | None = None,
 ):
     requested_raw_mode = annexe_b_chart_mode if annexe_b_chart_mode is not None else excel_chart_mode
@@ -1352,10 +1365,10 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "--annexe-b-charts",
         dest="excel_charts",
         choices=sorted(EXCEL_CHART_MODES),
-        default=os.environ.get("EXCEL_CHART_MODE") or os.environ.get("ANNEXE_B_CHART_MODE", "embedded"),
+        default=os.environ.get("EXCEL_CHART_MODE") or os.environ.get("ANNEXE_B_CHART_MODE", "linked"),
         help=(
             "Mode de remplacement des PNG annexe B/C : "
-            "linked (objets Excel liés), embedded (objets Excel incorporés), "
+            "linked (objets Excel liés, par défaut), embedded (objets Excel incorporés), "
             "png (conserver les PNG), auto (embedded si COM disponible, sinon PNG). "
             "Alias historique accepté : --annexe-b-charts."
         ),

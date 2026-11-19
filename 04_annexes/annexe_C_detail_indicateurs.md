@@ -49,11 +49,11 @@ Cette annexe présente, indicateur par indicateur, la construction complète des
 
 Pour rester lisible malgré la densité des données, cette annexe désigne les institutions par leur sigle (voir la [Liste des sigles et acronymes](../01_pages_preliminaires/sigles_acronymes.md)) et regroupe le détail du numérateur par régime : chaque ligne « Dont … » introduit un régime contributeur, ses prestations étant listées juste en dessous sous la forme « ↳ … », sans répéter l'institution ni le régime déjà indiqués. Le détail de construction du dénominateur (source retenue par année) est renvoyé en note de bas de page et factorisé par plage d'années partageant la même source.
 
-**Lecture du numérateur et règle de dédoublonnage.** Un même régime peut apparaître sous plusieurs branches lorsque ses cotisants relèvent simultanément de plusieurs risques couverts (par exemple, les cotisants de la CNSS financent à la fois la branche des pensions, celle des risques professionnels et celle des prestations familiales). Dans ce cas, les lignes « Dont … » répètent le même effectif de cotisants sous chaque branche à laquelle il contribue, afin de montrer la composition complète du calcul. Ces lignes ne s'additionnent donc pas entre elles : chaque cotisant n'est comptabilisé qu'une seule fois dans la ligne « Numérateur » de l'indicateur global, quel que soit le nombre de branches auxquelles il est rattaché. Le numérateur global correspond à l'union dédupliquée des personnes couvertes par au moins une des composantes retenues, et non à la somme brute des lignes « Dont … ».
+**Comment retrouver le numérateur.** Pour une année donnée, additionner les lignes de détail du même tableau, sans y ajouter la ligne en gras « Numérateur ». Les cotisants communs à plusieurs branches sont présentés une seule fois ; les prestations sont détaillées séparément. Ne pas additionner les numérateurs de deux tableaux : ils répondent à des questions différentes et peuvent porter sur les mêmes personnes. La somme des déclarations ne constitue pas un décompte individuel dédoublonné.
 
 **Cas particulier de l'hypothèse TRESOR hors CNSSAP.** Le code technique « TRESOR » ne désigne ni une institution ni un régime. Il qualifie une hypothèse de travail relative aux cotisants actifs estimés parmi les agents publics hors CNSSAP. Ces effectifs sont calculés par différence entre un total public de référence et les cotisants CNSSAP, afin d'éviter leur double compte ; ils sont retenus uniquement dans le sous-indicateur 2.9 des cotisants actifs à la retraite. Ils ne constituent pas une donnée administrative directe et restent exclus du numérateur global de l'ODD 1.3.1.
 
-*Source des tableaux et figures C.1 à C.9 : ESS OIT et données institutionnelles intégrées dans la base du bulletin, avec application des décisions d'inclusion du tableau de bord. Les sources propres aux dénominateurs sont précisées dans les tableaux. Légende : « [N/D] » = donnée attendue mais indisponible ou non vérifiable ; « [N/A] » = composante non applicable, hors périmètre ou non mise en œuvre ; « 0 » = valeur nulle déclarée.*
+*Sources des tableaux et figures C.1 à C.9 : ESS annuelles des institutions, décisions d’inclusion du tableau de bord et populations de référence indiquées par tableau. [N/D] signifie qu’aucune valeur n’est disponible pour cette ligne dans le calcul considéré, même si une déclaration existe au chapitre 4. [N/A] signifie « non applicable ». Un effectif nul se distingue d’un taux affiché à 0,0 % : un taux positif très faible s’arrondit aussi à 0,0 %.*
 
 ---
 
@@ -62,7 +62,7 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 
 **Définition (BIT/OIT).** Proportion de la population couverte par au moins une prestation en espèces de protection sociale ou cotisant activement à au moins un régime de sécurité sociale.
 
-**Numérateur.** Nombre de personnes recevant au moins une prestation en espèces de protection sociale, hors soins de santé et indemnités journalières de maladie ou de maternité, ou cotisant activement à au moins un régime de sécurité sociale, sans double comptage.
+**Numérateur.** Le calcul national additionne les cotisants après regroupement des branches communes et les bénéficiaires des prestations retenues. Il inclut les repas scolaires du PAM, prestation en nature. Il ne mesure pas directement un nombre de personnes distinctes.
 
 **Dénominateur.** Population totale.
 
@@ -75,17 +75,15 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 |---|---|---|---|---|---|---|---|
 | **Indicateur de couverture (%)** | **1,7** | **1,8** | **2,4** | **2,2** | **3,0** | **2,8** | **1,7** |
 | **Numérateur (nombre de personnes)** | **1 594 016** | **1 687 762** | **2 344 287** | **2 262 834** | **3 188 896** | **3 111 478** | **1 900 698** |
-| *Dont Prestations familiales (CNSS, cotisants)* | *676 179* | *508 708* | *591 130* | *613 761* | *578 272* | *800 486* | *[N/D]* |
+| *Dont Cotisants actifs communs aux branches retenues (CNSS, cotisants)* | *676 179* | *508 708* | *591 130* | *613 761* | *578 272* | *800 486* | *[N/D]* |
 | *↳ allocation de maternité (bénéf.)* | *0* | *108* | *167* | *414* | *167* | *390* | *[N/D]* |
 | *↳ allocations familiales (bénéf.)* | *847 801* | *933 077* | *1 256 585* | *1 129 861* | *1 256 585* | *911 125* | *[N/D]* |
 | *↳ allocations prénatales (bénéf.)* | *0* | *162* | *184* | *532* | *531* | *365* | *[N/D]* |
-| *Dont Risques professionnels (CNSS, cotisants)* | *676 179* | *508 708* | *591 130* | *613 761* | *578 272* | *800 486* | *[N/D]* |
-| *↳ Rente ou allocation d'incapacité (bénéf.)* | *1 082* | *1 020* | *955* | *1 053* | *1 020* | *2 853* | *[N/D]* |
+| *Dont Rente ou allocation d'incapacité — Risques professionnels (CNSS, bénéf.)* | *1 082* | *1 020* | *955* | *1 053* | *1 020* | *2 853* | *[N/D]* |
 | *↳ allocation des frais funéraires (bénéf.)* | *[N/D]* | *589* | *849* | *533* | *[N/D]* | *[N/D]* | *[N/D]* |
 | *↳ frais de réadaptation fonctionnelle  ou de reclassement de la victime (bénéf.)* | *[N/D]* | *[N/D]* | *[N/D]* | *677* | *[N/D]* | *[N/D]* | *[N/D]* |
 | *↳ rentes de survivants (bénéf.)* | *1 476* | *1 608* | *1 845* | *1 781* | *1 608* | *1 107* | *[N/D]* |
-| *Dont Pension (CNSS, cotisants)* | *676 179* | *508 708* | *591 130* | *613 761* | *578 272* | *800 486* | *[N/D]* |
-| *↳ Pension d'invalidité (bénéf.)* | *883* | *568* | *524* | *728* | *432* | *439* | *[N/D]* |
+| *Dont Pension d'invalidité — Pension (CNSS, bénéf.)* | *883* | *568* | *524* | *728* | *432* | *439* | *[N/D]* |
 | *↳ Pension de retraite (bénéf.)* | *38 641* | *39 465* | *42 407* | *44 094* | *43 601* | *44 937* | *[N/D]* |
 | *↳ Pension de retraite anticipée (bénéf.)* | *0* | *78* | *272* | *1 235* | *696* | *940* | *[N/D]* |
 | *↳ Pension des survivants (bénéf.)* | *24 725* | *25 720* | *28 355* | *31 524* | *30 778* | *33 506* | *[N/D]* |
@@ -93,10 +91,10 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 | *↳ Pension de retraite (bénéf.)* | *[N/D]* | *814* | *780* | *1 329* | *6 238* | *10 485* | *9 136* |
 | *↳ Rente de survie au conjoint survivants (bénéf.)* | *[N/D]* | *50* | *114* | *184* | *738* | *2 378* | *[N/D]* |
 | *↳ Rente de survie pour l'orphelin (bénéf.)* | *[N/D]* | *40* | *103* | *187* | *738* | *2 378* | *448* |
-| *Dont Réforme du transfert (CNSSAP, cotisants)* | *[N/D]* | *[N/D]* | *[N/D]* | *[N/D]* | *[N/D]* | *[N/D]* | *262 419* |
-| *↳ Pension de retraite (bénéf.)* | *[N/D]* | *[N/D]* | *[N/D]* | *3 653* | *4 522* | *2 510* | *[N/D]* |
-| *↳ Rente de survie au conjoint survivants (bénéf.)* | *[N/D]* | *[N/D]* | *[N/D]* | *6 044* | *8 922* | *7 508* | *[N/D]* |
-| *↳ Rente de survie pour l'orphelin (bénéf.)* | *[N/D]* | *[N/D]* | *[N/D]* | *549* | *8 922* | *720* | *[N/D]* |
+| *Dont CNSSAP, rubrique R2 (cotisants du complémentaire en 2025 ; prestations de transfèrement ci-dessous en 2022–2024)* | *[N/D]* | *[N/D]* | *[N/D]* | *[N/D]* | *[N/D]* | *[N/D]* | *262 419* |
+| *↳ Pension de retraite (bénéf.)* | *[N/A]* | *[N/A]* | *[N/A]* | *3 653* | *4 522* | *2 510* | *[N/D]* |
+| *↳ Rente de survie au conjoint survivants (bénéf.)* | *[N/A]* | *[N/A]* | *[N/A]* | *6 044* | *8 922* | *7 508* | *[N/D]* |
+| *↳ Rente de survie pour l'orphelin (bénéf.)* | *[N/A]* | *[N/A]* | *[N/A]* | *549* | *8 922* | *720* | *[N/D]* |
 | *Dont Prestations en cas d'accident du travail — Risques professionnels (CNSSAP, bénéf.)* | *[N/D]* | *[N/D]* | *[N/D]* | *[N/D]* | *[N/D]* | *2* | *2* |
 | *↳ Prestations en cas de maladie professionnelle (bénéf.)* | *[N/D]* | *[N/D]* | *[N/D]* | *[N/D]* | *[N/D]* | *0* | *[N/D]* |
 | *Dont Pension de retraite — Réforme de basculement (CNSSAP, bénéf.)* | *[N/A]* | *[N/A]* | *[N/A]* | *[N/D]* | *[N/D]* | *[N/D]* | *4 038* |
@@ -115,6 +113,12 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 </table>
 
 <!-- AUTO_GENERE:global_131:FIN -->
+
+**Couverture globale en 2022.** Le calcul national inclut les repas scolaires : 2 262 834 personnes rapportées à une population de 102 396 968, soit **2,2 %**.
+
+En 2025, le taux global repose sur les déclarations disponibles, hors CNSS. La variation par rapport à 2024 ne mesure donc pas, à elle seule, une baisse de la couverture nationale.
+
+**Survie (tableaux 4.12 et 4.12 bis).** Le total des pensions exclut les rentes AT/MP et les frais funéraires. En 2025, il comprend 5 381 déclarations CNSSAP et 671 du SESOPA, sans dédoublonnage individuel.
 
 ---
 
@@ -138,7 +142,7 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 | **Numérateur (nombre de personnes)**<span class="footnote">Pour les allocations familiales de la CNSS, le nombre d'enfants bénéficiaires est estimé en multipliant par 3,17 le nombre de titulaires de prestations familiales communiqué par la CNSS. Ce facteur correspond au nombre moyen d'enfants de moins de 20 ans par foyer en RDC en 2013, d'après UN HH Size and Composition 2019. Il s'agit donc d'une estimation et non d'un décompte administratif direct d'enfants.</span> | **847 801** | **933 117** | **1 256 688** | **1 130 597** | **1 266 245** | **914 223** | **448** |
 | *Dont allocations familiales — Prestations familiales (CNSS, bénéf.)* | *847 801* | *933 077* | *1 256 585* | *1 129 861* | *1 256 585* | *911 125* | *[N/D]* |
 | *Dont Rente de survie pour l'orphelin — Régime de base (CNSSAP, bénéf.)* | *[N/D]* | *40* | *103* | *187* | *738* | *2 378* | *448* |
-| *Dont Rente de survie pour l'orphelin — Réforme du transfert (CNSSAP, bénéf.)* | *[N/D]* | *[N/D]* | *[N/D]* | *549* | *8 922* | *720* | *[N/D]* |
+| *Dont Rente de survie pour l'orphelin — Réforme du transfert (CNSSAP, bénéf.)* | *[N/A]* | *[N/A]* | *[N/A]* | *549* | *8 922* | *720* | *[N/D]* |
 | Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–17 ans (A3), calculee = % INS x population totale INS (2019) ; proportion INS approximative ; 2020 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–17 ans (A3), calculee = % INS x population totale INS (2020) ; proportion INS approximative ; 2021 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–17 ans (A3), calculee = % INS x population totale INS (2021) ; proportion INS approximative ; 2022 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–17 ans (A3), calculee = % INS x population totale INS (2022) ; proportion INS approximative ; 2023 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–17 ans (A3), calculee = % INS x population totale INS (2023) ; proportion INS approximative ; 2024 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 0–17 ans (A3), calculee = % INS x population totale INS (2024) ; proportion INS approximative.</span> | 48 797 407 | 50 394 749 | 51 954 040 | 53 553 614 | 55 222 240 | 56 932 934 | 59 229 488 |
 
 <p class="fig-caption"><strong>Figure C.2</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — 2.2 Population 0–17 ans (2019–2025)</p>
@@ -149,6 +153,8 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 
 <!-- AUTO_GENERE:ind_22_enfants:FIN -->
 
+**Allocations familiales et rentes d’orphelin.** De 2019 à 2024, les six effectifs CNSS du tableau 4.6 reproduisent les titulaires du tableau 4.5 multipliés par 3,17 (ESS CNSS, régime 1, cellule L7), arrondis à l’enfant. Ce ne sont pas des enfants de 0 à 17 ans identifiés individuellement. Les rentes d’orphelin retenues s’y ajoutent ; les repas scolaires n’entrent pas dans C.2. En 2025, le calcul retient **448** orphelins du régime de base (ESS CNSSAP, régime de base). Le 0,0 % est donc un taux partiel arrondi, non une absence de bénéficiaires. Le dénominateur 2025 provient des Perspectives de la population mondiale de l’ONU (révision 2024, 0–17 ans).
+
 ---
 
 <!-- AUTO_GENERE:ind_23_maternite:DEBUT -->
@@ -158,7 +164,7 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 
 **Numérateur.** Nombre de bénéficiaires de l'allocation de maternité de la CNSS. Les indemnités journalières de maternité sont exclues.
 
-**Dénominateur.** Nombre total de femmes ayant accouché au cours de la même année, estimé directement ou à partir des naissances vivantes corrigées des naissances multiples.
+**Dénominateur.** Les naissances vivantes, renseignées ou estimées, servent d’approximation du nombre de femmes ayant accouché. Aucune correction des naissances multiples n’est documentée dans les valeurs utilisées.
 
 **Formule.** Femmes bénéficiaires d'une prestation de maternité ÷ femmes ayant accouché × 100.
 
@@ -212,6 +218,8 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 
 <!-- AUTO_GENERE:ind_24_handicap:FIN -->
 
+**Invalidité et incapacité.** Le tableau 4.9 distingue la pension d’invalidité non professionnelle (ESS CNSS, régime 3, L6) de la rente ou allocation d’incapacité professionnelle (régime 2, L5). C.4 additionne les deux séries sans dédoublonnage individuel : en 2024, 439 + 2 853 = **3 292**. Le chapitre ne publie pas cette somme comme un total de personnes. Aucun zéro d’invalidité CNSSAP n’est établi en 2022 ; les deux bénéficiaires de réparation professionnelle déclarés en 2024 et en 2025 ne sont pas des pensionnés d’invalidité générale.
+
 ---
 
 <!-- AUTO_GENERE:ind_25_atmp:DEBUT -->
@@ -244,6 +252,8 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 </table>
 
 <!-- AUTO_GENERE:ind_25_atmp:FIN -->
+
+**Composition du numérateur.** C.5 additionne les cotisants CNSS, les bénéficiaires d’incapacité et les rentes de survivants AT/MP ; ce n’est ni le nombre d’accidents ni le total des pensions de survivants du chapitre 4. En 2024, les 1 107 de la dernière ligne sont une estimation arrondie dans l’ESS CNSS (régime 2, L6 : 2 853 × 1 020 / 2 628), non un décompte observé. En 2025, le dénominateur est la force de travail de 15 ans et plus (estimation modélisée ILOSTAT) ; aucun numérateur C.5 n’est disponible.
 
 ---
 
@@ -286,7 +296,7 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 | *Dont Pension de retraite — Pension (CNSS, bénéf.)* | *38 641* | *39 465* | *42 407* | *44 094* | *43 601* | *44 937* | *[N/D]* |
 | *↳ Pension de retraite anticipée (bénéf.)* | *0* | *78* | *272* | *1 235* | *696* | *940* | *[N/D]* |
 | *Dont Pension de retraite — Régime de base (CNSSAP, bénéf.)* | *[N/D]* | *814* | *780* | *1 329* | *6 238* | *10 485* | *[N/D]* |
-| *Dont Pension de retraite — Réforme du transfert (CNSSAP, bénéf.)* | *[N/D]* | *[N/D]* | *[N/D]* | *3 653* | *4 522* | *2 510* | *[N/D]* |
+| *Dont Pension de retraite — Réforme du transfert (CNSSAP, bénéf.)* | *[N/A]* | *[N/A]* | *[N/A]* | *3 653* | *4 522* | *2 510* | *[N/D]* |
 | *Dont Pension de retraite contributive — SESOPA_R1 (SESOPA, bénéf.)* | *1 018* | *1 031* | *1 021* | *1 029* | *1 023* | *1 256* | *[N/D]* |
 | Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019–2024 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : population 60 ans et plus, seuil unique retenu.</span> | 3 996 740 | 4 223 560 | 4 461 702 | 4 710 261 | 4 972 117 | 5 245 261 | [N/D] |
 
@@ -297,6 +307,8 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 </table>
 
 <!-- AUTO_GENERE:ind_27_vieillesse:FIN -->
+
+**Rapprochement avec le tableau 4.1.** Les sommes coïncident de 2019 à 2024. En 2019, les 845 retraités CNSSAP archivés dans le premier bulletin ne sont pas ajoutés à la série ESS. En 2025, le chapitre recense **14 451** pensions renseignées : 9 136 du régime de base CNSSAP, 4 038 du transfèrement (rubrique de basculement, régime 4, L5) et 1 277 du SESOPA. C.7 ne fournit en 2025 ni numérateur retenu ni dénominateur de 60 ans et plus ; aucun taux n’est imputé à partir du total partiel du chapitre.
 
 ---
 
@@ -320,7 +332,7 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 | **Numérateur (nombre de personnes)**<span class="footnote">Le numérateur additionne les enfants bénéficiaires de prestations familiales, dont les allocations familiales CNSS déjà estimées à partir de 3,17 enfants par titulaire, et les enfants servis par les repas scolaires PAM (2021-2025). Faute d'identifiant individuel commun, cette somme ne déduplique pas un éventuel recoupement entre les deux interventions. En 2024, la valeur PAM retenue est 272 000 enfants, avec réserve : le tableau détaillé du rapport indique 194 636 enfants servis sur site. Le dénominateur est la population totale, moins les cotisants actifs dédupliqués, TRESOR inclus, et les bénéficiaires de pensions de vieillesse.</span> | **847 801** | **933 117** | **1 482 688** | **1 353 397** | **1 503 245** | **1 186 223** | **145 478** |
 | *Dont allocations familiales — Prestations familiales (CNSS, bénéf.)* | *847 801* | *933 077* | *1 256 585* | *1 129 861* | *1 256 585* | *911 125* | *[N/D]* |
 | *Dont Rente de survie pour l'orphelin — Régime de base (CNSSAP, bénéf.)* | *[N/D]* | *40* | *103* | *187* | *738* | *2 378* | *448* |
-| *Dont Rente de survie pour l'orphelin — Réforme du transfert (CNSSAP, bénéf.)* | *[N/D]* | *[N/D]* | *[N/D]* | *549* | *8 922* | *720* | *[N/D]* |
+| *Dont Rente de survie pour l'orphelin — Réforme du transfert (CNSSAP, bénéf.)* | *[N/A]* | *[N/A]* | *[N/A]* | *549* | *8 922* | *720* | *[N/D]* |
 | *Dont Repas scolaires PAM — PAM_R1 (PAM, bénéf.)* | *[N/D]* | *[N/D]* | *226 000* | *222 800* | *237 000* | *272 000* | *145 030* |
 | Dénominateur (population de référence)<span class="footnote">Dénominateur : population totale moins les cotisants actifs dédupliqués, TRESOR inclus, et les bénéficiaires de pensions de vieillesse.</span> | 90 779 121 | 93 815 115 | 96 888 535 | 100 107 080 | 103 530 092 | 106 686 336 | [N/D] |
 
@@ -332,6 +344,8 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 
 <!-- AUTO_GENERE:ind_28_vulnerables:FIN -->
 
+**Repas scolaires : quelle série est utilisée ?** Les tableaux C.1 et C.8 reprennent l’ESS PAM (régime 1, L6). En 2021–2024, elle suit le récit des rapports annuels (226 000 ; 222 800 ; 237 000 ; 272 000), et non la seule ligne « élèves du primaire servis sur site » (209 878 ; 222 781 ; 180 796 ; 194 636). En 2025, les **145 030** sont au contraire la réalisation sur site ; le récit indique 145 000. Le tableau 4.8 distingue ces deux séries. Passer de 272 000 à 145 030 ne mesure pas une variation à prestation et territoire constants. Le numérateur complémentaire C.8 conserve 145 030 + 448 = **145 478** en 2025 ; faute de valeurs C.7 et C.9 à retrancher de la population totale, son taux reste [N/D].
+
 ---
 
 <!-- AUTO_GENERE:ind_29_cotisants:DEBUT -->
@@ -341,7 +355,7 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 
 **Numérateur.** Nombre de personnes cotisant activement à un régime de retraite contributif.
 
-**Dénominateur.** Population en âge de travailler (15-64 ans, Banque mondiale SP.POP.1564.TO).
+**Dénominateur.** Population en âge de travailler (15–64 ans). La source et l’approximation utilisées dépendent de l’année.
 
 **Formule.** Cotisants actifs à un régime de retraite ÷ population en âge de travailler (15-64 ans) × 100.
 
@@ -355,7 +369,7 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 | *Dont Pension (CNSS, cotisants)* | *676 179* | *508 708* | *591 130* | *613 761* | *578 272* | *800 486* | *[N/D]* |
 | *Dont Régime de base (CNSSAP, cotisants)* | *[N/D]* | *172 304* | *190 545* | *198 399* | *1 004 106* | *1 013 104* | *[N/D]* |
 | *Dont Branche des pensions  de retraite et de réversion (SESOPA, cotisants)* | *1 815* | *1 815* | *1 815* | *1 815* | *2 315* | *2 315* | *[N/D]* |
-| *Dont Hypothèse TRESOR hors CNSSAP — cotisants actifs estimés de la fonction publique* | *1 450 668* | *1 450 668* | *1 432 427* | *1 424 573* | *618 866* | *713 896* | *[N/D]* |
+| *Dont hypothèse Trésor — agents publics estimés hors CNSSAP, avant exclusion des régimes spéciaux* | *1 450 668* | *1 450 668* | *1 432 427* | *1 424 573* | *618 866* | *713 896* | *[N/D]* |
 | Dénominateur (population de référence)<span class="footnote">Sources du dénominateur — 2019–2024 : Saisie manuelle — INS/RDC, canevas de collecte 2026 : approximation calculee a partir des donnees INS : population active 15 ans et plus moins population 65 ans et plus.</span> | 47 589 090 | 48 858 909 | 50 169 360 | 51 505 675 | 52 894 866 | 54 310 304 | 57 506 566 |
 
 <p class="fig-caption"><strong>Figure C.9</strong> — Évolution de l'indicateur de couverture (%) et du numérateur (effectifs) — 2.9 Cotisants actifs retraite (2019–2025)</p>
@@ -366,6 +380,8 @@ Pour rester lisible malgré la densité des données, cette annexe désigne les 
 
 <!-- AUTO_GENERE:ind_29_cotisants:FIN -->
 
+**Cotisants déclarés et estimation.** De 2019 à 2024, la différence entre le numérateur C.9 et le total déclaré du tableau 4.3 est exactement la ligne « hypothèse Trésor » : en 2024, **1 815 905 déclarés + 713 896 estimés = 2 529 801**. Cette estimation n’exclut pas tous les régimes spéciaux. En 2025, le chapitre recense **1 472 744** cotisants déclarés (1 470 429 du régime de base CNSSAP et 2 315 du SESOPA) ; il n’existe pas de numérateur C.9 pour cette année. Les 262 419 du complémentaire en C.1 ne sont pas une déclaration de cotisants du transfèrement et ne s’ajoutent pas au total du tableau 4.3. En 2025, la population de référence de C.9 provient des Perspectives de la population mondiale de l’ONU (révision 2024, 15–64 ans).
+
 ## C.10 — Réconciliation avec le premier bulletin (2019–2022)
 
 Le tableau ci-dessous rapproche les valeurs publiées dans le premier Bulletin statistique de la protection sociale en RDC et les valeurs des mêmes années recalculées selon les règles retenues dans la présente édition. Les valeurs sont arrondies à une décimale dans la colonne de recalcul. Une absence de comparabilité signifie que le concept, et non seulement la source, a changé.
@@ -373,9 +389,9 @@ Le tableau ci-dessous rapproche les valeurs publiées dans le premier Bulletin s
 <p class="table-caption"><strong>Tableau C.10</strong> — Réconciliation des indicateurs avec le premier bulletin (2019–2022)</p>
 | Sous-indicateur | Premier bulletin : 2019 / 2020 / 2021 / 2022 | Méthode actuelle recalculée : 2019 / 2020 / 2021 / 2022 | Réconciliation et comparabilité |
 |---|---|---|---|
-| Enfants | 1,78 % / 1,90 % / 2,47 % / 2,15 % | 1,7 % / 1,9 % / 2,4 % / 2,1 % | Même logique de numérateur, y compris l'estimation CNSS de 3,17 enfants par titulaire. Le dénominateur est désormais explicitement la population de 0 à 17 ans et les valeurs sont présentées à une décimale. Comparabilité élevée, sous réserve de l'arrondi. |
+| Enfants | 1,78 % / 1,90 % / 2,47 % / 2,15 % | 1,7 % / 1,9 % / 2,4 % / 2,1 % | Les deux éditions visent les moins de 18 ans et utilisent le facteur CNSS de 3,17. Les estimations de population diffèrent ; en 2022, C.2 inclut aussi 549 orphelins du transfèrement, absents du tableau 14 du premier bulletin. L’écart ne tient pas au seul arrondi. |
 | AT/MP | 2,14 % / 1,62 % / 1,76 % / 1,76 % | 1,4 % / 1,0 % / 1,1 % / 1,1 % | Le numérateur de 2022 reste 616 595 personnes. La rupture provient du dénominateur : la population active de l'ancien bulletin est remplacée par la force de travail de 15 ans et plus de la série actuelle. Comparabilité limitée. |
-| Vieillesse | 0,94 % / 0,93 % / 0,98 % / 1,03 % | 1,0 % / 1,0 % / 1,0 % / 1,1 % | Le dénominateur est harmonisé à la population de 60 ans et plus. Le numérateur actuel intègre les composantes ESS disponibles, y compris les pensions de retraite anticipée. Comparabilité partielle. |
+| Vieillesse | 0,94 % / 0,93 % / 0,98 % / 1,03 % | 1,0 % / 1,0 % / 1,0 % / 1,1 % | Les deux éditions incluent la retraite anticipée CNSS. C.7 utilise la population de 60 ans et plus et inclut le SESOPA ainsi que le transfèrement renseigné en 2022 ; il ne reprend pas les 845 retraités CNSSAP archivés pour 2019. Comparabilité partielle. |
 | Invalidité / handicap | 0 % / 0 % / 0 % / 0 % | 0,1 % / 0,1 % / 0,0 % / 0,1 % | Le numérateur reste composé des pensions d'invalidité et des rentes d'incapacité. L'écart apparent résulte principalement du passage d'un affichage à zéro entier à un arrondi à une décimale. Comparabilité élevée. |
 | Personnes vulnérables — assistance sociale | 0,94 % / 1,00 % / 1,31 % / 1,14 % | 0,9 % / 1,0 % / 1,5 % / 1,4 % | Le dénominateur actuel retire les cotisants actifs dédupliqués, TRESOR inclus, et les pensionnés de vieillesse. À partir de 2021, le numérateur ajoute les repas scolaires PAM ; il ne déduplique pas un éventuel recoupement avec les prestations familiales. Comparabilité limitée. |
 | Cotisants et couverture statutaire des actifs | 2,76 % / 2,25 % / 2,41 % / 2,42 % | 4,5 % / 4,4 % / 4,4 % / 4,3 % | L'ancien indicateur associait cotisants et bénéficiaires de prestations de long terme rapportés à la population active. L'indicateur actuel ne mesure que les cotisants actifs, rapportés à la population de 15 à 64 ans, avec une déduplication Q1 et l'hypothèse TRESOR. Non directement comparable. |

@@ -53,24 +53,10 @@ function Write-StepLog {
 
 function Get-MarkerOccurrences {
     param(
-        [Parameter(Mandatory = $true)]$Document,
+        [AllowEmptyString()][string]$Text,
         [Parameter(Mandatory = $true)][string]$Marker
     )
-
-    $count = 0
-    $searchRange = $Document.Content
-    while ($true) {
-        $find = $searchRange.Find
-        $find.ClearFormatting()
-        $found = $find.Execute($Marker, $false, $false, $false, $false, $false, $true, $wdFindStop)
-        if (-not $found) {
-            break
-        }
-        $count += 1
-        $searchRange.Start = $searchRange.End
-        $searchRange.End = $Document.Content.End
-    }
-    return $count
+    return [regex]::Matches($Text, [regex]::Escape($Marker)).Count
 }
 
 function Find-MarkerRange {
@@ -84,7 +70,7 @@ function Find-MarkerRange {
     $find.ClearFormatting()
     $found = $find.Execute($Marker, $false, $false, $false, $false, $false, $true, $wdFindStop)
     if ($found) {
-        return $range
+        return ,$range
     }
     return $null
 }
@@ -187,96 +173,73 @@ function Normalize-ChartEntries {
     return $normalized
 }
 
-function Find-PastedInlineShape {
-    param(
-        [Parameter(Mandatory = $true)]$Document,
-        [Parameter(Mandatory = $true)][int]$InsertionStart
-    )
+function Get-ChartWidth {
+    param($Range)
 
-    for ($i = $Document.InlineShapes.Count; $i -ge 1; $i--) {
-        $candidate = $Document.InlineShapes.Item($i)
-        try {
-            if ([Math]::Abs([int]$candidate.Range.Start - $InsertionStart) -le 2) {
-                return $candidate
-            }
+    $layout = $Range.Sections.Item(1).PageSetup
+    $width = $layout.PageWidth - $layout.LeftMargin - $layout.RightMargin - $layout.Gutter
+    if ($layout.TextColumns.Count -gt 1) {
+        foreach ($column in $layout.TextColumns) {
+            $width = [Math]::Min($width, [double]$column.Width)
         }
-        catch {
-        }
-        [void][Runtime.InteropServices.Marshal]::ReleaseComObject($candidate)
     }
-
-    for ($i = $Document.Shapes.Count; $i -ge 1; $i--) {
-        $shape = $Document.Shapes.Item($i)
-        try {
-            if ([Math]::Abs([int]$shape.Anchor.Start - $InsertionStart) -le 2) {
-                $inline = $shape.ConvertToInlineShape()
-                [void][Runtime.InteropServices.Marshal]::ReleaseComObject($shape)
-                return $inline
-            }
-        }
-        catch {
-        }
-        [void][Runtime.InteropServices.Marshal]::ReleaseComObject($shape)
+    if ($Range.Information($wdWithInTable)) {
+        $cell = $Range.Cells.Item(1)
+        $width = [Math]::Min($width, ($cell.Width - $cell.LeftPadding - $cell.RightPadding))
     }
-
-    return $null
-}
-
-function Wait-PastedInlineShape {
-    param(
-        [Parameter(Mandatory = $true)]$Document,
-        [Parameter(Mandatory = $true)][int]$InlineCountBefore,
-        [Parameter(Mandatory = $true)][int]$ShapeCountBefore,
-        [Parameter(Mandatory = $true)][int]$TimeoutMs
-    )
-
-    $deadline = [DateTime]::UtcNow.AddMilliseconds($TimeoutMs)
-    while ([DateTime]::UtcNow -lt $deadline) {
-        if ([int]$Document.InlineShapes.Count -gt $InlineCountBefore) {
-            return $Document.InlineShapes.Item($Document.InlineShapes.Count)
-        }
-        if ([int]$Document.Shapes.Count -gt $ShapeCountBefore) {
-            $shape = $Document.Shapes.Item($Document.Shapes.Count)
-            try {
-                return $shape.ConvertToInlineShape()
-            }
-            finally {
-                [void][Runtime.InteropServices.Marshal]::ReleaseComObject($shape)
-            }
-        }
-        Start-Sleep -Milliseconds $pasteRetryDelayMs
-    }
-    return $null
+    $para = $Range.ParagraphFormat
+    $width -= [Math]::Max(0.0, [double]$para.LeftIndent) + [Math]::Max(0.0, [double]$para.RightIndent) + [Math]::Max(0.0, [double]$para.FirstLineIndent)
+    if ($width -le 1) { throw "Largeur disponible invalide : $width pt." }
+    return [single][Math]::Floor($width)
 }
 
 function Invoke-PasteSpecialWithRetry {
     param(
         [Parameter(Mandatory = $true)]$Range,
+        [Parameter(Mandatory = $true)]$ChartObject,
         [Parameter(Mandatory = $true)][string]$PasteMode,
         [Parameter(Mandatory = $true)][int]$MaxAttempts,
         [Parameter(Mandatory = $true)][int]$DelayMs
     )
 
+    $doc = $Range.Document
+    $start = [int]$Range.Start
+    $endBefore = [int]$doc.Content.End
+    $inlineBefore = [int]$doc.InlineShapes.Count
+    $floatingBefore = [int]$doc.Shapes.Count
+    $link = $PasteMode -eq "linked"
     $lastError = ""
     for ($attempt = 1; $attempt -le $MaxAttempts; $attempt++) {
         try {
-            if ($PasteMode -eq "linked") {
-                $Range.PasteSpecial($null, $true, $wdInLine, $false, $wdPasteOLEObject)
-            }
-            else {
-                $Range.PasteSpecial($null, $false, $wdInLine, $false, $wdPasteOLEObject)
-            }
-            return
+            [void]$ChartObject.Copy()
+            if ($attempt -gt 1) { Start-Sleep -Milliseconds $DelayMs }
+            $Range.PasteSpecial([Type]::Missing, $link, $wdInLine, $false, $wdPasteOLEObject)
+            break
         }
         catch {
             $lastError = $_.Exception.Message
+            # Une exception COM peut survenir après insertion. Ne pas coller deux fois.
+            if ($doc.Content.End -ne $endBefore -or $doc.InlineShapes.Count -ne $inlineBefore -or $doc.Shapes.Count -ne $floatingBefore) {
+                break
+            }
             if ($attempt -lt $MaxAttempts) {
                 Start-Sleep -Milliseconds $DelayMs
             }
         }
     }
 
-    throw "PasteSpecial a échoué après $MaxAttempts tentative(s) : $lastError"
+    # Un champ LINK peut occuper plusieurs caractères. Ne considérer que le
+    # contenu ajouté à l'emplacement exact, jamais la dernière forme du document.
+    $deadline = [DateTime]::UtcNow.AddMilliseconds($shapeWaitTimeoutMs)
+    do {
+        $length = [int]$doc.Content.End - $endBefore
+        if ($length -gt 0 -and $doc.InlineShapes.Count -eq ($inlineBefore + 1) -and $doc.Shapes.Count -eq $floatingBefore) {
+            $added = $doc.Range($start, ($start + $length))
+            if ($added.InlineShapes.Count -eq 1) { return ,($added.InlineShapes.Item(1)) }
+        }
+        Start-Sleep -Milliseconds $DelayMs
+    } while ([DateTime]::UtcNow -lt $deadline)
+    throw "PasteSpecial : aucun objet en ligne unique à la position $start. $lastError"
 }
 
 $excel = $null
@@ -384,8 +347,9 @@ try {
         }
     }
 
+    $textBefore = $document.Content.Text
     foreach ($entry in $normalizedEntries) {
-        $occurrences = Get-MarkerOccurrences -Document $document -Marker $entry.marker
+        $occurrences = Get-MarkerOccurrences -Text $textBefore -Marker $entry.marker
         if ($occurrences -ne 1) {
             throw "Préflight Word échoué : marqueur '$($entry.marker)' trouvé $occurrences fois (attendu : 1)."
         }
@@ -402,7 +366,6 @@ try {
         try {
             $workbook = $workbooks[$entry.workbook_key]
             $workbookPath = [string]$workbookPaths[$entry.workbook_key]
-            $expectedWorkbookBase = [System.IO.Path]::GetFileName($workbookPath).ToLowerInvariant()
             Write-StepLog "Insert begin marker=$($entry.marker) sheet=$($entry.sheet_name) chart=$($entry.chart_index)"
 
             $range = Find-MarkerRange -Document $document -Marker $entry.marker
@@ -412,54 +375,32 @@ try {
 
             $worksheet = $workbook.Worksheets.Item($entry.sheet_name)
             $chartObject = $worksheet.ChartObjects($entry.chart_index)
-            $worksheet.Activate()
-            $chartObject.Activate()
-            $chartObject.Copy()
-            Write-StepLog "Copy ok marker=$($entry.marker)"
-            $isInTable = [bool]$range.Information($wdWithInTable)
-            $insertionStart = [int]$range.Start
+            [void]$workbook.Activate()
+            [void]$worksheet.Activate()
+            $width = Get-ChartWidth -Range $range
             $range.Text = ""
             $range.Collapse($wdCollapseStart)
-            $inlineCountBefore = [int]$document.InlineShapes.Count
-            $shapeCountBefore = [int]$document.Shapes.Count
-
-            Invoke-PasteSpecialWithRetry -Range $range -PasteMode $PasteMode -MaxAttempts $pasteMaxAttempts -DelayMs $pasteRetryDelayMs
-            Write-StepLog "PasteSpecial ok marker=$($entry.marker)"
-            $inlineShape = Wait-PastedInlineShape -Document $document -InlineCountBefore $inlineCountBefore -ShapeCountBefore $shapeCountBefore -TimeoutMs $shapeWaitTimeoutMs
-            if ($inlineShape -eq $null) {
-                $inlineShape = Find-PastedInlineShape -Document $document -InsertionStart $insertionStart
-            }
-            if ($inlineShape -eq $null) {
-                throw "objet collé introuvable"
-            }
-            Write-StepLog "Shape detected marker=$($entry.marker)"
-
-            $inlineShape.LockAspectRatio = $msoTrue
-            if ($isInTable) {
-                $inlineShape.Width = 225
-            }
-            else {
-                $inlineShape.Width = 440
-            }
+            $inlineShape = Invoke-PasteSpecialWithRetry -Range $range -ChartObject $chartObject -PasteMode $PasteMode -MaxAttempts $pasteMaxAttempts -DelayMs $pasteRetryDelayMs
 
             $sourceName = ""
-            try { $sourceName = [string]$inlineShape.LinkFormat.SourceName } catch {}
-            $sourceLower = $sourceName.ToLowerInvariant()
             if ($PasteMode -eq "linked") {
-                if ([string]::IsNullOrWhiteSpace($sourceName) -or $sourceLower -eq "null") {
-                    throw "objet lié attendu, mais LinkFormat.SourceName est vide"
+                if ($inlineShape.Type -ne 2 -or $inlineShape.OLEFormat.ProgID -notmatch '^Excel\.Chart(?:\.|$)') {
+                    throw "objet OLE graphique Excel lié attendu"
                 }
-                if (-not $sourceLower.Contains($expectedWorkbookBase)) {
-                    throw "lien inattendu '$sourceName' (classeur attendu : $expectedWorkbookBase)"
+                $sourceName = [string]$inlineShape.LinkFormat.SourceFullName
+                $sourceFile = $sourceName
+                if ($sourceFile -like 'file:*') { $sourceFile = ([uri]$sourceFile).LocalPath }
+                if ($sourceFile -notin @($workbookPath, [string]$workbook.FullName)) {
+                    throw "lien inattendu '$sourceName' (classeur attendu : $workbookPath)"
                 }
                 try { $inlineShape.LinkFormat.AutoUpdate = $true } catch {}
             }
             else {
-                if (-not [string]::IsNullOrWhiteSpace($sourceName) -and $sourceLower -ne "null") {
-                    throw "objet incorporé attendu, mais un lien externe subsiste : $sourceName"
-                }
+                if ($inlineShape.Type -ne 1) { throw "objet OLE incorporé attendu" }
             }
-            Write-StepLog "Shape validation ok marker=$($entry.marker)"
+            $inlineShape.LockAspectRatio = $msoTrue
+            $inlineShape.Width = $width
+            Write-StepLog "Shape validation ok marker=$($entry.marker) chart=$($chartObject.Name) source=$sourceName width=$width"
 
             $inserted += 1
             if (($inserted % 10) -eq 0 -or $inserted -eq $normalizedEntries.Count) {
@@ -495,8 +436,9 @@ try {
         throw "Nombre d'objets insérés inattendu : $inserted inséré(s), $($normalizedEntries.Count) entrée(s) manifeste."
     }
 
+    $textAfter = $document.Content.Text
     foreach ($entry in $normalizedEntries) {
-        $remaining = Get-MarkerOccurrences -Document $document -Marker $entry.marker
+        $remaining = Get-MarkerOccurrences -Text $textAfter -Marker $entry.marker
         if ($remaining -ne 0) {
             throw "Marqueur restant après collage : '$($entry.marker)' ($remaining occurrence(s))."
         }

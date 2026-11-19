@@ -560,6 +560,224 @@ p.a-rediger {
     margin        : 0.8em 0;
 }
 
+/* ===== Modifications manuelles du texte ================================ */
+.manual-edit {
+    border-left : 4px solid #d28a00;
+    margin      : 1em 0;
+    padding-left: 12px;
+}
+.manual-edit::before {
+    content         : "Modification manuelle";
+    display         : inline-block;
+    color           : #805500;
+    background      : #fff0c2;
+    border-radius   : 3px;
+    padding         : 2px 7px;
+    margin          : 0 0 8px;
+    font-family     : var(--police-ui);
+    font-size       : 10px;
+    font-weight     : 700;
+    letter-spacing  : 0.4px;
+    text-transform  : uppercase;
+}
+.manual-edit > p,
+.manual-edit li,
+.manual-edit blockquote p {
+    background   : #fff8e6;
+    border-radius: 2px;
+    padding      : 2px 6px;
+}
+.manual-edit > h3,
+.manual-edit > h4 {
+    background   : #fff8e6;
+    border-radius: 2px;
+    padding      : 4px 6px;
+}
+
+/* ===== Éditeur de texte du bulletin =================================== */
+#text-edit-open {
+    cursor: pointer;
+}
+#text-edit-dialog[hidden] {
+    display: none !important;
+}
+.text-edit-dialog {
+    position   : fixed;
+    inset      : 0;
+    z-index    : 10000;
+    display    : grid;
+    place-items: center;
+    padding    : 20px;
+    font-family: var(--police-ui);
+}
+.text-edit-backdrop {
+    position  : absolute;
+    inset     : 0;
+    background: rgba(15, 25, 40, 0.58);
+}
+.text-edit-panel {
+    position      : relative;
+    z-index       : 1;
+    display       : flex;
+    flex-direction: column;
+    width         : min(980px, 100%);
+    max-height    : min(88vh, 900px);
+    overflow      : hidden;
+    background    : #fff;
+    border        : 1px solid #c8cbd1;
+    border-radius : 8px;
+    box-shadow    : 0 12px 40px rgba(0, 0, 0, 0.28);
+    padding       : 22px;
+    color         : #263142;
+}
+.text-edit-header {
+    display        : flex;
+    align-items    : flex-start;
+    justify-content: space-between;
+    gap            : 16px;
+    margin-bottom  : 16px;
+}
+.text-edit-header h2 {
+    margin      : 0 0 5px;
+    padding     : 0;
+    border      : 0;
+    color       : var(--couleur-principale);
+    font-family : var(--police-ui);
+    font-size   : 20px;
+}
+.text-edit-header p,
+.text-edit-help {
+    margin     : 0;
+    color      : #5c6470;
+    font-size  : 12px;
+    line-height: 1.5;
+    text-align : left;
+}
+.text-edit-close {
+    flex       : 0 0 auto;
+    border     : 0;
+    background : transparent;
+    color      : #626b78;
+    font-size  : 26px;
+    line-height: 1;
+    cursor     : pointer;
+}
+.text-edit-label {
+    margin-bottom: 5px;
+    font-size    : 12px;
+    font-weight  : 700;
+}
+#text-edit-file {
+    width        : 100%;
+    min-height   : 38px;
+    border       : 1px solid #c8cbd1;
+    border-radius: 4px;
+    padding      : 6px 9px;
+    background   : #fff;
+    color        : #263142;
+    font-family  : var(--police-ui);
+    font-size    : 13px;
+}
+.text-edit-path {
+    overflow     : hidden;
+    margin       : 6px 0 9px;
+    color        : #717987;
+    font-family  : var(--police-mono);
+    font-size    : 10px;
+    text-overflow: ellipsis;
+    white-space  : nowrap;
+}
+#text-edit-bold {
+    margin-bottom: 5px;
+    padding: 3px 12px;
+}
+#text-edit-bold[aria-pressed="true"] {
+    background: var(--couleur-principale);
+    color: #fff;
+}
+#text-edit-content {
+    flex       : 1 1 auto;
+    min-height : 260px;
+    max-height : 52vh;
+    overflow   : auto;
+    border     : 1px solid #c8cbd1;
+    border-radius: 4px;
+    padding    : 12px;
+    background : #fffdf7;
+    color      : #1c1c1c;
+    font-family: var(--police-corps);
+    font-size  : 15px;
+    line-height: 1.8;
+}
+#text-edit-content [data-text-slot]:focus {
+    outline     : 2px solid rgba(26, 58, 107, 0.18);
+    background  : #fff0c2;
+}
+#text-edit-content [data-text-slot] {
+    cursor: text;
+    white-space: pre-wrap;
+}
+#text-edit-content .text-edit-changed {
+    background: #fff0c2;
+    color: #805500;
+}
+#text-edit-content table {
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+#text-edit-content h1,
+#text-edit-content h2,
+#text-edit-content h3,
+#text-edit-content h4 {
+    margin-top: 20px;
+}
+#text-edit-content .valid-badge {
+    display: none;
+}
+#text-edit-content img {
+    max-width: 100%;
+}
+.text-edit-help {
+    margin-top: 7px;
+}
+.text-edit-status {
+    min-height : 20px;
+    margin-top : 8px;
+    color      : #365b36;
+    font-size  : 12px;
+}
+.text-edit-status.error {
+    color: #b42318;
+}
+.text-edit-actions {
+    display        : flex;
+    justify-content: flex-end;
+    gap            : 8px;
+    margin-top     : 8px;
+}
+.text-edit-actions button {
+    min-height   : 36px;
+    border       : 1px solid #c8cbd1;
+    border-radius: 4px;
+    padding      : 6px 14px;
+    font-family  : var(--police-ui);
+    font-size    : 12px;
+    cursor       : pointer;
+}
+.text-edit-secondary {
+    background: #fff;
+    color     : #3f4855;
+}
+.text-edit-primary {
+    border-color: var(--couleur-principale) !important;
+    background  : var(--couleur-principale);
+    color       : #fff;
+}
+.text-edit-actions button:disabled {
+    cursor : not-allowed;
+    opacity: 0.55;
+}
+
 /* ===== Note technique interne (non publiée, non exportée vers Word) ===
  * Utilisée pour les mentions de génération automatique (scripts, base ESS…)
  * utiles en prévisualisation / pour les agents, mais à masquer du lecteur
@@ -911,7 +1129,8 @@ span.footnote {
     #page-indicator,
     #status-legend,
     #source-tooltip,
-    #val-popup {
+    #val-popup,
+    #text-edit-dialog {
         display: none !important;
     }
 

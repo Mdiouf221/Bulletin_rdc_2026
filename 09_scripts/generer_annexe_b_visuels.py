@@ -765,6 +765,8 @@ def build_regime_table_markdown(regime_meta_inst: dict) -> str:
             continue
         latest = versions[-1]
         nom = latest.get("nom_regime") or NOM_COURT.get(rc, rc)
+        if rc == "CNSSAP_R2" and latest.get("annee") == 2025:
+            nom = latest.get("nom_original") or nom
         fonctions = latest.get("fonctions_oit") or []
         fonctions_txt = "; ".join(fonctions) if fonctions else "—"
         lines.append(
@@ -1458,6 +1460,10 @@ def build_detailed_data_markdown(regimes: list[dict], regime_meta: dict, institu
         for item in table["rows"]:
             rc = item["regime_code"]
             year = item["annee"]
+            # Aligner les rubriques du détail sur l'inventaire 2025, sans
+            # modifier les codes des sources ni les règles financières par année.
+            if institution == "CNSSAP" and year < 2025:
+                rc = {"CNSSAP_R2": "CNSSAP_R4", "CNSSAP_R4": "CNSSAP_R2"}.get(rc, rc)
             if rc not in regime_order:
                 regime_order.append(rc)
             real_rows_by_key[(rc, year)] = item["values"]
@@ -1467,6 +1473,10 @@ def build_detailed_data_markdown(regimes: list[dict], regime_meta: dict, institu
             regime_order.append(rc)
 
     def regime_label(rc: str) -> str:
+        if rc == "CNSSAP_R2":
+            return "Régime complémentaire"
+        if rc == "CNSSAP_R4":
+            return "Transfèrement / basculement"
         meta = inst_regime_meta.get(rc) or {}
         versions = meta.get("versions") or []
         if versions:
@@ -1536,9 +1546,10 @@ def _locate_section_no_and_counters(md_text: str, institution: str) -> tuple[int
     last = head_matches[-1]
     section_no = int(last.group(1))
     section_text = md_text[last.start():idx]
-    n_tables = len(re.findall(rf"Tableau B\.{section_no}\.\d+", section_text))
-    n_figures = len(re.findall(rf"Figure B\.{section_no}\.\d+", section_text))
-    return section_no, n_tables + 1, n_figures + 1
+    def next_number(kind: str) -> int:
+        numbers = re.findall(rf"<strong>{kind} B\.{section_no}\.(\d+)</strong>", section_text)
+        return max(map(int, numbers), default=0) + 1
+    return section_no, next_number("Tableau"), next_number("Figure")
 
 
 def build_section_content(
@@ -1606,34 +1617,27 @@ def build_section_content(
         else "Répartition par sexe (cotisants et bénéficiaires cumulés)"
     )
     settings_note = (
-        '<p class="dev-note">Les règles enregistrées dans le formulaire institutionnel '
+        '<!-- NOTE_INTERNE\nLes règles enregistrées dans le formulaire institutionnel '
         "(Q1, Q1b, Q2 et Q4) sont appliquées aux visuels. Les données détaillées restent "
-        "présentées par régime, sans déduplication.</p>\n"
+        "présentées par régime, sans déduplication.\n-->\n"
         if settings else
-        '<p class="dev-note">Aucun paramètre institutionnel enregistré : les visuels '
-        "présentent les données ESS sans correction issue du formulaire.</p>\n"
+        '<!-- NOTE_INTERNE\nAucun paramètre institutionnel enregistré : les visuels '
+        "présentent les données ESS sans correction issue du formulaire.\n-->\n"
     )
     if institution == "CNSSAP":
         settings_note += (
-            '<span class="footnote">En 2022, la dépense de prestations de 34,40 milliards CDF '
-            "apparaît à la fois pour le régime de base et pour la réforme de transfèrement. "
-            "La ligne « ENSEMBLE » reprend 34,40 milliards CDF et ne constitue pas une addition "
-            "des deux lignes ; le caractère inclusif ou distinct de ces montants doit être "
-            "confirmé par la CNSSAP.</span>\n"
+            '<span class="footnote">En 2022, les 34,40 milliards de CDF de charges sont répétés '
+            "sur deux lignes et incluent déjà 14,00 milliards de gestion. En revanche, les recettes "
+            "sont distinctes : 52,40 + 9,80 = 62,20 milliards. En 2025, les quatre rubriques "
+            "totalisent 833,06 milliards de recettes techniques et 140,00 milliards de charges "
+            "techniques, non de pensions versées. Source : inventaires ESS, colonnes AG à AI ; "
+            "Annuaire statistique CNSSAP 2025, « Charges » et « Revenus ».</span>\n"
         )
         settings_note += (
-            '<span class="footnote">Les effectifs CNSSAP de 1 004 106 en 2023 et 1 013 104 '
-            "en 2024 sont présentés ici tels que déclarés dans les ESS par régime et sont "
-            "traités comme cotisants actifs N4 conformément à DM-019. La rupture avec 2022 "
-            "et la répétition de l'effectif dans les prestations de 2023 restent des réserves "
-            "de comparabilité.</span>\n"
-        )
-        settings_note += (
-            '<span class="footnote">Les champs de montant unitaire renseignés dans les ESS CNSSAP '
-            "2023–2024 présentent des valeurs élevées et leur définition n'est pas suffisamment "
-            "documentée pour être assimilée à une pension individuelle mensuelle. Les montants "
-            "moyens affichés dans ce tableau sont calculés séparément à partir des dépenses du "
-            "régime et du nombre de bénéficiaires.</span>\n"
+            '<span class="footnote">En 2025, les 9 136 et 4 038 bénéficiaires de la base et du '
+            "basculement correspondent aux retraités. Le tiret dans l’inventaire des risques professionnels "
+            "n’annule pas les deux réparations renseignées dans la feuille de prestations. Les quotients "
+            "de dépenses par effectif ne sont pas des pensions individuelles.</span>\n"
         )
 
     if section_no:
@@ -1665,8 +1669,8 @@ def build_section_content(
         f"{detail_caption}{detail_md}{tresor_detail_footnote}\n"
         "*Source : base consolidée des ESS OIT/BIT.*\n"
         f"{settings_note}"
-        '<p class="dev-note">Visuels et tableaux générés automatiquement, sans navigateur, '
-        "via `py 09_scripts/generer_annexe_b_visuels.py`.</p>\n"
+        '<!-- NOTE_INTERNE\nVisuels et tableaux générés automatiquement, sans navigateur, '
+        "via `py 09_scripts/generer_annexe_b_visuels.py`.\n-->\n"
     )
 
 
@@ -1719,16 +1723,6 @@ def main() -> int:
         regime
         for regime in regimes
         if regime.get("annee") in BULLETIN_YEARS
-    ]
-    # Périmètre Annexe B : pour la CNSSAP en 2025, ne conserver que R1 et R2.
-    regimes = [
-        regime
-        for regime in regimes
-        if not (
-            regime.get("institution") == "CNSSAP"
-            and regime.get("annee") == 2025
-            and regime.get("regime_code") not in {"CNSSAP_R1", "CNSSAP_R2"}
-        )
     ]
     try:
         questionnaire_data = load_questionnaire_data()

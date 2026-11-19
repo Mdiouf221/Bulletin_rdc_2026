@@ -433,6 +433,10 @@ Le navigateur s'ouvre automatiquement sur `http://localhost:8765`.
 Arrêt : `Ctrl+C` dans le terminal.
 
 Boutons disponibles dans la barre d'en-tête :
+- **✏️ Modifier le texte** — cliquez sur une rubrique du sommaire de gauche, puis sur **Modifier le texte**. L’éditeur ouvre le fichier correspondant. La liste **Rubrique du sommaire** reprend les mêmes titres dans le même ordre et permet de changer de passage. Un titre sans texte public modifiable reste visible et un message l’indique à l’ouverture. Les notes internes et les annotations sont préservées ; les tableaux et les blocs `AUTO_GENERE` restent en lecture seule.
+  Dans un passage modifiable, sélectionnez un mot ou une expression, puis cliquez sur **Gras** (ou utilisez `Ctrl+B` / `⌘B`). Répétez le geste pour retirer le gras. Cliquez sur **Enregistrer** pour conserver la mise en forme.
+  Une ancienne modification manuelle limitée à une sous-section n’empêche pas d’ouvrir et de modifier le texte situé avant ou après celle-ci.
+  Après **Enregistrer**, la prévisualisation attend que le bulletin soit reconstruit avant de se recharger. Il n’est pas nécessaire d’appuyer sur `F5`.
 - **📊 Tableau de bord** — ouvre le tableau de bord interactif des régimes (ESS)
 - **📤 Exporter HTML** — génère un fichier HTML autonome pour relecture hors ligne et l'ouvre dans un nouvel onglet
 - **🖨️ Export PDF** — ouvre la boîte d'impression du navigateur pour enregistrer le rendu courant en PDF
@@ -502,7 +506,7 @@ python 09_scripts/exporter.py --open      # générer et ouvrir automatiquement
 - Les classeurs existants servent de source de présentation et **ne sont jamais régénérés/écrasés** par `exporter.py`/`exporter_word.py` en mode normal.
 - La régénération des visuels B/C est **désactivée par défaut**. Elle ne s'exécute que via `--refresh-visuals` (opt-in explicite).
 - Avant tout export Word, le bulletin est assemblé et le HTML source est régénéré. `--reuse-html` permet de déroger explicitement à cette règle pour réutiliser le HTML daté du jour ; il échoue si ce fichier n'existe pas.
-- `embedded` est le mode par défaut : si Word/Excel COM ou un graphique attendu est indisponible, l'export échoue explicitement au lieu de produire silencieusement une capture PNG.
+- `linked` est le mode par défaut : Word pointe vers les graphiques des classeurs Excel des annexes B et C. Conserver ces classeurs à leur emplacement ; après modification et enregistrement dans Excel, actualiser les liaisons dans Word. Choisir `embedded` pour diffuser une copie autonome. Si Word/Excel COM ou un graphique attendu est indisponible, le mode par défaut échoue au lieu de produire silencieusement un PNG.
 - `auto` : tente `embedded` si COM Word/Excel est disponible ; sinon fallback explicite en `png`.
 - `embedded`/`linked` explicites : en cas d'actifs manquants ou incompatibles, l'export échoue avec erreur explicite (pas de DOCX final partiellement collé).
 

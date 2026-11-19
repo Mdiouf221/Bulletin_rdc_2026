@@ -80,6 +80,8 @@ from integrer_dashboard_bulletin import (  # noqa: E402
     DENOM_DB_PATH,
     METRIC_BY_INDICATOR,
     SETTINGS_PATH,
+    build_q1_regime_groups,
+    load_questionnaire_data,
     compute_numerator,
     compute_numerator_breakdown,
     get_denominator_value,
@@ -107,7 +109,7 @@ COLOR_NUMERATOR = "#2e78c8"
 ODD_METHODOLOGY_SPECS = {
     "global_131": {
         "definition": "Proportion de la population couverte par au moins une prestation en espèces de protection sociale ou cotisant activement à au moins un régime de sécurité sociale.",
-        "numerator": "Nombre de personnes recevant au moins une prestation en espèces de protection sociale, hors soins de santé et indemnités journalières de maladie ou de maternité, ou cotisant activement à au moins un régime de sécurité sociale, sans double comptage.",
+        "numerator": "Le calcul national additionne les cotisants après regroupement des branches communes et les bénéficiaires des prestations retenues. Il inclut les repas scolaires du PAM, prestation en nature. Il ne mesure pas directement un nombre de personnes distinctes.",
         "denominator": "Population totale.",
         "formula": "Population couverte par au moins une prestation ou cotisant activement ÷ population totale × 100.",
     },
@@ -120,7 +122,7 @@ ODD_METHODOLOGY_SPECS = {
     "ind_23_maternite": {
         "definition": "Proportion de femmes ayant accouché qui reçoivent une prestation en espèces de maternité.",
         "numerator": "Nombre de bénéficiaires de l'allocation de maternité de la CNSS. Les indemnités journalières de maternité sont exclues.",
-        "denominator": "Nombre total de femmes ayant accouché au cours de la même année, estimé directement ou à partir des naissances vivantes corrigées des naissances multiples.",
+        "denominator": "Les naissances vivantes, renseignées ou estimées, servent d’approximation du nombre de femmes ayant accouché. Aucune correction des naissances multiples n’est documentée dans les valeurs utilisées.",
         "formula": "Femmes bénéficiaires d'une prestation de maternité ÷ femmes ayant accouché × 100.",
     },
     "ind_24_handicap": {
@@ -156,13 +158,13 @@ ODD_METHODOLOGY_SPECS = {
     "ind_29_cotisants": {
         "definition": "Proportion de la population en âge de travailler qui cotise activement à un régime de retraite contributif.",
         "numerator": "Nombre de personnes cotisant activement à un régime de retraite contributif.",
-        "denominator": "Population en âge de travailler (15-64 ans, Banque mondiale SP.POP.1564.TO).",
+        "denominator": "Population en âge de travailler (15–64 ans). La source et l’approximation utilisées dépendent de l’année.",
         "formula": "Cotisants actifs à un régime de retraite ÷ population en âge de travailler (15-64 ans) × 100.",
     },
 }
 
 NON_CALCULABLE_NOTE = {
-    "ind_26_chomage": "N/A — aucun régime d'assurance chômage n'existe dans le périmètre du bulletin. Aucune allocation de chômage ne peut donc être mesurée.",
+    "ind_26_chomage": "[N/A] — aucun régime d'assurance chômage n'existe dans le périmètre du bulletin. Aucune allocation de chômage ne peut donc être mesurée.",
 }
 
 
@@ -277,6 +279,10 @@ def _format_component_row(
     cells = []
     regime_id = f"regime::{item.get('institution') or ''}::{item.get('regime_code') or ''}"
     implemented_from = (structural_availability.get(regime_id) or {}).get("implemented_from")
+    # Les prestations de transfèrement figurent en R2 de 2022 à 2024,
+    # puis en R4 ; la cotisation déclarée en R2 en 2025 est complémentaire.
+    if regime_id == "regime::CNSSAP::CNSSAP_R2" and item["kind"] == "prestation":
+        implemented_from = 2022
     for y in years:
         if isinstance(implemented_from, int) and y < implemented_from:
             cells.append("[N/A]")
@@ -303,9 +309,23 @@ def _build_breakdown_rows(
     « ↳ [prestation] (bénéf.) » qui ne répètent ni l'institution ni le régime, déjà
     portés par la ligne d'en-tête juste au-dessus."""
     groups: dict[tuple[str, str], list[dict]] = {}
+    q1 = build_q1_regime_groups(load_questionnaire_data())
+    shared: dict[tuple[str, str], list[dict]] = {}
     for item in components.values():
         key = (item.get("institution") or "", item.get("regime_code") or "")
-        groups.setdefault(key, []).append(item)
+        if item["kind"] == "regime":
+            shared.setdefault(q1.get(key, key), []).append(item)
+        else:
+            groups.setdefault(key, []).append(item)
+    for (inst, _), items in shared.items():
+        first = min(items, key=lambda it: it["regime_code"])
+        if len(items) > 1:
+            values = {}
+            for item in items:
+                for year, value in item["values"].items():
+                    values[year] = max(values.get(year, value), value)
+            first = {**first, "label": "Cotisants actifs communs aux branches retenues", "values": values}
+        groups.setdefault((inst, first["regime_code"]), []).append(first)
 
     def _group_sort_key(entry: tuple[tuple[str, str], list[dict]]):
         (inst, rc), _items = entry
@@ -323,6 +343,10 @@ def _build_breakdown_rows(
             header_item = regime_item
             metric = "cotisants actifs estimés" if inst == "TRESOR" else "cotisants"
             header_label = f"Dont {header_item['label']} ({acronym}, {metric})"
+            if inst == "TRESOR":
+                header_label = "Dont hypothèse Trésor — agents publics estimés hors CNSSAP, avant exclusion des régimes spéciaux"
+            elif rc == "CNSSAP_R2":
+                header_label = "Dont CNSSAP, rubrique R2 (cotisants du complémentaire en 2025 ; prestations de transfèrement ci-dessous en 2022–2024)"
             sub_items = prestation_items
         else:
             header_item = prestation_items[0]
@@ -602,23 +626,11 @@ def build_indicator_section(
             numerator_file = None
     charts_md = build_charts_markdown(ratio_file, numerator_file)
 
-    inclusion_note = (
-        "*Lignes « Dont … » / « ↳ … » : détail du numérateur — régimes (« Dont ») et prestations "
-        "(« ↳ », sous le régime dont elles relèvent) classés « inclus » ou « inclus avec réserve » "
-        "dans le module Décisions de l'onglet « Indicateurs » du tableau de bord, pour l'année et "
-        "l'indicateur considérés. Institutions désignées par leur sigle (cf. Liste des sigles et "
-        "acronymes). « [N/A] » : composante structurellement hors périmètre ou non encore "
-        "mise en œuvre. « [N/D] » : donnée ESS attendue mais indisponible ou non vérifiable.*\n"
-        if components else ""
-    )
-
     return (
         title
         + methodology
         + f'\n<p class="table-caption"><strong>Tableau C.{section_no}</strong> — Indicateur de couverture, numérateur et dénominateur — {label} ({years[0]}–{years[-1]})</p>\n\n'
         + synthesis_md
-        + "\n"
-        + inclusion_note
         + "\n"
         + f'<p class="fig-caption"><strong>Figure C.{section_no}</strong> — Évolution de l\'indicateur de couverture (%) et du numérateur (effectifs) — {label} ({years[0]}–{years[-1]})</p>\n\n'
         + charts_md

@@ -8,12 +8,10 @@ Objectif du chapitre :
 Établir les bases conceptuelles et méthodologiques du bulletin.
 Ce chapitre est particulièrement important dans le contexte RDC, où les acteurs n'ont pas de définition commune de la protection sociale. Il doit être pédagogique, rigoureux et ancré sur le cadre BIT/OIT.
 
-Structure retenue (5 sections — mise à jour juin 2026) :
+Structure retenue (3 sections assemblées — mise à jour novembre 2026 ; numérotation conservée) :
 2.1 Définitions et approches de la protection sociale
 2.2 Approche retenue pour le bulletin : cadre BIT/OIT et indicateurs de couverture effective
-2.3 Champ de la protection sociale et critères d'inclusion statistique [version condensée — détails en Annexe A.1]
 2.4 Grilles de lecture : classification des régimes, programmes et prestations [version condensée — détails en Annexe A.2]
-2.5 Précautions de lecture : distinctions statistiques et limites méthodologiques [version condensée]
 
 Contenu déplacé en annexe (juin 2026) :
 - 2.3 et 2.4 développés en intégralité → Annexe A (04_annexes/annexe_A_notes_methodologiques.md)
@@ -22,7 +20,7 @@ Contenu déplacé en annexe (juin 2026) :
 
 Logique d'ensemble :
 Le chapitre progresse du général (définitions, cadre OIT) vers l'opérationnel (périmètre,
-classification des régimes, précautions de lecture). Les développements méthodologiques
+classification des régimes). Les développements méthodologiques
 détaillés figurent en Annexe A pour ne pas alourdir le corps du texte.
 
 Fichiers du chapitre (ordre d'assemblage) :
@@ -30,10 +28,10 @@ Fichiers du chapitre (ordre d'assemblage) :
 2. 1_1_definitions_approches.md
 3. 1_2_approche_bit_oit.md
 4. 1_4_classification_regimes.md  (condensé — détails en Annexe A.2)
-5. 1_5_precautions_lecture.md     (condensé)
 
-Fichier exclu de l'assemblage :
+Fichiers exclus de l'assemblage :
 - 1_3_champ_statistique.md → contenu intégral déplacé en Annexe A.1
+- 1_5_precautions_lecture.md → section 2.5 retirée du corps du bulletin ; fichier conservé pour traçabilité. Les distinctions essentielles figurent en 2.2 et les précisions méthodologiques dans les annexes et les sections concernées.
 
 Statut global : rédigé
 -->

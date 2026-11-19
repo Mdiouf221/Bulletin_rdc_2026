@@ -57,9 +57,9 @@ Règle rédactionnelle pour la section "Perspective de l'institution" :
 - Il ne remplace pas l'analyse objective des sections précédentes.
 -->
 
-## 
+## Lecture des fiches
 
-Chaque fiche institutionnelle présente, pour l'ensemble des régimes documentés, des graphiques d'évolution des cotisants, des bénéficiaires et des agrégats financiers, ainsi qu'un tableau descriptif des régimes gérés et une répartition par sexe lorsque cette information est disponible.
+Les tableaux de couverture distinguent les prestations. Les graphiques et les tableaux détaillés décrivent des régimes : un effectif peut y être repris dans plusieurs branches, ou regrouper plusieurs prestations. Il ne faut additionner ni les lignes « ENSEMBLE » et leur détail, ni les cotisants et les bénéficiaires pour compter des personnes distinctes. Les répartitions par sexe dépendent des ventilations disponibles ; une part non identifiée n’est pas une répartition observée. Les rapports entre dépenses et effectifs ne mesurent ni la pension mensuelle moyenne ni le minimum payé. Un tiret ou la mention [N/D] ne signifie pas zéro ; [N/A] signifie non applicable.
 
 ---
 
@@ -99,13 +99,20 @@ La CNSS administre le régime général de sécurité sociale. Son champ légal 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
 | Affiliés enregistrés | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Cotisants actifs (contributeurs) | 676 179 | 508 708 | 591 130 | 613 761 | [N/D] | [N/D] | [N/D] |
-| Bénéficiaires de pensions (vieillesse + invalidité) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Bénéficiaires AT/MP (rentes d'incapacité) | 1 082 | 1 020 | 955 | 1 053 | [N/D] | [N/D] | [N/D] |
-| Bénéficiaires AT/MP (rentes de survivant) | 1 476 | 1 608 | 1 845 | 1 781 | [N/D] | [N/D] | [N/D] |
-| Bénéficiaires d'allocations familiales | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Cotisants actifs | 676 179 | 508 708 | 591 130 | 613 761 | 578 272 | 800 486 | [N/D] |
+| Pension de retraite ordinaire | 38 641 | 39 465 | 42 407 | 44 094 | 43 601 | 44 937 | [N/D] |
+| Pension de retraite anticipée | 0 | 78 | 272 | 1 235 | 696 | 940 | [N/D] |
+| Pension d’invalidité | 883 | 568 | 524 | 728 | 432 | 439 | [N/D] |
+| Pension de survivants | 24 725 | 25 720 | 28 355 | 31 524 | 30 778 | 33 506 | [N/D] |
+| Rente ou allocation d’incapacité AT/MP | 1 082 | 1 020 | 955 | 1 053 | 1 020 | 2 853 | [N/D] |
+| Rente de survivants AT/MP | 1 476 | 1 608 | 1 845 | 1 781 | 1 608 | 1 107 | [N/D] |
+| Frais funéraires AT/MP (bénéficiaires) | [N/D] | 589 | 849 | 533 | [N/D] | [N/D] | [N/D] |
+| Allocations familiales : titulaires | 267 445 | 294 346 | 396 399 | 356 423 | 396 399 | 287 421 | [N/D] |
+| Allocations familiales : enfants estimés | 847 801 | 933 077 | 1 256 585 | 1 129 861 | 1 256 585 | 911 125 | [N/D] |
 
-*Sources : premier Bulletin statistique RDC (2023) pour 2019–2022. Données 2023 à transmettre par la CNSS.*
+*Sources : ESS CNSS 2019–2024, inventaire X6:X8 (mêmes cotisants, comptés une fois), régime 3, L5:L7 et L10 (pensions), régime 2, L5, L6 et L8 (AT/MP), régime 1, formule L7 (titulaires × 3,17, arrondi à l’enfant). En 2024, les 1 107 rentes de survivants AT/MP sont une estimation du classeur, pas un décompte de décès. En 2019, le premier Bulletin (tableau 3) classe 1 766 bénéficiaires de frais funéraires en AT/MP ; l’ESS les inscrit en action sanitaire et sociale. Ils ne sont pas ajoutés à la branche AT/MP.*
+
+Les « bénéficiaires » du tableau détaillé des prestations familiales incluent d’autres prestations que les seules allocations familiales. De même, la ligne « Pension » n’est pas un décompte de retraités ordinaires. Pour les finances, les dépenses et recettes communes aux trois premières branches en 2019–2022 ne se comptent qu’une fois. L’inclusion de l’action sanitaire et sociale dans ces dépenses n’est pas établie. En 2023 et 2024, les recettes distinctes des trois branches totalisent respectivement 1 754,6 et 1 886,7 milliards de CDF ; l’échelle monétaire n’est pas précisée dans les inventaires CNSS (voir tableau 4.16).
 
 <!-- AUTO_GENERE:CNSS:DEBUT -->
 
@@ -228,13 +235,22 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
-| Contributeurs actifs (total) | [N/D] | 172 304 | 190 545 | 198 399 | [N/D] | [N/D] | [N/D] |
-| dont hommes | 110 912 | [N/D] | [N/D] | 138 443 | [N/D] | [N/D] | [N/D] |
-| dont femmes | [N/D] | 65 624 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Bénéficiaires de pensions | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Bénéficiaires AT/MP | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Cotisants actifs du régime de base (ESS) | [N/D] | 172 304 | 190 545 | 198 399 | 1 004 106 | 1 013 104 | 1 470 429 |
+| dont hommes (ventilation exploitable) | [N/D] | 110 912 | 124 921 | 138 443 | [N/D] | [N/D] | [N/D] |
+| dont femmes (ventilation exploitable) | [N/D] | 61 392 | 65 624 | 59 956 | [N/D] | [N/D] | [N/D] |
+| Retraités du régime de base (ESS) | [N/D] | 814 | 780 | 1 329 | 6 238 | 10 485 | 9 136 |
+| Retraités du transfèrement / basculement (ESS) | [N/A] | [N/A] | [N/A] | 3 653 | 4 522 | 2 510 | 4 038 |
+| Survie : déclarations renseignées, base et basculement | 70 | 90 | 217 | 6 964 | 19 320 | 12 984 | 5 381 |
+| Pension d’invalidité générale | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Réparation au titre des risques professionnels (prestation distincte) | [N/A] | [N/A] | [N/A] | [N/A] | [N/D] | 2 | 2 |
 
-*Sources : premier Bulletin statistique RDC (2023) pour 2019–2022. Données 2023 à transmettre par la CNSSAP.*
+*Sources : ESS CNSSAP 2020–2025, inventaire X6:Z6 (base), feuilles de prestations L5:L7 ; premier Bulletin, tableaux 5 et 6 (ventilations arrondies 2020–2022 et 70 réversions en 2019). Le premier Bulletin documente aussi 172 204 cotisants et 845 retraités en 2019, hors série ESS. En 2023–2024, les champs hommes/femmes nuls ne ventilent pas les cotisants ; en 2025, leurs valeurs décimales ne reconstituent pas le total.*
+
+Le tableau distingue les cotisants du régime de base des retraités relevant du basculement.
+
+Les effectifs de survie sont des déclarations non dédoublonnées. En 2025, 448 orphelins de base et 4 383 conjoints et 550 orphelins du basculement donnent <a href="/files/06_sources/ESS/ESS_CNSSAP/ESS%20CNSSAP%202025.xlsm" title="Source primaire : ESS CNSSAP 2025, régimes 1 et 4, L6:L7" class="source-ref" data-val-id="sB2-p3-d1" data-val-status="à valider" data-val-file="04_annexes/annexe_B_fiches_institutionnelles.md">5 381</a> ; les conjoints de base ne sont pas renseignés.
+
+**Lecture des figures B.2.1 et B.2.2.** Pour 2025, les rubriques représentées sont le régime de base et le régime complémentaire. Le tableau par prestation présente aussi les déclarations du basculement.
 
 <!-- AUTO_GENERE:CNSSAP:DEBUT -->
 
@@ -245,13 +261,13 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 | Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
 |---|---|---|---|---|
 | Régime de base | Contributif | Obligatoire | Publique | Vieillesse; Survivances |
-| Réforme du transfert | Contributif | Obligatoire | Publique | — |
+| Régime Complémentaire | Contributif | Obligatoire | Publique | — |
 | Risques professionnels | Non-contributif | — | Publique | Maladie (en espèces); Accident du travail |
 | Réforme de basculement | Non-contributif | — | Publique | Vieillesse; Survivances |
 
 ### Aperçu graphique (tous régimes, toutes années)
 
-<p class="fig-caption"><strong>Figure B.2.1</strong> — Évolution des cotisants, bénéficiaires, dépenses et recettes (tous régimes), CNSSAP (2019–2025)</p>
+<p class="fig-caption"><strong>Figure B.2.1</strong> — Évolution des cotisants, bénéficiaires, dépenses et recettes par rubrique représentée, CNSSAP (2019–2025)</p>
 
 <table style="width:100%; border-collapse:collapse;">
 <tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_CNSSAP_cotisants.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_CNSSAP_beneficiaires.png" style="width:100%; height:auto;"></td></tr>
@@ -279,19 +295,19 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 | Régime de base | 2023 | 1 004 106 | 6 238 | 24,26 | 281,56 | 3 890 | 280 |
 | Régime de base | 2024 | 1 013 104 | 10 485 | 29,74 | 460,33 | 2 836 | 454 |
 | Régime de base | 2025 | 1 470 429 | 9 136 | 106,73 | 687,27 | 11 682 | 467 |
-| Réforme du transfert | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Réforme du transfert | 2022 | — | 3 653 | 34,40 | 9,80 | — | — |
-| Réforme du transfert | 2023 | — | 4 522 | 8,56 | 19,62 | 1 892 | — |
-| Réforme du transfert | 2024 | — | 2 510 | 19,62 | 19,62 | 7 817 | — |
-| Réforme du transfert | 2025 | 262 419 | — | — | 67,75 | — | 258 |
+| Transfèrement / basculement | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Transfèrement / basculement | 2022 | — | 3 653 | 34,40 | 9,80 | — | — |
+| Transfèrement / basculement | 2023 | — | 4 522 | 8,56 | 19,62 | 1 892 | — |
+| Transfèrement / basculement | 2024 | — | 2 510 | 19,62 | 19,62 | 7 817 | — |
+| Transfèrement / basculement | 2025 | — | 4 038 | 24,92 | 19,62 | 6 171 | — |
+| Régime complémentaire | 2019–2022 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Régime complémentaire | 2023 | 218 899 | 0 | 0,00 | 22,35 | — | 102 |
+| Régime complémentaire | 2024 | 219 327 | 0 | 0,00 | 55,35 | — | 252 |
+| Régime complémentaire | 2025 | 262 419 | — | — | 67,75 | — | 258 |
 | Risques professionnels | 2019–2022 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | Risques professionnels | 2023 | — | 0 | 0,00 | 30,23 | — | — |
 | Risques professionnels | 2024 | — | 2 | 1,96 | 33,90 | 981 796 | — |
-| Risques professionnels | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Réforme de basculement | 2019–2022 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
-| Réforme de basculement | 2023 | 218 899 | 0 | 0,00 | 22,35 | — | 102 |
-| Réforme de basculement | 2024 | 219 327 | 0 | 0,00 | 55,35 | — | 252 |
-| Réforme de basculement | 2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
+| Risques professionnels | 2025 | — | — | 8,35 | 58,42 | — | — |
 | ENSEMBLE | 2019–2021 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
 | ENSEMBLE | 2022 | — | 4 982 | 34,40 | — | 6 905 | — |
 | ENSEMBLE | 2023–2025 | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] |
@@ -300,9 +316,8 @@ La CNSSAP a pour mission de coordonner et d'administrer les prestations de sécu
 <!-- NOTE_INTERNE
 Les règles enregistrées dans le formulaire institutionnel (Q1, Q1b, Q2 et Q4) sont appliquées aux visuels. Les données détaillées restent présentées par régime, sans déduplication.
 -->
-<span class="footnote">En 2022, la dépense de prestations de 34,40 milliards CDF apparaît à la fois pour le régime de base et pour la réforme de transfèrement. La ligne « ENSEMBLE » reprend 34,40 milliards CDF et ne constitue pas une addition des deux lignes ; le caractère inclusif ou distinct de ces montants doit être confirmé par la CNSSAP.</span>
-<span class="footnote">Les effectifs CNSSAP de 1 004 106 en 2023 et 1 013 104 en 2024 sont présentés ici tels que déclarés dans les ESS par régime et sont traités comme cotisants actifs N4 conformément à DM-019. La rupture avec 2022 et la répétition de l'effectif dans les prestations de 2023 restent des réserves de comparabilité.</span>
-<span class="footnote">Les champs de montant unitaire renseignés dans les ESS CNSSAP 2023–2024 présentent des valeurs élevées et leur définition n'est pas suffisamment documentée pour être assimilée à une pension individuelle mensuelle. Les montants moyens affichés dans ce tableau sont calculés séparément à partir des dépenses du régime et du nombre de bénéficiaires.</span>
+<span class="footnote">En 2022, les 34,40 milliards de CDF de charges sont répétés sur deux lignes et incluent déjà 14,00 milliards de gestion. En revanche, les recettes sont distinctes : 52,40 + 9,80 = 62,20 milliards. En 2025, les quatre rubriques totalisent 833,06 milliards de recettes techniques et 140,00 milliards de charges techniques, non de pensions versées. Source : inventaires ESS, colonnes AG à AI ; Annuaire statistique CNSSAP 2025, « Charges » et « Revenus ».</span>
+<span class="footnote">En 2025, les 9 136 et 4 038 bénéficiaires de la base et du basculement correspondent aux retraités. Le tiret dans l’inventaire des risques professionnels n’annule pas les deux réparations renseignées dans la feuille de prestations. Les quotients de dépenses par effectif ne sont pas des pensions individuelles.</span>
 <!-- NOTE_INTERNE
 Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scripts/generer_annexe_b_visuels.py`.
 -->
@@ -314,7 +329,7 @@ Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scri
 Mécanisation des agents publics.
 Mise à la retraite par vagues.
 
-**Lancement de la branche AT/MP.** La CNSS assure depuis longtemps la couverture des risques professionnels dans le régime général. Pour les agents publics relevant de la CNSSAP, la branche des accidents du travail et maladies professionnelles a été officiellement opérationnalisée en mai 2023, étendant la couverture de la CNSSAP à l'ensemble de ses contributeurs.
+**Lancement de la branche AT/MP.** Pour les agents publics relevant de la CNSSAP, la branche a été lancée en mai 2023. Cette date ne suffit pas à établir combien d’agents ont effectivement reçu une prestation.
 
 *[À compléter : autres réformes en cours, extension aux enseignants, déploiement du système informatique, etc.]*
 
@@ -324,6 +339,7 @@ Mise à la retraite par vagues.
 
 Le FSS est l'instrument public chargé de collecter les cotisations, de gérer les fonds et de payer les frais médicaux dans le cadre de la couverture santé universelle. Les produits et dispositifs cités ci-dessous doivent être lus en distinguant leur base légale, leur phase de déploiement et les prestations effectivement documentées.
 
+<p class="table-caption"><strong>Tableau B.3.1</strong> — Régimes et programmes documentés, FSS</p>
 | Régime | Statut |
 |---|---|
 | Afia Bora — Paquet de base obligatoire | Affiliés, cotisants et bénéficiaires non renseignés dans la transmission de l'atelier ; opérationnalité quantitative non documentée |
@@ -356,17 +372,18 @@ Le FSS est l'instrument public chargé de collecter les cotisations, de gérer l
 |---|---|---|---|---|---|---|---|---|
 | Kobota Ofele — femmes enceintes et nouveau-nés pris en charge | [N/D] | [N/D] | [N/D] | [N/D] | 181 733¹ | 951 276¹ | 2 517 081¹ | Données de l'atelier ; périmètres temporels et géographiques non homogènes |
 | Population de référence (agglomération de Kinshasa) | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | ≈17 000 000² | [N/D] | Référence démographique ONU, non donnée FSS |
-| Contributeurs actifs | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | Contributions non encore prélevées |
+| Cotisants actifs | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | [N/D] | Aucun effectif ni encaissement annuel établi par sous-régime |
 
 *Le fichier ESS FSS 2022 est disponible, mais ses champs quantitatifs ne renseignent pas de série exploitable. Les valeurs 2023–2025 ci-dessus proviennent d'un fichier institutionnel distinct transmis lors de l'atelier de validation ; elles ne sont pas issues de l'ESS et ne doivent pas être intégrées aux agrégats ESS sans validation méthodologique complémentaire.*
 
 ### Données de prise en charge transmises par le FSS lors de l'atelier
 
+<p class="table-caption"><strong>Tableau B.3.4</strong> — Prises en charge et coût déclaré de Kobota Ofele (2023–2025)</p>
 | Programme | Année | Périmètre et période | Femmes enceintes | Nouveau-nés | Total indiqué | Coût total indiqué (CDF) |
 |---|---:|---|---:|---:|---:|---:|
 | Kobota Ofele (non contributif) | 2023 | Kinshasa, septembre–décembre | 137 570 | 44 163 | 181 733 | 15 499 592 328,40 |
 | Kobota Ofele (non contributif) | 2024 | Kinshasa ; Kongo-Central (août–décembre) ; Kasaï-Oriental (décembre) | 700 098 | 251 178 | 951 276 | 71 779 182 064,28 |
-| Kobota Ofele (non contributif) | 2025 | Kinshasa, Kongo-Central et Kasaï-Oriental | 1 986 066 | 531 015 | 2 517 081 | 116 036 430 002,36 |
+| Kobota Ofele (non contributif) | 2025 | Kinshasa, Kongo-Central et Kasaï-Oriental | 1 986 066 | 531 015 | 2 517 081 | 116 036 430 002,37 |
 
 ¹ *Le total additionne les femmes enceintes et les nouveau-nés pris en charge. Il ne constitue pas nécessairement un nombre de personnes uniques. Source : fichier institutionnel FSS transmis lors de l'atelier de validation, distinct de l'ESS.*
 
@@ -376,7 +393,7 @@ Le FSS est l'instrument public chargé de collecter les cotisations, de gérer l
 
 ### Régimes gérés
 
-<p class="table-caption"><strong>Tableau B.3.1</strong> — Régimes gérés, FSS</p>
+<p class="table-caption"><strong>Tableau B.3.5</strong> — Régimes gérés, FSS</p>
 
 | Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
 |---|---|---|---|---|
@@ -404,7 +421,7 @@ Le FSS est l'instrument public chargé de collecter les cotisations, de gérer l
 
 ### Données détaillées (par régime et année)
 
-<p class="table-caption"><strong>Tableau B.3.2</strong> — Données détaillées par régime et année, FSS (2019–2025)</p>
+<p class="table-caption"><strong>Tableau B.3.6</strong> — Données détaillées par régime et année, FSS (2019–2025)</p>
 
 | Régime | Année | Cotisants totaux | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./cotisant (k CDF) |
 |---|---|---|---|---|---|---|---|
@@ -438,7 +455,7 @@ Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scri
 
 Le FSS représente l'architecture institutionnelle centrale de la CSU en RDC, mais son déploiement effectif est progressif. En septembre 2023, la politique de gratuité des accouchements et des soins néonatals a été lancée dans la ville-province de Kinshasa. Ce paquet couvre les consultations prénatales, l'échographie obstétricale, les accouchements simples et par césarienne, les soins du nouveau-né, la vaccination, les consultations post-natales et l'accès aux médicaments essentiels.
 
-L'extension est prévue vers le Sud-Kivu, le Kasaï-Oriental et le Kongo-Central, avant une généralisation progressive à l'ensemble du territoire national. La vocation du FSS est à terme de remplacer tous les régimes particuliers de financement des soins médicaux existants pour assurer une couverture universelle.
+La transmission de l’atelier documente l’extension au Kongo-Central en août 2024 et au Kasaï-Oriental en décembre 2024. Les trois exercices ne couvrent donc ni les mêmes durées ni les mêmes territoires. Le coût de 2025 est arrondi au centime à partir de la cellule G19 de la feuille « TABLEAU RESUMER » (116 036 430 002,365 CDF).
 
 # B.4 Mutuelle de Santé des Enseignants de l'Enseignement Primaire, Secondaire et Professionnel (MESP)
 
@@ -477,13 +494,13 @@ La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une soc
 | Contributeurs (titulaires enseignants) | 50 256 | 54 383 | 60 745 | 80 041 | 87 019 | 96 538 | 112 608 |
 | Bénéficiaires / personnes couvertes déclarées | 122 547 | 130 961 | 141 826 | 164 877 | 176 471 | 196 574 | 217 171 |
 
-*Source : ESS MESP 2019–2025. Pour 2019–2022, les bénéficiaires correspondent à l'addition des titulaires et des membres de famille déclarés ; pour 2023–2025, le questionnaire ESS fournit directement un total de bénéficiaires de la prestation. Le régime contributif a été généralisé en février 2025 ; les effectifs antérieurs ne doivent donc pas être interprétés comme la preuve d'un prélèvement contributif généralisé.*
+*Source : ESS MESP 2019–2025, régime 1, I5 et L5. Dès 2019, le total des personnes protégées inclut les titulaires et les membres de leur famille ; ce n’est ni un effectif à ajouter aux titulaires ni un nombre de consultations. Les effectifs antérieurs à février 2025 ne prouvent pas un prélèvement généralisé.*
 
 <!-- AUTO_GENERE:MESP:DEBUT -->
 
 ### Régimes gérés
 
-<p class="table-caption"><strong>Tableau B.7.1</strong> — Régimes gérés, MESP</p>
+<p class="table-caption"><strong>Tableau B.4.4</strong> — Régimes gérés, MESP</p>
 
 | Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
 |---|---|---|---|---|
@@ -491,7 +508,7 @@ La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une soc
 
 ### Aperçu graphique (tous régimes, toutes années)
 
-<p class="fig-caption"><strong>Figure B.7.1</strong> — Évolution des cotisants, bénéficiaires, dépenses et recettes (tous régimes), MESP (2019–2025)</p>
+<p class="fig-caption"><strong>Figure B.4.1</strong> — Évolution des cotisants, bénéficiaires, dépenses et recettes (tous régimes), MESP (2019–2025)</p>
 
 <table style="width:100%; border-collapse:collapse;">
 <tr><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_MESP_cotisants.png" style="width:100%; height:auto;"></td><td style="width:50%; padding:4px;"><img src="/files/04_annexes/illustrations/annexe_B_MESP_beneficiaires.png" style="width:100%; height:auto;"></td></tr>
@@ -501,14 +518,14 @@ La MESP est la seule mutuelle obligatoire et statutaire en RDC. Elle est une soc
 
 ### Répartition par sexe (cotisants et bénéficiaires cumulés)
 
-<p class="fig-caption"><strong>Figure B.7.2</strong> — Répartition par sexe des cotisants et bénéficiaires cumulés, MESP (2019–2025)</p>
+<p class="fig-caption"><strong>Figure B.4.2</strong> — Répartition par sexe des cotisants et bénéficiaires cumulés, MESP (2019–2025)</p>
 
 <p align="center" style="font-size:0.85em; color:#4a5568; margin-bottom:4px;"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#2e78c8;margin-right:4px;"></span>Hommes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d4487a;margin-right:4px;"></span>Femmes &nbsp;&nbsp; <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#a9b4c0;margin-right:4px;"></span>Non identifié</p>
 <p align="center"><img src="/files/04_annexes/illustrations/annexe_B_MESP_sexe.png" style="width:100%; height:auto; max-width:620px;"></p>
 
 ### Données détaillées (par régime et année)
 
-<p class="table-caption"><strong>Tableau B.7.2</strong> — Données détaillées par régime et année, MESP (2019–2025)</p>
+<p class="table-caption"><strong>Tableau B.4.5</strong> — Données détaillées par régime et année, MESP (2019–2025)</p>
 
 | Régime | Année | Cotisants totaux | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./cotisant (k CDF) |
 |---|---|---|---|---|---|---|---|
@@ -567,7 +584,7 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 | Soins de santé | Couverte légalement (assurance maladie des parlementaires ; volet santé de la branche des risques liés au mandat, données ESS) ; aucune donnée effective déclarée à ce jour |
 | Maternité | Couverte légalement (assurance maternité des parlementaires, données ESS) ; aucune donnée effective déclarée à ce jour |
 
-*Le détail par régime figure au Tableau B.6.6 « Régimes gérés ». Les branches sans donnée effective déclarée sont néanmoins retenues comme couvertes légalement, ces régimes figurant explicitement dans les déclarations ESS de la SESOPA.*
+*Le détail par régime figure au tableau B.6.4 « Régimes gérés ». Les branches sans donnée effective déclarée sont néanmoins retenues comme couvertes légalement, ces régimes figurant explicitement dans les déclarations ESS de la SESOPA.*
 
 **Population assujettie :** parlementaires de l'Assemblée nationale et du Sénat, ainsi que leurs ayants droit.
 
@@ -588,10 +605,12 @@ La SESOPA gère le régime de protection sociale des parlementaires nationaux.
 
 | Indicateur | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|---|
-| Parlementaires affiliés (branche pensions) | 2 315 | 2 315 | 2 315 | 2 315 | 2 315 | 2 315 | 2 315 |
-| Bénéficiaires de pensions (vieillesse + réversion) | 1 959 | 1 959 | 1 959 | 1 959 | 1 959 | 1 959 | 1 959 |
+| Cotisants actifs à la branche pensions | 1 815 | 1 815 | 1 815 | 1 815 | 2 315 | 2 315 | 2 315 |
+| Pension de vieillesse contributive | 1 018 | 1 031 | 1 021 | 1 029 | 1 023 | 1 256 | 1 277 |
+| Pension de réversion | 396 | 605 | 636 | 652 | 682 | 674 | 671 |
+| Vieillesse et réversion : somme des déclarations | 1 414 | 1 636 | 1 657 | 1 681 | 1 705 | 1 930 | 1 948 |
 
-*Source : ESS OIT — SESOPA (2019–2025). Le détail par régime figure au Tableau B.6.6.*
+*Sources : ESS SESOPA 2019–2025, inventaire X6 et régime 1, L5 et L7 ; synthèse SESOPA de l’Assemblée nationale, p. 1. Le périmètre documenté est celui de l’Assemblée nationale, pas des deux chambres réunies. L’effectif des pensionnés non cotisants n’est pas renseigné.*
 
 Une transmission SESOPA couvrant janvier–juillet 2026 est conservée dans la base ESS à titre documentaire. Comme le bulletin couvre la période 2019–2025, ses valeurs ne sont pas intégrées aux tableaux ni aux graphiques ; elles pourront être mentionnées dans le texte lors d'une actualisation ultérieure, sous réserve de leur périmètre temporel partiel.
 
@@ -599,7 +618,7 @@ Une transmission SESOPA couvrant janvier–juillet 2026 est conservée dans la b
 
 ### Régimes gérés
 
-<p class="table-caption"><strong>Tableau B.6.6</strong> — Régimes gérés, SESOPA</p>
+<p class="table-caption"><strong>Tableau B.6.4</strong> — Régimes gérés, SESOPA</p>
 
 | Régime | Type de financement | Caractère | Gestion | Fonctions couvertes |
 |---|---|---|---|---|
@@ -628,7 +647,7 @@ Une transmission SESOPA couvrant janvier–juillet 2026 est conservée dans la b
 
 ### Données détaillées (par régime et année)
 
-<p class="table-caption"><strong>Tableau B.6.7</strong> — Données détaillées par régime et année, SESOPA (2019–2025)</p>
+<p class="table-caption"><strong>Tableau B.6.5</strong> — Données détaillées par régime et année, SESOPA (2019–2025)</p>
 
 | Régime | Année | Cotisants totaux | Bénéficiaires totaux | Dépenses totales (Mds CDF) | Recettes totales (Mds CDF) | Dép. moy./bénéf. (k CDF) | Rec. moy./cotisant (k CDF) |
 |---|---|---|---|---|---|---|---|
@@ -685,6 +704,8 @@ Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scri
 # B.7 Régimes spéciaux non contributifs de la fonction publique
 
 **Note méthodologique importante.** « TRESOR » est un code technique de la base et non le nom d'une institution. Il désigne l'hypothèse de cotisants actifs estimés parmi les agents publics hors CNSSAP, calculée par différence afin d'éviter le double compte avec la CNSSAP. Cette hypothèse ne constitue ni un décompte administratif direct ni une mesure de bénéficiaires.
+
+Le résidu est calculé **avant** exclusion des régimes spéciaux. La valeur de 2019 reprend celle de 2020 ; la baisse de 2022 à 2023 est mécanique et ne mesure pas un flux de personnes transférées. Ne pas ajouter ces estimations aux cotisants déclarés (tableau 4.3).
 
 <!-- AUTO_GENERE:TRESOR:DEBUT -->
 
@@ -772,13 +793,14 @@ Les mutuelles de santé à adhésion volontaire relèvent du cadre défini par l
 
 ## Données de couverture
 
-Les données ESS disponibles pour les mutuelles accompagnées par le CGAT sont partielles : elles couvrent 2021–2025 pour
-trois mutuelles, tandis qu'aucune donnée exploitable n'est disponible ici pour 2019–2020.
+Les données ESS du CGAT couvrent 2021–2025 et distinguent trois rubriques géographiques : Kinshasa, Kongo-Central et Goma (Nord-Kivu). Ces rubriques ne correspondent pas au nombre de mutuelles accompagnées. Les tableaux ci-dessous ne présentent pas de données pour 2019–2020.
 Elles sont restituées ci-dessous via le bloc auto-généré (régimes, visuels et tableau
 détaillé). Elles ne sont pas agrégées aux indicateurs de couverture en l'absence de données consolidées et comparables, et non du seul fait de leur adhésion volontaire.
 Les formulaires 2024–2025 expriment les montants financiers en dollars ; ils sont conservés
 comme données de source mais ne sont pas convertis en CDF en l'absence de taux documenté,
 ce qui explique les cellules financières non renseignées pour ces deux années.
+
+En comptant chaque rubrique une fois, les effectifs des trois territoires totalisent 36 681, 32 766, 34 542, 35 337 et 35 058 de 2021 à 2025 (ESS CGAT, « Complement Word CGAT », F7). Ils ne sont ni le total du réseau POMUCO ni la somme des actes. Pour ces mêmes exercices, la présentation institutionnelle POMUCO–CGAT (colonne « Dépenses de soins ($) ») donne 1,70 ; 1,28 ; 1,40 ; 1,45 et 1,69 million d’USD de soins. Ces montants excluent le fonctionnement et ne se somment pas avec les colonnes en CDF.
 
 <!-- AUTO_GENERE:CGAT:DEBUT -->
 
@@ -849,6 +871,8 @@ Visuels et tableaux générés automatiquement, sans navigateur, via `py 09_scri
 *[À compléter à réception des informations institutionnelles CGAT.]*
 
 # B.9 Ministère de l'Enseignement Primaire, Secondaire et Technique (MEPST)
+
+La protection sociale scolaire du MEPST et les élèves servis par le programme de repas scolaires du PAM (tableau 4.8) sont deux séries distinctes ; elles ne s’additionnent pas.
 
 <!-- AUTO_GENERE:MEPST:DEBUT -->
 

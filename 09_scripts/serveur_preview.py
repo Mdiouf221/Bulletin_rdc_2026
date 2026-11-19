@@ -3,6 +3,10 @@ serveur_preview.py
 ------------------
 Serveur de prévisualisation du bulletin dans le navigateur.
 
+L'éditeur visuel expose uniquement les passages de texte : les balises,
+les annotations et les tableaux sont conservés côté serveur. Les sauvegardes
+portent sur le corps public des fichiers configurés et ne reçoivent jamais de HTML du navigateur.
+
 Surveille tous les fichiers Markdown et YAML du workspace.
 Dès qu'un fichier est modifié :
   1. L'assembleur est relancé automatiquement.
@@ -23,10 +27,14 @@ Dépendances :
 
 import http.server
 import threading
+import tempfile
 import subprocess
 import pathlib
 import queue
 import json
+import hashlib
+import html as html_lib
+from html.parser import HTMLParser
 import os
 import re
 import sys
@@ -75,6 +83,7 @@ PORT          = 8765
 
 _html_cache = "<p><em>Chargement en cours…</em></p>"
 _html_lock  = threading.Lock()
+_rebuild_lock = threading.Lock()
 _clients    = []
 _clients_lock = threading.Lock()
 _word_export_lock = threading.Lock()
@@ -83,6 +92,18 @@ _word_export_state = {
     "error": "",
     "filename": "",
 }
+_text_edit_lock = threading.Lock()
+
+TEXT_EDIT_SOURCE_DIRS = {
+    "01_pages_preliminaires",
+    "02_introduction_generale",
+    "03_chapitres",
+    "04_annexes",
+}
+TEXT_EDIT_MAX_BODY_BYTES = 2 * 1024 * 1024
+MANUAL_EDIT_START = "<!-- MANUEL_EDIT:DEBUT -->"
+MANUAL_EDIT_END = "<!-- MANUEL_EDIT:FIN -->"
+TABLE_TOKEN_RE = re.compile(r"\[\[TABLEAU_LECTURE_SEULE_\d+_[0-9a-f]{10}\]\]")
 
 
 def notify_clients():
@@ -95,10 +116,10 @@ def notify_clients():
                 pass
 
 
-def run_assembler():
+def run_assembler(preview_path):
     """Relance l'assembleur Markdown. Retourne True si succès."""
     result = subprocess.run(
-        [sys.executable, str(ASSEMBLER)],
+        [sys.executable, str(ASSEMBLER), "--preview-markdown", str(preview_path)],
         capture_output=True,
         cwd=str(WORKSPACE_DIR),
         encoding="cp1252",
@@ -370,21 +391,794 @@ def enrich_source_refs(html: str, md_text: str) -> str:
     return re.sub(r'<a\b[^>]*class="[^"]*source-ref[^"]*"[^>]*>', add_val_attrs, html)
 
 
-def build_html() -> str:
+def _split_text_edit_section(md_text: str):
+    """Isole le corps public complet, avec ou sans rubrique Texte rédigé."""
+    visible_text = re.sub(
+        r"<!--.*?-->",
+        lambda match: re.sub(r"[^\r\n]", " ", match.group()),
+        md_text,
+        flags=re.S,
+    )
+    headings = list(re.finditer(
+        r"(?im)^##[ \t]+Texte[ \t]+r[eé]dig[eé][ \t]*(?:\r?\n|\Z)",
+        visible_text,
+    ))
+    if not headings:
+        heading = re.match(r"\s*#{1,2}[ \t]+[^\r\n]*(?:\r?\n|\Z)", md_text)
+        if heading is None:
+            return None
+        body_start = heading.end()
+        leading_notes = re.match(
+            r"(?:\s+|<!--(?!\s*MANUEL_EDIT:).*?-->)*", md_text[body_start:], re.S
+        )
+        body_start += leading_notes.end()
+    elif len(headings) != 1:
+        raise ValueError("Le fichier doit contenir une seule section « Texte rédigé ».")
+    else:
+        body_start = headings[0].end()
+
+    return md_text[:body_start], md_text[body_start:], ""
+
+
+def _unwrap_manual_edit(body: str) -> str:
+    has_start = MANUAL_EDIT_START in body
+    has_end = MANUAL_EDIT_END in body
+    if not has_start and not has_end:
+        return body
+    if (
+        body.count(MANUAL_EDIT_START) != 1
+        or body.count(MANUAL_EDIT_END) != 1
+    ):
+        raise ValueError("Les marqueurs de modification manuelle sont invalides.")
+
+    start = body.index(MANUAL_EDIT_START)
+    end = body.index(MANUAL_EDIT_END)
+    if end <= start:
+        raise ValueError("Les marqueurs de modification manuelle sont dans le désordre.")
+    content = body[start + len(MANUAL_EDIT_START):end]
+    before, after = body[:start], body[end + len(MANUAL_EDIT_END):]
+    if before.strip() or after.strip():
+        # Une ancienne modification peut ne couvrir qu'une sous-section.
+        return before + content + after
+    return content.strip("\r\n")
+
+
+def _is_pipe_table_separator(line: str) -> bool:
+    stripped = line.strip()
+    if "|" not in stripped:
+        return False
+    cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+    return bool(cells) and all(
+        re.fullmatch(r":?-{3,}:?", cell) for cell in cells
+    )
+
+
+def _readonly_table_spans(body: str):
+    spans = [
+        (match.start(), match.end())
+        for match in re.finditer(r"<table\b.*?</table\s*>", body, re.I | re.S)
+    ]
+
+    lines = body.splitlines(keepends=True)
+    offsets = []
+    offset = 0
+    for line in lines:
+        offsets.append(offset)
+        offset += len(line)
+
+    index = 1
+    while index < len(lines):
+        if not _is_pipe_table_separator(lines[index]) or "|" not in lines[index - 1]:
+            index += 1
+            continue
+        start_line = index - 1
+        end_line = index + 1
+        while end_line < len(lines) and "|" in lines[end_line]:
+            end_line += 1
+        spans.append((
+            offsets[start_line],
+            offsets[end_line] if end_line < len(lines) else len(body),
+        ))
+        index = end_line
+
+    return sorted(spans)
+
+
+def _mask_readonly_tables(body: str):
+    """Remplace les tableaux par des repères vérifiés avant toute sauvegarde."""
+    spans = _readonly_table_spans(body)
+    masked_parts = []
+    tables = []
+    cursor = 0
+    for start, end in spans:
+        if start < cursor:
+            continue
+        table = body[start:end]
+        token = (
+            f"[[TABLEAU_LECTURE_SEULE_{len(tables) + 1}_"
+            f"{hashlib.sha256(table.encode('utf-8')).hexdigest()[:10]}]]"
+        )
+        if token in body:
+            raise ValueError("Un repère de tableau réservé apparaît déjà dans le texte.")
+        masked_parts.append(body[cursor:start])
+        masked_parts.append(token)
+        if table.endswith("\r\n"):
+            masked_parts.append("\r\n")
+        elif table.endswith("\n"):
+            masked_parts.append("\n")
+        tables.append((token, table))
+        cursor = end
+    masked_parts.append(body[cursor:])
+    return "".join(masked_parts), tables
+
+
+def _restore_readonly_tables(edited_body: str, tables):
+    expected_tokens = [token for token, _ in tables]
+    found_tokens = TABLE_TOKEN_RE.findall(edited_body)
+    if found_tokens != expected_tokens:
+        raise ValueError(
+            "Les repères des tableaux en lecture seule doivent rester inchangés et dans le même ordre."
+        )
+
+    restored = edited_body
+    for token, table in tables:
+        newline = "\r\n" if table.endswith("\r\n") else "\n" if table.endswith("\n") else ""
+        placeholder = token + newline if newline and token + newline in restored else token
+        restored = restored.replace(placeholder, table, 1)
+    return restored
+
+
+def _text_edit_sources(only_file=None):
+    """Charge les seules sources éditables déclarées dans la configuration."""
+    import yaml
+
+    config_path = WORKSPACE_DIR / "build_config.yml"
+    try:
+        with config_path.open(encoding="utf-8-sig") as config_file:
+            config = yaml.safe_load(config_file)
+    except yaml.YAMLError as exc:
+        raise ValueError(f"Lecture de build_config.yml impossible : {exc}") from exc
+    if not isinstance(config, dict) or not isinstance(config.get("sections"), list):
+        raise ValueError("La configuration des sections est invalide.")
+
+    root = WORKSPACE_DIR.resolve()
+    sources = {}
+    for section in config["sections"]:
+        if not isinstance(section, dict):
+            continue
+        configured_files = section.get("files", [])
+        if not isinstance(configured_files, list):
+            raise ValueError("La liste des fichiers d'une section est invalide.")
+        for configured_path in configured_files:
+            if not isinstance(configured_path, str) or not configured_path.lower().endswith(".md"):
+                continue
+            normalized = configured_path.replace("\\", "/")
+            if only_file is not None and normalized != only_file:
+                continue
+            relative = pathlib.PurePosixPath(normalized)
+            if (
+                relative.is_absolute()
+                or not relative.parts
+                or relative.parts[0] not in TEXT_EDIT_SOURCE_DIRS
+                or ".." in relative.parts
+            ):
+                continue
+            target = (root / pathlib.Path(*relative.parts)).resolve()
+            try:
+                target.relative_to(root)
+            except ValueError:
+                continue
+            if not target.is_file():
+                continue
+
+            raw_bytes = target.read_bytes()
+            md_text = raw_bytes.decode("utf-8-sig")
+            section_parts = _split_text_edit_section(md_text)
+            if section_parts is None:
+                continue
+            prefix, raw_body, suffix = section_parts
+            editable_body = _unwrap_manual_edit(raw_body)
+            masked_body, tables = _mask_readonly_tables(editable_body)
+            if not re.sub(r"<!--.*?-->", "", editable_body, flags=re.S).strip():
+                continue
+
+            title_match = re.search(r"(?m)^#{1,2}\s+(.+?)\s*$", md_text)
+            title = title_match.group(1).strip() if title_match else relative.stem
+            title = re.sub(r"<[^>]*>", "", title).strip()
+            sources[normalized] = {
+                "file": normalized,
+                "title": title,
+                "target": target,
+                "raw_bytes": raw_bytes,
+                "revision": hashlib.sha256(raw_bytes).hexdigest(),
+                "prefix": prefix,
+                "body": raw_body,
+                "suffix": suffix,
+                "content": masked_body.replace("\r\n", "\n").replace("\r", "\n"),
+                "tables": tables,
+            }
+    return sources
+
+
+def _render_manual_edit_markers(md_text: str) -> str:
+    return md_text.replace(
+        MANUAL_EDIT_START,
+        '<div class="manual-edit" markdown="1">',
+    ).replace(MANUAL_EDIT_END, "</div>")
+
+
+class _VisualTextSourceParser(HTMLParser):
+    """Repère les caractères de texte sans exposer les attributs HTML."""
+
+    def __init__(self, source):
+        super().__init__(convert_charrefs=False)
+        self.source = source
+        self.ranges = []
+        self.lines = [0]
+        for match in re.finditer("\n", source):
+            self.lines.append(match.end())
+
+    def handle_data(self, data):
+        line, column = self.getpos()
+        start = self.lines[line - 1] + column
+        self.ranges.append((start, start + len(data)))
+
+    def handle_entityref(self, name):
+        self.handle_data("&" + name + ";")
+
+    def handle_charref(self, name):
+        self.handle_data("&#" + name + ";")
+
+
+class _VisualTextRenderer(HTMLParser):
+    def __init__(self, source):
+        super().__init__(convert_charrefs=True)
+        self.source = source
+        parser = _VisualTextSourceParser(source)
+        parser.feed(source)
+        self.ranges = []
+        for start, end in parser.ranges:
+            if self.ranges and self.ranges[-1][1] == start:
+                self.ranges[-1] = (self.ranges[-1][0], end)
+            else:
+                self.ranges.append((start, end))
+        self.cursor = 0
+        self.stack = []
+        self.weights = []
+        self.output = []
+        self.slots = {}
+        self.generated = False
+
+    def handle_comment(self, data):
+        marker = re.fullmatch(r"\s*AUTO_GENERE:[^:\s]+:(DEBUT|FIN)\s*", data)
+        if marker:
+            self.generated = marker.group(1) == "DEBUT"
+
+    def handle_starttag(self, tag, attrs):
+        attributes = dict(attrs)
+        locked = (
+            tag in {"table", "pre", "code", "script", "style", "svg"}
+            or "valid-badge" in attributes.get("class", "").split()
+            or "table-caption" in attributes.get("class", "").split()
+            or any(self.stack)
+        )
+        if tag not in {"img", "br", "hr", "input", "meta", "link", "wbr"}:
+            self.stack.append(locked)
+            bold = bool(self.weights and self.weights[-1])
+            if tag in {"strong", "b", "h1", "h2", "h3", "h4", "h5", "h6"}:
+                bold = True
+            elif attributes.get("style") == "font-weight: normal":
+                bold = False
+            self.weights.append(bold)
+        self.output.append(self.get_starttag_text())
+
+    def handle_startendtag(self, tag, attrs):
+        self.output.append(self.get_starttag_text())
+
+    def handle_endtag(self, tag):
+        if self.stack:
+            self.stack.pop()
+            self.weights.pop()
+        self.output.append(f"</{tag}>")
+
+    def handle_data(self, text):
+        escaped = html_lib.escape(text, quote=False)
+        if not text.strip():
+            self.output.append(escaped)
+            return
+        candidates = []
+        for range_start, range_end in self.ranges:
+            if range_end <= self.cursor:
+                continue
+            start = max(range_start, self.cursor)
+            decoded = []
+            offsets = []
+            for match in re.finditer(r"&(?:#\d+|#x[0-9a-fA-F]+|[a-zA-Z]\w*);|\r\n?|.", self.source[start:range_end], re.S):
+                value = html_lib.unescape(match.group())
+                # Markdown normalise les retours, mais les offsets restent ceux du fichier.
+                value = value.replace("\r\n", "\n").replace("\r", "\n")
+                decoded.append(value)
+                offsets.extend([(start + match.start(), start + match.end())] * len(value))
+            found = "".join(decoded).find(text)
+            if found >= 0:
+                candidates.append((offsets[found][0], offsets[found + len(text) - 1][1]))
+                break
+        if not candidates:
+            self.output.append(escaped)
+            return
+        start, end = min(candidates)
+        self.cursor = end
+        if any(self.stack) or self.generated:
+            self.output.append(escaped)
+            return
+        slot_id = str(len(self.slots))
+        display_text = re.sub(r"\r\n?|\n", " ", text)
+        bold = bool(self.weights and self.weights[-1])
+        self.slots[slot_id] = {"start": start, "end": end, "text": display_text,
+                               "bold": bold, "parent_bold": any(self.weights[-2:-1])}
+        self.output.append(
+            f'<span data-text-slot="{slot_id}" contenteditable="plaintext-only"'
+            f' data-bold="{int(bold)}" role="textbox" aria-label="Passage de texte">'
+            f'{html_lib.escape(display_text, quote=False)}</span>'
+        )
+
+
+def _visual_text_document(source):
+    body = _unwrap_manual_edit(source["body"])
+    rendered = markdown.markdown(body, extensions=["tables", "fenced_code", "md_in_html"])
+    renderer = _VisualTextRenderer(body)
+    renderer.feed(rendered)
+    return {"html": "".join(renderer.output), "slots": renderer.slots, "body": body}
+
+
+def _escape_visual_text(text):
+    if not isinstance(text, str) or "\n" in text or "\r" in text:
+        raise ValueError("Le passage doit contenir du texte sur une seule ligne.")
+    return re.sub(r"[\\`*_{}\[\]()#+.!|>~-]", lambda m: f"&#{ord(m.group())};",
+                  html_lib.escape(text, quote=False))
+
+
+def _apply_visual_text_changes(source, changes):
+    document = _visual_text_document(source)
+    if not isinstance(changes, dict) or not changes:
+        raise ValueError("Aucune modification de texte à enregistrer.")
+    replacements = []
+    body = document["body"]
+    for slot_id, text in changes.items():
+        slot = document["slots"].get(slot_id)
+        if slot is None:
+            raise ValueError("Passage de texte inconnu ou contenu invalide.")
+        start, end = slot["start"], slot["end"]
+        if isinstance(text, str):
+            if text != slot["text"]:
+                replacements.append((start, end, _escape_visual_text(text)))
+            continue
+        if not isinstance(text, list) or not text:
+            raise ValueError("Mise en forme de texte invalide.")
+        inherited = slot["bold"]
+        # Retirer une enveloppe simple, sans toucher aux liens ni aux annotations.
+        for left, right, weight in (("**", "**", True), ("__", "__", True),
+                                    ("<strong>", "</strong>", True), ("<b>", "</b>", True),
+                                    ('<span style="font-weight: normal">', "</span>", False)):
+            if (weight == inherited and body[:start].endswith(left)
+                    and body.startswith(right, end)):
+                start -= len(left)
+                end += len(right)
+                inherited = slot["parent_bold"]
+                break
+        parts = []
+        for run in text:
+            if not isinstance(run, dict) or type(run.get("bold")) is not bool:
+                raise ValueError("Mise en forme de texte invalide.")
+            value = _escape_visual_text(run.get("text"))
+            if run["bold"] != inherited:
+                value = (f"<strong>{value}</strong>" if run["bold"] else
+                         f'<span style="font-weight: normal">{value}</span>')
+            parts.append(value)
+        replacements.append((start, end, "".join(parts)))
+    for start, end, text in sorted(replacements, reverse=True):
+        body = body[:start] + text + body[end:]
+    masked, _ = _mask_readonly_tables(body)
+    return masked
+
+
+def _build_text_edit_update(source: dict, edited_body: str) -> bytes:
+    restored_body = _restore_readonly_tables(edited_body, source["tables"])
+    if not TABLE_TOKEN_RE.sub("", edited_body).strip():
+        raise ValueError("Le texte rédigé ne peut pas être vide.")
+
+    newline = "\r\n" if "\r\n" in source["body"] else "\n"
+    restored_body = restored_body.replace("\r\n", "\n").replace("\r", "\n")
+    restored_body = restored_body.strip("\n").replace("\n", newline)
+    wrapped_body = (
+        newline
+        + MANUAL_EDIT_START + newline
+        + restored_body + newline
+        + MANUAL_EDIT_END + newline + newline
+    )
+    updated_text = source["prefix"] + wrapped_body + source["suffix"]
+    has_utf8_bom = source["raw_bytes"].startswith(b"\xef\xbb\xbf")
+    return (
+        (b"\xef\xbb\xbf" if has_utf8_bom else b"")
+        + updated_text.encode("utf-8")
+    )
+
+
+TEXT_EDIT_BUTTON = """
+    <button id="text-edit-open" class="topbar-btn" type="button">
+      ✏️ Modifier le texte
+    </button>
+"""
+
+TEXT_EDIT_MODAL = """
+<div id="text-edit-dialog" class="text-edit-dialog" hidden>
+  <div class="text-edit-backdrop" data-text-edit-close></div>
+  <section class="text-edit-panel" role="dialog" aria-modal="true"
+           aria-labelledby="text-edit-title">
+    <header class="text-edit-header">
+      <div>
+        <h2 id="text-edit-title">Modifier le texte du bulletin</h2>
+        <p>La sauvegarde modifie uniquement le texte public de la section choisie. Les notes internes sont préservées et les tableaux restent en lecture seule.</p>
+      </div>
+      <button id="text-edit-x" class="text-edit-close" type="button" aria-label="Fermer">×</button>
+    </header>
+    <label class="text-edit-label" for="text-edit-file">Rubrique du sommaire</label>
+    <select id="text-edit-file" disabled>
+      <option>Chargement des sections…</option>
+    </select>
+    <div id="text-edit-path" class="text-edit-path"></div>
+    <div><button id="text-edit-bold" type="button" aria-pressed="false" disabled><strong>Gras</strong></button></div>
+    <div id="text-edit-content" spellcheck="true" aria-label="Texte rédigé" aria-busy="true"></div>
+    <p class="text-edit-help">Sélectionnez du texte dans un passage, puis cliquez sur « Gras » pour appliquer ou retirer le gras (Ctrl+B ou ⌘B). Les tableaux et les blocs générés automatiquement sont verrouillés.</p>
+    <div id="text-edit-status" class="text-edit-status" role="status" aria-live="polite"></div>
+    <footer class="text-edit-actions">
+      <button id="text-edit-cancel" class="text-edit-secondary" type="button">Fermer</button>
+      <button id="text-edit-save" class="text-edit-primary" type="button" disabled>Enregistrer</button>
+    </footer>
+  </section>
+</div>
+"""
+
+TEXT_EDIT_SCRIPT = r"""
+<script>
+(function() {
+  const openButton = document.getElementById("text-edit-open");
+  const dialog = document.getElementById("text-edit-dialog");
+  const select = document.getElementById("text-edit-file");
+  const editor = document.getElementById("text-edit-content");
+  const boldButton = document.getElementById("text-edit-bold");
+  const pathLabel = document.getElementById("text-edit-path");
+  const status = document.getElementById("text-edit-status");
+  const saveButton = document.getElementById("text-edit-save");
+  const cancelButton = document.getElementById("text-edit-cancel");
+  const closeButton = document.getElementById("text-edit-x");
+  if (!openButton || !dialog || !select || !editor || !saveButton) return;
+
+  let currentFile = "";
+  let currentRevision = "";
+  let originalContent = {};
+  let loading = false;
+  let selectedEntry = "";
+  const sections = new Map();
+  let sourceFile = "";
+  document.querySelectorAll("#content [data-preview-file], #content :is(h1,h2,h3)[id]").forEach(node => {
+    if (node.hasAttribute("data-preview-file")) sourceFile = node.dataset.previewFile;
+    else if (sourceFile) sections.set(node.id, {file: sourceFile, heading: node});
+  });
+
+  function headingLabel(heading) {
+    const copy = heading.cloneNode(true);
+    copy.querySelectorAll(".valid-badge, .toc-toggle").forEach(node => node.remove());
+    return copy.textContent.replace(/\s+/g, " ").trim();
+  }
+
+  function showPassage(entry) {
+    editor.scrollTop = 0;
+    if (!entry) return;
+    const label = headingLabel(entry.heading);
+    const matches = Array.from(editor.querySelectorAll(entry.heading.tagName))
+      .filter(node => headingLabel(node) === label);
+    const similar = Array.from(sections.values()).filter(other =>
+      other.file === entry.file && other.heading.tagName === entry.heading.tagName &&
+      headingLabel(other.heading) === label);
+    const target = matches[similar.indexOf(entry)];
+    if (target) editor.scrollTop += target.getBoundingClientRect().top - editor.getBoundingClientRect().top - 10;
+  }
+
+  function isBold(node) {
+    return node.parentElement.closest("[data-bold]").dataset.bold === "1";
+  }
+
+  function slotValue(slot) {
+    if (!slot.querySelector("[data-bold]")) return slot.textContent;
+    const runs = [];
+    const walker = document.createTreeWalker(slot, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      if (!node.length) continue;
+      const bold = isBold(node);
+      const last = runs[runs.length - 1];
+      if (last && last.bold === bold) last.text += node.data;
+      else runs.push({text: node.data, bold});
+    }
+    return runs.some(run => run.bold !== (slot.dataset.bold === "1")) ? runs : slot.textContent;
+  }
+
+  function selectionInfo() {
+    const selection = window.getSelection();
+    if (loading || dialog.hidden || !selection.rangeCount || selection.isCollapsed) return null;
+    const range = selection.getRangeAt(0);
+    const root = range.commonAncestorContainer;
+    const slot = (root.parentElement && (root.nodeType === 1 ? root : root.parentElement))
+      ?.closest("[data-text-slot]");
+    if (!slot || !editor.contains(slot)) return null;
+    const walker = document.createTreeWalker(slot, NodeFilter.SHOW_TEXT);
+    let bold = true;
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      if (range.intersectsNode(node) && !(node === range.startContainer && range.startOffset === node.length)
+          && !(node === range.endContainer && range.endOffset === 0)) bold = bold && isBold(node);
+    }
+    return range.toString() ? {range, bold} : null;
+  }
+
+  function updateBoldState() {
+    const info = selectionInfo();
+    boldButton.disabled = !info;
+    boldButton.setAttribute("aria-pressed", String(Boolean(info && info.bold)));
+  }
+
+  function toggleBold() {
+    const info = selectionInfo();
+    if (!info) return;
+    const span = document.createElement("span");
+    span.dataset.bold = info.bold ? "0" : "1";
+    span.style.fontWeight = info.bold ? "normal" : "bold";
+    span.textContent = info.range.toString();
+    info.range.deleteContents();
+    info.range.insertNode(span);
+    info.range.selectNodeContents(span);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(info.range);
+    updateBoldState();
+    updateSaveState();
+  }
+
+  boldButton.addEventListener("mousedown", event => event.preventDefault());
+  boldButton.addEventListener("click", toggleBold);
+  document.addEventListener("selectionchange", updateBoldState);
+  editor.addEventListener("keydown", function(event) {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "b") {
+      event.preventDefault();
+      toggleBold();
+    }
+  });
+
+  function changes() {
+    const result = {};
+    editor.querySelectorAll("[data-text-slot]").forEach(function(element) {
+      const id = element.dataset.textSlot;
+      const value = slotValue(element);
+      if (JSON.stringify(value) !== originalContent[id]) result[id] = value;
+    });
+    return result;
+  }
+
+  function setLoading(value) {
+    loading = value;
+    editor.inert = value;
+    editor.setAttribute("aria-busy", String(value));
+    select.disabled = value;
+    cancelButton.disabled = value;
+    closeButton.disabled = value;
+    updateBoldState();
+    updateSaveState();
+  }
+
+  async function requestJson(url, options) {
+    const response = await fetch(url, Object.assign({cache: "no-store"}, options || {}));
+    let payload;
+    try {
+      payload = await response.json();
+    } catch (error) {
+      throw new Error("Réponse serveur illisible.");
+    }
+    if (!response.ok) throw new Error(payload.error || "La requête a échoué.");
+    return payload;
+  }
+
+  function setStatus(message, isError) {
+    status.textContent = message || "";
+    status.classList.toggle("error", Boolean(isError));
+  }
+
+  function updateSaveState() {
+    const pending = changes();
+    editor.querySelectorAll("[data-text-slot]").forEach(function(element) {
+      element.classList.toggle(
+        "text-edit-changed",
+        Object.hasOwn(pending, element.dataset.textSlot)
+      );
+    });
+    saveButton.disabled = loading || !currentFile || Object.keys(pending).length === 0;
+  }
+
+  async function loadFile(key) {
+    selectedEntry = key;
+    const entry = sections.get(key);
+    const file = entry ? entry.file : key;
+    setLoading(true);
+    setStatus("Chargement…", false);
+    try {
+      const payload = await requestJson("/api/text-edit?file=" + encodeURIComponent(file));
+      currentFile = payload.file;
+      currentRevision = payload.revision;
+      originalContent = {};
+      editor.innerHTML = payload.html;
+      editor.querySelectorAll("[data-text-slot]").forEach(function(element) {
+        originalContent[element.dataset.textSlot] = JSON.stringify(slotValue(element));
+      });
+      pathLabel.textContent = payload.file;
+      setStatus(
+        Object.keys(originalContent).length
+          ? ""
+          : "Cette section ne contient aucun passage de texte modifiable. Les tableaux et les éléments protégés restent en lecture seule.",
+        false
+      );
+      showPassage(entry);
+    } catch (error) {
+      currentFile = "";
+      currentRevision = "";
+      editor.innerHTML = "";
+      pathLabel.textContent = file;
+      setStatus(error.message, true);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function openEditor() {
+    dialog.hidden = false;
+    openButton.disabled = true;
+    setLoading(true);
+    setStatus("Chargement des sections…", false);
+    try {
+      if (sections.size) {
+        select.replaceChildren();
+        let current = "";
+        const top = document.getElementById("main").getBoundingClientRect().top;
+        const anchor = document.querySelector("#content :target");
+        document.querySelectorAll("#sidebar .toc a[href^='#']").forEach(link => {
+          const id = decodeURIComponent(link.hash.slice(1));
+          const entry = sections.get(id);
+          if (!entry) return;
+          const h = entry.heading;
+          select.add(new Option("\u00a0\u00a0".repeat(Number(h.tagName.slice(1)) - 1) + headingLabel(h), id));
+          if (h.getBoundingClientRect().top <= top + 80) current = id;
+        });
+        if (anchor && sections.has(anchor.id) && anchor.getBoundingClientRect().bottom >= top &&
+            anchor.getBoundingClientRect().top < window.innerHeight) current = anchor.id;
+        if (current) select.value = current;
+        await loadFile(select.value);
+        return;
+      }
+      const payload = await requestJson("/api/text-edit/files");
+      select.innerHTML = "";
+      payload.files.forEach(function(file) {
+        const option = document.createElement("option");
+        option.value = file.file;
+        option.textContent = file.title;
+        select.appendChild(option);
+      });
+      if (!payload.files.length) {
+        setStatus("Aucune section contenant du texte public n’est disponible.", true);
+        return;
+      }
+      select.disabled = false;
+      await loadFile(payload.files[0].file);
+    } catch (error) {
+      setStatus(error.message, true);
+    } finally {
+      openButton.disabled = false;
+      setLoading(false);
+    }
+  }
+
+  function closeEditor() {
+    if (loading) return;
+    if (Object.keys(changes()).length &&
+        !window.confirm("Les modifications non enregistrées seront perdues. Fermer ?")) return;
+    dialog.hidden = true;
+    if (dialog.dataset.pendingReload) window.location.reload();
+  }
+
+  openButton.addEventListener("click", openEditor);
+  cancelButton.addEventListener("click", closeEditor);
+  closeButton.addEventListener("click", closeEditor);
+  dialog.querySelector("[data-text-edit-close]").addEventListener("click", closeEditor);
+  select.addEventListener("change", function() {
+    const entry = sections.get(select.value);
+    if (entry && entry.file === currentFile) {
+      selectedEntry = select.value;
+      showPassage(entry);
+      return;
+    }
+    if (Object.keys(changes()).length &&
+        !window.confirm("Abandonner les modifications non enregistrées ?")) {
+      select.value = selectedEntry;
+      return;
+    }
+    loadFile(select.value);
+  });
+  editor.addEventListener("input", updateSaveState);
+  editor.addEventListener("click", function(event) {
+    if (event.target.closest("a")) event.preventDefault();
+  });
+  editor.addEventListener("beforeinput", function(event) {
+    if (event.inputType === "insertParagraph" || event.inputType === "insertLineBreak") {
+      event.preventDefault();
+    }
+  });
+  window.addEventListener("beforeunload", function(event) {
+    if (!dialog.hidden && Object.keys(changes()).length) {
+      event.preventDefault();
+      event.returnValue = "";
+    }
+  });
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape" && !dialog.hidden) closeEditor();
+  });
+
+  saveButton.addEventListener("click", async function() {
+    if (saveButton.disabled) return;
+    setLoading(true);
+    setStatus("Enregistrement et mise à jour du bulletin…", false);
+    try {
+      await requestJson("/api/text-edit/save", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          file: currentFile,
+          revision: currentRevision,
+          changes: changes()
+        })
+      });
+      editor.querySelectorAll("[data-text-slot]").forEach(function(element) {
+        originalContent[element.dataset.textSlot] = JSON.stringify(slotValue(element));
+      });
+      setStatus("Enregistré. Rechargement de la prévisualisation…", false);
+      if (sections.has(selectedEntry)) {
+        history.replaceState(null, "", "#" + encodeURIComponent(selectedEntry));
+      }
+      window.location.reload();
+    } catch (error) {
+      setStatus(error.message, true);
+    } finally {
+      setLoading(false);
+    }
+  });
+})();
+</script>
+"""
+
+
+def build_html(preview_path=None) -> str:
     """Convertit le fichier assemblé en page HTML complète."""
     css = CSS_FILE.read_text(encoding="utf-8-sig") if CSS_FILE.exists() else ""
 
-    if not ASSEMBLED.exists():
+    assembled = preview_path or ASSEMBLED
+    if not assembled.exists():
         md_text = (
             "# Fichier introuvable\n\n"
             "_Le fichier `10_output/bulletin_complet_publication.md` n'existe pas encore._\n\n"
             "Vérifiez que `build_config.yml` est correct et relancez l'assembleur."
         )
     else:
-        md_text = ASSEMBLED.read_text(encoding="utf-8")
+        md_text = assembled.read_text(encoding="utf-8")
 
     status_map = {}
-    md_preview = preprocess_md(md_text)
+    md_preview = preprocess_md(_render_manual_edit_markers(md_text))
     md = markdown.Markdown(
         extensions=[
             "tables",
@@ -424,6 +1218,7 @@ def build_html() -> str:
     <span id="status">● En ligne</span>
   </div>
   <div id="topbar-actions">
+    {TEXT_EDIT_BUTTON}
     <a href="/dashboard" target="_blank" class="topbar-btn topbar-link"
        title="Ouvrir le tableau de bord interactif des régimes (ESS)">
       📊 Tableau de bord
@@ -464,6 +1259,7 @@ def build_html() -> str:
 </div>
 
 <div id="page-indicator">Page 1</div>
+{TEXT_EDIT_MODAL}
 
 <script>
 /* ------------------------------------------------------------------ */
@@ -471,7 +1267,10 @@ def build_html() -> str:
 /* ------------------------------------------------------------------ */
 const evtSource = new EventSource("/events");
 evtSource.onmessage = function(e) {{
-  if (e.data === "reload") window.location.reload();
+  if (e.data !== "reload") return;
+  const dialog = document.getElementById("text-edit-dialog");
+  if (dialog && !dialog.hidden) dialog.dataset.pendingReload = "true";
+  else window.location.reload();
 }};
 evtSource.onerror = function() {{
   const s = document.getElementById("status");
@@ -913,6 +1712,7 @@ document.getElementById("main").addEventListener("scroll", onScroll);
 }})();
 </script>
 
+{TEXT_EDIT_SCRIPT}
 </body>
 </html>"""
     return html
@@ -985,16 +1785,21 @@ def kill_port(port: int) -> bool:
     return killed
 
 
-def rebuild(source: str = ""):
+def rebuild(source: str = "", *, text_edit=False):
     """Reconstruit la page : assembleur + HTML + notification navigateurs."""
     global _html_cache
     if source:
         print(f"[WATCHER] Modification détectée : {source}")
-    run_assembler()
-    run_regime_dashboard()
-    html = build_html()
-    with _html_lock:
-        _html_cache = html
+    with _rebuild_lock, tempfile.TemporaryDirectory() as temp_dir:
+        preview_path = pathlib.Path(temp_dir) / "preview.md"
+        ok = run_assembler(preview_path)
+        if not ok and text_edit:
+            raise ValueError("Échec de l’assemblage du bulletin.")
+        if not text_edit:
+            run_regime_dashboard()
+        html = build_html(preview_path if ok else None)
+        with _html_lock:
+            _html_cache = html
     notify_clients()
     print("[PREVIEW] Page mise à jour")
 
@@ -1047,6 +1852,10 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
             self._serve_sse()
         elif self.path == "/dashboard":
             self._serve_dashboard()
+        elif self.path == "/api/text-edit/files":
+            self._serve_text_edit_files()
+        elif urlparse(self.path).path == "/api/text-edit":
+            self._serve_text_edit_file()
         elif self.path in ("/export", "/export-notes"):
             self._handle_export(include_notes=(self.path == "/export-notes"))
         elif self.path in ("/export-word", "/export-word/start"):
@@ -1378,6 +2187,8 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
     def do_POST(self):
         if self.path == "/validate":
             self._handle_validate()
+        elif self.path == "/api/text-edit/save":
+            self._handle_text_edit_save()
         elif self.path == "/api/dashboard-settings":
             self._handle_dashboard_settings()
         elif self.path == "/api/questionnaire-data":
@@ -1396,6 +2207,134 @@ class PreviewHandler(http.server.BaseHTTPRequestHandler):
         else:
             self.send_response(405)
             self.end_headers()
+
+    def _send_text_edit_json(self, status_code: int, payload: dict):
+        body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        self.send_response(status_code)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _serve_text_edit_files(self):
+        try:
+            sources = _text_edit_sources()
+        except (OSError, UnicodeError, ValueError) as exc:
+            self._send_text_edit_json(500, {"error": f"Lecture des sections impossible : {exc}"})
+            return
+        files = [
+            {"file": source["file"], "title": source["title"]}
+            for source in sources.values()
+        ]
+        self._send_text_edit_json(200, {"files": files})
+
+    def _serve_text_edit_file(self):
+        query = parse_qs(urlparse(self.path).query, keep_blank_values=True)
+        file_values = query.get("file", [])
+        if len(file_values) != 1 or not file_values[0]:
+            self._send_text_edit_json(400, {"error": "Le paramètre file est requis."})
+            return
+        try:
+            source = _text_edit_sources(file_values[0]).get(file_values[0])
+        except (OSError, UnicodeError, ValueError) as exc:
+            self._send_text_edit_json(500, {"error": f"Lecture de la section impossible : {exc}"})
+            return
+        if source is None:
+            self._send_text_edit_json(404, {"error": "Cette rubrique ne contient pas de texte public modifiable. Choisissez une autre rubrique du sommaire."})
+            return
+        self._send_text_edit_json(200, {
+            "file": source["file"],
+            "title": source["title"],
+            "html": _visual_text_document(source)["html"],
+            "revision": source["revision"],
+        })
+
+    def _same_origin_local_request(self) -> bool:
+        origin = urlparse(self.headers.get("Origin", ""))
+        request_host = urlparse("//" + self.headers.get("Host", ""))
+        return (
+            origin.scheme == "http"
+            and origin.hostname in {"localhost", "127.0.0.1", "::1"}
+            and origin.hostname == request_host.hostname
+            and origin.port == PORT
+        )
+
+    def _handle_text_edit_save(self):
+        if not self._same_origin_local_request():
+            self._send_text_edit_json(403, {"error": "La sauvegarde doit provenir de la prévisualisation locale."})
+            return
+
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+        except ValueError:
+            self._send_text_edit_json(400, {"error": "Longueur de requête invalide."})
+            return
+        if length <= 0 or length > TEXT_EDIT_MAX_BODY_BYTES:
+            self._send_text_edit_json(413, {"error": "Le contenu est vide ou dépasse la taille autorisée."})
+            return
+
+        try:
+            data = json.loads(self.rfile.read(length).decode("utf-8"))
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            self._send_text_edit_json(400, {"error": "Corps JSON invalide."})
+            return
+        if (
+            not isinstance(data, dict)
+            or not isinstance(data.get("file"), str)
+            or not isinstance(data.get("revision"), str)
+            or not isinstance(data.get("changes"), dict)
+        ):
+            self._send_text_edit_json(400, {"error": "Champs requis : file, revision et changes."})
+            return
+
+        file_rel = data["file"]
+
+        with _text_edit_lock:
+            try:
+                source = _text_edit_sources(file_rel).get(file_rel)
+            except (OSError, UnicodeError, ValueError) as exc:
+                self._send_text_edit_json(500, {"error": f"Lecture de la source impossible : {exc}"})
+                return
+            if source is None:
+                self._send_text_edit_json(403, {"error": "Cette source n'est pas autorisée à l'édition."})
+                return
+            if data["revision"] != source["revision"]:
+                self._send_text_edit_json(409, {
+                    "error": "Le fichier source a changé depuis son ouverture. Rechargez la section avant de sauvegarder."
+                })
+                return
+
+            try:
+                latest_bytes = source["target"].read_bytes()
+            except OSError as exc:
+                self._send_text_edit_json(500, {"error": f"Relecture de la source impossible : {exc}"})
+                return
+            if hashlib.sha256(latest_bytes).hexdigest() != source["revision"]:
+                self._send_text_edit_json(409, {
+                    "error": "Le fichier source a changé pendant la sauvegarde. Rechargez la section."
+                })
+                return
+
+            try:
+                edited_body = _apply_visual_text_changes(source, data["changes"])
+                updated_bytes = _build_text_edit_update(source, edited_body)
+            except ValueError as exc:
+                self._send_text_edit_json(400, {"error": str(exc)})
+                return
+            try:
+                source["target"].write_bytes(updated_bytes)
+            except OSError as exc:
+                self._send_text_edit_json(500, {"error": f"Écriture du fichier source impossible : {exc}"})
+                return
+
+        try:
+            rebuild(file_rel, text_edit=True)
+        except (OSError, ValueError) as exc:
+            self._send_text_edit_json(500, {"error": f"Texte enregistré, mais prévisualisation non actualisée : {exc}"})
+            return
+        self._send_text_edit_json(200, {"ok": True})
+        print(f"[TEXT_EDIT] {file_rel}")
 
     def _handle_dashboard_settings(self):
         length = int(self.headers.get("Content-Length", 0))

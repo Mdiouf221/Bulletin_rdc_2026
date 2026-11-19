@@ -199,8 +199,15 @@ def build_rules(connection: sqlite3.Connection) -> list[Rule]:
         connection, "CNSS", ("CNSS_R3",), (1,), "montant_unitaire_cdf", "MAX"
     )
     cnssap_retirement = prestation_series(
-        connection, "CNSSAP", ("CNSSAP_R1", "CNSSAP_R2"), (1,), "beneficiaires_total"
+        connection, "CNSSAP", ("CNSSAP_R1",), (1,), "beneficiaires_total"
     )
+    # La rubrique de transfèrement passe du régime 2 au régime 4 dans l'ESS 2025.
+    cnssap_transfer = query_series(connection, """
+        SELECT annee, beneficiaires_total FROM prestations_historique
+        WHERE institution='CNSSAP' AND prestation_num=1
+          AND ((annee BETWEEN 2022 AND 2024 AND regime_code='CNSSAP_R2')
+            OR (annee=2025 AND regime_code='CNSSAP_R4'))
+    """, ())
     sesopa_retirement = prestation_series(
         connection, "SESOPA", ("SESOPA_R1",), (1, 2), "beneficiaires_total"
     )
@@ -229,8 +236,7 @@ def build_rules(connection: sqlite3.Connection) -> list[Rule]:
     atmp_amount = prestation_series(
         connection, "CNSS", ("CNSS_R2",), (1,), "montant_unitaire_cdf", "MAX"
     )
-    # DM-021 : détail 2024 et montant 2023-2024 non retenus avant vérification.
-    atmp_incapacity[2024] = None
+    # L'ESS 2024 corrigée renseigne l'incapacité ; les autres réserves restent applicables.
     atmp_rehabilitation[2024] = None
     atmp_amount[2023] = None
     atmp_amount[2024] = None
@@ -289,29 +295,28 @@ def build_rules(connection: sqlite3.Connection) -> list[Rule]:
     return [
         Rule("4.2_vieillesse.md", ("CNSS | Pension de retraite (bénéf.)",), cnss_retirement, format_integer, "s42-t1-d"),
         Rule("4.2_vieillesse.md", ("CNSS | Pension de retraite anticipée",), cnss_retirement_early, format_integer, "s42-t1-d4"),
-        Rule("4.2_vieillesse.md", ("CNSSAP | Pension de vieillesse",), cnssap_retirement, format_integer, "s42-t1-d"),
+        Rule("4.2_vieillesse.md", ("CNSSAP — régime de base | Pension de retraite",), cnssap_retirement, format_integer, "s42-base"),
+        Rule("4.2_vieillesse.md", ("CNSSAP — dispositif de transfèrement | Pension de retraite",), cnssap_transfer, format_integer, "s42-transfert"),
         Rule("4.2_vieillesse.md", ("SESOPA", "Pension de vieillesse"), sesopa_retirement, format_integer, "s42-t1-d5"),
-        Rule("4.2_vieillesse.md", ("Pension CNSS — montant unitaire",), cnss_retirement_amount, format_money, "s42-t2-d"),
-        Rule("4.3_age_actif.md", ("CNSS | Régime contributif — secteur formel | Cotisants actifs",), cnss_cotisants, format_integer, "s43-t1-d"),
-        Rule("4.3_age_actif.md", ("CNSSAP | Régime contributif — agents publics | Cotisants actifs",), cnssap_cotisants, format_integer, "s43-t1-d"),
-        Rule("4.3_age_actif.md", ("indemnité journalière maternité",), maternity_daily, format_integer, "s43-t2-d"),
-        Rule("4.3_age_actif.md", ("allocation de maternité",), maternity_allowance, format_integer, "s43-t2-d"),
-        Rule("4.3_age_actif.md", ("allocations prénatales",), prenatal_allowance, format_integer, "s43-t2-d"),
-        Rule("4.3_age_actif.md", ("Rentes/allocations incapacité AT/MP",), atmp_incapacity, format_integer, "s43-t3-d"),
-        Rule("4.3_age_actif.md", ("Frais de réadaptation fonctionnelle",), atmp_rehabilitation, format_integer, "s43-t3-d"),
-        Rule("4.3_age_actif.md", ("Montant unitaire rente AT/MP",), atmp_amount, format_money, "s43-t3-d"),
+        Rule("4.2_vieillesse.md", ("Pension de retraite CNSS — minimum payé",), cnss_retirement_amount, format_money, "s42-t2-d"),
+        Rule("4.3_age_actif.md", ("| CNSS | Cotisants actifs",), cnss_cotisants, format_integer, "s43-t1-d"),
+        Rule("4.3_age_actif.md", ("| CNSSAP | Cotisants actifs",), cnssap_cotisants, format_integer, "s43-t1-d"),
+        Rule("../../04_annexes/annexe_F_tableaux_statistiques.md", ("indemnité journalière maternité",), maternity_daily, format_integer, "s43-t2-d"),
+        Rule("../../04_annexes/annexe_F_tableaux_statistiques.md", ("allocation de maternité",), maternity_allowance, format_integer, "s43-t2-d"),
+        Rule("../../04_annexes/annexe_F_tableaux_statistiques.md", ("allocations prénatales",), prenatal_allowance, format_integer, "s43-t2-d"),
+        Rule("../../04_annexes/annexe_F_tableaux_statistiques.md", ("Rentes/allocations incapacité AT/MP",), atmp_incapacity, format_integer, "s43-t3-d"),
+        Rule("../../04_annexes/annexe_F_tableaux_statistiques.md", ("Frais de réadaptation fonctionnelle",), atmp_rehabilitation, format_integer, "s43-t3-d"),
+        Rule("../../04_annexes/annexe_F_tableaux_statistiques.md", ("Montant unitaire rente AT/MP",), atmp_amount, format_money, "s43-t3-d"),
         Rule("4.4_enfants_familles.md", ("CNSS | Enfants couverts",), family_children, format_integer, "s44-t1-d"),
         Rule("4.5_invalidite.md", ("CNSS | Pensionnés invalidité",), invalidity, format_integer, "s45-t1-d"),
-        Rule("4.5_invalidite.md", ("CNSS | Montant unitaire pension invalidité",), invalidity_amount, format_money, "s45-t1-d"),
+        Rule("4.5_invalidite.md", ("CNSS | Rente ou allocation d’incapacité AT/MP",), atmp_incapacity, format_integer, "s45-atmp"),
         Rule("4.5_invalidite.md", ("Pension invalidité CNSS",), invalidity_amount, format_money, "s45-t2-d"),
-        Rule("4.5_invalidite.md", ("Pension vieillesse CNSS",), cnss_retirement_amount, format_money, "s45-t2-d"),
         Rule("4.6_deces_survie.md", ("CNSS | Pension des survivants",), survivor_pension, format_integer, "s46-t1-d"),
         Rule("4.6_deces_survie.md", ("CNSS | Rentes de survivants AT/MP",), survivor_atmp, format_integer, "s46-t1-d"),
-        Rule("4.6_deces_survie.md", ("CNSS | Allocation frais funéraires",), funeral_beneficiaries, format_integer, "s46-t1-d"),
+        Rule("4.6_deces_survie.md", ("| Allocation frais funéraires (bénéf.) |",), funeral_beneficiaries, format_integer, "s46-t1-d"),
         Rule("4.6_deces_survie.md", ("CNSSAP | Pension des survivants",), cnssap_survivors, format_integer, "s46-t1-d4"),
         Rule("4.6_deces_survie.md", ("SESOPA", "Pension de réversion"), sesopa_survivors, format_integer, "s46-t1-d5"),
         Rule("4.6_deces_survie.md", ("Pension survie CNSS",), survivor_amount, format_money, "s46-t2-d"),
-        Rule("4.6_deces_survie.md", ("Pension vieillesse CNSS",), cnss_retirement_amount, format_money, "s46-t2-d"),
         Rule("4.6_deces_survie.md", ("Montant frais funéraires CNSS",), funeral_amount, format_money, "s46-t2-d"),
         Rule("4.7_sante.md", ("Cotisants actifs MESP",), mesp_cotisants, format_integer, "s47-t2-d1"),
         Rule("4.7_sante.md", ("Bénéficiaires couverts",), mesp_beneficiaries, format_integer, "s47-t2-d2"),
@@ -425,7 +430,7 @@ def main() -> int:
     changed_files = 0
     total_replacements = 0
     for file_name in sorted({rule.file_name for rule in rules}):
-        path = CHAPTER_DIR / file_name
+        path = (CHAPTER_DIR / file_name).resolve()
         file_rules = [rule for rule in rules if rule.file_name == file_name]
         replacements, changed = update_file(path, file_rules, args.check)
         total_replacements += replacements
